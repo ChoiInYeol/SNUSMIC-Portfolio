@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-29T14:17:50+00:00",
+  "generated_at": "2026-07-01T12:50:20+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -13655,6 +13655,35 @@
           "source_file": "2026-06-12_STAR_KB금융.md",
           "target_price": 211300.0,
           "stated_upside_pct": 31.0794
+        }
+      ]
+    },
+    {
+      "ticker": "012450",
+      "market": "KR",
+      "name": "한화에어로스페이스",
+      "entry_date": "2026-06-18",
+      "exit_date": "2026-07-01",
+      "entry_price": 1235000.0,
+      "exit_price": 1020000.0,
+      "return_pct": -17.9,
+      "days": 13,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: voera 2026-05-23, smic 2025-04-19)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-한화에어로스페이스.md",
+          "target_price": 1205000.0,
+          "stated_upside_pct": 47.7918
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-23",
+          "source_file": "undated_[BUY] 주가는 Eagles가 상승기류 타듯, 한화에어로스페이스.md",
+          "target_price": 1435000.0,
+          "stated_upside_pct": 13.7986
         }
       ]
     }

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-06-29T14:17:50+00:00",
+  "generated_at": "2026-07-01T12:50:20+00:00",
   "strategy_key": "E_half_runner",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -3656,6 +3656,100 @@
       "return_pct": 32.87,
       "days": 11,
       "exit_reason": "목표가_절반익절",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2026-02-06, star 2024-01-06)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-01-06",
+          "source_file": "2024-01-06_STAR_선익시스템.md",
+          "target_price": 54700.0,
+          "stated_upside_pct": 79.9342
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-02-06",
+          "source_file": "2026-04-04_선익시스템(171090, KQ), SuperSUNic ~ YIG Research.md",
+          "target_price": 131400.0,
+          "stated_upside_pct": 43.9211
+        }
+      ]
+    },
+    {
+      "ticker": "042660",
+      "market": "KR",
+      "name": "한화오션",
+      "entry_date": "2025-12-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 108700.0,
+      "exit_price": 101200.0,
+      "return_pct": 85.09,
+      "days": 212,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2025-11-29, smic 2024-04-17)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-04-17",
+          "source_file": "2024-04-17_equity-research-한화오션.md",
+          "target_price": 54500.0,
+          "stated_upside_pct": 87.931
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-11-29",
+          "source_file": "2025-11-28_[251128] 한화오션(042660).md",
+          "target_price": 167100.0,
+          "stated_upside_pct": 55.0093
+        }
+      ]
+    },
+    {
+      "ticker": "066970",
+      "market": "KR",
+      "name": "엘앤에프",
+      "entry_date": "2025-11-07",
+      "exit_date": "2026-07-01",
+      "entry_price": 123200.0,
+      "exit_price": 114600.0,
+      "return_pct": 84.92,
+      "days": 236,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2025-11-06, star 2023-03-01, ewha 2022-11-25)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-11-25",
+          "source_file": "2022-11-25_[221125] 엘앤에프(066970).md",
+          "target_price": 261600.0,
+          "stated_upside_pct": 22.5293
+        },
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_엘앤에프.md",
+          "target_price": 457300.0,
+          "stated_upside_pct": 74.542
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-06",
+          "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
+          "target_price": 184000.0,
+          "stated_upside_pct": 44.0877
+        }
+      ]
+    },
+    {
+      "ticker": "171090",
+      "market": "KR",
+      "name": "선익시스템",
+      "entry_date": "2026-02-09",
+      "exit_date": "2026-07-01",
+      "entry_price": 98000.0,
+      "exit_price": 60300.0,
+      "return_pct": -38.84,
+      "days": 142,
+      "exit_reason": "runner_thesis_break_200MA",
       "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2026-02-06, star 2024-01-06)",
       "trigger_reports": [
         {
