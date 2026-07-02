@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-01T12:50:20+00:00",
+  "generated_at": "2026-07-02T12:18:10+00:00",
   "strategy_key": "S_msharpe",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -47599,8 +47599,8 @@
       "entry_date": "2026-05-01",
       "exit_date": "2026-07-01",
       "entry_price": 188.52,
-      "exit_price": 163.12,
-      "return_pct": -9.89,
+      "exit_price": 157.63,
+      "return_pct": -12.92,
       "days": 61,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 1.6% 재조정 보유",
@@ -47773,6 +47773,50 @@
       ]
     },
     {
+      "ticker": "ALAB",
+      "market": "US",
+      "name": "ALAB",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 328.12,
+      "exit_price": 468.0,
+      "return_pct": 45.3,
+      "days": 30,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 3.6% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_Astera Labs.md",
+          "target_price": 168.37,
+          "stated_upside_pct": 28.7528
+        }
+      ]
+    },
+    {
+      "ticker": "SXT",
+      "market": "US",
+      "name": "SXT",
+      "entry_date": "2026-05-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 114.9399,
+      "exit_price": 123.48,
+      "return_pct": 11.93,
+      "days": 61,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 2.7% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-sensient-technologies-corp.md",
+          "target_price": 238.0,
+          "stated_upside_pct": 150.7724
+        }
+      ]
+    },
+    {
       "ticker": "440110",
       "market": "KR",
       "name": "파두",
@@ -47791,6 +47835,28 @@
           "source_file": "2026-02-09_파두 - 호재가 파두파두 끝이 없네.md",
           "target_price": 56400.0,
           "stated_upside_pct": 14.8676
+        }
+      ]
+    },
+    {
+      "ticker": "FIX",
+      "market": "US",
+      "name": "FIX",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 1765.75,
+      "exit_price": 1935.58,
+      "return_pct": 11.67,
+      "days": 30,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-05-29",
+          "source_file": "2026-05-29_equity-research-comfort-systems-usa-inc.md",
+          "target_price": 5326.0,
+          "stated_upside_pct": 191.3232
         }
       ]
     }

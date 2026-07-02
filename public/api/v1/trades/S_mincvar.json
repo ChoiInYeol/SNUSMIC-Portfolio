@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-01T12:50:20+00:00",
+  "generated_at": "2026-07-02T12:18:10+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20203,8 +20203,8 @@
       "entry_date": "2026-06-01",
       "exit_date": "2026-07-01",
       "entry_price": 1765.75,
-      "exit_price": 1981.95,
-      "return_pct": 14.34,
+      "exit_price": 1935.58,
+      "return_pct": 11.67,
       "days": 30,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.6% 신규 편입 (18개월 유효 리포트 유니버스)",
@@ -20320,6 +20320,50 @@
       ]
     },
     {
+      "ticker": "CLBT",
+      "market": "US",
+      "name": "CLBT",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 13.98,
+      "exit_price": 14.76,
+      "return_pct": 7.81,
+      "days": 91,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.1% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-cellebrite-di.md",
+          "target_price": 29.7,
+          "stated_upside_pct": 72.5741
+        }
+      ]
+    },
+    {
+      "ticker": "SRAD",
+      "market": "US",
+      "name": "SRAD",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 16.79,
+      "exit_price": 15.11,
+      "return_pct": -1.68,
+      "days": 91,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.2% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-sportradar.md",
+          "target_price": 33.82,
+          "stated_upside_pct": 41.5655
+        }
+      ]
+    },
+    {
       "ticker": "347850",
       "market": "KR",
       "name": "디앤디파마텍",
@@ -20338,6 +20382,57 @@
           "source_file": "2025-08-19_디앤디파마텍 - 간단히 말해, 비만도 MASH도 한 큐에.md",
           "target_price": null,
           "stated_upside_pct": 46.0
+        }
+      ]
+    },
+    {
+      "ticker": "IMAX",
+      "market": "US",
+      "name": "IMAX",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 38.23,
+      "exit_price": 40.17,
+      "return_pct": 10.81,
+      "days": 91,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 11.8% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-imax-corp.md",
+          "target_price": 54.6,
+          "stated_upside_pct": 48.2085
+        }
+      ]
+    },
+    {
+      "ticker": "LITE",
+      "market": "US",
+      "name": "LITE",
+      "entry_date": "2026-05-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 913.0,
+      "exit_price": 818.405,
+      "return_pct": -6.65,
+      "days": 61,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.5% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-lumentum-holdings-inc.md",
+          "target_price": 498.63,
+          "stated_upside_pct": 48.9826
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-03-27",
+          "source_file": "2026-03-27_Lumentum Holdings - 루멘상스의 시대가 왔다.md",
+          "target_price": 1216.0,
+          "stated_upside_pct": 73.0394
         }
       ]
     }
