@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-02T12:18:10+00:00",
+  "generated_at": "2026-07-03T12:32:07+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "ticker": "FIX",
   "market": "US",
@@ -17,6 +17,6 @@
   "open_stop": {
     "stop_level": 1635.29,
     "entry_date": "2026-06-01",
-    "as_of": "2026-07-02"
+    "as_of": "2026-07-03"
   }
 }

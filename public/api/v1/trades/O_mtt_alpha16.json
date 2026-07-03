@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-02T12:18:10+00:00",
+  "generated_at": "2026-07-03T12:32:07+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20047,6 +20047,144 @@
           "source_file": "2025-11-11_삼성전기 (009150, KS), 내가 삼전이오 (발간일 251014) YIG Research.md",
           "target_price": 297800.0,
           "stated_upside_pct": 50.2523
+        }
+      ]
+    },
+    {
+      "ticker": "GLW",
+      "market": "US",
+      "name": "GLW",
+      "entry_date": "2026-06-26",
+      "exit_date": "2026-07-02",
+      "entry_price": 224.43,
+      "exit_price": 223.89,
+      "return_pct": -0.98,
+      "days": 6,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 95≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-10-23",
+          "source_file": "2025-10-23_equity-research-corning-3.md",
+          "target_price": 144.0,
+          "stated_upside_pct": 68.8989
+        }
+      ]
+    },
+    {
+      "ticker": "420770",
+      "market": "KR",
+      "name": "기가비스",
+      "entry_date": "2026-06-23",
+      "exit_date": "2026-07-03",
+      "entry_price": 159200.0,
+      "exit_price": 170700.0,
+      "return_pct": 6.58,
+      "days": 10,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 97≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2023-05-24",
+          "source_file": "2025-11-10_기가버스 (420770, KQ), 기가지니~ 주가 좀 올려줘! (발간일 231102) YIG Research.md",
+          "target_price": 84000.0,
+          "stated_upside_pct": 6.3291
+        },
+        {
+          "school": "smic",
+          "report_date": "2023-05-25",
+          "source_file": "2023-05-25_equity-research-기가비스.md",
+          "target_price": 84800.0,
+          "stated_upside_pct": 13.6729
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_기가비스.md",
+          "target_price": 153300.0,
+          "stated_upside_pct": 112.0332
+        }
+      ]
+    },
+    {
+      "ticker": "319660",
+      "market": "KR",
+      "name": "피에스케이",
+      "entry_date": "2026-06-29",
+      "exit_date": "2026-07-03",
+      "entry_price": 191500.0,
+      "exit_price": 182800.0,
+      "return_pct": -5.11,
+      "days": 4,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 98≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2026-03-17",
+          "source_file": "2026-03-31_피에스케이(319660,KQ), Post Semiconductor King YIG Research.md",
+          "target_price": 87400.0,
+          "stated_upside_pct": 20.0549
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-03",
+          "source_file": "2026-05-03_STAR_피에스케이.md",
+          "target_price": 127800.0,
+          "stated_upside_pct": 44.0812
+        }
+      ]
+    },
+    {
+      "ticker": "222800",
+      "market": "KR",
+      "name": "심텍",
+      "entry_date": "2026-07-01",
+      "exit_date": "2026-07-03",
+      "entry_price": 146900.0,
+      "exit_price": 126000.0,
+      "return_pct": -14.74,
+      "days": 2,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 97≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-03-12",
+          "source_file": "2022-03-12_[220312] 심텍(222800).md",
+          "target_price": 66900.0,
+          "stated_upside_pct": 33.5329
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-13",
+          "source_file": "2026-04-08_심텍 (222800, KOSDAQ), 흔들린 숫자, 명확해진 방향 YIG Research.md",
+          "target_price": 84100.0,
+          "stated_upside_pct": 56.903
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2026-07-01",
+      "exit_date": "2026-07-03",
+      "entry_price": 161600.0,
+      "exit_price": 140500.0,
+      "return_pct": -13.58,
+      "days": 2,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 95≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-05-02",
+          "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
+          "target_price": 155200.0,
+          "stated_upside_pct": 24.8592
         }
       ]
     }
