@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-03T12:32:07+00:00",
+  "generated_at": "2026-07-06T13:28:54+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23553,7 +23553,7 @@
       "exit_date": "2026-07-02",
       "entry_price": 224.43,
       "exit_price": 223.89,
-      "return_pct": -0.98,
+      "return_pct": -0.5,
       "days": 6,
       "exit_reason": "q_stop",
       "entry_reason": "깡토 추세추종: RS 95 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
@@ -23600,6 +23600,35 @@
           "source_file": "2026-03-14_STAR_기가비스.md",
           "target_price": 153300.0,
           "stated_upside_pct": 112.0332
+        }
+      ]
+    },
+    {
+      "ticker": "084370",
+      "market": "KR",
+      "name": "유진테크",
+      "entry_date": "2026-07-02",
+      "exit_date": "2026-07-06",
+      "entry_price": 189300.0,
+      "exit_price": 170400.0,
+      "return_pct": -10.52,
+      "days": 4,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 94 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-11-11",
+          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_유진테크.md",
+          "target_price": 119500.0,
+          "stated_upside_pct": 59.3333
         }
       ]
     }

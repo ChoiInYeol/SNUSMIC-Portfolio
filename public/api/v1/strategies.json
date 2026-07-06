@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-03T12:32:07+00:00",
+  "generated_at": "2026-07-06T13:28:54+00:00",
   "headline_key": "U_chandelier_scaleout",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -11,9 +11,9 @@
       "is_headline": false,
       "trade_count": 118,
       "metrics": {
-        "total_return_pct": 88.67,
-        "cagr_pct": 10.26,
-        "sharpe": 0.48,
+        "total_return_pct": 82.99,
+        "cagr_pct": 9.73,
+        "sharpe": 0.46,
         "mdd_pct": -41.93,
         "win_rate_pct": 44.9,
         "avg_hold_days": 365.8
@@ -26,20 +26,20 @@
         "mdd_pct": -41.93
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 23.81,
-        "cagr_pct": 8.92,
-        "sharpe": 0.43,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 20.09,
+        "cagr_pct": 7.57,
+        "sharpe": 0.39,
         "mdd_pct": -30.64
       },
-      "kospi_dca_ratio": 0.454,
+      "kospi_dca_ratio": 0.443,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.569,
+      "aw_dca_ratio": 0.556,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.8913,
-        "dsr": 0.1065,
-        "sr0_annualized": 0.968,
+        "psr": 0.8832,
+        "dsr": 0.0945,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -66,9 +66,9 @@
       "is_headline": false,
       "trade_count": 40,
       "metrics": {
-        "total_return_pct": 225.0,
-        "cagr_pct": 19.88,
-        "sharpe": 0.78,
+        "total_return_pct": 221.49,
+        "cagr_pct": 19.66,
+        "sharpe": 0.77,
         "mdd_pct": -41.93,
         "win_rate_pct": 67.5,
         "avg_hold_days": 1096.7
@@ -81,20 +81,20 @@
         "mdd_pct": -41.93
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 94.76,
-        "cagr_pct": 30.56,
-        "sharpe": 1.05,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 92.66,
+        "cagr_pct": 29.88,
+        "sharpe": 1.04,
         "mdd_pct": -23.45
       },
-      "kospi_dca_ratio": 0.665,
+      "kospi_dca_ratio": 0.66,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.832,
+      "aw_dca_ratio": 0.829,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9768,
-        "dsr": 0.3109,
-        "sr0_annualized": 0.968,
+        "psr": 0.9759,
+        "dsr": 0.2967,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -121,9 +121,9 @@
       "is_headline": false,
       "trade_count": 78,
       "metrics": {
-        "total_return_pct": 113.77,
-        "cagr_pct": 12.4,
-        "sharpe": 0.53,
+        "total_return_pct": 103.35,
+        "cagr_pct": 11.52,
+        "sharpe": 0.5,
         "mdd_pct": -47.55,
         "win_rate_pct": 1.3,
         "avg_hold_days": 288.7
@@ -136,20 +136,20 @@
         "mdd_pct": -47.55
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 98.77,
-        "cagr_pct": 31.63,
-        "sharpe": 0.93,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 89.08,
+        "cagr_pct": 28.92,
+        "sharpe": 0.87,
         "mdd_pct": -23.77
       },
-      "kospi_dca_ratio": 0.631,
+      "kospi_dca_ratio": 0.603,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.791,
+      "aw_dca_ratio": 0.757,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9122,
-        "dsr": 0.1277,
-        "sr0_annualized": 0.968,
+        "psr": 0.9015,
+        "dsr": 0.1099,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -176,12 +176,12 @@
       "is_headline": false,
       "trade_count": 344,
       "metrics": {
-        "total_return_pct": 333.98,
-        "cagr_pct": 25.34,
+        "total_return_pct": 328.91,
+        "cagr_pct": 25.07,
         "sharpe": 1.0,
         "mdd_pct": -32.56,
-        "win_rate_pct": 45.3,
-        "avg_hold_days": 102.8
+        "win_rate_pct": 45.6,
+        "avg_hold_days": 103.0
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -191,20 +191,20 @@
         "mdd_pct": -24.51
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 99.25,
-        "cagr_pct": 31.76,
-        "sharpe": 1.01,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 96.92,
+        "cagr_pct": 31.02,
+        "sharpe": 1.0,
         "mdd_pct": -32.56
       },
-      "kospi_dca_ratio": 0.807,
+      "kospi_dca_ratio": 0.8,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 1.01,
+      "aw_dca_ratio": 1.005,
       "aw_dca_beats": true,
       "dsr": {
-        "psr": 0.9947,
-        "dsr": 0.5375,
-        "sr0_annualized": 0.968,
+        "psr": 0.9944,
+        "dsr": 0.5192,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -231,9 +231,9 @@
       "is_headline": false,
       "trade_count": 151,
       "metrics": {
-        "total_return_pct": 113.25,
-        "cagr_pct": 12.36,
-        "sharpe": 0.57,
+        "total_return_pct": 107.54,
+        "cagr_pct": 11.87,
+        "sharpe": 0.55,
         "mdd_pct": -43.67,
         "win_rate_pct": 80.1,
         "avg_hold_days": 226.7
@@ -246,20 +246,20 @@
         "mdd_pct": -43.67
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 75.21,
-        "cagr_pct": 25.15,
-        "sharpe": 0.88,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 70.52,
+        "cagr_pct": 23.71,
+        "sharpe": 0.85,
         "mdd_pct": -23.45
       },
-      "kospi_dca_ratio": 0.575,
+      "kospi_dca_ratio": 0.562,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.72,
+      "aw_dca_ratio": 0.705,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.928,
-        "dsr": 0.1537,
-        "sr0_annualized": 0.968,
+        "psr": 0.9223,
+        "dsr": 0.1384,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -286,9 +286,9 @@
       "is_headline": false,
       "trade_count": 59,
       "metrics": {
-        "total_return_pct": 100.71,
-        "cagr_pct": 11.31,
-        "sharpe": 0.61,
+        "total_return_pct": 98.82,
+        "cagr_pct": 11.14,
+        "sharpe": 0.6,
         "mdd_pct": -34.19,
         "win_rate_pct": 0.0,
         "avg_hold_days": 241.8
@@ -301,20 +301,20 @@
         "mdd_pct": -34.19
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 66.71,
-        "cagr_pct": 22.69,
-        "sharpe": 0.96,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 65.14,
+        "cagr_pct": 22.14,
+        "sharpe": 0.94,
         "mdd_pct": -17.82
       },
-      "kospi_dca_ratio": 0.528,
+      "kospi_dca_ratio": 0.525,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.661,
+      "aw_dca_ratio": 0.659,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9409,
-        "dsr": 0.182,
-        "sr0_annualized": 0.968,
+        "psr": 0.9388,
+        "dsr": 0.1709,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -341,9 +341,9 @@
       "is_headline": false,
       "trade_count": 757,
       "metrics": {
-        "total_return_pct": -77.8,
-        "cagr_pct": -20.67,
-        "sharpe": -0.94,
+        "total_return_pct": -78.47,
+        "cagr_pct": -21.02,
+        "sharpe": -0.96,
         "mdd_pct": -83.29,
         "win_rate_pct": 31.0,
         "avg_hold_days": 34.9
@@ -356,20 +356,20 @@
         "mdd_pct": -40.7
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": -76.37,
-        "cagr_pct": -43.85,
-        "sharpe": -1.93,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": -77.08,
+        "cagr_pct": -44.43,
+        "sharpe": -1.97,
         "mdd_pct": -78.16
       },
-      "kospi_dca_ratio": 0.137,
+      "kospi_dca_ratio": 0.133,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.171,
+      "aw_dca_ratio": 0.167,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.0066,
+        "psr": 0.0057,
         "dsr": 0.0,
-        "sr0_annualized": 0.968,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -396,10 +396,10 @@
       "is_headline": false,
       "trade_count": 110,
       "metrics": {
-        "total_return_pct": 149.64,
-        "cagr_pct": 15.11,
-        "sharpe": 1.14,
-        "mdd_pct": -11.04,
+        "total_return_pct": 140.92,
+        "cagr_pct": 14.47,
+        "sharpe": 1.09,
+        "mdd_pct": -11.54,
         "win_rate_pct": 36.4,
         "avg_hold_days": 53.8
       },
@@ -411,20 +411,20 @@
         "mdd_pct": -4.39
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 120.05,
-        "cagr_pct": 37.1,
-        "sharpe": 1.64,
-        "mdd_pct": -11.04
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 112.36,
+        "cagr_pct": 35.03,
+        "sharpe": 1.56,
+        "mdd_pct": -11.54
       },
-      "kospi_dca_ratio": 0.706,
+      "kospi_dca_ratio": 0.684,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.884,
+      "aw_dca_ratio": 0.859,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9984,
-        "dsr": 0.6719,
-        "sr0_annualized": 0.968,
+        "psr": 0.9976,
+        "dsr": 0.6166,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -451,11 +451,11 @@
       "is_headline": false,
       "trade_count": 516,
       "metrics": {
-        "total_return_pct": 63.44,
-        "cagr_pct": 7.85,
-        "sharpe": 0.41,
+        "total_return_pct": 60.04,
+        "cagr_pct": 7.49,
+        "sharpe": 0.4,
         "mdd_pct": -45.17,
-        "win_rate_pct": 32.2,
+        "win_rate_pct": 32.4,
         "avg_hold_days": 50.1
       },
       "in_sample": {
@@ -466,20 +466,20 @@
         "mdd_pct": -39.17
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 40.34,
-        "cagr_pct": 14.52,
-        "sharpe": 0.56,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 37.42,
+        "cagr_pct": 13.51,
+        "sharpe": 0.53,
         "mdd_pct": -45.17
       },
-      "kospi_dca_ratio": 0.469,
+      "kospi_dca_ratio": 0.461,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.588,
+      "aw_dca_ratio": 0.579,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.855,
-        "dsr": 0.0773,
-        "sr0_annualized": 0.968,
+        "psr": 0.8478,
+        "dsr": 0.0693,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -487,7 +487,7 @@
         "n_windows": 13,
         "positive_pct": 46.2,
         "beat_kospi_pct": 46.2,
-        "median_sharpe": -0.49,
+        "median_sharpe": -0.48,
         "worst_sharpe": -2.7,
         "worst_window_return_pct": -34.25
       },
@@ -506,9 +506,9 @@
       "is_headline": false,
       "trade_count": 0,
       "metrics": {
-        "total_return_pct": 280.4,
-        "cagr_pct": 22.82,
-        "sharpe": 0.95,
+        "total_return_pct": 274.34,
+        "cagr_pct": 22.49,
+        "sharpe": 0.94,
         "mdd_pct": -34.06,
         "win_rate_pct": null,
         "avg_hold_days": null
@@ -521,20 +521,20 @@
         "mdd_pct": -28.86
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 99.32,
-        "cagr_pct": 31.78,
-        "sharpe": 1.03,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 96.14,
+        "cagr_pct": 30.82,
+        "sharpe": 1.0,
         "mdd_pct": -34.06
       },
-      "kospi_dca_ratio": 0.78,
+      "kospi_dca_ratio": 0.77,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.976,
+      "aw_dca_ratio": 0.967,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9929,
-        "dsr": 0.4842,
-        "sr0_annualized": 0.968,
+        "psr": 0.9923,
+        "dsr": 0.462,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -561,9 +561,9 @@
       "is_headline": false,
       "trade_count": 587,
       "metrics": {
-        "total_return_pct": 33.08,
-        "cagr_pct": 4.5,
-        "sharpe": 0.75,
+        "total_return_pct": 32.85,
+        "cagr_pct": 4.46,
+        "sharpe": 0.74,
         "mdd_pct": -16.99,
         "win_rate_pct": 50.1,
         "avg_hold_days": 17.5
@@ -576,20 +576,20 @@
         "mdd_pct": -6.96
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 16.0,
-        "cagr_pct": 6.12,
-        "sharpe": 0.75,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 15.8,
+        "cagr_pct": 6.03,
+        "sharpe": 0.74,
         "mdd_pct": -11.77
       },
-      "kospi_dca_ratio": 0.417,
+      "kospi_dca_ratio": 0.419,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.523,
+      "aw_dca_ratio": 0.525,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9719,
-        "dsr": 0.2858,
-        "sr0_annualized": 0.968,
+        "psr": 0.9712,
+        "dsr": 0.2734,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -616,9 +616,9 @@
       "is_headline": false,
       "trade_count": 78,
       "metrics": {
-        "total_return_pct": 112.57,
-        "cagr_pct": 12.3,
-        "sharpe": 0.75,
+        "total_return_pct": 107.97,
+        "cagr_pct": 11.91,
+        "sharpe": 0.73,
         "mdd_pct": -27.2,
         "win_rate_pct": 39.7,
         "avg_hold_days": 274.7
@@ -631,20 +631,20 @@
         "mdd_pct": -22.63
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 81.34,
-        "cagr_pct": 26.89,
-        "sharpe": 1.13,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 77.42,
+        "cagr_pct": 25.69,
+        "sharpe": 1.09,
         "mdd_pct": -15.11
       },
-      "kospi_dca_ratio": 0.62,
+      "kospi_dca_ratio": 0.609,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.776,
+      "aw_dca_ratio": 0.765,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9708,
-        "dsr": 0.2876,
-        "sr0_annualized": 0.968,
+        "psr": 0.9673,
+        "dsr": 0.2623,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -671,9 +671,9 @@
       "is_headline": false,
       "trade_count": 695,
       "metrics": {
-        "total_return_pct": 35.1,
-        "cagr_pct": 4.74,
-        "sharpe": 0.42,
+        "total_return_pct": 35.02,
+        "cagr_pct": 4.72,
+        "sharpe": 0.41,
         "mdd_pct": -16.2,
         "win_rate_pct": 39.3,
         "avg_hold_days": 14.8
@@ -686,20 +686,20 @@
         "mdd_pct": -8.7
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 19.7,
-        "cagr_pct": 7.46,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 19.62,
+        "cagr_pct": 7.41,
         "sharpe": 0.46,
         "mdd_pct": -16.2
       },
-      "kospi_dca_ratio": 0.428,
+      "kospi_dca_ratio": 0.43,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.536,
+      "aw_dca_ratio": 0.54,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.8532,
-        "dsr": 0.0811,
-        "sr0_annualized": 0.968,
+        "psr": 0.8528,
+        "dsr": 0.0772,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -726,9 +726,9 @@
       "is_headline": false,
       "trade_count": 287,
       "metrics": {
-        "total_return_pct": 18.48,
-        "cagr_pct": 2.64,
-        "sharpe": 0.23,
+        "total_return_pct": 16.55,
+        "cagr_pct": 2.38,
+        "sharpe": 0.21,
         "mdd_pct": -43.5,
         "win_rate_pct": 33.1,
         "avg_hold_days": 69.7
@@ -741,20 +741,20 @@
         "mdd_pct": -35.7
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": -7.93,
-        "cagr_pct": -3.25,
-        "sharpe": -0.02,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": -9.43,
+        "cagr_pct": -3.87,
+        "sharpe": -0.04,
         "mdd_pct": -27.91
       },
-      "kospi_dca_ratio": 0.343,
+      "kospi_dca_ratio": 0.339,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.43,
+      "aw_dca_ratio": 0.426,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.7208,
-        "dsr": 0.0277,
-        "sr0_annualized": 0.968,
+        "psr": 0.7102,
+        "dsr": 0.0243,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -779,11 +779,11 @@
       "key": "Q_kangto_trend",
       "label": "Q_kangto_trend",
       "is_headline": false,
-      "trade_count": 869,
+      "trade_count": 870,
       "metrics": {
-        "total_return_pct": -5.61,
-        "cagr_pct": -0.89,
-        "sharpe": 0.04,
+        "total_return_pct": -5.86,
+        "cagr_pct": -0.92,
+        "sharpe": 0.03,
         "mdd_pct": -36.37,
         "win_rate_pct": 46.1,
         "avg_hold_days": 26.9
@@ -796,20 +796,20 @@
         "mdd_pct": -30.94
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": -2.03,
-        "cagr_pct": -0.82,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": -2.29,
+        "cagr_pct": -0.92,
         "sharpe": 0.08,
         "mdd_pct": -24.07
       },
       "kospi_dca_ratio": 0.338,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.423,
+      "aw_dca_ratio": 0.425,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.5372,
-        "dsr": 0.0081,
-        "sr0_annualized": 0.968,
+        "psr": 0.5348,
+        "dsr": 0.0074,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -834,14 +834,14 @@
       "key": "R_kelly_chandelier",
       "label": "R_kelly_chandelier",
       "is_headline": false,
-      "trade_count": 202,
+      "trade_count": 199,
       "metrics": {
-        "total_return_pct": 100.97,
-        "cagr_pct": 11.34,
+        "total_return_pct": 104.2,
+        "cagr_pct": 11.59,
         "sharpe": 0.57,
         "mdd_pct": -43.23,
-        "win_rate_pct": 47.0,
-        "avg_hold_days": 82.0
+        "win_rate_pct": 48.2,
+        "avg_hold_days": 82.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -851,26 +851,26 @@
         "mdd_pct": -35.04
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 47.83,
-        "cagr_pct": 16.93,
-        "sharpe": 0.66,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 50.21,
+        "cagr_pct": 17.61,
+        "sharpe": 0.68,
         "mdd_pct": -29.48
       },
-      "kospi_dca_ratio": 0.537,
+      "kospi_dca_ratio": 0.548,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.672,
+      "aw_dca_ratio": 0.688,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9269,
-        "dsr": 0.1521,
-        "sr0_annualized": 0.968,
+        "psr": 0.9294,
+        "dsr": 0.1497,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
       "walkforward": {
         "n_windows": 13,
-        "positive_pct": 69.2,
+        "positive_pct": 61.5,
         "beat_kospi_pct": 30.8,
         "median_sharpe": 1.23,
         "worst_sharpe": -1.91,
@@ -878,7 +878,7 @@
       },
       "walkforward_oos": {
         "n_windows": 5,
-        "positive_pct": 80.0,
+        "positive_pct": 60.0,
         "beat_kospi_pct": 20.0,
         "median_sharpe": 1.23,
         "worst_sharpe": -1.61,
@@ -889,13 +889,13 @@
       "key": "S_hrp",
       "label": "S_hrp",
       "is_headline": false,
-      "trade_count": 3894,
+      "trade_count": 3913,
       "metrics": {
-        "total_return_pct": 86.59,
-        "cagr_pct": 10.07,
-        "sharpe": 0.59,
+        "total_return_pct": 88.26,
+        "cagr_pct": 10.21,
+        "sharpe": 0.6,
         "mdd_pct": -34.71,
-        "win_rate_pct": 50.4,
+        "win_rate_pct": 50.7,
         "avg_hold_days": 124.1
       },
       "in_sample": {
@@ -906,20 +906,20 @@
         "mdd_pct": -34.71
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 38.44,
-        "cagr_pct": 13.9,
-        "sharpe": 0.8,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 39.68,
+        "cagr_pct": 14.25,
+        "sharpe": 0.82,
         "mdd_pct": -15.26
       },
-      "kospi_dca_ratio": 0.445,
+      "kospi_dca_ratio": 0.45,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.557,
+      "aw_dca_ratio": 0.565,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9346,
-        "dsr": 0.1662,
-        "sr0_annualized": 0.968,
+        "psr": 0.9367,
+        "dsr": 0.1641,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -935,7 +935,7 @@
         "n_windows": 5,
         "positive_pct": 60.0,
         "beat_kospi_pct": 40.0,
-        "median_sharpe": 1.32,
+        "median_sharpe": 1.57,
         "worst_sharpe": -0.79,
         "worst_window_return_pct": -8.82
       }
@@ -944,14 +944,14 @@
       "key": "S_msharpe",
       "label": "S_msharpe",
       "is_headline": false,
-      "trade_count": 1791,
+      "trade_count": 1865,
       "metrics": {
-        "total_return_pct": 123.8,
-        "cagr_pct": 13.19,
-        "sharpe": 0.61,
+        "total_return_pct": 118.76,
+        "cagr_pct": 12.78,
+        "sharpe": 0.6,
         "mdd_pct": -48.76,
-        "win_rate_pct": 48.4,
-        "avg_hold_days": 48.5
+        "win_rate_pct": 48.9,
+        "avg_hold_days": 47.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -961,20 +961,20 @@
         "mdd_pct": -48.76
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 77.12,
-        "cagr_pct": 25.7,
-        "sharpe": 1.05,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 73.13,
+        "cagr_pct": 24.47,
+        "sharpe": 1.04,
         "mdd_pct": -18.75
       },
-      "kospi_dca_ratio": 0.499,
+      "kospi_dca_ratio": 0.49,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.625,
+      "aw_dca_ratio": 0.615,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9433,
-        "dsr": 0.1801,
-        "sr0_annualized": 0.968,
+        "psr": 0.9407,
+        "dsr": 0.1678,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -982,7 +982,7 @@
         "n_windows": 13,
         "positive_pct": 61.5,
         "beat_kospi_pct": 53.8,
-        "median_sharpe": 0.91,
+        "median_sharpe": 1.05,
         "worst_sharpe": -1.63,
         "worst_window_return_pct": -21.41
       },
@@ -990,7 +990,7 @@
         "n_windows": 5,
         "positive_pct": 80.0,
         "beat_kospi_pct": 40.0,
-        "median_sharpe": 0.91,
+        "median_sharpe": 1.05,
         "worst_sharpe": 0.07,
         "worst_window_return_pct": -0.72
       }
@@ -999,14 +999,14 @@
       "key": "S_mincvar",
       "label": "S_mincvar",
       "is_headline": false,
-      "trade_count": 821,
+      "trade_count": 824,
       "metrics": {
-        "total_return_pct": 7.77,
-        "cagr_pct": 1.16,
-        "sharpe": 0.16,
+        "total_return_pct": 9.06,
+        "cagr_pct": 1.34,
+        "sharpe": 0.17,
         "mdd_pct": -49.82,
         "win_rate_pct": 46.8,
-        "avg_hold_days": 45.2
+        "avg_hold_days": 45.1
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1016,20 +1016,20 @@
         "mdd_pct": -49.82
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 43.64,
-        "cagr_pct": 15.59,
-        "sharpe": 0.81,
-        "mdd_pct": -18.33
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 45.35,
+        "cagr_pct": 16.08,
+        "sharpe": 0.83,
+        "mdd_pct": -19.68
       },
-      "kospi_dca_ratio": 0.398,
+      "kospi_dca_ratio": 0.404,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.498,
+      "aw_dca_ratio": 0.507,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.66,
-        "dsr": 0.0183,
-        "sr0_annualized": 0.968,
+        "psr": 0.668,
+        "dsr": 0.0182,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1045,9 +1045,9 @@
         "n_windows": 5,
         "positive_pct": 60.0,
         "beat_kospi_pct": 60.0,
-        "median_sharpe": 0.43,
-        "worst_sharpe": -0.69,
-        "worst_window_return_pct": -6.82
+        "median_sharpe": 0.58,
+        "worst_sharpe": -0.7,
+        "worst_window_return_pct": -7.1
       }
     },
     {
@@ -1056,8 +1056,8 @@
       "is_headline": false,
       "trade_count": 254,
       "metrics": {
-        "total_return_pct": 59.11,
-        "cagr_pct": 7.41,
+        "total_return_pct": 59.48,
+        "cagr_pct": 7.44,
         "sharpe": 0.44,
         "mdd_pct": -34.34,
         "win_rate_pct": 48.0,
@@ -1071,20 +1071,20 @@
         "mdd_pct": -27.82
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 62.98,
-        "cagr_pct": 21.58,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 63.36,
+        "cagr_pct": 21.62,
         "sharpe": 0.81,
         "mdd_pct": -34.34
       },
-      "kospi_dca_ratio": 0.53,
+      "kospi_dca_ratio": 0.534,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.664,
+      "aw_dca_ratio": 0.67,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.873,
-        "dsr": 0.0864,
-        "sr0_annualized": 0.968,
+        "psr": 0.8739,
+        "dsr": 0.0831,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1111,9 +1111,9 @@
       "is_headline": false,
       "trade_count": 242,
       "metrics": {
-        "total_return_pct": 113.01,
-        "cagr_pct": 12.34,
-        "sharpe": 0.57,
+        "total_return_pct": 103.12,
+        "cagr_pct": 11.5,
+        "sharpe": 0.55,
         "mdd_pct": -33.68,
         "win_rate_pct": 50.4,
         "avg_hold_days": 43.5
@@ -1126,20 +1126,20 @@
         "mdd_pct": -26.82
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 44.53,
-        "cagr_pct": 15.88,
-        "sharpe": 0.59,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 37.82,
+        "cagr_pct": 13.65,
+        "sharpe": 0.53,
         "mdd_pct": -33.68
       },
-      "kospi_dca_ratio": 0.556,
+      "kospi_dca_ratio": 0.533,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.696,
+      "aw_dca_ratio": 0.669,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9309,
-        "dsr": 0.1557,
-        "sr0_annualized": 0.968,
+        "psr": 0.9204,
+        "dsr": 0.1329,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1164,14 +1164,14 @@
       "key": "D+_chandelier_optuna",
       "label": "D+_chandelier_optuna",
       "is_headline": false,
-      "trade_count": 239,
+      "trade_count": 237,
       "metrics": {
-        "total_return_pct": 179.89,
-        "cagr_pct": 17.16,
-        "sharpe": 1.05,
+        "total_return_pct": 181.74,
+        "cagr_pct": 17.25,
+        "sharpe": 1.06,
         "mdd_pct": -18.3,
-        "win_rate_pct": 45.6,
-        "avg_hold_days": 81.0
+        "win_rate_pct": 46.8,
+        "avg_hold_days": 81.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1181,26 +1181,26 @@
         "mdd_pct": -16.69
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 66.92,
-        "cagr_pct": 22.75,
-        "sharpe": 1.08,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 68.02,
+        "cagr_pct": 22.99,
+        "sharpe": 1.11,
         "mdd_pct": -18.3
       },
-      "kospi_dca_ratio": 0.618,
+      "kospi_dca_ratio": 0.623,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 0.774,
+      "aw_dca_ratio": 0.782,
       "aw_dca_beats": false,
       "dsr": {
-        "psr": 0.9963,
-        "dsr": 0.582,
-        "sr0_annualized": 0.968,
+        "psr": 0.9967,
+        "dsr": 0.5884,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
       "walkforward": {
         "n_windows": 13,
-        "positive_pct": 61.5,
+        "positive_pct": 69.2,
         "beat_kospi_pct": 53.8,
         "median_sharpe": 0.91,
         "worst_sharpe": -2.0,
@@ -1208,9 +1208,9 @@
       },
       "walkforward_oos": {
         "n_windows": 5,
-        "positive_pct": 60.0,
+        "positive_pct": 80.0,
         "beat_kospi_pct": 40.0,
-        "median_sharpe": 2.03,
+        "median_sharpe": 1.98,
         "worst_sharpe": -1.07,
         "worst_window_return_pct": -10.3
       }
@@ -1219,14 +1219,14 @@
       "key": "T_kospi_core_chandelier",
       "label": "T_kospi_core_chandelier",
       "is_headline": false,
-      "trade_count": 239,
+      "trade_count": 237,
       "metrics": {
-        "total_return_pct": 325.73,
-        "cagr_pct": 24.97,
-        "sharpe": 0.98,
+        "total_return_pct": 331.53,
+        "cagr_pct": 25.19,
+        "sharpe": 0.99,
         "mdd_pct": -35.27,
-        "win_rate_pct": 45.6,
-        "avg_hold_days": 81.0
+        "win_rate_pct": 46.8,
+        "avg_hold_days": 81.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1236,20 +1236,20 @@
         "mdd_pct": -35.27
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 161.63,
-        "cagr_pct": 46.93,
-        "sharpe": 1.38,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 165.19,
+        "cagr_pct": 47.53,
+        "sharpe": 1.41,
         "mdd_pct": -23.5
       },
-      "kospi_dca_ratio": 0.93,
+      "kospi_dca_ratio": 0.944,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 1.165,
+      "aw_dca_ratio": 1.185,
       "aw_dca_beats": true,
       "dsr": {
-        "psr": 0.9937,
-        "dsr": 0.5118,
-        "sr0_annualized": 0.968,
+        "psr": 0.9942,
+        "dsr": 0.5142,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1257,7 +1257,7 @@
         "n_windows": 13,
         "positive_pct": 53.8,
         "beat_kospi_pct": 61.5,
-        "median_sharpe": 1.25,
+        "median_sharpe": 1.54,
         "worst_sharpe": -2.57,
         "worst_window_return_pct": -24.72
       },
@@ -1274,14 +1274,14 @@
       "key": "T-_kospi_core_regime",
       "label": "T-_kospi_core_regime",
       "is_headline": false,
-      "trade_count": 239,
+      "trade_count": 237,
       "metrics": {
-        "total_return_pct": 511.64,
-        "cagr_pct": 32.13,
-        "sharpe": 1.36,
+        "total_return_pct": 519.97,
+        "cagr_pct": 32.36,
+        "sharpe": 1.37,
         "mdd_pct": -17.7,
-        "win_rate_pct": 45.6,
-        "avg_hold_days": 81.0
+        "win_rate_pct": 46.8,
+        "avg_hold_days": 81.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1291,20 +1291,20 @@
         "mdd_pct": -16.85
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 175.98,
-        "cagr_pct": 50.1,
-        "sharpe": 1.52,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 179.74,
+        "cagr_pct": 50.71,
+        "sharpe": 1.55,
         "mdd_pct": -17.7
       },
-      "kospi_dca_ratio": 1.049,
+      "kospi_dca_ratio": 1.064,
       "kospi_dca_beats": true,
-      "aw_dca_ratio": 1.313,
+      "aw_dca_ratio": 1.336,
       "aw_dca_beats": true,
       "dsr": {
         "psr": 0.9997,
-        "dsr": 0.8367,
-        "sr0_annualized": 0.968,
+        "dsr": 0.8414,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1312,7 +1312,7 @@
         "n_windows": 13,
         "positive_pct": 61.5,
         "beat_kospi_pct": 69.2,
-        "median_sharpe": 1.24,
+        "median_sharpe": 1.53,
         "worst_sharpe": -2.02,
         "worst_window_return_pct": -10.94
       },
@@ -1320,7 +1320,7 @@
         "n_windows": 5,
         "positive_pct": 80.0,
         "beat_kospi_pct": 40.0,
-        "median_sharpe": 2.54,
+        "median_sharpe": 2.53,
         "worst_sharpe": -0.9,
         "worst_window_return_pct": -9.89
       }
@@ -1329,14 +1329,14 @@
       "key": "W_allweather_chandelier",
       "label": "W_allweather_chandelier",
       "is_headline": false,
-      "trade_count": 239,
+      "trade_count": 237,
       "metrics": {
-        "total_return_pct": 397.82,
-        "cagr_pct": 28.01,
-        "sharpe": 1.28,
+        "total_return_pct": 399.51,
+        "cagr_pct": 28.04,
+        "sharpe": 1.29,
         "mdd_pct": -22.86,
-        "win_rate_pct": 45.6,
-        "avg_hold_days": 81.0
+        "win_rate_pct": 46.8,
+        "avg_hold_days": 81.8
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1346,20 +1346,20 @@
         "mdd_pct": -22.86
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 137.83,
-        "cagr_pct": 41.43,
-        "sharpe": 1.57,
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 138.64,
+        "cagr_pct": 41.46,
+        "sharpe": 1.6,
         "mdd_pct": -18.08
       },
-      "kospi_dca_ratio": 0.884,
+      "kospi_dca_ratio": 0.888,
       "kospi_dca_beats": false,
-      "aw_dca_ratio": 1.107,
+      "aw_dca_ratio": 1.115,
       "aw_dca_beats": true,
       "dsr": {
-        "psr": 0.9994,
-        "dsr": 0.7842,
-        "sr0_annualized": 0.968,
+        "psr": 0.9995,
+        "dsr": 0.7851,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1367,7 +1367,7 @@
         "n_windows": 13,
         "positive_pct": 69.2,
         "beat_kospi_pct": 61.5,
-        "median_sharpe": 1.32,
+        "median_sharpe": 1.52,
         "worst_sharpe": -2.14,
         "worst_window_return_pct": -18.16
       },
@@ -1384,14 +1384,14 @@
       "key": "U_chandelier_scaleout",
       "label": "U_chandelier_scaleout",
       "is_headline": true,
-      "trade_count": 272,
+      "trade_count": 268,
       "metrics": {
-        "total_return_pct": 522.97,
-        "cagr_pct": 32.5,
-        "sharpe": 1.41,
-        "mdd_pct": -17.48,
-        "win_rate_pct": 52.2,
-        "avg_hold_days": 77.5
+        "total_return_pct": 529.96,
+        "cagr_pct": 32.69,
+        "sharpe": 1.43,
+        "mdd_pct": -17.6,
+        "win_rate_pct": 53.0,
+        "avg_hold_days": 78.7
       },
       "in_sample": {
         "period": "2020-01-02 ~ 2023-12-29",
@@ -1401,20 +1401,20 @@
         "mdd_pct": -16.92
       },
       "out_of_sample": {
-        "period": "2024-01-02 ~ 2026-07-03",
-        "total_return_pct": 186.98,
-        "cagr_pct": 52.46,
-        "sharpe": 1.61,
-        "mdd_pct": -17.48
+        "period": "2024-01-02 ~ 2026-07-06",
+        "total_return_pct": 190.2,
+        "cagr_pct": 52.93,
+        "sharpe": 1.64,
+        "mdd_pct": -17.6
       },
-      "kospi_dca_ratio": 1.073,
+      "kospi_dca_ratio": 1.087,
       "kospi_dca_beats": true,
-      "aw_dca_ratio": 1.344,
+      "aw_dca_ratio": 1.365,
       "aw_dca_beats": true,
       "dsr": {
         "psr": 0.9998,
-        "dsr": 0.8651,
-        "sr0_annualized": 0.968,
+        "dsr": 0.8688,
+        "sr0_annualized": 0.977,
         "n_trials": 26,
         "significant_after_deflation": false
       },
@@ -1422,7 +1422,7 @@
         "n_windows": 13,
         "positive_pct": 61.5,
         "beat_kospi_pct": 69.2,
-        "median_sharpe": 1.66,
+        "median_sharpe": 1.71,
         "worst_sharpe": -2.31,
         "worst_window_return_pct": -11.16
       },

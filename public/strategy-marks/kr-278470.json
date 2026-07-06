@@ -2,22 +2,22 @@
   "schema_version": "1.0",
   "generated_at": "2026-07-06T13:28:54+00:00",
   "strategy_key": "U_chandelier_scaleout",
-  "ticker": "200130",
+  "ticker": "278470",
   "market": "KR",
-  "name": "콜마비앤에이치",
+  "name": "에이피알",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
   "marks": [
     {
-      "date": "2020-01-02",
+      "date": "2025-11-26",
       "side": "buy",
-      "price": 27700.0,
-      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: smic 2019-08-11)"
+      "price": 253000.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: voera 2025-11-25, kuvic 2025-05-15, ewha 2025-04-05, yig 2025-02-07, star 2024-06-30, smic 2024-05-09)"
     },
     {
-      "date": "2020-01-31",
+      "date": "2026-06-24",
       "side": "stop",
-      "price": 26500.0,
-      "reason": "u_chandelier_ATR4.25 (-5.0%)"
+      "price": 352500.0,
+      "reason": "u_chandelier_ATR4.25 (+38.4%)"
     }
   ],
   "open_stop": null

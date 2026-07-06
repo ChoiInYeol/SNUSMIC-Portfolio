@@ -1,23 +1,23 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-03T12:32:07+00:00",
+  "generated_at": "2026-07-06T13:28:54+00:00",
   "strategy_key": "U_chandelier_scaleout",
-  "ticker": "237690",
+  "ticker": "062040",
   "market": "KR",
-  "name": "에스티팜",
+  "name": "산일전기",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
   "marks": [
     {
-      "date": "2025-08-25",
+      "date": "2025-08-20",
       "side": "buy",
-      "price": 93900.0,
-      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: ewha 2025-08-22, yig 2024-11-07, star 2024-09-11, smic 2024-04-17)"
+      "price": 107000.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: kuvic 2025-08-19)"
     },
     {
-      "date": "2025-10-24",
+      "date": "2025-11-24",
       "side": "stop",
-      "price": 91800.0,
-      "reason": "u_chandelier_ATR4.25 (-2.9%)"
+      "price": 134500.0,
+      "reason": "u_chandelier_ATR4.25 (+24.9%)"
     }
   ],
   "open_stop": null
