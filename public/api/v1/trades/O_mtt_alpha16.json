@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-06T13:28:54+00:00",
+  "generated_at": "2026-07-07T12:39:39+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20185,6 +20185,28 @@
           "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
           "target_price": 155200.0,
           "stated_upside_pct": 24.8592
+        }
+      ]
+    },
+    {
+      "ticker": "ALAB",
+      "market": "US",
+      "name": "ALAB",
+      "entry_date": "2026-07-01",
+      "exit_date": "2026-07-06",
+      "entry_price": 468.0,
+      "exit_price": 417.32,
+      "return_pct": -12.29,
+      "days": 5,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 97≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_Astera Labs.md",
+          "target_price": 168.37,
+          "stated_upside_pct": 28.7528
         }
       ]
     }
