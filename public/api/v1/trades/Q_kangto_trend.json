@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-08T12:03:42+00:00",
+  "generated_at": "2026-07-10T12:51:21+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23629,6 +23629,35 @@
           "source_file": "2025-12-12_STAR_유진테크.md",
           "target_price": 119500.0,
           "stated_upside_pct": 59.3333
+        }
+      ]
+    },
+    {
+      "ticker": "004170",
+      "market": "KR",
+      "name": "신세계",
+      "entry_date": "2026-06-12",
+      "exit_date": "2026-07-09",
+      "entry_price": 725000.0,
+      "exit_price": 626000.0,
+      "return_pct": -14.17,
+      "days": 27,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 94 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2020-05-14",
+          "source_file": "undated_[BUY] 신세계_직감보다는 데이터에 주목하라.md",
+          "target_price": 278000.0,
+          "stated_upside_pct": 16.8067
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_신세계.md",
+          "target_price": 424500.0,
+          "stated_upside_pct": 30.2147
         }
       ]
     }

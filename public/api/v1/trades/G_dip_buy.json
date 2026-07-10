@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-08T12:03:42+00:00",
+  "generated_at": "2026-07-10T12:51:21+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20593,6 +20593,100 @@
           "source_file": "2026-06-12_STAR_LG이노텍.md",
           "target_price": null,
           "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "014680",
+      "market": "KR",
+      "name": "한솔케미칼",
+      "entry_date": "2026-06-09",
+      "exit_date": "2026-07-09",
+      "entry_price": 232500.0,
+      "exit_price": 245500.0,
+      "return_pct": 4.96,
+      "days": 30,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-02-13) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2026-02-13",
+          "source_file": "2026-04-04_한솔케미칼(014680, KOSPI), 반도체와 이차전지의 케미 YIG Research.md",
+          "target_price": 390000.0,
+          "stated_upside_pct": 28.9256
+        }
+      ]
+    },
+    {
+      "ticker": "083650",
+      "market": "KR",
+      "name": "비에이치아이",
+      "entry_date": "2026-06-19",
+      "exit_date": "2026-07-09",
+      "entry_price": 64900.0,
+      "exit_price": 45050.0,
+      "return_pct": -31.0,
+      "days": 20,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-04-04) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_비에이치아이 (1).md",
+          "target_price": 61600.0,
+          "stated_upside_pct": 6.0241
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-04-04",
+          "source_file": "2026-04-03_[260403] 비에이치아이(083650).md",
+          "target_price": 134000.0,
+          "stated_upside_pct": 44.8649
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-11-14",
+          "source_file": "2024-11-14_비에이치아이 - Make BHI Great Again.md",
+          "target_price": 16190.0,
+          "stated_upside_pct": 2.4684
+        },
+        {
+          "school": "voera",
+          "report_date": "2025-07-30",
+          "source_file": "undated_[BUY] Become HRSG Itself, BHI.md",
+          "target_price": 49000.0,
+          "stated_upside_pct": 21.5881
+        }
+      ]
+    },
+    {
+      "ticker": "171090",
+      "market": "KR",
+      "name": "선익시스템",
+      "entry_date": "2026-06-19",
+      "exit_date": "2026-07-09",
+      "entry_price": 71600.0,
+      "exit_price": 51000.0,
+      "return_pct": -29.2,
+      "days": 20,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-02-06) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-05-02",
+          "source_file": "2026-05-02_STAR_선익시스템.md",
+          "target_price": 173900.0,
+          "stated_upside_pct": 69.6585
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-02-06",
+          "source_file": "2026-04-04_선익시스템(171090, KQ), SuperSUNic ~ YIG Research.md",
+          "target_price": 131400.0,
+          "stated_upside_pct": 43.9211
         }
       ]
     }

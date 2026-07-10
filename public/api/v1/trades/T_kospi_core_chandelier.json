@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-08T12:03:42+00:00",
+  "generated_at": "2026-07-10T12:51:21+00:00",
   "strategy_key": "T_kospi_core_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -4987,6 +4987,63 @@
       ]
     },
     {
+      "ticker": "214450",
+      "market": "KR",
+      "name": "파마리서치",
+      "entry_date": "2025-08-25",
+      "exit_date": "2025-09-24",
+      "entry_price": 696000.0,
+      "exit_price": 577000.0,
+      "return_pct": -17.64,
+      "days": 30,
+      "exit_reason": "t_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환) (트리거: ewha 2025-08-22, kuvic 2025-05-17, star 2025-01-09, voera 2024-11-11, yig 2024-09-14, smic 2023-04-13)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2025-08-22",
+          "source_file": "2025-08-22_[250822] 파마리서치(214450).md",
+          "target_price": 962000.0,
+          "stated_upside_pct": 37.4286
+        },
+        {
+          "school": "smic",
+          "report_date": "2023-04-13",
+          "source_file": "2023-04-13_equity-research-파마리서치.md",
+          "target_price": 111300.0,
+          "stated_upside_pct": 22.8477
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-14",
+          "source_file": "2025-11-10_미용의료기기, 누구나 예뻐지고 싶은 마음 (발간일 240914) YIG Research.md",
+          "target_price": 245000.0,
+          "stated_upside_pct": 30.2499
+        },
+        {
+          "school": "voera",
+          "report_date": "2024-11-11",
+          "source_file": "undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
+          "target_price": 250000.0,
+          "stated_upside_pct": 12.8668
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_파마리서치.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-17",
+          "source_file": "2025-05-15_파마리서치 - 폭싹 삭아버리기 전에 리쥬란.md",
+          "target_price": null,
+          "stated_upside_pct": 23.9
+        }
+      ]
+    },
+    {
       "ticker": "001040",
       "market": "KR",
       "name": "CJ",
@@ -5049,28 +5106,6 @@
           "source_file": "2025-04-19_equity-research-노머스.md",
           "target_price": 37950.0,
           "stated_upside_pct": 48.8235
-        }
-      ]
-    },
-    {
-      "ticker": "347850",
-      "market": "KR",
-      "name": "디앤디파마텍",
-      "entry_date": "2025-08-20",
-      "exit_date": "2025-10-20",
-      "entry_price": 32908.0,
-      "exit_price": 40790.0,
-      "return_pct": 23.15,
-      "days": 61,
-      "exit_reason": "t_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환) (트리거: kuvic 2025-08-19)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2025-08-19",
-          "source_file": "2025-08-19_디앤디파마텍 - 간단히 말해, 비만도 MASH도 한 큐에.md",
-          "target_price": null,
-          "stated_upside_pct": 46.0
         }
       ]
     },
@@ -5162,6 +5197,49 @@
       ]
     },
     {
+      "ticker": "064760",
+      "market": "KR",
+      "name": "티씨케이",
+      "entry_date": "2025-09-25",
+      "exit_date": "2025-11-04",
+      "entry_price": 160800.0,
+      "exit_price": 161700.0,
+      "return_pct": -0.09,
+      "days": 40,
+      "exit_reason": "t_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환) (트리거: yig 2025-09-24, kuvic 2025-06-27, star 2024-09-11, ewha 2024-07-26)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-07-26",
+          "source_file": "2024-07-26_[240726] 티씨케이(064760).md",
+          "target_price": 166600.0,
+          "stated_upside_pct": 50.4968
+        },
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_티씨케이.md",
+          "target_price": 168100.0,
+          "stated_upside_pct": 87.1938
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-06-27",
+          "source_file": "2025-06-27_티씨케이 - 중국은 8대 핵심산업 중 반도체만 남았다.md",
+          "target_price": 146700.0,
+          "stated_upside_pct": 41.4658
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-09-24",
+          "source_file": "2025-11-11_티씨케이 (064760, KQ), 반도체 소재 약속의 Ring! (발간일 250924) YIG Research.md",
+          "target_price": 206400.0,
+          "stated_upside_pct": 24.713
+        }
+      ]
+    },
+    {
       "ticker": "054950",
       "market": "KR",
       "name": "제이브이엠",
@@ -5216,63 +5294,6 @@
           "source_file": "2025-11-11_동방메디컬 (240550, KQ), 삼천갑자 동방메디컬, 주가도 무병장수 (발간일 251014) YIG Research.md",
           "target_price": 14520.0,
           "stated_upside_pct": 40.6977
-        }
-      ]
-    },
-    {
-      "ticker": "352820",
-      "market": "KR",
-      "name": "하이브",
-      "entry_date": "2025-10-24",
-      "exit_date": "2025-11-12",
-      "entry_price": 288500.0,
-      "exit_price": 289000.0,
-      "return_pct": -0.48,
-      "days": 19,
-      "exit_reason": "t_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환) (트리거: smic 2025-10-23, kuvic 2025-02-24, star 2025-01-09, yig 2024-06-28, ewha 2023-02-08, voera 2022-05-28)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2025-10-23",
-          "source_file": "2025-10-23_equity-research-하이브-3.md",
-          "target_price": 393000.0,
-          "stated_upside_pct": 36.2218
-        },
-        {
-          "school": "voera",
-          "report_date": "2022-05-28",
-          "source_file": "undated_[BUY] 하이브, High View!.md",
-          "target_price": 381500.0,
-          "stated_upside_pct": 74.5995
-        },
-        {
-          "school": "ewha",
-          "report_date": "2023-02-08",
-          "source_file": "2023-02-08_[230208] 하이브(352820).md",
-          "target_price": 229500.0,
-          "stated_upside_pct": 16.1437
-        },
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_하이브.md",
-          "target_price": 310300.0,
-          "stated_upside_pct": 53.995
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-06-28",
-          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
-          "target_price": 400500.0,
-          "stated_upside_pct": 97.7778
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-02-24",
-          "source_file": "2025-02-24_하이브 - 하이브'리드' 엔터.md",
-          "target_price": 369600.0,
-          "stated_upside_pct": 50.2439
         }
       ]
     },

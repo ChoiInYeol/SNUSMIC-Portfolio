@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-08T12:03:42+00:00",
+  "generated_at": "2026-07-10T12:51:21+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8691,6 +8691,35 @@
           "source_file": "2026-05-29_equity-research-sterling-infrastructure-inc.md",
           "target_price": 1500.0,
           "stated_upside_pct": 74.2484
+        }
+      ]
+    },
+    {
+      "ticker": "010120",
+      "market": "KR",
+      "name": "LS ELECTRIC",
+      "entry_date": "2026-05-21",
+      "exit_date": "2026-07-09",
+      "entry_price": 254000.0,
+      "exit_price": 185100.0,
+      "return_pct": -27.56,
+      "days": 49,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: voera 2026-05-20, star 2022-08-16)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2022-08-16",
+          "source_file": "2022-08-16_STAR_LS ELECTRIC.md",
+          "target_price": 15325.3846,
+          "stated_upside_pct": 32.1154
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-20",
+          "source_file": "undated_[BUY] Linked to AI, Shipped to America, LS ELECREIC.md",
+          "target_price": 360000.0,
+          "stated_upside_pct": 50.9434
         }
       ]
     }

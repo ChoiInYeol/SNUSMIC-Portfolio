@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-08T12:03:42+00:00",
+  "generated_at": "2026-07-10T12:51:21+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "ticker": "214450",
   "market": "KR",
@@ -18,6 +18,18 @@
       "side": "stop",
       "price": 119800.0,
       "reason": "u_chandelier_ATR4.25 (+54.6%)"
+    },
+    {
+      "date": "2025-08-25",
+      "side": "buy",
+      "price": 696000.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: ewha 2025-08-22, kuvic 2025-05-17, star 2025-01-09, voera 2024-11-11, yig 2024-09-14, smic 2023-04-13)"
+    },
+    {
+      "date": "2025-09-24",
+      "side": "stop",
+      "price": 577000.0,
+      "reason": "u_chandelier_ATR4.25 (-17.6%)"
     }
   ],
   "open_stop": null
