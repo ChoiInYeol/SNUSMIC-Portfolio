@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-10T12:51:21+00:00",
+  "generated_at": "2026-07-13T12:42:45+00:00",
   "strategy_key": "R_kelly_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -4134,63 +4134,6 @@
       ]
     },
     {
-      "ticker": "214450",
-      "market": "KR",
-      "name": "파마리서치",
-      "entry_date": "2025-08-25",
-      "exit_date": "2025-09-24",
-      "entry_price": 696000.0,
-      "exit_price": 577000.0,
-      "return_pct": -17.59,
-      "days": 30,
-      "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 1.8%) (트리거: ewha 2025-08-22, kuvic 2025-05-17, star 2025-01-09, voera 2024-11-11, yig 2024-09-14, smic 2023-04-13)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2025-08-22",
-          "source_file": "2025-08-22_[250822] 파마리서치(214450).md",
-          "target_price": 962000.0,
-          "stated_upside_pct": 37.4286
-        },
-        {
-          "school": "smic",
-          "report_date": "2023-04-13",
-          "source_file": "2023-04-13_equity-research-파마리서치.md",
-          "target_price": 111300.0,
-          "stated_upside_pct": 22.8477
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-09-14",
-          "source_file": "2025-11-10_미용의료기기, 누구나 예뻐지고 싶은 마음 (발간일 240914) YIG Research.md",
-          "target_price": 245000.0,
-          "stated_upside_pct": 30.2499
-        },
-        {
-          "school": "voera",
-          "report_date": "2024-11-11",
-          "source_file": "undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
-          "target_price": 250000.0,
-          "stated_upside_pct": 12.8668
-        },
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_파마리서치.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-05-17",
-          "source_file": "2025-05-15_파마리서치 - 폭싹 삭아버리기 전에 리쥬란.md",
-          "target_price": null,
-          "stated_upside_pct": 23.9
-        }
-      ]
-    },
-    {
       "ticker": "001040",
       "market": "KR",
       "name": "CJ",
@@ -4253,6 +4196,28 @@
           "source_file": "2025-04-19_equity-research-노머스.md",
           "target_price": 37950.0,
           "stated_upside_pct": 48.8235
+        }
+      ]
+    },
+    {
+      "ticker": "347850",
+      "market": "KR",
+      "name": "디앤디파마텍",
+      "entry_date": "2025-08-20",
+      "exit_date": "2025-10-20",
+      "entry_price": 32908.0,
+      "exit_price": 40790.0,
+      "return_pct": 23.21,
+      "days": 61,
+      "exit_reason": "r_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 1.8%) (트리거: kuvic 2025-08-19)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-08-19",
+          "source_file": "2025-08-19_디앤디파마텍 - 간단히 말해, 비만도 MASH도 한 큐에.md",
+          "target_price": null,
+          "stated_upside_pct": 46.0
         }
       ]
     },
@@ -4344,49 +4309,6 @@
       ]
     },
     {
-      "ticker": "064760",
-      "market": "KR",
-      "name": "티씨케이",
-      "entry_date": "2025-09-25",
-      "exit_date": "2025-11-04",
-      "entry_price": 160800.0,
-      "exit_price": 161700.0,
-      "return_pct": -0.04,
-      "days": 40,
-      "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 3.3%) (트리거: yig 2025-09-24, kuvic 2025-06-27, star 2024-09-11, ewha 2024-07-26)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2024-07-26",
-          "source_file": "2024-07-26_[240726] 티씨케이(064760).md",
-          "target_price": 166600.0,
-          "stated_upside_pct": 50.4968
-        },
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_티씨케이.md",
-          "target_price": 168100.0,
-          "stated_upside_pct": 87.1938
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-06-27",
-          "source_file": "2025-06-27_티씨케이 - 중국은 8대 핵심산업 중 반도체만 남았다.md",
-          "target_price": 146700.0,
-          "stated_upside_pct": 41.4658
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-09-24",
-          "source_file": "2025-11-11_티씨케이 (064760, KQ), 반도체 소재 약속의 Ring! (발간일 250924) YIG Research.md",
-          "target_price": 206400.0,
-          "stated_upside_pct": 24.713
-        }
-      ]
-    },
-    {
       "ticker": "054950",
       "market": "KR",
       "name": "제이브이엠",
@@ -4397,7 +4319,7 @@
       "return_pct": -9.39,
       "days": 21,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 8.0%) (트리거: yig 2025-10-14, ewha 2023-10-07, star 2022-08-16)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 10.4%) (트리거: yig 2025-10-14, ewha 2023-10-07, star 2022-08-16)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4433,7 +4355,7 @@
       "return_pct": -19.93,
       "days": 26,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 8.0%) (트리거: yig 2025-10-14)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 10.4%) (트리거: yig 2025-10-14)",
       "trigger_reports": [
         {
           "school": "yig",
@@ -4441,6 +4363,63 @@
           "source_file": "2025-11-11_동방메디컬 (240550, KQ), 삼천갑자 동방메디컬, 주가도 무병장수 (발간일 251014) YIG Research.md",
           "target_price": 14520.0,
           "stated_upside_pct": 40.6977
+        }
+      ]
+    },
+    {
+      "ticker": "352820",
+      "market": "KR",
+      "name": "하이브",
+      "entry_date": "2025-10-24",
+      "exit_date": "2025-11-12",
+      "entry_price": 288500.0,
+      "exit_price": 289000.0,
+      "return_pct": -0.43,
+      "days": 19,
+      "exit_reason": "r_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 10.4%) (트리거: smic 2025-10-23, kuvic 2025-02-24, star 2025-01-09, yig 2024-06-28, ewha 2023-02-08, voera 2022-05-28)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-10-23",
+          "source_file": "2025-10-23_equity-research-하이브-3.md",
+          "target_price": 393000.0,
+          "stated_upside_pct": 36.2218
+        },
+        {
+          "school": "voera",
+          "report_date": "2022-05-28",
+          "source_file": "undated_[BUY] 하이브, High View!.md",
+          "target_price": 381500.0,
+          "stated_upside_pct": 74.5995
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-02-08",
+          "source_file": "2023-02-08_[230208] 하이브(352820).md",
+          "target_price": 229500.0,
+          "stated_upside_pct": 16.1437
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_하이브.md",
+          "target_price": 310300.0,
+          "stated_upside_pct": 53.995
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-06-28",
+          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
+          "target_price": 400500.0,
+          "stated_upside_pct": 97.7778
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-02-24",
+          "source_file": "2025-02-24_하이브 - 하이브'리드' 엔터.md",
+          "target_price": 369600.0,
+          "stated_upside_pct": 50.2439
         }
       ]
     },
@@ -4455,7 +4434,7 @@
       "return_pct": -35.32,
       "days": 24,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 8.3%) (트리거: smic 2025-10-23)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 10.4%) (트리거: smic 2025-10-23)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -4477,7 +4456,7 @@
       "return_pct": 7.48,
       "days": 25,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 8.3%) (트리거: smic 2025-10-23, yig 2025-10-10, voera 2025-03-01)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 10.4%) (트리거: smic 2025-10-23, yig 2025-10-10, voera 2025-03-01)",
       "trigger_reports": [
         {
           "school": "voera",
@@ -4586,7 +4565,7 @@
       "return_pct": 28.28,
       "days": 33,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 12.6%) (트리거: yig 2025-11-06, star 2025-08-31)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 14.2%) (트리거: yig 2025-11-06, star 2025-08-31)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4615,7 +4594,7 @@
       "return_pct": -11.57,
       "days": 42,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 12.6%) (트리거: yig 2025-11-06, star 2023-03-01, ewha 2022-11-25)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 14.2%) (트리거: yig 2025-11-06, star 2023-03-01, ewha 2022-11-25)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -4651,7 +4630,7 @@
       "return_pct": -25.14,
       "days": 44,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 11.8%) (트리거: smic 2025-11-11)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 13.9%) (트리거: smic 2025-11-11)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -4673,7 +4652,7 @@
       "return_pct": 0.32,
       "days": 83,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 11.8%) (트리거: smic 2025-11-11, ewha 2025-10-03, star 2025-01-09)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 13.9%) (트리거: smic 2025-11-11, ewha 2025-10-03, star 2025-01-09)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4709,7 +4688,7 @@
       "return_pct": 16.75,
       "days": 77,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 11.1%) (트리거: kuvic 2025-11-17)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 13.2%) (트리거: kuvic 2025-11-17)",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -4731,7 +4710,7 @@
       "return_pct": 28.91,
       "days": 80,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.9%) (트리거: star 2025-12-12)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 19.7%) (트리거: star 2025-12-12)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4753,7 +4732,7 @@
       "return_pct": 13.55,
       "days": 62,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 15.5%) (트리거: yig 2026-01-01, ewha 2021-08-21)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.3%) (트리거: yig 2026-01-01, ewha 2021-08-21)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -4782,7 +4761,7 @@
       "return_pct": -8.12,
       "days": 111,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 11.8%) (트리거: yig 2025-11-13, ewha 2022-03-12)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 13.9%) (트리거: yig 2025-11-13, ewha 2022-03-12)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -4811,7 +4790,7 @@
       "return_pct": 7.31,
       "days": 39,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.8%) (트리거: yig 2026-02-06, star 2024-01-06)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 19.7%) (트리거: yig 2026-02-06, star 2024-01-06)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4830,42 +4809,6 @@
       ]
     },
     {
-      "ticker": "126340",
-      "market": "KR",
-      "name": "비나텍",
-      "entry_date": "2026-02-10",
-      "exit_date": "2026-04-08",
-      "entry_price": 118900.0,
-      "exit_price": 108800.0,
-      "return_pct": -9.04,
-      "days": 57,
-      "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.8%) (트리거: kuvic 2026-02-09, ewha 2024-06-01, star 2022-10-31)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2024-06-01",
-          "source_file": "2024-06-01_[240601] 비나텍(126340).md",
-          "target_price": 80200.0,
-          "stated_upside_pct": 61.0118
-        },
-        {
-          "school": "star",
-          "report_date": "2022-10-31",
-          "source_file": "2022-10-31_STAR_비나텍.md",
-          "target_price": 65400.0,
-          "stated_upside_pct": 74.7775
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2026-02-09",
-          "source_file": "2026-02-09_비나텍 - 팔려요.. 슈퍼캡 계속 팔려요!!.md",
-          "target_price": 165100.0,
-          "stated_upside_pct": 40.8703
-        }
-      ]
-    },
-    {
       "ticker": "127120",
       "market": "KR",
       "name": "제이에스링크",
@@ -4876,7 +4819,7 @@
       "return_pct": 109.48,
       "days": 181,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 11.1%) (트리거: kuvic 2025-11-17)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 13.2%) (트리거: kuvic 2025-11-17)",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -4898,7 +4841,7 @@
       "return_pct": 70.59,
       "days": 176,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.7%) (트리거: yig 2025-11-25, kuvic 2024-02-28)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 19.5%) (트리거: yig 2025-11-25, kuvic 2024-02-28)",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -4927,7 +4870,7 @@
       "return_pct": -6.24,
       "days": 84,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 18.8%) (트리거: voera 2026-03-04, ewha 2024-10-05, star 2024-03-11)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 20.7%) (트리거: voera 2026-03-04, ewha 2024-10-05, star 2024-03-11)",
       "trigger_reports": [
         {
           "school": "star",
@@ -4953,35 +4896,6 @@
       ]
     },
     {
-      "ticker": "007340",
-      "market": "KR",
-      "name": "DN오토모티브",
-      "entry_date": "2026-04-15",
-      "exit_date": "2026-06-09",
-      "entry_price": 37300.0,
-      "exit_price": 38600.0,
-      "return_pct": 2.87,
-      "days": 55,
-      "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.5%) (트리거: yig 2026-04-14, star 2023-02-16)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2023-02-16",
-          "source_file": "2023-02-16_STAR_DN오토모티브.md",
-          "target_price": 27887.017,
-          "stated_upside_pct": 103.5549
-        },
-        {
-          "school": "yig",
-          "report_date": "2026-04-14",
-          "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
-          "target_price": 60800.0,
-          "stated_upside_pct": 67.9558
-        }
-      ]
-    },
-    {
       "ticker": "010120",
       "market": "KR",
       "name": "LS ELECTRIC",
@@ -4992,7 +4906,7 @@
       "return_pct": -14.49,
       "days": 19,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 22.6%) (트리거: voera 2026-05-20, star 2022-08-16)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 23.9%) (트리거: voera 2026-05-20, star 2022-08-16)",
       "trigger_reports": [
         {
           "school": "star",
@@ -5021,7 +4935,7 @@
       "return_pct": -27.06,
       "days": 21,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 20.3%) (트리거: kuvic 2026-05-18, star 2026-03-14, ewha 2020-11-21, smic 2020-10-31)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 21.9%) (트리거: kuvic 2026-05-18, star 2026-03-14, ewha 2020-11-21, smic 2020-10-31)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -5064,7 +4978,7 @@
       "return_pct": 60.83,
       "days": 200,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 14.7%) (트리거: kuvic 2025-11-20, smic 2020-05-31)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 16.7%) (트리거: kuvic 2025-11-20, smic 2020-05-31)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -5093,7 +5007,7 @@
       "return_pct": 122.59,
       "days": 134,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 15.5%) (트리거: yig 2026-01-23, star 2025-12-12, ewha 2025-07-25, smic 2024-12-05)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 17.3%) (트리거: yig 2026-01-23, star 2025-12-12, ewha 2025-07-25, smic 2024-12-05)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -5136,7 +5050,7 @@
       "return_pct": 149.09,
       "days": 95,
       "exit_reason": "r_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 18.8%) (트리거: voera 2026-03-05, star 2025-12-12)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 20.7%) (트리거: voera 2026-03-05, star 2025-12-12)",
       "trigger_reports": [
         {
           "school": "star",
