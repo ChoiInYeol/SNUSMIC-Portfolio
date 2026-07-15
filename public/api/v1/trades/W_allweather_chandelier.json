@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-13T12:42:45+00:00",
+  "generated_at": "2026-07-15T11:31:59+00:00",
   "strategy_key": "W_allweather_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6091,6 +6091,35 @@
           "source_file": "2026-06-10_Equity Research, 파트론.md",
           "target_price": 15700.0,
           "stated_upside_pct": 148.4177
+        }
+      ]
+    },
+    {
+      "ticker": "004170",
+      "market": "KR",
+      "name": "신세계",
+      "entry_date": "2026-03-16",
+      "exit_date": "2026-07-15",
+      "entry_price": 328500.0,
+      "exit_price": 589000.0,
+      "return_pct": 78.14,
+      "days": 121,
+      "exit_reason": "t_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (올웨더 파킹 매도 후 전환) (트리거: star 2026-03-14, voera 2020-05-14)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2020-05-14",
+          "source_file": "undated_[BUY] 신세계_직감보다는 데이터에 주목하라.md",
+          "target_price": 278000.0,
+          "stated_upside_pct": 16.8067
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_신세계.md",
+          "target_price": 424500.0,
+          "stated_upside_pct": 30.2147
         }
       ]
     }

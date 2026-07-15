@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-13T12:42:45+00:00",
+  "generated_at": "2026-07-15T11:31:59+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7948,6 +7948,35 @@
           "source_file": "2026-03-14_STAR_토모큐브.md",
           "target_price": 78200.0,
           "stated_upside_pct": 43.2234
+        }
+      ]
+    },
+    {
+      "ticker": "120110",
+      "market": "KR",
+      "name": "코오롱인더",
+      "entry_date": "2026-05-20",
+      "exit_date": "2026-07-14",
+      "entry_price": 66970.6931,
+      "exit_price": 53500.0,
+      "return_pct": -20.59,
+      "days": 55,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-04) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2021-08-21",
+          "source_file": "2021-08-21_[210821] 코오롱인더(120110).md",
+          "target_price": 90876.0,
+          "stated_upside_pct": 27.2773
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-04",
+          "source_file": "2026-05-04_STAR_코오롱인더.md",
+          "target_price": 110400.0,
+          "stated_upside_pct": 17.6972
         }
       ]
     }

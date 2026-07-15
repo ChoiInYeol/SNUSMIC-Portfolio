@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-13T12:42:45+00:00",
+  "generated_at": "2026-07-15T11:31:59+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23658,6 +23658,49 @@
           "source_file": "2026-03-14_STAR_신세계.md",
           "target_price": 424500.0,
           "stated_upside_pct": 30.2147
+        }
+      ]
+    },
+    {
+      "ticker": "010950",
+      "market": "KR",
+      "name": "S-Oil",
+      "entry_date": "2026-07-14",
+      "exit_date": "2026-07-15",
+      "entry_price": 143500.0,
+      "exit_price": 131900.0,
+      "return_pct": -8.63,
+      "days": 1,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 89 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-s-oil-4.md",
+          "target_price": 128400.0,
+          "stated_upside_pct": 48.6111
+        },
+        {
+          "school": "voera",
+          "report_date": "2023-03-03",
+          "source_file": "undated_[Buy] 하이비젼시스템,애플아 나 지금 되게 신나.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-03-11",
+          "source_file": "2023-03-11_[230311] S-Oil(010950).md",
+          "target_price": 117400.0,
+          "stated_upside_pct": 44.4034
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_S-Oil.md",
+          "target_price": 119900.0,
+          "stated_upside_pct": 46.9363
         }
       ]
     }

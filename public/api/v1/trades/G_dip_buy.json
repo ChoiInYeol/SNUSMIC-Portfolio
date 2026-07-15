@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-13T12:42:45+00:00",
+  "generated_at": "2026-07-15T11:31:59+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20687,6 +20687,93 @@
           "source_file": "2026-04-04_선익시스템(171090, KQ), SuperSUNic ~ YIG Research.md",
           "target_price": 131400.0,
           "stated_upside_pct": 43.9211
+        }
+      ]
+    },
+    {
+      "ticker": "126340",
+      "market": "KR",
+      "name": "비나텍",
+      "entry_date": "2026-06-24",
+      "exit_date": "2026-07-15",
+      "entry_price": 92700.0,
+      "exit_price": 64500.0,
+      "return_pct": -30.84,
+      "days": 21,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-02-09) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-02-21",
+          "source_file": "2026-02-20_[260220] 비나텍(126340).md",
+          "target_price": 158700.0,
+          "stated_upside_pct": 41.57
+        },
+        {
+          "school": "star",
+          "report_date": "2022-10-31",
+          "source_file": "2022-10-31_STAR_비나텍.md",
+          "target_price": 65400.0,
+          "stated_upside_pct": 74.7775
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-02-09",
+          "source_file": "2026-02-09_비나텍 - 팔려요.. 슈퍼캡 계속 팔려요!!.md",
+          "target_price": 165100.0,
+          "stated_upside_pct": 40.8703
+        }
+      ]
+    },
+    {
+      "ticker": "249420",
+      "market": "KR",
+      "name": "일동제약",
+      "entry_date": "2026-06-29",
+      "exit_date": "2026-07-15",
+      "entry_price": 15710.0,
+      "exit_price": 13820.0,
+      "return_pct": -12.56,
+      "days": 16,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-03-14) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_일동제약.md",
+          "target_price": 59200.0,
+          "stated_upside_pct": 81.317
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-07-15",
+      "exit_date": "2026-07-15",
+      "entry_price": 675000.0,
+      "exit_price": 431000.0,
+      "return_pct": -36.53,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }
