@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-15T11:31:59+00:00",
+  "generated_at": "2026-07-16T11:59:28+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20774,6 +20774,49 @@
           "source_file": "2026-06-12_STAR_LG이노텍.md",
           "target_price": null,
           "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "032350",
+      "market": "KR",
+      "name": "롯데관광개발",
+      "entry_date": "2026-06-29",
+      "exit_date": "2026-07-16",
+      "entry_price": 14350.0,
+      "exit_price": 11820.0,
+      "return_pct": -18.12,
+      "days": 17,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-03-14) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-롯데관광개발.md",
+          "target_price": 19220.0,
+          "stated_upside_pct": 95.5239
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-29",
+          "source_file": "2025-11-10_롯데관광개발 (032350, KS), 롯데관광대박 (발간일 241129) YIG Research.md",
+          "target_price": 16780.0,
+          "stated_upside_pct": 90.8987
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_롯데관광개발.md",
+          "target_price": 30500.0,
+          "stated_upside_pct": 56.9738
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-22",
+          "source_file": "undated_[BUY] 중국 손님 제주행, 드림타워 실적행! 롯데관광개발.md",
+          "target_price": 30000.0,
+          "stated_upside_pct": 55.0388
         }
       ]
     }
