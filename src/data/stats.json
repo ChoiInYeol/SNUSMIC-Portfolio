@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-07-16T11:59:32",
- "as_of": "2026-07-16",
+ "generated_at": "2026-07-17T11:46:46",
+ "as_of": "2026-07-17",
  "universe": {
   "n_reports": 826,
   "n_by_tier": {
@@ -1187,7 +1187,7 @@
     "smic"
    ],
    "report_date": "2026-05-02",
-   "age_days": 75,
+   "age_days": 76,
    "tier_now": "Positive",
    "stated_upside_pct": 56.0,
    "return_since_pct": 3.1,
@@ -1232,39 +1232,39 @@
     "kuvic"
    ],
    "report_date": "2026-03-16",
-   "age_days": 122,
+   "age_days": 123,
    "tier_now": "Winner",
    "stated_upside_pct": null,
-   "return_since_pct": 20.4,
+   "return_since_pct": 13.0,
    "score": 4,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 111.63,
+     "value": 85.82,
      "pass": true
     },
     {
      "key": "vol_trend",
-     "value": 0.74,
+     "value": 0.76,
      "pass": true
     },
     {
      "key": "vol_60d",
-     "value": 95.6,
+     "value": 96.38,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 121.26,
+     "value": 95.45,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -11.82,
+     "value": -14.29,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -1277,7 +1277,7 @@
     "ewha"
    ],
    "report_date": "2026-04-04",
-   "age_days": 103,
+   "age_days": 104,
    "tier_now": "Winner",
    "stated_upside_pct": 40.1,
    "return_since_pct": -41.2,
@@ -1322,7 +1322,7 @@
     "voera"
    ],
    "report_date": "2026-05-22",
-   "age_days": 55,
+   "age_days": 56,
    "tier_now": "Positive",
    "stated_upside_pct": 28.9,
    "return_since_pct": -16.1,
@@ -1367,39 +1367,39 @@
     "smic"
    ],
    "report_date": "2026-05-29",
-   "age_days": 48,
+   "age_days": 49,
    "tier_now": "Positive",
    "stated_upside_pct": 74.2,
-   "return_since_pct": -22.3,
+   "return_since_pct": -25.5,
    "score": 4,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 107.81,
+     "value": 89.79,
      "pass": true
     },
     {
      "key": "vol_trend",
-     "value": 1.37,
+     "value": 1.41,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 133.82,
+     "value": 134.19,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 117.45,
+     "value": 99.42,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": 43.97,
+     "value": 40.62,
      "pass": true
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -1412,7 +1412,7 @@
     "yig"
    ],
    "report_date": "2026-06-05",
-   "age_days": 41,
+   "age_days": 42,
    "tier_now": "Winner",
    "stated_upside_pct": 61.8,
    "return_since_pct": 59.3,
@@ -1457,7 +1457,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 92.2,
    "return_since_pct": -35.2,
@@ -1502,7 +1502,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": null,
    "return_since_pct": -35.5,
@@ -1547,7 +1547,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": null,
    "return_since_pct": 6.6,
@@ -1592,39 +1592,39 @@
     "kuvic"
    ],
    "report_date": "2026-04-07",
-   "age_days": 100,
+   "age_days": 101,
    "tier_now": "Positive",
    "stated_upside_pct": null,
-   "return_since_pct": -11.6,
+   "return_since_pct": -10.9,
    "score": 3,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 37.58,
+     "value": 34.91,
      "pass": true
     },
     {
      "key": "vol_trend",
-     "value": 0.67,
+     "value": 0.69,
      "pass": true
     },
     {
      "key": "vol_60d",
-     "value": 41.76,
+     "value": 41.38,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 47.21,
+     "value": 44.54,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -0.55,
+     "value": -1.38,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -1637,7 +1637,7 @@
     "yig"
    ],
    "report_date": "2026-04-14",
-   "age_days": 93,
+   "age_days": 94,
    "tier_now": "Winner",
    "stated_upside_pct": 68.0,
    "return_since_pct": 12.7,
@@ -1682,7 +1682,7 @@
     "yig"
    ],
    "report_date": "2026-04-14",
-   "age_days": 93,
+   "age_days": 94,
    "tier_now": "Winner",
    "stated_upside_pct": 137.2,
    "return_since_pct": -25.6,
@@ -1727,7 +1727,7 @@
     "voera"
    ],
    "report_date": "2026-05-20",
-   "age_days": 57,
+   "age_days": 58,
    "tier_now": "Positive",
    "stated_upside_pct": 50.9,
    "return_since_pct": -20.3,
@@ -1772,7 +1772,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 34.3,
    "return_since_pct": -50.3,
@@ -1817,7 +1817,7 @@
     "ewha"
    ],
    "report_date": "2026-01-24",
-   "age_days": 173,
+   "age_days": 174,
    "tier_now": "Winner",
    "stated_upside_pct": 47.5,
    "return_since_pct": -16.6,
@@ -1862,7 +1862,7 @@
     "yig"
    ],
    "report_date": "2026-02-06",
-   "age_days": 160,
+   "age_days": 161,
    "tier_now": "Winner",
    "stated_upside_pct": 43.9,
    "return_since_pct": -39.2,
@@ -1907,7 +1907,7 @@
     "voera"
    ],
    "report_date": "2026-02-27",
-   "age_days": 139,
+   "age_days": 140,
    "tier_now": "Winner",
    "stated_upside_pct": 35.7,
    "return_since_pct": -1.2,
@@ -1952,7 +1952,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 98.6,
    "return_since_pct": -55.5,
@@ -1997,7 +1997,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 51.8,
    "return_since_pct": -46.3,
@@ -2042,7 +2042,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 53.3,
    "return_since_pct": -65.2,
@@ -2087,7 +2087,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 59.5,
    "return_since_pct": -68.1,
@@ -2132,7 +2132,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 43.2,
    "return_since_pct": -31.2,
@@ -2177,7 +2177,7 @@
     "yig"
    ],
    "report_date": "2026-03-17",
-   "age_days": 121,
+   "age_days": 122,
    "tier_now": "Positive",
    "stated_upside_pct": 47.4,
    "return_since_pct": -36.6,
@@ -2222,7 +2222,7 @@
     "voera"
    ],
    "report_date": "2026-03-27",
-   "age_days": 111,
+   "age_days": 112,
    "tier_now": "Winner",
    "stated_upside_pct": 7.6,
    "return_since_pct": -26.2,
@@ -2267,7 +2267,7 @@
     "kuvic"
    ],
    "report_date": "2026-03-27",
-   "age_days": 111,
+   "age_days": 112,
    "tier_now": "Winner",
    "stated_upside_pct": 95.1,
    "return_since_pct": -39.8,
@@ -2312,7 +2312,7 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 91,
+   "age_days": 92,
    "tier_now": "Positive",
    "stated_upside_pct": 73.7,
    "return_since_pct": -44.3,
@@ -2357,7 +2357,7 @@
     "smic"
    ],
    "report_date": "2026-05-02",
-   "age_days": 75,
+   "age_days": 76,
    "tier_now": "Positive",
    "stated_upside_pct": 167.4,
    "return_since_pct": -54.8,
@@ -2402,7 +2402,7 @@
     "smic"
    ],
    "report_date": "2026-05-02",
-   "age_days": 75,
+   "age_days": 76,
    "tier_now": "Positive",
    "stated_upside_pct": 48.0,
    "return_since_pct": -25.4,
@@ -2447,7 +2447,7 @@
     "smic"
    ],
    "report_date": "2026-05-06",
-   "age_days": 71,
+   "age_days": 72,
    "tier_now": "Positive",
    "stated_upside_pct": 73.7,
    "return_since_pct": -39.5,
@@ -2492,7 +2492,7 @@
     "yig"
    ],
    "report_date": "2026-05-11",
-   "age_days": 66,
+   "age_days": 67,
    "tier_now": "Winner",
    "stated_upside_pct": 49.1,
    "return_since_pct": -12.8,
@@ -2538,7 +2538,7 @@
     "star"
    ],
    "report_date": "2026-05-18",
-   "age_days": 59,
+   "age_days": 60,
    "tier_now": "Positive",
    "stated_upside_pct": 67.6,
    "return_since_pct": -21.4,
@@ -2585,7 +2585,7 @@
     "yig"
    ],
    "report_date": "2026-05-18",
-   "age_days": 59,
+   "age_days": 60,
    "tier_now": "Positive",
    "stated_upside_pct": null,
    "return_since_pct": -68.1,
@@ -2630,7 +2630,7 @@
     "kuvic"
    ],
    "report_date": "2026-05-18",
-   "age_days": 59,
+   "age_days": 60,
    "tier_now": "Positive",
    "stated_upside_pct": 60.0,
    "return_since_pct": -13.7,
@@ -2675,7 +2675,7 @@
     "yig"
    ],
    "report_date": "2026-05-26",
-   "age_days": 51,
+   "age_days": 52,
    "tier_now": "Winner",
    "stated_upside_pct": 89.0,
    "return_since_pct": -56.5,
@@ -2720,39 +2720,39 @@
     "smic"
    ],
    "report_date": "2026-05-29",
-   "age_days": 48,
+   "age_days": 49,
    "tier_now": "Positive",
    "stated_upside_pct": 191.3,
-   "return_since_pct": -5.0,
+   "return_since_pct": -8.1,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 57.8,
+     "value": 47.12,
      "pass": true
     },
     {
      "key": "vol_trend",
-     "value": 1.06,
+     "value": 1.11,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 56.17,
+     "value": 56.49,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 67.44,
+     "value": 56.75,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": 5.27,
+     "value": 1.96,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -2766,7 +2766,7 @@
     "star"
    ],
    "report_date": "2026-06-10",
-   "age_days": 36,
+   "age_days": 37,
    "tier_now": "Positive",
    "stated_upside_pct": 128.7,
    "return_since_pct": -22.3,
@@ -2811,7 +2811,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 85.4,
    "return_since_pct": -11.4,
@@ -2856,7 +2856,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 106.8,
    "return_since_pct": -17.6,
@@ -2901,7 +2901,7 @@
     "kuvic"
    ],
    "report_date": "2026-02-09",
-   "age_days": 157,
+   "age_days": 158,
    "tier_now": "Winner",
    "stated_upside_pct": 40.9,
    "return_since_pct": -47.4,
@@ -2946,7 +2946,7 @@
     "yig"
    ],
    "report_date": "2026-02-13",
-   "age_days": 153,
+   "age_days": 154,
    "tier_now": "Positive",
    "stated_upside_pct": 28.9,
    "return_since_pct": -19.2,
@@ -2991,7 +2991,7 @@
     "voera"
    ],
    "report_date": "2026-03-04",
-   "age_days": 134,
+   "age_days": 135,
    "tier_now": "Winner",
    "stated_upside_pct": 40.1,
    "return_since_pct": 19.8,
@@ -3036,7 +3036,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 88.6,
    "return_since_pct": -17.9,
@@ -3081,7 +3081,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Winner",
    "stated_upside_pct": 36.1,
    "return_since_pct": -3.7,
@@ -3126,7 +3126,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 42.7,
    "return_since_pct": -32.1,
@@ -3171,7 +3171,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 82.1,
    "return_since_pct": -1.1,
@@ -3216,7 +3216,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 81.3,
    "return_since_pct": -55.8,
@@ -3261,7 +3261,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Winner",
    "stated_upside_pct": 76.7,
    "return_since_pct": 2.4,
@@ -3306,7 +3306,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Winner",
    "stated_upside_pct": 181.0,
    "return_since_pct": -54.4,
@@ -3351,39 +3351,39 @@
     "kuvic"
    ],
    "report_date": "2026-03-16",
-   "age_days": 122,
+   "age_days": 123,
    "tier_now": "Positive",
    "stated_upside_pct": null,
-   "return_since_pct": 13.6,
+   "return_since_pct": 13.0,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -0.62,
+     "value": -1.11,
      "pass": false
     },
     {
      "key": "vol_trend",
-     "value": 0.34,
+     "value": 0.37,
      "pass": true
     },
     {
      "key": "vol_60d",
-     "value": 13.41,
+     "value": 13.47,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 9.01,
+     "value": 8.52,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": 9.02,
+     "value": 7.54,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -3397,7 +3397,7 @@
     "star"
    ],
    "report_date": "2026-03-27",
-   "age_days": 111,
+   "age_days": 112,
    "tier_now": "Positive",
    "stated_upside_pct": 53.1,
    "return_since_pct": -77.7,
@@ -3442,7 +3442,7 @@
     "yig"
    ],
    "report_date": "2026-03-31",
-   "age_days": 107,
+   "age_days": 108,
    "tier_now": "Positive",
    "stated_upside_pct": 39.6,
    "return_since_pct": -28.8,
@@ -3487,7 +3487,7 @@
     "yig"
    ],
    "report_date": "2026-03-31",
-   "age_days": 107,
+   "age_days": 108,
    "tier_now": "Positive",
    "stated_upside_pct": 156.9,
    "return_since_pct": -56.3,
@@ -3532,7 +3532,7 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 91,
+   "age_days": 92,
    "tier_now": "Positive",
    "stated_upside_pct": 95.0,
    "return_since_pct": -14.0,
@@ -3577,39 +3577,39 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 91,
+   "age_days": 92,
    "tier_now": "Positive",
    "stated_upside_pct": 32.1,
-   "return_since_pct": -18.4,
+   "return_since_pct": -18.1,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -2.73,
+     "value": -1.35,
      "pass": false
     },
     {
      "key": "vol_trend",
-     "value": 0.94,
+     "value": 1.01,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 91.4,
+     "value": 91.21,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 6.9,
+     "value": 8.28,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -18.5,
+     "value": -17.62,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -3622,39 +3622,39 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 91,
+   "age_days": 92,
    "tier_now": "Positive",
    "stated_upside_pct": null,
-   "return_since_pct": -4.4,
+   "return_since_pct": -6.2,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 23.12,
+     "value": 18.37,
      "pass": false
     },
     {
      "key": "vol_trend",
-     "value": 0.55,
+     "value": 0.57,
      "pass": true
     },
     {
      "key": "vol_60d",
-     "value": 24.7,
+     "value": 24.81,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 32.75,
+     "value": 28.0,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -3.84,
+     "value": -7.09,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   },
   {
@@ -3667,7 +3667,7 @@
     "yig"
    ],
    "report_date": "2026-05-11",
-   "age_days": 66,
+   "age_days": 67,
    "tier_now": "Positive",
    "stated_upside_pct": 79.8,
    "return_since_pct": -40.8,
@@ -3713,7 +3713,7 @@
     "yig"
    ],
    "report_date": "2026-05-21",
-   "age_days": 56,
+   "age_days": 57,
    "tier_now": "Positive",
    "stated_upside_pct": 66.7,
    "return_since_pct": -35.4,
@@ -3758,7 +3758,7 @@
     "voera"
    ],
    "report_date": "2026-05-22",
-   "age_days": 55,
+   "age_days": 56,
    "tier_now": "Positive",
    "stated_upside_pct": 52.4,
    "return_since_pct": -34.8,
@@ -3803,7 +3803,7 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 36,
+   "age_days": 37,
    "tier_now": "Positive",
    "stated_upside_pct": 12.2,
    "return_since_pct": -1.8,
@@ -3848,7 +3848,7 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 36,
+   "age_days": 37,
    "tier_now": "Positive",
    "stated_upside_pct": 56.9,
    "return_since_pct": 1.1,
@@ -3893,7 +3893,7 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 36,
+   "age_days": 37,
    "tier_now": "Positive",
    "stated_upside_pct": 148.4,
    "return_since_pct": -8.7,
@@ -3938,7 +3938,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 31.1,
    "return_since_pct": 12.3,
@@ -3983,7 +3983,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 75.8,
    "return_since_pct": -16.5,
@@ -4028,7 +4028,7 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 124,
+   "age_days": 125,
    "tier_now": "Positive",
    "stated_upside_pct": 44.3,
    "return_since_pct": 2.6,
@@ -4074,7 +4074,7 @@
     "voera"
    ],
    "report_date": "2026-05-22",
-   "age_days": 55,
+   "age_days": 56,
    "tier_now": "Positive",
    "stated_upside_pct": 55.0,
    "return_since_pct": -40.3,
@@ -4119,7 +4119,7 @@
     "voera"
    ],
    "report_date": "2026-05-23",
-   "age_days": 54,
+   "age_days": 55,
    "tier_now": "Positive",
    "stated_upside_pct": 13.8,
    "return_since_pct": -24.6,
@@ -4164,7 +4164,7 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 36,
+   "age_days": 37,
    "tier_now": "Positive",
    "stated_upside_pct": 127.2,
    "return_since_pct": -11.4,
@@ -4209,39 +4209,39 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 34,
+   "age_days": 35,
    "tier_now": "Positive",
    "stated_upside_pct": 76.9,
-   "return_since_pct": 7.9,
+   "return_since_pct": 2.7,
    "score": 0,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -16.66,
+     "value": -20.51,
      "pass": false
     },
     {
      "key": "vol_trend",
-     "value": 0.82,
+     "value": 0.88,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 45.22,
+     "value": 46.02,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -7.03,
+     "value": -10.88,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -2.28,
+     "value": -6.37,
      "pass": false
     }
    ],
-   "price_as_of": "2026-07-15",
+   "price_as_of": "2026-07-16",
    "stale_price": false
   }
  ],

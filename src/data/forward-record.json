@@ -1,12 +1,12 @@
 {
  "schema_version": "1.0",
- "generated_at": "2026-07-16T11:59:29+00:00",
+ "generated_at": "2026-07-17T11:46:42+00:00",
  "method": "신호 스냅샷(append-only, 커밋 시점 박제)의 매수 신호를 이후 실현 시세로 채점. 진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 동일 티커 7일 내 중복 신호 제외. 전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적.",
  "summary": {
   "n_signals": 9,
   "n_tracking": 9,
-  "avg_return_pct": -17.29,
-  "win_rate_pct": 33.3,
+  "avg_return_pct": -17.85,
+  "win_rate_pct": 22.2,
   "best_pct": 10.76,
   "worst_pct": -48.82,
   "first_snapshot": "2026-06-11",
@@ -166,10 +166,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 152.81,
-   "current_price": 160.23,
-   "return_pct": 4.86,
+   "current_price": 152.56,
+   "return_pct": -0.16,
    "peak_pct": 9.79,
-   "days": 30,
+   "days": 31,
    "status": "tracking",
    "trigger_schools": [
     "star"
