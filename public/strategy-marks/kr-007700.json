@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-20T12:22:46+00:00",
+  "generated_at": "2026-07-21T11:45:25+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "ticker": "007700",
   "market": "KR",
@@ -12,11 +12,13 @@
       "side": "buy",
       "price": 16590.0,
       "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: smic 2026-06-10)"
+    },
+    {
+      "date": "2026-07-21",
+      "side": "stop",
+      "price": 14010.0,
+      "reason": "u_chandelier_ATR4.25 (-16.1%)"
     }
   ],
-  "open_stop": {
-    "stop_level": 14050,
-    "entry_date": "2026-06-11",
-    "as_of": "2026-07-20"
-  }
+  "open_stop": null
 }

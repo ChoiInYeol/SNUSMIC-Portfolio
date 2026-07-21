@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-20T12:22:46+00:00",
+  "generated_at": "2026-07-21T11:45:25+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20817,6 +20817,107 @@
           "source_file": "undated_[BUY] 중국 손님 제주행, 드림타워 실적행! 롯데관광개발.md",
           "target_price": 30000.0,
           "stated_upside_pct": 55.0388
+        }
+      ]
+    },
+    {
+      "ticker": "131970",
+      "market": "KR",
+      "name": "두산테스나",
+      "entry_date": "2026-06-24",
+      "exit_date": "2026-07-21",
+      "entry_price": 125700.0,
+      "exit_price": 79900.0,
+      "return_pct": -36.82,
+      "days": 27,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-11-12",
+          "source_file": "2023-11-12_equity-research-두산테스나.md",
+          "target_price": 66500.0,
+          "stated_upside_pct": 23.8361
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-09-15",
+          "source_file": "2025-11-06_두산테스나(131970, KQ), 두산테슬라 (발간일 230916) YIG Research.md",
+          "target_price": 71300.0,
+          "stated_upside_pct": 34.5283
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-11-20",
+          "source_file": "2023-11-20_두산테스나 - 아! 테스형, OSAT 대장 믿고 있었다.md",
+          "target_price": 101000.0,
+          "stated_upside_pct": 69.1792
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-13",
+          "source_file": "2026-06-13_STAR_두산테스나.md",
+          "target_price": 235100.0,
+          "stated_upside_pct": 34.3429
+        }
+      ]
+    },
+    {
+      "ticker": "458870",
+      "market": "KR",
+      "name": "씨어스",
+      "entry_date": "2026-06-05",
+      "exit_date": "2026-07-21",
+      "entry_price": 29850.0,
+      "exit_price": 28600.0,
+      "return_pct": -4.76,
+      "days": 46,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2025-12-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_KEYSS_STAR_씨어스테크놀로지.md",
+          "target_price": 37720.0,
+          "stated_upside_pct": 0.0
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-06",
+          "source_file": "2026-01-26_씨어스테크놀로지, See us! 우리에게 주목할 시간 YIG Research.md",
+          "target_price": 44407.766,
+          "stated_upside_pct": 53.4
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-07-21",
+      "exit_date": "2026-07-21",
+      "entry_price": 601000.0,
+      "exit_price": 431000.0,
+      "return_pct": -28.72,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }
