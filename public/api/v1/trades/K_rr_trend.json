@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-21T11:45:25+00:00",
+  "generated_at": "2026-07-22T11:50:07+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -16824,6 +16824,28 @@
           "source_file": "2026-06-07_브이엠 (089970,KQ), 대한민국 반도체 장비의 선봉장 YIG Research.md",
           "target_price": 110000.0,
           "stated_upside_pct": 61.7647
+        }
+      ]
+    },
+    {
+      "ticker": "036190",
+      "market": "KR",
+      "name": "금화피에스시",
+      "entry_date": "2026-06-11",
+      "exit_date": "2026-07-22",
+      "entry_price": 32700.0,
+      "exit_price": 31150.0,
+      "return_pct": -5.31,
+      "days": 41,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: smic 2026-06-10)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-06-10",
+          "source_file": "2026-06-10_Equity Research, 금화피에스시.md",
+          "target_price": 36700.0,
+          "stated_upside_pct": 12.2324
         }
       ]
     }

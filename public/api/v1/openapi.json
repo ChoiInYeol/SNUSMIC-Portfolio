@@ -3,7 +3,7 @@
   "info": {
     "title": "SMIC Strategy Signal API",
     "version": "1.0",
-    "description": "Static JSON endpoints exposing backtested trading signals from the SMIC (Student Managed Investment Club) momentum strategy research pipeline. Last updated: 2026-07-21. These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
+    "description": "Static JSON endpoints exposing backtested trading signals from the SMIC (Student Managed Investment Club) momentum strategy research pipeline. Last updated: 2026-07-22. These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
     "contact": {
       "url": "https://verdict-archive.vercel.app"
     },
@@ -50,7 +50,7 @@
             "schema": {
               "type": "string",
               "format": "date",
-              "example": "2026-07-21"
+              "example": "2026-07-22"
             }
           }
         ],
