@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-22T11:50:07+00:00",
+  "generated_at": "2026-07-23T11:49:26+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8749,6 +8749,28 @@
           "source_file": "2026-03-14_STAR_신세계.md",
           "target_price": 424500.0,
           "stated_upside_pct": 30.2147
+        }
+      ]
+    },
+    {
+      "ticker": "007700",
+      "market": "KR",
+      "name": "F&F홀딩스",
+      "entry_date": "2026-06-11",
+      "exit_date": "2026-07-23",
+      "entry_price": 16590.0,
+      "exit_price": 13650.0,
+      "return_pct": -18.21,
+      "days": 42,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: smic 2026-06-10)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-06-10",
+          "source_file": "2026-06-10_Equity Research, F&F홀딩스.md",
+          "target_price": 37960.0,
+          "stated_upside_pct": 127.1694
         }
       ]
     }
