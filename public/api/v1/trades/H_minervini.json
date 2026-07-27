@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-24T11:58:35+00:00",
+  "generated_at": "2026-07-27T13:08:54+00:00",
   "strategy_key": "H_minervini",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -3291,6 +3291,57 @@
           "source_file": "2025-11-11_삼성전기 (009150, KS), 내가 삼전이오 (발간일 251014) YIG Research.md",
           "target_price": 297800.0,
           "stated_upside_pct": 50.2523
+        }
+      ]
+    },
+    {
+      "ticker": "095610",
+      "market": "KR",
+      "name": "테스",
+      "entry_date": "2026-06-15",
+      "exit_date": "2026-07-27",
+      "entry_price": 186000.0,
+      "exit_price": 137400.0,
+      "return_pct": -26.57,
+      "days": 42,
+      "exit_reason": "minervini_close<50MA",
+      "entry_reason": "미너비니 트렌드 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주고점 70%↑, RS>KOSPI) → 진입 (트리거: star 2026-06-13, yig 2025-09-24)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2025-09-24",
+          "source_file": "2025-11-11_테스 (095610, KQ), '테스' 토스테론, 반도체 사이클의 근육 (발간일 250924) YIG Research.md",
+          "target_price": 55200.0,
+          "stated_upside_pct": 21.0526
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-13",
+          "source_file": "2026-06-13_STAR_테스.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "319660",
+      "market": "KR",
+      "name": "피에스케이",
+      "entry_date": "2026-03-18",
+      "exit_date": "2026-07-27",
+      "entry_price": 75500.0,
+      "exit_price": 145600.0,
+      "return_pct": 91.69,
+      "days": 131,
+      "exit_reason": "minervini_close<50MA",
+      "entry_reason": "미너비니 트렌드 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주고점 70%↑, RS>KOSPI) → 진입 (트리거: yig 2026-03-17)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2026-03-17",
+          "source_file": "2026-03-31_피에스케이(319660,KQ), Post Semiconductor King YIG Research.md",
+          "target_price": 87400.0,
+          "stated_upside_pct": 20.0549
         }
       ]
     }
