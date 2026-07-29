@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-27T13:08:54+00:00",
+  "generated_at": "2026-07-29T12:01:26+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20265,6 +20265,28 @@
           "source_file": "2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md",
           "target_price": null,
           "stated_upside_pct": 27.3
+        }
+      ]
+    },
+    {
+      "ticker": "475150",
+      "market": "KR",
+      "name": "SK이터닉스",
+      "entry_date": "2026-07-24",
+      "exit_date": "2026-07-28",
+      "entry_price": 80800.0,
+      "exit_price": 54900.0,
+      "return_pct": -32.46,
+      "days": 4,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 97≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-06-27",
+          "source_file": "2025-06-27_SK이터닉스 - 나니가 SK.md",
+          "target_price": 47400.0,
+          "stated_upside_pct": 92.2921
         }
       ]
     }

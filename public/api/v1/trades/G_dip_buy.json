@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-27T13:08:54+00:00",
+  "generated_at": "2026-07-29T12:01:26+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20918,6 +20918,114 @@
           "source_file": "2026-06-12_STAR_LG이노텍.md",
           "target_price": null,
           "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "237690",
+      "market": "KR",
+      "name": "에스티팜",
+      "entry_date": "2026-06-09",
+      "exit_date": "2026-07-28",
+      "entry_price": 109500.0,
+      "exit_price": 99300.0,
+      "return_pct": -9.86,
+      "days": 49,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-05-04) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-04-17",
+          "source_file": "2024-04-17_equity-research-에스티팜-3.md",
+          "target_price": 114301.0,
+          "stated_upside_pct": 41.2868
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-04",
+          "source_file": "2026-05-04_STAR_에스티팜.md",
+          "target_price": 224800.0,
+          "stated_upside_pct": 46.1638
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-08-22",
+          "source_file": "2025-08-22_[250822] 에스티팜(237690).md",
+          "target_price": 133700.0,
+          "stated_upside_pct": 45.3261
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-07",
+          "source_file": "2025-11-10_에스티팜 (237690, KQ), 에스티팜 한 번 '올리고' 볼까 (발간일 241107) YIG Research.md",
+          "target_price": 160000.0,
+          "stated_upside_pct": 69.8514
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-07-28",
+      "exit_date": "2026-07-28",
+      "entry_price": 574000.0,
+      "exit_price": 431000.0,
+      "return_pct": -25.36,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "100090",
+      "market": "KR",
+      "name": "SK오션플랜트",
+      "entry_date": "2026-06-19",
+      "exit_date": "2026-07-29",
+      "entry_price": 17000.0,
+      "exit_price": 12630.0,
+      "return_pct": -26.15,
+      "days": 40,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-04-16) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-10-05",
+          "source_file": "2024-10-04_[241004] SK오션플랜트(100090).md",
+          "target_price": 20090.0,
+          "stated_upside_pct": 34.0227
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_SK오션플랜트.md",
+          "target_price": 32100.0,
+          "stated_upside_pct": 53.9568
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-sk오션플랜트.md",
+          "target_price": 41600.0,
+          "stated_upside_pct": 73.6952
         }
       ]
     }

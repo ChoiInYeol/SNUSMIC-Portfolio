@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-27T13:08:54+00:00",
+  "generated_at": "2026-07-29T12:01:26+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7977,6 +7977,128 @@
           "source_file": "2026-05-04_STAR_코오롱인더.md",
           "target_price": 110400.0,
           "stated_upside_pct": 17.6972
+        }
+      ]
+    },
+    {
+      "ticker": "126340",
+      "market": "KR",
+      "name": "비나텍",
+      "entry_date": "2026-06-24",
+      "exit_date": "2026-07-29",
+      "entry_price": 84784.7434,
+      "exit_price": 54600.0,
+      "return_pct": -35.99,
+      "days": 35,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-02-09) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-02-21",
+          "source_file": "2026-02-20_[260220] 비나텍(126340).md",
+          "target_price": 158700.0,
+          "stated_upside_pct": 41.57
+        },
+        {
+          "school": "star",
+          "report_date": "2022-10-31",
+          "source_file": "2022-10-31_STAR_비나텍.md",
+          "target_price": 65400.0,
+          "stated_upside_pct": 74.7775
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-02-09",
+          "source_file": "2026-02-09_비나텍 - 팔려요.. 슈퍼캡 계속 팔려요!!.md",
+          "target_price": 165100.0,
+          "stated_upside_pct": 40.8703
+        }
+      ]
+    },
+    {
+      "ticker": "131970",
+      "market": "KR",
+      "name": "두산테스나",
+      "entry_date": "2026-06-24",
+      "exit_date": "2026-07-29",
+      "entry_price": 116040.3252,
+      "exit_price": 67000.0,
+      "return_pct": -42.61,
+      "days": 35,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-11-12",
+          "source_file": "2023-11-12_equity-research-두산테스나.md",
+          "target_price": 66500.0,
+          "stated_upside_pct": 23.8361
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-09-15",
+          "source_file": "2025-11-06_두산테스나(131970, KQ), 두산테슬라 (발간일 230916) YIG Research.md",
+          "target_price": 71300.0,
+          "stated_upside_pct": 34.5283
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-11-20",
+          "source_file": "2023-11-20_두산테스나 - 아! 테스형, OSAT 대장 믿고 있었다.md",
+          "target_price": 101000.0,
+          "stated_upside_pct": 69.1792
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-13",
+          "source_file": "2026-06-13_STAR_두산테스나.md",
+          "target_price": 235100.0,
+          "stated_upside_pct": 34.3429
+        }
+      ]
+    },
+    {
+      "ticker": "213420",
+      "market": "KR",
+      "name": "덕산네오룩스",
+      "entry_date": "2026-06-09",
+      "exit_date": "2026-07-29",
+      "entry_price": 30100.7688,
+      "exit_price": 28500.0,
+      "return_pct": -5.89,
+      "days": 50,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-06) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-04-06",
+          "source_file": "2024-04-06_[240406] 덕산네오룩스(213420).md",
+          "target_price": 53200.0,
+          "stated_upside_pct": 37.1134
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_덕산네오룩스.md",
+          "target_price": 48200.0,
+          "stated_upside_pct": 51.3344
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-06-02",
+          "source_file": "2025-11-10_덕산네오룩스 (213420, KQ), 떡상, 네오룩스 (발간일 240524) YIG Research.md",
+          "target_price": 58500.0,
+          "stated_upside_pct": 29.2818
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-05-07",
+          "source_file": "2026-05-07_equity-research-덕산네오룩스.md",
+          "target_price": 91200.0,
+          "stated_upside_pct": 76.4023
         }
       ]
     }
