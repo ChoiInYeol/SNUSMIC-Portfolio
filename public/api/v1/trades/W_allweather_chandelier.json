@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-29T12:01:26+00:00",
+  "generated_at": "2026-07-30T12:10:44+00:00",
   "strategy_key": "W_allweather_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6214,6 +6214,28 @@
           "source_file": "2026-06-13_KEYSS_STAR_OCI홀딩스.md",
           "target_price": 576500.0,
           "stated_upside_pct": 92.1667
+        }
+      ]
+    },
+    {
+      "ticker": "FIX",
+      "market": "US",
+      "name": "FIX",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-07-29",
+      "entry_price": 1765.75,
+      "exit_price": 1608.0,
+      "return_pct": -12.75,
+      "days": 58,
+      "exit_reason": "t_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (올웨더 파킹 매도 후 전환) (트리거: smic 2026-05-29)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-05-29",
+          "source_file": "2026-05-29_equity-research-comfort-systems-usa-inc.md",
+          "target_price": 5326.0,
+          "stated_upside_pct": 191.3232
         }
       ]
     }

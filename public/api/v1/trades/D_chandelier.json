@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-29T12:01:26+00:00",
+  "generated_at": "2026-07-30T12:10:43+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8857,6 +8857,93 @@
           "source_file": "undated_[BUY] 미국이 감탄하고 전세계가 부러워하는, APR.md",
           "target_price": 362500.0,
           "stated_upside_pct": 44.7106
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2026-05-04",
+      "exit_date": "2026-07-30",
+      "entry_price": 126300.0,
+      "exit_price": 76000.0,
+      "return_pct": -40.19,
+      "days": 87,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: star 2026-05-02)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-05-02",
+          "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
+          "target_price": 155200.0,
+          "stated_upside_pct": 24.8592
+        }
+      ]
+    },
+    {
+      "ticker": "091700",
+      "market": "KR",
+      "name": "파트론",
+      "entry_date": "2026-06-11",
+      "exit_date": "2026-07-30",
+      "entry_price": 6300.0,
+      "exit_price": 4950.0,
+      "return_pct": -21.9,
+      "days": 49,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: smic 2026-06-10, ewha 2022-02-12)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-02-12",
+          "source_file": "2022-02-12_[220212] 파트론(091700).md",
+          "target_price": 17100.0,
+          "stated_upside_pct": 48.0519
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-06-10",
+          "source_file": "2026-06-10_Equity Research, 파트론.md",
+          "target_price": 15700.0,
+          "stated_upside_pct": 148.4177
+        }
+      ]
+    },
+    {
+      "ticker": "120110",
+      "market": "KR",
+      "name": "코오롱인더",
+      "entry_date": "2026-06-11",
+      "exit_date": "2026-07-30",
+      "entry_price": 68600.0,
+      "exit_price": 46000.0,
+      "return_pct": -33.35,
+      "days": 49,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: smic 2026-06-10, star 2026-05-04, ewha 2021-08-21)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2021-08-21",
+          "source_file": "2021-08-21_[210821] 코오롱인더(120110).md",
+          "target_price": 90876.0,
+          "stated_upside_pct": 27.2773
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-04",
+          "source_file": "2026-05-04_STAR_코오롱인더.md",
+          "target_price": 110400.0,
+          "stated_upside_pct": 17.6972
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-06-10",
+          "source_file": "2026-06-10_Equity Research, 코오롱인더스트리.md",
+          "target_price": 157800.0,
+          "stated_upside_pct": 128.6957
         }
       ]
     }
