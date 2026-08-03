@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-07-31T12:03:20+00:00",
+  "generated_at": "2026-08-03T13:10:51+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20433,6 +20433,151 @@
           "source_file": "2026-03-27_Lumentum Holdings - 루멘상스의 시대가 왔다.md",
           "target_price": 1216.0,
           "stated_upside_pct": 73.0394
+        }
+      ]
+    },
+    {
+      "ticker": "009150",
+      "market": "KR",
+      "name": "삼성전기",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 2021000.0,
+      "exit_price": 1221000.0,
+      "return_pct": -39.95,
+      "days": 63,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.2% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_삼성전기.md",
+          "target_price": 309000.0,
+          "stated_upside_pct": 13.6029
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-04-04",
+          "source_file": "2025-04-04_[250404] 삼성전기(009150).md",
+          "target_price": 187900.0,
+          "stated_upside_pct": 55.033
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-10-14",
+          "source_file": "2025-11-11_삼성전기 (009150, KS), 내가 삼전이오 (발간일 251014) YIG Research.md",
+          "target_price": 297800.0,
+          "stated_upside_pct": 50.2523
+        }
+      ]
+    },
+    {
+      "ticker": "012510",
+      "market": "KR",
+      "name": "더존비즈온",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 119200.0,
+      "exit_price": 120000.0,
+      "return_pct": -0.97,
+      "days": 124,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-16",
+          "source_file": "2024-08-16_더존비즈온 - 이제는 DOU이상 ZONE버할 필요 없다.md",
+          "target_price": 75900.0,
+          "stated_upside_pct": 32.23
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_더존비즈온.md",
+          "target_price": 102100.0,
+          "stated_upside_pct": 45.8571
+        }
+      ]
+    },
+    {
+      "ticker": "099190",
+      "market": "KR",
+      "name": "아이센스",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 19700.0,
+      "exit_price": 16690.0,
+      "return_pct": -11.99,
+      "days": 124,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.8% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_아이센스.md",
+          "target_price": 35400.0,
+          "stated_upside_pct": 80.2444
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-11-02",
+          "source_file": "2025-11-10_아이센스(099190, KQ), 우리 아이 센스가 달라졌어요 (발간일 231104) YIG Research.md",
+          "target_price": 40400.0,
+          "stated_upside_pct": 61.6
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-11-25",
+          "source_file": "2023-11-25_[231125] 아이센스(099190).md",
+          "target_price": 32200.0,
+          "stated_upside_pct": 37.6068
+        }
+      ]
+    },
+    {
+      "ticker": "049720",
+      "market": "KR",
+      "name": "고려신용정보",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 9690.0,
+      "exit_price": 9200.0,
+      "return_pct": -5.6,
+      "days": 63,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-고려신용정보-2.md",
+          "target_price": 18600.0,
+          "stated_upside_pct": 86.1862
+        }
+      ]
+    },
+    {
+      "ticker": "440110",
+      "market": "KR",
+      "name": "파두",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 114500.0,
+      "exit_price": 63400.0,
+      "return_pct": -38.25,
+      "days": 63,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.1% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2026-02-09",
+          "source_file": "2026-02-09_파두 - 호재가 파두파두 끝이 없네.md",
+          "target_price": 56400.0,
+          "stated_upside_pct": 14.8676
         }
       ]
     }
