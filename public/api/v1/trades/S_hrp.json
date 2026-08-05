@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-03T13:10:51+00:00",
+  "generated_at": "2026-08-05T12:18:21+00:00",
   "strategy_key": "S_hrp",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -98477,8 +98477,8 @@
       "entry_date": "2026-03-02",
       "exit_date": "2026-08-03",
       "entry_price": 112.97,
-      "exit_price": 311.23,
-      "return_pct": 166.5,
+      "exit_price": 297.5,
+      "return_pct": 155.06,
       "days": 154,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.2% 재조정 보유",
@@ -100317,6 +100317,28 @@
       ]
     },
     {
+      "ticker": "SRAD",
+      "market": "US",
+      "name": "SRAD",
+      "entry_date": "2025-07-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 28.2,
+      "exit_price": 11.76,
+      "return_pct": -42.68,
+      "days": 398,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "hrp 월간 리밸런스 — 목표비중 1.3% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-sportradar.md",
+          "target_price": 33.82,
+          "stated_upside_pct": 41.5655
+        }
+      ]
+    },
+    {
       "ticker": "461300",
       "market": "KR",
       "name": "아이스크림미디어",
@@ -100522,6 +100544,50 @@
       ]
     },
     {
+      "ticker": "IMAX",
+      "market": "US",
+      "name": "IMAX",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-08-03",
+      "entry_price": 34.8,
+      "exit_price": 49.15,
+      "return_pct": 29.7,
+      "days": 182,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "hrp 월간 리밸런스 — 목표비중 2.1% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-imax-corp.md",
+          "target_price": 54.6,
+          "stated_upside_pct": 48.2085
+        }
+      ]
+    },
+    {
+      "ticker": "IRMD",
+      "market": "US",
+      "name": "IRMD",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-08-03",
+      "entry_price": 97.4661,
+      "exit_price": 92.95,
+      "return_pct": -0.39,
+      "days": 182,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "hrp 월간 리밸런스 — 목표비중 3.8% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-iradimed-corporation.md",
+          "target_price": 146.0,
+          "stated_upside_pct": 59.6585
+        }
+      ]
+    },
+    {
       "ticker": "006400",
       "market": "KR",
       "name": "삼성SDI",
@@ -100540,6 +100606,28 @@
           "source_file": "2025-12-12_STAR_삼성SDI.md",
           "target_price": 479000.0,
           "stated_upside_pct": 55.5195
+        }
+      ]
+    },
+    {
+      "ticker": "LITE",
+      "market": "US",
+      "name": "LITE",
+      "entry_date": "2026-03-02",
+      "exit_date": "2026-08-03",
+      "entry_price": 742.895,
+      "exit_price": 685.64,
+      "return_pct": -15.34,
+      "days": 154,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.5% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-lumentum-holdings-inc.md",
+          "target_price": 498.63,
+          "stated_upside_pct": 48.9826
         }
       ]
     },
@@ -100708,6 +100796,28 @@
           "source_file": "undated_[BUY] 조선,대한으로 나아가라, 대한조선.md",
           "target_price": 107000.0,
           "stated_upside_pct": 52.4217
+        }
+      ]
+    },
+    {
+      "ticker": "FIX",
+      "market": "US",
+      "name": "FIX",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 1765.75,
+      "exit_price": 1674.3199,
+      "return_pct": -12.01,
+      "days": 63,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "hrp 월간 리밸런스 — 목표비중 1.5% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-05-29",
+          "source_file": "2026-05-29_equity-research-comfort-systems-usa-inc.md",
+          "target_price": 5326.0,
+          "stated_upside_pct": 191.3232
         }
       ]
     },

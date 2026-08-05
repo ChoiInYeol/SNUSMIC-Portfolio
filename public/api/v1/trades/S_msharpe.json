@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-03T13:10:51+00:00",
+  "generated_at": "2026-08-05T12:18:21+00:00",
   "strategy_key": "S_msharpe",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -47867,8 +47867,8 @@
       "entry_date": "2026-01-02",
       "exit_date": "2026-08-03",
       "entry_price": 88.6086,
-      "exit_price": 138.25,
-      "return_pct": -28.05,
+      "exit_price": 134.89,
+      "return_pct": -29.72,
       "days": 213,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 9.4% 재조정 보유",
@@ -47918,8 +47918,8 @@
       "entry_date": "2026-06-01",
       "exit_date": "2026-08-03",
       "entry_price": 328.12,
-      "exit_price": 311.23,
-      "return_pct": -10.28,
+      "exit_price": 297.5,
+      "return_pct": -14.13,
       "days": 63,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 2.4% 재조정 보유",
@@ -48035,6 +48035,28 @@
       ]
     },
     {
+      "ticker": "CLBT",
+      "market": "US",
+      "name": "CLBT",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 14.8,
+      "exit_price": 15.0,
+      "return_pct": -6.21,
+      "days": 63,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 1.8% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-cellebrite-di.md",
+          "target_price": 29.7,
+          "stated_upside_pct": 72.5741
+        }
+      ]
+    },
+    {
       "ticker": "475150",
       "market": "KR",
       "name": "SK이터닉스",
@@ -48075,6 +48097,28 @@
           "source_file": "2026-02-09_파두 - 호재가 파두파두 끝이 없네.md",
           "target_price": 56400.0,
           "stated_upside_pct": 14.8676
+        }
+      ]
+    },
+    {
+      "ticker": "GLNG",
+      "market": "US",
+      "name": "GLNG",
+      "entry_date": "2026-05-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 54.7634,
+      "exit_price": 48.54,
+      "return_pct": -13.47,
+      "days": 94,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 13.2% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-golar-lng.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }

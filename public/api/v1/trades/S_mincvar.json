@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-03T13:10:51+00:00",
+  "generated_at": "2026-08-05T12:18:21+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20538,6 +20538,28 @@
       ]
     },
     {
+      "ticker": "DOCS",
+      "market": "US",
+      "name": "DOCS",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 23.31,
+      "exit_price": 21.32,
+      "return_pct": -11.84,
+      "days": 124,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.2% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-doximity.md",
+          "target_price": 75.4,
+          "stated_upside_pct": 47.7852
+        }
+      ]
+    },
+    {
       "ticker": "049720",
       "market": "KR",
       "name": "고려신용정보",
@@ -20556,6 +20578,72 @@
           "source_file": "2025-06-10_equity-research-고려신용정보-2.md",
           "target_price": 18600.0,
           "stated_upside_pct": 86.1862
+        }
+      ]
+    },
+    {
+      "ticker": "CRWV",
+      "market": "US",
+      "name": "CRWV",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 114.775,
+      "exit_price": 70.555,
+      "return_pct": -34.71,
+      "days": 63,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 4.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-10-23",
+          "source_file": "2025-10-23_equity-research-coreweave.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "IRMD",
+      "market": "US",
+      "name": "IRMD",
+      "entry_date": "2026-03-02",
+      "exit_date": "2026-08-03",
+      "entry_price": 101.7054,
+      "exit_price": 92.95,
+      "return_pct": -8.65,
+      "days": 154,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 12.3% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-iradimed-corporation.md",
+          "target_price": 146.0,
+          "stated_upside_pct": 59.6585
+        }
+      ]
+    },
+    {
+      "ticker": "SXT",
+      "market": "US",
+      "name": "SXT",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 88.2329,
+      "exit_price": 123.08,
+      "return_pct": 4.85,
+      "days": 124,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 10.9% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-sensient-technologies-corp.md",
+          "target_price": 238.0,
+          "stated_upside_pct": 150.7724
         }
       ]
     },
