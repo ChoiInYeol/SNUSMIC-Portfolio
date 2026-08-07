@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-06T12:05:16+00:00",
+  "generated_at": "2026-08-07T10:52:39+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5988,35 +5988,6 @@
       ]
     },
     {
-      "ticker": "338220",
-      "market": "KR",
-      "name": "뷰노",
-      "entry_date": "2025-02-28",
-      "exit_date": "2025-04-01",
-      "entry_price": 24050.0,
-      "exit_price": 18170.0,
-      "return_pct": -24.9,
-      "days": 32,
-      "exit_reason": "p_chandelier_ATR4.25",
-      "entry_reason": "발간일(2024-09-11) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_뷰노 - You know 뷰노 Why no.md",
-          "target_price": null,
-          "stated_upside_pct": 35.5
-        },
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_뷰노.md",
-          "target_price": 49510.0,
-          "stated_upside_pct": 55.2038
-        }
-      ]
-    },
-    {
       "ticker": "195940",
       "market": "KR",
       "name": "HK이노엔",
@@ -6058,9 +6029,9 @@
       "name": "FNKO",
       "entry_date": "2025-03-28",
       "exit_date": "2025-04-09",
-      "entry_price": 6.0846,
+      "entry_price": 6.0815,
       "exit_price": 4.36,
-      "return_pct": -27.32,
+      "return_pct": -27.28,
       "days": 12,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2024-11-21) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -6075,14 +6046,43 @@
       ]
     },
     {
+      "ticker": "337930",
+      "market": "KR",
+      "name": "젝시믹스",
+      "entry_date": "2025-02-28",
+      "exit_date": "2025-04-10",
+      "entry_price": 6920.0,
+      "exit_price": 5760.0,
+      "return_pct": -17.26,
+      "days": 41,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2024-09-11) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-16",
+          "source_file": "2024-08-16_브랜드엑스코퍼레이션 - 1위 브랜드 엑스코퍼레이션.md",
+          "target_price": 16700.0,
+          "stated_upside_pct": 54.7729
+        },
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_브랜드엑스코퍼레이션.md",
+          "target_price": 16010.0,
+          "stated_upside_pct": 71.047
+        }
+      ]
+    },
+    {
       "ticker": "450080",
       "market": "KR",
       "name": "에코프로머티",
       "entry_date": "2025-03-28",
       "exit_date": "2025-05-08",
-      "entry_price": 62676.0718,
+      "entry_price": 62665.7774,
       "exit_price": 54000.0,
-      "return_pct": -14.36,
+      "return_pct": -14.34,
       "days": 41,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2024-11-15) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -6248,6 +6248,42 @@
       ]
     },
     {
+      "ticker": "035900",
+      "market": "KR",
+      "name": "JYP Ent.",
+      "entry_date": "2025-04-10",
+      "exit_date": "2025-07-08",
+      "entry_price": 59600.0,
+      "exit_price": 72300.0,
+      "return_pct": 20.58,
+      "days": 89,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2024-12-05) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-12-05",
+          "source_file": "2024-12-05_equity-research-jyp-ent-2.md",
+          "target_price": 116604.0,
+          "stated_upside_pct": 60.8331
+        },
+        {
+          "school": "ewha",
+          "report_date": "2022-08-13",
+          "source_file": "2022-08-13_[220813] JYP Ent.(035900).md",
+          "target_price": 75100.0,
+          "stated_upside_pct": 27.2881
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_JYP Ent_.md",
+          "target_price": 114500.0,
+          "stated_upside_pct": 56.6347
+        }
+      ]
+    },
+    {
       "ticker": "213420",
       "market": "KR",
       "name": "덕산네오룩스",
@@ -6340,9 +6376,9 @@
       "name": "티앤엘",
       "entry_date": "2025-06-17",
       "exit_date": "2025-08-20",
-      "entry_price": 57985.6737,
+      "entry_price": 58005.5254,
       "exit_price": 53600.0,
-      "return_pct": -8.12,
+      "return_pct": -8.15,
       "days": 64,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-03-10) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -6378,15 +6414,44 @@
       ]
     },
     {
+      "ticker": "326030",
+      "market": "KR",
+      "name": "SK바이오팜",
+      "entry_date": "2025-07-09",
+      "exit_date": "2025-08-21",
+      "entry_price": 92100.0,
+      "exit_price": 97600.0,
+      "return_pct": 5.34,
+      "days": 43,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2025-01-09) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_KEYSS_SK바이오팜.md",
+          "target_price": 161500.0,
+          "stated_upside_pct": 37.9163
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-02-24",
+          "source_file": "2025-02-24_SK바이오팜 - 바이오팜, 꿈과 미래를 팜.md",
+          "target_price": 204500.0,
+          "stated_upside_pct": 77.5174
+        }
+      ]
+    },
+    {
       "ticker": "348210",
       "market": "KR",
       "name": "넥스틴",
-      "entry_date": "2025-07-09",
+      "entry_date": "2025-07-08",
       "exit_date": "2025-08-22",
-      "entry_price": 48900.0,
+      "entry_price": 47500.0,
       "exit_price": 42100.0,
-      "return_pct": -14.42,
-      "days": 44,
+      "return_pct": -11.9,
+      "days": 45,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-01-24) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
       "trigger_reports": [
@@ -6412,9 +6477,9 @@
       "name": "ALAB",
       "entry_date": "2025-03-04",
       "exit_date": "2025-09-29",
-      "entry_price": 58.191,
+      "entry_price": 58.1637,
       "exit_price": 208.215,
-      "return_pct": 244.49,
+      "return_pct": 244.66,
       "days": 209,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-01-09) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -6465,89 +6530,24 @@
       ]
     },
     {
-      "ticker": "462870",
+      "ticker": "306200",
       "market": "KR",
-      "name": "시프트업",
-      "entry_date": "2025-07-28",
-      "exit_date": "2025-10-14",
-      "entry_price": 43000.0,
-      "exit_price": 39500.0,
-      "return_pct": -8.69,
-      "days": 78,
+      "name": "세아제강",
+      "entry_date": "2025-08-22",
+      "exit_date": "2025-10-13",
+      "entry_price": 136400.0,
+      "exit_price": 120900.0,
+      "return_pct": -11.89,
+      "days": 52,
       "exit_reason": "p_chandelier_ATR4.25",
-      "entry_reason": "발간일(2025-03-10) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "entry_reason": "발간일(2025-05-13) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
       "trigger_reports": [
         {
-          "school": "star",
-          "report_date": "2025-03-10",
-          "source_file": "2025-03-10_STAR_시프트업.md",
-          "target_price": 89100.0,
-          "stated_upside_pct": 55.7692
-        }
-      ]
-    },
-    {
-      "ticker": "003720",
-      "market": "KR",
-      "name": "삼영",
-      "entry_date": "2025-04-01",
-      "exit_date": "2025-10-15",
-      "entry_price": 3790.0,
-      "exit_price": 4590.0,
-      "return_pct": 20.38,
-      "days": 197,
-      "exit_reason": "p_chandelier_ATR4.25",
-      "entry_reason": "발간일(2024-10-07) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2023-10-04",
-          "source_file": "2023-10-04_STAR_삼영.md",
-          "target_price": 7820.0,
-          "stated_upside_pct": 58.6207
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-10-07",
-          "source_file": "2024-10-07_삼영 - 필름 얇기의 정도를 중요시하거든요.md",
-          "target_price": 7900.0,
-          "stated_upside_pct": 46.0259
-        },
-        {
-          "school": "ewha",
-          "report_date": "2024-11-22",
-          "source_file": "2024-11-22_[241122] 삼영(003720).md",
-          "target_price": null,
-          "stated_upside_pct": 42.4
-        }
-      ]
-    },
-    {
-      "ticker": "241710",
-      "market": "KR",
-      "name": "코스메카코리아",
-      "entry_date": "2025-03-06",
-      "exit_date": "2025-10-15",
-      "entry_price": 41350.0,
-      "exit_price": 62500.0,
-      "return_pct": 50.24,
-      "days": 223,
-      "exit_reason": "p_chandelier_ATR4.25",
-      "entry_reason": "발간일(2024-10-05) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-03-11",
-          "source_file": "2024-03-11_STAR_코스메카코리아.md",
-          "target_price": 62800.0,
-          "stated_upside_pct": 69.0444
-        },
-        {
-          "school": "ewha",
-          "report_date": "2024-10-05",
-          "source_file": "2024-10-04_[241004] 코스메카코리아(241710).md",
-          "target_price": 116600.0,
-          "stated_upside_pct": 41.8491
+          "school": "voera",
+          "report_date": "2025-05-13",
+          "source_file": "undated_[BUY] 강(鋼)하게 버틴다, 세아제강.md",
+          "target_price": 205630.0,
+          "stated_upside_pct": 19.7612
         }
       ]
     },
@@ -6555,12 +6555,12 @@
       "ticker": "340570",
       "market": "KR",
       "name": "티앤엘",
-      "entry_date": "2025-08-22",
-      "exit_date": "2025-10-15",
-      "entry_price": 54000.0,
-      "exit_price": 47600.0,
-      "return_pct": -12.38,
-      "days": 54,
+      "entry_date": "2025-08-21",
+      "exit_date": "2025-10-13",
+      "entry_price": 54800.0,
+      "exit_price": 47100.0,
+      "return_pct": -14.57,
+      "days": 53,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-03-10) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
       "trigger_reports": [
@@ -6591,6 +6591,57 @@
           "source_file": "2024-08-23_[240823] 티앤엘(340570).md",
           "target_price": 113900.0,
           "stated_upside_pct": 53.504
+        }
+      ]
+    },
+    {
+      "ticker": "462870",
+      "market": "KR",
+      "name": "시프트업",
+      "entry_date": "2025-07-28",
+      "exit_date": "2025-10-14",
+      "entry_price": 43000.0,
+      "exit_price": 39500.0,
+      "return_pct": -8.69,
+      "days": 78,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2025-03-10) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_시프트업.md",
+          "target_price": 89100.0,
+          "stated_upside_pct": 55.7692
+        }
+      ]
+    },
+    {
+      "ticker": "241710",
+      "market": "KR",
+      "name": "코스메카코리아",
+      "entry_date": "2025-03-06",
+      "exit_date": "2025-10-15",
+      "entry_price": 41350.0,
+      "exit_price": 62500.0,
+      "return_pct": 50.24,
+      "days": 223,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2024-10-05) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-03-11",
+          "source_file": "2024-03-11_STAR_코스메카코리아.md",
+          "target_price": 62800.0,
+          "stated_upside_pct": 69.0444
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-10-05",
+          "source_file": "2024-10-04_[241004] 코스메카코리아(241710).md",
+          "target_price": 116600.0,
+          "stated_upside_pct": 41.8491
         }
       ]
     },
@@ -6730,9 +6781,9 @@
       "name": "SAMG엔터",
       "entry_date": "2025-08-20",
       "exit_date": "2025-11-11",
-      "entry_price": 53833.436,
+      "entry_price": 53846.6352,
       "exit_price": 46350.0,
-      "return_pct": -14.42,
+      "return_pct": -14.44,
       "days": 83,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-06-18) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -6757,12 +6808,12 @@
       "ticker": "214450",
       "market": "KR",
       "name": "파마리서치",
-      "entry_date": "2025-10-14",
+      "entry_date": "2025-10-13",
       "exit_date": "2025-11-12",
-      "entry_price": 525269.3237,
+      "entry_price": 528000.0,
       "exit_price": 444000.0,
-      "return_pct": -15.98,
-      "days": 29,
+      "return_pct": -16.41,
+      "days": 30,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-08-22) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
       "trigger_reports": [
@@ -6951,12 +7002,12 @@
       "ticker": "306200",
       "market": "KR",
       "name": "세아제강",
-      "entry_date": "2025-10-01",
+      "entry_date": "2025-10-14",
       "exit_date": "2026-01-07",
-      "entry_price": 128400.0,
+      "entry_price": 124700.0,
       "exit_price": 116100.0,
-      "return_pct": -10.12,
-      "days": 98,
+      "return_pct": -7.45,
+      "days": 85,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-05-13) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
       "trigger_reports": [
@@ -6975,7 +7026,7 @@
       "name": "애니플러스",
       "entry_date": "2025-12-03",
       "exit_date": "2026-01-16",
-      "entry_price": 3467.571,
+      "entry_price": 3467.5777,
       "exit_price": 3155.0,
       "return_pct": -9.56,
       "days": 44,
@@ -7011,7 +7062,7 @@
       "name": "SAMG엔터",
       "entry_date": "2025-11-12",
       "exit_date": "2026-01-16",
-      "entry_price": 41341.2097,
+      "entry_price": 41341.2143,
       "exit_price": 38250.0,
       "return_pct": -8.03,
       "days": 65,
@@ -7076,7 +7127,7 @@
       "name": "파마리서치",
       "entry_date": "2025-11-18",
       "exit_date": "2026-02-03",
-      "entry_price": 445679.7509,
+      "entry_price": 445679.3485,
       "exit_price": 444500.0,
       "return_pct": -0.86,
       "days": 77,
@@ -7248,9 +7299,9 @@
       "name": "태웅",
       "entry_date": "2025-11-05",
       "exit_date": "2026-03-05",
-      "entry_price": 25731.8783,
+      "entry_price": 25727.4769,
       "exit_price": 29450.0,
-      "return_pct": 13.76,
+      "return_pct": 13.78,
       "days": 120,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-06-26) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -7444,7 +7495,7 @@
       "name": "인카금융서비스",
       "entry_date": "2026-03-24",
       "exit_date": "2026-05-07",
-      "entry_price": 11649.4711,
+      "entry_price": 11649.4617,
       "exit_price": 10180.0,
       "return_pct": -13.14,
       "days": 44,
@@ -7480,9 +7531,9 @@
       "name": "비에이치아이",
       "entry_date": "2025-11-06",
       "exit_date": "2026-05-14",
-      "entry_price": 44268.4423,
+      "entry_price": 44263.7927,
       "exit_price": 85700.0,
-      "return_pct": 92.43,
+      "return_pct": 92.45,
       "days": 189,
       "exit_reason": "p_chandelier_ATR4.25",
       "entry_reason": "발간일(2025-08-31) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
@@ -7552,7 +7603,7 @@
       "name": "CRWV",
       "entry_date": "2026-02-03",
       "exit_date": "2026-05-19",
-      "entry_price": 84.0114,
+      "entry_price": 84.0116,
       "exit_price": 98.53,
       "return_pct": 19.04,
       "days": 105,
@@ -7632,7 +7683,7 @@
       "name": "그래피",
       "entry_date": "2026-04-10",
       "exit_date": "2026-05-21",
-      "entry_price": 33130.5416,
+      "entry_price": 33130.5637,
       "exit_price": 26600.0,
       "return_pct": -20.19,
       "days": 41,
@@ -7733,7 +7784,7 @@
       "name": "일동제약",
       "entry_date": "2026-05-07",
       "exit_date": "2026-06-09",
-      "entry_price": 22649.1142,
+      "entry_price": 22649.0674,
       "exit_price": 17690.0,
       "return_pct": -22.36,
       "days": 33,
@@ -7755,7 +7806,7 @@
       "name": "SK오션플랜트",
       "entry_date": "2026-05-19",
       "exit_date": "2026-06-23",
-      "entry_price": 17903.403,
+      "entry_price": 17903.4031,
       "exit_price": 15420.0,
       "return_pct": -14.39,
       "days": 35,
@@ -7791,7 +7842,7 @@
       "name": "선익시스템",
       "entry_date": "2026-05-21",
       "exit_date": "2026-06-24",
-      "entry_price": 73737.8687,
+      "entry_price": 73737.868,
       "exit_price": 58800.0,
       "return_pct": -20.74,
       "days": 34,
@@ -7871,7 +7922,7 @@
       "name": "씨에스윈드",
       "entry_date": "2026-06-05",
       "exit_date": "2026-06-29",
-      "entry_price": 43227.4365,
+      "entry_price": 43227.4359,
       "exit_price": 39200.0,
       "return_pct": -9.86,
       "days": 24,
@@ -7957,7 +8008,7 @@
       "name": "코오롱인더",
       "entry_date": "2026-05-20",
       "exit_date": "2026-07-14",
-      "entry_price": 66970.6931,
+      "entry_price": 66970.6922,
       "exit_price": 53500.0,
       "return_pct": -20.59,
       "days": 55,
@@ -8022,7 +8073,7 @@
       "name": "두산테스나",
       "entry_date": "2026-06-24",
       "exit_date": "2026-07-29",
-      "entry_price": 116040.3252,
+      "entry_price": 116040.3253,
       "exit_price": 67000.0,
       "return_pct": -42.61,
       "days": 35,
@@ -8065,7 +8116,7 @@
       "name": "덕산네오룩스",
       "entry_date": "2026-06-09",
       "exit_date": "2026-07-29",
-      "entry_price": 30100.7688,
+      "entry_price": 30100.7686,
       "exit_price": 28500.0,
       "return_pct": -5.89,
       "days": 50,
@@ -8108,7 +8159,7 @@
       "name": "인텔리안테크",
       "entry_date": "2026-06-23",
       "exit_date": "2026-07-30",
-      "entry_price": 80555.294,
+      "entry_price": 80555.2933,
       "exit_price": 50300.0,
       "return_pct": -37.93,
       "days": 37,

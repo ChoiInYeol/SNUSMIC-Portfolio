@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-06T12:05:16+00:00",
+  "generated_at": "2026-08-07T10:52:39+00:00",
   "strategy_key": "V_spo",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5565,7 +5565,7 @@
       "return_pct": -2.33,
       "days": 33,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "voera",
@@ -5601,7 +5601,7 @@
       "return_pct": -3.3,
       "days": 33,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -5737,93 +5737,116 @@
       ]
     },
     {
-      "ticker": "GLW",
-      "market": "US",
-      "name": "GLW",
-      "entry_date": "2025-11-03",
-      "exit_date": "2025-12-01",
-      "entry_price": 89.0522,
-      "exit_price": 83.0674,
-      "return_pct": -4.78,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2025-10-23",
-          "source_file": "2025-10-23_equity-research-corning-3.md",
-          "target_price": 144.0,
-          "stated_upside_pct": 68.8989
-        }
-      ]
-    },
-    {
-      "ticker": "352820",
+      "ticker": "095340",
       "market": "KR",
-      "name": "하이브",
+      "name": "ISC",
       "entry_date": "2025-11-03",
       "exit_date": "2025-12-01",
-      "entry_price": 350500.0,
-      "exit_price": 300000.0,
-      "return_pct": -14.92,
+      "entry_price": 79100.0,
+      "exit_price": 111200.0,
+      "return_pct": 39.74,
       "days": 28,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
-          "school": "smic",
-          "report_date": "2025-10-23",
-          "source_file": "2025-10-23_equity-research-하이브-3.md",
-          "target_price": 393000.0,
-          "stated_upside_pct": 36.2218
+          "school": "star",
+          "report_date": "2024-06-30",
+          "source_file": "2024-06-30_STAR_ISC.md",
+          "target_price": 114800.0,
+          "stated_upside_pct": 75.2672
         },
         {
           "school": "voera",
-          "report_date": "2022-05-28",
-          "source_file": "undated_[BUY] 하이브, High View!.md",
-          "target_price": 381500.0,
-          "stated_upside_pct": 74.5995
-        },
-        {
-          "school": "ewha",
-          "report_date": "2023-02-08",
-          "source_file": "2023-02-08_[230208] 하이브(352820).md",
-          "target_price": 229500.0,
-          "stated_upside_pct": 16.1437
-        },
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_하이브.md",
-          "target_price": 310300.0,
-          "stated_upside_pct": 53.995
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-06-28",
-          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
-          "target_price": 400500.0,
-          "stated_upside_pct": 97.7778
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-02-24",
-          "source_file": "2025-02-24_하이브 - 하이브'리드' 엔터.md",
-          "target_price": 369600.0,
-          "stated_upside_pct": 50.2439
+          "report_date": "2023-05-22",
+          "source_file": "undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
+          "target_price": 55000.0,
+          "stated_upside_pct": 17.8992
         }
       ]
     },
     {
-      "ticker": "009150",
+      "ticker": "397030",
       "market": "KR",
-      "name": "삼성전기",
+      "name": "에이프릴바이오",
       "entry_date": "2025-11-03",
       "exit_date": "2025-12-01",
-      "entry_price": 242000.0,
-      "exit_price": 255000.0,
-      "return_pct": 4.74,
+      "entry_price": 33450.0,
+      "exit_price": 40150.0,
+      "return_pct": 19.31,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-05-07",
+          "source_file": "2024-05-07_STAR_에이프릴바이오.md",
+          "target_price": 26750.0,
+          "stated_upside_pct": 63.1098
+        }
+      ]
+    },
+    {
+      "ticker": "FSLR",
+      "market": "US",
+      "name": "FSLR",
+      "entry_date": "2025-11-03",
+      "exit_date": "2025-12-01",
+      "entry_price": 265.93,
+      "exit_price": 269.27,
+      "return_pct": 3.36,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-06-28",
+          "source_file": "2024-06-28_First Solar - 해가 지지 않는 기업, FSLR.md",
+          "target_price": 330.0,
+          "stated_upside_pct": 46.3674
+        }
+      ]
+    },
+    {
+      "ticker": "058470",
+      "market": "KR",
+      "name": "리노공업",
+      "entry_date": "2025-11-03",
+      "exit_date": "2025-12-01",
+      "entry_price": 58000.0,
+      "exit_price": 70100.0,
+      "return_pct": 20.14,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2024-07-30",
+          "source_file": "undated_[BUY] SOCKET LIKE ROCKET, 리노공업.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-13",
+          "source_file": "2025-11-10_리노공업 (058470, KQ), 다가올 혁신, LEENOvation (발간일 240913) YIG Research.md",
+          "target_price": 48195.1016,
+          "stated_upside_pct": 34.3942
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2025-11-03",
+      "exit_date": "2025-12-01",
+      "entry_price": 49300.0,
+      "exit_price": 46000.0,
+      "return_pct": -7.25,
       "days": 28,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
@@ -5831,124 +5854,31 @@
         {
           "school": "star",
           "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_삼성전기.md",
-          "target_price": 207500.0,
-          "stated_upside_pct": 64.1614
-        },
-        {
-          "school": "ewha",
-          "report_date": "2025-04-04",
-          "source_file": "2025-04-04_[250404] 삼성전기(009150).md",
-          "target_price": 187900.0,
-          "stated_upside_pct": 55.033
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-10-14",
-          "source_file": "2025-11-11_삼성전기 (009150, KS), 내가 삼전이오 (발간일 251014) YIG Research.md",
-          "target_price": 297800.0,
-          "stated_upside_pct": 50.2523
+          "source_file": "2024-09-11_STAR_피에스케이홀딩스.md",
+          "target_price": 89300.0,
+          "stated_upside_pct": 128.6812
         }
       ]
     },
     {
-      "ticker": "128940",
+      "ticker": "319660",
       "market": "KR",
-      "name": "한미약품",
+      "name": "피에스케이",
       "entry_date": "2025-11-03",
       "exit_date": "2025-12-01",
-      "entry_price": 422500.0,
-      "exit_price": 456500.0,
-      "return_pct": 7.4,
+      "entry_price": 37500.0,
+      "exit_price": 30350.0,
+      "return_pct": -19.55,
       "days": 28,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2025-01-24",
-          "source_file": "2025-01-24_[250124] 한미약품(128940).md",
-          "target_price": 360500.0,
-          "stated_upside_pct": 47.1429
-        },
         {
           "school": "yig",
-          "report_date": "2025-08-01",
-          "source_file": "2025-11-11_한미약품 (128940, KS), 한 한번은 미 미친다 (발간일 250801) YIG Research.md",
-          "target_price": 516900.0,
-          "stated_upside_pct": 91.4444
-        },
-        {
-          "school": "star",
-          "report_date": "2025-08-31",
-          "source_file": "2025-08-31_STAR_한미약품.md",
-          "target_price": 406000.0,
-          "stated_upside_pct": 33.9934
-        }
-      ]
-    },
-    {
-      "ticker": "007660",
-      "market": "KR",
-      "name": "이수페타시스",
-      "entry_date": "2025-11-03",
-      "exit_date": "2025-12-01",
-      "entry_price": 113900.0,
-      "exit_price": 145000.0,
-      "return_pct": 26.54,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-11-13",
-          "source_file": "2022-11-13_equity-research-이수페타시스-2.md",
-          "target_price": 7600.0,
-          "stated_upside_pct": 32.4734
-        },
-        {
-          "school": "ewha",
-          "report_date": "2025-05-31",
-          "source_file": "2025-05-30_[250530] 이수페타시스(007660).md",
-          "target_price": 57350.0,
-          "stated_upside_pct": 49.349
-        },
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_이수페타시스.md",
-          "target_price": 51600.0,
-          "stated_upside_pct": 81.7093
-        }
-      ]
-    },
-    {
-      "ticker": "183300",
-      "market": "KR",
-      "name": "코미코",
-      "entry_date": "2025-11-03",
-      "exit_date": "2025-12-01",
-      "entry_price": 55566.0,
-      "exit_price": 45431.0,
-      "return_pct": -18.73,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-08-31",
-          "source_file": "2025-08-31_STAR_코미코.md",
-          "target_price": 87900.0,
-          "stated_upside_pct": 109.1961
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-09-24",
-          "source_file": "2025-11-11_코미코 (183300, KQ), 코미코 짱! High~ (발간일 250924) YIG Research.md",
-          "target_price": 138000.0,
-          "stated_upside_pct": 174.2448
+          "report_date": "2024-09-13",
+          "source_file": "2025-11-10_피에스케이 (319660, KQ), Perfect Stock in Korea (발간일 240913) YIG Research.md",
+          "target_price": 28400.0,
+          "stated_upside_pct": 30.8756
         }
       ]
     },
@@ -6292,7 +6222,7 @@
       "exit_date": "2026-02-02",
       "entry_price": 69300.0,
       "exit_price": 73500.0,
-      "return_pct": 5.45,
+      "return_pct": 5.44,
       "days": 63,
       "exit_reason": "s_rebalance_trim",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
@@ -6379,15 +6309,59 @@
       ]
     },
     {
+      "ticker": "239890",
+      "market": "KR",
+      "name": "피엔에이치테크",
+      "entry_date": "2026-01-02",
+      "exit_date": "2026-04-01",
+      "entry_price": 4770.0,
+      "exit_price": 4790.0,
+      "return_pct": -1.49,
+      "days": 89,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_피엔에이치테크.md",
+          "target_price": 19590.0,
+          "stated_upside_pct": 114.3326
+        }
+      ]
+    },
+    {
+      "ticker": "GRND",
+      "market": "US",
+      "name": "GRND",
+      "entry_date": "2026-03-02",
+      "exit_date": "2026-04-01",
+      "entry_price": 11.27,
+      "exit_price": 12.17,
+      "return_pct": 12.18,
+      "days": 30,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-11-21",
+          "source_file": "2024-11-21_equity-research-grindr-inc.md",
+          "target_price": 24.34,
+          "stated_upside_pct": 63.0275
+        }
+      ]
+    },
+    {
       "ticker": "067160",
       "market": "KR",
       "name": "SOOP",
       "entry_date": "2025-12-01",
-      "exit_date": "2026-04-01",
+      "exit_date": "2026-05-01",
       "entry_price": 69300.0,
-      "exit_price": 59500.0,
-      "return_pct": -14.64,
-      "days": 121,
+      "exit_price": 58400.0,
+      "return_pct": -13.65,
+      "days": 151,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
       "trigger_reports": [
@@ -6415,17 +6389,39 @@
       ]
     },
     {
+      "ticker": "021240",
+      "market": "KR",
+      "name": "코웨이",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-05-01",
+      "entry_price": 72600.0,
+      "exit_price": 86100.0,
+      "return_pct": 17.88,
+      "days": 30,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-25",
+          "source_file": "2026-03-25_STAR_코웨이.md",
+          "target_price": 140000.0,
+          "stated_upside_pct": 88.9339
+        }
+      ]
+    },
+    {
       "ticker": "039130",
       "market": "KR",
       "name": "하나투어",
       "entry_date": "2026-02-02",
-      "exit_date": "2026-04-01",
+      "exit_date": "2026-05-01",
       "entry_price": 45900.0,
-      "exit_price": 41500.0,
-      "return_pct": -10.13,
-      "days": 58,
+      "exit_price": 41850.0,
+      "return_pct": -8.16,
+      "days": 88,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -6444,39 +6440,17 @@
       ]
     },
     {
-      "ticker": "239890",
-      "market": "KR",
-      "name": "피엔에이치테크",
-      "entry_date": "2026-01-02",
-      "exit_date": "2026-04-01",
-      "entry_price": 4770.0,
-      "exit_price": 4790.0,
-      "return_pct": -1.49,
-      "days": 89,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_피엔에이치테크.md",
-          "target_price": 19590.0,
-          "stated_upside_pct": 114.3326
-        }
-      ]
-    },
-    {
       "ticker": "234300",
       "market": "KR",
       "name": "에스트래픽",
       "entry_date": "2026-02-02",
-      "exit_date": "2026-04-01",
+      "exit_date": "2026-05-01",
       "entry_price": 3635.0,
-      "exit_price": 3310.0,
-      "return_pct": -9.49,
-      "days": 58,
+      "exit_price": 3845.0,
+      "return_pct": 9.12,
+      "days": 88,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -6488,24 +6462,24 @@
       ]
     },
     {
-      "ticker": "GRND",
-      "market": "US",
-      "name": "GRND",
-      "entry_date": "2026-03-02",
-      "exit_date": "2026-04-01",
-      "entry_price": 11.27,
-      "exit_price": 12.17,
-      "return_pct": 12.18,
+      "ticker": "293940",
+      "market": "KR",
+      "name": "신한알파리츠",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-05-01",
+      "entry_price": 5680.0,
+      "exit_price": 6050.0,
+      "return_pct": 5.88,
       "days": 30,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
-          "school": "smic",
-          "report_date": "2024-11-21",
-          "source_file": "2024-11-21_equity-research-grindr-inc.md",
-          "target_price": 24.34,
-          "stated_upside_pct": 63.0275
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_신한알파리츠.md",
+          "target_price": 7700.0,
+          "stated_upside_pct": 27.6949
         }
       ]
     },
@@ -6514,13 +6488,13 @@
       "market": "KR",
       "name": "고려신용정보",
       "entry_date": "2026-02-02",
-      "exit_date": "2026-04-01",
+      "exit_date": "2026-05-01",
       "entry_price": 9990.0,
-      "exit_price": 10270.0,
-      "return_pct": 2.19,
-      "days": 58,
+      "exit_price": 10060.0,
+      "return_pct": 0.05,
+      "days": 88,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -6532,254 +6506,24 @@
       ]
     },
     {
-      "ticker": "140860",
+      "ticker": "004370",
       "market": "KR",
-      "name": "파크시스템스",
+      "name": "농심",
       "entry_date": "2026-04-01",
       "exit_date": "2026-05-01",
-      "entry_price": 246500.0,
-      "exit_price": 289000.0,
-      "return_pct": 16.54,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2020-05-06",
-          "source_file": "2020-05-06_Equity Research, 파크시스템스.md",
-          "target_price": 55993.0,
-          "stated_upside_pct": 50.3168
-        },
-        {
-          "school": "ewha",
-          "report_date": "2026-02-21",
-          "source_file": "2026-02-20_[260220] 파크시스템스(140860).md",
-          "target_price": null,
-          "stated_upside_pct": 38.29
-        },
-        {
-          "school": "star",
-          "report_date": "2025-03-10",
-          "source_file": "2025-03-10_STAR_파크시스템스.md",
-          "target_price": 303000.0,
-          "stated_upside_pct": 60.4023
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-03-14",
-          "source_file": "2025-11-11_파크시스템스 (140860, KQ), 반도체 테마 PARK, 롤러코스터 타고 올라가요~ (발간일 250314) YIG Res.md",
-          "target_price": 283500.0,
-          "stated_upside_pct": 41.3965
-        }
-      ]
-    },
-    {
-      "ticker": "004170",
-      "market": "KR",
-      "name": "신세계",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 314500.0,
-      "exit_price": 407000.0,
-      "return_pct": 28.64,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "voera",
-          "report_date": "2020-05-14",
-          "source_file": "undated_[BUY] 신세계_직감보다는 데이터에 주목하라.md",
-          "target_price": 278000.0,
-          "stated_upside_pct": 16.8067
-        },
-        {
-          "school": "star",
-          "report_date": "2026-03-14",
-          "source_file": "2026-03-14_STAR_신세계.md",
-          "target_price": 424500.0,
-          "stated_upside_pct": 30.2147
-        }
-      ]
-    },
-    {
-      "ticker": "352820",
-      "market": "KR",
-      "name": "하이브",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 306000.0,
-      "exit_price": 263000.0,
-      "return_pct": -14.57,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2025-10-23",
-          "source_file": "2025-10-23_equity-research-하이브-3.md",
-          "target_price": 393000.0,
-          "stated_upside_pct": 36.2218
-        },
-        {
-          "school": "voera",
-          "report_date": "2022-05-28",
-          "source_file": "undated_[BUY] 하이브, High View!.md",
-          "target_price": 381500.0,
-          "stated_upside_pct": 74.5995
-        },
-        {
-          "school": "ewha",
-          "report_date": "2023-02-08",
-          "source_file": "2023-02-08_[230208] 하이브(352820).md",
-          "target_price": 229500.0,
-          "stated_upside_pct": 16.1437
-        },
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_하이브.md",
-          "target_price": 310300.0,
-          "stated_upside_pct": 53.995
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-06-28",
-          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
-          "target_price": 400500.0,
-          "stated_upside_pct": 97.7778
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-02-24",
-          "source_file": "2025-02-24_하이브 - 하이브'리드' 엔터.md",
-          "target_price": 369600.0,
-          "stated_upside_pct": 50.2439
-        }
-      ]
-    },
-    {
-      "ticker": "082740",
-      "market": "KR",
-      "name": "한화엔진",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 45200.0,
-      "exit_price": 88000.0,
-      "return_pct": 93.52,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2026-03-14",
-          "source_file": "2026-03-14_STAR_한화엔진.md",
-          "target_price": 73700.0,
-          "stated_upside_pct": 48.4391
-        },
-        {
-          "school": "smic",
-          "report_date": "2024-12-05",
-          "source_file": "2024-12-05_equity-research-한화엔진.md",
-          "target_price": 24352.0,
-          "stated_upside_pct": 60.8454
-        }
-      ]
-    },
-    {
-      "ticker": "032350",
-      "market": "KR",
-      "name": "롯데관광개발",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 18110.0,
-      "exit_price": 20700.0,
-      "return_pct": 13.62,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2024-05-09",
-          "source_file": "2024-05-09_equity-research-롯데관광개발.md",
-          "target_price": 19220.0,
-          "stated_upside_pct": 95.5239
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-11-29",
-          "source_file": "2025-11-10_롯데관광개발 (032350, KS), 롯데관광대박 (발간일 241129) YIG Research.md",
-          "target_price": 16780.0,
-          "stated_upside_pct": 90.8987
-        },
-        {
-          "school": "star",
-          "report_date": "2026-03-14",
-          "source_file": "2026-03-14_STAR_롯데관광개발.md",
-          "target_price": 30500.0,
-          "stated_upside_pct": 56.9738
-        }
-      ]
-    },
-    {
-      "ticker": "119850",
-      "market": "KR",
-      "name": "지엔씨에너지",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 31550.0,
-      "exit_price": 36650.0,
-      "return_pct": 15.47,
+      "entry_price": 374000.0,
+      "exit_price": 377500.0,
+      "return_pct": 0.33,
       "days": 30,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
-          "report_date": "2025-03-10",
-          "source_file": "2025-03-10_STAR_지엔씨에너지.md",
-          "target_price": 32000.0,
-          "stated_upside_pct": 99.6257
-        },
-        {
-          "school": "smic",
-          "report_date": "2025-04-19",
-          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
-          "target_price": 39610.0,
-          "stated_upside_pct": 106.3021
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-08-01",
-          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
-      "ticker": "014680",
-      "market": "KR",
-      "name": "한솔케미칼",
-      "entry_date": "2026-04-01",
-      "exit_date": "2026-05-01",
-      "entry_price": 270000.0,
-      "exit_price": 285000.0,
-      "return_pct": 4.92,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "yig",
-          "report_date": "2026-02-13",
-          "source_file": "2026-04-04_한솔케미칼(014680, KOSPI), 반도체와 이차전지의 케미 YIG Research.md",
-          "target_price": 390000.0,
-          "stated_upside_pct": 28.9256
+          "report_date": "2025-06-18",
+          "source_file": "2025-06-18_STAR_농심.md",
+          "target_price": 582000.0,
+          "stated_upside_pct": 49.4223
         }
       ]
     },
@@ -6952,7 +6696,7 @@
       "exit_price": 5150.0,
       "return_pct": -2.49,
       "days": 30,
-      "exit_reason": "s_rebalance_trim",
+      "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
@@ -7033,7 +6777,7 @@
       "return_pct": 3.51,
       "days": 33,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -7120,28 +6864,6 @@
           "source_file": "2025-03-10_STAR_더존비즈온.md",
           "target_price": 102100.0,
           "stated_upside_pct": 45.8571
-        }
-      ]
-    },
-    {
-      "ticker": "293940",
-      "market": "KR",
-      "name": "신한알파리츠",
-      "entry_date": "2026-06-01",
-      "exit_date": "2026-08-03",
-      "entry_price": 5250.0,
-      "exit_price": 5200.0,
-      "return_pct": -1.55,
-      "days": 63,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-03-10",
-          "source_file": "2025-03-10_STAR_신한알파리츠.md",
-          "target_price": 7700.0,
-          "stated_upside_pct": 27.6949
         }
       ]
     },
