@@ -139,7 +139,7 @@ data/markdown/star/2026-06-13_STAR_한화-KAI M&A Feasibility Study.md,star,sect
 data/markdown/kuvic/2023-09-20_루닛 - The Winner Takes It All.md,kuvic,company,True,2023-09-20,,2023-09-20,KR,루닛,328130,KRX,Buy,,,,,31.9,missing_target_price,ocr_fallback,
 data/markdown/kuvic/2023-10-13_원텍 - 우리 원텍 절대 월드클래스 맞습니다.md,kuvic,company,True,2023-10-13,2023-10-13,2023-10-13,KR,원텍,336570,KRX,Buy,,,,,,missing_target_price,ocr_fallback,
 data/markdown/kuvic/2024-04-05_하이비젼시스템 - 이 기업의 고점은 어디인가.md,kuvic,company,True,2024-04-05,,2024-04-05,KR,하이비젼시스템,126700,KOSDAQ,Buy,,,,,96.0,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
-data/markdown/kuvic/2024-05-13_뷰노 - You know 뷰노 Why no.md,kuvic,sector,True,2024-05-13,2024-05-13,2024-05-13,,,,,Buy,,,,,35.5,non_us_kr_or_unparsed_market;missing_ticker;missing_target_price,ocr_fallback;ocr_inconsistent_prices,
+data/markdown/kuvic/2024-05-13_뷰노 - You know 뷰노 Why no.md,kuvic,company,True,2024-05-13,2024-05-13,2024-05-13,KR,뷰노,338220,KOSDAQ,Buy,,,,,35.5,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
 data/markdown/kuvic/2024-06-27_Novo Nordisk - 수수수 수퍼노보~.md,kuvic,sector,True,2024-06-27,,2024-06-27,,Novo Nordisk,,,Buy,52.0,52,,,33.6,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 "data/markdown/kuvic/2024-06-28_버튜버 산업 - 야레야레, 못말리는 버튜버 아가씨.md",kuvic,sector,True,2024-06-28,,2024-06-28,,버튜버 산업,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2024-12-06_RADNET - 촬영하자고 너 누군데.md,kuvic,sector,True,2024-12-06,,2024-12-06,,RADNET,,,Buy,52.0,52,52.0,52,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,

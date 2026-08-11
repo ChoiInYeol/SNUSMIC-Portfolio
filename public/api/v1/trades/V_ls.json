@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-07T10:52:39+00:00",
+  "generated_at": "2026-08-11T10:54:23+00:00",
   "strategy_key": "V_ls",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6359,124 +6359,15 @@
       ]
     },
     {
-      "ticker": "211050",
-      "market": "KR",
-      "name": "인카금융서비스",
-      "entry_date": "2026-02-02",
-      "exit_date": "2026-03-02",
-      "entry_price": 15050.0,
-      "exit_price": 14050.0,
-      "return_pct": -7.2,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2023-11-29",
-          "source_file": "2023-11-29_STAR_인카금융서비스.md",
-          "target_price": 4101.9279,
-          "stated_upside_pct": 36.2767
-        },
-        {
-          "school": "smic",
-          "report_date": "2024-10-17",
-          "source_file": "2024-10-17_equity-research-인카금융서비스.md",
-          "target_price": 8100.0,
-          "stated_upside_pct": 55.4702
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-11-26",
-          "source_file": "2025-11-17_인카금융서비스 - 내 성장이 멈추지 않는 탓일까 ㅜ.ㅜ.md",
-          "target_price": 36700.0,
-          "stated_upside_pct": 143.0464
-        }
-      ]
-    },
-    {
-      "ticker": "263750",
-      "market": "KR",
-      "name": "펄어비스",
-      "entry_date": "2026-02-02",
-      "exit_date": "2026-03-02",
-      "entry_price": 56300.0,
-      "exit_price": 53600.0,
-      "return_pct": -5.37,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_펄어비스.md",
-          "target_price": 55800.0,
-          "stated_upside_pct": 66.5672
-        }
-      ]
-    },
-    {
-      "ticker": "214430",
-      "market": "KR",
-      "name": "아이쓰리시스템",
-      "entry_date": "2026-02-02",
-      "exit_date": "2026-03-02",
-      "entry_price": 125100.0,
-      "exit_price": 105500.0,
-      "return_pct": -16.17,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2024-11-23",
-          "source_file": "2024-11-22_[241122] 아이쓰리시스템(214430).md",
-          "target_price": 58360.0,
-          "stated_upside_pct": 36.6745
-        }
-      ]
-    },
-    {
-      "ticker": "099320",
-      "market": "KR",
-      "name": "쎄트렉아이",
-      "entry_date": "2026-02-02",
-      "exit_date": "2026-03-02",
-      "entry_price": 193900.0,
-      "exit_price": 190200.0,
-      "return_pct": -2.5,
-      "days": 28,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_쎄트렉아이.md",
-          "target_price": 71400.0,
-          "stated_upside_pct": 65.0867
-        },
-        {
-          "school": "ewha",
-          "report_date": "2025-02-21",
-          "source_file": "2025-02-21_[250221] 쎄트렉아이(099320).md",
-          "target_price": 76400.0,
-          "stated_upside_pct": 43.609
-        }
-      ]
-    },
-    {
       "ticker": "189300",
       "market": "KR",
       "name": "인텔리안테크",
       "entry_date": "2026-02-02",
-      "exit_date": "2026-04-01",
+      "exit_date": "2026-03-02",
       "entry_price": 102400.0,
-      "exit_price": 117100.0,
-      "return_pct": 13.67,
-      "days": 58,
+      "exit_price": 121000.0,
+      "return_pct": 17.46,
+      "days": 28,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
@@ -6514,6 +6405,194 @@
           "source_file": "2025-08-31_STAR_인텔리안테크.md",
           "target_price": 71700.0,
           "stated_upside_pct": 55.7003
+        }
+      ]
+    },
+    {
+      "ticker": "214450",
+      "market": "KR",
+      "name": "파마리서치",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-03-02",
+      "entry_price": 456000.0,
+      "exit_price": 349500.0,
+      "return_pct": -23.81,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2025-08-22",
+          "source_file": "2025-08-22_[250822] 파마리서치(214450).md",
+          "target_price": 962000.0,
+          "stated_upside_pct": 37.4286
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-파마리서치-2.md",
+          "target_price": 805000.0,
+          "stated_upside_pct": 111.5637
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-14",
+          "source_file": "2025-11-10_미용의료기기, 누구나 예뻐지고 싶은 마음 (발간일 240914) YIG Research.md",
+          "target_price": 245000.0,
+          "stated_upside_pct": 30.2499
+        },
+        {
+          "school": "voera",
+          "report_date": "2024-11-11",
+          "source_file": "undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
+          "target_price": 250000.0,
+          "stated_upside_pct": 12.8668
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_파마리서치.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-17",
+          "source_file": "2025-05-15_파마리서치 - 폭싹 삭아버리기 전에 리쥬란.md",
+          "target_price": null,
+          "stated_upside_pct": 23.9
+        }
+      ]
+    },
+    {
+      "ticker": "101490",
+      "market": "KR",
+      "name": "에스앤에스텍",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-03-02",
+      "entry_price": 88800.0,
+      "exit_price": 98700.0,
+      "return_pct": 10.48,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-06-19",
+          "source_file": "2025-06-19_STAR_에스앤에스텍.md",
+          "target_price": 61300.0,
+          "stated_upside_pct": 56.9782
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-04-07",
+          "source_file": "2024-04-07_에스앤에스텍 - 미세먼지엔 블랭크마스크(feat.펠리클).md",
+          "target_price": 89200.0,
+          "stated_upside_pct": 100.0
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-05-11",
+          "source_file": "2025-05-11_equity-research-에스앤에스텍.md",
+          "target_price": 54700.0,
+          "stated_upside_pct": 64.5113
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-03-02",
+      "entry_price": 77300.0,
+      "exit_price": 87200.0,
+      "return_pct": 12.13,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_피에스케이홀딩스.md",
+          "target_price": 89300.0,
+          "stated_upside_pct": 128.6812
+        }
+      ]
+    },
+    {
+      "ticker": "263750",
+      "market": "KR",
+      "name": "펄어비스",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-03-02",
+      "entry_price": 56300.0,
+      "exit_price": 53600.0,
+      "return_pct": -5.37,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_펄어비스.md",
+          "target_price": 55800.0,
+          "stated_upside_pct": 66.5672
+        }
+      ]
+    },
+    {
+      "ticker": "099320",
+      "market": "KR",
+      "name": "쎄트렉아이",
+      "entry_date": "2026-02-02",
+      "exit_date": "2026-03-02",
+      "entry_price": 193900.0,
+      "exit_price": 190200.0,
+      "return_pct": -2.5,
+      "days": 28,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_쎄트렉아이.md",
+          "target_price": 71400.0,
+          "stated_upside_pct": 65.0867
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-02-21",
+          "source_file": "2025-02-21_[250221] 쎄트렉아이(099320).md",
+          "target_price": 76400.0,
+          "stated_upside_pct": 43.609
+        }
+      ]
+    },
+    {
+      "ticker": "FNKO",
+      "market": "US",
+      "name": "FNKO",
+      "entry_date": "2026-03-02",
+      "exit_date": "2026-04-01",
+      "entry_price": 4.86,
+      "exit_price": 3.2,
+      "return_pct": -31.6,
+      "days": 30,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-11-21",
+          "source_file": "2024-11-21_equity-research-funko-inc.md",
+          "target_price": 16.1,
+          "stated_upside_pct": 55.8567
         }
       ]
     },
@@ -6650,14 +6729,14 @@
       "ticker": "214450",
       "market": "KR",
       "name": "파마리서치",
-      "entry_date": "2026-02-02",
+      "entry_date": "2026-04-01",
       "exit_date": "2026-05-01",
-      "entry_price": 456000.0,
+      "entry_price": 305500.0,
       "exit_price": 313500.0,
-      "return_pct": -23.33,
-      "days": 88,
+      "return_pct": 2.0,
+      "days": 30,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -7081,7 +7160,7 @@
       "return_pct": -47.15,
       "days": 33,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "voera",
@@ -7110,7 +7189,7 @@
       "return_pct": -6.05,
       "days": 33,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -7189,35 +7268,6 @@
           "source_file": "2026-03-14_STAR_기가비스.md",
           "target_price": 153300.0,
           "stated_upside_pct": 112.0332
-        }
-      ]
-    },
-    {
-      "ticker": "319660",
-      "market": "KR",
-      "name": "피에스케이",
-      "entry_date": "2026-07-01",
-      "exit_date": "2026-08-03",
-      "entry_price": 202000.0,
-      "exit_price": 126400.0,
-      "return_pct": -37.8,
-      "days": 33,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "yig",
-          "report_date": "2026-03-17",
-          "source_file": "2026-03-31_피에스케이(319660,KQ), Post Semiconductor King YIG Research.md",
-          "target_price": 87400.0,
-          "stated_upside_pct": 20.0549
-        },
-        {
-          "school": "star",
-          "report_date": "2026-05-03",
-          "source_file": "2026-05-03_STAR_피에스케이.md",
-          "target_price": 127800.0,
-          "stated_upside_pct": 44.0812
         }
       ]
     },

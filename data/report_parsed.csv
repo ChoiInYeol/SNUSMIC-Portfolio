@@ -1216,7 +1216,7 @@ data/markdown/kuvic/2024-04-05_하이비젼시스템 - 이 기업의 고점은 �
 data/markdown/kuvic/2024-04-07_에스앤에스텍 - 미세먼지엔 블랭크마스크(feat.펠리클).md,kuvic,company,True,2024-04-07,,2024-04-07,KR,에스앤에스텍,101490,KRX,Buy,89200.0,"89,200원",44600.0,"44,600원",,,ocr_fallback,
 "data/markdown/kuvic/2024-04-12_동진쎄미켐 - 동진이 일으킬 진동, 이름하여 동진동.md",kuvic,company,True,2024-04-12,,2024-04-12,KR,동진쎄미켐,005290,KRX,Buy,85300.0,"85,300원",48450.0,"48,450원",,,ocr_fallback,
 data/markdown/kuvic/2024-05-09_코리아에프티 - 하이브리드 샘이솟아 리오레이비.md,kuvic,company,False,2024-05-09,2024-05-09,2024-05-09,KR,코리아에프티,123410,KRX,Buy,10070.0,"10,070 원",7170.0,"7,170 원",40.0,,,
-data/markdown/kuvic/2024-05-13_뷰노 - You know 뷰노 Why no.md,kuvic,sector,True,2024-05-13,2024-05-13,2024-05-13,,,,,Buy,,,,,35.5,non_us_kr_or_unparsed_market;missing_ticker;missing_target_price,ocr_fallback;ocr_inconsistent_prices,
+data/markdown/kuvic/2024-05-13_뷰노 - You know 뷰노 Why no.md,kuvic,company,True,2024-05-13,2024-05-13,2024-05-13,KR,뷰노,338220,KOSDAQ,Buy,,,,,35.5,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
 data/markdown/kuvic/2024-05-13_하나투어 - 나에게로 떠나는 여행.md,kuvic,company,True,2024-05-13,,2024-05-13,KR,하나투어,039130,KOSPI,Buy,87800.0,"87,800원",60200.0,"60,200원",,,ocr_fallback,
 data/markdown/kuvic/2024-05-14_에이엘티 - ALT로 웨이퍼테스트 Alt+Tab.md,kuvic,company,True,2024-05-14,,2024-05-14,KR,에이엘티,172670,KRX,Buy,31300.0,"31,300원",20450.0,"20,450원",,,ocr_fallback,
 data/markdown/kuvic/2024-05-18_서진시스템 - 서(희)진씨 ESS 밟으실 수 있쬬.md,kuvic,company,True,2024-05-18,,2024-05-18,KR,서진시스템,178320,KRX,Buy,43600.0,"43,600원",25500.0,"25,500원",70.9,,ocr_fallback,
