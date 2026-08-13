@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T11:01:42+00:00",
+  "generated_at": "2026-08-13T11:17:22+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -22797,8 +22797,8 @@
       "name": "아모텍",
       "entry_date": "2026-05-28",
       "exit_date": "2026-05-28",
-      "entry_price": 27422.0,
-      "exit_price": 34003.28,
+      "entry_price": 24934.0,
+      "exit_price": 30918.16,
       "return_pct": 23.26,
       "days": 0,
       "exit_reason": "q_half_+3R",
@@ -22809,7 +22809,7 @@
           "report_date": "2026-04-14",
           "source_file": "2026-04-14_아모텍 (052710, KOSDAQ) - 아모도 모르게 광(光)텍 나기 시작 YIG Research.md",
           "target_price": 54100.0,
-          "stated_upside_pct": 137.1663
+          "stated_upside_pct": 160.836
         }
       ]
     },
@@ -22993,8 +22993,8 @@
       "name": "아모텍",
       "entry_date": "2026-05-28",
       "exit_date": "2026-06-02",
-      "entry_price": 27422.0,
-      "exit_price": 22860.0,
+      "entry_price": 24934.0,
+      "exit_price": 20785.0,
       "return_pct": -17.14,
       "days": 5,
       "exit_reason": "q_stop",
@@ -23005,7 +23005,7 @@
           "report_date": "2026-04-14",
           "source_file": "2026-04-14_아모텍 (052710, KOSDAQ) - 아모도 모르게 광(光)텍 나기 시작 YIG Research.md",
           "target_price": 54100.0,
-          "stated_upside_pct": 137.1663
+          "stated_upside_pct": 160.836
         }
       ]
     },
@@ -23493,9 +23493,9 @@
       "name": "아모텍",
       "entry_date": "2026-06-19",
       "exit_date": "2026-06-24",
-      "entry_price": 31298.0,
-      "exit_price": 24086.0,
-      "return_pct": -23.5,
+      "entry_price": 28458.0,
+      "exit_price": 21900.0,
+      "return_pct": -23.51,
       "days": 5,
       "exit_reason": "q_stop",
       "entry_reason": "깡토 추세추종: RS 95 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
@@ -23505,7 +23505,7 @@
           "report_date": "2026-04-14",
           "source_file": "2026-04-14_아모텍 (052710, KOSDAQ) - 아모도 모르게 광(光)텍 나기 시작 YIG Research.md",
           "target_price": 54100.0,
-          "stated_upside_pct": 137.1663
+          "stated_upside_pct": 160.836
         }
       ]
     },

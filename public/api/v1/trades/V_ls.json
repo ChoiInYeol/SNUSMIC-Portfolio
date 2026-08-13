@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T11:01:43+00:00",
+  "generated_at": "2026-08-13T11:17:22+00:00",
   "strategy_key": "V_ls",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6985,35 +6985,6 @@
       ]
     },
     {
-      "ticker": "183300",
-      "market": "KR",
-      "name": "코미코",
-      "entry_date": "2026-06-01",
-      "exit_date": "2026-07-01",
-      "entry_price": 87000.0,
-      "exit_price": 95000.0,
-      "return_pct": 8.54,
-      "days": 30,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-08-31",
-          "source_file": "2025-08-31_STAR_코미코.md",
-          "target_price": 87900.0,
-          "stated_upside_pct": 109.1961
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-09-24",
-          "source_file": "2025-11-11_코미코 (183300, KQ), 코미코 짱! High~ (발간일 250924) YIG Research.md",
-          "target_price": 138000.0,
-          "stated_upside_pct": 174.2448
-        }
-      ]
-    },
-    {
       "ticker": "082740",
       "market": "KR",
       "name": "한화엔진",
@@ -7150,31 +7121,31 @@
       ]
     },
     {
-      "ticker": "004170",
+      "ticker": "183300",
       "market": "KR",
-      "name": "신세계",
-      "entry_date": "2026-07-01",
-      "exit_date": "2026-08-03",
-      "entry_price": 774000.0,
-      "exit_price": 411500.0,
-      "return_pct": -47.15,
-      "days": 33,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "name": "코미코",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-07-01",
+      "entry_price": 87000.0,
+      "exit_price": 95000.0,
+      "return_pct": 8.54,
+      "days": 30,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
-          "school": "voera",
-          "report_date": "2020-05-14",
-          "source_file": "undated_[BUY] 신세계_직감보다는 데이터에 주목하라.md",
-          "target_price": 278000.0,
-          "stated_upside_pct": 16.8067
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_코미코.md",
+          "target_price": 87900.0,
+          "stated_upside_pct": 109.1961
         },
         {
-          "school": "star",
-          "report_date": "2026-03-14",
-          "source_file": "2026-03-14_STAR_신세계.md",
-          "target_price": 424500.0,
-          "stated_upside_pct": 30.2147
+          "school": "yig",
+          "report_date": "2025-09-24",
+          "source_file": "2025-11-11_코미코 (183300, KQ), 코미코 짱! High~ (발간일 250924) YIG Research.md",
+          "target_price": 138000.0,
+          "stated_upside_pct": 174.2448
         }
       ]
     },
@@ -7236,38 +7207,31 @@
       ]
     },
     {
-      "ticker": "420770",
+      "ticker": "183300",
       "market": "KR",
-      "name": "기가비스",
-      "entry_date": "2026-07-01",
+      "name": "코미코",
+      "entry_date": "2026-06-01",
       "exit_date": "2026-08-03",
-      "entry_price": 196500.0,
-      "exit_price": 102300.0,
-      "return_pct": -48.25,
-      "days": 33,
+      "entry_price": 87000.0,
+      "exit_price": 54400.0,
+      "return_pct": -37.85,
+      "days": 63,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 재조정 보유",
       "trigger_reports": [
         {
-          "school": "yig",
-          "report_date": "2023-05-24",
-          "source_file": "2025-11-10_기가버스 (420770, KQ), 기가지니~ 주가 좀 올려줘! (발간일 231102) YIG Research.md",
-          "target_price": 84000.0,
-          "stated_upside_pct": 6.3291
-        },
-        {
-          "school": "smic",
-          "report_date": "2023-05-25",
-          "source_file": "2023-05-25_equity-research-기가비스.md",
-          "target_price": 84800.0,
-          "stated_upside_pct": 13.6729
-        },
-        {
           "school": "star",
-          "report_date": "2026-03-14",
-          "source_file": "2026-03-14_STAR_기가비스.md",
-          "target_price": 153300.0,
-          "stated_upside_pct": 112.0332
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_코미코.md",
+          "target_price": 87900.0,
+          "stated_upside_pct": 109.1961
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-09-24",
+          "source_file": "2025-11-11_코미코 (183300, KQ), 코미코 짱! High~ (발간일 250924) YIG Research.md",
+          "target_price": 138000.0,
+          "stated_upside_pct": 174.2448
         }
       ]
     },
@@ -7312,6 +7276,28 @@
           "source_file": "2025-05-25_equity-research-tempus-ai-inc.md",
           "target_price": 228.5,
           "stated_upside_pct": 265.2494
+        }
+      ]
+    },
+    {
+      "ticker": "472850",
+      "market": "KR",
+      "name": "폰드그룹",
+      "entry_date": "2026-07-01",
+      "exit_date": "2026-08-03",
+      "entry_price": 4180.0,
+      "exit_price": 4480.0,
+      "return_pct": 6.53,
+      "days": 33,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-폰드그룹.md",
+          "target_price": 16057.0,
+          "stated_upside_pct": 248.5348
         }
       ]
     },

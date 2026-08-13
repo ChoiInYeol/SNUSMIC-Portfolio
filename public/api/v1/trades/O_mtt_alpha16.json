@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T11:01:42+00:00",
+  "generated_at": "2026-08-13T11:17:22+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -19232,8 +19232,8 @@
       "name": "아모텍",
       "entry_date": "2026-05-27",
       "exit_date": "2026-05-28",
-      "entry_price": 34143.0,
-      "exit_price": 27422.0,
+      "entry_price": 31045.0,
+      "exit_price": 24934.0,
       "return_pct": -20.17,
       "days": 1,
       "exit_reason": "mtt_stop",
@@ -19244,7 +19244,7 @@
           "report_date": "2026-04-14",
           "source_file": "2026-04-14_아모텍 (052710, KOSDAQ) - 아모도 모르게 광(光)텍 나기 시작 YIG Research.md",
           "target_price": 54100.0,
-          "stated_upside_pct": 137.1663
+          "stated_upside_pct": 160.836
         }
       ]
     },

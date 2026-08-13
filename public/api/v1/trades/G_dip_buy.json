@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T11:01:42+00:00",
+  "generated_at": "2026-08-13T11:17:22+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -19519,8 +19519,8 @@
       "name": "아모텍",
       "entry_date": "2026-05-19",
       "exit_date": "2026-05-26",
-      "entry_price": 17160.0,
-      "exit_price": 25740.0,
+      "entry_price": 15603.0,
+      "exit_price": 23404.5,
       "return_pct": 49.1,
       "days": 7,
       "exit_reason": "dip_+50pct",
@@ -19531,7 +19531,7 @@
           "report_date": "2026-04-14",
           "source_file": "2026-04-14_아모텍 (052710, KOSDAQ) - 아모도 모르게 광(光)텍 나기 시작 YIG Research.md",
           "target_price": 54100.0,
-          "stated_upside_pct": 137.1663
+          "stated_upside_pct": 160.836
         }
       ]
     },
@@ -21313,6 +21313,42 @@
           "source_file": "undated_[BUY] ALD의 왕 주성전하 납시오, 주성엔지니어링.md",
           "target_price": 288820.0,
           "stated_upside_pct": 28.9375
+        }
+      ]
+    },
+    {
+      "ticker": "066970",
+      "market": "KR",
+      "name": "엘앤에프",
+      "entry_date": "2026-07-31",
+      "exit_date": "2026-08-13",
+      "entry_price": 70900.0,
+      "exit_price": 102600.0,
+      "return_pct": 43.84,
+      "days": 13,
+      "exit_reason": "dip_+50pct",
+      "entry_reason": "발간일(2026-05-26) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-05-26",
+          "source_file": "2026-05-26_[260526] (KEYSS 대회 우수상) 엘앤에프(066970).md",
+          "target_price": 290700.0,
+          "stated_upside_pct": 84.4543
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_엘앤에프.md",
+          "target_price": 204200.0,
+          "stated_upside_pct": 59.0343
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-06",
+          "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
+          "target_price": 184000.0,
+          "stated_upside_pct": 44.0877
         }
       ]
     }

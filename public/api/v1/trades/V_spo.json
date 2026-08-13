@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-12T11:01:43+00:00",
+  "generated_at": "2026-08-13T11:17:22+00:00",
   "strategy_key": "V_spo",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6952,7 +6952,7 @@
       "exit_price": 5150.0,
       "return_pct": -2.49,
       "days": 30,
-      "exit_reason": "s_rebalance_trim",
+      "exit_reason": "s_rebalance_exit",
       "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
@@ -7120,28 +7120,6 @@
           "source_file": "2025-03-10_STAR_더존비즈온.md",
           "target_price": 102100.0,
           "stated_upside_pct": 45.8571
-        }
-      ]
-    },
-    {
-      "ticker": "293940",
-      "market": "KR",
-      "name": "신한알파리츠",
-      "entry_date": "2026-06-01",
-      "exit_date": "2026-08-03",
-      "entry_price": 5250.0,
-      "exit_price": 5200.0,
-      "return_pct": -1.55,
-      "days": 63,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-03-10",
-          "source_file": "2025-03-10_STAR_신한알파리츠.md",
-          "target_price": 7700.0,
-          "stated_upside_pct": 27.6949
         }
       ]
     },
