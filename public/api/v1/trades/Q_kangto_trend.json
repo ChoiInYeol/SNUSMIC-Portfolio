@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-13T11:17:22+00:00",
+  "generated_at": "2026-08-14T10:55:27+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23781,6 +23781,35 @@
           "source_file": "undated_[BUY] 화장품의 메카, 수익성은 메가! 코스메카코리아.md",
           "target_price": 99200.0,
           "stated_upside_pct": 40.113
+        }
+      ]
+    },
+    {
+      "ticker": "093320",
+      "market": "KR",
+      "name": "케이아이엔엑스",
+      "entry_date": "2026-08-12",
+      "exit_date": "2026-08-14",
+      "entry_price": 161200.0,
+      "exit_price": 147200.0,
+      "return_pct": -9.23,
+      "days": 2,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 92 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_케이아이엔엑스.md",
+          "target_price": 151400.0,
+          "stated_upside_pct": 108.2531
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-11-02",
+          "source_file": "2025-11-10_케이아이엔엑스 (093320, KQ), KINX, 내가 데이터센터의 King이 될 상인가 (발간일 231102) YIG Re.md",
+          "target_price": 148000.0,
+          "stated_upside_pct": 66.1055
         }
       ]
     }
