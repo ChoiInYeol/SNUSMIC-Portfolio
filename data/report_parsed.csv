@@ -1256,7 +1256,7 @@ data/markdown/kuvic/2025-05-15_파마리서치 - 폭싹 삭아버리기 전에 �
 data/markdown/kuvic/2025-06-26_태웅 - '태'동했던 바람은 '웅'장한 실적으로.md,kuvic,company,True,2025-06-26,,2025-06-26,KR,태웅,044490,KRX,Buy,48000.0,"48,000",34550.0,"34,550",,,ocr_fallback,
 data/markdown/kuvic/2025-06-27_SAMG엔터 - 나만 믿어핑!.md,kuvic,company,True,2025-06-27,,2025-06-27,KR,SAMG엔터,419530,KOSDAQ,Buy,6.0,06,,,59.4,,ocr_fallback,
 data/markdown/kuvic/2025-06-27_SK이터닉스 - 나니가 SK.md,kuvic,company,True,2025-06-27,,2025-06-27,KR,SK이터닉스,475150,KRX,Buy,47400.0,"47,400원",24650.0,"24,650원",86.1,,ocr_fallback,
-data/markdown/kuvic/2025-06-27_SYM - 심보틱으로 심봤다.md,kuvic,sector,True,2025-06-27,,2025-06-27,,SYM,,,Buy,,,,,165.0,non_us_kr_or_unparsed_market;missing_ticker;missing_target_price,ocr_fallback;ocr_inconsistent_prices,
+data/markdown/kuvic/2025-06-27_SYM - 심보틱으로 심봤다.md,kuvic,sector,True,2025-06-27,,2025-06-27,,,,,Buy,,,,,165.0,non_us_kr_or_unparsed_market;missing_ticker;missing_target_price,ocr_fallback;ocr_inconsistent_prices,
 data/markdown/kuvic/2025-06-27_티씨케이 - 중국은 8대 핵심산업 중 반도체만 남았다.md,kuvic,company,True,2025-06-27,,2025-06-27,KR,티씨케이,064760,KRX,Buy,146700.0,"146,700원",103700.0,"103,700원",41.5,,ocr_fallback,
 data/markdown/kuvic/2025-08-19_AVAV - 드(론)좋(아) 국방시대.md,kuvic,sector,True,2025-08-19,2025-08-19,2025-08-19,,AVAV,,,Buy,52.0,52,,,52.9,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2025-08-19_두산 - GPU와 ASIC이라는 '두 산'.md,kuvic,company,True,2025-08-19,2025-08-19,2025-08-19,KR,두산,000150,KRX,Buy,,,,,68.9,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
