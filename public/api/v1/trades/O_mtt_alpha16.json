@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-18T10:24:54+00:00",
+  "generated_at": "2026-08-19T10:24:42+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20316,6 +20316,35 @@
           "source_file": "2025-11-10_케이아이엔엑스 (093320, KQ), KINX, 내가 데이터센터의 King이 될 상인가 (발간일 231102) YIG Re.md",
           "target_price": 148000.0,
           "stated_upside_pct": 66.1055
+        }
+      ]
+    },
+    {
+      "ticker": "236200",
+      "market": "KR",
+      "name": "슈프리마",
+      "entry_date": "2026-08-11",
+      "exit_date": "2026-08-19",
+      "entry_price": 64300.0,
+      "exit_price": 56500.0,
+      "return_pct": -12.66,
+      "days": 8,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 92≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-08-23",
+          "source_file": "2024-08-23_[240823] 슈프리마(236200).md",
+          "target_price": 38810.0,
+          "stated_upside_pct": 33.5972
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_슈프리마.md",
+          "target_price": 89600.0,
+          "stated_upside_pct": 82.1138
         }
       ]
     }
