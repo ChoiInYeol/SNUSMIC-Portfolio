@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-19T10:24:42+00:00",
+  "generated_at": "2026-08-20T10:40:30+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23810,6 +23810,71 @@
           "source_file": "2025-11-10_케이아이엔엑스 (093320, KQ), KINX, 내가 데이터센터의 King이 될 상인가 (발간일 231102) YIG Re.md",
           "target_price": 148000.0,
           "stated_upside_pct": 66.1055
+        }
+      ]
+    },
+    {
+      "ticker": "009450",
+      "market": "KR",
+      "name": "경동나비엔",
+      "entry_date": "2026-08-12",
+      "exit_date": "2026-08-20",
+      "entry_price": 70800.0,
+      "exit_price": 65200.0,
+      "return_pct": -8.46,
+      "days": 8,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 77 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-09-08",
+          "source_file": "2023-09-08_STAR_경동나비엔.md",
+          "target_price": 80300.0,
+          "stated_upside_pct": 68.3438
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-10-07",
+          "source_file": "2024-10-07_경동나비엔 - Even하게 데웠어요.md",
+          "target_price": 146700.0,
+          "stated_upside_pct": 107.7904
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-04-04",
+          "source_file": "2025-11-11_경동나비엔 (009450, KS), 연애는 식어도 경동은 안 식어요. (발간일 250404) YIG Research.md",
+          "target_price": 98800.0,
+          "stated_upside_pct": 46.3704
+        }
+      ]
+    },
+    {
+      "ticker": "007340",
+      "market": "KR",
+      "name": "DN오토모티브",
+      "entry_date": "2026-08-19",
+      "exit_date": "2026-08-20",
+      "entry_price": 61100.0,
+      "exit_price": 53300.0,
+      "return_pct": -13.29,
+      "days": 1,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 95 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-02-16",
+          "source_file": "2023-02-16_STAR_DN오토모티브.md",
+          "target_price": 27887.017,
+          "stated_upside_pct": 103.5549
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-04-14",
+          "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
+          "target_price": 60800.0,
+          "stated_upside_pct": 67.9558
         }
       ]
     }
