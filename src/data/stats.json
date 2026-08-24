@@ -1,16 +1,16 @@
 {
- "generated_at": "2026-08-21T10:41:26",
- "as_of": "2026-08-21",
+ "generated_at": "2026-08-24T10:54:36",
+ "as_of": "2026-08-24",
  "universe": {
-  "n_reports": 826,
+  "n_reports": 827,
   "n_by_tier": {
    "Tenbagger": 11,
-   "Multibagger": 64,
+   "Multibagger": 63,
    "Double": 215,
-   "Winner": 266,
-   "Positive": 270
+   "Winner": 267,
+   "Positive": 271
   },
-  "base_rate_pct": 35.1,
+  "base_rate_pct": 34.9,
   "success_def": "bucket_peak ≥ Double — 발간 후 24개월 내 최고가 기준 +100% 이상",
   "criteria": "modern 시대(2019.07~) 매수·소프트매수 의견, 리포트당 1행(첫 목표가), 시세 확보분",
   "skipped_no_price": 0,
@@ -22,10 +22,10 @@
    "label": "직전 1개월 수익률",
    "unit": "%",
    "desc": "발간일 기준 21거래일 수익률",
-   "n": 429,
+   "n": 430,
    "monotone": false,
    "direction": -1,
-   "lift_spread": 0.02,
+   "lift_spread": 0.01,
    "best_bin_lift": 1.02,
    "is_top": false
   },
@@ -34,11 +34,11 @@
    "label": "직전 3개월 수익률",
    "unit": "%",
    "desc": "발간일 기준 63거래일 수익률",
-   "n": 401,
+   "n": 402,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.19,
-   "best_bin_lift": 1.04,
+   "lift_spread": 0.22,
+   "best_bin_lift": 1.05,
    "is_top": true
   },
   {
@@ -46,10 +46,10 @@
    "label": "직전 6개월 수익률",
    "unit": "%",
    "desc": "발간일 기준 126거래일 수익률",
-   "n": 343,
+   "n": 344,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.22,
+   "lift_spread": 0.25,
    "best_bin_lift": 1.07,
    "is_top": true
   },
@@ -58,10 +58,10 @@
    "label": "직전 12개월 수익률",
    "unit": "%",
    "desc": "발간일 기준 252거래일 수익률",
-   "n": 307,
+   "n": 308,
    "monotone": false,
    "direction": -1,
-   "lift_spread": 0.01,
+   "lift_spread": 0.0,
    "best_bin_lift": 0.92,
    "is_top": false
   },
@@ -70,11 +70,11 @@
    "label": "52주 고가 근접도",
    "unit": "%",
    "desc": "발간일 종가 ÷ 직전 52주 최고가 × 100 — 100%면 신고가",
-   "n": 337,
+   "n": 338,
    "monotone": false,
    "direction": -1,
-   "lift_spread": 0.06,
-   "best_bin_lift": 1.03,
+   "lift_spread": 0.05,
+   "best_bin_lift": 1.01,
    "is_top": false
   },
   {
@@ -82,10 +82,10 @@
    "label": "52주 저가 배수",
    "unit": "배",
    "desc": "발간일 종가 ÷ 직전 52주 최저가 — 바닥에서 얼마나 올라왔나",
-   "n": 331,
+   "n": 332,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.08,
+   "lift_spread": 0.1,
    "best_bin_lift": 0.98,
    "is_top": false
   },
@@ -94,10 +94,10 @@
    "label": "변동성 (60일)",
    "unit": "%",
    "desc": "일간 수익률 60일 표준편차 연율화",
-   "n": 417,
+   "n": 418,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.24,
+   "lift_spread": 0.22,
    "best_bin_lift": 1.0,
    "is_top": true
   },
@@ -106,22 +106,22 @@
    "label": "거래량 추세",
    "unit": "배",
    "desc": "20일 평균 거래량 ÷ 120일 평균 거래량 — 1보다 크면 거래 증가",
-   "n": 357,
-   "monotone": false,
+   "n": 358,
+   "monotone": true,
    "direction": -1,
-   "lift_spread": 0.22,
-   "best_bin_lift": 1.08,
-   "is_top": false
+   "lift_spread": 0.23,
+   "best_bin_lift": 1.07,
+   "is_top": true
   },
   {
    "key": "vs_ma200",
    "label": "200일선 이격",
    "unit": "%",
    "desc": "발간일 종가 ÷ 200일 이동평균 − 1",
-   "n": 318,
+   "n": 319,
    "monotone": false,
    "direction": 1,
-   "lift_spread": 0.13,
+   "lift_spread": 0.16,
    "best_bin_lift": 1.02,
    "is_top": false
   },
@@ -130,10 +130,10 @@
    "label": "시장 대비 상대강도 6개월",
    "unit": "%p",
    "desc": "종목 6개월 수익률 − 지수(KOSPI/NASDAQ) 6개월 수익률",
-   "n": 343,
+   "n": 344,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.27,
+   "lift_spread": 0.3,
    "best_bin_lift": 1.07,
    "is_top": true
   },
@@ -142,23 +142,23 @@
    "label": "리포트 제시 상승여력",
    "unit": "%",
    "desc": "목표가 ÷ 발간 시점 가격 − 1 (리포트 기재)",
-   "n": 768,
+   "n": 770,
    "monotone": true,
    "direction": 1,
    "lift_spread": 0.15,
    "best_bin_lift": 1.07,
-   "is_top": true
+   "is_top": false
   },
   {
    "key": "n_clubs_18m",
    "label": "18개월 내 커버 학회 수",
    "unit": "개",
    "desc": "발간일 기준 직전 18개월 내 같은 종목을 다룬 학회 수 (본인 포함)",
-   "n": 826,
+   "n": 827,
    "monotone": true,
    "direction": 1,
-   "lift_spread": 0.08,
-   "best_bin_lift": 1.06,
+   "lift_spread": 0.07,
+   "best_bin_lift": 1.05,
    "is_top": false
   }
  ],
@@ -180,12 +180,12 @@
     "p90": 23.89
    },
    "Multibagger": {
-    "n": 29,
-    "median": 4.05,
-    "q1": -2.17,
-    "q3": 18.14,
-    "p10": -8.53,
-    "p90": 27.41
+    "n": 28,
+    "median": 4.48,
+    "q1": -1.47,
+    "q3": 18.92,
+    "p10": -8.54,
+    "p90": 27.93
    },
    "Double": {
     "n": 106,
@@ -196,20 +196,20 @@
     "p90": 22.56
    },
    "Winner": {
-    "n": 136,
-    "median": 2.44,
-    "q1": -8.07,
-    "q3": 12.24,
+    "n": 137,
+    "median": 2.33,
+    "q1": -8.42,
+    "q3": 12.2,
     "p10": -16.1,
-    "p90": 29.65
+    "p90": 28.92
    },
    "Positive": {
-    "n": 155,
-    "median": 3.71,
-    "q1": -7.31,
-    "q3": 15.31,
-    "p10": -12.73,
-    "p90": 35.64
+    "n": 156,
+    "median": 3.92,
+    "q1": -7.28,
+    "q3": 15.92,
+    "p10": -12.65,
+    "p90": 38.94
    }
   },
   "ret_3m": {
@@ -222,12 +222,12 @@
     "p90": 44.38
    },
    "Multibagger": {
-    "n": 28,
-    "median": 12.56,
-    "q1": 4.85,
-    "q3": 38.49,
-    "p10": -12.43,
-    "p90": 90.68
+    "n": 27,
+    "median": 12.97,
+    "q1": 5.03,
+    "q3": 38.58,
+    "p10": -12.72,
+    "p90": 91.65
    },
    "Double": {
     "n": 98,
@@ -238,20 +238,20 @@
     "p90": 69.45
    },
    "Winner": {
-    "n": 130,
-    "median": 9.86,
-    "q1": -6.34,
-    "q3": 29.57,
-    "p10": -16.09,
-    "p90": 52.34
+    "n": 131,
+    "median": 9.83,
+    "q1": -6.67,
+    "q3": 29.49,
+    "p10": -16.46,
+    "p90": 52.31
    },
    "Positive": {
-    "n": 142,
-    "median": 12.6,
-    "q1": -2.74,
-    "q3": 34.44,
-    "p10": -10.24,
-    "p90": 86.97
+    "n": 143,
+    "median": 12.8,
+    "q1": -2.7,
+    "q3": 34.57,
+    "p10": -10.23,
+    "p90": 86.86
    }
   },
   "ret_6m": {
@@ -264,12 +264,12 @@
     "p90": 54.14
    },
    "Multibagger": {
-    "n": 27,
-    "median": 20.93,
-    "q1": 3.8,
-    "q3": 60.49,
-    "p10": -11.5,
-    "p90": 115.13
+    "n": 26,
+    "median": 21.47,
+    "q1": 5.74,
+    "q3": 65.56,
+    "p10": -8.2,
+    "p90": 117.21
    },
    "Double": {
     "n": 84,
@@ -280,20 +280,20 @@
     "p90": 144.71
    },
    "Winner": {
-    "n": 116,
-    "median": 13.7,
-    "q1": 0.25,
-    "q3": 42.26,
-    "p10": -15.23,
-    "p90": 77.18
+    "n": 117,
+    "median": 13.5,
+    "q1": -0.35,
+    "q3": 42.03,
+    "p10": -15.02,
+    "p90": 77.07
    },
    "Positive": {
-    "n": 114,
-    "median": 19.68,
-    "q1": -0.29,
-    "q3": 63.67,
-    "p10": -11.89,
-    "p90": 141.19
+    "n": 115,
+    "median": 19.74,
+    "q1": -0.19,
+    "q3": 63.57,
+    "p10": -11.81,
+    "p90": 140.3
    }
   },
   "ret_12m": {
@@ -306,12 +306,12 @@
     "p90": 40.52
    },
    "Multibagger": {
-    "n": 19,
-    "median": 38.52,
-    "q1": 4.96,
-    "q3": 87.08,
-    "p10": -6.19,
-    "p90": 118.89
+    "n": 18,
+    "median": 41.31,
+    "q1": 9.59,
+    "q3": 95.23,
+    "p10": -2.07,
+    "p90": 121.08
    },
    "Double": {
     "n": 73,
@@ -322,20 +322,20 @@
     "p90": 191.68
    },
    "Winner": {
-    "n": 107,
-    "median": 25.19,
-    "q1": -3.76,
-    "q3": 62.54,
-    "p10": -18.0,
-    "p90": 136.15
+    "n": 108,
+    "median": 25.32,
+    "q1": -3.53,
+    "q3": 64.41,
+    "p10": -17.97,
+    "p90": 141.47
    },
    "Positive": {
-    "n": 106,
+    "n": 107,
     "median": 38.89,
-    "q1": 5.69,
-    "q3": 103.87,
-    "p10": -13.99,
-    "p90": 204.29
+    "q1": 6.82,
+    "q3": 102.18,
+    "p10": -13.73,
+    "p90": 202.3
    }
   },
   "prox_52w_high": {
@@ -348,12 +348,12 @@
     "p90": 90.54
    },
    "Multibagger": {
-    "n": 27,
-    "median": 83.92,
-    "q1": 76.79,
-    "q3": 89.26,
-    "p10": 60.23,
-    "p90": 93.97
+    "n": 26,
+    "median": 84.22,
+    "q1": 78.07,
+    "q3": 89.48,
+    "p10": 63.73,
+    "p90": 94.13
    },
    "Double": {
     "n": 83,
@@ -364,20 +364,20 @@
     "p90": 92.21
    },
    "Winner": {
-    "n": 113,
-    "median": 80.15,
-    "q1": 71.11,
-    "q3": 88.61,
-    "p10": 59.2,
-    "p90": 95.03
+    "n": 114,
+    "median": 80.11,
+    "q1": 71.06,
+    "q3": 88.57,
+    "p10": 58.02,
+    "p90": 95.02
    },
    "Positive": {
-    "n": 112,
-    "median": 82.87,
-    "q1": 73.44,
-    "q3": 90.77,
-    "p10": 65.03,
-    "p90": 96.36
+    "n": 113,
+    "median": 82.9,
+    "q1": 73.58,
+    "q3": 90.86,
+    "p10": 65.11,
+    "p90": 96.35
    }
   },
   "mult_52w_low": {
@@ -390,12 +390,12 @@
     "p90": 1.8
    },
    "Multibagger": {
-    "n": 24,
-    "median": 1.76,
-    "q1": 1.43,
-    "q3": 2.37,
-    "p10": 1.26,
-    "p90": 2.59
+    "n": 23,
+    "median": 1.77,
+    "q1": 1.45,
+    "q3": 2.4,
+    "p10": 1.29,
+    "p90": 2.6
    },
    "Double": {
     "n": 81,
@@ -406,20 +406,20 @@
     "p90": 3.9
    },
    "Winner": {
-    "n": 113,
+    "n": 114,
     "median": 1.57,
     "q1": 1.29,
-    "q3": 2.02,
+    "q3": 2.04,
     "p10": 1.13,
     "p90": 2.93
    },
    "Positive": {
-    "n": 111,
+    "n": 112,
     "median": 1.66,
     "q1": 1.32,
-    "q3": 2.29,
+    "q3": 2.31,
     "p10": 1.17,
-    "p90": 3.62
+    "p90": 3.6
    }
   },
   "vol_60d": {
@@ -432,12 +432,12 @@
     "p90": 62.99
    },
    "Multibagger": {
-    "n": 28,
-    "median": 59.71,
-    "q1": 47.84,
-    "q3": 67.27,
-    "p10": 39.82,
-    "p90": 79.86
+    "n": 27,
+    "median": 58.11,
+    "q1": 46.7,
+    "q3": 68.53,
+    "p10": 39.74,
+    "p90": 80.53
    },
    "Double": {
     "n": 102,
@@ -448,20 +448,20 @@
     "p90": 80.98
    },
    "Winner": {
-    "n": 134,
-    "median": 51.4,
-    "q1": 38.7,
-    "q3": 61.1,
+    "n": 135,
+    "median": 51.7,
+    "q1": 38.72,
+    "q3": 61.62,
     "p10": 31.79,
-    "p90": 88.05
+    "p90": 88.53
    },
    "Positive": {
-    "n": 150,
-    "median": 54.04,
-    "q1": 38.63,
-    "q3": 77.77,
-    "p10": 28.08,
-    "p90": 103.56
+    "n": 151,
+    "median": 54.09,
+    "q1": 38.65,
+    "q3": 78.16,
+    "p10": 28.09,
+    "p90": 105.99
    }
   },
   "vol_trend": {
@@ -474,12 +474,12 @@
     "p90": 1.26
    },
    "Multibagger": {
-    "n": 27,
-    "median": 0.97,
+    "n": 26,
+    "median": 1.02,
     "q1": 0.66,
-    "q3": 1.24,
+    "q3": 1.3,
     "p10": 0.56,
-    "p90": 2.03
+    "p90": 2.07
    },
    "Double": {
     "n": 85,
@@ -490,20 +490,20 @@
     "p90": 1.54
    },
    "Winner": {
-    "n": 120,
-    "median": 0.91,
+    "n": 121,
+    "median": 0.9,
     "q1": 0.76,
     "q3": 1.22,
     "p10": 0.5,
-    "p90": 1.75
+    "p90": 1.74
    },
    "Positive": {
-    "n": 123,
+    "n": 124,
     "median": 0.98,
     "q1": 0.78,
-    "q3": 1.24,
+    "q3": 1.25,
     "p10": 0.63,
-    "p90": 1.64
+    "p90": 1.69
    }
   },
   "vs_ma200": {
@@ -516,12 +516,12 @@
     "p90": 33.79
    },
    "Multibagger": {
-    "n": 23,
-    "median": 10.81,
-    "q1": 0.4,
-    "q3": 21.24,
-    "p10": -12.91,
-    "p90": 48.48
+    "n": 22,
+    "median": 11.94,
+    "q1": 2.37,
+    "q3": 22.46,
+    "p10": -11.43,
+    "p90": 50.53
    },
    "Double": {
     "n": 75,
@@ -532,20 +532,20 @@
     "p90": 72.26
    },
    "Winner": {
-    "n": 109,
-    "median": 8.91,
-    "q1": -1.77,
-    "q3": 25.47,
-    "p10": -11.94,
-    "p90": 53.8
+    "n": 110,
+    "median": 8.51,
+    "q1": -3.04,
+    "q3": 25.28,
+    "p10": -13.09,
+    "p90": 53.31
    },
    "Positive": {
-    "n": 109,
-    "median": 13.56,
-    "q1": 0.45,
-    "q3": 37.79,
-    "p10": -8.84,
-    "p90": 70.13
+    "n": 110,
+    "median": 13.95,
+    "q1": 0.63,
+    "q3": 38.17,
+    "p10": -8.62,
+    "p90": 68.98
    }
   },
   "rs_6m": {
@@ -558,12 +558,12 @@
     "p90": 14.55
    },
    "Multibagger": {
-    "n": 27,
-    "median": 19.11,
-    "q1": -1.61,
-    "q3": 67.36,
-    "p10": -12.9,
-    "p90": 99.21
+    "n": 26,
+    "median": 22.74,
+    "q1": -0.23,
+    "q3": 71.47,
+    "p10": -6.93,
+    "p90": 103.66
    },
    "Double": {
     "n": 84,
@@ -574,20 +574,20 @@
     "p90": 116.58
    },
    "Winner": {
-    "n": 116,
-    "median": 5.57,
-    "q1": -7.67,
-    "q3": 35.83,
-    "p10": -20.56,
-    "p90": 58.7
+    "n": 117,
+    "median": 5.54,
+    "q1": -7.85,
+    "q3": 35.77,
+    "p10": -21.34,
+    "p90": 58.35
    },
    "Positive": {
-    "n": 114,
-    "median": 6.69,
-    "q1": -18.59,
-    "q3": 44.78,
-    "p10": -56.09,
-    "p90": 90.87
+    "n": 115,
+    "median": 6.9,
+    "q1": -18.32,
+    "q3": 44.25,
+    "p10": -55.97,
+    "p90": 90.79
    }
   },
   "stated_upside_pct": {
@@ -616,20 +616,20 @@
     "p90": 132.8
    },
    "Winner": {
-    "n": 250,
-    "median": 46.19,
-    "q1": 32.41,
-    "q3": 69.9,
-    "p10": 21.78,
-    "p90": 110.86
+    "n": 251,
+    "median": 46.37,
+    "q1": 32.5,
+    "q3": 70.33,
+    "p10": 21.83,
+    "p90": 112.44
    },
    "Positive": {
-    "n": 245,
-    "median": 47.91,
-    "q1": 34.53,
-    "q3": 73.28,
-    "p10": 24.2,
-    "p90": 109.59
+    "n": 246,
+    "median": 47.97,
+    "q1": 34.91,
+    "q3": 73.1,
+    "p10": 24.21,
+    "p90": 109.13
    }
   },
   "n_clubs_18m": {
@@ -642,10 +642,10 @@
     "p90": 1.0
    },
    "Multibagger": {
-    "n": 64,
+    "n": 63,
     "median": 1.0,
     "q1": 1.0,
-    "q3": 1.25,
+    "q3": 1.5,
     "p10": 1.0,
     "p90": 2.0
    },
@@ -658,7 +658,7 @@
     "p90": 2.0
    },
    "Winner": {
-    "n": 266,
+    "n": 267,
     "median": 1.0,
     "q1": 1.0,
     "q3": 2.0,
@@ -666,7 +666,7 @@
     "p90": 2.0
    },
    "Positive": {
-    "n": 270,
+    "n": 271,
     "median": 1.0,
     "q1": 1.0,
     "q3": 1.0,
@@ -677,21 +677,21 @@
  },
  "lift": {
   "ret_1m": {
-   "n": 429,
+   "n": 430,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -34.18,
-     "hi": -3.5,
+     "hi": -3.45,
      "n": 143,
-     "success": 44,
-     "p_pct": 30.8,
-     "lift": 0.88
+     "success": 43,
+     "p_pct": 30.1,
+     "lift": 0.86
     },
     {
      "label": "중위 ⅓",
-     "lo": -3.5,
-     "hi": 8.88,
+     "lo": -3.45,
+     "hi": 8.96,
      "n": 143,
      "success": 51,
      "p_pct": 35.7,
@@ -699,63 +699,63 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 8.88,
+     "lo": 8.96,
      "hi": 192.24,
-     "n": 143,
+     "n": 144,
      "success": 43,
-     "p_pct": 30.1,
-     "lift": 0.86
+     "p_pct": 29.9,
+     "lift": 0.85
     }
    ]
   },
   "ret_3m": {
-   "n": 401,
+   "n": 402,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -49.42,
-     "hi": 0.35,
+     "hi": 0.38,
+     "n": 134,
+     "success": 39,
+     "p_pct": 29.1,
+     "lift": 0.83
+    },
+    {
+     "label": "중위 ⅓",
+     "lo": 0.38,
+     "hi": 24.41,
      "n": 134,
      "success": 40,
      "p_pct": 29.9,
      "lift": 0.85
     },
     {
-     "label": "중위 ⅓",
-     "lo": 0.35,
-     "hi": 24.26,
-     "n": 133,
-     "success": 40,
-     "p_pct": 30.1,
-     "lift": 0.86
-    },
-    {
      "label": "상위 ⅓",
-     "lo": 24.26,
+     "lo": 24.41,
      "hi": 314.69,
      "n": 134,
      "success": 49,
      "p_pct": 36.6,
-     "lift": 1.04
+     "lift": 1.05
     }
    ]
   },
   "ret_6m": {
-   "n": 343,
+   "n": 344,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -49.31,
-     "hi": 5.55,
-     "n": 114,
-     "success": 34,
-     "p_pct": 29.8,
-     "lift": 0.85
+     "hi": 5.56,
+     "n": 115,
+     "success": 33,
+     "p_pct": 28.7,
+     "lift": 0.82
     },
     {
      "label": "중위 ⅓",
-     "lo": 5.55,
-     "hi": 38.42,
+     "lo": 5.56,
+     "hi": 38.06,
      "n": 114,
      "success": 36,
      "p_pct": 31.6,
@@ -763,7 +763,7 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 38.42,
+     "lo": 38.06,
      "hi": 664.5,
      "n": 115,
      "success": 43,
@@ -773,53 +773,53 @@
    ]
   },
   "ret_12m": {
-   "n": 307,
+   "n": 308,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -57.57,
-     "hi": 10.31,
-     "n": 102,
+     "hi": 11.48,
+     "n": 103,
      "success": 33,
-     "p_pct": 32.4,
+     "p_pct": 32.0,
      "lift": 0.92
     },
     {
      "label": "중위 ⅓",
-     "lo": 10.31,
-     "hi": 60.71,
+     "lo": 11.48,
+     "hi": 60.91,
      "n": 102,
-     "success": 28,
-     "p_pct": 27.5,
-     "lift": 0.78
+     "success": 27,
+     "p_pct": 26.5,
+     "lift": 0.76
     },
     {
      "label": "상위 ⅓",
-     "lo": 60.71,
+     "lo": 60.91,
      "hi": 765.64,
      "n": 103,
      "success": 33,
      "p_pct": 32.0,
-     "lift": 0.91
+     "lift": 0.92
     }
    ]
   },
   "prox_52w_high": {
-   "n": 337,
+   "n": 338,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": 39.53,
-     "hi": 75.9,
+     "hi": 75.91,
      "n": 113,
-     "success": 41,
-     "p_pct": 36.3,
-     "lift": 1.03
+     "success": 40,
+     "p_pct": 35.4,
+     "lift": 1.01
     },
     {
      "label": "중위 ⅓",
-     "lo": 75.9,
-     "hi": 87.38,
+     "lo": 75.91,
+     "hi": 87.39,
      "n": 112,
      "success": 33,
      "p_pct": 29.5,
@@ -827,39 +827,39 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 87.38,
+     "lo": 87.39,
      "hi": 99.82,
-     "n": 112,
+     "n": 113,
      "success": 38,
-     "p_pct": 33.9,
-     "lift": 0.97
+     "p_pct": 33.6,
+     "lift": 0.96
     }
    ]
   },
   "mult_52w_low": {
-   "n": 331,
+   "n": 332,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": 1.02,
      "hi": 1.39,
      "n": 111,
-     "success": 35,
-     "p_pct": 31.5,
-     "lift": 0.9
+     "success": 34,
+     "p_pct": 30.6,
+     "lift": 0.88
     },
     {
      "label": "중위 ⅓",
      "lo": 1.39,
-     "hi": 1.95,
-     "n": 109,
+     "hi": 1.97,
+     "n": 110,
      "success": 34,
-     "p_pct": 31.2,
-     "lift": 0.89
+     "p_pct": 30.9,
+     "lift": 0.88
     },
     {
      "label": "상위 ⅓",
-     "lo": 1.95,
+     "lo": 1.97,
      "hi": 10.25,
      "n": 111,
      "success": 38,
@@ -869,48 +869,48 @@
    ]
   },
   "vol_60d": {
-   "n": 417,
+   "n": 418,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": 6.96,
      "hi": 44.42,
-     "n": 139,
-     "success": 37,
-     "p_pct": 26.6,
-     "lift": 0.76
+     "n": 140,
+     "success": 38,
+     "p_pct": 27.1,
+     "lift": 0.78
     },
     {
      "label": "중위 ⅓",
      "lo": 44.42,
-     "hi": 62.14,
-     "n": 139,
-     "success": 47,
-     "p_pct": 33.8,
-     "lift": 0.96
+     "hi": 62.27,
+     "n": 138,
+     "success": 45,
+     "p_pct": 32.6,
+     "lift": 0.93
     },
     {
      "label": "상위 ⅓",
-     "lo": 62.14,
+     "lo": 62.27,
      "hi": 155.84,
-     "n": 139,
+     "n": 140,
      "success": 49,
-     "p_pct": 35.3,
+     "p_pct": 35.0,
      "lift": 1.0
     }
    ]
   },
   "vol_trend": {
-   "n": 357,
+   "n": 358,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": 0.28,
      "hi": 0.8,
-     "n": 119,
+     "n": 120,
      "success": 45,
-     "p_pct": 37.8,
-     "lift": 1.08
+     "p_pct": 37.5,
+     "lift": 1.07
     },
     {
      "label": "중위 ⅓",
@@ -926,28 +926,28 @@
      "lo": 1.1,
      "hi": 3.81,
      "n": 119,
-     "success": 36,
-     "p_pct": 30.3,
-     "lift": 0.86
+     "success": 35,
+     "p_pct": 29.4,
+     "lift": 0.84
     }
    ]
   },
   "vs_ma200": {
-   "n": 318,
+   "n": 319,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -26.37,
-     "hi": 3.87,
+     "hi": 4.01,
      "n": 106,
-     "success": 33,
-     "p_pct": 31.1,
-     "lift": 0.89
+     "success": 32,
+     "p_pct": 30.2,
+     "lift": 0.86
     },
     {
      "label": "중위 ⅓",
-     "lo": 3.87,
-     "hi": 23.58,
+     "lo": 4.01,
+     "hi": 23.67,
      "n": 106,
      "success": 29,
      "p_pct": 27.4,
@@ -955,31 +955,31 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 23.58,
+     "lo": 23.67,
      "hi": 339.55,
-     "n": 106,
+     "n": 107,
      "success": 38,
-     "p_pct": 35.8,
+     "p_pct": 35.5,
      "lift": 1.02
     }
    ]
   },
   "rs_6m": {
-   "n": 343,
+   "n": 344,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -108.06,
-     "hi": -3.34,
-     "n": 114,
-     "success": 32,
-     "p_pct": 28.1,
-     "lift": 0.8
+     "hi": -3.24,
+     "n": 115,
+     "success": 31,
+     "p_pct": 27.0,
+     "lift": 0.77
     },
     {
      "label": "중위 ⅓",
-     "lo": -3.34,
-     "hi": 25.18,
+     "lo": -3.24,
+     "hi": 25.16,
      "n": 114,
      "success": 38,
      "p_pct": 33.3,
@@ -987,7 +987,7 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 25.18,
+     "lo": 25.16,
      "hi": 568.88,
      "n": 115,
      "success": 43,
@@ -997,21 +997,21 @@
    ]
   },
   "stated_upside_pct": {
-   "n": 768,
+   "n": 770,
    "bins": [
     {
      "label": "하위 ⅓",
      "lo": -3.17,
-     "hi": 39.13,
-     "n": 256,
+     "hi": 39.16,
+     "n": 257,
      "success": 83,
-     "p_pct": 32.4,
+     "p_pct": 32.3,
      "lift": 0.92
     },
     {
      "label": "중위 ⅓",
-     "lo": 39.13,
-     "hi": 60.59,
+     "lo": 39.16,
+     "hi": 60.6,
      "n": 256,
      "success": 94,
      "p_pct": 36.7,
@@ -1019,23 +1019,23 @@
     },
     {
      "label": "상위 ⅓",
-     "lo": 60.59,
+     "lo": 60.6,
      "hi": 585.48,
-     "n": 256,
+     "n": 257,
      "success": 96,
-     "p_pct": 37.5,
+     "p_pct": 37.4,
      "lift": 1.07
     }
    ]
   },
   "n_clubs_18m": {
-   "n": 826,
+   "n": 827,
    "bins": [
     {
      "label": "1개 학회",
      "lo": null,
      "hi": null,
-     "n": 603,
+     "n": 604,
      "success": 207,
      "p_pct": 34.3,
      "lift": 0.98
@@ -1045,9 +1045,9 @@
      "lo": null,
      "hi": null,
      "n": 223,
-     "success": 83,
-     "p_pct": 37.2,
-     "lift": 1.06
+     "success": 82,
+     "p_pct": 36.8,
+     "lift": 1.05
     }
    ]
   }
@@ -1059,21 +1059,10 @@
    "unit": "%p",
    "direction": 1,
    "monotone": true,
-   "threshold": 25.19,
+   "threshold": 25.17,
    "cond": ">=",
-   "lift_spread": 0.27,
+   "lift_spread": 0.3,
    "best_bin_lift": 1.07
-  },
-  {
-   "key": "vol_60d",
-   "label": "변동성 (60일)",
-   "unit": "%",
-   "direction": 1,
-   "monotone": true,
-   "threshold": 62.14,
-   "cond": ">=",
-   "lift_spread": 0.24,
-   "best_bin_lift": 1.0
   },
   {
    "key": "ret_6m",
@@ -1081,9 +1070,20 @@
    "unit": "%",
    "direction": 1,
    "monotone": true,
-   "threshold": 38.42,
+   "threshold": 38.06,
    "cond": ">=",
-   "lift_spread": 0.22,
+   "lift_spread": 0.25,
+   "best_bin_lift": 1.07
+  },
+  {
+   "key": "vol_trend",
+   "label": "거래량 추세",
+   "unit": "배",
+   "direction": -1,
+   "monotone": true,
+   "threshold": 0.8,
+   "cond": "<=",
+   "lift_spread": 0.23,
    "best_bin_lift": 1.07
   },
   {
@@ -1092,66 +1092,66 @@
    "unit": "%",
    "direction": 1,
    "monotone": true,
-   "threshold": 24.26,
+   "threshold": 24.41,
    "cond": ">=",
-   "lift_spread": 0.19,
-   "best_bin_lift": 1.04
+   "lift_spread": 0.22,
+   "best_bin_lift": 1.05
   },
   {
-   "key": "stated_upside_pct",
-   "label": "리포트 제시 상승여력",
+   "key": "vol_60d",
+   "label": "변동성 (60일)",
    "unit": "%",
    "direction": 1,
    "monotone": true,
-   "threshold": 60.59,
+   "threshold": 62.27,
    "cond": ">=",
-   "lift_spread": 0.15,
-   "best_bin_lift": 1.07
+   "lift_spread": 0.22,
+   "best_bin_lift": 1.0
   }
  ],
  "logit": {
-  "n": 288,
-  "auc_in_sample": 0.661,
+  "n": 290,
+  "auc_in_sample": 0.658,
   "coefs": [
    {
     "key": "ret_12m",
     "label": "직전 12개월 수익률",
-    "coef": -0.613
-   },
-   {
-    "key": "rs_6m",
-    "label": "시장 대비 상대강도 6개월",
-    "coef": 0.498
+    "coef": -0.621
    },
    {
     "key": "ret_6m",
     "label": "직전 6개월 수익률",
-    "coef": -0.494
+    "coef": -0.481
    },
    {
-    "key": "vol_60d",
-    "label": "변동성 (60일)",
-    "coef": 0.414
+    "key": "rs_6m",
+    "label": "시장 대비 상대강도 6개월",
+    "coef": 0.477
    },
    {
     "key": "ret_1m",
     "label": "직전 1개월 수익률",
-    "coef": -0.379
+    "coef": -0.417
+   },
+   {
+    "key": "vol_60d",
+    "label": "변동성 (60일)",
+    "coef": 0.372
    },
    {
     "key": "mult_52w_low",
     "label": "52주 저가 배수",
-    "coef": 0.334
-   },
-   {
-    "key": "vol_trend",
-    "label": "거래량 추세",
-    "coef": -0.244
+    "coef": 0.331
    },
    {
     "key": "vs_ma200",
     "label": "200일선 이격",
-    "coef": 0.24
+    "coef": 0.263
+   },
+   {
+    "key": "vol_trend",
+    "label": "거래량 추세",
+    "coef": -0.254
    },
    {
     "key": "stated_upside_pct",
@@ -1159,204 +1159,24 @@
     "coef": 0.112
    },
    {
-    "key": "prox_52w_high",
-    "label": "52주 고가 근접도",
-    "coef": 0.071
-   },
-   {
     "key": "ret_3m",
     "label": "직전 3개월 수익률",
-    "coef": 0.037
+    "coef": 0.083
+   },
+   {
+    "key": "prox_52w_high",
+    "label": "52주 고가 근접도",
+    "coef": 0.074
    },
    {
     "key": "n_clubs_18m",
     "label": "18개월 내 커버 학회 수",
-    "coef": 0.004
+    "coef": -0.016
    }
   ],
   "note": "L2 로지스틱 회귀, 피처 표준화(1SD당 로그오즈). in-sample 상관 요약이며 인과·예측력 주장이 아님. 결측 없는 표본만 사용."
  },
  "candidates": [
-  {
-   "ticker": "089970",
-   "market": "KR",
-   "slug": "kr-089970",
-   "name": "브이엠",
-   "school": "yig",
-   "schools": [
-    "yig"
-   ],
-   "report_date": "2026-06-05",
-   "age_days": 77,
-   "tier_now": "Winner",
-   "stated_upside_pct": 61.8,
-   "return_since_pct": -14.6,
-   "score": 4,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 44.9,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 162.2,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 66.95,
-     "pass": true
-    },
-    {
-     "key": "ret_3m",
-     "value": 11.09,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 61.76,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "010060",
-   "market": "KR",
-   "slug": "kr-010060",
-   "name": "OCI홀딩스",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-06-12",
-   "age_days": 70,
-   "tier_now": "Positive",
-   "stated_upside_pct": 92.2,
-   "return_since_pct": -11.7,
-   "score": 4,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 48.25,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 130.89,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 70.31,
-     "pass": true
-    },
-    {
-     "key": "ret_3m",
-     "value": -4.5,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 92.17,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "236200",
-   "market": "KR",
-   "slug": "kr-236200",
-   "name": "슈프리마",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Winner",
-   "stated_upside_pct": 82.1,
-   "return_since_pct": 15.4,
-   "score": 3,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -2.57,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 62.75,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 19.49,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 28.23,
-     "pass": true
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 82.11,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "257720",
-   "market": "KR",
-   "slug": "kr-257720",
-   "name": "실리콘투",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Winner",
-   "stated_upside_pct": 76.7,
-   "return_since_pct": 35.4,
-   "score": 3,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -11.5,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 71.9,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 10.56,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 25.73,
-     "pass": true
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 76.71,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
   {
    "ticker": "036930",
    "market": "KR",
@@ -1367,39 +1187,39 @@
     "voera"
    ],
    "report_date": "2026-05-22",
-   "age_days": 91,
+   "age_days": 94,
    "tier_now": "Positive",
    "stated_upside_pct": 28.9,
-   "return_since_pct": -24.7,
-   "score": 3,
+   "return_since_pct": -25.9,
+   "score": 4,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 218.55,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 158.46,
+     "value": 203.43,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 240.61,
+     "value": 225.49,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.65,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -5.55,
+     "value": -10.37,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 28.94,
-     "pass": false
+     "key": "vol_60d",
+     "value": 158.42,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -1412,579 +1232,39 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 70,
+   "age_days": 73,
    "tier_now": "Positive",
    "stated_upside_pct": null,
-   "return_since_pct": -46.9,
-   "score": 3,
+   "return_since_pct": -45.0,
+   "score": 4,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 94.9,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 129.19,
+     "value": 112.99,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 116.96,
+     "value": 135.05,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.78,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -27.63,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "095610",
-   "market": "KR",
-   "slug": "kr-095610",
-   "name": "테스",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-06-12",
-   "age_days": 70,
-   "tier_now": "Positive",
-   "stated_upside_pct": null,
-   "return_since_pct": -27.1,
-   "score": 3,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 78.7,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 157.99,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 100.76,
-     "pass": true
-    },
-    {
-     "key": "ret_3m",
-     "value": 14.18,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "249420",
-   "market": "KR",
-   "slug": "kr-249420",
-   "name": "일동제약",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Positive",
-   "stated_upside_pct": 81.3,
-   "return_since_pct": -58.0,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -85.15,
+     "value": -31.98,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 67.0,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -63.09,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -34.1,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 81.32,
+     "value": 129.47,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "318060",
-   "market": "KR",
-   "slug": "kr-318060",
-   "name": "그래피",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Positive",
-   "stated_upside_pct": 98.6,
-   "return_since_pct": -56.5,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -84.86,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 96.65,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -62.8,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -28.28,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 98.64,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "445680",
-   "market": "KR",
-   "slug": "kr-445680",
-   "name": "큐리옥스바이오시스템즈",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Winner",
-   "stated_upside_pct": 181.0,
-   "return_since_pct": -52.1,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -84.65,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 122.67,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -62.59,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -47.58,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 181.01,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "LITE",
-   "market": "US",
-   "slug": "us-lite",
-   "name": "LITE",
-   "school": "kuvic",
-   "schools": [
-    "kuvic"
-   ],
-   "report_date": "2026-03-16",
-   "age_days": 158,
-   "tier_now": "Winner",
-   "stated_upside_pct": null,
-   "return_since_pct": 40.7,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 28.7,
-     "pass": true
-    },
-    {
-     "key": "vol_60d",
-     "value": 105.06,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 38.33,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 1.29,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "417200",
-   "market": "KR",
-   "slug": "kr-417200",
-   "name": "LS머트리얼즈",
-   "school": "kuvic",
-   "schools": [
-    "kuvic"
-   ],
-   "report_date": "2026-03-27",
-   "age_days": 147,
-   "tier_now": "Winner",
-   "stated_upside_pct": 95.1,
-   "return_since_pct": -43.2,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -55.27,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 91.24,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -33.21,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -45.97,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 95.08,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "347700",
-   "market": "KR",
-   "slug": "kr-347700",
-   "name": "스피어",
-   "school": "yig",
-   "schools": [
-    "yig"
-   ],
-   "report_date": "2026-03-31",
-   "age_days": 143,
-   "tier_now": "Positive",
-   "stated_upside_pct": 156.9,
-   "return_since_pct": -45.7,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -61.15,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 159.09,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -39.09,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -41.45,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 156.94,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "007340",
-   "market": "KR",
-   "slug": "kr-007340",
-   "name": "DN오토모티브",
-   "school": "yig",
-   "schools": [
-    "yig"
-   ],
-   "report_date": "2026-04-14",
-   "age_days": 129,
-   "tier_now": "Winner",
-   "stated_upside_pct": 68.0,
-   "return_since_pct": 22.1,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 16.07,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 89.06,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 38.13,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -0.79,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 67.96,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "052710",
-   "market": "KR",
-   "slug": "kr-052710",
-   "name": "아모텍",
-   "school": "yig",
-   "schools": [
-    "yig"
-   ],
-   "report_date": "2026-04-14",
-   "age_days": 129,
-   "tier_now": "Winner",
-   "stated_upside_pct": 160.8,
-   "return_since_pct": -45.9,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -4.83,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 148.74,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 17.23,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -28.9,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 160.84,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "100090",
-   "market": "KR",
-   "slug": "kr-100090",
-   "name": "SK오션플랜트",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-04-16",
-   "age_days": 127,
-   "tier_now": "Positive",
-   "stated_upside_pct": 73.7,
-   "return_since_pct": -45.6,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -49.35,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 125.37,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -27.29,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -26.38,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 73.7,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "187790",
-   "market": "KR",
-   "slug": "kr-187790",
-   "name": "나노",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-02",
-   "age_days": 111,
-   "tier_now": "Positive",
-   "stated_upside_pct": 167.4,
-   "return_since_pct": -53.0,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -52.04,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 115.13,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -29.98,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -54.7,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 167.38,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "213420",
-   "market": "KR",
-   "slug": "kr-213420",
-   "name": "덕산네오룩스",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-06",
-   "age_days": 107,
-   "tier_now": "Positive",
-   "stated_upside_pct": 73.7,
-   "return_since_pct": -39.3,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -51.67,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 79.96,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -29.61,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -24.44,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 73.71,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -1997,39 +1277,984 @@
     "yig"
    ],
    "report_date": "2026-05-11",
-   "age_days": 102,
+   "age_days": 105,
    "tier_now": "Winner",
    "stated_upside_pct": 49.1,
-   "return_since_pct": -11.0,
-   "score": 2,
+   "return_since_pct": -8.9,
+   "score": 3,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 22.14,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 157.0,
+     "value": 29.74,
      "pass": true
     },
     {
      "key": "ret_6m",
-     "value": 44.2,
+     "value": 51.8,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.94,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -1.29,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 156.66,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "010120",
+   "market": "KR",
+   "slug": "kr-010120",
+   "name": "LS ELECTRIC",
+   "school": "voera",
+   "schools": [
+    "voera"
+   ],
+   "report_date": "2026-05-20",
+   "age_days": 96,
+   "tier_now": "Positive",
+   "stated_upside_pct": 50.9,
+   "return_since_pct": -19.4,
+   "score": 3,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 23.4,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 45.46,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.72,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": 6.8,
+     "value": -29.17,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 49.14,
-     "pass": false
+     "key": "vol_60d",
+     "value": 115.4,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "089970",
+   "market": "KR",
+   "slug": "kr-089970",
+   "name": "브이엠",
+   "school": "yig",
+   "schools": [
+    "yig"
+   ],
+   "report_date": "2026-06-05",
+   "age_days": 80,
+   "tier_now": "Winner",
+   "stated_upside_pct": 61.8,
+   "return_since_pct": -14.0,
+   "score": 3,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 49.75,
+     "pass": true
+    },
+    {
+     "key": "ret_6m",
+     "value": 71.81,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.0,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -2.34,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 162.03,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "010060",
+   "market": "KR",
+   "slug": "kr-010060",
+   "name": "OCI홀딩스",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-06-12",
+   "age_days": 73,
+   "tier_now": "Positive",
+   "stated_upside_pct": 92.2,
+   "return_since_pct": -10.3,
+   "score": 3,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 56.56,
+     "pass": true
+    },
+    {
+     "key": "ret_6m",
+     "value": 78.62,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.09,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -4.1,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 129.89,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "095610",
+   "market": "KR",
+   "slug": "kr-095610",
+   "name": "테스",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-06-12",
+   "age_days": 73,
+   "tier_now": "Positive",
+   "stated_upside_pct": null,
+   "return_since_pct": -26.8,
+   "score": 3,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 79.76,
+     "pass": true
+    },
+    {
+     "key": "ret_6m",
+     "value": 101.82,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.95,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": 11.07,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 157.38,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "236200",
+   "market": "KR",
+   "slug": "kr-236200",
+   "name": "슈프리마",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Winner",
+   "stated_upside_pct": 82.1,
+   "return_since_pct": 16.9,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 3.19,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 25.25,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.89,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": 27.21,
+     "pass": true
+    },
+    {
+     "key": "vol_60d",
+     "value": 62.42,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "257720",
+   "market": "KR",
+   "slug": "kr-257720",
+   "name": "실리콘투",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Winner",
+   "stated_upside_pct": 76.7,
+   "return_since_pct": 40.5,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -7.06,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 15.0,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.83,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": 31.69,
+     "pass": true
+    },
+    {
+     "key": "vol_60d",
+     "value": 72.01,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "318060",
+   "market": "KR",
+   "slug": "kr-318060",
+   "name": "그래피",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Positive",
+   "stated_upside_pct": 98.6,
+   "return_since_pct": -56.4,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -85.11,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -63.05,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.58,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -27.37,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 96.39,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "445680",
+   "market": "KR",
+   "slug": "kr-445680",
+   "name": "큐리옥스바이오시스템즈",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Winner",
+   "stated_upside_pct": 181.0,
+   "return_since_pct": -40.5,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -74.33,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -52.27,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.76,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -34.91,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 133.0,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "450950",
+   "market": "KR",
+   "slug": "kr-450950",
+   "name": "아스테라시스",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Positive",
+   "stated_upside_pct": 51.8,
+   "return_since_pct": -53.2,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -84.63,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -62.57,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.69,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -42.23,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 73.83,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "474650",
+   "market": "KR",
+   "slug": "kr-474650",
+   "name": "링크솔루션",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Positive",
+   "stated_upside_pct": 53.3,
+   "return_since_pct": -60.5,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -87.31,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -65.25,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.51,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -50.69,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 103.32,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "475960",
+   "market": "KR",
+   "slug": "kr-475960",
+   "name": "토모큐브",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Positive",
+   "stated_upside_pct": 43.2,
+   "return_since_pct": -39.1,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -60.39,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -38.33,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.53,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -25.46,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 88.96,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "388210",
+   "market": "KR",
+   "slug": "kr-388210",
+   "name": "씨엠티엑스",
+   "school": "yig",
+   "schools": [
+    "yig"
+   ],
+   "report_date": "2026-03-17",
+   "age_days": 160,
+   "tier_now": "Positive",
+   "stated_upside_pct": 47.4,
+   "return_since_pct": -48.6,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -74.34,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -52.28,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.55,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -39.18,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 107.85,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "417200",
+   "market": "KR",
+   "slug": "kr-417200",
+   "name": "LS머트리얼즈",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-03-27",
+   "age_days": 150,
+   "tier_now": "Winner",
+   "stated_upside_pct": 95.1,
+   "return_since_pct": -42.3,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -52.97,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -30.91,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.2,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -50.93,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 91.38,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "047050",
+   "market": "KR",
+   "slug": "kr-047050",
+   "name": "포스코인터내셔널",
+   "school": "yig",
+   "schools": [
+    "yig"
+   ],
+   "report_date": "2026-03-31",
+   "age_days": 146,
+   "tier_now": "Positive",
+   "stated_upside_pct": 39.6,
+   "return_since_pct": -25.0,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -40.6,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -18.54,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.66,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -20.0,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 64.51,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "007340",
+   "market": "KR",
+   "slug": "kr-007340",
+   "name": "DN오토모티브",
+   "school": "yig",
+   "schools": [
+    "yig"
+   ],
+   "report_date": "2026-04-14",
+   "age_days": 132,
+   "tier_now": "Winner",
+   "stated_upside_pct": 68.0,
+   "return_since_pct": 32.0,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 23.67,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 45.73,
+     "pass": true
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.12,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": 7.9,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 90.36,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "052710",
+   "market": "KR",
+   "slug": "kr-052710",
+   "name": "아모텍",
+   "school": "yig",
+   "schools": [
+    "yig"
+   ],
+   "report_date": "2026-04-14",
+   "age_days": 132,
+   "tier_now": "Winner",
+   "stated_upside_pct": 160.8,
+   "return_since_pct": -45.7,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 2.66,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 24.72,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.58,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -35.34,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 148.72,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "100090",
+   "market": "KR",
+   "slug": "kr-100090",
+   "name": "SK오션플랜트",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-04-16",
+   "age_days": 130,
+   "tier_now": "Positive",
+   "stated_upside_pct": 73.7,
+   "return_since_pct": -45.7,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -49.55,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -27.5,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.63,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -29.16,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 125.11,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "187790",
+   "market": "KR",
+   "slug": "kr-187790",
+   "name": "나노",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-02",
+   "age_days": 114,
+   "tier_now": "Positive",
+   "stated_upside_pct": 167.4,
+   "return_since_pct": -54.0,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -48.93,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -26.88,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.39,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -56.67,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 114.85,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "252990",
+   "market": "KR",
+   "slug": "kr-252990",
+   "name": "샘씨엔에스",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-02",
+   "age_days": 114,
+   "tier_now": "Positive",
+   "stated_upside_pct": 56.0,
+   "return_since_pct": -5.7,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -5.23,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 16.83,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.73,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": 1.91,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 126.72,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "443060",
+   "market": "KR",
+   "slug": "kr-443060",
+   "name": "HD현대마린솔루션",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-02",
+   "age_days": 114,
+   "tier_now": "Positive",
+   "stated_upside_pct": 48.0,
+   "return_since_pct": -23.4,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -1.51,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 20.55,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.41,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -10.22,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 63.22,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "213420",
+   "market": "KR",
+   "slug": "kr-213420",
+   "name": "덕산네오룩스",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-06",
+   "age_days": 110,
+   "tier_now": "Positive",
+   "stated_upside_pct": 73.7,
+   "return_since_pct": -39.6,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -46.04,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -23.98,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.67,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -28.68,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 77.85,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2042,39 +2267,39 @@
     "yig"
    ],
    "report_date": "2026-05-11",
-   "age_days": 102,
+   "age_days": 105,
    "tier_now": "Positive",
    "stated_upside_pct": 79.8,
-   "return_since_pct": -33.5,
+   "return_since_pct": -32.4,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -44.54,
+     "value": -43.47,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -21.41,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.7,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -19.62,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 64.52,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -22.48,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -18.75,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 79.77,
+     "value": 63.81,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2088,130 +2313,176 @@
     "star"
    ],
    "report_date": "2026-05-18",
-   "age_days": 95,
+   "age_days": 98,
    "tier_now": "Positive",
    "stated_upside_pct": 67.6,
-   "return_since_pct": -31.2,
+   "return_since_pct": -29.2,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -50.84,
+     "value": -45.51,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -23.45,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.37,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -24.86,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 80.23,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -28.79,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -27.39,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 67.63,
+     "value": 80.19,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "010120",
+   "ticker": "355150",
    "market": "KR",
-   "slug": "kr-010120",
-   "name": "LS ELECTRIC",
+   "slug": "kr-355150",
+   "name": "코스텍시스",
+   "school": "kuvic",
+   "schools": [
+    "kuvic",
+    "smic",
+    "yig"
+   ],
+   "report_date": "2026-05-18",
+   "age_days": 98,
+   "tier_now": "Positive",
+   "stated_upside_pct": null,
+   "return_since_pct": -66.7,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 4.13,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 26.18,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.43,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -51.81,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 126.16,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "039440",
+   "market": "KR",
+   "slug": "kr-039440",
+   "name": "에스티아이",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-05-18",
+   "age_days": 98,
+   "tier_now": "Positive",
+   "stated_upside_pct": 60.0,
+   "return_since_pct": -32.9,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -66.28,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -44.22,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.57,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -34.91,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 110.77,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "012450",
+   "market": "KR",
+   "slug": "kr-012450",
+   "name": "한화에어로스페이스",
    "school": "voera",
    "schools": [
     "voera"
    ],
-   "report_date": "2026-05-20",
+   "report_date": "2026-05-23",
    "age_days": 93,
    "tier_now": "Positive",
-   "stated_upside_pct": 50.9,
-   "return_since_pct": -21.6,
+   "stated_upside_pct": 13.8,
+   "return_since_pct": -11.7,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": 17.29,
+     "value": -22.06,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 116.37,
-     "pass": true
+     "key": "ret_6m",
+     "value": 0.0,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": 39.34,
+     "key": "vol_trend",
+     "value": 0.8,
      "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -21.59,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 50.94,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "082740",
-   "market": "KR",
-   "slug": "kr-082740",
-   "name": "한화엔진",
-   "school": "kuvic",
-   "schools": [
-    "kuvic",
-    "yig"
-   ],
-   "report_date": "2026-05-21",
-   "age_days": 92,
-   "tier_now": "Positive",
-   "stated_upside_pct": 66.7,
-   "return_since_pct": -39.3,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -41.88,
+     "value": -11.46,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 96.73,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -19.82,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -36.64,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 66.67,
+     "value": 74.55,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2224,129 +2495,39 @@
     "yig"
    ],
    "report_date": "2026-05-26",
-   "age_days": 87,
+   "age_days": 90,
    "tier_now": "Winner",
    "stated_upside_pct": 89.0,
-   "return_since_pct": -55.8,
+   "return_since_pct": -56.2,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -42.93,
+     "value": -39.39,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -17.33,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.77,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -54.12,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 161.47,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -20.87,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -54.01,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 89.01,
+     "value": 161.15,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "FIX",
-   "market": "US",
-   "slug": "us-fix",
-   "name": "FIX",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-29",
-   "age_days": 84,
-   "tier_now": "Positive",
-   "stated_upside_pct": 191.3,
-   "return_since_pct": -8.5,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 12.28,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 62.94,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 21.91,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -8.86,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 191.32,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "STRL",
-   "market": "US",
-   "slug": "us-strl",
-   "name": "STRL",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-29",
-   "age_days": 84,
-   "tier_now": "Positive",
-   "stated_upside_pct": 74.2,
-   "return_since_pct": -39.5,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 15.76,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 91.8,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 25.39,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -30.78,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 74.25,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-20",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2360,84 +2541,39 @@
     "star"
    ],
    "report_date": "2026-06-10",
-   "age_days": 72,
+   "age_days": 75,
    "tier_now": "Positive",
    "stated_upside_pct": 128.7,
-   "return_since_pct": -28.0,
+   "return_since_pct": -27.1,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -42.87,
+     "value": -41.84,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -19.78,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.56,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -34.25,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 68.57,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -20.81,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -30.07,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 128.7,
+     "value": 68.6,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "039490",
-   "market": "KR",
-   "slug": "kr-039490",
-   "name": "키움증권",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-06-12",
-   "age_days": 70,
-   "tier_now": "Positive",
-   "stated_upside_pct": 85.4,
-   "return_since_pct": -26.3,
-   "score": 2,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -62.83,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 80.84,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -40.77,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -26.27,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 85.42,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2450,7 +2586,7 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 70,
+   "age_days": 73,
    "tier_now": "Positive",
    "stated_upside_pct": 106.8,
    "return_since_pct": -21.1,
@@ -2458,31 +2594,31 @@
    "checks": [
     {
      "key": "rs_6m",
-     "value": -57.99,
+     "value": -56.39,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -34.33,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.53,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -34.77,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 69.88,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -35.93,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -35.73,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 106.81,
+     "value": 69.46,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2495,39 +2631,129 @@
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 70,
+   "age_days": 73,
    "tier_now": "Positive",
    "stated_upside_pct": 75.8,
-   "return_since_pct": -14.1,
+   "return_since_pct": -9.5,
    "score": 2,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -38.28,
+     "value": -30.41,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -8.35,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.7,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -9.73,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 80.79,
+     "value": 81.15,
      "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "095340",
+   "market": "KR",
+   "slug": "kr-095340",
+   "name": "ISC",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-08-06",
+   "age_days": 18,
+   "tier_now": "Winner",
+   "stated_upside_pct": 112.8,
+   "return_since_pct": 13.1,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -31.72,
+     "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -16.22,
+     "value": -9.67,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.63,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -29.75,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 108.43,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "119850",
+   "market": "KR",
+   "slug": "kr-119850",
+   "name": "지엔씨에너지",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-08-06",
+   "age_days": 18,
+   "tier_now": "Positive",
+   "stated_upside_pct": 48.7,
+   "return_since_pct": -4.1,
+   "score": 2,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 7.23,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 29.29,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 2.72,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -10.66,
-     "pass": false
+     "value": 81.48,
+     "pass": true
     },
     {
-     "key": "stated_upside_pct",
-     "value": 75.75,
+     "key": "vol_60d",
+     "value": 142.92,
      "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2540,39 +2766,39 @@
     "voera"
    ],
    "report_date": "2026-02-27",
-   "age_days": 175,
+   "age_days": 178,
    "tier_now": "Winner",
    "stated_upside_pct": 35.7,
-   "return_since_pct": -3.6,
+   "return_since_pct": -1.1,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -8.92,
+     "value": -4.94,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 108.16,
-     "pass": true
+     "key": "ret_6m",
+     "value": 17.11,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": 13.14,
+     "key": "vol_trend",
+     "value": 0.98,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -23.76,
+     "value": -28.94,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 35.67,
-     "pass": false
+     "key": "vol_60d",
+     "value": 108.06,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2585,39 +2811,84 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 160,
+   "age_days": 163,
    "tier_now": "Positive",
    "stated_upside_pct": 88.6,
-   "return_since_pct": -18.3,
+   "return_since_pct": -12.8,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -54.34,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 49.96,
+     "value": -47.3,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -32.28,
+     "value": -25.24,
      "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.76,
+     "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -5.79,
+     "value": -1.21,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 88.63,
-     "pass": true
+     "key": "vol_60d",
+     "value": 50.88,
+     "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "018670",
+   "market": "KR",
+   "slug": "kr-018670",
+   "name": "SK가스",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Winner",
+   "stated_upside_pct": 36.1,
+   "return_since_pct": 1.5,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -20.76,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 1.3,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.55,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -6.96,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 61.15,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2630,129 +2901,84 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 160,
+   "age_days": 163,
    "tier_now": "Positive",
    "stated_upside_pct": 42.7,
-   "return_since_pct": -36.9,
+   "return_since_pct": -35.9,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -60.34,
+     "value": -58.52,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -36.46,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.75,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -22.22,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 62.75,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -38.28,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -25.76,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 42.75,
+     "value": 62.16,
      "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "450950",
+   "ticker": "249420",
    "market": "KR",
-   "slug": "kr-450950",
-   "name": "아스테라시스",
+   "slug": "kr-249420",
+   "name": "일동제약",
    "school": "star",
    "schools": [
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 160,
+   "age_days": 163,
    "tier_now": "Positive",
-   "stated_upside_pct": 51.8,
-   "return_since_pct": -53.6,
+   "stated_upside_pct": 81.3,
+   "return_since_pct": -53.0,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -85.86,
+     "value": -80.09,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 74.47,
-     "pass": true
+     "key": "ret_6m",
+     "value": -58.03,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -63.8,
+     "key": "vol_trend",
+     "value": 1.01,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -41.85,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 51.84,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "474650",
-   "market": "KR",
-   "slug": "kr-474650",
-   "name": "링크솔루션",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Positive",
-   "stated_upside_pct": 53.3,
-   "return_since_pct": -63.9,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -88.77,
+     "value": -28.71,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 101.24,
+     "value": 71.97,
      "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -66.72,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -53.23,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 53.28,
-     "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2765,125 +2991,125 @@
     "star"
    ],
    "report_date": "2026-03-14",
-   "age_days": 160,
+   "age_days": 163,
    "tier_now": "Positive",
    "stated_upside_pct": 59.5,
-   "return_since_pct": -59.9,
+   "return_since_pct": -60.6,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -83.54,
+     "value": -85.08,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 93.16,
-     "pass": true
+     "key": "ret_6m",
+     "value": -63.02,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -61.48,
+     "key": "vol_trend",
+     "value": 0.86,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -37.22,
+     "value": -37.37,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 59.5,
+     "key": "vol_60d",
+     "value": 93.18,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "LITE",
+   "market": "US",
+   "slug": "us-lite",
+   "name": "LITE",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-03-16",
+   "age_days": 161,
+   "tier_now": "Winner",
+   "stated_upside_pct": null,
+   "return_since_pct": 38.7,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 20.16,
      "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 29.79,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.93,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -10.14,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 105.09,
+     "pass": true
     }
    ],
    "price_as_of": "2026-08-21",
    "stale_price": false
   },
   {
-   "ticker": "475960",
-   "market": "KR",
-   "slug": "kr-475960",
-   "name": "토모큐브",
-   "school": "star",
+   "ticker": "TOT",
+   "market": "US",
+   "slug": "us-tot",
+   "name": "TOT",
+   "school": "kuvic",
    "schools": [
-    "star"
+    "kuvic"
    ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
+   "report_date": "2026-03-16",
+   "age_days": 161,
    "tier_now": "Positive",
-   "stated_upside_pct": 43.2,
-   "return_since_pct": -46.0,
+   "stated_upside_pct": null,
+   "return_since_pct": 15.4,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -69.89,
+     "value": 2.1,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 11.74,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.45,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": 3.87,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 85.62,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -47.83,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -33.83,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 43.22,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "388210",
-   "market": "KR",
-   "slug": "kr-388210",
-   "name": "씨엠티엑스",
-   "school": "yig",
-   "schools": [
-    "yig"
-   ],
-   "report_date": "2026-03-17",
-   "age_days": 157,
-   "tier_now": "Positive",
-   "stated_upside_pct": 47.4,
-   "return_since_pct": -49.0,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -72.17,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 109.25,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -50.11,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -37.16,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 47.36,
+     "value": 14.12,
      "pass": false
     }
    ],
@@ -2901,84 +3127,129 @@
     "star"
    ],
    "report_date": "2026-03-27",
-   "age_days": 147,
+   "age_days": 150,
    "tier_now": "Positive",
    "stated_upside_pct": 53.1,
-   "return_since_pct": -85.3,
+   "return_since_pct": -85.4,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -110.91,
+     "value": -111.21,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 195.5,
-     "pass": true
+     "key": "ret_6m",
+     "value": -89.16,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -88.85,
+     "key": "vol_trend",
+     "value": 2.05,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -81.45,
+     "value": -82.04,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 53.1,
-     "pass": false
+     "key": "vol_60d",
+     "value": 195.36,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "047050",
+   "ticker": "011170",
    "market": "KR",
-   "slug": "kr-047050",
-   "name": "포스코인터내셔널",
+   "slug": "kr-011170",
+   "name": "롯데케미칼",
+   "school": "voera",
+   "schools": [
+    "voera"
+   ],
+   "report_date": "2026-03-27",
+   "age_days": 150,
+   "tier_now": "Winner",
+   "stated_upside_pct": 7.6,
+   "return_since_pct": -33.3,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -53.32,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -31.26,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.58,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -32.52,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 55.11,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "347700",
+   "market": "KR",
+   "slug": "kr-347700",
+   "name": "스피어",
    "school": "yig",
    "schools": [
     "yig"
    ],
    "report_date": "2026-03-31",
-   "age_days": 143,
+   "age_days": 146,
    "tier_now": "Positive",
-   "stated_upside_pct": 39.6,
-   "return_since_pct": -29.2,
+   "stated_upside_pct": 156.9,
+   "return_since_pct": -46.6,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -48.73,
+     "value": -70.38,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 63.63,
-     "pass": true
+     "key": "ret_6m",
+     "value": -48.32,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -26.67,
+     "key": "vol_trend",
+     "value": 0.84,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -25.81,
+     "value": -45.96,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 39.58,
-     "pass": false
+     "key": "vol_60d",
+     "value": 158.78,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -2991,35 +3262,80 @@
     "ewha"
    ],
    "report_date": "2026-04-04",
-   "age_days": 139,
+   "age_days": 142,
    "tier_now": "Winner",
    "stated_upside_pct": 40.1,
-   "return_since_pct": -58.0,
+   "return_since_pct": -56.2,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -44.53,
+     "value": -33.76,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 191.16,
-     "pass": true
+     "key": "ret_6m",
+     "value": -11.71,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -22.47,
+     "key": "vol_trend",
+     "value": 1.23,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -65.19,
+     "value": -61.12,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 40.12,
+     "key": "vol_60d",
+     "value": 190.1,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "CF",
+   "market": "US",
+   "slug": "us-cf",
+   "name": "CF",
+   "school": "kuvic",
+   "schools": [
+    "kuvic"
+   ],
+   "report_date": "2026-04-07",
+   "age_days": 139,
+   "tier_now": "Positive",
+   "stated_upside_pct": null,
+   "return_since_pct": -2.7,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 24.27,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 33.91,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.67,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": 6.5,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 37.48,
      "pass": false
     }
    ],
@@ -3036,39 +3352,39 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 127,
+   "age_days": 130,
    "tier_now": "Positive",
    "stated_upside_pct": 95.0,
-   "return_since_pct": -5.8,
+   "return_since_pct": -6.1,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -11.96,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 44.24,
+     "value": -13.48,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 10.1,
+     "value": 8.58,
      "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.43,
+     "pass": true
     },
     {
      "key": "ret_3m",
-     "value": -6.48,
+     "value": -9.09,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 95.03,
-     "pass": true
+     "key": "vol_60d",
+     "value": 43.61,
+     "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -3081,262 +3397,577 @@
     "smic"
    ],
    "report_date": "2026-04-16",
-   "age_days": 127,
+   "age_days": 130,
    "tier_now": "Positive",
    "stated_upside_pct": 32.1,
-   "return_since_pct": -17.8,
+   "return_since_pct": -18.7,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -12.69,
+     "value": -10.5,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 89.59,
-     "pass": true
+     "key": "ret_6m",
+     "value": -0.87,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": -3.06,
+     "key": "vol_trend",
+     "value": 1.18,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -6.81,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 32.13,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "252990",
-   "market": "KR",
-   "slug": "kr-252990",
-   "name": "샘씨엔에스",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-02",
-   "age_days": 111,
-   "tier_now": "Positive",
-   "stated_upside_pct": 56.0,
-   "return_since_pct": -8.8,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -10.74,
+     "value": -8.58,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 126.54,
+     "value": 89.42,
      "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 11.32,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 8.51,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 55.96,
-     "pass": false
     }
    ],
    "price_as_of": "2026-08-21",
    "stale_price": false
   },
   {
-   "ticker": "443060",
+   "ticker": "082740",
    "market": "KR",
-   "slug": "kr-443060",
-   "name": "HD현대마린솔루션",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-05-02",
-   "age_days": 111,
-   "tier_now": "Positive",
-   "stated_upside_pct": 48.0,
-   "return_since_pct": -26.6,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -3.25,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 63.59,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 18.81,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -10.95,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 48.02,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "355150",
-   "market": "KR",
-   "slug": "kr-355150",
-   "name": "코스텍시스",
+   "slug": "kr-082740",
+   "name": "한화엔진",
    "school": "kuvic",
    "schools": [
     "kuvic",
-    "smic",
     "yig"
    ],
-   "report_date": "2026-05-18",
+   "report_date": "2026-05-21",
    "age_days": 95,
    "tier_now": "Positive",
-   "stated_upside_pct": null,
-   "return_since_pct": -66.5,
+   "stated_upside_pct": 66.7,
+   "return_since_pct": -38.2,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -1.07,
+     "value": -38.91,
      "pass": false
     },
     {
-     "key": "vol_60d",
-     "value": 126.85,
-     "pass": true
+     "key": "ret_6m",
+     "value": -16.85,
+     "pass": false
     },
     {
-     "key": "ret_6m",
-     "value": 20.99,
+     "key": "vol_trend",
+     "value": 0.9,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -56.95,
+     "value": -38.15,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
+     "key": "vol_60d",
+     "value": 95.63,
+     "pass": true
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "039440",
+   "ticker": "032350",
    "market": "KR",
-   "slug": "kr-039440",
-   "name": "에스티아이",
-   "school": "kuvic",
+   "slug": "kr-032350",
+   "name": "롯데관광개발",
+   "school": "voera",
    "schools": [
-    "kuvic"
+    "star",
+    "voera"
    ],
-   "report_date": "2026-05-18",
-   "age_days": 95,
+   "report_date": "2026-05-22",
+   "age_days": 94,
    "tier_now": "Positive",
-   "stated_upside_pct": 60.0,
-   "return_since_pct": -30.8,
+   "stated_upside_pct": 55.0,
+   "return_since_pct": -32.9,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -66.16,
+     "value": -70.45,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -48.39,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.54,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -29.11,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 111.62,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": -44.1,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -29.56,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 60.0,
+     "value": 59.66,
      "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "012450",
+   "ticker": "439260",
    "market": "KR",
-   "slug": "kr-012450",
-   "name": "한화에어로스페이스",
+   "slug": "kr-439260",
+   "name": "대한조선",
    "school": "voera",
    "schools": [
     "voera"
    ],
-   "report_date": "2026-05-23",
-   "age_days": 90,
+   "report_date": "2026-05-22",
+   "age_days": 94,
    "tier_now": "Positive",
-   "stated_upside_pct": 13.8,
-   "return_since_pct": -13.3,
+   "stated_upside_pct": 52.4,
+   "return_since_pct": -30.7,
    "score": 1,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -26.13,
+     "value": -57.62,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -35.56,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.48,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -28.46,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 74.44,
-     "pass": true
+     "value": 60.74,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "FIX",
+   "market": "US",
+   "slug": "us-fix",
+   "name": "FIX",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-29",
+   "age_days": 87,
+   "tier_now": "Positive",
+   "stated_upside_pct": 191.3,
+   "return_since_pct": -9.4,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 3.7,
+     "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -4.07,
+     "value": 13.33,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.01,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -13.13,
+     "value": -9.79,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 13.8,
+     "key": "vol_60d",
+     "value": 62.95,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-21",
+   "stale_price": false
+  },
+  {
+   "ticker": "STRL",
+   "market": "US",
+   "slug": "us-strl",
+   "name": "STRL",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-05-29",
+   "age_days": 87,
+   "tier_now": "Positive",
+   "stated_upside_pct": 74.2,
+   "return_since_pct": -40.0,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 9.04,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 18.67,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.28,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -29.57,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 91.8,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-21",
+   "stale_price": false
+  },
+  {
+   "ticker": "036190",
+   "market": "KR",
+   "slug": "kr-036190",
+   "name": "금화피에스시",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-06-10",
+   "age_days": 75,
+   "tier_now": "Positive",
+   "stated_upside_pct": 12.2,
+   "return_since_pct": 4.6,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -21.02,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 1.03,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.38,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": 3.95,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 33.25,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "091700",
+   "market": "KR",
+   "slug": "kr-091700",
+   "name": "파트론",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-06-10",
+   "age_days": 75,
+   "tier_now": "Positive",
+   "stated_upside_pct": 148.4,
+   "return_since_pct": -12.5,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -49.77,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -27.71,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.53,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": -21.45,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 42.37,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "039490",
+   "market": "KR",
+   "slug": "kr-039490",
+   "name": "키움증권",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-06-12",
+   "age_days": 73,
+   "tier_now": "Positive",
+   "stated_upside_pct": 85.4,
+   "return_since_pct": -26.4,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -65.08,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -43.02,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.85,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -34.76,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 80.75,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "105560",
+   "market": "KR",
+   "slug": "kr-105560",
+   "name": "KB금융",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-06-12",
+   "age_days": 73,
+   "tier_now": "Positive",
+   "stated_upside_pct": 31.1,
+   "return_since_pct": 1.2,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -24.92,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -2.86,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.76,
+     "pass": true
+    },
+    {
+     "key": "ret_3m",
+     "value": 4.69,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 50.54,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "131970",
+   "market": "KR",
+   "slug": "kr-131970",
+   "name": "두산테스나",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-06-12",
+   "age_days": 73,
+   "tier_now": "Positive",
+   "stated_upside_pct": 34.3,
+   "return_since_pct": -57.1,
+   "score": 1,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -2.28,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 19.78,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.84,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -55.95,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 125.28,
+     "pass": true
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "259960",
+   "market": "KR",
+   "slug": "kr-259960",
+   "name": "크래프톤",
+   "school": "star",
+   "schools": [
+    "star"
+   ],
+   "report_date": "2026-03-14",
+   "age_days": 163,
+   "tier_now": "Positive",
+   "stated_upside_pct": 44.3,
+   "return_since_pct": -4.5,
+   "score": 0,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": -34.9,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": -12.84,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.81,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -13.18,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 53.68,
+     "pass": false
+    }
+   ],
+   "price_as_of": "2026-08-24",
+   "stale_price": false
+  },
+  {
+   "ticker": "GLNG",
+   "market": "US",
+   "slug": "us-glng",
+   "name": "GLNG",
+   "school": "smic",
+   "schools": [
+    "smic"
+   ],
+   "report_date": "2026-04-16",
+   "age_days": 130,
+   "tier_now": "Positive",
+   "stated_upside_pct": null,
+   "return_since_pct": -1.9,
+   "score": 0,
+   "checks": [
+    {
+     "key": "rs_6m",
+     "value": 5.11,
+     "pass": false
+    },
+    {
+     "key": "ret_6m",
+     "value": 14.74,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.8,
+     "pass": false
+    },
+    {
+     "key": "ret_3m",
+     "value": -0.09,
+     "pass": false
+    },
+    {
+     "key": "vol_60d",
+     "value": 19.86,
      "pass": false
     }
    ],
@@ -3353,580 +3984,39 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 72,
+   "age_days": 75,
    "tier_now": "Positive",
    "stated_upside_pct": 127.2,
-   "return_since_pct": -16.3,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -55.6,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 44.39,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -33.54,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -19.51,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 127.17,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "091700",
-   "market": "KR",
-   "slug": "kr-091700",
-   "name": "파트론",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-06-10",
-   "age_days": 72,
-   "tier_now": "Positive",
-   "stated_upside_pct": 148.4,
-   "return_since_pct": -13.3,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -50.24,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 42.5,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -28.18,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -20.0,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 148.42,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "131970",
-   "market": "KR",
-   "slug": "kr-131970",
-   "name": "두산테스나",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-06-12",
-   "age_days": 70,
-   "tier_now": "Positive",
-   "stated_upside_pct": 34.3,
-   "return_since_pct": -56.1,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -0.57,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 126.11,
-     "pass": true
-    },
-    {
-     "key": "ret_6m",
-     "value": 21.48,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -53.56,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 34.34,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "VST",
-   "market": "US",
-   "slug": "us-vst",
-   "name": "VST",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-06-12",
-   "age_days": 70,
-   "tier_now": "Positive",
-   "stated_upside_pct": 76.9,
-   "return_since_pct": -6.4,
-   "score": 1,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -28.98,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 44.83,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -19.35,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -3.51,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 76.87,
-     "pass": true
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "018670",
-   "market": "KR",
-   "slug": "kr-018670",
-   "name": "SK가스",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Winner",
-   "stated_upside_pct": 36.1,
-   "return_since_pct": 1.3,
+   "return_since_pct": -15.9,
    "score": 0,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -19.87,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 61.32,
+     "value": -53.85,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": 2.19,
+     "value": -31.8,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.26,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": -2.1,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 36.11,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "259960",
-   "market": "KR",
-   "slug": "kr-259960",
-   "name": "크래프톤",
-   "school": "star",
-   "schools": [
-    "star"
-   ],
-   "report_date": "2026-03-14",
-   "age_days": 160,
-   "tier_now": "Positive",
-   "stated_upside_pct": 44.3,
-   "return_since_pct": -5.3,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -36.01,
+     "value": -21.29,
      "pass": false
     },
     {
      "key": "vol_60d",
-     "value": 53.78,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -13.95,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -16.38,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 44.29,
+     "value": 44.35,
      "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "TOT",
-   "market": "US",
-   "slug": "us-tot",
-   "name": "TOT",
-   "school": "kuvic",
-   "schools": [
-    "kuvic"
-   ],
-   "report_date": "2026-03-16",
-   "age_days": 158,
-   "tier_now": "Positive",
-   "stated_upside_pct": null,
-   "return_since_pct": 14.9,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 2.26,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 14.09,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": 11.89,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 3.64,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "011170",
-   "market": "KR",
-   "slug": "kr-011170",
-   "name": "롯데케미칼",
-   "school": "voera",
-   "schools": [
-    "voera"
-   ],
-   "report_date": "2026-03-27",
-   "age_days": 147,
-   "tier_now": "Winner",
-   "stated_upside_pct": 7.6,
-   "return_since_pct": -34.3,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -55.84,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 55.09,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -33.78,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -31.27,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 7.62,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "CF",
-   "market": "US",
-   "slug": "us-cf",
-   "name": "CF",
-   "school": "kuvic",
-   "schools": [
-    "kuvic"
-   ],
-   "report_date": "2026-04-07",
-   "age_days": 136,
-   "tier_now": "Positive",
-   "stated_upside_pct": null,
-   "return_since_pct": -5.7,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 17.27,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 37.35,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": 26.9,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 1.95,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "GLNG",
-   "market": "US",
-   "slug": "us-glng",
-   "name": "GLNG",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-04-16",
-   "age_days": 127,
-   "tier_now": "Positive",
-   "stated_upside_pct": null,
-   "return_since_pct": -1.7,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": 6.16,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 20.81,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": 15.79,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -5.51,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": null,
-     "pass": null
-    }
-   ],
-   "price_as_of": "2026-08-20",
-   "stale_price": false
-  },
-  {
-   "ticker": "032350",
-   "market": "KR",
-   "slug": "kr-032350",
-   "name": "롯데관광개발",
-   "school": "voera",
-   "schools": [
-    "star",
-    "voera"
-   ],
-   "report_date": "2026-05-22",
-   "age_days": 91,
-   "tier_now": "Positive",
-   "stated_upside_pct": 55.0,
-   "return_since_pct": -34.1,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -71.86,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 59.48,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -49.8,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -32.32,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 55.04,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "439260",
-   "market": "KR",
-   "slug": "kr-439260",
-   "name": "대한조선",
-   "school": "voera",
-   "schools": [
-    "voera"
-   ],
-   "report_date": "2026-05-22",
-   "age_days": 91,
-   "tier_now": "Positive",
-   "stated_upside_pct": 52.4,
-   "return_since_pct": -30.1,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -56.83,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 61.1,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": -34.77,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": -25.0,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 52.42,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
-   "stale_price": false
-  },
-  {
-   "ticker": "036190",
-   "market": "KR",
-   "slug": "kr-036190",
-   "name": "금화피에스시",
-   "school": "smic",
-   "schools": [
-    "smic"
-   ],
-   "report_date": "2026-06-10",
-   "age_days": 72,
-   "tier_now": "Positive",
-   "stated_upside_pct": 12.2,
-   "return_since_pct": 2.6,
-   "score": 0,
-   "checks": [
-    {
-     "key": "rs_6m",
-     "value": -22.06,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 33.51,
-     "pass": false
-    },
-    {
-     "key": "ret_6m",
-     "value": 0.0,
-     "pass": false
-    },
-    {
-     "key": "ret_3m",
-     "value": 4.84,
-     "pass": false
-    },
-    {
-     "key": "stated_upside_pct",
-     "value": 12.23,
-     "pass": false
-    }
-   ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
@@ -3939,80 +4029,80 @@
     "smic"
    ],
    "report_date": "2026-06-10",
-   "age_days": 72,
+   "age_days": 75,
    "tier_now": "Positive",
    "stated_upside_pct": 56.9,
-   "return_since_pct": 5.4,
+   "return_since_pct": 6.6,
    "score": 0,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -25.76,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 26.26,
+     "value": -24.33,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -3.7,
+     "value": -2.27,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 0.89,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": 2.18,
+     "value": 1.5,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 56.92,
+     "key": "vol_60d",
+     "value": 25.74,
      "pass": false
     }
    ],
-   "price_as_of": "2026-08-21",
+   "price_as_of": "2026-08-24",
    "stale_price": false
   },
   {
-   "ticker": "105560",
-   "market": "KR",
-   "slug": "kr-105560",
-   "name": "KB금융",
+   "ticker": "VST",
+   "market": "US",
+   "slug": "us-vst",
+   "name": "VST",
    "school": "star",
    "schools": [
     "star"
    ],
    "report_date": "2026-06-12",
-   "age_days": 70,
+   "age_days": 73,
    "tier_now": "Positive",
-   "stated_upside_pct": 31.1,
-   "return_since_pct": 1.9,
+   "stated_upside_pct": 76.9,
+   "return_since_pct": -8.3,
    "score": 0,
    "checks": [
     {
      "key": "rs_6m",
-     "value": -24.55,
-     "pass": false
-    },
-    {
-     "key": "vol_60d",
-     "value": 50.74,
+     "value": -30.05,
      "pass": false
     },
     {
      "key": "ret_6m",
-     "value": -2.49,
+     "value": -20.42,
+     "pass": false
+    },
+    {
+     "key": "vol_trend",
+     "value": 1.09,
      "pass": false
     },
     {
      "key": "ret_3m",
-     "value": 8.31,
+     "value": -8.63,
      "pass": false
     },
     {
-     "key": "stated_upside_pct",
-     "value": 31.08,
+     "key": "vol_60d",
+     "value": 44.68,
      "pass": false
     }
    ],
@@ -4022,24 +4112,24 @@
  ],
  "consensus": {
   "window_days": 90,
-  "base_rate_pct": 35.1,
-  "n_reports": 826,
+  "base_rate_pct": 34.9,
+  "n_reports": 827,
   "groups": [
    {
     "label": "단독 커버",
-    "n": 747,
-    "success_pct": 34.3,
+    "n": 748,
+    "success_pct": 34.1,
     "lift": 0.98,
-    "median_peak_pct": 58.4,
-    "median_latest_pct": -6.3
+    "median_peak_pct": 58.3,
+    "median_latest_pct": -5.9
    },
    {
     "label": "2개 학회",
     "n": 78,
     "success_pct": 43.6,
-    "lift": 1.24,
+    "lift": 1.25,
     "median_peak_pct": 62.1,
-    "median_latest_pct": 10.0
+    "median_latest_pct": 10.6
    }
   ],
   "episodes": [
@@ -4052,7 +4142,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 15.4,
-    "latest_pct": -28.0
+    "latest_pct": -27.1
    },
    {
     "ticker": "032350",
@@ -4063,7 +4153,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 3.3,
-    "latest_pct": -34.1
+    "latest_pct": -32.9
    },
    {
     "ticker": "082740",
@@ -4074,7 +4164,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 11.2,
-    "latest_pct": -39.3
+    "latest_pct": -38.2
    },
    {
     "ticker": "355150",
@@ -4085,7 +4175,7 @@
     "n_schools": 3,
     "tier": "Positive",
     "peak_pct": 3.1,
-    "latest_pct": -66.5
+    "latest_pct": -66.7
    },
    {
     "ticker": "036890",
@@ -4096,7 +4186,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 2.1,
-    "latest_pct": -31.2
+    "latest_pct": -29.2
    },
    {
     "ticker": "355150",
@@ -4107,7 +4197,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 16.3,
-    "latest_pct": -65.0
+    "latest_pct": -65.2
    },
    {
     "ticker": "484870",
@@ -4118,7 +4208,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 20.3,
-    "latest_pct": -85.3
+    "latest_pct": -85.4
    },
    {
     "ticker": "218410",
@@ -4129,7 +4219,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 263.1,
-    "latest_pct": 34.9
+    "latest_pct": 32.2
    },
    {
     "ticker": "062040",
@@ -4140,7 +4230,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 122.9,
-    "latest_pct": 7.7
+    "latest_pct": 7.9
    },
    {
     "ticker": "000150",
@@ -4151,7 +4241,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 145.5,
-    "latest_pct": 6.3
+    "latest_pct": 7.0
    },
    {
     "ticker": "103140",
@@ -4162,7 +4252,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 55.8,
-    "latest_pct": -23.9
+    "latest_pct": -19.6
    },
    {
     "ticker": "458870",
@@ -4173,7 +4263,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 121.9,
-    "latest_pct": -27.8
+    "latest_pct": -27.3
    },
    {
     "ticker": "108490",
@@ -4184,7 +4274,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 148.1,
-    "latest_pct": 35.8
+    "latest_pct": 32.4
    },
    {
     "ticker": "062040",
@@ -4195,7 +4285,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 205.8,
-    "latest_pct": 47.8
+    "latest_pct": 48.1
    },
    {
     "ticker": "064760",
@@ -4206,7 +4296,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 110.6,
-    "latest_pct": 36.3
+    "latest_pct": 37.5
    },
    {
     "ticker": "128940",
@@ -4217,7 +4307,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 112.8,
-    "latest_pct": 36.7
+    "latest_pct": 77.6
    },
    {
     "ticker": "017800",
@@ -4228,7 +4318,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 31.4,
-    "latest_pct": -16.3
+    "latest_pct": -14.8
    },
    {
     "ticker": "064350",
@@ -4239,7 +4329,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 33.0,
-    "latest_pct": -38.6
+    "latest_pct": -36.7
    },
    {
     "ticker": "071970",
@@ -4250,7 +4340,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 118.1,
-    "latest_pct": -8.3
+    "latest_pct": -7.6
    },
    {
     "ticker": "034020",
@@ -4261,7 +4351,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 228.7,
-    "latest_pct": 73.1
+    "latest_pct": 72.4
    },
    {
     "ticker": "278470",
@@ -4272,7 +4362,7 @@
     "n_schools": 2,
     "tier": "Multibagger",
     "peak_pct": 328.1,
-    "latest_pct": 248.4
+    "latest_pct": 270.6
    },
    {
     "ticker": "389650",
@@ -4283,7 +4373,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 147.2,
-    "latest_pct": -20.9
+    "latest_pct": -18.6
    },
    {
     "ticker": "161890",
@@ -4294,7 +4384,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 72.5,
-    "latest_pct": 63.7
+    "latest_pct": 71.6
    },
    {
     "ticker": "119850",
@@ -4305,7 +4395,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 201.3,
-    "latest_pct": 150.6
+    "latest_pct": 154.5
    },
    {
     "ticker": "278470",
@@ -4316,7 +4406,7 @@
     "n_schools": 2,
     "tier": "Multibagger",
     "peak_pct": 660.5,
-    "latest_pct": 519.0
+    "latest_pct": 558.4
    },
    {
     "ticker": "140860",
@@ -4327,7 +4417,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 74.8,
-    "latest_pct": 29.4
+    "latest_pct": 32.2
    },
    {
     "ticker": "326030",
@@ -4338,7 +4428,7 @@
     "n_schools": 2,
     "tier": "Positive",
     "peak_pct": 25.1,
-    "latest_pct": -27.3
+    "latest_pct": -25.0
    },
    {
     "ticker": "099320",
@@ -4349,7 +4439,7 @@
     "n_schools": 2,
     "tier": "Multibagger",
     "peak_pct": 321.1,
-    "latest_pct": 30.5
+    "latest_pct": 33.6
    },
    {
     "ticker": "033500",
@@ -4360,7 +4450,7 @@
     "n_schools": 2,
     "tier": "Winner",
     "peak_pct": 59.5,
-    "latest_pct": -22.3
+    "latest_pct": -20.6
    },
    {
     "ticker": "003230",
@@ -4371,7 +4461,7 @@
     "n_schools": 2,
     "tier": "Double",
     "peak_pct": 125.0,
-    "latest_pct": 84.6
+    "latest_pct": 89.7
    }
   ],
   "note": "합의 = 발간일 직전 90일 내 같은 종목을 커버한 학회 수(본인 포함). 리포트 단위 집계라 동시 커버 에피소드는 그룹에 중복 기여. 성공 = 발간 후 24개월 피크 +100% 이상(Double+)."

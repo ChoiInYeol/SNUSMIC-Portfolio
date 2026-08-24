@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-21T10:41:23+00:00",
+  "generated_at": "2026-08-24T10:54:32+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -9740,6 +9740,49 @@
       ]
     },
     {
+      "ticker": "214450",
+      "market": "KR",
+      "name": "파마리서치",
+      "entry_date": "2024-11-12",
+      "exit_date": "2024-11-13",
+      "entry_price": 221500.0,
+      "exit_price": 216500.0,
+      "return_pct": -2.84,
+      "days": 1,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: voera 2024-11-11, yig 2024-09-14, smic 2023-04-13, ewha 2023-02-08)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-02-08",
+          "source_file": "2023-02-08_[230208] 파마리서치(214450).md",
+          "target_price": 107000.0,
+          "stated_upside_pct": 40.0524
+        },
+        {
+          "school": "smic",
+          "report_date": "2023-04-13",
+          "source_file": "2023-04-13_equity-research-파마리서치.md",
+          "target_price": 111300.0,
+          "stated_upside_pct": 22.8477
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-14",
+          "source_file": "2025-11-10_미용의료기기, 누구나 예뻐지고 싶은 마음 (발간일 240914) YIG Research.md",
+          "target_price": 245000.0,
+          "stated_upside_pct": 30.2499
+        },
+        {
+          "school": "voera",
+          "report_date": "2024-11-11",
+          "source_file": "undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
+          "target_price": 250000.0,
+          "stated_upside_pct": 12.8668
+        }
+      ]
+    },
+    {
       "ticker": "237690",
       "market": "KR",
       "name": "에스티팜",
@@ -9779,28 +9822,6 @@
           "source_file": "2025-11-10_에스티팜 (237690, KQ), 에스티팜 한 번 '올리고' 볼까 (발간일 241107) YIG Research.md",
           "target_price": 160000.0,
           "stated_upside_pct": 69.8514
-        }
-      ]
-    },
-    {
-      "ticker": "084370",
-      "market": "KR",
-      "name": "유진테크",
-      "entry_date": "2024-11-12",
-      "exit_date": "2024-11-19",
-      "entry_price": 35950.0,
-      "exit_price": 33700.0,
-      "return_pct": -6.82,
-      "days": 7,
-      "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-11-11)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-11-11",
-          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
-          "target_price": null,
-          "stated_upside_pct": null
         }
       ]
     },
@@ -16846,6 +16867,85 @@
           "source_file": "2026-06-10_Equity Research, 금화피에스시.md",
           "target_price": 36700.0,
           "stated_upside_pct": 12.2324
+        }
+      ]
+    },
+    {
+      "ticker": "095340",
+      "market": "KR",
+      "name": "ISC",
+      "entry_date": "2026-08-07",
+      "exit_date": "2026-08-19",
+      "entry_price": 138300.0,
+      "exit_price": 173125.0,
+      "return_pct": 24.43,
+      "days": 12,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-08-06, star 2024-06-30, voera 2023-05-22)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-06-30",
+          "source_file": "2024-06-30_STAR_ISC.md",
+          "target_price": 114800.0,
+          "stated_upside_pct": 75.2672
+        },
+        {
+          "school": "voera",
+          "report_date": "2023-05-22",
+          "source_file": "undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
+          "target_price": 55000.0,
+          "stated_upside_pct": 17.8992
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_ISC - 베트남에서 누가돌아왔~게.md",
+          "target_price": 290000.0,
+          "stated_upside_pct": 112.766
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-08-07",
+      "exit_date": "2026-08-24",
+      "entry_price": 53400.0,
+      "exit_price": 47850.0,
+      "return_pct": -10.93,
+      "days": 17,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-08-06, yig 2025-08-01, smic 2025-04-19, star 2025-03-10)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_지엔씨에너지.md",
+          "target_price": 32000.0,
+          "stated_upside_pct": 99.6257
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",
+          "target_price": 76000.0,
+          "stated_upside_pct": 48.728
         }
       ]
     }

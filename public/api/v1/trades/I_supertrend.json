@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-21T10:41:23+00:00",
+  "generated_at": "2026-08-24T10:54:32+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8019,35 +8019,6 @@
       ]
     },
     {
-      "ticker": "095340",
-      "market": "KR",
-      "name": "ISC",
-      "entry_date": "2024-08-09",
-      "exit_date": "2024-11-07",
-      "entry_price": 55500.0,
-      "exit_price": 55300.0,
-      "return_pct": -0.96,
-      "days": 90,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2024-06-30, voera 2023-05-22)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-06-30",
-          "source_file": "2024-06-30_STAR_ISC.md",
-          "target_price": 114800.0,
-          "stated_upside_pct": 75.2672
-        },
-        {
-          "school": "voera",
-          "report_date": "2023-05-22",
-          "source_file": "undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
-          "target_price": 55000.0,
-          "stated_upside_pct": 17.8992
-        }
-      ]
-    },
-    {
       "ticker": "030200",
       "market": "KR",
       "name": "KT",
@@ -8233,6 +8204,35 @@
           "source_file": "undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
           "target_price": 250000.0,
           "stated_upside_pct": 12.8668
+        }
+      ]
+    },
+    {
+      "ticker": "228760",
+      "market": "KR",
+      "name": "지노믹트리",
+      "entry_date": "2024-10-18",
+      "exit_date": "2024-11-15",
+      "entry_price": 17400.0,
+      "exit_price": 14690.0,
+      "return_pct": -16.08,
+      "days": 28,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2024-09-11, smic 2019-08-11)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2019-08-11",
+          "source_file": "2019-08-11_Equity Research, 지노믹트리.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_지노믹트리.md",
+          "target_price": 29200.0,
+          "stated_upside_pct": 80.2469
         }
       ]
     },
@@ -8741,28 +8741,6 @@
           "source_file": "2024-11-21_equity-research-levi-strauss-co.md",
           "target_price": 26.33,
           "stated_upside_pct": 71.8822
-        }
-      ]
-    },
-    {
-      "ticker": "SE",
-      "market": "US",
-      "name": "SE",
-      "entry_date": "2024-11-13",
-      "exit_date": "2025-01-02",
-      "entry_price": 109.24,
-      "exit_price": 105.19,
-      "return_pct": 0.27,
-      "days": 50,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: yig 2024-11-09)",
-      "trigger_reports": [
-        {
-          "school": "yig",
-          "report_date": "2024-11-09",
-          "source_file": "2025-11-10_E-Commerce, '이'커머스 '커'지면 '머'지않아 '스'펙타클해짐 (발간일 241109) YIG Research.md",
-          "target_price": 148.05,
-          "stated_upside_pct": 58.2407
         }
       ]
     },
@@ -12025,15 +12003,8 @@
       "return_pct": -15.6,
       "days": 18,
       "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2025-12-12, kuvic 2024-11-11)",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2025-12-12)",
       "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-11-11",
-          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        },
         {
           "school": "star",
           "report_date": "2025-12-12",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-21T10:41:23+00:00",
+  "generated_at": "2026-08-24T10:54:32+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -17333,28 +17333,6 @@
       ]
     },
     {
-      "ticker": "084370",
-      "market": "KR",
-      "name": "유진테크",
-      "entry_date": "2025-08-13",
-      "exit_date": "2025-09-02",
-      "entry_price": 50000.0,
-      "exit_price": 45350.0,
-      "return_pct": -9.84,
-      "days": 20,
-      "exit_reason": "q_stop",
-      "entry_reason": "깡토 추세추종: RS 72 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-11-11",
-          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
       "ticker": "336260",
       "market": "KR",
       "name": "두산퓨얼셀",
@@ -17820,6 +17798,35 @@
           "source_file": "2024-06-02_[240602] (KEYSS 대회 준우승) 세진중공업(075580).md",
           "target_price": 10820.0,
           "stated_upside_pct": 54.7926
+        }
+      ]
+    },
+    {
+      "ticker": "014620",
+      "market": "KR",
+      "name": "성광벤드",
+      "entry_date": "2025-09-03",
+      "exit_date": "2025-09-19",
+      "entry_price": 35450.0,
+      "exit_price": 31800.0,
+      "return_pct": -10.83,
+      "days": 16,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 80 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-08-13",
+          "source_file": "2022-08-13_[220813] 성광벤드(014620).md",
+          "target_price": 17800.0,
+          "stated_upside_pct": 22.3368
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_성광벤드.md",
+          "target_price": 35650.0,
+          "stated_upside_pct": 43.4608
         }
       ]
     },
@@ -23443,13 +23450,6 @@
       "entry_reason": "깡토 추세추종: RS 91 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
       "trigger_reports": [
         {
-          "school": "kuvic",
-          "report_date": "2024-11-11",
-          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        },
-        {
           "school": "star",
           "report_date": "2025-12-12",
           "source_file": "2025-12-12_STAR_유진테크.md",
@@ -23616,13 +23616,6 @@
       "exit_reason": "q_stop",
       "entry_reason": "깡토 추세추종: RS 94 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
       "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-11-11",
-          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        },
         {
           "school": "star",
           "report_date": "2025-12-12",
@@ -23875,6 +23868,85 @@
           "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
           "target_price": 60800.0,
           "stated_upside_pct": 67.9558
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-08-05",
+      "exit_date": "2026-08-24",
+      "entry_price": 49550.0,
+      "exit_price": 47850.0,
+      "return_pct": -4.01,
+      "days": 19,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 92 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_지엔씨에너지.md",
+          "target_price": 32000.0,
+          "stated_upside_pct": 99.6257
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "340570",
+      "market": "KR",
+      "name": "티앤엘",
+      "entry_date": "2026-08-06",
+      "exit_date": "2026-08-24",
+      "entry_price": 32400.0,
+      "exit_price": 29850.0,
+      "return_pct": -8.42,
+      "days": 18,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 81 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_티앤엘.md",
+          "target_price": 114600.0,
+          "stated_upside_pct": 43.25
+        },
+        {
+          "school": "voera",
+          "report_date": "2023-05-03",
+          "source_file": "undated_[BUY].md",
+          "target_price": 105000.0,
+          "stated_upside_pct": 118.75
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-11-20",
+          "source_file": "2023-11-20_티앤엘 - Mighty Patch is getting Mighter.md",
+          "target_price": 59100.0,
+          "stated_upside_pct": 40.38
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-08-23",
+          "source_file": "2024-08-23_[240823] 티앤엘(340570).md",
+          "target_price": 113900.0,
+          "stated_upside_pct": 53.504
         }
       ]
     }

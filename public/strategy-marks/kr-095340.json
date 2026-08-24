@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-24T10:54:32+00:00",
+  "strategy_key": "U_chandelier_scaleout",
+  "ticker": "095340",
+  "market": "KR",
+  "name": "ISC",
+  "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
+  "marks": [
+    {
+      "date": "2026-08-07",
+      "side": "buy",
+      "price": 138300.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: kuvic 2026-08-06, star 2024-06-30, voera 2023-05-22)"
+    }
+  ],
+  "open_stop": {
+    "stop_level": 115900,
+    "entry_date": "2026-08-07",
+    "as_of": "2026-08-24"
+  }
+}
