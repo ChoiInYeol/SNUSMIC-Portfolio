@@ -1234,7 +1234,7 @@ data/markdown/kuvic/2024-10-07_삼영 - 필름 얇기의 정도를 중요시하�
 "data/markdown/kuvic/2024-10-08_씨에스윈드 - 해상 풍력, 늦바람 났어♬.md",kuvic,company,True,2024-10-08,,2024-10-08,KR,씨에스윈드,112610,KRX,Buy,96684.0,"96,684원",66300.0,"66,300원",,,ocr_fallback,
 data/markdown/kuvic/2024-10-10_토비스 - 전장으로 777 잭팟.md,kuvic,company,True,2024-10-10,2024-10-10,2024-10-10,KR,토비스,051360,KRX,Buy,31400.0,"31,400원",18640.0,"18,640원",,,ocr_fallback,
 data/markdown/kuvic/2024-11-11_대한항공 - 국가권력급 인수합병.md,kuvic,company,True,2024-11-11,2024-11-11,2024-11-11,KR,대한항공,003490,KRX,Buy,24500.0,"24,500원",19400.0,"19,400원",38.1,,ocr_fallback,
-data/markdown/kuvic/2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md,kuvic,sector,True,2024-11-11,2024-11-11,2024-11-11,,,,,Buy,52.0,52,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
+data/markdown/kuvic/2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md,kuvic,company,True,2024-11-11,2024-11-11,2024-11-11,KR,유진테크,084370,KOSDAQ,Buy,52.0,52,,,,,ocr_fallback,
 data/markdown/kuvic/2024-11-11_화승엔터프라이즈 - GAZELLE 가질래.md,kuvic,company,False,2024-11-11,2024-11-11,2024-11-11,KR,화승엔터프라이즈,241590,KRX,Buy,13600.0,"13,600 원",9600.0,"9,600 원",41.7,,,
 data/markdown/kuvic/2024-11-11_휴젤 - I'm so TOXIN.md,kuvic,company,True,2024-11-11,2024-11-11,2024-11-11,KR,휴젤,145020,KRX,Buy,443520.0,"443,520원",281000.0,"281,000원",,,ocr_fallback,
 data/markdown/kuvic/2024-11-14_비에이치아이 - Make BHI Great Again.md,kuvic,company,True,2024-11-14,,2024-11-14,KR,비에이치아이,083650,KRX,Buy,16190.0,"16,190원",6340.0,"6,340원",,,ocr_fallback,
