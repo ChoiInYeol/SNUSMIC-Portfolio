@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-25T10:25:40+00:00",
+  "generated_at": "2026-08-26T10:31:51+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23954,6 +23954,42 @@
           "source_file": "2024-08-23_[240823] 티앤엘(340570).md",
           "target_price": 113900.0,
           "stated_upside_pct": 53.504
+        }
+      ]
+    },
+    {
+      "ticker": "128940",
+      "market": "KR",
+      "name": "한미약품",
+      "entry_date": "2026-08-25",
+      "exit_date": "2026-08-26",
+      "entry_price": 550000.0,
+      "exit_price": 527000.0,
+      "return_pct": -4.76,
+      "days": 1,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 83 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2025-01-24",
+          "source_file": "2025-01-24_[250124] 한미약품(128940).md",
+          "target_price": 360500.0,
+          "stated_upside_pct": 47.1429
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_한미약품 (128940, KS), 한 한번은 미 미친다 (발간일 250801) YIG Research.md",
+          "target_price": 516900.0,
+          "stated_upside_pct": 91.4444
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_한미약품.md",
+          "target_price": 406000.0,
+          "stated_upside_pct": 33.9934
         }
       ]
     }
