@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-26T10:31:51+00:00",
+  "generated_at": "2026-08-27T20:36:41+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -23990,6 +23990,35 @@
           "source_file": "2025-08-31_STAR_한미약품.md",
           "target_price": 406000.0,
           "stated_upside_pct": 33.9934
+        }
+      ]
+    },
+    {
+      "ticker": "236200",
+      "market": "KR",
+      "name": "슈프리마",
+      "entry_date": "2026-08-07",
+      "exit_date": "2026-08-27",
+      "entry_price": 60700.0,
+      "exit_price": 54900.0,
+      "return_pct": -10.1,
+      "days": 20,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 90 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-08-23",
+          "source_file": "2024-08-23_[240823] 슈프리마(236200).md",
+          "target_price": 38810.0,
+          "stated_upside_pct": 33.5972
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_슈프리마.md",
+          "target_price": 89600.0,
+          "stated_upside_pct": 82.1138
         }
       ]
     }
