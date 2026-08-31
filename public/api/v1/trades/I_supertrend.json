@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-27T20:36:41+00:00",
+  "generated_at": "2026-08-31T17:54:33+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5652,35 +5652,6 @@
       ]
     },
     {
-      "ticker": "298040",
-      "market": "KR",
-      "name": "효성중공업",
-      "entry_date": "2023-11-13",
-      "exit_date": "2023-12-08",
-      "entry_price": 195000.0,
-      "exit_price": 183700.0,
-      "return_pct": -6.36,
-      "days": 25,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: kuvic 2023-10-11, star 2023-03-01)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2023-03-01",
-          "source_file": "2023-03-01_STAR_효성중공업.md",
-          "target_price": 103150.0,
-          "stated_upside_pct": 45.0774
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2023-10-11",
-          "source_file": "2023-10-11_효성중공업 - '전력'질주를 시작하지.md",
-          "target_price": 269000.0,
-          "stated_upside_pct": 60.5012
-        }
-      ]
-    },
-    {
       "ticker": "036620",
       "market": "KR",
       "name": "감성코퍼레이션",
@@ -6138,35 +6109,6 @@
       ]
     },
     {
-      "ticker": "047810",
-      "market": "KR",
-      "name": "한국항공우주",
-      "entry_date": "2023-12-21",
-      "exit_date": "2024-01-31",
-      "entry_price": 48850.0,
-      "exit_price": 51000.0,
-      "return_pct": 3.78,
-      "days": 41,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: kuvic 2023-11-19, smic 2022-12-08)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-12-08",
-          "source_file": "2022-12-08_equity-research-한국항공우주.md",
-          "target_price": 67000.0,
-          "stated_upside_pct": 45.1788
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2023-11-19",
-          "source_file": "2023-11-19_한국항공우주 - 작전명 신세KAI.md",
-          "target_price": 69400.0,
-          "stated_upside_pct": 50.8696
-        }
-      ]
-    },
-    {
       "ticker": "140860",
       "market": "KR",
       "name": "파크시스템스",
@@ -6214,6 +6156,35 @@
           "source_file": "2025-11-06_케이씨텍(281820, KS), 슬러리 돈워리! (발간일 230916) YIG Research.md",
           "target_price": 27580.0,
           "stated_upside_pct": 21.766
+        }
+      ]
+    },
+    {
+      "ticker": "195940",
+      "market": "KR",
+      "name": "HK이노엔",
+      "entry_date": "2023-11-21",
+      "exit_date": "2024-02-06",
+      "entry_price": 42750.0,
+      "exit_price": 39650.0,
+      "return_pct": -7.81,
+      "days": 77,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: kuvic 2023-11-20, ewha 2022-05-28)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-05-28",
+          "source_file": "2022-05-28_[220528] HK이노엔(195940).md",
+          "target_price": 54312.0,
+          "stated_upside_pct": 23.8586
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-11-20",
+          "source_file": "2023-11-20_HK이노엔 - 네가 알던 내가 아냐.md",
+          "target_price": 45000.0,
+          "stated_upside_pct": 5.51
         }
       ]
     },

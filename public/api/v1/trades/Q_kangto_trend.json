@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-27T20:36:41+00:00",
+  "generated_at": "2026-08-31T17:54:33+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24019,6 +24019,136 @@
           "source_file": "2026-03-14_STAR_슈프리마.md",
           "target_price": 89600.0,
           "stated_upside_pct": 82.1138
+        }
+      ]
+    },
+    {
+      "ticker": "251970",
+      "market": "KR",
+      "name": "펌텍코리아",
+      "entry_date": "2026-08-13",
+      "exit_date": "2026-08-28",
+      "entry_price": 57600.0,
+      "exit_price": 56700.0,
+      "return_pct": -2.15,
+      "days": 15,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 77 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 펌텍코리아.md",
+          "target_price": 20224.0,
+          "stated_upside_pct": 26.0062
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_펌텍코리아.md",
+          "target_price": 68500.0,
+          "stated_upside_pct": 65.8596
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-10-12",
+          "source_file": "2023-10-12_펌텍코리아 - '용기' 있는 자가 세상을 얻는다.md",
+          "target_price": 47000.0,
+          "stated_upside_pct": 88.0
+        }
+      ]
+    },
+    {
+      "ticker": "192820",
+      "market": "KR",
+      "name": "코스맥스",
+      "entry_date": "2026-08-13",
+      "exit_date": "2026-08-28",
+      "entry_price": 243000.0,
+      "exit_price": 301320.0,
+      "return_pct": 23.26,
+      "days": 15,
+      "exit_reason": "q_half_+3R",
+      "entry_reason": "깡토 추세추종: RS 87 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-12-06",
+          "source_file": "2023-12-06_equity-research-코스맥스-2.md",
+          "target_price": 142000.0,
+          "stated_upside_pct": 17.3554
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-02-16",
+          "source_file": "2024-02-16_[240216] 코스맥스(192820).md",
+          "target_price": 167700.0,
+          "stated_upside_pct": 46.9763
+        },
+        {
+          "school": "star",
+          "report_date": "2024-03-11",
+          "source_file": "2024-03-11_STAR_코스맥스.md",
+          "target_price": 147100.0,
+          "stated_upside_pct": 40.9004
+        },
+        {
+          "school": "voera",
+          "report_date": "2025-03-08",
+          "source_file": "undated_[BUY] 코스메틱 성공 코스 ODM 여기엠! 코스맥스.md",
+          "target_price": 222100.0,
+          "stated_upside_pct": 20.51
+        }
+      ]
+    },
+    {
+      "ticker": "TEM",
+      "market": "US",
+      "name": "TEM",
+      "entry_date": "2026-08-21",
+      "exit_date": "2026-08-31",
+      "entry_price": 65.6,
+      "exit_price": 62.25,
+      "return_pct": -7.24,
+      "days": 10,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 81 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-05-25",
+          "source_file": "2025-05-25_equity-research-tempus-ai-inc.md",
+          "target_price": 228.5,
+          "stated_upside_pct": 265.2494
+        }
+      ]
+    },
+    {
+      "ticker": "161890",
+      "market": "KR",
+      "name": "한국콜마",
+      "entry_date": "2026-08-13",
+      "exit_date": "2026-08-31",
+      "entry_price": 133000.0,
+      "exit_price": 164920.0,
+      "return_pct": 23.26,
+      "days": 18,
+      "exit_reason": "q_half_+3R",
+      "entry_reason": "깡토 추세추종: RS 92 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2025-05-08",
+          "source_file": "2025-11-11_한국콜마 (161890, KS), 콜마의 여름이 돌아왔다 (발간일 250508) YIG Research.md",
+          "target_price": 106929.0,
+          "stated_upside_pct": 34.3329
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-13",
+          "source_file": "2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md",
+          "target_price": null,
+          "stated_upside_pct": 27.3
         }
       ]
     }
