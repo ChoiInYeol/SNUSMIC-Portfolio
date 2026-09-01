@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-31T17:54:33+00:00",
+  "generated_at": "2026-09-01T14:40:09+00:00",
   "strategy_key": "N_52w_high",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -2189,6 +2189,35 @@
           "source_file": "2026-06-13_STAR_테스.md",
           "target_price": null,
           "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "007340",
+      "market": "KR",
+      "name": "DN오토모티브",
+      "entry_date": "2026-04-15",
+      "exit_date": "2026-09-01",
+      "entry_price": 37300.0,
+      "exit_price": 46800.0,
+      "return_pct": 24.72,
+      "days": 139,
+      "exit_reason": "52w_hi_exit",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2026-04-14, star 2023-02-16)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-02-16",
+          "source_file": "2023-02-16_STAR_DN오토모티브.md",
+          "target_price": 27887.017,
+          "stated_upside_pct": 103.5549
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-04-14",
+          "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
+          "target_price": 60800.0,
+          "stated_upside_pct": 67.9558
         }
       ]
     }

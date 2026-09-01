@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-31T17:54:33+00:00",
+  "generated_at": "2026-09-01T14:40:09+00:00",
   "strategy_key": "V_ls",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7320,6 +7320,223 @@
           "source_file": "2026-05-11_후성 (093370, KOSPI), '후'퇴는 없다, '성'장만 남았다 YIG Research.md",
           "target_price": 20000.0,
           "stated_upside_pct": 49.1424
+        }
+      ]
+    },
+    {
+      "ticker": "010950",
+      "market": "KR",
+      "name": "S-Oil",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 126100.0,
+      "exit_price": 150400.0,
+      "return_pct": 18.56,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-s-oil-4.md",
+          "target_price": 128400.0,
+          "stated_upside_pct": 48.6111
+        },
+        {
+          "school": "voera",
+          "report_date": "2023-03-03",
+          "source_file": "undated_[Buy] 하이비젼시스템,애플아 나 지금 되게 신나.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-03-11",
+          "source_file": "2023-03-11_[230311] S-Oil(010950).md",
+          "target_price": 117400.0,
+          "stated_upside_pct": 44.4034
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_S-Oil.md",
+          "target_price": 119900.0,
+          "stated_upside_pct": 46.9363
+        }
+      ]
+    },
+    {
+      "ticker": "007340",
+      "market": "KR",
+      "name": "DN오토모티브",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 38850.0,
+      "exit_price": 46800.0,
+      "return_pct": 19.74,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-02-16",
+          "source_file": "2023-02-16_STAR_DN오토모티브.md",
+          "target_price": 27887.017,
+          "stated_upside_pct": 103.5549
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-04-14",
+          "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
+          "target_price": 60800.0,
+          "stated_upside_pct": 67.9558
+        }
+      ]
+    },
+    {
+      "ticker": "093320",
+      "market": "KR",
+      "name": "케이아이엔엑스",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 128500.0,
+      "exit_price": 144000.0,
+      "return_pct": 11.39,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_케이아이엔엑스.md",
+          "target_price": 151400.0,
+          "stated_upside_pct": 108.2531
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-11-02",
+          "source_file": "2025-11-10_케이아이엔엑스 (093320, KQ), KINX, 내가 데이터센터의 King이 될 상인가 (발간일 231102) YIG Re.md",
+          "target_price": 148000.0,
+          "stated_upside_pct": 66.1055
+        }
+      ]
+    },
+    {
+      "ticker": "236200",
+      "market": "KR",
+      "name": "슈프리마",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 51500.0,
+      "exit_price": 56300.0,
+      "return_pct": 8.67,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-08-23",
+          "source_file": "2024-08-23_[240823] 슈프리마(236200).md",
+          "target_price": 38810.0,
+          "stated_upside_pct": 33.5972
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_슈프리마.md",
+          "target_price": 89600.0,
+          "stated_upside_pct": 82.1138
+        }
+      ]
+    },
+    {
+      "ticker": "319660",
+      "market": "KR",
+      "name": "피에스케이",
+      "entry_date": "2026-07-01",
+      "exit_date": "2026-09-01",
+      "entry_price": 202000.0,
+      "exit_price": 124000.0,
+      "return_pct": -35.97,
+      "days": 62,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2026-03-17",
+          "source_file": "2026-03-31_피에스케이(319660,KQ), Post Semiconductor King YIG Research.md",
+          "target_price": 87400.0,
+          "stated_upside_pct": 20.0549
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-03",
+          "source_file": "2026-05-03_STAR_피에스케이.md",
+          "target_price": 127800.0,
+          "stated_upside_pct": 44.0812
+        }
+      ]
+    },
+    {
+      "ticker": "111770",
+      "market": "KR",
+      "name": "영원무역",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 88000.0,
+      "exit_price": 71800.0,
+      "return_pct": -18.9,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2025-02-21",
+          "source_file": "2025-11-11_영원무역 (111770, KS), The Young Ones Shouldn't Be Afraid YIG Research.md",
+          "target_price": 63250.0,
+          "stated_upside_pct": 43.424
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 36050.0,
+      "exit_price": 46400.0,
+      "return_pct": 27.94,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "ls 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_지엔씨에너지.md",
+          "target_price": 32000.0,
+          "stated_upside_pct": 99.6257
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }

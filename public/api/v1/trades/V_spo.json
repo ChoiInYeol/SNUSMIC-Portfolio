@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-31T17:54:33+00:00",
+  "generated_at": "2026-09-01T14:40:09+00:00",
   "strategy_key": "V_spo",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7164,6 +7164,209 @@
           "source_file": "2025-06-10_equity-research-고려신용정보-2.md",
           "target_price": 18600.0,
           "stated_upside_pct": 86.1862
+        }
+      ]
+    },
+    {
+      "ticker": "091700",
+      "market": "KR",
+      "name": "파트론",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 5270.0,
+      "exit_price": 5440.0,
+      "return_pct": 2.61,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-02-12",
+          "source_file": "2022-02-12_[220212] 파트론(091700).md",
+          "target_price": 17100.0,
+          "stated_upside_pct": 48.0519
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-06-10",
+          "source_file": "2026-06-10_Equity Research, 파트론.md",
+          "target_price": 15700.0,
+          "stated_upside_pct": 148.4177
+        }
+      ]
+    },
+    {
+      "ticker": "310200",
+      "market": "KR",
+      "name": "애니플러스",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 2550.0,
+      "exit_price": 2055.0,
+      "return_pct": -19.89,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-애니플러스-2.md",
+          "target_price": 7680.0,
+          "stated_upside_pct": 92.2403
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-09-20",
+          "source_file": "2023-09-20_애니플러스 - 내가 아직 만만하니.md",
+          "target_price": 6300.0,
+          "stated_upside_pct": 85.022
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_애니플러스.md",
+          "target_price": 9120.0,
+          "stated_upside_pct": 89.8023
+        }
+      ]
+    },
+    {
+      "ticker": "211050",
+      "market": "KR",
+      "name": "인카금융서비스",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 9700.0,
+      "exit_price": 10660.0,
+      "return_pct": 9.24,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-11-29",
+          "source_file": "2023-11-29_STAR_인카금융서비스.md",
+          "target_price": 4101.9279,
+          "stated_upside_pct": 36.2767
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-10-17",
+          "source_file": "2024-10-17_equity-research-인카금융서비스.md",
+          "target_price": 8100.0,
+          "stated_upside_pct": 55.4702
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-11-26",
+          "source_file": "2025-11-17_인카금융서비스 - 내 성장이 멈추지 않는 탓일까 ㅜ.ㅜ.md",
+          "target_price": 36700.0,
+          "stated_upside_pct": 143.0464
+        }
+      ]
+    },
+    {
+      "ticker": "226400",
+      "market": "KR",
+      "name": "오스테오닉",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 4900.0,
+      "exit_price": 4400.0,
+      "return_pct": -10.74,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2025-02-07",
+          "source_file": "2025-11-11_오스테오닉 (226400, KQ), 내수, 수출, 실적, 삼박자가 맞는 기업 (발간일 250207) YIG Research.md",
+          "target_price": 12560.0,
+          "stated_upside_pct": 49.702
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_오스테오닉.md",
+          "target_price": 9250.0,
+          "stated_upside_pct": 42.7469
+        }
+      ]
+    },
+    {
+      "ticker": "306200",
+      "market": "KR",
+      "name": "세아제강",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 127400.0,
+      "exit_price": 139100.0,
+      "return_pct": 8.53,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2025-05-13",
+          "source_file": "undated_[BUY] 강(鋼)하게 버틴다, 세아제강.md",
+          "target_price": 205630.0,
+          "stated_upside_pct": 19.7612
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-세아제강.md",
+          "target_price": 286700.0,
+          "stated_upside_pct": 95.034
+        }
+      ]
+    },
+    {
+      "ticker": "049720",
+      "market": "KR",
+      "name": "고려신용정보",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-09-01",
+      "entry_price": 9690.0,
+      "exit_price": 9200.0,
+      "return_pct": -5.63,
+      "days": 92,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 10.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-고려신용정보-2.md",
+          "target_price": 18600.0,
+          "stated_upside_pct": 86.1862
+        }
+      ]
+    },
+    {
+      "ticker": "472850",
+      "market": "KR",
+      "name": "폰드그룹",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-09-01",
+      "entry_price": 4480.0,
+      "exit_price": 5320.0,
+      "return_pct": 18.04,
+      "days": 29,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "spo_plus 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-폰드그룹.md",
+          "target_price": 16057.0,
+          "stated_upside_pct": 248.5348
         }
       ]
     }

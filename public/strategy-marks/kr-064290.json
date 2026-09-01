@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-31T17:54:34+00:00",
+  "generated_at": "2026-09-01T14:40:09+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "ticker": "064290",
   "market": "KR",
@@ -18,7 +18,17 @@
       "side": "stop",
       "price": 12200.0,
       "reason": "u_chandelier_ATR4.25 (+35.9%)"
+    },
+    {
+      "date": "2026-08-31",
+      "side": "buy",
+      "price": 31100.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: voera 2026-08-28, smic 2020-05-06)"
     }
   ],
-  "open_stop": null
+  "open_stop": {
+    "stop_level": 14210,
+    "entry_date": "2026-08-31",
+    "as_of": "2026-09-01"
+  }
 }

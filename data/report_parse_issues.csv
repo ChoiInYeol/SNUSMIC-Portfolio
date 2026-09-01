@@ -144,7 +144,7 @@ data/markdown/kuvic/2024-06-27_Novo Nordisk - 수수수 수퍼노보~.md,kuvic,s
 "data/markdown/kuvic/2024-06-28_버튜버 산업 - 야레야레, 못말리는 버튜버 아가씨.md",kuvic,sector,True,2024-06-28,,2024-06-28,,버튜버 산업,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2024-12-06_RADNET - 촬영하자고 너 누군데.md,kuvic,sector,True,2024-12-06,,2024-12-06,,RADNET,,,Buy,52.0,52,52.0,52,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2025-03-21_AdTech - AI 수익성 증명이 되.md,kuvic,sector,False,2025-03-21,2025-03-21,2025-03-21,,AdTech,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,,
-data/markdown/kuvic/2025-03-21_여행업 OTA - What's your OTA.md,kuvic,sector,True,2025-03-21,,2025-03-21,,여행업/OTA,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
+data/markdown/kuvic/2025-03-21_여행업 OTA - What's your OTA.md,kuvic,sector,True,2025-03-21,,2025-03-21,,,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 "data/markdown/kuvic/2025-03-21_패션 명품 - Better than your 루이비통, Your 루이비통~.md",kuvic,sector,True,2025-03-21,,2025-03-21,,패션/명품,,,Neutral,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md,kuvic,company,True,2025-05-13,2025-05-13,2025-05-13,KR,한국콜마,161890,KRX,Buy,,,,,27.3,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
 data/markdown/kuvic/2025-05-15_에이피알 - (A)안 (P)팔 (R)릴 이유가 없다.md,kuvic,company,True,2025-05-15,2025-05-12,2025-05-15,KR,에이피알,278470,KRX,Buy,,,,,32.0,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
