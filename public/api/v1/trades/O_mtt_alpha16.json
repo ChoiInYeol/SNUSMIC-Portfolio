@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-01T14:40:09+00:00",
+  "generated_at": "2026-09-02T14:10:03+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20345,6 +20345,42 @@
           "source_file": "2026-03-14_STAR_슈프리마.md",
           "target_price": 89600.0,
           "stated_upside_pct": 82.1138
+        }
+      ]
+    },
+    {
+      "ticker": "241710",
+      "market": "KR",
+      "name": "코스메카코리아",
+      "entry_date": "2026-08-21",
+      "exit_date": "2026-09-02",
+      "entry_price": 136200.0,
+      "exit_price": 139500.0,
+      "return_pct": 1.81,
+      "days": 12,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 94≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-03-11",
+          "source_file": "2024-03-11_STAR_코스메카코리아.md",
+          "target_price": 62800.0,
+          "stated_upside_pct": 69.0444
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-10-05",
+          "source_file": "2024-10-04_[241004] 코스메카코리아(241710).md",
+          "target_price": 116600.0,
+          "stated_upside_pct": 41.8491
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-03-04",
+          "source_file": "undated_[BUY] 화장품의 메카, 수익성은 메가! 코스메카코리아.md",
+          "target_price": 99200.0,
+          "stated_upside_pct": 40.113
         }
       ]
     }

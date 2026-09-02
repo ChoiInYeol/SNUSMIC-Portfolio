@@ -1246,7 +1246,7 @@ data/markdown/kuvic/2025-02-24_SK가스 - LNG도 ESS도 사로잡GAS!.md,kuvic,c
 "data/markdown/kuvic/2025-02-24_SK바이오팜 - 바이오팜, 꿈과 미래를 팜.md",kuvic,company,True,2025-02-24,,2025-02-24,KR,SK바이오팜,326030,KOSPI,Buy,204500.0,"204,500",115100.0,"115,100",,,ocr_fallback,
 data/markdown/kuvic/2025-02-24_하이브 - 하이브'리드' 엔터.md,kuvic,company,True,2025-02-24,,2025-02-24,KR,하이브,352820,KRX,Buy,369600.0,"369,600",245500.0,"245,500",50.5,,ocr_fallback,
 data/markdown/kuvic/2025-03-21_AdTech - AI 수익성 증명이 되.md,kuvic,sector,False,2025-03-21,2025-03-21,2025-03-21,,AdTech,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,,
-data/markdown/kuvic/2025-03-21_여행업 OTA - What's your OTA.md,kuvic,sector,True,2025-03-21,,2025-03-21,,,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
+data/markdown/kuvic/2025-03-21_여행업 OTA - What's your OTA.md,kuvic,sector,True,2025-03-21,,2025-03-21,,여행업/OTA,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 "data/markdown/kuvic/2025-03-21_패션 명품 - Better than your 루이비통, Your 루이비통~.md",kuvic,sector,True,2025-03-21,,2025-03-21,,패션/명품,,,Neutral,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
 data/markdown/kuvic/2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md,kuvic,company,True,2025-05-13,2025-05-13,2025-05-13,KR,한국콜마,161890,KRX,Buy,,,,,27.3,missing_target_price,ocr_fallback;ocr_inconsistent_prices,
 data/markdown/kuvic/2025-05-15_두산에너빌리티 - 두에빌은 뭐든지 두어블(Do-able).md,kuvic,company,False,2025-05-15,2025-05-12,2025-05-15,KR,두산에너빌리티,034020,KRX,Buy,64200.0,"64,200",28800.0,"28,800",123.0,,,
