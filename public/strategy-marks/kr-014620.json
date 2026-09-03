@@ -1,23 +1,23 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-02T14:10:04+00:00",
+  "generated_at": "2026-09-03T14:09:36+00:00",
   "strategy_key": "U_chandelier_scaleout",
-  "ticker": "196170",
+  "ticker": "014620",
   "market": "KR",
-  "name": "알테오젠",
+  "name": "성광벤드",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
   "marks": [
     {
-      "date": "2024-08-16",
+      "date": "2025-01-10",
       "side": "buy",
-      "price": 294000.0,
-      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: kuvic 2024-08-15, smic 2024-05-09)"
+      "price": 24750.0,
+      "reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: star 2025-01-09, ewha 2022-08-13)"
     },
     {
-      "date": "2024-11-21",
+      "date": "2025-04-08",
       "side": "stop",
-      "price": 344000.0,
-      "reason": "u_chandelier_ATR4.25 (+16.2%)"
+      "price": 23300.0,
+      "reason": "u_chandelier_ATR4.25 (-6.5%)"
     }
   ],
   "open_stop": null

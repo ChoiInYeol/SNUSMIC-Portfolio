@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-02T14:10:04+00:00",
+  "generated_at": "2026-09-03T14:09:36+00:00",
   "strategy_key": "S_msharpe",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24769,13 +24769,6 @@
           "source_file": "2024-05-09_equity-research-알테오젠.md",
           "target_price": 242200.0,
           "stated_upside_pct": 42.5544
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-08-15",
-          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
-          "target_price": null,
-          "stated_upside_pct": null
         }
       ]
     },
@@ -35608,7 +35601,7 @@
       "return_pct": 13.04,
       "days": 28,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 1.2% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 1.3% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -37052,7 +37045,7 @@
       "exit_date": "2026-04-01",
       "entry_price": 68.76,
       "exit_price": 57.34,
-      "return_pct": -20.47,
+      "return_pct": -20.46,
       "days": 58,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 1.7% 재조정 보유",
@@ -37365,7 +37358,7 @@
       "exit_date": "2026-05-01",
       "entry_price": 88.6086,
       "exit_price": 161.7721,
-      "return_pct": 24.13,
+      "return_pct": 24.16,
       "days": 119,
       "exit_reason": "s_rebalance_trim",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 10.7% 재조정 보유",
@@ -37722,7 +37715,7 @@
       "exit_date": "2026-06-01",
       "entry_price": 88.6086,
       "exit_price": 176.11,
-      "return_pct": 38.14,
+      "return_pct": 38.18,
       "days": 150,
       "exit_reason": "s_rebalance_trim",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 4.1% 재조정 보유",
@@ -38462,7 +38455,7 @@
       "exit_date": "2026-08-03",
       "entry_price": 88.6086,
       "exit_price": 134.89,
-      "return_pct": -26.86,
+      "return_pct": -26.85,
       "days": 213,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 9.4% 재조정 보유",
@@ -38484,7 +38477,7 @@
       "exit_date": "2026-08-03",
       "entry_price": 94500.0,
       "exit_price": 120000.0,
-      "return_pct": -0.47,
+      "return_pct": -0.46,
       "days": 182,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "msharpe 월간 리밸런스 — 목표비중 10.0% 재조정 보유",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-02T14:10:04+00:00",
+  "generated_at": "2026-09-03T14:09:36+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -4669,35 +4669,6 @@
       ]
     },
     {
-      "ticker": "196170",
-      "market": "KR",
-      "name": "알테오젠",
-      "entry_date": "2024-08-16",
-      "exit_date": "2024-11-21",
-      "entry_price": 294000.0,
-      "exit_price": 344000.0,
-      "return_pct": 16.25,
-      "days": 97,
-      "exit_reason": "u_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: kuvic 2024-08-15, smic 2024-05-09)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2024-05-09",
-          "source_file": "2024-05-09_equity-research-알테오젠.md",
-          "target_price": 242200.0,
-          "stated_upside_pct": 42.5544
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-08-15",
-          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
       "ticker": "083650",
       "market": "KR",
       "name": "비에이치아이",
@@ -4774,6 +4745,35 @@
           "source_file": "2024-11-11_대한항공 - 국가권력급 인수합병.md",
           "target_price": 24500.0,
           "stated_upside_pct": 2.9412
+        }
+      ]
+    },
+    {
+      "ticker": "178320",
+      "market": "KR",
+      "name": "서진시스템",
+      "entry_date": "2024-08-26",
+      "exit_date": "2025-01-08",
+      "entry_price": 27150.0,
+      "exit_price": 23750.0,
+      "return_pct": -13.09,
+      "days": 135,
+      "exit_reason": "u_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: ewha 2024-08-23, kuvic 2024-05-18)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-18",
+          "source_file": "2024-05-18_서진시스템 - 서(희)진씨 ESS 밟으실 수 있쬬.md",
+          "target_price": 43600.0,
+          "stated_upside_pct": 73.0159
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-08-23",
+          "source_file": "2024-08-23_[240823] 서진시스템(178320).md",
+          "target_price": 38100.0,
+          "stated_upside_pct": 43.7736
         }
       ]
     },
@@ -4930,28 +4930,6 @@
       ]
     },
     {
-      "ticker": "FNKO",
-      "market": "US",
-      "name": "FNKO",
-      "entry_date": "2024-11-22",
-      "exit_date": "2025-03-04",
-      "entry_price": 10.44,
-      "exit_price": 11.46,
-      "return_pct": 13.6,
-      "days": 102,
-      "exit_reason": "u_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: smic 2024-11-21)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2024-11-21",
-          "source_file": "2024-11-21_equity-research-funko-inc.md",
-          "target_price": 16.1,
-          "stated_upside_pct": 55.8567
-        }
-      ]
-    },
-    {
       "ticker": "141080",
       "market": "KR",
       "name": "리가켐바이오",
@@ -5097,6 +5075,35 @@
       ]
     },
     {
+      "ticker": "014620",
+      "market": "KR",
+      "name": "성광벤드",
+      "entry_date": "2025-01-10",
+      "exit_date": "2025-04-08",
+      "entry_price": 24750.0,
+      "exit_price": 23300.0,
+      "return_pct": -6.47,
+      "days": 88,
+      "exit_reason": "u_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: star 2025-01-09, ewha 2022-08-13)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-08-13",
+          "source_file": "2022-08-13_[220813] 성광벤드(014620).md",
+          "target_price": 17800.0,
+          "stated_upside_pct": 22.3368
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_성광벤드.md",
+          "target_price": 35650.0,
+          "stated_upside_pct": 43.4608
+        }
+      ]
+    },
+    {
       "ticker": "084730",
       "market": "KR",
       "name": "팅크웨어",
@@ -5137,49 +5144,6 @@
           "source_file": "2024-09-11_STAR_KT.md",
           "target_price": 49600.0,
           "stated_upside_pct": 20.2424
-        }
-      ]
-    },
-    {
-      "ticker": "192820",
-      "market": "KR",
-      "name": "코스맥스",
-      "entry_date": "2025-03-10",
-      "exit_date": "2025-04-10",
-      "entry_price": 184100.0,
-      "exit_price": 158100.0,
-      "return_pct": -14.68,
-      "days": 31,
-      "exit_reason": "u_chandelier_ATR4.25",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (KOSPI 파킹 매도 후 전환, 과열 스케일아웃 규칙) (트리거: voera 2025-03-08, star 2024-03-11, ewha 2024-02-16, smic 2023-12-06)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2023-12-06",
-          "source_file": "2023-12-06_equity-research-코스맥스-2.md",
-          "target_price": 142000.0,
-          "stated_upside_pct": 17.3554
-        },
-        {
-          "school": "ewha",
-          "report_date": "2024-02-16",
-          "source_file": "2024-02-16_[240216] 코스맥스(192820).md",
-          "target_price": 167700.0,
-          "stated_upside_pct": 46.9763
-        },
-        {
-          "school": "star",
-          "report_date": "2024-03-11",
-          "source_file": "2024-03-11_STAR_코스맥스.md",
-          "target_price": 147100.0,
-          "stated_upside_pct": 40.9004
-        },
-        {
-          "school": "voera",
-          "report_date": "2025-03-08",
-          "source_file": "undated_[BUY] 코스메틱 성공 코스 ODM 여기엠! 코스맥스.md",
-          "target_price": 222100.0,
-          "stated_upside_pct": 20.51
         }
       ]
     },
