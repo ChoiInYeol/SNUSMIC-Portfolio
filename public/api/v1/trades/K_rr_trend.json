@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8834,6 +8834,35 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-09-19",
+      "entry_price": 294000.0,
+      "exit_price": 349062.5,
+      "return_pct": 18.02,
+      "days": 34,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "031980",
       "market": "KR",
       "name": "피에스케이홀딩스",
@@ -9005,35 +9034,6 @@
           "source_file": "2025-11-10_GLP-1, 지방아 내 몸에서 나가! (발간일 240928) YIG Research.md",
           "target_price": 1390.0,
           "stated_upside_pct": 60.3398
-        }
-      ]
-    },
-    {
-      "ticker": "241710",
-      "market": "KR",
-      "name": "코스메카코리아",
-      "entry_date": "2024-10-07",
-      "exit_date": "2024-10-10",
-      "entry_price": 82300.0,
-      "exit_price": 78000.0,
-      "return_pct": -5.79,
-      "days": 3,
-      "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2024-10-05, star 2024-03-11)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-03-11",
-          "source_file": "2024-03-11_STAR_코스메카코리아.md",
-          "target_price": 62800.0,
-          "stated_upside_pct": 69.0444
-        },
-        {
-          "school": "ewha",
-          "report_date": "2024-10-05",
-          "source_file": "2024-10-04_[241004] 코스메카코리아(241710).md",
-          "target_price": 116600.0,
-          "stated_upside_pct": 41.8491
         }
       ]
     },
@@ -9453,6 +9453,35 @@
           "source_file": "2024-10-17_equity-research-크래프톤.md",
           "target_price": 600500.0,
           "stated_upside_pct": 79.5217
+        }
+      ]
+    },
+    {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-11-05",
+      "entry_price": 294000.0,
+      "exit_price": 390500.0,
+      "return_pct": 164.05,
+      "days": 81,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     },
@@ -16896,6 +16925,35 @@
           "source_file": "2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",
           "target_price": 76000.0,
           "stated_upside_pct": 48.728
+        }
+      ]
+    },
+    {
+      "ticker": "064290",
+      "market": "KR",
+      "name": "인텍플러스",
+      "entry_date": "2026-08-31",
+      "exit_date": "2026-09-04",
+      "entry_price": 31100.0,
+      "exit_price": 40131.25,
+      "return_pct": 28.27,
+      "days": 4,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: voera 2026-08-28, smic 2020-05-06)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 인텍플러스.md",
+          "target_price": 12534.0,
+          "stated_upside_pct": 40.5157
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-28",
+          "source_file": "undated_[BUY] 사람에 기술을 더하다, 인텍플러스.md",
+          "target_price": 44300.0,
+          "stated_upside_pct": 36.3077
         }
       ]
     }

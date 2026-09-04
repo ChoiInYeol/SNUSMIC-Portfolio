@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "C_narrative",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -1548,6 +1548,64 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-12-02",
+      "entry_price": 294000.0,
+      "exit_price": 283500.0,
+      "return_pct": -4.15,
+      "days": 108,
+      "exit_reason": "thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "032350",
+      "market": "KR",
+      "name": "롯데관광개발",
+      "entry_date": "2024-12-02",
+      "exit_date": "2025-01-02",
+      "entry_price": 8800.0,
+      "exit_price": 7650.0,
+      "return_pct": -13.59,
+      "days": 31,
+      "exit_reason": "thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-11-29, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-롯데관광개발.md",
+          "target_price": 19220.0,
+          "stated_upside_pct": 95.5239
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-29",
+          "source_file": "2025-11-10_롯데관광개발 (032350, KS), 롯데관광대박 (발간일 241129) YIG Research.md",
+          "target_price": 16780.0,
+          "stated_upside_pct": 90.8987
+        }
+      ]
+    },
+    {
       "ticker": "131370",
       "market": "KR",
       "name": "알서포트",
@@ -1602,28 +1660,6 @@
           "source_file": "2024-03-11_STAR_한국항공우주.md",
           "target_price": 71500.0,
           "stated_upside_pct": 34.1463
-        }
-      ]
-    },
-    {
-      "ticker": "337930",
-      "market": "KR",
-      "name": "젝시믹스",
-      "entry_date": "2024-08-19",
-      "exit_date": "2025-02-03",
-      "entry_price": 10680.0,
-      "exit_price": 6050.0,
-      "return_pct": -43.69,
-      "days": 168,
-      "exit_reason": "thesis_break_200MA",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-08-16)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-08-16",
-          "source_file": "2024-08-16_브랜드엑스코퍼레이션 - 1위 브랜드 엑스코퍼레이션.md",
-          "target_price": 16700.0,
-          "stated_upside_pct": 54.7729
         }
       ]
     },

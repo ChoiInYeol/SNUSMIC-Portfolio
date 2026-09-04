@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -12142,6 +12142,35 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2025-11-19",
+      "exit_date": "2025-12-01",
+      "entry_price": 560000.0,
+      "exit_price": 537000.0,
+      "return_pct": -4.68,
+      "days": 12,
+      "exit_reason": "mtt_rs_exit_<82",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 80≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "141080",
       "market": "KR",
       "name": "리가켐바이오",
@@ -20409,6 +20438,35 @@
           "source_file": "undated_[BUY] 미국이 감탄하고 전세계가 부러워하는, APR.md",
           "target_price": 362500.0,
           "stated_upside_pct": 44.7106
+        }
+      ]
+    },
+    {
+      "ticker": "161890",
+      "market": "KR",
+      "name": "한국콜마",
+      "entry_date": "2026-08-13",
+      "exit_date": "2026-09-04",
+      "entry_price": 133000.0,
+      "exit_price": 150500.0,
+      "return_pct": 12.48,
+      "days": 22,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 92≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2025-05-08",
+          "source_file": "2025-11-11_한국콜마 (161890, KS), 콜마의 여름이 돌아왔다 (발간일 250508) YIG Research.md",
+          "target_price": 106929.0,
+          "stated_upside_pct": 34.3329
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-13",
+          "source_file": "2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md",
+          "target_price": null,
+          "stated_upside_pct": 27.3
         }
       ]
     }

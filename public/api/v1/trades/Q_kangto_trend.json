@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24257,6 +24257,64 @@
           "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
           "target_price": 184000.0,
           "stated_upside_pct": 44.0877
+        }
+      ]
+    },
+    {
+      "ticker": "257720",
+      "market": "KR",
+      "name": "실리콘투",
+      "entry_date": "2026-08-13",
+      "exit_date": "2026-09-04",
+      "entry_price": 44300.0,
+      "exit_price": 48800.0,
+      "return_pct": 9.5,
+      "days": 22,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 78 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (2유닛)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-15",
+          "source_file": "2025-05-15_실리콘투 - 진격의 실리콘투.md",
+          "target_price": 59000.0,
+          "stated_upside_pct": 57.1238
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-20",
+          "source_file": "2025-11-10_실리콘투 (257720, KQ), 실리콘 투 the SKY! (발간일 241120) YIG Research.md",
+          "target_price": 60000.0,
+          "stated_upside_pct": 118.9781
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_실리콘투.md",
+          "target_price": 64500.0,
+          "stated_upside_pct": 76.7123
+        }
+      ]
+    },
+    {
+      "ticker": "472850",
+      "market": "KR",
+      "name": "폰드그룹",
+      "entry_date": "2026-08-31",
+      "exit_date": "2026-09-04",
+      "entry_price": 5500.0,
+      "exit_price": 4970.0,
+      "return_pct": -10.18,
+      "days": 4,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 75 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-폰드그룹.md",
+          "target_price": 16057.0,
+          "stated_upside_pct": 248.5348
         }
       ]
     }

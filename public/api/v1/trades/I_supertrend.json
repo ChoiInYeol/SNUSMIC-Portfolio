@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8208,6 +8208,35 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-11-21",
+      "entry_price": 294000.0,
+      "exit_price": 344000.0,
+      "return_pct": 16.31,
+      "days": 97,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "003230",
       "market": "KR",
       "name": "삼양식품",
@@ -8832,42 +8861,6 @@
       ]
     },
     {
-      "ticker": "010620",
-      "market": "KR",
-      "name": "HD현대미포",
-      "entry_date": "2024-10-18",
-      "exit_date": "2025-02-07",
-      "entry_price": 109800.0,
-      "exit_price": 116700.0,
-      "return_pct": 5.65,
-      "days": 112,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: kuvic 2024-08-16, star 2023-07-14, ewha 2021-02-20)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2021-02-20",
-          "source_file": "2021-02-20_[210220] 현대미포조선(010620).md",
-          "target_price": 69100.0,
-          "stated_upside_pct": 36.0236
-        },
-        {
-          "school": "star",
-          "report_date": "2023-07-14",
-          "source_file": "2023-07-14_STAR_현대미포조선.md",
-          "target_price": 111300.0,
-          "stated_upside_pct": 19.9353
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-08-16",
-          "source_file": "2024-08-16_HD현대미포 - 응답하라 2007 미포의 미친 (Positive) 포텐셜.md",
-          "target_price": 193000.0,
-          "stated_upside_pct": 76.9019
-        }
-      ]
-    },
-    {
       "ticker": "141080",
       "market": "KR",
       "name": "리가켐바이오",
@@ -9166,31 +9159,31 @@
       ]
     },
     {
-      "ticker": "039130",
+      "ticker": "204320",
       "market": "KR",
-      "name": "하나투어",
-      "entry_date": "2025-02-12",
-      "exit_date": "2025-03-21",
-      "entry_price": 58500.0,
-      "exit_price": 54100.0,
-      "return_pct": -8.08,
-      "days": 37,
+      "name": "HL만도",
+      "entry_date": "2025-01-10",
+      "exit_date": "2025-03-18",
+      "entry_price": 41350.0,
+      "exit_price": 40300.0,
+      "return_pct": -3.12,
+      "days": 67,
       "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2025-01-09, kuvic 2024-05-13)",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: star 2025-01-09, ewha 2023-05-27)",
       "trigger_reports": [
         {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
+          "school": "ewha",
+          "report_date": "2023-05-27",
+          "source_file": "2023-05-27_[230527] HL만도(204320).md",
+          "target_price": 63300.0,
+          "stated_upside_pct": 33.2632
         },
         {
           "school": "star",
           "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_하나투어.md",
-          "target_price": 96700.0,
-          "stated_upside_pct": 78.0847
+          "source_file": "2025-01-09_STAR_HL만도.md",
+          "target_price": 57500.0,
+          "stated_upside_pct": 39.0568
         }
       ]
     },
@@ -9293,6 +9286,28 @@
           "source_file": "2025-01-09_STAR_한국카본.md",
           "target_price": 18100.0,
           "stated_upside_pct": 47.5143
+        }
+      ]
+    },
+    {
+      "ticker": "108490",
+      "market": "KR",
+      "name": "로보티즈",
+      "entry_date": "2025-03-18",
+      "exit_date": "2025-03-31",
+      "entry_price": 39439.0,
+      "exit_price": 29409.0,
+      "return_pct": -25.88,
+      "days": 13,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: voera 2025-03-01)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2025-03-01",
+          "source_file": "undated_[BUY] Robot is... 로보티즈!.md",
+          "target_price": 45700.0,
+          "stated_upside_pct": 54.1211
         }
       ]
     },

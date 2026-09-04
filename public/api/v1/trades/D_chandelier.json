@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -6171,67 +6171,31 @@
       ]
     },
     {
-      "ticker": "340570",
+      "ticker": "196170",
       "market": "KR",
-      "name": "티앤엘",
-      "entry_date": "2024-08-26",
-      "exit_date": "2024-11-22",
-      "entry_price": 74200.0,
-      "exit_price": 60900.0,
-      "return_pct": -18.42,
-      "days": 88,
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-11-21",
+      "entry_price": 294000.0,
+      "exit_price": 344000.0,
+      "return_pct": 16.31,
+      "days": 97,
       "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2024-08-23, kuvic 2023-11-20, voera 2023-05-03, star 2023-04-22)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-08-15, smic 2024-05-09)",
       "trigger_reports": [
         {
-          "school": "star",
-          "report_date": "2023-04-22",
-          "source_file": "2023-04-22_STAR_티앤엘.md",
-          "target_price": 63300.0,
-          "stated_upside_pct": 38.6637
-        },
-        {
-          "school": "voera",
-          "report_date": "2023-05-03",
-          "source_file": "undated_[BUY].md",
-          "target_price": 105000.0,
-          "stated_upside_pct": 118.75
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
         },
         {
           "school": "kuvic",
-          "report_date": "2023-11-20",
-          "source_file": "2023-11-20_티앤엘 - Mighty Patch is getting Mighter.md",
-          "target_price": 59100.0,
-          "stated_upside_pct": 40.38
-        },
-        {
-          "school": "ewha",
-          "report_date": "2024-08-23",
-          "source_file": "2024-08-23_[240823] 티앤엘(340570).md",
-          "target_price": 113900.0,
-          "stated_upside_pct": 53.504
-        }
-      ]
-    },
-    {
-      "ticker": "079550",
-      "market": "KR",
-      "name": "LIG디펜스앤에어로스페이스",
-      "entry_date": "2024-09-12",
-      "exit_date": "2024-11-27",
-      "entry_price": 204000.0,
-      "exit_price": 199900.0,
-      "return_pct": -2.6,
-      "days": 76,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: star 2024-09-11)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_LIG넥스원.md",
-          "target_price": 267000.0,
-          "stated_upside_pct": 33.1671
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     },
@@ -6418,35 +6382,6 @@
       ]
     },
     {
-      "ticker": "032350",
-      "market": "KR",
-      "name": "롯데관광개발",
-      "entry_date": "2024-12-02",
-      "exit_date": "2025-02-04",
-      "entry_price": 8800.0,
-      "exit_price": 7790.0,
-      "return_pct": -12.01,
-      "days": 64,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-11-29, smic 2024-05-09)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2024-05-09",
-          "source_file": "2024-05-09_equity-research-롯데관광개발.md",
-          "target_price": 19220.0,
-          "stated_upside_pct": 95.5239
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-11-29",
-          "source_file": "2025-11-10_롯데관광개발 (032350, KS), 롯데관광대박 (발간일 241129) YIG Research.md",
-          "target_price": 16780.0,
-          "stated_upside_pct": 90.8987
-        }
-      ]
-    },
-    {
       "ticker": "178320",
       "market": "KR",
       "name": "서진시스템",
@@ -6603,6 +6538,28 @@
           "source_file": "2024-11-21_equity-research-funko-inc.md",
           "target_price": 16.1,
           "stated_upside_pct": 55.8567
+        }
+      ]
+    },
+    {
+      "ticker": "GRND",
+      "market": "US",
+      "name": "GRND",
+      "entry_date": "2024-11-22",
+      "exit_date": "2025-03-07",
+      "entry_price": 14.92,
+      "exit_price": 15.44,
+      "return_pct": 6.31,
+      "days": 105,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: smic 2024-11-21)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-11-21",
+          "source_file": "2024-11-21_equity-research-grindr-inc.md",
+          "target_price": 24.34,
+          "stated_upside_pct": 63.0275
         }
       ]
     },
@@ -6956,6 +6913,42 @@
       ]
     },
     {
+      "ticker": "035900",
+      "market": "KR",
+      "name": "JYP Ent.",
+      "entry_date": "2025-03-11",
+      "exit_date": "2025-07-29",
+      "entry_price": 71600.0,
+      "exit_price": 69300.0,
+      "return_pct": -3.79,
+      "days": 140,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: star 2025-03-10, smic 2024-12-05, ewha 2022-08-13)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-12-05",
+          "source_file": "2024-12-05_equity-research-jyp-ent-2.md",
+          "target_price": 116604.0,
+          "stated_upside_pct": 60.8331
+        },
+        {
+          "school": "ewha",
+          "report_date": "2022-08-13",
+          "source_file": "2022-08-13_[220813] JYP Ent.(035900).md",
+          "target_price": 75100.0,
+          "stated_upside_pct": 27.2881
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_JYP Ent_.md",
+          "target_price": 114500.0,
+          "stated_upside_pct": 56.6347
+        }
+      ]
+    },
+    {
       "ticker": "192820",
       "market": "KR",
       "name": "코스맥스",
@@ -7297,49 +7290,6 @@
       ]
     },
     {
-      "ticker": "237690",
-      "market": "KR",
-      "name": "에스티팜",
-      "entry_date": "2025-08-25",
-      "exit_date": "2025-10-27",
-      "entry_price": 93900.0,
-      "exit_price": 90900.0,
-      "return_pct": -3.77,
-      "days": 63,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2025-08-22, yig 2024-11-07, star 2024-09-11, smic 2024-04-17)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2024-04-17",
-          "source_file": "2024-04-17_equity-research-에스티팜-3.md",
-          "target_price": 114301.0,
-          "stated_upside_pct": 41.2868
-        },
-        {
-          "school": "star",
-          "report_date": "2024-09-11",
-          "source_file": "2024-09-11_STAR_에스티팜.md",
-          "target_price": 128500.0,
-          "stated_upside_pct": 32.7479
-        },
-        {
-          "school": "ewha",
-          "report_date": "2025-08-22",
-          "source_file": "2025-08-22_[250822] 에스티팜(237690).md",
-          "target_price": 133700.0,
-          "stated_upside_pct": 45.3261
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-11-07",
-          "source_file": "2025-11-10_에스티팜 (237690, KQ), 에스티팜 한 번 '올리고' 볼까 (발간일 241107) YIG Research.md",
-          "target_price": 160000.0,
-          "stated_upside_pct": 69.8514
-        }
-      ]
-    },
-    {
       "ticker": "008730",
       "market": "KR",
       "name": "율촌화학",
@@ -7487,14 +7437,14 @@
       "ticker": "278470",
       "market": "KR",
       "name": "에이피알",
-      "entry_date": "2025-02-10",
+      "entry_date": "2025-04-07",
       "exit_date": "2025-11-12",
-      "entry_price": 49500.0,
+      "entry_price": 61500.0,
       "exit_price": 213000.0,
-      "return_pct": 327.73,
-      "days": 275,
+      "return_pct": 244.27,
+      "days": 219,
       "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2025-02-07, star 2024-06-30, smic 2024-05-09)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2025-04-05, yig 2025-02-07, star 2024-06-30, smic 2024-05-09)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -7516,6 +7466,13 @@
           "source_file": "2025-11-11_에이피알 (278470, KS), “이제는 화장품도 장비발” (발간일 250207) YIG Research.md",
           "target_price": 68800.0,
           "stated_upside_pct": 38.9899
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-04-05",
+          "source_file": "2025-04-04_[250404] 에이피알(278470).md",
+          "target_price": 100500.0,
+          "stated_upside_pct": 56.2986
         }
       ]
     },
@@ -7843,6 +7800,28 @@
           "source_file": "2025-11-11_equity-research-지투지바이오.md",
           "target_price": 319800.0,
           "stated_upside_pct": 256.9196
+        }
+      ]
+    },
+    {
+      "ticker": "062040",
+      "market": "KR",
+      "name": "산일전기",
+      "entry_date": "2025-08-20",
+      "exit_date": "2025-12-29",
+      "entry_price": 107000.0,
+      "exit_price": 129200.0,
+      "return_pct": 20.02,
+      "days": 131,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2025-08-19)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-08-19",
+          "source_file": "2025-08-19_산일전기 - BESS를 연결하고, 미국 전력망을 점령하다.md",
+          "target_price": null,
+          "stated_upside_pct": 44.3
         }
       ]
     },

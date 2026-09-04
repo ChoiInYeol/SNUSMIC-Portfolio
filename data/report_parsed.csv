@@ -1225,7 +1225,7 @@ data/markdown/kuvic/2024-06-27_셀트리온 - K-바이오의 매운맛을 보여
 data/markdown/kuvic/2024-06-27_한화솔루션 - 중국을 이겨낼 단 '한화'의 솔루션.md,kuvic,company,True,2024-06-27,,2024-06-27,KR,한화솔루션,009830,KRX,Buy,49500.0,"49,500원",28200.0,"28,200원",,,ocr_fallback,
 "data/markdown/kuvic/2024-06-28_First Solar - 해가 지지 않는 기업, FSLR.md",kuvic,company,True,2024-06-28,,2024-06-28,US,EQUITY RESEARCH First SOlar,FSLR,NASDAQ,Buy,330.0,$330 $,330.0,$330 $,,,ocr_fallback,
 "data/markdown/kuvic/2024-06-28_버튜버 산업 - 야레야레, 못말리는 버튜버 아가씨.md",kuvic,sector,True,2024-06-28,,2024-06-28,,버튜버 산업,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
-data/markdown/kuvic/2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md,kuvic,sector,True,2024-08-15,,2024-08-15,,,,,Buy,65324.0,"65,324",13048.0,"13,048",,non_us_kr_or_unparsed_market;missing_ticker,ocr_fallback,
+data/markdown/kuvic/2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md,kuvic,company,True,2024-08-15,,2024-08-15,KR,알테오젠,196170,KOSDAQ,Buy,65324.0,"65,324",13048.0,"13,048",,,ocr_fallback,
 data/markdown/kuvic/2024-08-16_HD현대미포 - 응답하라 2007 미포의 미친 (Positive) 포텐셜.md,kuvic,company,True,2024-08-16,,2024-08-16,KR,HD현대미포,010620,KRX,Buy,193000.0,"193,000원",,"110,000원",15.0,,ocr_fallback;ocr_inconsistent_prices;target_manually_corrected,
 data/markdown/kuvic/2024-08-16_더존비즈온 - 이제는 DOU이상 ZONE버할 필요 없다.md,kuvic,company,True,2024-08-16,,2024-08-16,KR,더존비즈온,012510,KRX,Buy,75900.0,"75,900원",27100.0,"27,100원",,,ocr_fallback,
 data/markdown/kuvic/2024-08-16_브랜드엑스코퍼레이션 - 1위 브랜드 엑스코퍼레이션.md,kuvic,company,True,2024-08-16,,2024-08-16,KR,젝시믹스,337930,KRX,Buy,16700.0,"16,700원",10290.0,"10,290원",62.3,,ocr_fallback,

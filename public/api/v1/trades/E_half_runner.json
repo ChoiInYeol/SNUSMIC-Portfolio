@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-03T14:09:36+00:00",
+  "generated_at": "2026-09-04T14:06:08+00:00",
   "strategy_key": "E_half_runner",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -2493,6 +2493,35 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-08-16",
+      "entry_price": 294000.0,
+      "exit_price": 242200.0,
+      "return_pct": -18.11,
+      "days": 0,
+      "exit_reason": "목표가_절반익절",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "001530",
       "market": "KR",
       "name": "DI동일",
@@ -2681,6 +2710,35 @@
       ]
     },
     {
+      "ticker": "196170",
+      "market": "KR",
+      "name": "알테오젠",
+      "entry_date": "2024-08-16",
+      "exit_date": "2024-12-02",
+      "entry_price": 294000.0,
+      "exit_price": 283500.0,
+      "return_pct": -4.15,
+      "days": 108,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-08-15, smic 2024-05-09)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-알테오젠.md",
+          "target_price": 242200.0,
+          "stated_upside_pct": 42.5544
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-08-15",
+          "source_file": "2024-08-15_알테오젠 - 낫고 싶지만 링겔은 맞기 싫어.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "336570",
       "market": "KR",
       "name": "원텍",
@@ -2721,35 +2779,6 @@
           "source_file": "2024-06-28_First Solar - 해가 지지 않는 기업, FSLR.md",
           "target_price": 330.0,
           "stated_upside_pct": 46.3674
-        }
-      ]
-    },
-    {
-      "ticker": "LLY",
-      "market": "US",
-      "name": "LLY",
-      "entry_date": "2024-09-30",
-      "exit_date": "2024-12-02",
-      "entry_price": 853.8034,
-      "exit_price": 789.522,
-      "return_pct": 96.55,
-      "days": 63,
-      "exit_reason": "runner_thesis_break_200MA",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-09-28, smic 2023-11-22)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2023-11-22",
-          "source_file": "2023-11-22_equity-research-eli-lilly-co.md",
-          "target_price": 745.2,
-          "stated_upside_pct": 27.4131
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-09-28",
-          "source_file": "2025-11-10_GLP-1, 지방아 내 몸에서 나가! (발간일 240928) YIG Research.md",
-          "target_price": 1390.0,
-          "stated_upside_pct": 60.3398
         }
       ]
     },
@@ -2866,6 +2895,42 @@
           "source_file": "2024-03-11_STAR_한국항공우주.md",
           "target_price": 71500.0,
           "stated_upside_pct": 34.1463
+        }
+      ]
+    },
+    {
+      "ticker": "145020",
+      "market": "KR",
+      "name": "휴젤",
+      "entry_date": "2024-10-07",
+      "exit_date": "2025-02-03",
+      "entry_price": 259000.0,
+      "exit_price": 232000.0,
+      "return_pct": 78.08,
+      "days": 119,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-10-04, star 2023-03-01, voera 2023-01-02)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2023-01-02",
+          "source_file": "undated_[BUY] 휴~휴~ 불면은 수출길 뚫리는 휴젤.md",
+          "target_price": 387000.0,
+          "stated_upside_pct": 187.9464
+        },
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_휴젤.md",
+          "target_price": 188300.0,
+          "stated_upside_pct": 45.8559
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-10-04",
+          "source_file": "2025-11-10_휴젤 (145020, KQ), 휴~젤 좋다! (발간일 241004) YIG Research.md",
+          "target_price": 318000.0,
+          "stated_upside_pct": 23.7354
         }
       ]
     },
