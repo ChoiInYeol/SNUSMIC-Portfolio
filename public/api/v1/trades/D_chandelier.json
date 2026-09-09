@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-08T14:31:06+00:00",
+  "generated_at": "2026-09-09T14:20:19+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5414,6 +5414,56 @@
       ]
     },
     {
+      "ticker": "352820",
+      "market": "KR",
+      "name": "하이브",
+      "entry_date": "2024-07-01",
+      "exit_date": "2024-07-23",
+      "entry_price": 204500.0,
+      "exit_price": 179700.0,
+      "return_pct": -12.65,
+      "days": 22,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-06-28, smic 2023-10-19, star 2023-03-01, ewha 2023-02-08, voera 2022-05-28)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-10-19",
+          "source_file": "2023-10-19_equity-research-하이브-2.md",
+          "target_price": 334500.0,
+          "stated_upside_pct": 47.033
+        },
+        {
+          "school": "voera",
+          "report_date": "2022-05-28",
+          "source_file": "undated_[BUY] 하이브, High View!.md",
+          "target_price": 381500.0,
+          "stated_upside_pct": 74.5995
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-02-08",
+          "source_file": "2023-02-08_[230208] 하이브(352820).md",
+          "target_price": 229500.0,
+          "stated_upside_pct": 16.1437
+        },
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_하이브.md",
+          "target_price": 223000.0,
+          "stated_upside_pct": 20.4754
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-06-28",
+          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
+          "target_price": 400500.0,
+          "stated_upside_pct": 97.7778
+        }
+      ]
+    },
+    {
       "ticker": "039130",
       "market": "KR",
       "name": "하나투어",
@@ -5564,35 +5614,6 @@
           "source_file": "2024-02-28_HD현대건설기계 - HD현대건설기계 가치를 알아볼 시간.md",
           "target_price": 81000.0,
           "stated_upside_pct": 46.7391
-        }
-      ]
-    },
-    {
-      "ticker": "068270",
-      "market": "KR",
-      "name": "셀트리온",
-      "entry_date": "2024-06-28",
-      "exit_date": "2024-08-07",
-      "entry_price": 152662.0,
-      "exit_price": 158186.0,
-      "return_pct": 3.0,
-      "days": 40,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-06-27, smic 2022-12-08)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-12-08",
-          "source_file": "2022-12-08_equity-research-셀트리온-3.md",
-          "target_price": 222000.0,
-          "stated_upside_pct": 48.9113
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-06-27",
-          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
-          "target_price": 275200.0,
-          "stated_upside_pct": 80.5798
         }
       ]
     },

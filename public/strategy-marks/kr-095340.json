@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-08T14:31:06+00:00",
+  "generated_at": "2026-09-09T14:20:19+00:00",
   "strategy_key": "U_chandelier_scaleout",
   "ticker": "095340",
   "market": "KR",
@@ -15,8 +15,8 @@
     }
   ],
   "open_stop": {
-    "stop_level": 129600,
+    "stop_level": 133800,
     "entry_date": "2026-08-07",
-    "as_of": "2026-09-08"
+    "as_of": "2026-09-09"
   }
 }

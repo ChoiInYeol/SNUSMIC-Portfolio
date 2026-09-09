@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-08T14:31:06+00:00",
+  "generated_at": "2026-09-09T14:20:19+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8384,31 +8384,31 @@
       ]
     },
     {
-      "ticker": "068270",
+      "ticker": "194480",
       "market": "KR",
-      "name": "셀트리온",
-      "entry_date": "2024-06-28",
-      "exit_date": "2024-07-05",
-      "entry_price": 152662.0,
-      "exit_price": 163634.125,
-      "return_pct": 6.55,
-      "days": 7,
-      "exit_reason": "rr_half_+2.5R",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-06-27, smic 2022-12-08)",
+      "name": "데브시스터즈",
+      "entry_date": "2024-07-01",
+      "exit_date": "2024-07-03",
+      "entry_price": 60900.0,
+      "exit_price": 55400.0,
+      "return_pct": -9.58,
+      "days": 2,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2024-06-30, smic 2024-05-09)",
       "trigger_reports": [
         {
           "school": "smic",
-          "report_date": "2022-12-08",
-          "source_file": "2022-12-08_equity-research-셀트리온-3.md",
-          "target_price": 222000.0,
-          "stated_upside_pct": 48.9113
+          "report_date": "2024-05-09",
+          "source_file": "2024-05-09_equity-research-데브시스터즈-2.md",
+          "target_price": 87700.0,
+          "stated_upside_pct": 72.6378
         },
         {
-          "school": "kuvic",
-          "report_date": "2024-06-27",
-          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
-          "target_price": 275200.0,
-          "stated_upside_pct": 80.5798
+          "school": "star",
+          "report_date": "2024-06-30",
+          "source_file": "2024-06-30_STAR_데브시스터즈.md",
+          "target_price": 80500.0,
+          "stated_upside_pct": 37.138
         }
       ]
     },
@@ -8489,35 +8489,6 @@
           "source_file": "2024-07-26_[240726] 티씨케이(064760).md",
           "target_price": 166600.0,
           "stated_upside_pct": 50.4968
-        }
-      ]
-    },
-    {
-      "ticker": "068270",
-      "market": "KR",
-      "name": "셀트리온",
-      "entry_date": "2024-06-28",
-      "exit_date": "2024-08-05",
-      "entry_price": 152662.0,
-      "exit_price": 165114.0,
-      "return_pct": 115.02,
-      "days": 38,
-      "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-06-27, smic 2022-12-08)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-12-08",
-          "source_file": "2022-12-08_equity-research-셀트리온-3.md",
-          "target_price": 222000.0,
-          "stated_upside_pct": 48.9113
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-06-27",
-          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
-          "target_price": 275200.0,
-          "stated_upside_pct": 80.5798
         }
       ]
     },
@@ -9222,7 +9193,7 @@
       "return_pct": -3.21,
       "days": 11,
       "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2024-10-04, kuvic 2024-06-27, smic 2022-12-08)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2024-10-04, smic 2022-12-08)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -9230,13 +9201,6 @@
           "source_file": "2022-12-08_equity-research-셀트리온-3.md",
           "target_price": 222000.0,
           "stated_upside_pct": 48.9113
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-06-27",
-          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
-          "target_price": 275200.0,
-          "stated_upside_pct": 80.5798
         },
         {
           "school": "ewha",

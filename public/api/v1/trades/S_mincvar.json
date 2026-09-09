@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-08T14:31:06+00:00",
+  "generated_at": "2026-09-09T14:20:19+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -12553,7 +12553,7 @@
       "return_pct": -25.48,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.1% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12589,7 +12589,7 @@
       "return_pct": -19.44,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.7% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12625,7 +12625,7 @@
       "return_pct": -11.5,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.3% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.2% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -12654,7 +12654,7 @@
       "return_pct": 6.14,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.2% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -12673,35 +12673,6 @@
       ]
     },
     {
-      "ticker": "041830",
-      "market": "KR",
-      "name": "인바디",
-      "entry_date": "2024-08-01",
-      "exit_date": "2024-09-02",
-      "entry_price": 24200.0,
-      "exit_price": 25800.0,
-      "return_pct": 5.97,
-      "days": 32,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.1% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-05-12",
-          "source_file": "2022-05-12_equity-research-인바디.md",
-          "target_price": 43000.0,
-          "stated_upside_pct": 51.9435
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-04-06",
-          "source_file": "2025-11-10_인바디 (041830, KQ), 갖고 싶어 美 In Body (발간일 240405) YIG Research.md",
-          "target_price": 40000.0,
-          "stated_upside_pct": 41.844
-        }
-      ]
-    },
-    {
       "ticker": "001060",
       "market": "KR",
       "name": "JW중외제약",
@@ -12712,7 +12683,7 @@
       "return_pct": -8.81,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.4% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 11.8% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -12741,7 +12712,7 @@
       "return_pct": -3.97,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 4.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.6% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12770,7 +12741,7 @@
       "return_pct": -11.29,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 9.9% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12789,35 +12760,6 @@
       ]
     },
     {
-      "ticker": "068270",
-      "market": "KR",
-      "name": "셀트리온",
-      "entry_date": "2024-08-01",
-      "exit_date": "2024-09-02",
-      "entry_price": 176250.0,
-      "exit_price": 178003.0,
-      "return_pct": 0.39,
-      "days": 32,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2022-12-08",
-          "source_file": "2022-12-08_equity-research-셀트리온-3.md",
-          "target_price": 222000.0,
-          "stated_upside_pct": 48.9113
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2024-06-27",
-          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
-          "target_price": 275200.0,
-          "stated_upside_pct": 80.5798
-        }
-      ]
-    },
-    {
       "ticker": "100840",
       "market": "KR",
       "name": "SNT에너지",
@@ -12828,7 +12770,7 @@
       "return_pct": -8.28,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.1% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.5% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12857,7 +12799,7 @@
       "return_pct": -10.27,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.4% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -12908,7 +12850,7 @@
       "return_pct": -12.92,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.8% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.1% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12944,7 +12886,7 @@
       "return_pct": -4.54,
       "days": 91,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.2% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.7% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -12973,7 +12915,7 @@
       "return_pct": -10.53,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.9% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -13006,10 +12948,10 @@
       "exit_date": "2024-09-02",
       "entry_price": 14220.0,
       "exit_price": 18880.0,
-      "return_pct": 2.75,
+      "return_pct": 5.09,
       "days": 91,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 8.1% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 7.6% 재조정 보유",
       "trigger_reports": [
         {
           "school": "star",
@@ -13021,24 +12963,24 @@
       ]
     },
     {
-      "ticker": "008730",
+      "ticker": "009450",
       "market": "KR",
-      "name": "율촌화학",
+      "name": "경동나비엔",
       "entry_date": "2024-08-01",
       "exit_date": "2024-09-02",
-      "entry_price": 24050.0,
-      "exit_price": 23700.0,
-      "return_pct": -2.05,
+      "entry_price": 58000.0,
+      "exit_price": 68800.0,
+      "return_pct": 17.91,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.6% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.4% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
-          "school": "smic",
-          "report_date": "2024-05-09",
-          "source_file": "2024-05-09_equity-research-율촌화학.md",
-          "target_price": 69000.0,
-          "stated_upside_pct": 110.687
+          "school": "star",
+          "report_date": "2023-09-08",
+          "source_file": "2023-09-08_STAR_경동나비엔.md",
+          "target_price": 80300.0,
+          "stated_upside_pct": 68.3438
         }
       ]
     },
@@ -13053,7 +12995,7 @@
       "return_pct": -12.3,
       "days": 63,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 4.1% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 4.5% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -13075,7 +13017,7 @@
       "return_pct": -5.68,
       "days": 32,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 12.9% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -13094,7 +13036,7 @@
       "exit_date": "2024-10-01",
       "entry_price": 1365778.0,
       "exit_price": 1437894.0,
-      "return_pct": -1.52,
+      "return_pct": 0.18,
       "days": 61,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
@@ -13220,14 +13162,14 @@
       "ticker": "395400",
       "market": "KR",
       "name": "SK리츠",
-      "entry_date": "2024-08-01",
+      "entry_date": "2024-09-02",
       "exit_date": "2024-11-01",
-      "entry_price": 5240.0,
+      "entry_price": 5350.0,
       "exit_price": 4635.0,
-      "return_pct": -13.53,
-      "days": 92,
+      "return_pct": -13.88,
+      "days": 60,
       "exit_reason": "s_rebalance_trim",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -13401,12 +13343,12 @@
       "ticker": "395400",
       "market": "KR",
       "name": "SK리츠",
-      "entry_date": "2024-08-01",
+      "entry_date": "2024-09-02",
       "exit_date": "2024-12-02",
-      "entry_price": 5240.0,
+      "entry_price": 5350.0,
       "exit_price": 4700.0,
-      "return_pct": -12.31,
-      "days": 123,
+      "return_pct": -12.68,
+      "days": 91,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 11.5% 재조정 보유",
       "trigger_reports": [
