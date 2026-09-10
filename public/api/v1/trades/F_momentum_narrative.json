@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-09T14:20:19+00:00",
+  "generated_at": "2026-09-10T14:11:20+00:00",
   "strategy_key": "F_momentum_narrative",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -1300,7 +1300,7 @@
       "return_pct": -7.31,
       "days": 25,
       "exit_reason": "thesis_break_200MA",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2024-10-04, smic 2022-12-08) · 진입 조건: 시가 > 200MA (모멘텀 필터 통과)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2024-10-04, kuvic 2024-06-27, smic 2022-12-08) · 진입 조건: 시가 > 200MA (모멘텀 필터 통과)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -1308,6 +1308,13 @@
           "source_file": "2022-12-08_equity-research-셀트리온-3.md",
           "target_price": 222000.0,
           "stated_upside_pct": 48.9113
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-06-27",
+          "source_file": "2024-06-27_셀트리온 - K-바이오의 매운맛을 보여줄게.md",
+          "target_price": 275200.0,
+          "stated_upside_pct": 80.5798
         },
         {
           "school": "ewha",
