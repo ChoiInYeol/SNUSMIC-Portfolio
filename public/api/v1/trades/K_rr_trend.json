@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-10T14:11:20+00:00",
+  "generated_at": "2026-09-11T14:06:32+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -16954,6 +16954,35 @@
           "source_file": "undated_[BUY] 사람에 기술을 더하다, 인텍플러스.md",
           "target_price": 44300.0,
           "stated_upside_pct": 36.3077
+        }
+      ]
+    },
+    {
+      "ticker": "020000",
+      "market": "KR",
+      "name": "한섬",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-09-11",
+      "entry_price": 15680.0,
+      "exit_price": 15250.0,
+      "return_pct": -3.33,
+      "days": 2,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2026-09-08, voera 2021-09-17)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2021-09-17",
+          "source_file": "undated_[BUY] 한섬, HANDSOME!.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_한섬.md",
+          "target_price": 45000.0,
+          "stated_upside_pct": 189.7618
         }
       ]
     }
