@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-11T14:06:32+00:00",
+  "generated_at": "2026-09-15T14:49:16+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -21317,71 +21317,6 @@
       ]
     },
     {
-      "ticker": "066970",
-      "market": "KR",
-      "name": "엘앤에프",
-      "entry_date": "2026-07-31",
-      "exit_date": "2026-08-13",
-      "entry_price": 70900.0,
-      "exit_price": 102600.0,
-      "return_pct": 43.84,
-      "days": 13,
-      "exit_reason": "dip_+50pct",
-      "entry_reason": "발간일(2026-05-26) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2026-05-26",
-          "source_file": "2026-05-26_[260526] (KEYSS 대회 우수상) 엘앤에프(066970).md",
-          "target_price": 290700.0,
-          "stated_upside_pct": 84.4543
-        },
-        {
-          "school": "star",
-          "report_date": "2025-12-12",
-          "source_file": "2025-12-12_STAR_엘앤에프.md",
-          "target_price": 204200.0,
-          "stated_upside_pct": 59.0343
-        },
-        {
-          "school": "yig",
-          "report_date": "2025-11-06",
-          "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
-          "target_price": 184000.0,
-          "stated_upside_pct": 44.0877
-        }
-      ]
-    },
-    {
-      "ticker": "011070",
-      "market": "KR",
-      "name": "LG이노텍",
-      "entry_date": "2026-08-14",
-      "exit_date": "2026-08-14",
-      "entry_price": 645000.0,
-      "exit_price": 431000.0,
-      "return_pct": -33.58,
-      "days": 0,
-      "exit_reason": "dip_목표가",
-      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2023-07-22",
-          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
-          "target_price": 431000.0,
-          "stated_upside_pct": 52.5664
-        },
-        {
-          "school": "star",
-          "report_date": "2026-06-12",
-          "source_file": "2026-06-12_STAR_LG이노텍.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
       "ticker": "403870",
       "market": "KR",
       "name": "HPSP",
@@ -21414,6 +21349,35 @@
           "source_file": "2026-03-14_STAR_HPSP.md",
           "target_price": 44900.0,
           "stated_upside_pct": 5.2755
+        }
+      ]
+    },
+    {
+      "ticker": "348210",
+      "market": "KR",
+      "name": "넥스틴",
+      "entry_date": "2026-07-30",
+      "exit_date": "2026-08-18",
+      "entry_price": 25600.0,
+      "exit_price": 35200.0,
+      "return_pct": 36.68,
+      "days": 19,
+      "exit_reason": "dip_+50pct",
+      "entry_reason": "발간일(2026-07-25) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-넥스틴.md",
+          "target_price": 72400.0,
+          "stated_upside_pct": 41.4062
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 넥스틴(348210).md",
+          "target_price": 49800.0,
+          "stated_upside_pct": 50.6808
         }
       ]
     },
@@ -21570,57 +21534,6 @@
       ]
     },
     {
-      "ticker": "STRL",
-      "market": "US",
-      "name": "STRL",
-      "entry_date": "2026-08-18",
-      "exit_date": "2026-09-03",
-      "entry_price": 575.38,
-      "exit_price": 455.82,
-      "return_pct": -24.39,
-      "days": 16,
-      "exit_reason": "dip_atr3_stop",
-      "entry_reason": "발간일(2026-05-29) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2026-05-29",
-          "source_file": "2026-05-29_equity-research-sterling-infrastructure-inc.md",
-          "target_price": 1500.0,
-          "stated_upside_pct": 74.2484
-        }
-      ]
-    },
-    {
-      "ticker": "011070",
-      "market": "KR",
-      "name": "LG이노텍",
-      "entry_date": "2026-09-03",
-      "exit_date": "2026-09-03",
-      "entry_price": 579000.0,
-      "exit_price": 431000.0,
-      "return_pct": -26.01,
-      "days": 0,
-      "exit_reason": "dip_목표가",
-      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2023-07-22",
-          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
-          "target_price": 431000.0,
-          "stated_upside_pct": 52.5664
-        },
-        {
-          "school": "star",
-          "report_date": "2026-06-12",
-          "source_file": "2026-06-12_STAR_LG이노텍.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
       "ticker": "189300",
       "market": "KR",
       "name": "인텔리안테크",
@@ -21671,15 +21584,44 @@
       ]
     },
     {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-09-04",
+      "exit_date": "2026-09-04",
+      "entry_price": 554000.0,
+      "exit_price": 431000.0,
+      "return_pct": -22.67,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
       "ticker": "066970",
       "market": "KR",
       "name": "엘앤에프",
-      "entry_date": "2026-08-21",
+      "entry_date": "2026-08-20",
       "exit_date": "2026-09-08",
-      "entry_price": 104700.0,
+      "entry_price": 108000.0,
       "exit_price": 116300.0,
-      "return_pct": 10.41,
-      "days": 18,
+      "return_pct": 7.04,
+      "days": 19,
       "exit_reason": "dip_atr3_stop",
       "entry_reason": "발간일(2026-05-26) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
       "trigger_reports": [
@@ -21703,6 +21645,143 @@
           "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
           "target_price": 184000.0,
           "stated_upside_pct": 44.0877
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-09-08",
+      "exit_date": "2026-09-08",
+      "entry_price": 587000.0,
+      "exit_price": 431000.0,
+      "return_pct": -27.02,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "099190",
+      "market": "KR",
+      "name": "아이센스",
+      "entry_date": "2026-06-09",
+      "exit_date": "2026-09-15",
+      "entry_price": 15580.0,
+      "exit_price": 16110.0,
+      "return_pct": 2.78,
+      "days": 98,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-03-14) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_아이센스.md",
+          "target_price": 35400.0,
+          "stated_upside_pct": 80.2444
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-11-02",
+          "source_file": "2025-11-10_아이센스(099190, KQ), 우리 아이 센스가 달라졌어요 (발간일 231104) YIG Research.md",
+          "target_price": 40400.0,
+          "stated_upside_pct": 61.6
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-11-25",
+          "source_file": "2023-11-25_[231125] 아이센스(099190).md",
+          "target_price": 32200.0,
+          "stated_upside_pct": 37.6068
+        }
+      ]
+    },
+    {
+      "ticker": "237690",
+      "market": "KR",
+      "name": "에스티팜",
+      "entry_date": "2026-07-29",
+      "exit_date": "2026-09-15",
+      "entry_price": 98400.0,
+      "exit_price": 88000.0,
+      "return_pct": -11.1,
+      "days": 48,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-05-04) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2024-04-17",
+          "source_file": "2024-04-17_equity-research-에스티팜-3.md",
+          "target_price": 114301.0,
+          "stated_upside_pct": 41.2868
+        },
+        {
+          "school": "star",
+          "report_date": "2026-05-04",
+          "source_file": "2026-05-04_STAR_에스티팜.md",
+          "target_price": 224800.0,
+          "stated_upside_pct": 46.1638
+        },
+        {
+          "school": "ewha",
+          "report_date": "2025-08-22",
+          "source_file": "2025-08-22_[250822] 에스티팜(237690).md",
+          "target_price": 133700.0,
+          "stated_upside_pct": 45.3261
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-07",
+          "source_file": "2025-11-10_에스티팜 (237690, KQ), 에스티팜 한 번 '올리고' 볼까 (발간일 241107) YIG Research.md",
+          "target_price": 160000.0,
+          "stated_upside_pct": 69.8514
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-09-15",
+      "exit_date": "2026-09-15",
+      "entry_price": 508000.0,
+      "exit_price": 431000.0,
+      "return_pct": -15.67,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }

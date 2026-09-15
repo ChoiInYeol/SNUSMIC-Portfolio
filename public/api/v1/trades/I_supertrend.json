@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-11T14:06:32+00:00",
+  "generated_at": "2026-09-15T14:49:16+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -2298,28 +2298,6 @@
       ]
     },
     {
-      "ticker": "348210",
-      "market": "KR",
-      "name": "넥스틴",
-      "entry_date": "2021-12-20",
-      "exit_date": "2022-02-16",
-      "entry_price": 53000.0,
-      "exit_price": 55100.0,
-      "return_pct": 3.34,
-      "days": 58,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: smic 2021-11-03)",
-      "trigger_reports": [
-        {
-          "school": "smic",
-          "report_date": "2021-11-03",
-          "source_file": "2021-11-03_equity-research-넥스틴.md",
-          "target_price": 72400.0,
-          "stated_upside_pct": 41.4062
-        }
-      ]
-    },
-    {
       "ticker": "INMD",
       "market": "US",
       "name": "INMD",
@@ -2755,35 +2733,6 @@
           "source_file": "2022-03-12_[220312] 롯데칠성(005300).md",
           "target_price": 242000.0,
           "stated_upside_pct": 51.25
-        }
-      ]
-    },
-    {
-      "ticker": "195870",
-      "market": "KR",
-      "name": "해성디에스",
-      "entry_date": "2022-03-25",
-      "exit_date": "2022-06-20",
-      "entry_price": 54700.0,
-      "exit_price": 62300.0,
-      "return_pct": 13.21,
-      "days": 87,
-      "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2022-03-15, ewha 2021-03-10)",
-      "trigger_reports": [
-        {
-          "school": "ewha",
-          "report_date": "2021-03-10",
-          "source_file": "2021-02-20_[210220] 해성디에스(195870).md",
-          "target_price": 53700.0,
-          "stated_upside_pct": 79.0
-        },
-        {
-          "school": "star",
-          "report_date": "2022-03-15",
-          "source_file": "2022-03-15_STAR_해성디에스.md",
-          "target_price": 67300.0,
-          "stated_upside_pct": 47.5877
         }
       ]
     },
@@ -13849,6 +13798,71 @@
           "source_file": "undated_[BUY] 조선,대한으로 나아가라, 대한조선.md",
           "target_price": 107000.0,
           "stated_upside_pct": 52.4217
+        }
+      ]
+    },
+    {
+      "ticker": "010060",
+      "market": "KR",
+      "name": "OCI홀딩스",
+      "entry_date": "2026-08-10",
+      "exit_date": "2026-09-15",
+      "entry_price": 267000.0,
+      "exit_price": 203500.0,
+      "return_pct": -24.24,
+      "days": 36,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2026-06-13, yig 2026-01-01, ewha 2021-08-21)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2021-08-21",
+          "source_file": "2021-08-21_[210821] OCI(010060).md",
+          "target_price": 113156.0,
+          "stated_upside_pct": 40.2911
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-01-01",
+          "source_file": "2026-04-04_OCI홀딩스(010060, KOSPI), 전력은 부족해도, 홀딩은 OCI YIG Research.md",
+          "target_price": 159300.0,
+          "stated_upside_pct": 38.2812
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-13",
+          "source_file": "2026-06-13_KEYSS_STAR_OCI홀딩스.md",
+          "target_price": 576500.0,
+          "stated_upside_pct": 92.1667
+        }
+      ]
+    },
+    {
+      "ticker": "290650",
+      "market": "KR",
+      "name": "엘앤씨바이오",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-09-15",
+      "entry_price": 51400.0,
+      "exit_price": 46400.0,
+      "return_pct": -10.27,
+      "days": 22,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: voera 2026-08-21, ewha 2025-11-25)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2025-11-25",
+          "source_file": "2025-11-25_[251125] (KEYSS 대회) 엘앤씨바이오(290650).md",
+          "target_price": 82900.0,
+          "stated_upside_pct": 54.9533
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-21",
+          "source_file": "undated_[BUY] 리투오, 리쥬란의 성장곡선을 압축하다! 엘앤씨바이오.md",
+          "target_price": 74700.0,
+          "stated_upside_pct": 46.4706
         }
       ]
     }

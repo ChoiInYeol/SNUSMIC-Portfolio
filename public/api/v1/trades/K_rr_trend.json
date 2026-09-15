@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-11T14:06:32+00:00",
+  "generated_at": "2026-09-15T14:49:16+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -16850,6 +16850,64 @@
       ]
     },
     {
+      "ticker": "348210",
+      "market": "KR",
+      "name": "넥스틴",
+      "entry_date": "2026-07-27",
+      "exit_date": "2026-07-29",
+      "entry_price": 34350.0,
+      "exit_price": 29500.0,
+      "return_pct": -14.63,
+      "days": 2,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2026-07-25, smic 2021-11-03)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-넥스틴.md",
+          "target_price": 72400.0,
+          "stated_upside_pct": 41.4062
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 넥스틴(348210).md",
+          "target_price": 49800.0,
+          "stated_upside_pct": 50.6808
+        }
+      ]
+    },
+    {
+      "ticker": "195870",
+      "market": "KR",
+      "name": "해성디에스",
+      "entry_date": "2026-07-27",
+      "exit_date": "2026-07-30",
+      "entry_price": 50200.0,
+      "exit_price": 38150.0,
+      "return_pct": -24.46,
+      "days": 3,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2026-07-25, star 2022-03-15)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 해성디에스(195870).md",
+          "target_price": 75200.0,
+          "stated_upside_pct": 51.9192
+        },
+        {
+          "school": "star",
+          "report_date": "2022-03-15",
+          "source_file": "2022-03-15_STAR_해성디에스.md",
+          "target_price": 67300.0,
+          "stated_upside_pct": 47.5877
+        }
+      ]
+    },
+    {
       "ticker": "095340",
       "market": "KR",
       "name": "ISC",
@@ -16929,6 +16987,28 @@
       ]
     },
     {
+      "ticker": "091580",
+      "market": "KR",
+      "name": "상신이디피",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-08-27",
+      "entry_price": 17060.0,
+      "exit_price": 20998.75,
+      "return_pct": 22.35,
+      "days": 3,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2026-08-22)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-08-22",
+          "source_file": "2026-08-21_[260821] 상신이디피(091580).md",
+          "target_price": 24170.0,
+          "stated_upside_pct": 41.7595
+        }
+      ]
+    },
+    {
       "ticker": "064290",
       "market": "KR",
       "name": "인텍플러스",
@@ -16958,6 +17038,49 @@
       ]
     },
     {
+      "ticker": "257720",
+      "market": "KR",
+      "name": "실리콘투",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-09-10",
+      "entry_price": 47000.0,
+      "exit_price": 44900.0,
+      "return_pct": -5.04,
+      "days": 17,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: ewha 2026-08-22, star 2026-03-14, kuvic 2025-05-15, yig 2024-11-20)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-15",
+          "source_file": "2025-05-15_실리콘투 - 진격의 실리콘투.md",
+          "target_price": 59000.0,
+          "stated_upside_pct": 57.1238
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-20",
+          "source_file": "2025-11-10_실리콘투 (257720, KQ), 실리콘 투 the SKY! (발간일 241120) YIG Research.md",
+          "target_price": 60000.0,
+          "stated_upside_pct": 118.9781
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_실리콘투.md",
+          "target_price": 64500.0,
+          "stated_upside_pct": 76.7123
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-08-22",
+          "source_file": "2026-08-21_[260821] 실리콘투(257720).md",
+          "target_price": 68600.0,
+          "stated_upside_pct": 43.9664
+        }
+      ]
+    },
+    {
       "ticker": "020000",
       "market": "KR",
       "name": "한섬",
@@ -16983,6 +17106,64 @@
           "source_file": "2026-09-08_STAR_한섬.md",
           "target_price": 45000.0,
           "stated_upside_pct": 189.7618
+        }
+      ]
+    },
+    {
+      "ticker": "290650",
+      "market": "KR",
+      "name": "엘앤씨바이오",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-09-15",
+      "entry_price": 51400.0,
+      "exit_price": 46400.0,
+      "return_pct": -10.27,
+      "days": 22,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: voera 2026-08-21, ewha 2025-11-25)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2025-11-25",
+          "source_file": "2025-11-25_[251125] (KEYSS 대회) 엘앤씨바이오(290650).md",
+          "target_price": 82900.0,
+          "stated_upside_pct": 54.9533
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-21",
+          "source_file": "undated_[BUY] 리투오, 리쥬란의 성장곡선을 압축하다! 엘앤씨바이오.md",
+          "target_price": 74700.0,
+          "stated_upside_pct": 46.4706
+        }
+      ]
+    },
+    {
+      "ticker": "122640",
+      "market": "KR",
+      "name": "예스티",
+      "entry_date": "2026-09-10",
+      "exit_date": "2026-09-15",
+      "entry_price": 31100.0,
+      "exit_price": 28750.0,
+      "return_pct": -8.11,
+      "days": 5,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2026-09-09, smic 2025-12-15)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-예스티-2.md",
+          "target_price": 40500.0,
+          "stated_upside_pct": 125.3756
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-09",
+          "source_file": "2026-09-09_STAR_예스티.md",
+          "target_price": 42800.0,
+          "stated_upside_pct": 36.5231
         }
       ]
     }

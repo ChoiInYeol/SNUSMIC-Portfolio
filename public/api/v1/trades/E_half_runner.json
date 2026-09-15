@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-11T14:06:32+00:00",
+  "generated_at": "2026-09-15T14:49:16+00:00",
   "strategy_key": "E_half_runner",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -3794,6 +3794,64 @@
           "source_file": "2025-11-11_로봇 액추에이터 저만 믿으십시오 휴먼. (발간일 251010) YIG Research.md",
           "target_price": 254100.0,
           "stated_upside_pct": 32.828
+        }
+      ]
+    },
+    {
+      "ticker": "195870",
+      "market": "KR",
+      "name": "해성디에스",
+      "entry_date": "2026-07-27",
+      "exit_date": "2026-08-03",
+      "entry_price": 50200.0,
+      "exit_price": 47550.0,
+      "return_pct": 88.31,
+      "days": 7,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2026-07-25, star 2022-03-15)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 해성디에스(195870).md",
+          "target_price": 75200.0,
+          "stated_upside_pct": 51.9192
+        },
+        {
+          "school": "star",
+          "report_date": "2022-03-15",
+          "source_file": "2022-03-15_STAR_해성디에스.md",
+          "target_price": 67300.0,
+          "stated_upside_pct": 47.5877
+        }
+      ]
+    },
+    {
+      "ticker": "348210",
+      "market": "KR",
+      "name": "넥스틴",
+      "entry_date": "2026-07-27",
+      "exit_date": "2026-08-03",
+      "entry_price": 34350.0,
+      "exit_price": 27600.0,
+      "return_pct": 59.74,
+      "days": 7,
+      "exit_reason": "runner_thesis_break_200MA",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: ewha 2026-07-25, smic 2021-11-03)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-넥스틴.md",
+          "target_price": 72400.0,
+          "stated_upside_pct": 41.4062
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 넥스틴(348210).md",
+          "target_price": 49800.0,
+          "stated_upside_pct": 50.6808
         }
       ]
     }
