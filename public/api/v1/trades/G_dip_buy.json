@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-17T15:05:34+00:00",
+  "generated_at": "2026-09-18T14:26:26+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -21825,6 +21825,49 @@
           "source_file": "2026-05-18_진성티이씨 - 진성이 진짜예요.md",
           "target_price": 29000.0,
           "stated_upside_pct": 67.6301
+        }
+      ]
+    },
+    {
+      "ticker": "213420",
+      "market": "KR",
+      "name": "덕산네오룩스",
+      "entry_date": "2026-07-02",
+      "exit_date": "2026-09-18",
+      "entry_price": 32250.0,
+      "exit_price": 30200.0,
+      "return_pct": -6.92,
+      "days": 78,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-05-06) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-04-06",
+          "source_file": "2024-04-06_[240406] 덕산네오룩스(213420).md",
+          "target_price": 53200.0,
+          "stated_upside_pct": 37.1134
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_덕산네오룩스.md",
+          "target_price": 48200.0,
+          "stated_upside_pct": 51.3344
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-06-02",
+          "source_file": "2025-11-10_덕산네오룩스 (213420, KQ), 떡상, 네오룩스 (발간일 240524) YIG Research.md",
+          "target_price": 58500.0,
+          "stated_upside_pct": 29.2818
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-05-07",
+          "source_file": "2026-05-07_equity-research-덕산네오룩스.md",
+          "target_price": 91200.0,
+          "stated_upside_pct": 76.4023
         }
       ]
     }
