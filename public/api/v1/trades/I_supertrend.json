@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-18T14:26:26+00:00",
+  "generated_at": "2026-09-22T14:33:58+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -11915,8 +11915,15 @@
       "return_pct": -15.6,
       "days": 18,
       "exit_reason": "supertrend_bearish_flip",
-      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2025-12-12)",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: star 2025-12-12, kuvic 2024-11-11)",
       "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-11-11",
+          "source_file": "2024-11-11_유진테크 - 반도체가 여름이래'유~진'짜라니께.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
         {
           "school": "star",
           "report_date": "2025-12-12",
@@ -13899,6 +13906,85 @@
           "source_file": "undated_[BUY] 중국 손님 제주행, 드림타워 실적행! 롯데관광개발.md",
           "target_price": 30000.0,
           "stated_upside_pct": 55.0388
+        }
+      ]
+    },
+    {
+      "ticker": "257720",
+      "market": "KR",
+      "name": "실리콘투",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-09-21",
+      "entry_price": 47000.0,
+      "exit_price": 41250.0,
+      "return_pct": -12.76,
+      "days": 28,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: ewha 2026-08-22, star 2026-03-14, kuvic 2025-05-15, yig 2024-11-20)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2025-05-15",
+          "source_file": "2025-05-15_실리콘투 - 진격의 실리콘투.md",
+          "target_price": 59000.0,
+          "stated_upside_pct": 57.1238
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-11-20",
+          "source_file": "2025-11-10_실리콘투 (257720, KQ), 실리콘 투 the SKY! (발간일 241120) YIG Research.md",
+          "target_price": 60000.0,
+          "stated_upside_pct": 118.9781
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_실리콘투.md",
+          "target_price": 64500.0,
+          "stated_upside_pct": 76.7123
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-08-22",
+          "source_file": "2026-08-21_[260821] 실리콘투(257720).md",
+          "target_price": 68600.0,
+          "stated_upside_pct": 43.9664
+        }
+      ]
+    },
+    {
+      "ticker": "066970",
+      "market": "KR",
+      "name": "엘앤에프",
+      "entry_date": "2026-08-10",
+      "exit_date": "2026-09-22",
+      "entry_price": 90000.0,
+      "exit_price": 109100.0,
+      "return_pct": 20.5,
+      "days": 43,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 후 3개월 내 슈퍼트렌드(10,3) 상방 전환 → 익일 시가 진입 (트리거: ewha 2026-05-26, star 2025-12-12, yig 2025-11-06)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-05-26",
+          "source_file": "2026-05-26_[260526] (KEYSS 대회 우수상) 엘앤에프(066970).md",
+          "target_price": 290700.0,
+          "stated_upside_pct": 84.4543
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_엘앤에프.md",
+          "target_price": 204200.0,
+          "stated_upside_pct": 59.0343
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-06",
+          "source_file": "2025-12-08_엘앤에프(066970, KOSPI), 엘앤에프, 충전 완료! YIG Research.md",
+          "target_price": 184000.0,
+          "stated_upside_pct": 44.0877
         }
       ]
     }
