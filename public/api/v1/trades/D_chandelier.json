@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-22T14:33:58+00:00",
+  "generated_at": "2026-09-23T14:44:01+00:00",
   "strategy_key": "D_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5414,28 +5414,6 @@
       ]
     },
     {
-      "ticker": "039130",
-      "market": "KR",
-      "name": "하나투어",
-      "entry_date": "2024-05-14",
-      "exit_date": "2024-07-25",
-      "entry_price": 60200.0,
-      "exit_price": 52900.0,
-      "return_pct": -12.65,
-      "days": 72,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-05-13)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
-        }
-      ]
-    },
-    {
       "ticker": "000660",
       "market": "KR",
       "name": "SK하이닉스",
@@ -5888,28 +5866,6 @@
       ]
     },
     {
-      "ticker": "058470",
-      "market": "KR",
-      "name": "리노공업",
-      "entry_date": "2024-07-31",
-      "exit_date": "2024-10-23",
-      "entry_price": 39104.0,
-      "exit_price": 35840.0,
-      "return_pct": -8.9,
-      "days": 84,
-      "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: voera 2024-07-30)",
-      "trigger_reports": [
-        {
-          "school": "voera",
-          "report_date": "2024-07-30",
-          "source_file": "undated_[BUY] SOCKET LIKE ROCKET, 리노공업.md",
-          "target_price": null,
-          "stated_upside_pct": null
-        }
-      ]
-    },
-    {
       "ticker": "337930",
       "market": "KR",
       "name": "젝시믹스",
@@ -5928,6 +5884,28 @@
           "source_file": "2024-08-16_브랜드엑스코퍼레이션 - 1위 브랜드 엑스코퍼레이션.md",
           "target_price": 16700.0,
           "stated_upside_pct": 54.7729
+        }
+      ]
+    },
+    {
+      "ticker": "338220",
+      "market": "KR",
+      "name": "뷰노",
+      "entry_date": "2024-05-14",
+      "exit_date": "2024-10-29",
+      "entry_price": 27600.0,
+      "exit_price": 28950.0,
+      "return_pct": 4.26,
+      "days": 168,
+      "exit_reason": "chandelier_ATR5",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: kuvic 2024-05-13)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-13",
+          "source_file": "2024-05-13_뷰노 - You know 뷰노 Why no.md",
+          "target_price": null,
+          "stated_upside_pct": 35.5
         }
       ]
     },
@@ -6785,15 +6763,8 @@
       "return_pct": -7.59,
       "days": 88,
       "exit_reason": "chandelier_ATR5",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: star 2025-01-09, kuvic 2024-05-13)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: star 2025-01-09)",
       "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
-        },
         {
           "school": "star",
           "report_date": "2025-01-09",

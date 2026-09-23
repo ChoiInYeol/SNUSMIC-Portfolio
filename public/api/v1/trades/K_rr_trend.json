@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-22T14:33:58+00:00",
+  "generated_at": "2026-09-23T14:44:01+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7797,28 +7797,6 @@
       ]
     },
     {
-      "ticker": "039130",
-      "market": "KR",
-      "name": "하나투어",
-      "entry_date": "2024-05-14",
-      "exit_date": "2024-05-24",
-      "entry_price": 60200.0,
-      "exit_price": 57000.0,
-      "return_pct": -5.88,
-      "days": 10,
-      "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-05-13)",
-      "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
-        }
-      ]
-    },
-    {
       "ticker": "073010",
       "market": "KR",
       "name": "케이에스피",
@@ -10650,15 +10628,8 @@
       "return_pct": 7.68,
       "days": 32,
       "exit_reason": "rr_half_+2.5R",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09, kuvic 2024-05-13)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09)",
       "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
-        },
         {
           "school": "star",
           "report_date": "2025-01-09",
@@ -10933,15 +10904,8 @@
       "return_pct": 98.43,
       "days": 56,
       "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09, kuvic 2024-05-13)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09)",
       "trigger_reports": [
-        {
-          "school": "kuvic",
-          "report_date": "2024-05-13",
-          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
-          "target_price": 87800.0,
-          "stated_upside_pct": 45.8472
-        },
         {
           "school": "star",
           "report_date": "2025-01-09",
@@ -17186,6 +17150,42 @@
           "source_file": "2026-09-08_STAR_호텔신라.md",
           "target_price": 68000.0,
           "stated_upside_pct": 61.5202
+        }
+      ]
+    },
+    {
+      "ticker": "041830",
+      "market": "KR",
+      "name": "인바디",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-09-23",
+      "entry_price": 58100.0,
+      "exit_price": 55200.0,
+      "return_pct": -5.56,
+      "days": 14,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2026-09-08, yig 2024-04-06, smic 2022-05-12)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2022-05-12",
+          "source_file": "2022-05-12_equity-research-인바디.md",
+          "target_price": 43000.0,
+          "stated_upside_pct": 51.9435
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-04-06",
+          "source_file": "2025-11-10_인바디 (041830, KQ), 갖고 싶어 美 In Body (발간일 240405) YIG Research.md",
+          "target_price": 40000.0,
+          "stated_upside_pct": 41.844
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_인바디.md",
+          "target_price": 91069.0,
+          "stated_upside_pct": 55.9401
         }
       ]
     }
