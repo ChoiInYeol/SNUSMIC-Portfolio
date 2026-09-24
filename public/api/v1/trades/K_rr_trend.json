@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-23T14:44:01+00:00",
+  "generated_at": "2026-09-24T15:00:29+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -7797,6 +7797,28 @@
       ]
     },
     {
+      "ticker": "039130",
+      "market": "KR",
+      "name": "하나투어",
+      "entry_date": "2024-05-14",
+      "exit_date": "2024-05-24",
+      "entry_price": 60200.0,
+      "exit_price": 57000.0,
+      "return_pct": -5.88,
+      "days": 10,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2024-05-13)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-13",
+          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
+          "target_price": 87800.0,
+          "stated_upside_pct": 45.8472
+        }
+      ]
+    },
+    {
       "ticker": "073010",
       "market": "KR",
       "name": "케이에스피",
@@ -10628,8 +10650,15 @@
       "return_pct": 7.68,
       "days": 32,
       "exit_reason": "rr_half_+2.5R",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09, kuvic 2024-05-13)",
       "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-13",
+          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
+          "target_price": 87800.0,
+          "stated_upside_pct": 45.8472
+        },
         {
           "school": "star",
           "report_date": "2025-01-09",
@@ -10904,8 +10933,15 @@
       "return_pct": 98.43,
       "days": 56,
       "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09)",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2025-01-09, kuvic 2024-05-13)",
       "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-13",
+          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
+          "target_price": 87800.0,
+          "stated_upside_pct": 45.8472
+        },
         {
           "school": "star",
           "report_date": "2025-01-09",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-23T14:44:02+00:00",
+  "generated_at": "2026-09-24T15:00:30+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -13471,6 +13471,35 @@
       ]
     },
     {
+      "ticker": "211050",
+      "market": "KR",
+      "name": "인카금융서비스",
+      "entry_date": "2024-11-01",
+      "exit_date": "2024-12-02",
+      "entry_price": 5340.0,
+      "exit_price": 6380.0,
+      "return_pct": 18.76,
+      "days": 31,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.6% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-11-29",
+          "source_file": "2023-11-29_STAR_인카금융서비스.md",
+          "target_price": 4101.9279,
+          "stated_upside_pct": 36.2767
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-10-17",
+          "source_file": "2024-10-17_equity-research-인카금융서비스.md",
+          "target_price": 8100.0,
+          "stated_upside_pct": 55.4702
+        }
+      ]
+    },
+    {
       "ticker": "396270",
       "market": "KR",
       "name": "넥스트칩",
@@ -13575,7 +13604,7 @@
       "exit_price": 217000.0,
       "return_pct": 7.96,
       "days": 31,
-      "exit_reason": "s_rebalance_exit",
+      "exit_reason": "s_rebalance_trim",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.7% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
@@ -13649,7 +13678,7 @@
       "return_pct": 3.3,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 9.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 10.5% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -13685,7 +13714,7 @@
       "return_pct": 5.24,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.1% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -13721,7 +13750,7 @@
       "return_pct": 5.08,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.8% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.3% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -13750,7 +13779,7 @@
       "return_pct": -19.59,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 11.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 9.9% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "voera",
@@ -13805,52 +13834,31 @@
       ]
     },
     {
-      "ticker": "352820",
+      "ticker": "267260",
       "market": "KR",
-      "name": "하이브",
+      "name": "HD현대일렉트릭",
       "entry_date": "2024-12-02",
       "exit_date": "2025-01-02",
-      "entry_price": 193100.0,
-      "exit_price": 194100.0,
-      "return_pct": -0.08,
+      "entry_price": 351500.0,
+      "exit_price": 383500.0,
+      "return_pct": 8.45,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.9% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.7% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-10-07",
+          "source_file": "2022-10-07_[221007] 현대일렉트릭(267260).md",
+          "target_price": 44250.0,
+          "stated_upside_pct": 34.0909
+        },
         {
           "school": "smic",
           "report_date": "2023-10-19",
-          "source_file": "2023-10-19_equity-research-하이브-2.md",
-          "target_price": 334500.0,
-          "stated_upside_pct": 47.033
-        },
-        {
-          "school": "voera",
-          "report_date": "2022-05-28",
-          "source_file": "undated_[BUY] 하이브, High View!.md",
-          "target_price": 381500.0,
-          "stated_upside_pct": 74.5995
-        },
-        {
-          "school": "ewha",
-          "report_date": "2023-02-08",
-          "source_file": "2023-02-08_[230208] 하이브(352820).md",
-          "target_price": 229500.0,
-          "stated_upside_pct": 16.1437
-        },
-        {
-          "school": "star",
-          "report_date": "2023-03-01",
-          "source_file": "2023-03-01_STAR_하이브.md",
-          "target_price": 223000.0,
-          "stated_upside_pct": 20.4754
-        },
-        {
-          "school": "yig",
-          "report_date": "2024-06-28",
-          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
-          "target_price": 400500.0,
-          "stated_upside_pct": 97.7778
+          "source_file": "2023-10-19_equity-research-hd현대일렉트릭.md",
+          "target_price": 140100.0,
+          "stated_upside_pct": 97.3239
         }
       ]
     },
@@ -13865,7 +13873,7 @@
       "return_pct": -12.79,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.9% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -13894,7 +13902,7 @@
       "return_pct": 29.25,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 4.2% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.2% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "ewha",
@@ -13937,7 +13945,7 @@
       "return_pct": 36.17,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.7% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.5% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -13966,7 +13974,7 @@
       "return_pct": 4.32,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.6% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.3% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -13988,7 +13996,7 @@
       "return_pct": -6.68,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.2% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.4% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "smic",
@@ -13996,35 +14004,6 @@
           "source_file": "2023-11-22_equity-research-vertiv-holdings-co.md",
           "target_price": 61.97,
           "stated_upside_pct": 42.8811
-        }
-      ]
-    },
-    {
-      "ticker": "211050",
-      "market": "KR",
-      "name": "인카금융서비스",
-      "entry_date": "2024-11-01",
-      "exit_date": "2025-01-02",
-      "entry_price": 5340.0,
-      "exit_price": 5690.0,
-      "return_pct": -0.77,
-      "days": 62,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.0% 재조정 보유",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2023-11-29",
-          "source_file": "2023-11-29_STAR_인카금융서비스.md",
-          "target_price": 4101.9279,
-          "stated_upside_pct": 36.2767
-        },
-        {
-          "school": "smic",
-          "report_date": "2024-10-17",
-          "source_file": "2024-10-17_equity-research-인카금융서비스.md",
-          "target_price": 8100.0,
-          "stated_upside_pct": 55.4702
         }
       ]
     },
@@ -14039,7 +14018,7 @@
       "return_pct": -9.65,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.0% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.6% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -14087,6 +14066,72 @@
       ]
     },
     {
+      "ticker": "443250",
+      "market": "KR",
+      "name": "레뷰코퍼레이션",
+      "entry_date": "2024-12-02",
+      "exit_date": "2025-01-02",
+      "entry_price": 11460.0,
+      "exit_price": 11910.0,
+      "return_pct": 3.3,
+      "days": 31,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.1% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-03-11",
+          "source_file": "2024-03-11_STAR_레뷰코퍼레이션.md",
+          "target_price": 22200.0,
+          "stated_upside_pct": 91.3793
+        }
+      ]
+    },
+    {
+      "ticker": "018670",
+      "market": "KR",
+      "name": "SK가스",
+      "entry_date": "2024-11-01",
+      "exit_date": "2025-01-02",
+      "entry_price": 199800.0,
+      "exit_price": 207000.0,
+      "return_pct": 2.98,
+      "days": 62,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.7% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2024-05-04",
+          "source_file": "2025-11-10_SK가스 (018670, KS), 당신의 포트폴리오를 지켜줄 든든한 수비수 (발간일 240503) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "039130",
+      "market": "KR",
+      "name": "하나투어",
+      "entry_date": "2024-12-02",
+      "exit_date": "2025-01-02",
+      "entry_price": 59900.0,
+      "exit_price": 54200.0,
+      "return_pct": -10.06,
+      "days": 31,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-05-13",
+          "source_file": "2024-05-13_하나투어 - 나에게로 떠나는 여행.md",
+          "target_price": 87800.0,
+          "stated_upside_pct": 45.8472
+        }
+      ]
+    },
+    {
       "ticker": "LEU",
       "market": "US",
       "name": "LEU",
@@ -14094,10 +14139,10 @@
       "exit_date": "2025-01-02",
       "entry_price": 106.3,
       "exit_price": 67.52,
-      "return_pct": -27.55,
+      "return_pct": -28.67,
       "days": 62,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.1% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.3% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -14119,7 +14164,7 @@
       "return_pct": -1.95,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.4% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.5% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "voera",
@@ -14127,28 +14172,6 @@
           "source_file": "undated_[BUY] 디어유, 팬 플랫폼 성장 열기에 디어유~.md",
           "target_price": 34500.0,
           "stated_upside_pct": 32.1839
-        }
-      ]
-    },
-    {
-      "ticker": "329180",
-      "market": "KR",
-      "name": "HD현대중공업",
-      "entry_date": "2024-12-02",
-      "exit_date": "2025-01-02",
-      "entry_price": 222000.0,
-      "exit_price": 289500.0,
-      "return_pct": 29.62,
-      "days": 31,
-      "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.4% 신규 편입 (18개월 유효 리포트 유니버스)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2024-06-30",
-          "source_file": "2024-06-30_STAR_HD현대중공업.md",
-          "target_price": 173400.0,
-          "stated_upside_pct": 11.368
         }
       ]
     },
@@ -14163,7 +14186,7 @@
       "return_pct": -10.39,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.3% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.8% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "kuvic",
@@ -14185,7 +14208,7 @@
       "return_pct": -10.84,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.7% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.7% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -14207,7 +14230,7 @@
       "return_pct": -31.21,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.8% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.2% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -14215,6 +14238,28 @@
           "source_file": "2024-09-11_STAR_지역난방공사.md",
           "target_price": 67600.0,
           "stated_upside_pct": 40.8333
+        }
+      ]
+    },
+    {
+      "ticker": "079550",
+      "market": "KR",
+      "name": "LIG디펜스앤에어로스페이스",
+      "entry_date": "2024-12-02",
+      "exit_date": "2025-01-02",
+      "entry_price": 195300.0,
+      "exit_price": 219500.0,
+      "return_pct": 11.72,
+      "days": 31,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.3% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-09-11",
+          "source_file": "2024-09-11_STAR_LIG넥스원.md",
+          "target_price": 267000.0,
+          "stated_upside_pct": 33.1671
         }
       ]
     },
@@ -14229,7 +14274,7 @@
       "return_pct": 0.46,
       "days": 31,
       "exit_reason": "s_rebalance_exit",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 8.8% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 8.2% 신규 편입 (18개월 유효 리포트 유니버스)",
       "trigger_reports": [
         {
           "school": "star",
@@ -14251,7 +14296,7 @@
       "return_pct": 93.88,
       "days": 62,
       "exit_reason": "s_rebalance_trim",
-      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.1% 재조정 보유",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 7.0% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",
@@ -14387,7 +14432,7 @@
       "exit_date": "2025-02-03",
       "entry_price": 204.35,
       "exit_price": 163.31,
-      "return_pct": -10.15,
+      "return_pct": -9.91,
       "days": 63,
       "exit_reason": "s_rebalance_trim",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
@@ -14700,7 +14745,7 @@
       "exit_date": "2025-03-03",
       "entry_price": 21.95,
       "exit_price": 5.765,
-      "return_pct": -63.4,
+      "return_pct": -63.08,
       "days": 153,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.3% 재조정 보유",
@@ -14729,7 +14774,7 @@
       "exit_date": "2025-03-03",
       "entry_price": 204.35,
       "exit_price": 135.28,
-      "return_pct": -25.42,
+      "return_pct": -25.22,
       "days": 91,
       "exit_reason": "s_rebalance_exit",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 9.3% 재조정 보유",
