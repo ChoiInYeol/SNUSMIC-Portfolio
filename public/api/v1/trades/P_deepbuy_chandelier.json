@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-25T15:25:44+00:00",
+  "generated_at": "2026-09-28T18:28:31+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8185,6 +8185,78 @@
           "source_file": "2026-06-13_KEYSS_STAR_OCI홀딩스.md",
           "target_price": 576500.0,
           "stated_upside_pct": 92.1667
+        }
+      ]
+    },
+    {
+      "ticker": "036890",
+      "market": "KR",
+      "name": "진성티이씨",
+      "entry_date": "2026-06-24",
+      "exit_date": "2026-09-28",
+      "entry_price": 13040.0,
+      "exit_price": 12000.0,
+      "return_pct": -8.53,
+      "days": 96,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-03-14) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2020-11-21",
+          "source_file": "2020-11-21_[201121] 진성티이씨(036890).md",
+          "target_price": 13250.0,
+          "stated_upside_pct": 22.6852
+        },
+        {
+          "school": "smic",
+          "report_date": "2020-10-31",
+          "source_file": "2020-10-31_equity-research-진성티이씨.md",
+          "target_price": 20350.0,
+          "stated_upside_pct": 105.3481
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_진성티이씨.md",
+          "target_price": 27000.0,
+          "stated_upside_pct": 52.5424
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-05-18",
+          "source_file": "2026-05-18_진성티이씨 - 진성이 진짜예요.md",
+          "target_price": 29000.0,
+          "stated_upside_pct": 67.6301
+        }
+      ]
+    },
+    {
+      "ticker": "207940",
+      "market": "KR",
+      "name": "삼성바이오로직스",
+      "entry_date": "2026-05-20",
+      "exit_date": "2026-09-28",
+      "entry_price": 1347000.0,
+      "exit_price": 1367000.0,
+      "return_pct": 0.88,
+      "days": 131,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2025-12-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2021-08-17",
+          "source_file": "undated_[Buy]이마트, 이맡에 산다.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_삼성바이오로직스.md",
+          "target_price": 2142000.0,
+          "stated_upside_pct": 26.5957
         }
       ]
     }

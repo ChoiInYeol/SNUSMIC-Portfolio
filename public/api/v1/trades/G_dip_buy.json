@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-25T15:25:43+00:00",
+  "generated_at": "2026-09-28T18:28:31+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -21868,6 +21868,42 @@
           "source_file": "2026-05-07_equity-research-덕산네오룩스.md",
           "target_price": 91200.0,
           "stated_upside_pct": 76.4023
+        }
+      ]
+    },
+    {
+      "ticker": "100090",
+      "market": "KR",
+      "name": "SK오션플랜트",
+      "entry_date": "2026-07-31",
+      "exit_date": "2026-09-28",
+      "entry_price": 12170.0,
+      "exit_price": 11360.0,
+      "return_pct": -7.21,
+      "days": 59,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-04-16) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2024-10-05",
+          "source_file": "2024-10-04_[241004] SK오션플랜트(100090).md",
+          "target_price": 20090.0,
+          "stated_upside_pct": 34.0227
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_SK오션플랜트.md",
+          "target_price": 32100.0,
+          "stated_upside_pct": 53.9568
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-sk오션플랜트.md",
+          "target_price": 41600.0,
+          "stated_upside_pct": 73.6952
         }
       ]
     }
