@@ -1321,7 +1321,7 @@ data/markdown/kuvic/2026-08-06_ISC - 베트남에서 누가돌아왔~게.md,kuvi
 "data/markdown/kuvic/2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",kuvic,company,False,2026-08-06,2026-08-06,2026-08-06,KR,지엔씨에너지,119850,KRX,Buy,76000.0,"76,000",51100.0,"51,100",49.0,,,
 data/markdown/kuvic/2026-09-14_우주 항공 - Fly me to the moon.md,kuvic,company,False,2026-09-14,2026-09-14,2026-09-14,US,SpaceX,SPCX,US,,,,,,,,,
 data/markdown/kuvic/2026-09-14_은행 - 이제는 은행나무가 노래질 때.md,kuvic,sector,False,2026-09-14,2026-09-14,2026-09-14,,은행,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,,
-data/markdown/kuvic/2026-09-14_이차전지 - ESSential.md,kuvic,sector,False,2026-09-14,2026-09-14,2026-09-14,,,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,,
+data/markdown/kuvic/2026-09-14_이차전지 - ESSential.md,kuvic,sector,False,2026-09-14,2026-09-14,2026-09-14,,이차전지,,,,,,,,,non_us_kr_or_unparsed_market;missing_ticker,,
 data/markdown/kuvic/2026-09-14_제약 바이오 - 바이오 바이(BUY)요~.md,kuvic,company,False,2026-09-14,2026-09-14,2026-09-14,US,바이오바이,BUY,US,Buy,,,,,,missing_target_price,,
 data/markdown/kuvic/2026-09-15_로봇 - 로봇도 하체다.md,kuvic,company,False,2026-09-15,2026-09-15,2026-09-15,US,유성 롤러스크류,PRS,US,,,,,,,,,
 data/markdown/kuvic/undated_kuvic-5ec6f7_7302d46cd033470899f067eb2d01c2e2.md,kuvic,company,False,2026-05-18,2026-05-18,,KR,코스텍시스,355150,KRX,Buy,159000.0,"159,000원",5760.0,"57,60",176.0,,date_cover_only;target_manually_corrected,

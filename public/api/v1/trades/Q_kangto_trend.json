@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-28T18:28:31+00:00",
+  "generated_at": "2026-09-29T16:27:34+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24582,6 +24582,49 @@
           "source_file": "2026-09-08_STAR_지니언스.md",
           "target_price": 31200.0,
           "stated_upside_pct": 102.8609
+        }
+      ]
+    },
+    {
+      "ticker": "108490",
+      "market": "KR",
+      "name": "로보티즈",
+      "entry_date": "2026-09-11",
+      "exit_date": "2026-09-29",
+      "entry_price": 314000.0,
+      "exit_price": 293500.0,
+      "return_pct": -7.09,
+      "days": 18,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 87 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2025-03-01",
+          "source_file": "undated_[BUY] Robot is... 로보티즈!.md",
+          "target_price": 45700.0,
+          "stated_upside_pct": 54.1211
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-10-10",
+          "source_file": "2025-11-11_로봇 액추에이터 저만 믿으십시오 휴먼. (발간일 251010) YIG Research.md",
+          "target_price": 254100.0,
+          "stated_upside_pct": 32.828
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-10-23",
+          "source_file": "2025-10-23_equity-research-로보티즈.md",
+          "target_price": 355800.0,
+          "stated_upside_pct": 90.2674
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_로보티즈.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }
