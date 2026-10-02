@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-30T16:44:26+00:00",
+  "generated_at": "2026-10-02T16:25:32+00:00",
   "strategy_key": "S_mincvar",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20950,6 +20950,319 @@
       "days": 29,
       "exit_reason": "s_rebalance_trim",
       "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.5% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-05-29",
+          "source_file": "2026-05-29_equity-research-comfort-systems-usa-inc.md",
+          "target_price": 5326.0,
+          "stated_upside_pct": 191.3232
+        }
+      ]
+    },
+    {
+      "ticker": "307950",
+      "market": "KR",
+      "name": "현대오토에버",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-10-01",
+      "entry_price": 364500.0,
+      "exit_price": 376500.0,
+      "return_pct": 2.67,
+      "days": 59,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.1% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-02-12",
+          "source_file": "2022-02-12_[220212] 현대오토에버(307950).md",
+          "target_price": null,
+          "stated_upside_pct": 42.13
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-07-31",
+          "source_file": "2025-11-11_현대오토에버 (307950, KS), 현대오토에버, 에버, 포에버! (발간일 250731) YIG Research.md",
+          "target_price": 222000.0,
+          "stated_upside_pct": 44.0623
+        }
+      ]
+    },
+    {
+      "ticker": "007340",
+      "market": "KR",
+      "name": "DN오토모티브",
+      "entry_date": "2026-09-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 46800.0,
+      "exit_price": 48000.0,
+      "return_pct": 1.95,
+      "days": 30,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.7% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-02-16",
+          "source_file": "2023-02-16_STAR_DN오토모티브.md",
+          "target_price": 27887.017,
+          "stated_upside_pct": 103.5549
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-04-14",
+          "source_file": "2026-04-14_DN오토모티브 (007340, KOSPI) - 우주, 방산, 반도체, 자동차 뒤엔 DN YIG Research.md",
+          "target_price": 60800.0,
+          "stated_upside_pct": 67.9558
+        }
+      ]
+    },
+    {
+      "ticker": "099190",
+      "market": "KR",
+      "name": "아이센스",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 19700.0,
+      "exit_price": 15960.0,
+      "return_pct": -15.84,
+      "days": 183,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.6% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_아이센스.md",
+          "target_price": 35400.0,
+          "stated_upside_pct": 80.2444
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-11-02",
+          "source_file": "2025-11-10_아이센스(099190, KQ), 우리 아이 센스가 달라졌어요 (발간일 231104) YIG Research.md",
+          "target_price": 40400.0,
+          "stated_upside_pct": 61.6
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-11-25",
+          "source_file": "2023-11-25_[231125] 아이센스(099190).md",
+          "target_price": 32200.0,
+          "stated_upside_pct": 37.6068
+        }
+      ]
+    },
+    {
+      "ticker": "051360",
+      "market": "KR",
+      "name": "토비스",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-10-01",
+      "entry_price": 11350.0,
+      "exit_price": 11680.0,
+      "return_pct": 2.14,
+      "days": 59,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.7% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "kuvic",
+          "report_date": "2024-10-10",
+          "source_file": "2024-10-10_토비스 - 전장으로 777 잭팟.md",
+          "target_price": 31400.0,
+          "stated_upside_pct": 66.5782
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_토비스.md",
+          "target_price": 30200.0,
+          "stated_upside_pct": 77.7516
+        }
+      ]
+    },
+    {
+      "ticker": "293940",
+      "market": "KR",
+      "name": "신한알파리츠",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 5680.0,
+      "exit_price": 5620.0,
+      "return_pct": 3.78,
+      "days": 183,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_신한알파리츠.md",
+          "target_price": 7700.0,
+          "stated_upside_pct": 27.6949
+        }
+      ]
+    },
+    {
+      "ticker": "LITE",
+      "market": "US",
+      "name": "LITE",
+      "entry_date": "2026-05-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 913.0,
+      "exit_price": 980.0,
+      "return_pct": 4.8,
+      "days": 153,
+      "exit_reason": "s_rebalance_exit",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.4% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-15",
+          "source_file": "2025-12-15_equity-research-lumentum-holdings-inc.md",
+          "target_price": 498.63,
+          "stated_upside_pct": 48.9826
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-03-27",
+          "source_file": "2026-03-27_Lumentum Holdings - 루멘상스의 시대가 왔다.md",
+          "target_price": 1216.0,
+          "stated_upside_pct": 73.0394
+        }
+      ]
+    },
+    {
+      "ticker": "306200",
+      "market": "KR",
+      "name": "세아제강",
+      "entry_date": "2026-09-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 139100.0,
+      "exit_price": 168400.0,
+      "return_pct": 20.34,
+      "days": 30,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 0.8% 신규 편입 (18개월 유효 리포트 유니버스)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2025-05-13",
+          "source_file": "undated_[BUY] 강(鋼)하게 버틴다, 세아제강.md",
+          "target_price": 205630.0,
+          "stated_upside_pct": 19.7612
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-세아제강.md",
+          "target_price": 286700.0,
+          "stated_upside_pct": 95.034
+        }
+      ]
+    },
+    {
+      "ticker": "049720",
+      "market": "KR",
+      "name": "고려신용정보",
+      "entry_date": "2026-06-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 9690.0,
+      "exit_price": 9100.0,
+      "return_pct": -6.51,
+      "days": 122,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-06-10",
+          "source_file": "2025-06-10_equity-research-고려신용정보-2.md",
+          "target_price": 18600.0,
+          "stated_upside_pct": 86.1862
+        }
+      ]
+    },
+    {
+      "ticker": "IMAX",
+      "market": "US",
+      "name": "IMAX",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 38.23,
+      "exit_price": 54.62,
+      "return_pct": 30.42,
+      "days": 183,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.0% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-imax-corp.md",
+          "target_price": 54.6,
+          "stated_upside_pct": 48.2085
+        }
+      ]
+    },
+    {
+      "ticker": "IRMD",
+      "market": "US",
+      "name": "IRMD",
+      "entry_date": "2026-03-02",
+      "exit_date": "2026-10-01",
+      "entry_price": 101.7054,
+      "exit_price": 86.2,
+      "return_pct": -13.37,
+      "days": 213,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 8.3% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-iradimed-corporation.md",
+          "target_price": 146.0,
+          "stated_upside_pct": 59.6585
+        }
+      ]
+    },
+    {
+      "ticker": "SXT",
+      "market": "US",
+      "name": "SXT",
+      "entry_date": "2026-04-01",
+      "exit_date": "2026-10-01",
+      "entry_price": 88.2329,
+      "exit_price": 130.32,
+      "return_pct": 2.27,
+      "days": 183,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 13.6% 재조정 보유",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2025-12-01",
+          "source_file": "2025-12-01_equity-research-sensient-technologies-corp.md",
+          "target_price": 238.0,
+          "stated_upside_pct": 150.7724
+        }
+      ]
+    },
+    {
+      "ticker": "FIX",
+      "market": "US",
+      "name": "FIX",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-10-01",
+      "entry_price": 1674.3199,
+      "exit_price": 1658.0,
+      "return_pct": -6.82,
+      "days": 59,
+      "exit_reason": "s_rebalance_trim",
+      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.1% 재조정 보유",
       "trigger_reports": [
         {
           "school": "smic",

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-30T16:44:26+00:00",
+  "generated_at": "2026-10-02T16:25:32+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -10952,35 +10952,6 @@
       ]
     },
     {
-      "ticker": "326030",
-      "market": "KR",
-      "name": "SK바이오팜",
-      "entry_date": "2025-02-25",
-      "exit_date": "2025-03-10",
-      "entry_price": 114500.0,
-      "exit_price": 107000.0,
-      "return_pct": -7.11,
-      "days": 13,
-      "exit_reason": "rr_stop",
-      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2025-02-24, star 2025-01-09)",
-      "trigger_reports": [
-        {
-          "school": "star",
-          "report_date": "2025-01-09",
-          "source_file": "2025-01-09_STAR_KEYSS_SK바이오팜.md",
-          "target_price": 161500.0,
-          "stated_upside_pct": 37.9163
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-02-24",
-          "source_file": "2025-02-24_SK바이오팜 - 바이오팜, 꿈과 미래를 팜.md",
-          "target_price": 204500.0,
-          "stated_upside_pct": 77.5174
-        }
-      ]
-    },
-    {
       "ticker": "099320",
       "market": "KR",
       "name": "쎄트렉아이",
@@ -11006,6 +10977,63 @@
           "source_file": "2025-02-21_[250221] 쎄트렉아이(099320).md",
           "target_price": 76400.0,
           "stated_upside_pct": 43.609
+        }
+      ]
+    },
+    {
+      "ticker": "352820",
+      "market": "KR",
+      "name": "하이브",
+      "entry_date": "2025-02-25",
+      "exit_date": "2025-03-11",
+      "entry_price": 246000.0,
+      "exit_price": 231000.0,
+      "return_pct": -6.66,
+      "days": 14,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2025-02-24, star 2025-01-09, yig 2024-06-28, smic 2023-10-19, ewha 2023-02-08, voera 2022-05-28)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-10-19",
+          "source_file": "2023-10-19_equity-research-하이브-2.md",
+          "target_price": 334500.0,
+          "stated_upside_pct": 47.033
+        },
+        {
+          "school": "voera",
+          "report_date": "2022-05-28",
+          "source_file": "undated_[BUY] 하이브, High View!.md",
+          "target_price": 381500.0,
+          "stated_upside_pct": 74.5995
+        },
+        {
+          "school": "ewha",
+          "report_date": "2023-02-08",
+          "source_file": "2023-02-08_[230208] 하이브(352820).md",
+          "target_price": 229500.0,
+          "stated_upside_pct": 16.1437
+        },
+        {
+          "school": "star",
+          "report_date": "2025-01-09",
+          "source_file": "2025-01-09_STAR_하이브.md",
+          "target_price": 310300.0,
+          "stated_upside_pct": 53.995
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-06-28",
+          "source_file": "2025-11-11_하이브 (352820, KS), “봄날은 온다” (발간일 250207) YIG Research.md",
+          "target_price": 400500.0,
+          "stated_upside_pct": 97.7778
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-02-24",
+          "source_file": "2025-02-24_하이브 - 하이브'리드' 엔터.md",
+          "target_price": 369600.0,
+          "stated_upside_pct": 50.2439
         }
       ]
     },

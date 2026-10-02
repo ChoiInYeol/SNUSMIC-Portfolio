@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-30T16:44:26+00:00",
+  "generated_at": "2026-10-02T16:25:32+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8257,6 +8257,42 @@
           "source_file": "2025-12-12_STAR_삼성바이오로직스.md",
           "target_price": 2142000.0,
           "stated_upside_pct": 26.5957
+        }
+      ]
+    },
+    {
+      "ticker": "298020",
+      "market": "KR",
+      "name": "효성티앤씨",
+      "entry_date": "2026-06-29",
+      "exit_date": "2026-10-01",
+      "entry_price": 260500.0,
+      "exit_price": 278500.0,
+      "return_pct": 6.27,
+      "days": 94,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-11) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-11-12",
+          "source_file": "2023-11-12_equity-research-효성티앤씨-2.md",
+          "target_price": 514000.0,
+          "stated_upside_pct": 41.0151
+        },
+        {
+          "school": "star",
+          "report_date": "2023-06-12",
+          "source_file": "2023-06-12_STAR_효성티앤씨.md",
+          "target_price": 536700.0,
+          "stated_upside_pct": 37.792
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-05-11",
+          "source_file": "2026-05-11_효성티앤씨 (298020, KOSPI), 금의환향(錦衣還鄕) 비단 대신 스판덱스 옷을 입고 YIG Research.md",
+          "target_price": 844000.0,
+          "stated_upside_pct": 79.7657
         }
       ]
     }

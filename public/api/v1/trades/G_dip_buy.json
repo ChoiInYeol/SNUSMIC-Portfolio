@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-09-30T16:44:26+00:00",
+  "generated_at": "2026-10-02T16:25:32+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -16167,13 +16167,6 @@
           "source_file": "2025-01-09_STAR_KEYSS_SK바이오팜.md",
           "target_price": 161500.0,
           "stated_upside_pct": 37.9163
-        },
-        {
-          "school": "kuvic",
-          "report_date": "2025-02-24",
-          "source_file": "2025-02-24_SK바이오팜 - 바이오팜, 꿈과 미래를 팜.md",
-          "target_price": 204500.0,
-          "stated_upside_pct": 77.5174
         }
       ]
     },
@@ -21940,6 +21933,121 @@
           "source_file": "2026-05-11_효성티앤씨 (298020, KOSPI), 금의환향(錦衣還鄕) 비단 대신 스판덱스 옷을 입고 YIG Research.md",
           "target_price": 844000.0,
           "stated_upside_pct": 79.7657
+        }
+      ]
+    },
+    {
+      "ticker": "195870",
+      "market": "KR",
+      "name": "해성디에스",
+      "entry_date": "2026-07-31",
+      "exit_date": "2026-10-01",
+      "entry_price": 42800.0,
+      "exit_price": 64200.0,
+      "return_pct": 49.1,
+      "days": 62,
+      "exit_reason": "dip_+50pct",
+      "entry_reason": "발간일(2026-07-25) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2026-07-25",
+          "source_file": "2026-07-24_[260724] 해성디에스(195870).md",
+          "target_price": 75200.0,
+          "stated_upside_pct": 51.9192
+        },
+        {
+          "school": "star",
+          "report_date": "2022-03-15",
+          "source_file": "2022-03-15_STAR_해성디에스.md",
+          "target_price": 67300.0,
+          "stated_upside_pct": 47.5877
+        }
+      ]
+    },
+    {
+      "ticker": "112610",
+      "market": "KR",
+      "name": "씨에스윈드",
+      "entry_date": "2026-07-31",
+      "exit_date": "2026-10-02",
+      "entry_price": 36600.0,
+      "exit_price": 54900.0,
+      "return_pct": 49.1,
+      "days": 63,
+      "exit_reason": "dip_+50pct",
+      "entry_reason": "발간일(2026-03-31) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-05-27",
+          "source_file": "2023-05-27_[230527] 씨에스윈드(112610).md",
+          "target_price": 103200.0,
+          "stated_upside_pct": 35.611
+        },
+        {
+          "school": "voera",
+          "report_date": "2021-05-14",
+          "source_file": "undated_[BUY] 씨에스윈드 불어라 바람! 불어라 수주!.md",
+          "target_price": 90900.0,
+          "stated_upside_pct": 31.3584
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-03-31",
+          "source_file": "2026-04-04_씨에스윈드 (112610, KOSPI), 씨에스WINd~ YIG Research.md",
+          "target_price": 88500.0,
+          "stated_upside_pct": 48.4899
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_씨에스윈드.md",
+          "target_price": 51700.0,
+          "stated_upside_pct": 23.8323
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-10-08",
+          "source_file": "2024-10-08_씨에스윈드 - 해상 풍력, 늦바람 났어♬.md",
+          "target_price": 96684.0,
+          "stated_upside_pct": 45.8281
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-10-17",
+          "source_file": "2024-10-17_equity-research-씨에스윈드.md",
+          "target_price": 134400.0,
+          "stated_upside_pct": 118.1818
+        }
+      ]
+    },
+    {
+      "ticker": "011070",
+      "market": "KR",
+      "name": "LG이노텍",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-02",
+      "entry_price": 580000.0,
+      "exit_price": 431000.0,
+      "return_pct": -26.13,
+      "days": 0,
+      "exit_reason": "dip_목표가",
+      "entry_reason": "발간일(2026-06-12) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-07-22",
+          "source_file": "2023-07-22_[230722] LG이노텍(011070).md",
+          "target_price": 431000.0,
+          "stated_upside_pct": 52.5664
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-12",
+          "source_file": "2026-06-12_STAR_LG이노텍.md",
+          "target_price": null,
+          "stated_upside_pct": null
         }
       ]
     }
