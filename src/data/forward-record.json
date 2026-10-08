@@ -1,17 +1,17 @@
 {
  "schema_version": "1.0",
- "generated_at": "2026-10-07T17:18:56+00:00",
+ "generated_at": "2026-10-08T17:13:37+00:00",
  "method": "신호 스냅샷(append-only, 커밋 시점 박제)의 매수 신호를 이후 실현 시세로 채점. 진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 동일 티커 7일 내 중복 신호 제외. 전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적.",
  "summary": {
   "n_signals": 28,
   "n_tracking": 28,
-  "avg_return_pct": 4.03,
-  "win_rate_pct": 57.1,
-  "best_pct": 76.88,
-  "worst_pct": -45.83,
+  "avg_return_pct": 3.23,
+  "win_rate_pct": 50.0,
+  "best_pct": 81.44,
+  "worst_pct": -47.57,
   "first_snapshot": "2026-06-11",
-  "last_snapshot": "2026-10-07",
-  "n_snapshots": 70
+  "last_snapshot": "2026-10-08",
+  "n_snapshots": 71
  },
  "entries": [
   {
@@ -22,10 +22,10 @@
    "basis_price": null,
    "entry_date": "2026-09-10",
    "entry_price": 31100.0,
-   "current_price": 31700.0,
-   "return_pct": 1.93,
+   "current_price": 32200.0,
+   "return_pct": 3.54,
    "peak_pct": 10.93,
-   "days": 27,
+   "days": 28,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -40,10 +40,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 42000.0,
-   "current_price": 39350.0,
-   "return_pct": -6.31,
+   "current_price": 38800.0,
+   "return_pct": -7.62,
    "peak_pct": -0.71,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -58,10 +58,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 15680.0,
-   "current_price": 21650.0,
-   "return_pct": 38.07,
+   "current_price": 21300.0,
+   "return_pct": 35.84,
    "peak_pct": 40.62,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -76,10 +76,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 169900.0,
-   "current_price": 178700.0,
-   "return_pct": 5.18,
+   "current_price": 177300.0,
+   "return_pct": 4.36,
    "peak_pct": 5.18,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -94,10 +94,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 58100.0,
-   "current_price": 53200.0,
-   "return_pct": -8.43,
+   "current_price": 51500.0,
+   "return_pct": -11.36,
    "peak_pct": 2.07,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -112,10 +112,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 20900.0,
-   "current_price": 22300.0,
-   "return_pct": 6.7,
+   "current_price": 20450.0,
+   "return_pct": -2.15,
    "peak_pct": 7.66,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -130,10 +130,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 36350.0,
-   "current_price": 36150.0,
-   "return_pct": -0.55,
+   "current_price": 35800.0,
+   "return_pct": -1.51,
    "peak_pct": 10.73,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -148,10 +148,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 23750.0,
-   "current_price": 22100.0,
-   "return_pct": -6.95,
+   "current_price": 20800.0,
+   "return_pct": -12.42,
    "peak_pct": 4.42,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -166,10 +166,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 27850.0,
-   "current_price": 29450.0,
-   "return_pct": 5.75,
+   "current_price": 28000.0,
+   "return_pct": 0.54,
    "peak_pct": 8.8,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -184,10 +184,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 283500.0,
-   "current_price": 304000.0,
-   "return_pct": 7.23,
+   "current_price": 298000.0,
+   "return_pct": 5.11,
    "peak_pct": 16.23,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -202,10 +202,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 258000.0,
-   "current_price": 307500.0,
-   "return_pct": 19.19,
+   "current_price": 309000.0,
+   "return_pct": 19.77,
    "peak_pct": 20.54,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -220,10 +220,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 64100.0,
-   "current_price": 60300.0,
-   "return_pct": -5.93,
+   "current_price": 61700.0,
+   "return_pct": -3.74,
    "peak_pct": -1.56,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -238,10 +238,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 8230.0,
-   "current_price": 8700.0,
-   "return_pct": 5.71,
+   "current_price": 8560.0,
+   "return_pct": 4.01,
    "peak_pct": 6.56,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -256,10 +256,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 122700.0,
-   "current_price": 169200.0,
-   "return_pct": 37.9,
+   "current_price": 170700.0,
+   "return_pct": 39.12,
    "peak_pct": 41.73,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -274,10 +274,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 98500.0,
-   "current_price": 120600.0,
-   "return_pct": 22.44,
+   "current_price": 118000.0,
+   "return_pct": 19.8,
    "peak_pct": 25.48,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -292,10 +292,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 53200.0,
-   "current_price": 63000.0,
-   "return_pct": 18.42,
+   "current_price": 61500.0,
+   "return_pct": 15.6,
    "peak_pct": 18.42,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -310,10 +310,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 15380.0,
-   "current_price": 23050.0,
-   "return_pct": 49.87,
+   "current_price": 24000.0,
+   "return_pct": 56.05,
    "peak_pct": 59.3,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -328,10 +328,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 67900.0,
-   "current_price": 120100.0,
-   "return_pct": 76.88,
-   "peak_pct": 76.88,
-   "days": 28,
+   "current_price": 123200.0,
+   "return_pct": 81.44,
+   "peak_pct": 81.44,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -346,10 +346,10 @@
    "basis_price": null,
    "entry_date": "2026-09-09",
    "entry_price": 18300.0,
-   "current_price": 22050.0,
-   "return_pct": 20.49,
+   "current_price": 21850.0,
+   "return_pct": 19.4,
    "peak_pct": 20.49,
-   "days": 28,
+   "days": 29,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -364,10 +364,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 304000.0,
-   "current_price": 237500.0,
-   "return_pct": -21.88,
+   "current_price": 234000.0,
+   "return_pct": -23.03,
    "peak_pct": 4.61,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -382,10 +382,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 1091000.0,
-   "current_price": 591000.0,
-   "return_pct": -45.83,
+   "current_price": 572000.0,
+   "return_pct": -47.57,
    "peak_pct": 17.6,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -400,10 +400,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 375500.0,
-   "current_price": 246000.0,
-   "return_pct": -34.49,
+   "current_price": 242000.0,
+   "return_pct": -35.55,
    "peak_pct": 3.86,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -418,10 +418,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 50700.0,
-   "current_price": 35850.0,
-   "return_pct": -29.29,
+   "current_price": 35800.0,
+   "return_pct": -29.39,
    "peak_pct": -2.66,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -436,10 +436,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 186000.0,
-   "current_price": 162600.0,
-   "return_pct": -12.58,
+   "current_price": 163300.0,
+   "return_pct": -12.2,
    "peak_pct": 16.94,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -454,10 +454,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 163500.0,
-   "current_price": 168300.0,
-   "return_pct": 2.94,
+   "current_price": 163400.0,
+   "return_pct": -0.06,
    "peak_pct": 13.88,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -472,10 +472,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 169800.0,
-   "current_price": 109800.0,
-   "return_pct": -35.34,
+   "current_price": 123300.0,
+   "return_pct": -27.39,
    "peak_pct": -3.71,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -490,10 +490,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 412000.0,
-   "current_price": 387000.0,
-   "return_pct": -6.07,
+   "current_price": 403000.0,
+   "return_pct": -2.18,
    "peak_pct": 2.06,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -508,10 +508,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 152.81,
-   "current_price": 164.8485,
-   "return_pct": 7.88,
+   "current_price": 155.74,
+   "return_pct": 1.92,
    "peak_pct": 10.58,
-   "days": 114,
+   "days": 115,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -589,6 +589,7 @@
   "2026-09-30": "U_chandelier_scaleout",
   "2026-10-02": "U_chandelier_scaleout",
   "2026-10-05": "U_chandelier_scaleout",
-  "2026-10-07": "U_chandelier_scaleout"
+  "2026-10-07": "U_chandelier_scaleout",
+  "2026-10-08": "U_chandelier_scaleout"
  }
 }

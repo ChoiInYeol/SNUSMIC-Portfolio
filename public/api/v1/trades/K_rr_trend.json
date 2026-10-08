@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-07T17:18:55+00:00",
+  "generated_at": "2026-10-08T17:13:36+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -17222,6 +17222,71 @@
           "source_file": "2026-09-08_STAR_인바디.md",
           "target_price": 91069.0,
           "stated_upside_pct": 55.9401
+        }
+      ]
+    },
+    {
+      "ticker": "298040",
+      "market": "KR",
+      "name": "효성중공업",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-10-08",
+      "entry_price": 2585000.0,
+      "exit_price": 2605000.0,
+      "return_pct": 0.17,
+      "days": 66,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: voera 2026-07-31, kuvic 2023-10-11, star 2023-03-01)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_효성중공업.md",
+          "target_price": 103150.0,
+          "stated_upside_pct": 45.0774
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-10-11",
+          "source_file": "2023-10-11_효성중공업 - '전력'질주를 시작하지.md",
+          "target_price": 269000.0,
+          "stated_upside_pct": 60.5012
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-07-31",
+          "source_file": "undated_[BUY] NO CAP, MORE CAPA 효성중공업.md",
+          "target_price": 4200000.0,
+          "stated_upside_pct": 73.7691
+        }
+      ]
+    },
+    {
+      "ticker": "033780",
+      "market": "KR",
+      "name": "KT&G",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-10-08",
+      "entry_price": 169900.0,
+      "exit_price": 180175.0,
+      "return_pct": 5.41,
+      "days": 29,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: star 2026-09-08, ewha 2021-03-13)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2021-03-13",
+          "source_file": "2021-03-13_[210313] KT&G(033780).md",
+          "target_price": 110136.0,
+          "stated_upside_pct": 36.9851
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_KT&G.md",
+          "target_price": 263000.0,
+          "stated_upside_pct": 54.8881
         }
       ]
     }

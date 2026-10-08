@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-07T17:18:55+00:00",
+  "generated_at": "2026-10-08T17:13:36+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20445,6 +20445,92 @@
           "source_file": "2025-05-13_한국콜마 - 선크림하면 ~ 한국콜마INDI.md",
           "target_price": null,
           "stated_upside_pct": 27.3
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-09-30",
+      "exit_date": "2026-10-08",
+      "entry_price": 56600.0,
+      "exit_price": 51100.0,
+      "return_pct": -10.26,
+      "days": 8,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 94≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_지엔씨에너지.md",
+          "target_price": 79700.0,
+          "stated_upside_pct": 77.9018
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",
+          "target_price": 76000.0,
+          "stated_upside_pct": 48.728
+        }
+      ]
+    },
+    {
+      "ticker": "036930",
+      "market": "KR",
+      "name": "주성엔지니어링",
+      "entry_date": "2026-10-07",
+      "exit_date": "2026-10-08",
+      "entry_price": 276500.0,
+      "exit_price": 252500.0,
+      "return_pct": -9.23,
+      "days": 1,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 97≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-주성엔지니어링.md",
+          "target_price": 26700.0,
+          "stated_upside_pct": 135.2423
+        },
+        {
+          "school": "star",
+          "report_date": "2022-04-01",
+          "source_file": "2022-04-01_STAR_주성엔지니어링.md",
+          "target_price": 34100.0,
+          "stated_upside_pct": 33.7255
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-13",
+          "source_file": "2025-11-10_주성엔지니어링 (036930, KQ), 주성엔지니어링, 어서 빨리 주성~ (발간일 240913) YIG Research.md",
+          "target_price": 31350.0,
+          "stated_upside_pct": 26.1569
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-22",
+          "source_file": "undated_[BUY] ALD의 왕 주성전하 납시오, 주성엔지니어링.md",
+          "target_price": 288820.0,
+          "stated_upside_pct": 28.9375
         }
       ]
     }

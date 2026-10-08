@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-07T17:18:55+00:00",
+  "generated_at": "2026-10-08T17:13:36+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24712,6 +24712,49 @@
           "source_file": "2025-11-11_SNT에너지 (100840, KS), SNT 에너지, YOUR 에너지! (발간일 250411) YIG Research.md",
           "target_price": 47000.0,
           "stated_upside_pct": 39.0533
+        }
+      ]
+    },
+    {
+      "ticker": "036930",
+      "market": "KR",
+      "name": "주성엔지니어링",
+      "entry_date": "2026-10-07",
+      "exit_date": "2026-10-08",
+      "entry_price": 276500.0,
+      "exit_price": 252500.0,
+      "return_pct": -9.23,
+      "days": 1,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 97 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-주성엔지니어링.md",
+          "target_price": 26700.0,
+          "stated_upside_pct": 135.2423
+        },
+        {
+          "school": "star",
+          "report_date": "2022-04-01",
+          "source_file": "2022-04-01_STAR_주성엔지니어링.md",
+          "target_price": 34100.0,
+          "stated_upside_pct": 33.7255
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-13",
+          "source_file": "2025-11-10_주성엔지니어링 (036930, KQ), 주성엔지니어링, 어서 빨리 주성~ (발간일 240913) YIG Research.md",
+          "target_price": 31350.0,
+          "stated_upside_pct": 26.1569
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-22",
+          "source_file": "undated_[BUY] ALD의 왕 주성전하 납시오, 주성엔지니어링.md",
+          "target_price": 288820.0,
+          "stated_upside_pct": 28.9375
         }
       ]
     }
