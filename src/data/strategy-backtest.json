@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-08T17:13:34+00:00",
+ "generated_at": "2026-10-09T17:08:46+00:00",
  "universe_filter": "rating_class == buy AND report_date >= 2019-07-01 (KR + US)",
  "universe_stats": {
   "kr_reports": 924,
@@ -25,10 +25,10 @@
  },
  "metrics": {
   "start": "2020-01-02",
-  "end": "2026-10-08",
+  "end": "2026-10-09",
   "total_return_pct": 502.36,
-  "cagr_pct": 30.4,
-  "sharpe": 1.25,
+  "cagr_pct": 30.38,
+  "sharpe": 1.24,
   "mdd_pct": -32.22,
   "trades": 274,
   "win_rate_pct": 52.2,
@@ -46,9 +46,9 @@
  },
  "out_of_sample": {
   "start": "2024-01-02",
-  "end": "2026-10-08",
+  "end": "2026-10-09",
   "total_return_pct": 177.48,
-  "cagr_pct": 44.64,
+  "cagr_pct": 44.59,
   "sharpe": 1.32,
   "mdd_pct": -32.22
  },
@@ -1507,9 +1507,9 @@
     "label": "A_12mo",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 83.03,
-     "cagr_pct": 9.35,
+     "cagr_pct": 9.34,
      "sharpe": 0.44,
      "mdd_pct": -42.67,
      "trades": 118,
@@ -1528,7 +1528,7 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 20.11,
      "cagr_pct": 6.85,
      "sharpe": 0.36,
@@ -1541,13 +1541,13 @@
     "trade_count": 118,
     "kospi_dca_ratio": 0.554,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.655,
+    "aw_dca_ratio": 0.654,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "12개월 고정 보유 기준선 — 비교 앵커로만 유지 (IS 0.52 · OOS 0.36)",
     "dsr": {
      "psr": 0.8782,
-     "dsr": 0.115,
+     "dsr": 0.1151,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1574,9 +1574,9 @@
     "label": "B_36mo",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 217.65,
-     "cagr_pct": 18.63,
+     "cagr_pct": 18.62,
      "sharpe": 0.72,
      "mdd_pct": -41.93,
      "trades": 40,
@@ -1595,10 +1595,10 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 90.35,
-     "cagr_pct": 26.21,
-     "sharpe": 0.9,
+     "cagr_pct": 26.18,
+     "sharpe": 0.89,
      "mdd_pct": -36.75
     },
     "max_single_return_pct": 788.76,
@@ -1608,13 +1608,13 @@
     "trade_count": 40,
     "kospi_dca_ratio": 0.8,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.946,
+    "aw_dca_ratio": 0.944,
     "aw_dca_beats": false,
     "verdict": "채택",
-    "verdict_reason": "셀렉터 핵심 비교 세트 — IS 0.59 · OOS 0.9 · vs KOSPI DCA 0.8x",
+    "verdict_reason": "셀렉터 핵심 비교 세트 — IS 0.59 · OOS 0.89 · vs KOSPI DCA 0.8x",
     "dsr": {
      "psr": 0.9714,
-     "dsr": 0.3198,
+     "dsr": 0.32,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1641,9 +1641,9 @@
     "label": "C_narrative",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 105.15,
-     "cagr_pct": 11.21,
+     "cagr_pct": 11.2,
      "sharpe": 0.48,
      "mdd_pct": -47.55,
      "trades": 79,
@@ -1662,9 +1662,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 90.76,
-     "cagr_pct": 26.31,
+     "cagr_pct": 26.28,
      "sharpe": 0.78,
      "mdd_pct": -39.11
     },
@@ -1675,13 +1675,13 @@
     "trade_count": 79,
     "kospi_dca_ratio": 0.75,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.886,
+    "aw_dca_ratio": 0.885,
     "aw_dca_beats": false,
     "verdict": "채택",
     "verdict_reason": "셀렉터 핵심 비교 세트 — IS 0.19 · OOS 0.78 · vs KOSPI DCA 0.75x",
     "dsr": {
      "psr": 0.8979,
-     "dsr": 0.1336,
+     "dsr": 0.1337,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1708,9 +1708,9 @@
     "label": "D_chandelier",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 332.14,
-     "cagr_pct": 24.15,
+     "cagr_pct": 24.14,
      "sharpe": 0.97,
      "mdd_pct": -32.56,
      "trades": 356,
@@ -1729,9 +1729,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 98.4,
-     "cagr_pct": 28.12,
+     "end": "2026-10-09",
+     "total_return_pct": 98.41,
+     "cagr_pct": 28.09,
      "sharpe": 0.94,
      "mdd_pct": -32.56
     },
@@ -1742,13 +1742,13 @@
     "trade_count": 356,
     "kospi_dca_ratio": 0.983,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 1.162,
+    "aw_dca_ratio": 1.159,
     "aw_dca_beats": true,
     "verdict": "채택",
     "verdict_reason": "셀렉터 핵심 비교 세트 — IS 1.04 · OOS 0.94 · vs KOSPI DCA 0.983x",
     "dsr": {
      "psr": 0.994,
-     "dsr": 0.5667,
+     "dsr": 0.5669,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1775,7 +1775,7 @@
     "label": "E_half_runner",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 101.03,
      "cagr_pct": 10.87,
      "sharpe": 0.51,
@@ -1796,9 +1796,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 65.17,
-     "cagr_pct": 19.9,
+     "cagr_pct": 19.88,
      "sharpe": 0.72,
      "mdd_pct": -34.72
     },
@@ -1809,13 +1809,13 @@
     "trade_count": 155,
     "kospi_dca_ratio": 0.672,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.795,
+    "aw_dca_ratio": 0.793,
     "aw_dca_beats": false,
     "verdict": "기각",
-    "verdict_reason": "vs KOSPI DCA 0.672x · 올웨더 DCA 0.795x — 벤치마크 적립식 하회 (IS 0.32 · OOS 0.72)",
+    "verdict_reason": "vs KOSPI DCA 0.672x · 올웨더 DCA 0.793x — 벤치마크 적립식 하회 (IS 0.32 · OOS 0.72)",
     "dsr": {
      "psr": 0.909,
-     "dsr": 0.1504,
+     "dsr": 0.1505,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1842,7 +1842,7 @@
     "label": "F_momentum_narrative",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 83.97,
      "cagr_pct": 9.43,
      "sharpe": 0.53,
@@ -1863,9 +1863,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 52.81,
-     "cagr_pct": 16.57,
+     "cagr_pct": 16.55,
      "sharpe": 0.74,
      "mdd_pct": -23.0
     },
@@ -1876,13 +1876,13 @@
     "trade_count": 59,
     "kospi_dca_ratio": 0.601,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.711,
+    "aw_dca_ratio": 0.709,
     "aw_dca_beats": false,
     "verdict": "채택",
     "verdict_reason": "셀렉터 핵심 비교 세트 — IS 0.34 · OOS 0.74 · vs KOSPI DCA 0.601x",
     "dsr": {
      "psr": 0.9155,
-     "dsr": 0.1629,
+     "dsr": 0.163,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -1900,7 +1900,7 @@
      "positive_pct": 66.7,
      "beat_kospi_pct": 66.7,
      "median_sharpe": 0.76,
-     "worst_sharpe": -1.46,
+     "worst_sharpe": -1.45,
      "worst_window_return_pct": -11.09
     }
    },
@@ -1909,10 +1909,10 @@
     "label": "G_dip_buy",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": -81.05,
-     "cagr_pct": -21.8,
-     "sharpe": -0.9,
+     "end": "2026-10-09",
+     "total_return_pct": -81.03,
+     "cagr_pct": -21.78,
+     "sharpe": -0.89,
      "mdd_pct": -87.31,
      "trades": 805,
      "win_rate_pct": 30.9,
@@ -1930,9 +1930,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": -79.83,
-     "cagr_pct": -43.95,
+     "end": "2026-10-09",
+     "total_return_pct": -79.81,
+     "cagr_pct": -43.9,
      "sharpe": -1.68,
      "mdd_pct": -83.41
     },
@@ -1948,7 +1948,7 @@
     "verdict": "기각",
     "verdict_reason": "IS 샤프 -0.01 — 이 유니버스에서 미작동",
     "dsr": {
-     "psr": 0.0084,
+     "psr": 0.0085,
      "dsr": 0.0,
      "sr0_annualized": 0.903,
      "n_trials": 26,
@@ -1966,7 +1966,7 @@
      "n_windows": 6,
      "positive_pct": 16.7,
      "beat_kospi_pct": 16.7,
-     "median_sharpe": -1.54,
+     "median_sharpe": -1.53,
      "worst_sharpe": -7.59,
      "worst_window_return_pct": -52.48
     }
@@ -1976,8 +1976,8 @@
     "label": "H_minervini",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 134.27,
+     "end": "2026-10-09",
+     "total_return_pct": 134.29,
      "cagr_pct": 13.41,
      "sharpe": 1.01,
      "mdd_pct": -17.95,
@@ -1997,9 +1997,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 106.5,
-     "cagr_pct": 29.98,
+     "end": "2026-10-09",
+     "total_return_pct": 106.52,
+     "cagr_pct": 29.95,
      "sharpe": 1.39,
      "mdd_pct": -17.95
     },
@@ -2010,13 +2010,13 @@
     "trade_count": 114,
     "kospi_dca_ratio": 0.815,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.963,
+    "aw_dca_ratio": 0.961,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "OOS 샤프 1.39 양호 · IS 0.9 미달 — 표본 부족, 참고용",
     "dsr": {
      "psr": 0.9962,
-     "dsr": 0.6121,
+     "dsr": 0.6125,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2026,7 +2026,7 @@
      "positive_pct": 78.6,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 1.68,
-     "worst_sharpe": -1.93,
+     "worst_sharpe": -1.92,
      "worst_window_return_pct": -11.2
     },
     "walkforward_oos": {
@@ -2034,7 +2034,7 @@
      "positive_pct": 66.7,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 1.83,
-     "worst_sharpe": -1.93,
+     "worst_sharpe": -1.92,
      "worst_window_return_pct": -11.2
     }
    },
@@ -2043,9 +2043,9 @@
     "label": "I_supertrend",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 65.54,
-     "cagr_pct": 7.74,
+     "cagr_pct": 7.73,
      "sharpe": 0.41,
      "mdd_pct": -42.82,
      "trades": 524,
@@ -2064,9 +2064,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 44.1,
-     "cagr_pct": 14.12,
+     "cagr_pct": 14.11,
      "sharpe": 0.56,
      "mdd_pct": -42.82
     },
@@ -2077,13 +2077,13 @@
     "trade_count": 524,
     "kospi_dca_ratio": 0.6,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.709,
+    "aw_dca_ratio": 0.708,
     "aw_dca_beats": false,
     "verdict": "기각",
     "verdict_reason": "거래 524건 고회전 — 비용이 알파 소진 (vs KOSPI DCA 0.6x)",
     "dsr": {
      "psr": 0.8587,
-     "dsr": 0.0987,
+     "dsr": 0.0988,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2110,9 +2110,9 @@
     "label": "J_core_satellite",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 275.29,
-     "cagr_pct": 21.59,
+     "end": "2026-10-09",
+     "total_return_pct": 275.26,
+     "cagr_pct": 21.58,
      "sharpe": 0.9,
      "mdd_pct": -34.06,
      "trades": 0,
@@ -2131,9 +2131,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 96.64,
-     "cagr_pct": 27.7,
+     "end": "2026-10-09",
+     "total_return_pct": 96.62,
+     "cagr_pct": 27.67,
      "sharpe": 0.93,
      "mdd_pct": -34.06
     },
@@ -2144,13 +2144,13 @@
     "trade_count": 0,
     "kospi_dca_ratio": 0.942,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 1.114,
+    "aw_dca_ratio": 1.112,
     "aw_dca_beats": true,
     "verdict": "연구용",
     "verdict_reason": "D 레버리지 오버레이 — 차입·디레버 효과 검증용 (차입 6%/년) (IS 0.93 · OOS 0.93)",
     "dsr": {
      "psr": 0.9912,
-     "dsr": 0.5007,
+     "dsr": 0.5009,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2177,8 +2177,8 @@
     "label": "K_rr_trend",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 36.7,
+     "end": "2026-10-09",
+     "total_return_pct": 36.71,
      "cagr_pct": 4.73,
      "sharpe": 0.77,
      "mdd_pct": -16.99,
@@ -2198,8 +2198,8 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 19.15,
+     "end": "2026-10-09",
+     "total_return_pct": 19.17,
      "cagr_pct": 6.54,
      "sharpe": 0.8,
      "mdd_pct": -11.77
@@ -2211,13 +2211,13 @@
     "trade_count": 604,
     "kospi_dca_ratio": 0.537,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.635,
+    "aw_dca_ratio": 0.634,
     "aw_dca_beats": false,
     "verdict": "기각",
     "verdict_reason": "거래 604건 고회전 — 비용이 알파 소진 (vs KOSPI DCA 0.537x)",
     "dsr": {
-     "psr": 0.9783,
-     "dsr": 0.3682,
+     "psr": 0.9784,
+     "dsr": 0.3686,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2244,9 +2244,9 @@
     "label": "N_52w_high",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 89.84,
-     "cagr_pct": 9.94,
+     "end": "2026-10-09",
+     "total_return_pct": 90.03,
+     "cagr_pct": 9.95,
      "sharpe": 0.62,
      "mdd_pct": -27.2,
      "trades": 81,
@@ -2265,9 +2265,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 61.95,
-     "cagr_pct": 19.05,
+     "end": "2026-10-09",
+     "total_return_pct": 62.11,
+     "cagr_pct": 19.07,
      "sharpe": 0.86,
      "mdd_pct": -27.02
     },
@@ -2276,15 +2276,15 @@
     "best_trade_ticker": "009150",
     "top_decile_pnl_share_pct": 71.9,
     "trade_count": 81,
-    "kospi_dca_ratio": 0.685,
+    "kospi_dca_ratio": 0.686,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.81,
+    "aw_dca_ratio": 0.809,
     "aw_dca_beats": false,
     "verdict": "기각",
-    "verdict_reason": "vs KOSPI DCA 0.685x · 올웨더 DCA 0.81x — 벤치마크 적립식 하회 (IS 0.37 · OOS 0.86)",
+    "verdict_reason": "vs KOSPI DCA 0.686x · 올웨더 DCA 0.809x — 벤치마크 적립식 하회 (IS 0.37 · OOS 0.86)",
     "dsr": {
-     "psr": 0.9462,
-     "dsr": 0.2306,
+     "psr": 0.9465,
+     "dsr": 0.2314,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2294,16 +2294,16 @@
      "positive_pct": 57.1,
      "beat_kospi_pct": 64.3,
      "median_sharpe": 0.26,
-     "worst_sharpe": -2.21,
-     "worst_window_return_pct": -14.04
+     "worst_sharpe": -2.18,
+     "worst_window_return_pct": -13.96
     },
     "walkforward_oos": {
      "n_windows": 6,
      "positive_pct": 66.7,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 0.26,
-     "worst_sharpe": -2.21,
-     "worst_window_return_pct": -14.04
+     "worst_sharpe": -2.18,
+     "worst_window_return_pct": -13.96
     }
    },
    {
@@ -2311,8 +2311,8 @@
     "label": "O_mtt_alpha16",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 33.85,
+     "end": "2026-10-09",
+     "total_return_pct": 33.86,
      "cagr_pct": 4.4,
      "sharpe": 0.39,
      "mdd_pct": -16.2,
@@ -2332,8 +2332,8 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 18.06,
+     "end": "2026-10-09",
+     "total_return_pct": 18.07,
      "cagr_pct": 6.19,
      "sharpe": 0.41,
      "mdd_pct": -16.2
@@ -2345,13 +2345,13 @@
     "trade_count": 705,
     "kospi_dca_ratio": 0.53,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.627,
+    "aw_dca_ratio": 0.626,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "alpha16 KRX 파라미터 이식 — 본 유니버스 미튜닝, 비교 참고용 (IS 0.57 · OOS 0.41)",
     "dsr": {
      "psr": 0.8463,
-     "dsr": 0.0946,
+     "dsr": 0.0947,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2369,7 +2369,7 @@
      "positive_pct": 50.0,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 0.56,
-     "worst_sharpe": -2.04,
+     "worst_sharpe": -2.02,
      "worst_window_return_pct": -6.72
     }
    },
@@ -2378,9 +2378,9 @@
     "label": "P_deepbuy_chandelier",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 28.01,
-     "cagr_pct": 3.72,
+     "end": "2026-10-09",
+     "total_return_pct": 28.21,
+     "cagr_pct": 3.74,
      "sharpe": 0.27,
      "mdd_pct": -43.5,
      "trades": 297,
@@ -2399,9 +2399,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": -0.53,
-     "cagr_pct": -0.19,
+     "end": "2026-10-09",
+     "total_return_pct": -0.37,
+     "cagr_pct": -0.13,
      "sharpe": 0.12,
      "mdd_pct": -36.44
     },
@@ -2417,8 +2417,8 @@
     "verdict": "채택",
     "verdict_reason": "셀렉터 핵심 비교 세트 — IS 0.43 · OOS 0.12 · vs KOSPI DCA 0.471x",
     "dsr": {
-     "psr": 0.7639,
-     "dsr": 0.0481,
+     "psr": 0.7648,
+     "dsr": 0.0484,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2445,9 +2445,9 @@
     "label": "Q_kangto_trend",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": -11.16,
-     "cagr_pct": -1.73,
+     "end": "2026-10-09",
+     "total_return_pct": -11.06,
+     "cagr_pct": -1.72,
      "sharpe": -0.01,
      "mdd_pct": -36.37,
      "trades": 904,
@@ -2466,9 +2466,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": -6.0,
-     "cagr_pct": -2.21,
+     "end": "2026-10-09",
+     "total_return_pct": -5.89,
+     "cagr_pct": -2.17,
      "sharpe": 0.02,
      "mdd_pct": -24.07
     },
@@ -2479,13 +2479,13 @@
     "trade_count": 904,
     "kospi_dca_ratio": 0.411,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.486,
+    "aw_dca_ratio": 0.485,
     "aw_dca_beats": false,
     "verdict": "기각",
     "verdict_reason": "IS 샤프 -0.07 — 이 유니버스에서 미작동",
     "dsr": {
-     "psr": 0.4844,
-     "dsr": 0.0077,
+     "psr": 0.4854,
+     "dsr": 0.0078,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2503,7 +2503,7 @@
      "positive_pct": 50.0,
      "beat_kospi_pct": 50.0,
      "median_sharpe": -0.37,
-     "worst_sharpe": -1.9,
+     "worst_sharpe": -1.85,
      "worst_window_return_pct": -16.69
     }
    },
@@ -2512,9 +2512,9 @@
     "label": "R_kelly_chandelier",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 116.95,
-     "cagr_pct": 12.13,
+     "cagr_pct": 12.12,
      "sharpe": 0.58,
      "mdd_pct": -43.23,
      "trades": 202,
@@ -2533,9 +2533,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 59.59,
-     "cagr_pct": 18.42,
+     "cagr_pct": 18.4,
      "sharpe": 0.69,
      "mdd_pct": -29.48
     },
@@ -2546,13 +2546,13 @@
     "trade_count": 202,
     "kospi_dca_ratio": 0.718,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.849,
+    "aw_dca_ratio": 0.847,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "Kelly 사이징 오버레이 — 사이징 효과 단독 검증용 (IS 0.47 · OOS 0.69)",
     "dsr": {
      "psr": 0.9369,
-     "dsr": 0.2009,
+     "dsr": 0.2011,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2561,7 +2561,7 @@
      "n_windows": 14,
      "positive_pct": 64.3,
      "beat_kospi_pct": 35.7,
-     "median_sharpe": 0.94,
+     "median_sharpe": 0.93,
      "worst_sharpe": -1.91,
      "worst_window_return_pct": -23.7
     },
@@ -2569,7 +2569,7 @@
      "n_windows": 6,
      "positive_pct": 66.7,
      "beat_kospi_pct": 33.3,
-     "median_sharpe": 0.94,
+     "median_sharpe": 0.93,
      "worst_sharpe": -1.61,
      "worst_window_return_pct": -23.7
     }
@@ -2579,9 +2579,9 @@
     "label": "S_hrp",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 83.11,
-     "cagr_pct": 9.35,
+     "end": "2026-10-09",
+     "total_return_pct": 83.04,
+     "cagr_pct": 9.34,
      "sharpe": 0.55,
      "mdd_pct": -34.71,
      "trades": 4214,
@@ -2600,9 +2600,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 35.86,
-     "cagr_pct": 11.72,
+     "end": "2026-10-09",
+     "total_return_pct": 35.81,
+     "cagr_pct": 11.69,
      "sharpe": 0.68,
      "mdd_pct": -20.78
     },
@@ -2613,13 +2613,13 @@
     "trade_count": 4214,
     "kospi_dca_ratio": 0.545,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.644,
+    "aw_dca_ratio": 0.643,
     "aw_dca_beats": false,
     "verdict": "채택",
     "verdict_reason": "S 배분형 IS 샤프 베스트 변형 — IS 0.48 · OOS 0.68",
     "dsr": {
-     "psr": 0.926,
-     "dsr": 0.1795,
+     "psr": 0.9259,
+     "dsr": 0.1794,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2646,9 +2646,9 @@
     "label": "S_msharpe",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 91.04,
-     "cagr_pct": 10.04,
+     "end": "2026-10-09",
+     "total_return_pct": 90.57,
+     "cagr_pct": 10.0,
      "sharpe": 0.5,
      "mdd_pct": -48.76,
      "trades": 1898,
@@ -2667,9 +2667,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 51.19,
-     "cagr_pct": 16.12,
+     "end": "2026-10-09",
+     "total_return_pct": 50.82,
+     "cagr_pct": 16.0,
      "sharpe": 0.72,
      "mdd_pct": -32.13
     },
@@ -2678,15 +2678,15 @@
     "best_trade_ticker": "257720",
     "top_decile_pnl_share_pct": 59.0,
     "trade_count": 1898,
-    "kospi_dca_ratio": 0.534,
+    "kospi_dca_ratio": 0.533,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.631,
+    "aw_dca_ratio": 0.628,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "S 배분형 비베스트 변형 — IS 0.36 (베스트 S_hrp 0.48)",
     "dsr": {
-     "psr": 0.9063,
-     "dsr": 0.1446,
+     "psr": 0.9057,
+     "dsr": 0.1439,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2696,7 +2696,7 @@
      "positive_pct": 57.1,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 0.79,
-     "worst_sharpe": -2.21,
+     "worst_sharpe": -2.22,
      "worst_window_return_pct": -21.41
     },
     "walkforward_oos": {
@@ -2704,8 +2704,8 @@
      "positive_pct": 66.7,
      "beat_kospi_pct": 33.3,
      "median_sharpe": 0.79,
-     "worst_sharpe": -2.21,
-     "worst_window_return_pct": -21.13
+     "worst_sharpe": -2.22,
+     "worst_window_return_pct": -21.32
     }
    },
    {
@@ -2713,9 +2713,9 @@
     "label": "S_mincvar",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 3.41,
-     "cagr_pct": 0.5,
+     "end": "2026-10-09",
+     "total_return_pct": 3.3,
+     "cagr_pct": 0.48,
      "sharpe": 0.13,
      "mdd_pct": -49.82,
      "trades": 856,
@@ -2734,9 +2734,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 37.82,
-     "cagr_pct": 12.3,
+     "end": "2026-10-09",
+     "total_return_pct": 37.68,
+     "cagr_pct": 12.25,
      "sharpe": 0.68,
      "mdd_pct": -19.68
     },
@@ -2747,13 +2747,13 @@
     "trade_count": 856,
     "kospi_dca_ratio": 0.48,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.568,
+    "aw_dca_ratio": 0.566,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "S 배분형 비베스트 변형 — IS -0.19 (베스트 S_hrp 0.48)",
     "dsr": {
-     "psr": 0.6333,
-     "dsr": 0.0206,
+     "psr": 0.6326,
+     "dsr": 0.0205,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2771,7 +2771,7 @@
      "positive_pct": 50.0,
      "beat_kospi_pct": 66.7,
      "median_sharpe": 0.33,
-     "worst_sharpe": -1.56,
+     "worst_sharpe": -1.58,
      "worst_window_return_pct": -7.1
     }
    },
@@ -2780,7 +2780,7 @@
     "label": "V_spo",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 40.41,
      "cagr_pct": 5.14,
      "sharpe": 0.34,
@@ -2801,9 +2801,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 43.82,
-     "cagr_pct": 14.04,
+     "cagr_pct": 14.03,
      "sharpe": 0.6,
      "mdd_pct": -34.34
     },
@@ -2814,13 +2814,13 @@
     "trade_count": 272,
     "kospi_dca_ratio": 0.582,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.688,
+    "aw_dca_ratio": 0.686,
     "aw_dca_beats": false,
     "verdict": "연구용",
     "verdict_reason": "SPO+ 의사결정 학습 검증 — 승격 게이트 미달 (부의 비율 0.582x vs 1.231x · OOS 0.6 vs 1.26)",
     "dsr": {
      "psr": 0.8153,
-     "dsr": 0.0685,
+     "dsr": 0.0686,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2830,7 +2830,7 @@
      "positive_pct": 64.3,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 0.05,
-     "worst_sharpe": -2.08,
+     "worst_sharpe": -2.07,
      "worst_window_return_pct": -24.61
     },
     "walkforward_oos": {
@@ -2838,7 +2838,7 @@
      "positive_pct": 50.0,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 0.51,
-     "worst_sharpe": -2.08,
+     "worst_sharpe": -2.07,
      "worst_window_return_pct": -24.61
     }
    },
@@ -2847,9 +2847,9 @@
     "label": "V_ls",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 101.0,
-     "cagr_pct": 10.87,
+     "end": "2026-10-09",
+     "total_return_pct": 101.54,
+     "cagr_pct": 10.91,
      "sharpe": 0.51,
      "mdd_pct": -46.95,
      "trades": 262,
@@ -2868,10 +2868,10 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 36.38,
-     "cagr_pct": 11.87,
-     "sharpe": 0.48,
+     "end": "2026-10-09",
+     "total_return_pct": 36.75,
+     "cagr_pct": 11.97,
+     "sharpe": 0.49,
      "mdd_pct": -46.95
     },
     "max_single_return_pct": 122.15,
@@ -2879,15 +2879,15 @@
     "best_trade_ticker": "230240",
     "top_decile_pnl_share_pct": 59.2,
     "trade_count": 262,
-    "kospi_dca_ratio": 0.653,
+    "kospi_dca_ratio": 0.655,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.772,
+    "aw_dca_ratio": 0.773,
     "aw_dca_beats": false,
     "verdict": "연구용",
-    "verdict_reason": "SPO+ 효과 분리용 LS 대조군 — 비교 앵커로만 유지 (IS 0.66 · OOS 0.48)",
+    "verdict_reason": "SPO+ 효과 분리용 LS 대조군 — 비교 앵커로만 유지 (IS 0.66 · OOS 0.49)",
     "dsr": {
-     "psr": 0.9113,
-     "dsr": 0.1523,
+     "psr": 0.9119,
+     "dsr": 0.1533,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2898,15 +2898,15 @@
      "beat_kospi_pct": 71.4,
      "median_sharpe": 0.5,
      "worst_sharpe": -0.95,
-     "worst_window_return_pct": -14.74
+     "worst_window_return_pct": -14.51
     },
     "walkforward_oos": {
      "n_windows": 6,
      "positive_pct": 50.0,
      "beat_kospi_pct": 66.7,
      "median_sharpe": 0.21,
-     "worst_sharpe": -0.95,
-     "worst_window_return_pct": -14.74
+     "worst_sharpe": -0.93,
+     "worst_window_return_pct": -14.51
     }
    },
    {
@@ -2914,8 +2914,8 @@
     "label": "D+_chandelier_optuna",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 190.51,
+     "end": "2026-10-09",
+     "total_return_pct": 190.52,
      "cagr_pct": 17.07,
      "sharpe": 1.06,
      "mdd_pct": -18.3,
@@ -2935,9 +2935,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 73.25,
-     "cagr_pct": 21.99,
+     "end": "2026-10-09",
+     "total_return_pct": 73.26,
+     "cagr_pct": 21.97,
      "sharpe": 1.09,
      "mdd_pct": -18.3
     },
@@ -2948,13 +2948,13 @@
     "trade_count": 243,
     "kospi_dca_ratio": 0.787,
     "kospi_dca_beats": false,
-    "aw_dca_ratio": 0.931,
+    "aw_dca_ratio": 0.929,
     "aw_dca_beats": false,
     "verdict": "채택",
     "verdict_reason": "셀렉터 핵심 비교 세트 — IS 1.05 · OOS 1.09 · vs KOSPI DCA 0.787x",
     "dsr": {
      "psr": 0.997,
-     "dsr": 0.6573,
+     "dsr": 0.6576,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -2981,9 +2981,9 @@
     "label": "T_kospi_core_chandelier",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 292.58,
-     "cagr_pct": 22.4,
+     "cagr_pct": 22.39,
      "sharpe": 0.87,
      "mdd_pct": -35.78,
      "trades": 243,
@@ -3002,9 +3002,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 141.26,
-     "cagr_pct": 37.5,
+     "cagr_pct": 37.46,
      "sharpe": 1.11,
      "mdd_pct": -35.78
     },
@@ -3015,13 +3015,13 @@
     "trade_count": 243,
     "kospi_dca_ratio": 1.043,
     "kospi_dca_beats": true,
-    "aw_dca_ratio": 1.233,
+    "aw_dca_ratio": 1.23,
     "aw_dca_beats": true,
     "verdict": "연구용",
     "verdict_reason": "상시 KOSPI 파킹 앵커 (레짐 없음) — 파킹 효과 분리용 (IS 0.63 · OOS 1.11)",
     "dsr": {
      "psr": 0.9885,
-     "dsr": 0.4616,
+     "dsr": 0.4618,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -3048,9 +3048,9 @@
     "label": "T-_kospi_core_regime",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 492.95,
-     "cagr_pct": 30.1,
+     "cagr_pct": 30.08,
      "sharpe": 1.21,
      "mdd_pct": -32.41,
      "trades": 243,
@@ -3069,9 +3069,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 167.55,
-     "cagr_pct": 42.75,
+     "cagr_pct": 42.7,
      "sharpe": 1.26,
      "mdd_pct": -32.41
     },
@@ -3082,13 +3082,13 @@
     "trade_count": 243,
     "kospi_dca_ratio": 1.231,
     "kospi_dca_beats": true,
-    "aw_dca_ratio": 1.456,
+    "aw_dca_ratio": 1.453,
     "aw_dca_beats": true,
     "verdict": "채택",
     "verdict_reason": "파킹 콘테스트 승자·승격 게이트 통과 — 타이브레이크 차점 (IS 1.28 vs 1.29 · OOS 1.26 vs 1.32)",
     "dsr": {
      "psr": 0.9992,
-     "dsr": 0.7892,
+     "dsr": 0.7893,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -3115,8 +3115,8 @@
     "label": "W_allweather_chandelier",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 370.06,
+     "end": "2026-10-09",
+     "total_return_pct": 370.51,
      "cagr_pct": 25.71,
      "sharpe": 1.2,
      "mdd_pct": -24.78,
@@ -3136,8 +3136,8 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
-     "total_return_pct": 124.57,
+     "end": "2026-10-09",
+     "total_return_pct": 124.79,
      "cagr_pct": 33.99,
      "sharpe": 1.37,
      "mdd_pct": -24.78
@@ -3147,15 +3147,15 @@
     "best_trade_ticker": "267260",
     "top_decile_pnl_share_pct": 65.2,
     "trade_count": 243,
-    "kospi_dca_ratio": 1.016,
+    "kospi_dca_ratio": 1.017,
     "kospi_dca_beats": true,
-    "aw_dca_ratio": 1.201,
+    "aw_dca_ratio": 1.2,
     "aw_dca_beats": true,
     "verdict": "연구용",
-    "verdict_reason": "파킹 콘테스트 패자 (vs T-_kospi_core_regime) — IS+OOS 샤프 합 2.41 vs 2.54 · 자기 벤치마크(올웨더 DCA) 1.201x",
+    "verdict_reason": "파킹 콘테스트 패자 (vs T-_kospi_core_regime) — IS+OOS 샤프 합 2.41 vs 2.54 · 자기 벤치마크(올웨더 DCA) 1.2x",
     "dsr": {
      "psr": 0.9991,
-     "dsr": 0.7776,
+     "dsr": 0.7783,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -3173,8 +3173,8 @@
      "positive_pct": 66.7,
      "beat_kospi_pct": 50.0,
      "median_sharpe": 1.8,
-     "worst_sharpe": -1.52,
-     "worst_window_return_pct": -9.18
+     "worst_sharpe": -1.49,
+     "worst_window_return_pct": -9.1
     }
    },
    {
@@ -3182,10 +3182,10 @@
     "label": "U_chandelier_scaleout",
     "metrics": {
      "start": "2020-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 502.36,
-     "cagr_pct": 30.4,
-     "sharpe": 1.25,
+     "cagr_pct": 30.38,
+     "sharpe": 1.24,
      "mdd_pct": -32.22,
      "trades": 274,
      "win_rate_pct": 52.2,
@@ -3203,9 +3203,9 @@
     },
     "out_of_sample": {
      "start": "2024-01-02",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "total_return_pct": 177.48,
-     "cagr_pct": 44.64,
+     "cagr_pct": 44.59,
      "sharpe": 1.32,
      "mdd_pct": -32.22
     },
@@ -3216,13 +3216,13 @@
     "trade_count": 274,
     "kospi_dca_ratio": 1.257,
     "kospi_dca_beats": true,
-    "aw_dca_ratio": 1.486,
+    "aw_dca_ratio": 1.483,
     "aw_dca_beats": true,
     "verdict": "SOTA",
     "verdict_reason": "타이브레이크(IS 샤프 → OOS 샤프 → 부의 비율) 1위 — IS 1.29 · OOS 1.32 · vs KOSPI DCA 1.257x",
     "dsr": {
      "psr": 0.9994,
-     "dsr": 0.8146,
+     "dsr": 0.8148,
      "sr0_annualized": 0.903,
      "n_trials": 26,
      "significant_after_deflation": false
@@ -4086,18 +4086,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 239395289,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "B_36mo": {
-    "final_strategy_value": 345855232,
+    "final_strategy_value": 345855274,
     "strategy_gain_on_contributed_pct": 79.2,
     "strategy_mdd_pct": -26.19,
     "series": [
@@ -4923,18 +4923,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 345855232,
+      "strategy_value": 345855274,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "C_narrative": {
-    "final_strategy_value": 324075739,
+    "final_strategy_value": 324075758,
     "strategy_gain_on_contributed_pct": 67.9,
     "strategy_mdd_pct": -27.83,
     "series": [
@@ -5760,18 +5760,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 324075739,
+      "strategy_value": 324075758,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "D_chandelier": {
-    "final_strategy_value": 424710965,
+    "final_strategy_value": 424714554,
     "strategy_gain_on_contributed_pct": 120.1,
     "strategy_mdd_pct": -21.12,
     "series": [
@@ -6597,18 +6597,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 424710965,
+      "strategy_value": 424714554,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "E_half_runner": {
-    "final_strategy_value": 290540193,
+    "final_strategy_value": 290540895,
     "strategy_gain_on_contributed_pct": 50.5,
     "strategy_mdd_pct": -25.14,
     "series": [
@@ -7434,18 +7434,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 290540193,
+      "strategy_value": 290540895,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "F_momentum_narrative": {
-    "final_strategy_value": 259789658,
+    "final_strategy_value": 259790165,
     "strategy_gain_on_contributed_pct": 34.6,
     "strategy_mdd_pct": -14.18,
     "series": [
@@ -8271,18 +8271,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 259789658,
+      "strategy_value": 259790165,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "G_dip_buy": {
-    "final_strategy_value": 72125645,
+    "final_strategy_value": 72210535,
     "strategy_gain_on_contributed_pct": -62.6,
     "strategy_mdd_pct": -38.77,
     "series": [
@@ -9108,18 +9108,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 72125645,
+      "strategy_value": 72210535,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "H_minervini": {
-    "final_strategy_value": 352080784,
+    "final_strategy_value": 352112835,
     "strategy_gain_on_contributed_pct": 82.4,
     "strategy_mdd_pct": -13.16,
     "series": [
@@ -9945,18 +9945,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 352080784,
+      "strategy_value": 352112835,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "I_supertrend": {
-    "final_strategy_value": 259252152,
+    "final_strategy_value": 259254905,
     "strategy_gain_on_contributed_pct": 34.3,
     "strategy_mdd_pct": -21.2,
     "series": [
@@ -10782,18 +10782,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 259252152,
+      "strategy_value": 259254905,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "J_core_satellite": {
-    "final_strategy_value": 407228932,
+    "final_strategy_value": 407193711,
     "strategy_gain_on_contributed_pct": 111.0,
     "strategy_mdd_pct": -21.8,
     "series": [
@@ -11619,18 +11619,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 407228932,
+      "strategy_value": 407193711,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "K_rr_trend": {
-    "final_strategy_value": 232208411,
+    "final_strategy_value": 232231732,
     "strategy_gain_on_contributed_pct": 20.3,
     "strategy_mdd_pct": -1.8,
     "series": [
@@ -12456,19 +12456,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 232208411,
+      "strategy_value": 232231732,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "N_52w_high": {
-    "final_strategy_value": 296130873,
-    "strategy_gain_on_contributed_pct": 53.4,
+    "final_strategy_value": 296425367,
+    "strategy_gain_on_contributed_pct": 53.6,
     "strategy_mdd_pct": -17.65,
     "series": [
      {
@@ -13293,18 +13293,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 296130873,
+      "strategy_value": 296425367,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "O_mtt_alpha16": {
-    "final_strategy_value": 229119921,
+    "final_strategy_value": 229137041,
     "strategy_gain_on_contributed_pct": 18.7,
     "strategy_mdd_pct": -8.88,
     "series": [
@@ -14130,19 +14130,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 229119921,
+      "strategy_value": 229137041,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "P_deepbuy_chandelier": {
-    "final_strategy_value": 203440461,
-    "strategy_gain_on_contributed_pct": 5.4,
+    "final_strategy_value": 203766290,
+    "strategy_gain_on_contributed_pct": 5.6,
     "strategy_mdd_pct": -25.02,
     "series": [
      {
@@ -14967,19 +14967,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 203440461,
+      "strategy_value": 203766290,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "Q_kangto_trend": {
-    "final_strategy_value": 177624825,
-    "strategy_gain_on_contributed_pct": -8.0,
+    "final_strategy_value": 177836681,
+    "strategy_gain_on_contributed_pct": -7.9,
     "strategy_mdd_pct": -13.75,
     "series": [
      {
@@ -15804,13 +15804,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 177624825,
+      "strategy_value": 177836681,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
@@ -16641,19 +16641,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 310302471,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "S_hrp": {
-    "final_strategy_value": 235623183,
-    "strategy_gain_on_contributed_pct": 22.1,
+    "final_strategy_value": 235537074,
+    "strategy_gain_on_contributed_pct": 22.0,
     "strategy_mdd_pct": -11.44,
     "series": [
      {
@@ -17478,19 +17478,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 235623183,
+      "strategy_value": 235537074,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "S_msharpe": {
-    "final_strategy_value": 230736214,
-    "strategy_gain_on_contributed_pct": 19.6,
+    "final_strategy_value": 230170539,
+    "strategy_gain_on_contributed_pct": 19.3,
     "strategy_mdd_pct": -23.22,
     "series": [
      {
@@ -18315,19 +18315,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 230736214,
+      "strategy_value": 230170539,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "S_mincvar": {
-    "final_strategy_value": 207495614,
-    "strategy_gain_on_contributed_pct": 7.5,
+    "final_strategy_value": 207284631,
+    "strategy_gain_on_contributed_pct": 7.4,
     "strategy_mdd_pct": -13.83,
     "series": [
      {
@@ -19152,13 +19152,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 207495614,
+      "strategy_value": 207284631,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
@@ -19989,19 +19989,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 251465167,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "V_ls": {
-    "final_strategy_value": 282264420,
-    "strategy_gain_on_contributed_pct": 46.3,
+    "final_strategy_value": 283030988,
+    "strategy_gain_on_contributed_pct": 46.6,
     "strategy_mdd_pct": -38.5,
     "series": [
      {
@@ -20826,18 +20826,18 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 282264420,
+      "strategy_value": 283030988,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "D+_chandelier_optuna": {
-    "final_strategy_value": 340355660,
+    "final_strategy_value": 340375370,
     "strategy_gain_on_contributed_pct": 76.4,
     "strategy_mdd_pct": -9.64,
     "series": [
@@ -21663,13 +21663,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 340355660,
+      "strategy_value": 340375370,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
@@ -22500,13 +22500,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 450732861,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
@@ -23337,19 +23337,19 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 532164411,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
    "W_allweather_chandelier": {
-    "final_strategy_value": 439157224,
-    "strategy_gain_on_contributed_pct": 127.5,
+    "final_strategy_value": 439573041,
+    "strategy_gain_on_contributed_pct": 127.8,
     "strategy_mdd_pct": -17.97,
     "series": [
      {
@@ -24174,13 +24174,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
-      "strategy_value": 439157224,
+      "strategy_value": 439573041,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    },
@@ -25011,13 +25011,13 @@
      },
      {
       "month": 82,
-      "date": "2026-10-08",
+      "date": "2026-10-09",
       "contributed": 193000000,
       "strategy_value": 543100005,
       "KOSPI_value": 432224341,
-      "SP500_value": 310580899,
+      "SP500_value": 312993330,
       "NASDAQ_value": 331839123,
-      "AllWeather_value": 365595334
+      "AllWeather_value": 366317948
      }
     ]
    }
@@ -25162,7 +25162,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -11.41,
      "sharpe": -0.56,
      "mdd_pct": -34.65,
@@ -25304,7 +25304,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -7.35,
      "sharpe": -0.37,
      "mdd_pct": -25.56,
@@ -25446,7 +25446,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -11.29,
      "sharpe": -0.38,
      "mdd_pct": -38.46,
@@ -25588,8 +25588,8 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -6.14,
+     "end": "2026-10-09",
+     "return_pct": -6.13,
      "sharpe": -0.76,
      "mdd_pct": -19.55,
      "kospi_return_pct": -20.2,
@@ -25730,7 +25730,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -10.82,
      "sharpe": -0.63,
      "mdd_pct": -30.25,
@@ -25872,9 +25872,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -11.09,
-     "sharpe": -1.46,
+     "sharpe": -1.45,
      "mdd_pct": -13.75,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -26014,9 +26014,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -19.77,
-     "sharpe": -1.19,
+     "end": "2026-10-09",
+     "return_pct": -19.68,
+     "sharpe": -1.17,
      "mdd_pct": -34.02,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -26156,9 +26156,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -11.2,
-     "sharpe": -1.93,
+     "sharpe": -1.92,
      "mdd_pct": -15.3,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -26298,7 +26298,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -2.36,
      "sharpe": -0.24,
      "mdd_pct": -15.53,
@@ -26440,7 +26440,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -6.25,
      "sharpe": -0.61,
      "mdd_pct": -22.04,
@@ -26582,8 +26582,8 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": 1.7,
+     "end": "2026-10-09",
+     "return_pct": 1.71,
      "sharpe": 0.8,
      "mdd_pct": -3.32,
      "kospi_return_pct": -20.2,
@@ -26724,9 +26724,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -14.04,
-     "sharpe": -2.21,
+     "end": "2026-10-09",
+     "return_pct": -13.96,
+     "sharpe": -2.18,
      "mdd_pct": -20.4,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -26866,9 +26866,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -5.23,
-     "sharpe": -2.04,
+     "end": "2026-10-09",
+     "return_pct": -5.22,
+     "sharpe": -2.02,
      "mdd_pct": -7.41,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27008,9 +27008,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": 3.13,
-     "sharpe": 0.47,
+     "end": "2026-10-09",
+     "return_pct": 3.3,
+     "sharpe": 0.48,
      "mdd_pct": -21.22,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27150,9 +27150,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -6.42,
-     "sharpe": -1.9,
+     "end": "2026-10-09",
+     "return_pct": -6.31,
+     "sharpe": -1.85,
      "mdd_pct": -7.66,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27292,9 +27292,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": 4.77,
-     "sharpe": 0.64,
+     "sharpe": 0.63,
      "mdd_pct": -18.16,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27434,9 +27434,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -4.75,
-     "sharpe": -0.67,
+     "end": "2026-10-09",
+     "return_pct": -4.79,
+     "sharpe": -0.68,
      "mdd_pct": -13.18,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27576,9 +27576,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -21.13,
-     "sharpe": -2.21,
+     "end": "2026-10-09",
+     "return_pct": -21.32,
+     "sharpe": -2.22,
      "mdd_pct": -30.85,
      "kospi_return_pct": -20.2,
      "beat_kospi": false,
@@ -27718,9 +27718,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -5.36,
-     "sharpe": -1.56,
+     "end": "2026-10-09",
+     "return_pct": -5.46,
+     "sharpe": -1.58,
      "mdd_pct": -6.92,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -27860,9 +27860,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -11.85,
-     "sharpe": -2.08,
+     "sharpe": -2.07,
      "mdd_pct": -13.18,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -28002,9 +28002,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -14.74,
-     "sharpe": -0.95,
+     "end": "2026-10-09",
+     "return_pct": -14.51,
+     "sharpe": -0.93,
      "mdd_pct": -31.36,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -28144,8 +28144,8 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": 0.41,
+     "end": "2026-10-09",
+     "return_pct": 0.42,
      "sharpe": 0.17,
      "mdd_pct": -8.8,
      "kospi_return_pct": -20.2,
@@ -28286,7 +28286,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -12.98,
      "sharpe": -0.67,
      "mdd_pct": -29.97,
@@ -28428,7 +28428,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -8.51,
      "sharpe": -0.35,
      "mdd_pct": -26.29,
@@ -28570,9 +28570,9 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
-     "return_pct": -9.18,
-     "sharpe": -1.52,
+     "end": "2026-10-09",
+     "return_pct": -9.1,
+     "sharpe": -1.49,
      "mdd_pct": -17.75,
      "kospi_return_pct": -20.2,
      "beat_kospi": true,
@@ -28712,7 +28712,7 @@
     },
     {
      "start": "2026-07-01",
-     "end": "2026-10-08",
+     "end": "2026-10-09",
      "return_pct": -8.51,
      "sharpe": -0.35,
      "mdd_pct": -26.3,
@@ -34392,7 +34392,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 4.2962
+     "nav": 4.2963
     }
    ],
    "E_half_runner": [
@@ -38646,7 +38646,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 0.1895
+     "nav": 0.1897
     }
    ],
    "H_minervini": [
@@ -40064,7 +40064,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 2.3408
+     "nav": 2.341
     }
    ],
    "I_supertrend": [
@@ -42900,7 +42900,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 3.753
+     "nav": 3.7527
     }
    ],
    "K_rr_trend": [
@@ -44318,7 +44318,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.3643
+     "nav": 1.3645
     }
    ],
    "N_52w_high": [
@@ -45736,7 +45736,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.8968
+     "nav": 1.8987
     }
    ],
    "O_mtt_alpha16": [
@@ -47154,7 +47154,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.3387
+     "nav": 1.3388
     }
    ],
    "P_deepbuy_chandelier": [
@@ -48572,7 +48572,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.2802
+     "nav": 1.2823
     }
    ],
    "Q_kangto_trend": [
@@ -49990,7 +49990,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 0.8885
+     "nav": 0.8895
     }
    ],
    "R_kelly_chandelier": [
@@ -52826,7 +52826,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.8313
+     "nav": 1.8306
     }
    ],
    "S_msharpe": [
@@ -54244,7 +54244,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.9106
+     "nav": 1.9059
     }
    ],
    "S_mincvar": [
@@ -55662,7 +55662,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 1.0342
+     "nav": 1.0332
     }
    ],
    "V_spo": [
@@ -58498,7 +58498,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 2.0102
+     "nav": 2.0156
     }
    ],
    "D+_chandelier_optuna": [
@@ -59916,7 +59916,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 2.8995
+     "nav": 2.8997
     }
    ],
    "T_kospi_core_chandelier": [
@@ -64170,7 +64170,7 @@
     },
     {
      "date": "2026-10-09",
-     "nav": 4.6875
+     "nav": 4.692
     }
    ],
    "U_chandelier_scaleout": [
@@ -65800,7 +65800,7 @@
     },
     {
      "year": 2026,
-     "return_pct": -28.75
+     "return_pct": -28.67
     }
    ],
    "H_minervini": [
@@ -65830,7 +65830,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 51.24
+     "return_pct": 51.25
     }
    ],
    "I_supertrend": [
@@ -65890,7 +65890,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 47.09
+     "return_pct": 47.08
     }
    ],
    "K_rr_trend": [
@@ -65920,7 +65920,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 14.68
+     "return_pct": 14.69
     }
    ],
    "N_52w_high": [
@@ -65950,7 +65950,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 37.61
+     "return_pct": 37.75
     }
    ],
    "O_mtt_alpha16": [
@@ -65980,7 +65980,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 15.88
+     "return_pct": 15.89
     }
    ],
    "P_deepbuy_chandelier": [
@@ -66010,7 +66010,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 1.47
+     "return_pct": 1.63
     }
    ],
    "Q_kangto_trend": [
@@ -66040,7 +66040,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 5.76
+     "return_pct": 5.89
     }
    ],
    "R_kelly_chandelier": [
@@ -66100,7 +66100,7 @@
     },
     {
      "year": 2026,
-     "return_pct": -10.92
+     "return_pct": -10.95
     }
    ],
    "S_msharpe": [
@@ -66130,7 +66130,7 @@
     },
     {
      "year": 2026,
-     "return_pct": -11.56
+     "return_pct": -11.77
     }
    ],
    "S_mincvar": [
@@ -66160,7 +66160,7 @@
     },
     {
      "year": 2026,
-     "return_pct": -12.61
+     "return_pct": -12.7
     }
    ],
    "V_spo": [
@@ -66220,7 +66220,7 @@
     },
     {
      "year": 2026,
-     "return_pct": -1.33
+     "return_pct": -1.06
     }
    ],
    "D+_chandelier_optuna": [
@@ -66250,7 +66250,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 34.22
+     "return_pct": 34.23
     }
    ],
    "T_kospi_core_chandelier": [
@@ -66340,7 +66340,7 @@
     },
     {
      "year": 2026,
-     "return_pct": 35.61
+     "return_pct": 35.73
     }
    ],
    "U_chandelier_scaleout": [
@@ -67906,12 +67906,12 @@
      "display_name": "CAMT",
      "entry_date": "2026-09-28",
      "entry": 144.5,
-     "last_close": 147.22,
+     "last_close": 151.0,
      "stop": 143.71,
-     "return_pct": -99.93,
+     "return_pct": -99.92,
      "source": "2026-04-16_equity-research-camteck.md",
      "n_clubs": 1,
-     "extension": -0.08,
+     "extension": 0.42,
      "entry_reason": "발간일(2026-04-16) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)"
     },
     {
@@ -67934,12 +67934,12 @@
      "display_name": "STRL",
      "entry_date": "2026-10-06",
      "entry": 525.25,
-     "last_close": 510.93,
+     "last_close": 515.01,
      "stop": 485.95,
      "return_pct": -99.93,
      "source": "2026-05-29_equity-research-sterling-infrastructure-inc.md",
      "n_clubs": 1,
-     "extension": -0.18,
+     "extension": 0.03,
      "entry_reason": "발간일(2026-05-29) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)"
     },
     {
@@ -68405,12 +68405,12 @@
      "display_name": "LLY",
      "entry_date": "2024-09-30",
      "entry": 853.8034,
-     "last_close": 1151.0,
+     "last_close": 1178.21,
      "stop": 0,
-     "return_pct": -99.9,
+     "return_pct": -99.89,
      "source": "2025-11-10_GLP-1, 지방아 내 몸에서 나가! (발간일 240928) YIG Research.md",
      "n_clubs": 2,
-     "extension": -0.63,
+     "extension": 0.08,
      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (트리거: yig 2024-09-28, smic 2023-11-22)"
     },
     {
@@ -68675,12 +68675,12 @@
      "display_name": "CAMT",
      "entry_date": "2026-09-28",
      "entry": 144.5,
-     "last_close": 147.22,
+     "last_close": 151.0,
      "stop": 134.32,
-     "return_pct": -99.93,
+     "return_pct": -99.92,
      "source": "2026-04-16_equity-research-camteck.md",
      "n_clubs": 1,
-     "extension": -0.08,
+     "extension": 0.42,
      "entry_reason": "발간일(2026-04-16) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)"
     },
     {
@@ -68689,12 +68689,12 @@
      "display_name": "STRL",
      "entry_date": "2026-09-28",
      "entry": 504.06,
-     "last_close": 510.93,
+     "last_close": 515.01,
      "stop": 453.56,
      "return_pct": -99.93,
      "source": "2026-05-29_equity-research-sterling-infrastructure-inc.md",
      "n_clubs": 1,
-     "extension": -0.18,
+     "extension": 0.03,
      "entry_reason": "발간일(2026-05-29) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)"
     },
     {
@@ -68859,12 +68859,12 @@
      "display_name": "DOCS",
      "entry_date": "2026-10-01",
      "entry": 28.91,
-     "last_close": 29.05,
+     "last_close": 29.75,
      "stop": 26.59,
-     "return_pct": -99.93,
+     "return_pct": -99.92,
      "source": "2025-05-25_equity-research-doximity.md",
      "n_clubs": 1,
-     "extension": 3.84,
+     "extension": 4.49,
      "entry_reason": "깡토 추세추종: RS 73 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)"
     },
     {
@@ -69283,12 +69283,12 @@
      "display_name": "GLW",
      "entry_date": "2025-11-03",
      "entry": 89.0522,
-     "last_close": 154.27,
+     "last_close": 155.83,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.09,
+     "extension": 0.07,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.6% 재조정 보유"
     },
     {
@@ -70151,12 +70151,12 @@
      "display_name": "LEU",
      "entry_date": "2026-03-02",
      "entry": 193.5,
-     "last_close": 141.09,
+     "last_close": 142.29,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -3.06,
+     "extension": -3.18,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.3% 재조정 보유"
     },
     {
@@ -70557,12 +70557,12 @@
      "display_name": "CLBT",
      "entry_date": "2025-07-01",
      "entry": 15.912,
-     "last_close": 11.24,
+     "last_close": 11.4101,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -2.76,
+     "extension": -2.17,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.7% 재조정 보유"
     },
     {
@@ -70571,12 +70571,12 @@
      "display_name": "DOCS",
      "entry_date": "2025-07-01",
      "entry": 60.96,
-     "last_close": 29.05,
+     "last_close": 29.75,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 3.84,
+     "extension": 4.49,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.8% 재조정 보유"
     },
     {
@@ -70585,12 +70585,12 @@
      "display_name": "SRAD",
      "entry_date": "2025-07-01",
      "entry": 28.2,
-     "last_close": 12.1,
+     "last_close": 12.305,
      "stop": 0,
-     "return_pct": -99.95,
+     "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.23,
+     "extension": -0.85,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 1.6% 재조정 보유"
     },
     {
@@ -70599,12 +70599,12 @@
      "display_name": "TEM",
      "entry_date": "2025-08-01",
      "entry": 55.18,
-     "last_close": 67.7,
+     "last_close": 70.21,
      "stop": 0,
-     "return_pct": -99.91,
+     "return_pct": -99.9,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.49,
+     "extension": 0.87,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.5% 재조정 보유"
     },
     {
@@ -70907,12 +70907,12 @@
      "display_name": "CRWV",
      "entry_date": "2026-03-02",
      "entry": 76.61,
-     "last_close": 81.09,
+     "last_close": 82.095,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.39,
+     "extension": -1.34,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.2% 재조정 보유"
     },
     {
@@ -70963,12 +70963,12 @@
      "display_name": "ESTA",
      "entry_date": "2026-02-02",
      "entry": 68.76,
-     "last_close": 62.42,
+     "last_close": 60.96,
      "stop": 0,
-     "return_pct": -99.93,
+     "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -3.38,
+     "extension": -3.58,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 3.0% 재조정 보유"
     },
     {
@@ -70977,12 +70977,12 @@
      "display_name": "IMAX",
      "entry_date": "2026-02-02",
      "entry": 34.8,
-     "last_close": 53.25,
+     "last_close": 50.905,
      "stop": 0,
-     "return_pct": -99.9,
+     "return_pct": -99.91,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.54,
+     "extension": -0.74,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 2.3% 재조정 보유"
     },
     {
@@ -70991,12 +70991,12 @@
      "display_name": "IRMD",
      "entry_date": "2026-02-02",
      "entry": 97.4661,
-     "last_close": 86.495,
+     "last_close": 86.72,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.17,
+     "extension": 0.04,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 4.0% 재조정 보유"
     },
     {
@@ -71005,12 +71005,12 @@
      "display_name": "SXT",
      "entry_date": "2026-02-02",
      "entry": 94.371,
-     "last_close": 131.76,
+     "last_close": 129.91,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.21,
+     "extension": -0.45,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 2.6% 재조정 보유"
     },
     {
@@ -71061,12 +71061,12 @@
      "display_name": "LITE",
      "entry_date": "2026-03-02",
      "entry": 742.895,
-     "last_close": 1048.3,
+     "last_close": 1115.3822,
      "stop": 0,
-     "return_pct": -99.91,
+     "return_pct": -99.9,
      "source": "",
      "n_clubs": 1,
-     "extension": 2.42,
+     "extension": 3.61,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.4% 재조정 보유"
     },
     {
@@ -71285,12 +71285,12 @@
      "display_name": "CAMT",
      "entry_date": "2026-05-01",
      "entry": 188.52,
-     "last_close": 147.22,
+     "last_close": 151.0,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.08,
+     "extension": 0.42,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.7% 재조정 보유"
     },
     {
@@ -71299,12 +71299,12 @@
      "display_name": "GLNG",
      "entry_date": "2026-05-01",
      "entry": 54.7634,
-     "last_close": 48.41,
+     "last_close": 47.94,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.88,
+     "extension": -2.24,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 6.3% 재조정 보유"
     },
     {
@@ -71397,12 +71397,12 @@
      "display_name": "FIX",
      "entry_date": "2026-06-01",
      "entry": 1765.75,
-     "last_close": 1675.2325,
+     "last_close": 1719.98,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.25,
+     "extension": 0.98,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 1.4% 재조정 보유"
     },
     {
@@ -71411,12 +71411,12 @@
      "display_name": "STRL",
      "entry_date": "2026-06-01",
      "entry": 836.24,
-     "last_close": 510.93,
+     "last_close": 515.01,
      "stop": 0,
      "return_pct": -99.95,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.18,
+     "extension": 0.03,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 0.6% 재조정 보유"
     },
     {
@@ -71509,12 +71509,12 @@
      "display_name": "VST",
      "entry_date": "2026-07-01",
      "entry": 156.0,
-     "last_close": 155.74,
+     "last_close": 159.215,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 2.0,
+     "extension": 2.51,
      "entry_reason": "hrp 월간 리밸런스 — 목표비중 1.7% 재조정 보유"
     },
     {
@@ -71721,12 +71721,12 @@
      "display_name": "TEM",
      "entry_date": "2026-10-01",
      "entry": 81.98,
-     "last_close": 67.7,
+     "last_close": 70.21,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.49,
+     "extension": 0.87,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 2.5% 신규 편입 (18개월 유효 리포트 유니버스)"
     },
     {
@@ -71749,12 +71749,12 @@
      "display_name": "IMAX",
      "entry_date": "2026-08-03",
      "entry": 49.15,
-     "last_close": 53.25,
+     "last_close": 50.905,
      "stop": 0,
-     "return_pct": -99.92,
+     "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.54,
+     "extension": -0.74,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 15.0% 재조정 보유"
     },
     {
@@ -71763,12 +71763,12 @@
      "display_name": "SXT",
      "entry_date": "2026-05-01",
      "entry": 114.9399,
-     "last_close": 131.76,
+     "last_close": 129.91,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.21,
+     "extension": -0.45,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 10.8% 재조정 보유"
     },
     {
@@ -71777,12 +71777,12 @@
      "display_name": "LITE",
      "entry_date": "2026-07-01",
      "entry": 818.405,
-     "last_close": 1048.3,
+     "last_close": 1115.3822,
      "stop": 0,
-     "return_pct": -99.91,
+     "return_pct": -99.9,
      "source": "",
      "n_clubs": 1,
-     "extension": 2.42,
+     "extension": 3.61,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 5.7% 재조정 보유"
     },
     {
@@ -71791,12 +71791,12 @@
      "display_name": "GLNG",
      "entry_date": "2026-05-01",
      "entry": 54.7634,
-     "last_close": 48.41,
+     "last_close": 47.94,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.88,
+     "extension": -2.24,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 10.7% 재조정 보유"
     },
     {
@@ -71805,12 +71805,12 @@
      "display_name": "FIX",
      "entry_date": "2026-06-01",
      "entry": 1765.75,
-     "last_close": 1675.2325,
+     "last_close": 1719.98,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.25,
+     "extension": 0.98,
      "entry_reason": "msharpe 월간 리밸런스 — 목표비중 6.0% 재조정 보유"
     },
     {
@@ -71863,12 +71863,12 @@
      "display_name": "GLW",
      "entry_date": "2026-09-01",
      "entry": 144.25,
-     "last_close": 154.27,
+     "last_close": 155.83,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.09,
+     "extension": 0.07,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.5% 재조정 보유"
     },
     {
@@ -71947,12 +71947,12 @@
      "display_name": "CLBT",
      "entry_date": "2026-04-01",
      "entry": 13.98,
-     "last_close": 11.24,
+     "last_close": 11.4101,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -2.76,
+     "extension": -2.17,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 5.7% 재조정 보유"
     },
     {
@@ -71961,12 +71961,12 @@
      "display_name": "DOCS",
      "entry_date": "2026-04-01",
      "entry": 23.31,
-     "last_close": 29.05,
+     "last_close": 29.75,
      "stop": 0,
-     "return_pct": -99.92,
+     "return_pct": -99.91,
      "source": "",
      "n_clubs": 1,
-     "extension": 3.84,
+     "extension": 4.49,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 7.3% 재조정 보유"
     },
     {
@@ -71975,12 +71975,12 @@
      "display_name": "SRAD",
      "entry_date": "2026-04-01",
      "entry": 16.79,
-     "last_close": 12.1,
+     "last_close": 12.305,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.23,
+     "extension": -0.85,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.6% 재조정 보유"
     },
     {
@@ -72031,12 +72031,12 @@
      "display_name": "CRWV",
      "entry_date": "2026-10-01",
      "entry": 87.575,
-     "last_close": 81.09,
+     "last_close": 82.095,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.39,
+     "extension": -1.34,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.3% 신규 편입 (18개월 유효 리포트 유니버스)"
     },
     {
@@ -72045,12 +72045,12 @@
      "display_name": "ESTA",
      "entry_date": "2026-07-01",
      "entry": 85.23,
-     "last_close": 62.42,
+     "last_close": 60.96,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -3.38,
+     "extension": -3.58,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 2.4% 재조정 보유"
     },
     {
@@ -72059,12 +72059,12 @@
      "display_name": "IMAX",
      "entry_date": "2026-04-01",
      "entry": 38.23,
-     "last_close": 53.25,
+     "last_close": 50.905,
      "stop": 0,
      "return_pct": -99.91,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.54,
+     "extension": -0.74,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 6.2% 재조정 보유"
     },
     {
@@ -72073,12 +72073,12 @@
      "display_name": "IRMD",
      "entry_date": "2026-03-02",
      "entry": 101.7054,
-     "last_close": 86.495,
+     "last_close": 86.72,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -0.17,
+     "extension": 0.04,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 7.6% 재조정 보유"
     },
     {
@@ -72087,12 +72087,12 @@
      "display_name": "SXT",
      "entry_date": "2026-04-01",
      "entry": 88.2329,
-     "last_close": 131.76,
+     "last_close": 129.91,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.21,
+     "extension": -0.45,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 10.2% 재조정 보유"
     },
     {
@@ -72101,12 +72101,12 @@
      "display_name": "GLNG",
      "entry_date": "2026-05-01",
      "entry": 54.7634,
-     "last_close": 48.41,
+     "last_close": 47.94,
      "stop": 0,
      "return_pct": -99.94,
      "source": "",
      "n_clubs": 1,
-     "extension": -1.88,
+     "extension": -2.24,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 15.0% 재조정 보유"
     },
     {
@@ -72115,12 +72115,12 @@
      "display_name": "FIX",
      "entry_date": "2026-08-03",
      "entry": 1674.3199,
-     "last_close": 1675.2325,
+     "last_close": 1719.98,
      "stop": 0,
      "return_pct": -99.93,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.25,
+     "extension": 0.98,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 1.2% 재조정 보유"
     },
     {
@@ -72129,12 +72129,12 @@
      "display_name": "VST",
      "entry_date": "2026-10-01",
      "entry": 139.16,
-     "last_close": 155.74,
+     "last_close": 159.215,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": 2.0,
+     "extension": 2.51,
      "entry_reason": "mincvar 월간 리밸런스 — 목표비중 3.5% 신규 편입 (18개월 유효 리포트 유니버스)"
     }
    ],
@@ -72301,12 +72301,12 @@
      "display_name": "TEM",
      "entry_date": "2026-09-01",
      "entry": 65.555,
-     "last_close": 67.7,
+     "last_close": 70.21,
      "stop": 0,
      "return_pct": -99.92,
      "source": "",
      "n_clubs": 1,
-     "extension": 0.49,
+     "extension": 0.87,
      "entry_reason": "ls 월간 리밸런스 — 목표비중 10.0% 재조정 보유"
     },
     {
@@ -559669,16 +559669,16 @@
   "final_strategy_value": 543100005,
   "final_benchmark_values": {
    "KOSPI": 432224341,
-   "SP500": 310580899,
+   "SP500": 312993330,
    "NASDAQ": 331839123,
-   "AllWeather": 365595334
+   "AllWeather": 366317948
   },
   "strategy_gain_on_contributed_pct": 181.4,
   "benchmark_gain_on_contributed_pct": {
    "KOSPI": 124.0,
-   "SP500": 60.9,
+   "SP500": 62.2,
    "NASDAQ": 71.9,
-   "AllWeather": 89.4
+   "AllWeather": 89.8
   },
   "strategy_mdd_pct": -22.94,
   "series": [
@@ -560504,13 +560504,13 @@
    },
    {
     "month": 82,
-    "date": "2026-10-08",
+    "date": "2026-10-09",
     "contributed": 193000000,
     "strategy_value": 543100005,
     "KOSPI_value": 432224341,
-    "SP500_value": 310580899,
+    "SP500_value": 312993330,
     "NASDAQ_value": 331839123,
-    "AllWeather_value": 365595334
+    "AllWeather_value": 366317948
    }
   ]
  },
@@ -570602,7 +570602,7 @@
   }
  ],
  "signals": {
-  "as_of": "2026-10-08",
+  "as_of": "2026-10-09",
   "headline_strategy": "U_chandelier_scaleout",
   "disclaimer": "백테스트 규칙의 기계적 적용이며 투자 권유가 아닙니다. 과거 데이터 기반 시뮬레이션으로 미래 수익을 보장하지 않습니다.",
   "regime": {
@@ -570626,7 +570626,7 @@
     "entry_price": 2585000.0,
     "current_price": 2514000.0,
     "unrealized_pct": -2.75,
-    "days_elapsed": 66,
+    "days_elapsed": 67,
     "highest_since_entry": 3153000.0,
     "extension": -1.98,
     "trigger_schools": [
@@ -570673,7 +570673,7 @@
     "entry_price": 32700.0,
     "current_price": 33050.0,
     "unrealized_pct": 1.07,
-    "days_elapsed": 119,
+    "days_elapsed": 120,
     "highest_since_entry": 34950.0,
     "extension": -0.43,
     "trigger_schools": [
@@ -570700,7 +570700,7 @@
     "entry_price": 74100.0,
     "current_price": 100300.0,
     "unrealized_pct": 35.36,
-    "days_elapsed": 196,
+    "days_elapsed": 197,
     "highest_since_entry": 108400.0,
     "extension": 0.64,
     "trigger_schools": [
@@ -570733,7 +570733,7 @@
     "entry_price": 138300.0,
     "current_price": 200000.0,
     "unrealized_pct": 44.61,
-    "days_elapsed": 62,
+    "days_elapsed": 63,
     "highest_since_entry": 224000.0,
     "extension": 2.96,
     "trigger_schools": [
@@ -570780,7 +570780,7 @@
     "entry_price": 34350.0,
     "current_price": 39700.0,
     "unrealized_pct": 15.57,
-    "days_elapsed": 73,
+    "days_elapsed": 74,
     "highest_since_entry": 41200.0,
     "extension": 3.68,
     "trigger_schools": [
@@ -570820,7 +570820,7 @@
     "entry_price": 50200.0,
     "current_price": 65600.0,
     "unrealized_pct": 30.68,
-    "days_elapsed": 73,
+    "days_elapsed": 74,
     "highest_since_entry": 67200.0,
     "extension": 3.08,
     "trigger_schools": [
@@ -570866,7 +570866,7 @@
     "entry_price": 53400.0,
     "current_price": 48050.0,
     "unrealized_pct": -10.02,
-    "days_elapsed": 62,
+    "days_elapsed": 63,
     "highest_since_entry": 56400.0,
     "extension": -0.16,
     "trigger_schools": [
@@ -570920,7 +570920,7 @@
     "entry_price": 51400.0,
     "current_price": 55800.0,
     "unrealized_pct": 8.56,
-    "days_elapsed": 45,
+    "days_elapsed": 46,
     "highest_since_entry": 57400.0,
     "extension": 1.16,
     "trigger_schools": [
@@ -570960,7 +570960,7 @@
     "entry_price": 17060.0,
     "current_price": 25300.0,
     "unrealized_pct": 48.3,
-    "days_elapsed": 45,
+    "days_elapsed": 46,
     "highest_since_entry": 25300.0,
     "extension": 4.9,
     "trigger_schools": [
@@ -570989,7 +570989,7 @@
     "entry_price": 2585000.0,
     "current_price": 2514000.0,
     "unrealized_pct": -2.75,
-    "days_elapsed": 66,
+    "days_elapsed": 67,
     "highest_since_entry": 3153000.0,
     "extension": -1.98,
     "trigger_schools": [
@@ -571086,7 +571086,7 @@
      "is_sharpe": 0.36,
      "oos_sharpe": 0.72,
      "trades": 1898,
-     "kospi_dca_ratio": 0.534
+     "kospi_dca_ratio": 0.533
     },
     "S_mincvar": {
      "is_sharpe": -0.19,
@@ -571247,16 +571247,16 @@
   },
   "V_ls": {
    "is_sharpe": 0.66,
-   "oos_sharpe": 0.48,
+   "oos_sharpe": 0.49,
    "trades": 262,
    "mdd_pct": -46.95,
-   "kospi_dca_ratio": 0.653
+   "kospi_dca_ratio": 0.655
   },
   "spo_beats_ls": {
    "is": false,
    "oos": true
   },
-  "spo_vs_ls_verdict": "SPO+ vs LS — IS 0.01 vs 0.66 (LS 우위/동률), OOS 0.6 vs 0.48 (SPO+ 우위), vs KOSPI DCA 0.582x vs 0.653x",
+  "spo_vs_ls_verdict": "SPO+ vs LS — IS 0.01 vs 0.66 (LS 우위/동률), OOS 0.6 vs 0.49 (SPO+ 우위), vs KOSPI DCA 0.582x vs 0.655x",
   "promoted_to_selector": false,
   "promotion_verdict": "NOT PROMOTED — 부의 비율이 T 베스트에 미달 → 연구 기록 전용",
   "promotion_criteria": "U와 동일 관례: T 베스트 변형 대비 전체 기간 부의 비율 우위 AND OOS 샤프 동등 이상",
@@ -571266,185 +571266,185 @@
  "kospi_dca_ratios": {
   "A_12mo": {
    "full_ratio": 0.554,
-   "aw_ratio": 0.655,
+   "aw_ratio": 0.654,
    "strat_final": 239395289,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "B_36mo": {
    "full_ratio": 0.8,
-   "aw_ratio": 0.946,
-   "strat_final": 345855232,
+   "aw_ratio": 0.944,
+   "strat_final": 345855274,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "C_narrative": {
    "full_ratio": 0.75,
-   "aw_ratio": 0.886,
-   "strat_final": 324075739,
+   "aw_ratio": 0.885,
+   "strat_final": 324075758,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "D_chandelier": {
    "full_ratio": 0.983,
-   "aw_ratio": 1.162,
-   "strat_final": 424710965,
+   "aw_ratio": 1.159,
+   "strat_final": 424714554,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "E_half_runner": {
    "full_ratio": 0.672,
-   "aw_ratio": 0.795,
-   "strat_final": 290540193,
+   "aw_ratio": 0.793,
+   "strat_final": 290540895,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "F_momentum_narrative": {
    "full_ratio": 0.601,
-   "aw_ratio": 0.711,
-   "strat_final": 259789658,
+   "aw_ratio": 0.709,
+   "strat_final": 259790165,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "G_dip_buy": {
    "full_ratio": 0.167,
    "aw_ratio": 0.197,
-   "strat_final": 72125645,
+   "strat_final": 72210535,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "H_minervini": {
    "full_ratio": 0.815,
-   "aw_ratio": 0.963,
-   "strat_final": 352080784,
+   "aw_ratio": 0.961,
+   "strat_final": 352112835,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "I_supertrend": {
    "full_ratio": 0.6,
-   "aw_ratio": 0.709,
-   "strat_final": 259252152,
+   "aw_ratio": 0.708,
+   "strat_final": 259254905,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "J_core_satellite": {
    "full_ratio": 0.942,
-   "aw_ratio": 1.114,
-   "strat_final": 407228932,
+   "aw_ratio": 1.112,
+   "strat_final": 407193711,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "K_rr_trend": {
    "full_ratio": 0.537,
-   "aw_ratio": 0.635,
-   "strat_final": 232208411,
+   "aw_ratio": 0.634,
+   "strat_final": 232231732,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "N_52w_high": {
-   "full_ratio": 0.685,
-   "aw_ratio": 0.81,
-   "strat_final": 296130873,
+   "full_ratio": 0.686,
+   "aw_ratio": 0.809,
+   "strat_final": 296425367,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "O_mtt_alpha16": {
    "full_ratio": 0.53,
-   "aw_ratio": 0.627,
-   "strat_final": 229119921,
+   "aw_ratio": 0.626,
+   "strat_final": 229137041,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "P_deepbuy_chandelier": {
    "full_ratio": 0.471,
    "aw_ratio": 0.556,
-   "strat_final": 203440461,
+   "strat_final": 203766290,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "Q_kangto_trend": {
    "full_ratio": 0.411,
-   "aw_ratio": 0.486,
-   "strat_final": 177624825,
+   "aw_ratio": 0.485,
+   "strat_final": 177836681,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "R_kelly_chandelier": {
    "full_ratio": 0.718,
-   "aw_ratio": 0.849,
+   "aw_ratio": 0.847,
    "strat_final": 310302471,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "S_hrp": {
    "full_ratio": 0.545,
-   "aw_ratio": 0.644,
-   "strat_final": 235623183,
+   "aw_ratio": 0.643,
+   "strat_final": 235537074,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "S_msharpe": {
-   "full_ratio": 0.534,
-   "aw_ratio": 0.631,
-   "strat_final": 230736214,
+   "full_ratio": 0.533,
+   "aw_ratio": 0.628,
+   "strat_final": 230170539,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "S_mincvar": {
    "full_ratio": 0.48,
-   "aw_ratio": 0.568,
-   "strat_final": 207495614,
+   "aw_ratio": 0.566,
+   "strat_final": 207284631,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "V_spo": {
    "full_ratio": 0.582,
-   "aw_ratio": 0.688,
+   "aw_ratio": 0.686,
    "strat_final": 251465167,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "V_ls": {
-   "full_ratio": 0.653,
-   "aw_ratio": 0.772,
-   "strat_final": 282264420,
+   "full_ratio": 0.655,
+   "aw_ratio": 0.773,
+   "strat_final": 283030988,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "D+_chandelier_optuna": {
    "full_ratio": 0.787,
-   "aw_ratio": 0.931,
-   "strat_final": 340355660,
+   "aw_ratio": 0.929,
+   "strat_final": 340375370,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "T_kospi_core_chandelier": {
    "full_ratio": 1.043,
-   "aw_ratio": 1.233,
+   "aw_ratio": 1.23,
    "strat_final": 450732861,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "T-_kospi_core_regime": {
    "full_ratio": 1.231,
-   "aw_ratio": 1.456,
+   "aw_ratio": 1.453,
    "strat_final": 532164411,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "W_allweather_chandelier": {
-   "full_ratio": 1.016,
-   "aw_ratio": 1.201,
-   "strat_final": 439157224,
+   "full_ratio": 1.017,
+   "aw_ratio": 1.2,
+   "strat_final": 439573041,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   },
   "U_chandelier_scaleout": {
    "full_ratio": 1.257,
-   "aw_ratio": 1.486,
+   "aw_ratio": 1.483,
    "strat_final": 543100005,
    "kospi_final": 432224341,
-   "aw_final": 365595334
+   "aw_final": 366317948
   }
  },
  "parking_showdown": {
@@ -571452,8 +571452,8 @@
   "W": {
    "is_sharpe": 1.04,
    "oos_sharpe": 1.37,
-   "vs_kospi_dca": 1.016,
-   "vs_allweather_dca": 1.201,
+   "vs_kospi_dca": 1.017,
+   "vs_allweather_dca": 1.2,
    "own_benchmark": "올웨더 DCA",
    "beats_own_benchmark": true
   },
@@ -571461,7 +571461,7 @@
    "is_sharpe": 1.28,
    "oos_sharpe": 1.26,
    "vs_kospi_dca": 1.231,
-   "vs_allweather_dca": 1.456,
+   "vs_allweather_dca": 1.453,
    "own_benchmark": "KOSPI DCA",
    "beats_own_benchmark": true
   },

@@ -1,17 +1,17 @@
 {
  "schema_version": "1.0",
- "generated_at": "2026-10-08T17:13:37+00:00",
+ "generated_at": "2026-10-09T17:08:49+00:00",
  "method": "신호 스냅샷(append-only, 커밋 시점 박제)의 매수 신호를 이후 실현 시세로 채점. 진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 동일 티커 7일 내 중복 신호 제외. 전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적.",
  "summary": {
   "n_signals": 28,
   "n_tracking": 28,
-  "avg_return_pct": 3.23,
+  "avg_return_pct": 3.31,
   "win_rate_pct": 50.0,
   "best_pct": 81.44,
   "worst_pct": -47.57,
   "first_snapshot": "2026-06-11",
-  "last_snapshot": "2026-10-08",
-  "n_snapshots": 71
+  "last_snapshot": "2026-10-09",
+  "n_snapshots": 72
  },
  "entries": [
   {
@@ -508,10 +508,10 @@
    "basis_price": null,
    "entry_date": "2026-06-15",
    "entry_price": 152.81,
-   "current_price": 155.74,
-   "return_pct": 1.92,
+   "current_price": 159.215,
+   "return_pct": 4.19,
    "peak_pct": 10.58,
-   "days": 115,
+   "days": 116,
    "status": "tracking",
    "trigger_schools": [
     "star"
@@ -590,6 +590,7 @@
   "2026-10-02": "U_chandelier_scaleout",
   "2026-10-05": "U_chandelier_scaleout",
   "2026-10-07": "U_chandelier_scaleout",
-  "2026-10-08": "U_chandelier_scaleout"
+  "2026-10-08": "U_chandelier_scaleout",
+  "2026-10-09": "U_chandelier_scaleout"
  }
 }
