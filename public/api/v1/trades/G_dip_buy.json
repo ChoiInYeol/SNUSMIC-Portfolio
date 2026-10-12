@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-09T17:08:48+00:00",
+  "generated_at": "2026-10-12T19:37:05+00:00",
   "strategy_key": "G_dip_buy",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -22199,6 +22199,92 @@
           "source_file": "2026-06-13_STAR_두산테스나.md",
           "target_price": 235100.0,
           "stated_upside_pct": 34.3429
+        }
+      ]
+    },
+    {
+      "ticker": "036890",
+      "market": "KR",
+      "name": "진성티이씨",
+      "entry_date": "2026-09-18",
+      "exit_date": "2026-10-12",
+      "entry_price": 12360.0,
+      "exit_price": 10650.0,
+      "return_pct": -14.35,
+      "days": 24,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-05-18) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2020-11-21",
+          "source_file": "2020-11-21_[201121] 진성티이씨(036890).md",
+          "target_price": 13250.0,
+          "stated_upside_pct": 22.6852
+        },
+        {
+          "school": "smic",
+          "report_date": "2020-10-31",
+          "source_file": "2020-10-31_equity-research-진성티이씨.md",
+          "target_price": 20350.0,
+          "stated_upside_pct": 105.3481
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_진성티이씨.md",
+          "target_price": 27000.0,
+          "stated_upside_pct": 52.5424
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-05-18",
+          "source_file": "2026-05-18_진성티이씨 - 진성이 진짜예요.md",
+          "target_price": 29000.0,
+          "stated_upside_pct": 67.6301
+        }
+      ]
+    },
+    {
+      "ticker": "082740",
+      "market": "KR",
+      "name": "한화엔진",
+      "entry_date": "2026-08-24",
+      "exit_date": "2026-10-12",
+      "entry_price": 44000.0,
+      "exit_price": 40100.0,
+      "return_pct": -9.41,
+      "days": 49,
+      "exit_reason": "dip_atr3_stop",
+      "entry_reason": "발간일(2026-05-21) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_한화엔진.md",
+          "target_price": 73700.0,
+          "stated_upside_pct": 48.4391
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-12-05",
+          "source_file": "2024-12-05_equity-research-한화엔진.md",
+          "target_price": 24352.0,
+          "stated_upside_pct": 60.8454
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-04-14",
+          "source_file": "2026-04-14_한화엔진 (082740, KOSPI)- 순풍만범(順風滿帆)– 한화엔진 달고 쾌속질주 YIG Research.md",
+          "target_price": 64200.0,
+          "stated_upside_pct": 32.0988
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-05-21",
+          "source_file": "2026-05-21_한화엔진 - 데센 상륙작전.md",
+          "target_price": 121000.0,
+          "stated_upside_pct": 66.6667
         }
       ]
     }

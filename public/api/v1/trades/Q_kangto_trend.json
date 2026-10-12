@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-09T17:08:48+00:00",
+  "generated_at": "2026-10-12T19:37:05+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24755,6 +24755,114 @@
           "source_file": "undated_[BUY] ALD의 왕 주성전하 납시오, 주성엔지니어링.md",
           "target_price": 288820.0,
           "stated_upside_pct": 28.9375
+        }
+      ]
+    },
+    {
+      "ticker": "044490",
+      "market": "KR",
+      "name": "태웅",
+      "entry_date": "2026-09-23",
+      "exit_date": "2026-10-12",
+      "entry_price": 39050.0,
+      "exit_price": 34700.0,
+      "return_pct": -11.67,
+      "days": 19,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 74 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-05-11",
+          "source_file": "2023-05-11_equity-research-태웅-3.md",
+          "target_price": 28600.0,
+          "stated_upside_pct": 103.2694
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-06-26",
+          "source_file": "2025-06-26_태웅 - '태'동했던 바람은 '웅'장한 실적으로.md",
+          "target_price": 48000.0,
+          "stated_upside_pct": 30.2578
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-01-24",
+          "source_file": "2026-01-23_[260123] 태웅(044490).md",
+          "target_price": 45800.0,
+          "stated_upside_pct": 47.504
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_태웅.md",
+          "target_price": 36850.0,
+          "stated_upside_pct": 5.7389
+        }
+      ]
+    },
+    {
+      "ticker": "403870",
+      "market": "KR",
+      "name": "HPSP",
+      "entry_date": "2026-09-30",
+      "exit_date": "2026-10-12",
+      "entry_price": 61100.0,
+      "exit_price": 63000.0,
+      "return_pct": 2.49,
+      "days": 12,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 83 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2022-10-13",
+          "source_file": "2022-10-13_equity-research-hpsp.md",
+          "target_price": 19911.913,
+          "stated_upside_pct": 54.9565
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-03-14",
+          "source_file": "2025-11-11_HPSP (403870, KQ), HPSP의 역습이 시작된다 (발간일 250314) YIG Research.md",
+          "target_price": 37760.0,
+          "stated_upside_pct": 35.0984
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_HPSP.md",
+          "target_price": 44900.0,
+          "stated_upside_pct": 5.2755
+        }
+      ]
+    },
+    {
+      "ticker": "092870",
+      "market": "KR",
+      "name": "엑시콘",
+      "entry_date": "2026-09-29",
+      "exit_date": "2026-10-12",
+      "entry_price": 46050.0,
+      "exit_price": 57102.0,
+      "return_pct": 23.26,
+      "days": 13,
+      "exit_reason": "q_half_+3R",
+      "entry_reason": "깡토 추세추종: RS 97 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-10-10",
+          "source_file": "2020-10-10_equity-research-엑시콘.md",
+          "target_price": 28700.0,
+          "stated_upside_pct": 119.5029
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_엑시콘.md",
+          "target_price": 21700.0,
+          "stated_upside_pct": 45.4424
         }
       ]
     }

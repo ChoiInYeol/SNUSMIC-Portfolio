@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-09T17:08:48+00:00",
+  "generated_at": "2026-10-12T19:37:05+00:00",
   "strategy_key": "H_minervini",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -3378,6 +3378,49 @@
           "source_file": "2026-09-08_STAR_인바디.md",
           "target_price": 91069.0,
           "stated_upside_pct": 55.9401
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-10-12",
+      "entry_price": 47850.0,
+      "exit_price": 47150.0,
+      "return_pct": -2.05,
+      "days": 33,
+      "exit_reason": "minervini_close<50MA",
+      "entry_reason": "미너비니 트렌드 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주고점 70%↑, RS>KOSPI) → 진입 (트리거: star 2026-09-08, kuvic 2026-08-06, yig 2025-08-01, smic 2025-04-19)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_지엔씨에너지.md",
+          "target_price": 79700.0,
+          "stated_upside_pct": 77.9018
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",
+          "target_price": 76000.0,
+          "stated_upside_pct": 48.728
         }
       ]
     }

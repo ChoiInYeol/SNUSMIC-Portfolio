@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-09T17:08:48+00:00",
+  "generated_at": "2026-10-12T19:37:05+00:00",
   "strategy_key": "R_kelly_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -5160,6 +5160,42 @@
           "source_file": "2026-05-29_equity-research-comfort-systems-usa-inc.md",
           "target_price": 5326.0,
           "stated_upside_pct": 191.3232
+        }
+      ]
+    },
+    {
+      "ticker": "298040",
+      "market": "KR",
+      "name": "효성중공업",
+      "entry_date": "2026-08-03",
+      "exit_date": "2026-10-12",
+      "entry_price": 2585000.0,
+      "exit_price": 2450000.0,
+      "return_pct": -5.79,
+      "days": 70,
+      "exit_reason": "r_chandelier_ATR4.25",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입 (Kelly 사이징 24.3%) (트리거: voera 2026-07-31, kuvic 2023-10-11, star 2023-03-01)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_효성중공업.md",
+          "target_price": 103150.0,
+          "stated_upside_pct": 45.0774
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-10-11",
+          "source_file": "2023-10-11_효성중공업 - '전력'질주를 시작하지.md",
+          "target_price": 269000.0,
+          "stated_upside_pct": 60.5012
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-07-31",
+          "source_file": "undated_[BUY] NO CAP, MORE CAPA 효성중공업.md",
+          "target_price": 4200000.0,
+          "stated_upside_pct": 73.7691
         }
       ]
     }
