@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-12T19:37:05+00:00",
+  "generated_at": "2026-10-13T17:28:01+00:00",
   "strategy_key": "S_hrp",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -10113,8 +10113,8 @@
       "name": "대림제지",
       "entry_date": "2021-05-03",
       "exit_date": "2021-08-02",
-      "entry_price": 14700.0,
-      "exit_price": 14100.0,
+      "entry_price": 2940.0,
+      "exit_price": 2820.0,
       "return_pct": -3.23,
       "days": 91,
       "exit_reason": "s_rebalance_trim",
@@ -10124,8 +10124,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -13240,8 +13240,8 @@
       "name": "대림제지",
       "entry_date": "2021-05-03",
       "exit_date": "2021-11-01",
-      "entry_price": 14700.0,
-      "exit_price": 10800.0,
+      "entry_price": 2940.0,
+      "exit_price": 2160.0,
       "return_pct": -22.26,
       "days": 182,
       "exit_reason": "s_rebalance_trim",
@@ -13251,8 +13251,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -14295,8 +14295,8 @@
       "name": "대림제지",
       "entry_date": "2021-05-03",
       "exit_date": "2021-12-01",
-      "entry_price": 14700.0,
-      "exit_price": 11300.0,
+      "entry_price": 2940.0,
+      "exit_price": 2260.0,
       "return_pct": -18.66,
       "days": 212,
       "exit_reason": "s_rebalance_trim",
@@ -14306,8 +14306,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -15987,8 +15987,8 @@
       "name": "대림제지",
       "entry_date": "2021-05-03",
       "exit_date": "2022-01-03",
-      "entry_price": 14700.0,
-      "exit_price": 12000.0,
+      "entry_price": 2940.0,
+      "exit_price": 2400.0,
       "return_pct": -13.62,
       "days": 245,
       "exit_reason": "s_rebalance_exit",
@@ -15998,8 +15998,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -18811,8 +18811,8 @@
       "name": "대림제지",
       "entry_date": "2022-04-01",
       "exit_date": "2022-07-01",
-      "entry_price": 10700.0,
-      "exit_price": 8320.0,
+      "entry_price": 2140.0,
+      "exit_price": 1664.0,
       "return_pct": -22.54,
       "days": 91,
       "exit_reason": "s_rebalance_trim",
@@ -18822,8 +18822,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -22675,8 +22675,8 @@
       "name": "대림제지",
       "entry_date": "2022-04-01",
       "exit_date": "2022-11-01",
-      "entry_price": 10700.0,
-      "exit_price": 8190.0,
+      "entry_price": 2140.0,
+      "exit_price": 1638.0,
       "return_pct": -14.94,
       "days": 214,
       "exit_reason": "s_rebalance_exit",
@@ -22686,8 +22686,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },

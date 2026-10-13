@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-12T19:37:05+00:00",
+  "generated_at": "2026-10-13T17:28:01+00:00",
   "strategy_key": "I_supertrend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -1564,8 +1564,8 @@
       "name": "대림제지",
       "entry_date": "2021-04-16",
       "exit_date": "2021-06-23",
-      "entry_price": 15250.0,
-      "exit_price": 13850.0,
+      "entry_price": 3050.0,
+      "exit_price": 2770.0,
       "return_pct": -9.72,
       "days": 68,
       "exit_reason": "supertrend_bearish_flip",
@@ -1575,8 +1575,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -14043,6 +14043,164 @@
           "source_file": "undated_[BUY] NO CAP, MORE CAPA 효성중공업.md",
           "target_price": 4200000.0,
           "stated_upside_pct": 73.7691
+        }
+      ]
+    },
+    {
+      "ticker": "041830",
+      "market": "KR",
+      "name": "인바디",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-10-13",
+      "entry_price": 58100.0,
+      "exit_price": 50000.0,
+      "return_pct": -14.46,
+      "days": 34,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: star 2026-09-08, yig 2024-04-06, smic 2022-05-12)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2022-05-12",
+          "source_file": "2022-05-12_equity-research-인바디.md",
+          "target_price": 43000.0,
+          "stated_upside_pct": 51.9435
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-04-06",
+          "source_file": "2025-11-10_인바디 (041830, KQ), 갖고 싶어 美 In Body (발간일 240405) YIG Research.md",
+          "target_price": 40000.0,
+          "stated_upside_pct": 41.844
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_인바디.md",
+          "target_price": 91069.0,
+          "stated_upside_pct": 55.9401
+        }
+      ]
+    },
+    {
+      "ticker": "044490",
+      "market": "KR",
+      "name": "태웅",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-10-13",
+      "entry_price": 36350.0,
+      "exit_price": 31750.0,
+      "return_pct": -13.18,
+      "days": 34,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: star 2026-09-08, ewha 2026-01-24, kuvic 2025-06-26, smic 2023-05-11)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-05-11",
+          "source_file": "2023-05-11_equity-research-태웅-3.md",
+          "target_price": 28600.0,
+          "stated_upside_pct": 103.2694
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2025-06-26",
+          "source_file": "2025-06-26_태웅 - '태'동했던 바람은 '웅'장한 실적으로.md",
+          "target_price": 48000.0,
+          "stated_upside_pct": 30.2578
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-01-24",
+          "source_file": "2026-01-23_[260123] 태웅(044490).md",
+          "target_price": 45800.0,
+          "stated_upside_pct": 47.504
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_태웅.md",
+          "target_price": 36850.0,
+          "stated_upside_pct": 5.7389
+        }
+      ]
+    },
+    {
+      "ticker": "082920",
+      "market": "KR",
+      "name": "비츠로셀",
+      "entry_date": "2026-09-09",
+      "exit_date": "2026-10-13",
+      "entry_price": 27850.0,
+      "exit_price": 24800.0,
+      "return_pct": -11.49,
+      "days": 34,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: star 2026-09-08, yig 2023-10-05, smic 2019-12-18)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2019-12-18",
+          "source_file": "2019-12-18_Equity Research, 비츠로셀.md",
+          "target_price": 16829.0,
+          "stated_upside_pct": 151.7051
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-10-05",
+          "source_file": "2025-11-10_비츠로셀(082920 KQ), 1짱 전지 (발간일 231007) YIG Research.md",
+          "target_price": 25700.0,
+          "stated_upside_pct": 183.0708
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_비츠로셀.md",
+          "target_price": 38500.0,
+          "stated_upside_pct": 38.4892
+        }
+      ]
+    },
+    {
+      "ticker": "119850",
+      "market": "KR",
+      "name": "지엔씨에너지",
+      "entry_date": "2026-08-07",
+      "exit_date": "2026-10-13",
+      "entry_price": 53400.0,
+      "exit_price": 42450.0,
+      "return_pct": -20.98,
+      "days": 67,
+      "exit_reason": "supertrend_bearish_flip",
+      "entry_reason": "리포트 발간 시점 슈퍼트렌드(10,3) 상방 → 익일 시가 진입 (트리거: kuvic 2026-08-06, yig 2025-08-01, smic 2025-04-19, star 2025-03-10)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_지엔씨에너지.md",
+          "target_price": 32000.0,
+          "stated_upside_pct": 99.6257
+        },
+        {
+          "school": "smic",
+          "report_date": "2025-04-19",
+          "source_file": "2025-04-19_equity-research-지엔씨에너지.md",
+          "target_price": 39610.0,
+          "stated_upside_pct": 106.3021
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-08-01",
+          "source_file": "2025-11-11_지엔씨에너지 (119850, KQ), 비상발전기로 주가도 비상 (발간일 250801) YIG Research.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨.md",
+          "target_price": 76000.0,
+          "stated_upside_pct": 48.728
         }
       ]
     }

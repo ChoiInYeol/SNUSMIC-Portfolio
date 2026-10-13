@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-12T19:37:05+00:00",
+  "generated_at": "2026-10-13T17:28:01+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -1155,8 +1155,8 @@
       "name": "대림제지",
       "entry_date": "2021-04-19",
       "exit_date": "2021-04-29",
-      "entry_price": 15150.0,
-      "exit_price": 14600.0,
+      "entry_price": 3030.0,
+      "exit_price": 2920.0,
       "return_pct": -4.21,
       "days": 10,
       "exit_reason": "mtt_rs_exit_<82",
@@ -1166,8 +1166,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
@@ -1309,8 +1309,8 @@
       "name": "대림제지",
       "entry_date": "2021-05-10",
       "exit_date": "2021-05-21",
-      "entry_price": 15450.0,
-      "exit_price": 15500.0,
+      "entry_price": 3090.0,
+      "exit_price": 3100.0,
       "return_pct": -0.28,
       "days": 11,
       "exit_reason": "mtt_rs_exit_<82",
@@ -1320,8 +1320,8 @@
           "school": "smic",
           "report_date": "2021-04-15",
           "source_file": "2021-04-15_equity-research-대림제지-2.md",
-          "target_price": 21500.0,
-          "stated_upside_pct": 42.3841
+          "target_price": 4705.0725,
+          "stated_upside_pct": 55.7971
         }
       ]
     },
