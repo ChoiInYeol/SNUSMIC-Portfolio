@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-13T17:28:01+00:00",
+  "generated_at": "2026-10-16T14:30:28+00:00",
   "strategy_key": "Q_kangto_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -24885,6 +24885,294 @@
           "source_file": "2026-05-11_후성 (093370, KOSPI), '후'퇴는 없다, '성'장만 남았다 YIG Research.md",
           "target_price": 20000.0,
           "stated_upside_pct": 49.1424
+        }
+      ]
+    },
+    {
+      "ticker": "092870",
+      "market": "KR",
+      "name": "엑시콘",
+      "entry_date": "2026-09-29",
+      "exit_date": "2026-10-15",
+      "entry_price": 46050.0,
+      "exit_price": 46900.0,
+      "return_pct": 1.24,
+      "days": 16,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 97 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-10-10",
+          "source_file": "2020-10-10_equity-research-엑시콘.md",
+          "target_price": 28700.0,
+          "stated_upside_pct": 119.5029
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_엑시콘.md",
+          "target_price": 21700.0,
+          "stated_upside_pct": 45.4424
+        }
+      ]
+    },
+    {
+      "ticker": "140860",
+      "market": "KR",
+      "name": "파크시스템스",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-15",
+      "entry_price": 299000.0,
+      "exit_price": 268000.0,
+      "return_pct": -10.9,
+      "days": 13,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 72 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 파크시스템스.md",
+          "target_price": 55993.0,
+          "stated_upside_pct": 50.3168
+        },
+        {
+          "school": "ewha",
+          "report_date": "2026-02-21",
+          "source_file": "2026-02-20_[260220] 파크시스템스(140860).md",
+          "target_price": null,
+          "stated_upside_pct": 38.29
+        },
+        {
+          "school": "star",
+          "report_date": "2025-03-10",
+          "source_file": "2025-03-10_STAR_파크시스템스.md",
+          "target_price": 303000.0,
+          "stated_upside_pct": 60.4023
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-03-14",
+          "source_file": "2025-11-11_파크시스템스 (140860, KQ), 반도체 테마 PARK, 롤러코스터 타고 올라가요~ (발간일 250314) YIG Res.md",
+          "target_price": 283500.0,
+          "stated_upside_pct": 41.3965
+        }
+      ]
+    },
+    {
+      "ticker": "306200",
+      "market": "KR",
+      "name": "세아제강",
+      "entry_date": "2026-09-11",
+      "exit_date": "2026-10-16",
+      "entry_price": 148200.0,
+      "exit_price": 136000.0,
+      "return_pct": -8.78,
+      "days": 35,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 72 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "voera",
+          "report_date": "2025-05-13",
+          "source_file": "undated_[BUY] 강(鋼)하게 버틴다, 세아제강.md",
+          "target_price": 205630.0,
+          "stated_upside_pct": 19.7612
+        },
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-세아제강.md",
+          "target_price": 286700.0,
+          "stated_upside_pct": 95.034
+        }
+      ]
+    },
+    {
+      "ticker": "112610",
+      "market": "KR",
+      "name": "씨에스윈드",
+      "entry_date": "2026-09-14",
+      "exit_date": "2026-10-16",
+      "entry_price": 52200.0,
+      "exit_price": 50400.0,
+      "return_pct": -4.03,
+      "days": 32,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 80 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2023-05-27",
+          "source_file": "2023-05-27_[230527] 씨에스윈드(112610).md",
+          "target_price": 103200.0,
+          "stated_upside_pct": 35.611
+        },
+        {
+          "school": "voera",
+          "report_date": "2021-05-14",
+          "source_file": "undated_[BUY] 씨에스윈드 불어라 바람! 불어라 수주!.md",
+          "target_price": 90900.0,
+          "stated_upside_pct": 31.3584
+        },
+        {
+          "school": "yig",
+          "report_date": "2026-03-31",
+          "source_file": "2026-04-04_씨에스윈드 (112610, KOSPI), 씨에스WINd~ YIG Research.md",
+          "target_price": 88500.0,
+          "stated_upside_pct": 48.4899
+        },
+        {
+          "school": "star",
+          "report_date": "2025-08-31",
+          "source_file": "2025-08-31_STAR_씨에스윈드.md",
+          "target_price": 51700.0,
+          "stated_upside_pct": 23.8323
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2024-10-08",
+          "source_file": "2024-10-08_씨에스윈드 - 해상 풍력, 늦바람 났어♬.md",
+          "target_price": 96684.0,
+          "stated_upside_pct": 45.8281
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-10-17",
+          "source_file": "2024-10-17_equity-research-씨에스윈드.md",
+          "target_price": 134400.0,
+          "stated_upside_pct": 118.1818
+        }
+      ]
+    },
+    {
+      "ticker": "064290",
+      "market": "KR",
+      "name": "인텍플러스",
+      "entry_date": "2026-09-23",
+      "exit_date": "2026-10-16",
+      "entry_price": 56200.0,
+      "exit_price": 52000.0,
+      "return_pct": -8.03,
+      "days": 23,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 96 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 인텍플러스.md",
+          "target_price": 12534.0,
+          "stated_upside_pct": 40.5157
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-28",
+          "source_file": "undated_[BUY] 사람에 기술을 더하다, 인텍플러스.md",
+          "target_price": 44300.0,
+          "stated_upside_pct": 36.3077
+        }
+      ]
+    },
+    {
+      "ticker": "353200",
+      "market": "KR",
+      "name": "대덕전자",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-16",
+      "entry_price": 149400.0,
+      "exit_price": 132600.0,
+      "return_pct": -11.78,
+      "days": 14,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 85 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_대덕전자.md",
+          "target_price": null,
+          "stated_upside_pct": null
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-03-05",
+          "source_file": "undated_[BUY] 형 여기도 봐줘, 넷째 깐부 대덕전자.md",
+          "target_price": 100100.0,
+          "stated_upside_pct": 68.8027
+        }
+      ]
+    },
+    {
+      "ticker": "281820",
+      "market": "KR",
+      "name": "케이씨텍",
+      "entry_date": "2026-10-08",
+      "exit_date": "2026-10-16",
+      "entry_price": 121000.0,
+      "exit_price": 102300.0,
+      "return_pct": -15.96,
+      "days": 8,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 93 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "yig",
+          "report_date": "2023-09-14",
+          "source_file": "2025-11-06_케이씨텍(281820, KS), 슬러리 돈워리! (발간일 230916) YIG Research.md",
+          "target_price": 27580.0,
+          "stated_upside_pct": 21.766
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_케이씨텍.md",
+          "target_price": 104000.0,
+          "stated_upside_pct": 54.5319
+        }
+      ]
+    },
+    {
+      "ticker": "131970",
+      "market": "KR",
+      "name": "두산테스나",
+      "entry_date": "2026-10-13",
+      "exit_date": "2026-10-16",
+      "entry_price": 119600.0,
+      "exit_price": 124100.0,
+      "return_pct": 3.14,
+      "days": 3,
+      "exit_reason": "q_stop",
+      "entry_reason": "깡토 추세추종: RS 91 ≥ KOSPI RS + 60일 신고가 돌파 + 거래량 ≥ 1.5×20일평균 → 익일 시가 진입 (1유닛)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-11-12",
+          "source_file": "2023-11-12_equity-research-두산테스나.md",
+          "target_price": 66500.0,
+          "stated_upside_pct": 23.8361
+        },
+        {
+          "school": "yig",
+          "report_date": "2023-09-15",
+          "source_file": "2025-11-06_두산테스나(131970, KQ), 두산테슬라 (발간일 230916) YIG Research.md",
+          "target_price": 71300.0,
+          "stated_upside_pct": 34.5283
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2023-11-20",
+          "source_file": "2023-11-20_두산테스나 - 아! 테스형, OSAT 대장 믿고 있었다.md",
+          "target_price": 101000.0,
+          "stated_upside_pct": 69.1792
+        },
+        {
+          "school": "star",
+          "report_date": "2026-06-13",
+          "source_file": "2026-06-13_STAR_두산테스나.md",
+          "target_price": 235100.0,
+          "stated_upside_pct": 34.3429
         }
       ]
     }

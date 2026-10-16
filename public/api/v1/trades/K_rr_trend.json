@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-13T17:28:01+00:00",
+  "generated_at": "2026-10-16T14:30:27+00:00",
   "strategy_key": "K_rr_trend",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -17287,6 +17287,172 @@
           "source_file": "2026-09-08_STAR_KT&G.md",
           "target_price": 263000.0,
           "stated_upside_pct": 54.8881
+        }
+      ]
+    },
+    {
+      "ticker": "095340",
+      "market": "KR",
+      "name": "ISC",
+      "entry_date": "2026-08-07",
+      "exit_date": "2026-10-14",
+      "entry_price": 138300.0,
+      "exit_price": 184000.0,
+      "return_pct": 164.49,
+      "days": 68,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-08-06, star 2024-06-30, voera 2023-05-22)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2024-06-30",
+          "source_file": "2024-06-30_STAR_ISC.md",
+          "target_price": 114800.0,
+          "stated_upside_pct": 75.2672
+        },
+        {
+          "school": "voera",
+          "report_date": "2023-05-22",
+          "source_file": "undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
+          "target_price": 55000.0,
+          "stated_upside_pct": 17.8992
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-08-06",
+          "source_file": "2026-08-06_ISC - 베트남에서 누가돌아왔~게.md",
+          "target_price": 290000.0,
+          "stated_upside_pct": 112.766
+        }
+      ]
+    },
+    {
+      "ticker": "078350",
+      "market": "KR",
+      "name": "한양디지텍",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-14",
+      "entry_price": 34600.0,
+      "exit_price": 40178.75,
+      "return_pct": 15.43,
+      "days": 12,
+      "exit_reason": "rr_half_+2.5R",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-10-01, smic 2024-04-17, star 2023-03-01)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_한양디지텍.md",
+          "target_price": 24100.0,
+          "stated_upside_pct": 103.7194
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-04-17",
+          "source_file": "2024-04-17_equity-research-한양디지텍.md",
+          "target_price": 47800.0,
+          "stated_upside_pct": 112.4444
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-10-01",
+          "source_file": "2026-10-01_한양디지텍 - 삼성 그냥 한양없이 눈물이 나.md",
+          "target_price": 49000.0,
+          "stated_upside_pct": 36.1111
+        }
+      ]
+    },
+    {
+      "ticker": "064290",
+      "market": "KR",
+      "name": "인텍플러스",
+      "entry_date": "2026-08-31",
+      "exit_date": "2026-10-16",
+      "entry_price": 31100.0,
+      "exit_price": 52000.0,
+      "return_pct": 232.4,
+      "days": 46,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: voera 2026-08-28, smic 2020-05-06)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 인텍플러스.md",
+          "target_price": 12534.0,
+          "stated_upside_pct": 40.5157
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-28",
+          "source_file": "undated_[BUY] 사람에 기술을 더하다, 인텍플러스.md",
+          "target_price": 44300.0,
+          "stated_upside_pct": 36.3077
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-16",
+      "entry_price": 194000.0,
+      "exit_price": 197500.0,
+      "return_pct": 1.19,
+      "days": 14,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-10-01, star 2026-05-02)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-05-02",
+          "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
+          "target_price": 155200.0,
+          "stated_upside_pct": 24.8592
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-10-01",
+          "source_file": "2026-10-01_피에스케이홀딩스 - 성장이 다시 흐른다(Re-flow)~~.md",
+          "target_price": 280000.0,
+          "stated_upside_pct": 44.3299
+        }
+      ]
+    },
+    {
+      "ticker": "078350",
+      "market": "KR",
+      "name": "한양디지텍",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-16",
+      "entry_price": 34600.0,
+      "exit_price": 35950.0,
+      "return_pct": 106.56,
+      "days": 14,
+      "exit_reason": "rr_stop",
+      "entry_reason": "학회 매수리포트 발간 → 익일 시가 진입, R:R 세팅 (스탑 1×ATR20, 목표 +2.5R) (트리거: kuvic 2026-10-01, smic 2024-04-17, star 2023-03-01)",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2023-03-01",
+          "source_file": "2023-03-01_STAR_한양디지텍.md",
+          "target_price": 24100.0,
+          "stated_upside_pct": 103.7194
+        },
+        {
+          "school": "smic",
+          "report_date": "2024-04-17",
+          "source_file": "2024-04-17_equity-research-한양디지텍.md",
+          "target_price": 47800.0,
+          "stated_upside_pct": 112.4444
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-10-01",
+          "source_file": "2026-10-01_한양디지텍 - 삼성 그냥 한양없이 눈물이 나.md",
+          "target_price": 49000.0,
+          "stated_upside_pct": 36.1111
         }
       ]
     }

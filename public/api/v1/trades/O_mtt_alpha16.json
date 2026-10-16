@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-13T17:28:01+00:00",
+  "generated_at": "2026-10-16T14:30:27+00:00",
   "strategy_key": "O_mtt_alpha16",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -20553,6 +20553,172 @@
           "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
           "target_price": 155200.0,
           "stated_upside_pct": 24.8592
+        }
+      ]
+    },
+    {
+      "ticker": "192820",
+      "market": "KR",
+      "name": "코스맥스",
+      "entry_date": "2026-08-26",
+      "exit_date": "2026-10-15",
+      "entry_price": 283000.0,
+      "exit_price": 280500.0,
+      "return_pct": -1.48,
+      "days": 50,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 91≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2023-12-06",
+          "source_file": "2023-12-06_equity-research-코스맥스-2.md",
+          "target_price": 142000.0,
+          "stated_upside_pct": 17.3554
+        },
+        {
+          "school": "ewha",
+          "report_date": "2024-02-16",
+          "source_file": "2024-02-16_[240216] 코스맥스(192820).md",
+          "target_price": 167700.0,
+          "stated_upside_pct": 46.9763
+        },
+        {
+          "school": "star",
+          "report_date": "2024-03-11",
+          "source_file": "2024-03-11_STAR_코스맥스.md",
+          "target_price": 147100.0,
+          "stated_upside_pct": 40.9004
+        },
+        {
+          "school": "voera",
+          "report_date": "2025-03-08",
+          "source_file": "undated_[BUY] 코스메틱 성공 코스 ODM 여기엠! 코스맥스.md",
+          "target_price": 222100.0,
+          "stated_upside_pct": 20.51
+        }
+      ]
+    },
+    {
+      "ticker": "222800",
+      "market": "KR",
+      "name": "심텍",
+      "entry_date": "2026-10-02",
+      "exit_date": "2026-10-15",
+      "entry_price": 161700.0,
+      "exit_price": 129400.0,
+      "return_pct": -20.45,
+      "days": 13,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 93≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2022-03-12",
+          "source_file": "2022-03-12_[220312] 심텍(222800).md",
+          "target_price": 66900.0,
+          "stated_upside_pct": 33.5329
+        },
+        {
+          "school": "yig",
+          "report_date": "2025-11-13",
+          "source_file": "2026-04-08_심텍 (222800, KOSDAQ), 흔들린 숫자, 명확해진 방향 YIG Research.md",
+          "target_price": 84100.0,
+          "stated_upside_pct": 56.903
+        },
+        {
+          "school": "star",
+          "report_date": "2026-09-08",
+          "source_file": "2026-09-08_STAR_심텍.md",
+          "target_price": 206900.0,
+          "stated_upside_pct": 69.8686
+        }
+      ]
+    },
+    {
+      "ticker": "092870",
+      "market": "KR",
+      "name": "엑시콘",
+      "entry_date": "2026-10-08",
+      "exit_date": "2026-10-15",
+      "entry_price": 53000.0,
+      "exit_price": 46900.0,
+      "return_pct": -12.04,
+      "days": 7,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 98≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-10-10",
+          "source_file": "2020-10-10_equity-research-엑시콘.md",
+          "target_price": 28700.0,
+          "stated_upside_pct": 119.5029
+        },
+        {
+          "school": "star",
+          "report_date": "2025-12-12",
+          "source_file": "2025-12-12_STAR_엑시콘.md",
+          "target_price": 21700.0,
+          "stated_upside_pct": 45.4424
+        }
+      ]
+    },
+    {
+      "ticker": "064290",
+      "market": "KR",
+      "name": "인텍플러스",
+      "entry_date": "2026-09-23",
+      "exit_date": "2026-10-16",
+      "entry_price": 56200.0,
+      "exit_price": 52000.0,
+      "return_pct": -8.03,
+      "days": 23,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 96≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2020-05-06",
+          "source_file": "2020-05-06_Equity Research, 인텍플러스.md",
+          "target_price": 12534.0,
+          "stated_upside_pct": 40.5157
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-08-28",
+          "source_file": "undated_[BUY] 사람에 기술을 더하다, 인텍플러스.md",
+          "target_price": 44300.0,
+          "stated_upside_pct": 36.3077
+        }
+      ]
+    },
+    {
+      "ticker": "031980",
+      "market": "KR",
+      "name": "피에스케이홀딩스",
+      "entry_date": "2026-10-14",
+      "exit_date": "2026-10-16",
+      "entry_price": 212500.0,
+      "exit_price": 197500.0,
+      "return_pct": -7.62,
+      "days": 2,
+      "exit_reason": "mtt_stop",
+      "entry_reason": "MTT 템플릿 통과 (close>50MA>150MA>200MA, 200MA 상승, 52주저점×1.9↑, 52주고점×0.95↑, RS 96≥80) → 익일 시가 진입",
+      "trigger_reports": [
+        {
+          "school": "star",
+          "report_date": "2026-05-02",
+          "source_file": "2026-05-02_STAR_피에스케이홀딩스.md",
+          "target_price": 155200.0,
+          "stated_upside_pct": 24.8592
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-10-01",
+          "source_file": "2026-10-01_피에스케이홀딩스 - 성장이 다시 흐른다(Re-flow)~~.md",
+          "target_price": 280000.0,
+          "stated_upside_pct": 44.3299
         }
       ]
     }

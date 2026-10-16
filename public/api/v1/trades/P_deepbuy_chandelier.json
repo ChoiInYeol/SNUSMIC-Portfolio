@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-13T17:28:01+00:00",
+  "generated_at": "2026-10-16T14:30:28+00:00",
   "strategy_key": "P_deepbuy_chandelier",
   "disclaimer": "These are backtested signals for research purposes only. They do NOT constitute investment advice. Past performance does not guarantee future results. All trading decisions and their consequences are solely your responsibility.",
   "disclaimer_ko": "이 데이터는 백테스트 시뮬레이션 결과이며 연구 목적으로만 제공됩니다. 투자 권유가 아닙니다. 과거 성과가 미래 수익을 보장하지 않습니다. 실매매로 인한 모든 손익의 책임은 전적으로 사용자에게 있습니다.",
@@ -8322,6 +8322,136 @@
           "source_file": "2026-06-12_STAR_LG이노텍.md",
           "target_price": null,
           "stated_upside_pct": null
+        }
+      ]
+    },
+    {
+      "ticker": "STRL",
+      "market": "US",
+      "name": "STRL",
+      "entry_date": "2026-09-28",
+      "exit_date": "2026-10-15",
+      "entry_price": 504.06,
+      "exit_price": 435.5,
+      "return_pct": -15.65,
+      "days": 17,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-29) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-05-29",
+          "source_file": "2026-05-29_equity-research-sterling-infrastructure-inc.md",
+          "target_price": 1500.0,
+          "stated_upside_pct": 74.2484
+        }
+      ]
+    },
+    {
+      "ticker": "036890",
+      "market": "KR",
+      "name": "진성티이씨",
+      "entry_date": "2026-10-01",
+      "exit_date": "2026-10-16",
+      "entry_price": 10746.7445,
+      "exit_price": 9470.0,
+      "return_pct": -12.41,
+      "days": 15,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-18) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "ewha",
+          "report_date": "2020-11-21",
+          "source_file": "2020-11-21_[201121] 진성티이씨(036890).md",
+          "target_price": 13250.0,
+          "stated_upside_pct": 22.6852
+        },
+        {
+          "school": "smic",
+          "report_date": "2020-10-31",
+          "source_file": "2020-10-31_equity-research-진성티이씨.md",
+          "target_price": 20350.0,
+          "stated_upside_pct": 105.3481
+        },
+        {
+          "school": "star",
+          "report_date": "2026-03-14",
+          "source_file": "2026-03-14_STAR_진성티이씨.md",
+          "target_price": 27000.0,
+          "stated_upside_pct": 52.5424
+        },
+        {
+          "school": "kuvic",
+          "report_date": "2026-05-18",
+          "source_file": "2026-05-18_진성티이씨 - 진성이 진짜예요.md",
+          "target_price": 29000.0,
+          "stated_upside_pct": 67.6301
+        }
+      ]
+    },
+    {
+      "ticker": "036930",
+      "market": "KR",
+      "name": "주성엔지니어링",
+      "entry_date": "2026-07-29",
+      "exit_date": "2026-10-16",
+      "entry_price": 115978.0857,
+      "exit_price": 213000.0,
+      "return_pct": 82.56,
+      "days": 79,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-05-22) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2021-11-03",
+          "source_file": "2021-11-03_equity-research-주성엔지니어링.md",
+          "target_price": 26700.0,
+          "stated_upside_pct": 135.2423
+        },
+        {
+          "school": "star",
+          "report_date": "2022-04-01",
+          "source_file": "2022-04-01_STAR_주성엔지니어링.md",
+          "target_price": 34100.0,
+          "stated_upside_pct": 33.7255
+        },
+        {
+          "school": "yig",
+          "report_date": "2024-09-13",
+          "source_file": "2025-11-10_주성엔지니어링 (036930, KQ), 주성엔지니어링, 어서 빨리 주성~ (발간일 240913) YIG Research.md",
+          "target_price": 31350.0,
+          "stated_upside_pct": 26.1569
+        },
+        {
+          "school": "voera",
+          "report_date": "2026-05-22",
+          "source_file": "undated_[BUY] ALD의 왕 주성전하 납시오, 주성엔지니어링.md",
+          "target_price": 288820.0,
+          "stated_upside_pct": 28.9375
+        }
+      ]
+    },
+    {
+      "ticker": "CAMT",
+      "market": "US",
+      "name": "CAMT",
+      "entry_date": "2026-09-28",
+      "exit_date": "2026-10-16",
+      "entry_price": 144.5,
+      "exit_price": 129.17,
+      "return_pct": -12.73,
+      "days": 18,
+      "exit_reason": "p_chandelier_ATR4.25",
+      "entry_reason": "발간일(2026-04-16) 종가 대비 −20% 하락 도달 → 익일 시가 진입 (딥바이; 추가 −10% 시 1회 스케일인)",
+      "trigger_reports": [
+        {
+          "school": "smic",
+          "report_date": "2026-04-16",
+          "source_file": "2026-04-16_equity-research-camteck.md",
+          "target_price": 238.67,
+          "stated_upside_pct": 32.132
         }
       ]
     }
