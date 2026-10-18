@@ -1,0 +1,6 @@
+---
+description: Project rules for AI agents (mirrors AGENTS.md)
+alwaysApply: true
+---
+
+Follow the rules in AGENTS.md at the repository root. It is the single source of truth.

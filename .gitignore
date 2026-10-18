@@ -49,3 +49,6 @@ logs/
 
 # stray run logs at root
 *.log
+.omx/
+# per-machine agent skill links/copies (restore: see AGENTS.md "Agent tooling setup")
+.claude/skills/
