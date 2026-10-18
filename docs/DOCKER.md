@@ -137,14 +137,10 @@ is provided for local reproducibility and self-hosted use.
 Docker Desktop on Windows runs containers inside a Linux VM (WSL2 or Hyper-V),
 so all containers run `linux/amd64`.
 
-> **winocr note:** `winocr` is a Windows-only package (uses the Windows OCR
-> API).  It is excluded from the Linux container image automatically via the
-> `pyproject.toml` marker `sys_platform == 'win32'`.
-> `scripts/ocr_fallback.py` is import-guarded and raises a clear
-> `RuntimeError` if called inside a container.
-> The PDF-to-markdown transcription step (`transcribe_pdfs.py`) uses
-> `opendataloader-pdf` (Java-based) which works cross-platform — JDK 21 is
-> installed in the `pipeline` image.
+> **Transcription engine:** `transcribe_pdfs.py` runs kordoc (Node, pinned in
+> `tools/kordoc`) for PDF→markdown and its built-in PP-OCRv5 Korean OCR. The
+> `pipeline` image copies Node 24 from `node:24-slim` and runs
+> `npm ci --prefix tools/kordoc`; no JDK or Windows-only OCR is involved.
 
 ---
 

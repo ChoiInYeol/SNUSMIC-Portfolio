@@ -2,7 +2,6 @@ name: full-sweep-manual
 
 # 수동 전용 전수 스윕 — 평소엔 일간 증분(refresh-daily)이 전부 커버하므로 스케줄 없음.
 # 수집기 버그 복구나 과거 누락 의심 시에만 Actions 탭에서 수동 실행(--full로 전 페이지 순회).
-# OCR fallback (ocr_fallback.py) is Windows-only and is skipped in CI.
 on:
   workflow_dispatch:
 
@@ -32,10 +31,6 @@ jobs:
       # Install Playwright browsers (needed for KUVIC and Voera collectors).
       - name: Install Playwright + browsers
         run: uv run python -m playwright install chromium --with-deps
-
-      # JDK is available on ubuntu-latest via PATH (openjdk pre-installed).
-      # transcribe_pdfs.py uses pdfminer/pdfplumber (pure Python); JDK is only
-      # needed by opendataloader-pdf tools which this project does not use directly.
 
       - name: Restore price cache
         uses: actions/cache@v4
@@ -67,8 +62,18 @@ jobs:
           path: data/quarantine
           if-no-files-found: ignore
 
-      # Transcription is incremental: already-transcribed .md files are skipped.
-      # ocr_fallback.py (Windows winocr) is intentionally skipped in CI.
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            tools/kordoc/package-lock.json
+
+      # kordoc: PDF→markdown + built-in Korean OCR, pinned (onnxruntime postinstall allowed in package.json).
+      - run: npm ci --prefix tools/kordoc --no-audit --no-fund
+
+      # Transcription is incremental: files with the current kordoc header are skipped.
       - name: Transcribe only-new PDFs
         run: |
           uv run python scripts/transcribe_pdfs.py
@@ -91,11 +96,6 @@ jobs:
 
       # GITHUB_TOKEN pushes do not trigger tests.yml, so the bot commit must pass
       # the same gate here before it reaches main (and the Vercel build).
-      - uses: actions/setup-node@v4
-        with:
-          node-version: "24"
-          cache: npm
-
       - run: npm ci
 
       - name: Verify publication (contracts, tests, production build)

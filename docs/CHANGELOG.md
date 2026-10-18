@@ -5,6 +5,40 @@
 
 ---
 
+## Unreleased — 2026-10 감사 P0 · 에이전트 규칙 · kordoc 엔진 (2026-10-19)
+
+인수인계: `docs/HANDOFF-2026-10-19.md`. 감사 근거: `docs/AUDIT-2026-10-19.md`.
+
+### 감사 P0 (`8987a7af9`, 브랜치 `audit/2026-10-p0`)
+
+- **백테스트 시점 정합**: T-·U 파킹 레짐 게이트가 당일 종가·당일 200MA로 당일 파킹 수익을 정하던
+  look-ahead 제거(`_regime_risk_on`, 전일 기준). Q 시가 진입 유닛도 전일 종가. 통합·월요일 오라클 테스트.
+  **공표 성과 숫자는 아직 수정 전 코드 결과** — 재계산·헤드라인 재선정 필요.
+- **전략 페이지**: 자산곡선 납입금선·벤치마크 4종 소실 회귀 복구, 캔들/전략 상세 오류 상태 + 재시도
+  (shadcn Alert/Skeleton), aria-live, `error.tsx`/`not-found.tsx`, 375px 내비 넘침 수정.
+- **스키마·API 계약**: `src/lib/api-schemas.ts`(zod) 단일 계약, openapi가 모든 게시 경로·필드 문서화,
+  계약 테스트(pytest + node), `signal_date` null 작성기 버그, 날짜 스냅샷·해시 자산 캐시 헤더.
+- **릴리스 게이트**: `export_signals_api.py --check`(재생성 대신 검증), refresh 워크플로가 봇 커밋 전
+  계약·pytest·`next build` 실행.
+
+### AI 에이전트 규칙 (`5a8c380fc`)
+
+- `AGENTS.md` 단일 원천(데이터 계약 · shadcn 우선 UI 정책 · 등락 색 토큰 · 검증 명령),
+  `CLAUDE.md`·`.cursor/rules` 는 import. 공식 shadcn Skill(`.agents/skills`), shadcn MCP(Claude Code·Cursor).
+
+### 파싱 엔진 kordoc 교체 (진행 중, 브랜치 `feat/kordoc-parsing`)
+
+- 전사 엔진 opendataloader(Java) + winocr(Windows) → **kordoc 4.22.13**(`tools/kordoc` 고정), 내장 PP-OCRv5 한국어 OCR.
+  CI(Linux)에서도 OCR 동작. `ocr_fallback.py`·관련 의존성 삭제.
+- 후보-채점 추출기 `scripts/report_extract.py`, 평가 하네스 `scripts/eval_extraction.py`,
+  PDF 표지를 직접 읽은 정답셋 240건(`tests/fixtures/parse_gold`).
+- 정답셋(company 224건) 기준: 기존 방식 전체 오류 19.4% / 틀린 값 4.1% → **kordoc + 새 추출기 13.2% / 2.1%**.
+- kordoc 성능 함정 수정: OCR 모델이 캐시돼 있으면 `--ocr` 없이도 이미지를 자동 OCR(40배 느림) →
+  텍스트층 단계는 빈 `KORDOC_MODEL_CACHE` 사용.
+- 파이프라인 적용·전체 재전사·재파싱은 미완 — 인수인계 §3.
+
+---
+
 ## v1.3.0 — 회귀 게이트 · DSR · 전진 기록 · CI 소생 (2026-06-13)
 
 새 전략 없음. 백테스트를 "믿을 수 있게" 만드는 검증 인프라 릴리스.

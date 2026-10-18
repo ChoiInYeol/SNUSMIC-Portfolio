@@ -56,14 +56,14 @@
 
 ```mermaid
 flowchart LR
-    A["수집<br/>collect_*.py<br/>6개 학회 사이트"] --> B["전사<br/>transcribe_pdfs.py<br/>+ OCR 폴백"]
+    A["수집<br/>collect_*.py<br/>6개 학회 사이트"] --> B["전사<br/>transcribe_pdfs.py<br/>kordoc + OCR"]
     B --> C["파싱<br/>목표가·투자의견<br/>티커 매칭"]
     C --> D["시세 결합<br/>build_report_performance.py<br/>KRX/yfinance PIT"]
     D --> E["판결·백테스트<br/>backtest_momentum.py<br/>이중 판결 + 26개 전략"]
     E --> F["SSG 배포<br/>Next.js → Vercel"]
 ```
 
-데이터 복구 체인: 일반 전사 → 파일명/수집 메타데이터 힌트 → 네이버 자동완성 티커 복구 → Windows OCR 표지 폴백.
+데이터 복구 체인: kordoc 전사(텍스트층, 필요 시 내장 한국어 OCR) → 파일명/수집 메타데이터 힌트 → 네이버 자동완성 티커 복구.
 사람이 검증한 교정값은 `data/sources/corrections.json`으로 유지됩니다.
 
 ## 데이터 소스
@@ -93,9 +93,9 @@ npm install && npm run dev          # http://localhost:3000
 .venv/Scripts/python scripts/collect_ewha.py              # EIA (plain requests)
 .venv/Scripts/python scripts/collect_voera.py             # VOERA (Playwright)
 
-# 2) 전사 + OCR 폴백 (텍스트 없는 PDF 표지, Windows 전용)
+# 2) kordoc 전사 (텍스트층 없는 표지/스캔본은 내장 OCR)
+npm ci --prefix tools/kordoc
 .venv/Scripts/python scripts/transcribe_pdfs.py
-.venv/Scripts/python scripts/ocr_fallback.py
 
 # 3) 파싱 + 시세 결합 (.env의 KRX_ID/KRX_PW 사용, data/prices/ 증분 캐시)
 .venv/Scripts/python scripts/build_report_performance.py

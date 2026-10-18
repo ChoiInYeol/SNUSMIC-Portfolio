@@ -13,12 +13,8 @@ dependencies = [
     "scipy>=1.11",
     "scikit-learn>=1.4",
     "playwright>=1.40",
-    "pymupdf>=1.23",
-    "pillow>=10.0",
-    "opendataloader-pdf>=0.1",
-    # Windows-only OCR dependency
-    "winocr>=0.0.15; sys_platform == 'win32'",
 ]
+# PDF→markdown + OCR: kordoc (Node), pinned in tools/kordoc — see scripts/transcribe_pdfs.py
 
 [dependency-groups]
 dev = ["pytest>=8.3"]

@@ -1,0 +1,11 @@
+{
+  "name": "verdict-archive-kordoc",
+  "private": true,
+  "description": "Pinned kordoc engine for the report transcription pipeline (kept out of the Next.js/Vercel install).",
+  "dependencies": {
+    "kordoc": "4.22.13"
+  },
+  "allowScripts": {
+    "onnxruntime-node@1.30.0": true
+  }
+}

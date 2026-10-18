@@ -121,6 +121,8 @@ KR_EXCHANGE_CODE_RE = re.compile(r"^(KS|KQ|KOSPI|KOSDAQ|코스피|코스닥|KRX)
 # 괄호 안 단독 미국 티커: (GLW) (TSLA)
 BARE_US_TICKER_RE = re.compile(r"^([A-Z]{1,5})$")
 YIG_PUBLISHED_RE = re.compile(r"발간일\s*(\d{6})")
+# transcribe_pdfs.py 헤더: kordoc이 OCR을 적용한 페이지가 있으면 ocr_pages가 비어 있지 않다
+KORDOC_OCR_HEADER_RE = re.compile(r"^<!-- kordoc \S+ ocr_pages=\d")
 # Voera 파일명 브라켓 날짜: "[2025.10]" → 2025-10 / "[2026]" → 2026-01
 VOERA_BRACKET_DATE_RE = re.compile(r"^\[(\d{4})[. ]?(\d{2})?\]")
 # SMIC bulk-import 날짜 복구: pdf_url 내 YYMMDD 접두사 (e.g. "070525_")
@@ -870,7 +872,7 @@ def parse_prices(lines: list[str], market: str | None) -> tuple[float | None, st
 def parse_report(path: Path, school: str = "smic", hint: dict | None = None) -> ParsedReport:
     text = path.read_text(encoding="utf-8", errors="ignore")
     lines = [line.rstrip("\n") for line in text.splitlines()]
-    ocr_recovered = "<!-- ocr_fallback -->" in text[:200]
+    ocr_recovered = bool(KORDOC_OCR_HEADER_RE.match(text)) or "<!-- ocr_fallback -->" in text[:200]
     report_date, filename_date, authored_date = resolve_report_date(path, lines, school, hint)
     market, ticker, exchange, company = parse_identity(path, lines)
     rating = parse_rating(lines)

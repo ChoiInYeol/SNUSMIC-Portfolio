@@ -16,24 +16,19 @@
 # ────────────────────────────────────────────────────────────
 # Stage 1: Python pipeline base
 #   - uv for reproducible installs (uv sync --frozen)
-#   - JDK 21 for opendataloader-pdf (transcribe_pdfs.py)
+#   - Node 24 + pinned kordoc (tools/kordoc) for PDF→markdown and
+#     built-in PP-OCRv5 Korean OCR (transcribe_pdfs.py)
 #   - Playwright Chromium for JS-rendered collector pages
-#   - winocr is Windows-only — excluded here (pyproject marker
-#     sys_platform == 'win32' means uv skips it on Linux).
-#     ocr_fallback.py is import-guarded and will raise a clear
-#     RuntimeError if called on Linux (not a silent crash).
 # ────────────────────────────────────────────────────────────
 FROM python:3.12-slim AS pipeline-base
 
 # Install system deps:
 #   - curl + ca-certificates: for uv installer
-#   - openjdk-21-jre-headless: for opendataloader-pdf / transcribe_pdfs.py
 #   - build-essential, libffi-dev: native extension compilation (e.g. scipy)
 #   - fonts + libglib2/libnss3/...: Playwright Chromium runtime deps
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     ca-certificates \
-    openjdk-21-jre-headless \
     build-essential \
     libffi-dev \
     libglib2.0-0 \
@@ -61,8 +56,15 @@ WORKDIR /app
 # Copy only the lockfile/config first for layer caching
 COPY pyproject.toml uv.lock* ./
 
-# Install Python deps (frozen; winocr skipped on linux automatically)
+# Install Python deps (frozen)
 RUN uv sync --frozen --no-dev
+
+# Node runtime for kordoc (copied from the official image) + pinned engine
+COPY --from=node:24-slim /usr/local/bin/node /usr/local/bin/node
+COPY --from=node:24-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
+RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+COPY tools/kordoc/package.json tools/kordoc/package-lock.json ./tools/kordoc/
+RUN npm ci --prefix tools/kordoc --no-audit --no-fund
 
 # Install Playwright Chromium browser
 RUN uv run playwright install chromium
