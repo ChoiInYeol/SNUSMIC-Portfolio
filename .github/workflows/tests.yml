@@ -1,24 +1,10 @@
 name: tests
 
-# 백테스트 회귀 게이트 — 합성 유니버스 골든 스냅샷 + 회계 단위 테스트.
-# 실데이터에 의존하지 않으므로(KRX/yfinance 불필요) 모든 push/PR에서 빠르게 돈다.
-# 의도된 로직 변경은 UPDATE_GOLDEN=1 uv run pytest 로 골든을 갱신해 함께 커밋할 것.
+# Independent accounting oracles precede the non-updatable golden regression gate.
 on:
   push:
     branches: [main]
-    paths:
-      - "scripts/**"
-      - "tests/**"
-      - "pyproject.toml"
-      - "uv.lock"
-      - ".github/workflows/tests.yml"
   pull_request:
-    paths:
-      - "scripts/**"
-      - "tests/**"
-      - "pyproject.toml"
-      - "uv.lock"
-      - ".github/workflows/tests.yml"
 
 permissions:
   contents: read
@@ -38,4 +24,27 @@ jobs:
 
       - run: uv sync --frozen
 
-      - run: uv run pytest
+      - name: Independent financial and publication tests
+        env:
+          CI: "true"
+          UPDATE_GOLDEN: "0"
+        run: uv run pytest --junitxml=test-results.xml
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Schema quarantine and API contract tests
+        run: node --test tests/report-model.test.cjs tests/api-schemas.test.cjs
+
+      # Build from the committed artifacts, never from a fresh export: a missing or
+      # stale public/api file must fail here, not pass CI and break the Vercel build.
+      - name: Committed API artifacts match the committed source
+        run: uv run python scripts/export_signals_api.py --check
+
+      - run: npm run lint
+
+      - run: npm run build

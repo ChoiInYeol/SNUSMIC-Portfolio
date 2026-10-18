@@ -21,6 +21,9 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import math
+import hashlib
+import tempfile
 import sys
 from pathlib import Path
 
@@ -45,20 +48,46 @@ DISCLAIMER_KO = (
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 
 # ── helpers ─────────────────────────────────────────────────────────────────
 
+
 def _load_source(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
-        return json.load(f)
+        data = json.load(f)
+    multi = data.get("multi_strategy") if isinstance(data, dict) else None
+    if not isinstance(data, dict) or not isinstance(multi, dict) or not isinstance(multi.get("strategies"), list):
+        raise ValueError("source schema requires multi_strategy.strategies array")
+    if not isinstance(data.get("params"), dict) or not _finite_tree(data):
+        raise ValueError("source schema missing params or contains non-finite numeric value")
+    return data
+
+def _finite_tree(value: object) -> bool:
+    if isinstance(value, bool) or value is None or isinstance(value, (str, int)):
+        return True
+    if isinstance(value, float):
+        return math.isfinite(value)
+    if isinstance(value, list):
+        return all(_finite_tree(v) for v in value)
+    if isinstance(value, dict):
+        return all(isinstance(k, str) and _finite_tree(v) for k, v in value.items())
+    return False
 
 
-def _write_json(path: Path, obj: dict | list, *, indent: int = 2) -> None:
+def _write_json(path: Path, obj: dict | list) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=indent)
-    print(f"  wrote {path.relative_to(ROOT).as_posix()}", flush=True)
+    fd, temp_name = tempfile.mkstemp(prefix=f".{path.name}.", dir=path.parent, text=True)
+    try:
+        with open(fd, "w", encoding="utf-8") as f:
+            json.dump(obj, f, ensure_ascii=False, separators=(",", ":"), allow_nan=False)
+            f.flush()
+        Path(temp_name).replace(path)
+    except Exception:
+        Path(temp_name).unlink(missing_ok=True)
+        raise
+    print(f"  wrote {path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else path}", flush=True)
 
 
 def _generated_at() -> str:
@@ -95,7 +124,7 @@ def build_latest_signals(data: dict) -> dict:
             "ticker": b.get("ticker", ""),
             "market": b.get("market", "KR"),
             "name": b.get("display_name", b.get("ticker", "")),
-            "signal_date": b.get("entry_basis_date", sig.get("as_of", "")),
+            "signal_date": b.get("entry_basis_date") or sig.get("as_of", ""),
             "entry_basis_price": b.get("entry_basis_price"),
             "entry_reason": b.get("entry_reason", ""),
             "trigger_reports": b.get("trigger_reports", []),
@@ -229,6 +258,35 @@ def build_trades(data: dict) -> dict[str, list[dict]]:
                 "trigger_reports": t.get("trigger_reports", []),
             })
         result[key] = mapped
+    return result
+
+def build_strategy_details(data: dict) -> dict[str, tuple[str, dict]]:
+    """Hash the actual producer curves and raw UI trade contract, never placeholders."""
+    ms = data["multi_strategy"]
+    fields = {
+        "nav": "equity_by_strategy",
+        "wealth": "strategy_wealth_sims",
+        "trades": "trades_by_strategy",
+        "open_positions": "open_positions_by_strategy",
+        "yearly": "yearly_by_strategy",
+    }
+    result: dict[str, tuple[str, dict]] = {}
+    for strategy in ms["strategies"]:
+        key = strategy["key"]
+        if (not isinstance(key, str) or not key or not key[0].isalnum()
+                or not key.isascii() or any(not (c.isalnum() or c in "_+.-") for c in key)):
+            raise ValueError("invalid strategy asset key")
+        payload = {"schema_version": SCHEMA_VERSION, "strategy_key": key}
+        for field, source in fields.items():
+            value = ms[source][key]
+            expected_type = dict if field == "wealth" else list
+            if not isinstance(value, expected_type):
+                raise ValueError(f"{key}: invalid {source} contract")
+            payload[field] = value
+        canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
+        digest = hashlib.sha256(canonical).hexdigest()
+        payload["content_hash"] = digest
+        result[key] = (digest, payload)
     return result
 
 
@@ -417,6 +475,60 @@ def build_openapi(as_of: str) -> dict:
                     },
                 }
             },
+            "/signals/latest": {
+                "get": {
+                    "operationId": "getLatestSignalsAlias",
+                    "summary": "Latest trading signals (extensionless alias of /signals/latest.json)",
+                    "responses": {
+                        "200": {
+                            "description": "Signal payload",
+                            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/SignalsPayload"}}},
+                        }
+                    },
+                }
+            },
+            "/forward.json": {
+                "get": {
+                    "operationId": "getForwardRecord",
+                    "summary": "Forward (out-of-sample) record of published buy signals",
+                    "responses": {
+                        "200": {
+                            "description": "Forward record",
+                            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/ForwardRecord"}}},
+                        }
+                    },
+                }
+            },
+            "/strategy-details/manifest.json": {
+                "get": {
+                    "operationId": "getStrategyDetailsManifest",
+                    "summary": "Current content hash and path of each strategy detail asset",
+                    "responses": {
+                        "200": {
+                            "description": "Manifest",
+                            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/StrategyDetailsManifest"}}},
+                        }
+                    },
+                }
+            },
+            "/strategy-details/{strategy_key}/{content_hash}.json": {
+                "get": {
+                    "operationId": "getStrategyDetail",
+                    "summary": "Immutable, content-addressed NAV, wealth, trades and open positions of one strategy",
+                    "parameters": [
+                        {"name": "strategy_key", "in": "path", "required": True, "schema": {"type": "string"}},
+                        {"name": "content_hash", "in": "path", "required": True,
+                         "schema": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Strategy detail",
+                            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/StrategyDetail"}}},
+                        },
+                        "404": {"description": "Unknown strategy or hash"},
+                    },
+                }
+            },
             "/openapi.json": {
                 "get": {
                     "operationId": "getOpenApiSpec",
@@ -449,7 +561,7 @@ def build_openapi(as_of: str) -> dict:
                         "ticker": {"type": "string"},
                         "market": {"type": "string", "enum": ["KR", "US"]},
                         "name": {"type": "string"},
-                        "signal_date": {"type": "string", "format": "date"},
+                        "signal_date": {"type": ["string", "null"], "format": "date", "description": "null only in snapshots published before 2026-09-10"},
                         "entry_basis_price": {"type": ["number", "null"]},
                         "entry_reason": {"type": "string"},
                         "trigger_reports": {"type": "array", "items": {"type": "object"}},
@@ -488,11 +600,25 @@ def build_openapi(as_of: str) -> dict:
                         "disclaimer": {"type": "string"},
                         "disclaimer_ko": {"type": "string"},
                         "regime": {"$ref": "#/components/schemas/Regime"},
-                        "slots": {"type": "object"},
+                        "slots": {
+                            "type": "object",
+                            "properties": {
+                                "max_positions": {"type": "integer"},
+                                "open": {"type": "integer"},
+                                "available": {"type": "integer"},
+                            },
+                        },
                         "open_positions": {"type": "array", "items": {"$ref": "#/components/schemas/Position"}},
                         "buy_signals": {"type": "array", "items": {"$ref": "#/components/schemas/BuySignal"}},
                         "sell_signals": {"type": "array", "items": {"$ref": "#/components/schemas/SellSignal"}},
-                        "counts": {"type": "object"},
+                        "counts": {
+                            "type": "object",
+                            "properties": {
+                                "open_positions": {"type": "integer"},
+                                "buy_signals": {"type": "integer"},
+                                "sell_signals": {"type": "integer"},
+                            },
+                        },
                     },
                 },
                 "StrategyEntry": {
@@ -509,6 +635,9 @@ def build_openapi(as_of: str) -> dict:
                         "kospi_dca_beats": {"type": ["boolean", "null"]},
                         "aw_dca_ratio": {"type": ["number", "null"]},
                         "aw_dca_beats": {"type": ["boolean", "null"]},
+                        "dsr": {"type": ["object", "null"], "description": "Probabilistic / deflated Sharpe ratio"},
+                        "walkforward": {"type": ["object", "null"], "description": "Rolling-window walk-forward summary"},
+                        "walkforward_oos": {"type": ["object", "null"], "description": "Walk-forward summary, OOS windows only"},
                     },
                 },
                 "StrategiesPayload": {
@@ -518,6 +647,7 @@ def build_openapi(as_of: str) -> dict:
                         "generated_at": {"type": "string", "format": "date-time"},
                         "headline_key": {"type": "string"},
                         "disclaimer": {"type": "string"},
+                        "disclaimer_ko": {"type": "string"},
                         "strategies": {"type": "array", "items": {"$ref": "#/components/schemas/StrategyEntry"}},
                     },
                 },
@@ -545,7 +675,52 @@ def build_openapi(as_of: str) -> dict:
                         "generated_at": {"type": "string", "format": "date-time"},
                         "strategy_key": {"type": "string"},
                         "disclaimer": {"type": "string"},
+                        "disclaimer_ko": {"type": "string"},
                         "trades": {"type": "array", "items": {"$ref": "#/components/schemas/Trade"}},
+                    },
+                },
+                "StrategyDetailsManifest": {
+                    "type": "object",
+                    "required": ["schema_version", "as_of", "assets"],
+                    "properties": {
+                        "schema_version": {"type": "string"},
+                        "as_of": {"type": "string", "format": "date"},
+                        "assets": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "object",
+                                "required": ["content_hash", "path"],
+                                "properties": {"content_hash": {"type": "string"}, "path": {"type": "string"}},
+                            },
+                        },
+                    },
+                },
+                "StrategyDetail": {
+                    "type": "object",
+                    "required": ["schema_version", "strategy_key", "content_hash"],
+                    "description": "content_hash = sha256 of the canonical JSON of the payload without content_hash.",
+                    "properties": {
+                        "schema_version": {"type": "string"},
+                        "strategy_key": {"type": "string"},
+                        "content_hash": {"type": "string"},
+                        "nav": {"type": "array", "items": {"type": "object"}},
+                        "wealth": {"type": "object"},
+                        "trades": {"type": "array", "items": {"type": "object"}},
+                        "open_positions": {"type": "array", "items": {"type": "object"}},
+                        "yearly": {"type": "array", "items": {"type": "object"}},
+                    },
+                },
+                "ForwardRecord": {
+                    "type": "object",
+                    "required": ["schema_version", "generated_at", "summary", "entries"],
+                    "properties": {
+                        "schema_version": {"type": "string"},
+                        "generated_at": {"type": "string", "format": "date-time"},
+                        "method": {"type": "string"},
+                        "provenance": {"type": "object"},
+                        "summary": {"type": "object"},
+                        "entries": {"type": "array", "items": {"type": "object"}},
+                        "headline_by_date": {"type": "object", "additionalProperties": {"type": "string"}},
                     },
                 },
             }
@@ -555,6 +730,91 @@ def build_openapi(as_of: str) -> dict:
 
 # ── main ─────────────────────────────────────────────────────────────────────
 
+def _manifest(as_of: str, details: dict[str, tuple[str, dict]]) -> dict:
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "as_of": as_of,
+        "assets": {key: {"content_hash": digest, "path": f"strategy-details/{key}/{digest}.json"}
+                   for key, (digest, _) in details.items()},
+    }
+
+
+def plan_outputs(data: dict, *, details_only: bool = False) -> tuple[dict[Path, dict | list], set[Path]]:
+    """Every file this export owns → payload, plus the set of append-only paths.
+
+    Append-only paths (dated snapshots, content-addressed details) are written
+    only when missing and must never change once published.
+    """
+    as_of: str = data.get("signals", {}).get("as_of", dt.date.today().isoformat())
+    outputs: dict[Path, dict | list] = {}
+    append_only: set[Path] = set()
+    # Immutable content-addressed detail assets; never prune old hashes.
+    details = build_strategy_details(data)
+    for key, (digest, payload) in details.items():
+        path = API_DIR / "strategy-details" / key / f"{digest}.json"
+        outputs[path] = payload
+        append_only.add(path)
+    outputs[API_DIR / "strategy-details" / "manifest.json"] = _manifest(as_of, details)
+    if details_only:
+        return outputs, append_only
+
+    latest = build_latest_signals(data)
+    outputs[API_DIR / "signals" / "latest.json"] = latest
+    daily_path = API_DIR / "signals" / f"{as_of}.json"
+    outputs[daily_path] = latest
+    append_only.add(daily_path)
+    outputs[API_DIR / "strategies.json"] = build_strategies(data)
+    for key, trades in build_trades(data).items():
+        outputs[API_DIR / "trades" / f"{key}.json"] = {
+            "schema_version": SCHEMA_VERSION,
+            "generated_at": _generated_at(),
+            "strategy_key": key,
+            "disclaimer": DISCLAIMER_EN,
+            "disclaimer_ko": DISCLAIMER_KO,
+            "trades": trades,
+        }
+    outputs[API_DIR / "openapi.json"] = build_openapi(as_of)
+    for slug, payload in sorted(build_strategy_marks(data).items()):
+        outputs[MARKS_DIR / f"{slug}.json"] = payload
+    return outputs, append_only
+
+
+def _comparable(value: object) -> object:
+    """Drop wall-clock stamps so a re-export of the same source compares equal."""
+    if isinstance(value, dict):
+        return {k: _comparable(v) for k, v in value.items() if k != "generated_at"}
+    if isinstance(value, list):
+        return [_comparable(v) for v in value]
+    return value
+
+
+def check_outputs(outputs: dict[Path, dict | list], append_only: set[Path], *, prune_marks: bool) -> list[str]:
+    """Committed artifacts must equal what the committed source would export.
+
+    Append-only paths only need to exist: a dated snapshot is frozen at first
+    publication even if a same-day re-run produces different signals, and
+    content-addressed details are verified by their hash.
+    """
+    problems: list[str] = []
+    for path, expected in outputs.items():
+        rel = path.relative_to(ROOT).as_posix()
+        if not path.exists():
+            problems.append(f"missing {rel}")
+            continue
+        if path in append_only:
+            continue
+        with open(path, encoding="utf-8") as f:
+            actual = json.load(f)
+        if _comparable(actual) != _comparable(expected):
+            problems.append(f"stale {rel}")
+    fresh_marks = {p for p in outputs if p.parent == MARKS_DIR}
+    if prune_marks and MARKS_DIR.exists():
+        for old in MARKS_DIR.glob("*.json"):
+            if old not in fresh_marks:
+                problems.append(f"orphan {old.relative_to(ROOT).as_posix()}")
+    return problems
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -563,6 +823,9 @@ def main(argv: list[str] | None = None) -> int:
         default=DEFAULT_SOURCE,
         help="Path to strategy-backtest.json (default: src/data/strategy-backtest.json)",
     )
+    parser.add_argument("--details-only", action="store_true", help="write only immutable strategy detail assets and manifest")
+    parser.add_argument("--check", action="store_true",
+                        help="write nothing; exit 1 if committed artifacts differ from a fresh export (CI gate)")
     args = parser.parse_args(argv)
 
     source: Path = args.source
@@ -572,65 +835,33 @@ def main(argv: list[str] | None = None) -> int:
 
     print(f"Loading {source.relative_to(ROOT).as_posix()} ...", flush=True)
     data = _load_source(source)
-    as_of: str = data.get("signals", {}).get("as_of", dt.date.today().isoformat())
-    print(f"  as_of: {as_of}", flush=True)
+    print(f"  as_of: {data.get('signals', {}).get('as_of')}", flush=True)
+    outputs, append_only = plan_outputs(data, details_only=args.details_only)
 
-    # 1. signals/latest.json
-    latest = build_latest_signals(data)
-    _write_json(API_DIR / "signals" / "latest.json", latest)
-
-    # 2. signals/{YYYY-MM-DD}.json  — daily snapshot (append-only; never overwrite)
-    daily_path = API_DIR / "signals" / f"{as_of}.json"
-    if not daily_path.exists():
-        _write_json(daily_path, latest)
-    else:
-        print(f"  skipped (exists) {daily_path.relative_to(ROOT).as_posix()}", flush=True)
-
-    # 3. strategies.json
-    strats = build_strategies(data)
-    _write_json(API_DIR / "strategies.json", strats)
-
-    # 4. trades/{strategy_key}.json
-    all_trades = build_trades(data)
-    for key, trades in all_trades.items():
-        payload = {
-            "schema_version": SCHEMA_VERSION,
-            "generated_at": _generated_at(),
-            "strategy_key": key,
-            "disclaimer": DISCLAIMER_EN,
-            "disclaimer_ko": DISCLAIMER_KO,
-            "trades": trades,
-        }
-        _write_json(API_DIR / "trades" / f"{key}.json", payload)
-
-    # 5. openapi.json
-    openapi = build_openapi(as_of)
-    _write_json(API_DIR / "openapi.json", openapi)
-
-    # 6. strategy-marks/{slug}.json — headline strategy trade marks per ticker.
-    #    Write-then-prune (NOT wipe-then-write): 새 파일을 전부 쓴 뒤 스테일만
-    #    지운다. 중간에 죽어도 디렉터리가 비는 일이 없다.
-    marks = build_strategy_marks(data)
-    fresh = {f"{slug}.json" for slug in marks}
-    for slug, payload in sorted(marks.items()):
-        _write_json(MARKS_DIR / f"{slug}.json", payload)
-    if MARKS_DIR.exists():
-        for old in MARKS_DIR.glob("*.json"):
-            if old.name not in fresh:
-                old.unlink()
-    print(f"  strategy-marks: {len(marks)} tickers", flush=True)
-
-    # Validate all written JSON can be re-parsed
-    print("\nValidating written files ...", flush=True)
-    for path in sorted(API_DIR.rglob("*.json")) + sorted(MARKS_DIR.glob("*.json")):
-        try:
-            with open(path, encoding="utf-8") as f:
-                json.load(f)
-            print(f"  OK  {path.relative_to(ROOT).as_posix()}", flush=True)
-        except json.JSONDecodeError as exc:
-            print(f"  FAIL {path.relative_to(ROOT).as_posix()}: {exc}", file=sys.stderr)
+    if args.check:
+        problems = check_outputs(outputs, append_only, prune_marks=not args.details_only)
+        for problem in problems:
+            print(f"  DRIFT {problem}", file=sys.stderr)
+        if problems:
+            print(f"\n{len(problems)} artifact(s) out of sync — run scripts/export_signals_api.py and commit.",
+                  file=sys.stderr)
             return 1
+        print(f"  OK  {len(outputs)} artifacts match the source", flush=True)
+        return 0
 
+    for path, payload in outputs.items():
+        if path in append_only and path.exists():
+            print(f"  skipped (exists) {path.relative_to(ROOT).as_posix()}", flush=True)
+            continue
+        _write_json(path, payload)
+    # Write-then-prune (NOT wipe-then-write): 새 파일을 전부 쓴 뒤 스테일만 지운다.
+    if not args.details_only:
+        fresh_marks = {p for p in outputs if p.parent == MARKS_DIR}
+        if MARKS_DIR.exists():
+            for old in MARKS_DIR.glob("*.json"):
+                if old not in fresh_marks:
+                    old.unlink()
+        print(f"  strategy-marks: {len(fresh_marks)} tickers", flush=True)
     print("\nDone. API files written to public/api/v1/", flush=True)
     return 0
 

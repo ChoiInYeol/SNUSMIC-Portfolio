@@ -145,6 +145,55 @@ if hasattr(sys.stdout, "reconfigure"):
 
 
 
+def point_in_time_school_counts(perf: pd.DataFrame) -> dict[tuple[str, dt.date], int]:
+    """Return accumulated unique school coverage available at each report date."""
+    required = {"ticker_key", "report_date", "school"}
+    missing = required.difference(perf.columns)
+    if missing:
+        raise ValueError(f"school-count input missing columns: {sorted(missing)}")
+    rows = perf[["ticker_key", "report_date", "school"]].copy()
+    rows["report_date"] = pd.to_datetime(rows["report_date"]).dt.date
+    counts: dict[tuple[str, dt.date], int] = {}
+    for ticker, group in rows.groupby("ticker_key", sort=True):
+        schools: set[str] = set()
+        for report_date, day_group in group.groupby("report_date", sort=True):
+            schools.update(str(school) for school in day_group["school"])
+            counts[(str(ticker), report_date)] = len(schools)
+    return counts
+
+def headline_rank(item: tuple[str, dict]) -> tuple[float, str]:
+    """Deterministic IS-only headline rank; OOS flips cannot alter selection."""
+    key, result = item
+    value = result.get("in_sample", {}).get("sharpe")
+    score = float(value) if value is not None and math.isfinite(float(value)) else float("-inf")
+    return score, key
+
+
+def align_causal_quotes(series: pd.Series, index: pd.DatetimeIndex, name: str) -> pd.Series:
+    """Carry only earlier observations; reject prices not yet observable at the start."""
+    aligned = series.reindex(series.index.union(index)).ffill().reindex(index)
+    if aligned.empty or not np.isfinite(aligned.to_numpy(dtype=float)).all() or (aligned <= 0).any():
+        raise ValueError(f"{name}: missing finite positive point-in-time quote")
+    return aligned
+
+
+def _is_dca_ratios(nav: pd.Series, kospi: pd.Series, all_weather: pd.Series) -> dict[str, float | None]:
+    """Compute causal DCA ratios through IS end only for selection gates."""
+    nav_is = nav[nav.index.date <= IS_END]
+    if len(nav_is) < 2:
+        return {"kospi": None, "allweather": None}
+    try:
+        result = compute_wealth_simulation_multi(nav_is, {"KOSPI": kospi, "AllWeather": all_weather}, nav_is.index[0].date(), nav_is.index[-1].date())
+    except (ValueError, KeyError):
+        return {"kospi": None, "allweather": None}
+    final = result.get("final_strategy_value")
+    finals = result.get("final_benchmark_values", {})
+    return {
+        "kospi": round(final / finals["KOSPI"], 3) if final is not None and finals.get("KOSPI", 0) > 0 else None,
+        "allweather": round(final / finals["AllWeather"], 3) if final is not None and finals.get("AllWeather", 0) > 0 else None,
+    }
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Benchmark computations
 # ──────────────────────────────────────────────────────────────────────────────
@@ -159,19 +208,15 @@ def compute_all_weather(
     usdkrw: pd.Series | None = None,
 ) -> pd.Series:
     idx = pd.date_range(start=pd.Timestamp(start), end=pd.Timestamp(end), freq="B")
-    # v19 FX: align USDKRW to business-day index, ffill. Fallback to global _USDKRW.
+    # FX and asset prices must already be observable, never borrowed from a future bar.
     fx_src = usdkrw if usdkrw is not None else fx._USDKRW
-    if fx_src is not None:
-        fx_aligned = fx_src.reindex(idx).ffill().bfill()
-        fx_aligned = fx_aligned.fillna(fx._USDKRW_FALLBACK)
-    else:
-        fx_aligned = pd.Series(fx._USDKRW_FALLBACK, index=idx)
-
-    k = kospi.reindex(idx).ffill().bfill()
-    # USD legs converted to KRW via daily USDKRW rate
-    s = sp500.reindex(idx).ffill().bfill() * fx_aligned
-    n = nasdaq.reindex(idx).ffill().bfill() * fx_aligned
-    g = gld.reindex(idx).ffill().bfill() * fx_aligned
+    if fx_src is None:
+        raise ValueError("USDKRW: no point-in-time quotes for all-weather valuation")
+    fx_aligned = align_causal_quotes(fx_src, idx, "USDKRW")
+    k = align_causal_quotes(kospi, idx, "KOSPI")
+    s = align_causal_quotes(sp500, idx, "SP500") * fx_aligned
+    n = align_causal_quotes(nasdaq, idx, "NASDAQ") * fx_aligned
+    g = align_causal_quotes(gld, idx, "GLD") * fx_aligned
 
     k = k / k.iloc[0]
     s = s / s.iloc[0]
@@ -224,7 +269,9 @@ def compute_wealth_simulation_multi(
     # Positional numpy views — same aligned values as .loc[day], just O(1) access
     bench_arr: dict[str, np.ndarray] = {}
     for name, idx_series in benchmarks.items():
-        aligned = idx_series.reindex(all_dates).ffill().bfill()
+        aligned = idx_series.reindex(all_dates).ffill()
+        if aligned.isna().any() or float(aligned.iloc[0]) <= 0:
+            raise ValueError(f"benchmark {name} has no point-in-time quote for DCA start")
         bench_aligned[name] = aligned
         bench_arr[name] = aligned.to_numpy()
         bench_units[name] = DCA_INITIAL / float(aligned.iloc[0])
@@ -234,19 +281,20 @@ def compute_wealth_simulation_multi(
         day_date = day.date()
         is_month_first = day_date in monthly_dates
 
-        if is_month_first and month_idx > 0:
-            contribution = DCA_BASE_MONTHLY + DCA_STEP * (month_idx // DCA_STEP_MONTHS)
-            total_contributed += contribution
-            strat_wealth += contribution
-            for name in bench_units:
-                price_today = float(bench_arr[name][day_i])
-                bench_units[name] += contribution / price_today
-
         if is_month_first:
             month_idx += 1
 
         sr = float(strat_ret_arr[day_i])
         strat_wealth *= (1 + sr)
+
+        # Contributions execute at the daily close after that day's return; strategy and benchmarks use same convention.
+        if is_month_first and month_idx > 1:
+            contribution = DCA_BASE_MONTHLY + DCA_STEP * ((month_idx - 1) // DCA_STEP_MONTHS)
+            total_contributed += contribution
+            strat_wealth += contribution
+            for name in bench_units:
+                price_today = float(bench_arr[name][day_i])
+                bench_units[name] += contribution / price_today
 
         bench_vals: dict[str, float] = {
             name: bench_units[name] * float(bench_arr[name][day_i])
@@ -576,10 +624,9 @@ def main() -> int:
     # Build per-ticker report metadata
     ticker_reports = build_ticker_reports(perf)
 
-    # Club count per ticker_key
-    ticker_club_count: dict[str, int] = (
-        perf.groupby("ticker_key")["school"].nunique().to_dict()
-    )
+    # Point-in-time school coverage: future reports must not alter earlier consensus counts.
+    ticker_club_count = point_in_time_school_counts(perf)
+
 
     # ── Fetch missing US price files
     print("Checking US price files...", flush=True)
@@ -610,7 +657,7 @@ def main() -> int:
             rdate = dt.date.fromisoformat(str(row["report_date"]))
         except ValueError:
             continue
-        n_clubs = ticker_club_count.get(tk, 1)
+        n_clubs = ticker_club_count.get((tk, rdate), 1)
         source = Path(str(row["source_file"])).name
         reports.append((rdate, tk, source, n_clubs))
     reports.sort()
@@ -979,26 +1026,14 @@ def main() -> int:
     result_Dplus = None
 
     if not optuna_result.get("skipped"):
-        oos_sharpe_dplus = optuna_result.get("out_of_sample", {}).get("sharpe")
-        is_sharpe_dplus  = optuna_result.get("in_sample", {}).get("sharpe")
-        oos_sharpe_D     = result_D.get("out_of_sample", {}).get("sharpe")
-        is_sharpe_D      = result_D.get("in_sample", {}).get("sharpe")
-
-        # Adoption criteria: OOS within 80% of its own IS AND >= D's OOS
-        oos_ok = (
-            oos_sharpe_dplus is not None
-            and is_sharpe_dplus is not None
-            and oos_sharpe_dplus >= 0.8 * is_sharpe_dplus
-            and (oos_sharpe_D is None or oos_sharpe_dplus >= oos_sharpe_D)
-        )
-        d_plus_adopted = oos_ok
+        # Parameters are selected on IS only; OOS is descriptive and cannot promote tuning.
+        is_sharpe_dplus = optuna_result.get("in_sample", {}).get("sharpe")
         result_Dplus = optuna_result
-        if d_plus_adopted:
-            result_Dplus["label"] = "D+_chandelier_optuna"
-            all_strategies["D+_chandelier_optuna"] = result_Dplus
-            print(f"  D+ ADOPTED: IS={is_sharpe_dplus:.2f}  OOS={oos_sharpe_dplus:.2f}  (D OOS={oos_sharpe_D})", flush=True)
-        else:
-            print(f"  D+ NOT ADOPTED (OOS degraded): IS={is_sharpe_dplus}  OOS={oos_sharpe_dplus}  D OOS={oos_sharpe_D}", flush=True)
+        d_plus_adopted = True
+        result_Dplus["label"] = "D+_chandelier_optuna"
+        result_Dplus["selection_basis"] = "IS-only fixed parameter choice; OOS is untouched evaluation"
+        all_strategies["D+_chandelier_optuna"] = result_Dplus
+        print(f"  D+ ADOPTED from IS-only selection (IS={is_sharpe_dplus})", flush=True)
 
     # ── T / T-: 코어-KOSPI 샹들리에 (D+ params if adopted, else D defaults) ──
     # Use D+ Optuna params if available; otherwise fall back to D ATR×5 / 20 pos
@@ -1127,37 +1162,38 @@ def main() -> int:
         aw_final = ws_tmp["final_benchmark_values"].get("AllWeather", 1)
         ratio = round(strat_final / kospi_final, 3) if kospi_final and kospi_final > 0 else None
         aw_ratio = round(strat_final / aw_final, 3) if aw_final and aw_final > 0 else None
+        is_ratios = _is_dca_ratios(r["nav_df"], kospi, all_weather)
         _kospi_dca_ratios[key] = {
             "full_ratio": ratio,
-            "aw_ratio": aw_ratio,            # v18: vs 올웨더 DCA
+            "aw_ratio": aw_ratio,
+            "is_ratio": is_ratios["kospi"],
+            "aw_is_ratio": is_ratios["allweather"],
             "strat_final": round(strat_final),
             "kospi_final": round(kospi_final) if kospi_final else None,
             "aw_final": round(aw_final) if aw_final else None,
         }
 
     # ── v18 파킹 헤드라인 콘테스트: W (올웨더 파킹) vs T- (KOSPI 파킹 + 레짐) ──
-    # 강건성 기준: (a) 자기 파킹 벤치마크를 이긴다 — W → 올웨더 DCA, T- → KOSPI DCA.
-    #             (b) IS+OOS 샤프 합이 높은 쪽이 승자.
-    # 승자는 기존 게이트(자기 벤치마크 우위 AND IS·OOS 샤프 >= D+) 통과 시 셀렉터 승격.
+    # Selection uses IS-only benchmark ratio and IS Sharpe. OOS/full-period values are descriptive; historical OOS was observed during prior research and is not an untouched holdout.
     # T (상시 KOSPI 파킹, 레짐 없음)는 연구 기록 비교용 — 콘테스트에 미참여.
     _dplus_ref = result_Dplus if result_Dplus is not None else result_D
-    _dplus_is  = (_dplus_ref.get("in_sample", {}).get("sharpe") or -999.0)
-    _dplus_oos = (_dplus_ref.get("out_of_sample", {}).get("sharpe") or -999.0)
+    _dplus_is  = _dplus_ref.get("in_sample", {}).get("sharpe")
+    _dplus_oos = _dplus_ref.get("out_of_sample", {}).get("sharpe")
 
-    _tm_kospi_ratio = (_kospi_dca_ratios.get("T-_kospi_core_regime", {}).get("full_ratio") or 0.0)
-    _w_aw_ratio     = (_kospi_dca_ratios.get("W_allweather_chandelier", {}).get("aw_ratio") or 0.0)
-    _w_kospi_ratio  = (_kospi_dca_ratios.get("W_allweather_chandelier", {}).get("full_ratio") or 0.0)
-    _tm_aw_ratio    = (_kospi_dca_ratios.get("T-_kospi_core_regime", {}).get("aw_ratio") or 0.0)
+    _tm_kospi_ratio = _kospi_dca_ratios.get("T-_kospi_core_regime", {}).get("is_ratio")
+    _w_aw_ratio     = _kospi_dca_ratios.get("W_allweather_chandelier", {}).get("aw_is_ratio")
+    _w_kospi_ratio  = _kospi_dca_ratios.get("W_allweather_chandelier", {}).get("is_ratio")
+    _tm_aw_ratio    = _kospi_dca_ratios.get("T-_kospi_core_regime", {}).get("aw_is_ratio")
 
     _tm_is  = (result_Tminus.get("in_sample", {}).get("sharpe") or -999.0)
     _tm_oos = (result_Tminus.get("out_of_sample", {}).get("sharpe") or -999.0)
     _w_is   = (result_W.get("in_sample", {}).get("sharpe") or -999.0)
     _w_oos  = (result_W.get("out_of_sample", {}).get("sharpe") or -999.0)
 
-    _tm_robust = _tm_kospi_ratio > 1.0   # T-는 자기 파킹 벤치마크 = KOSPI DCA
-    _w_robust  = _w_aw_ratio > 1.0       # W는 자기 파킹 벤치마크 = 올웨더 DCA
-    _tm_score = _tm_is + _tm_oos
-    _w_score  = _w_is + _w_oos
+    _tm_robust = _tm_kospi_ratio is not None and _tm_kospi_ratio > 1.0
+    _w_robust  = _w_aw_ratio is not None and _w_aw_ratio > 1.0
+    _tm_score = _tm_is
+    _w_score  = _w_is
 
     # Winner: robust 후보 중 IS+OOS 샤프 합 우위; 둘 다 robust 아니면 점수만으로 비교
     if _w_robust and not _tm_robust:
@@ -1176,13 +1212,14 @@ def main() -> int:
         _t_best_own_ratio, _t_loser_key = _tm_kospi_ratio, "W_allweather_chandelier"
         _t_best_robust = _tm_robust
 
-    _t_best_is  = (_t_best.get("in_sample", {}).get("sharpe") or -999.0)
-    _t_best_oos = (_t_best.get("out_of_sample", {}).get("sharpe") or -999.0)
-    # 승격 게이트: 자기 파킹 벤치마크 우위 AND IS·OOS 샤프 >= D+
+    _t_best_is  = _t_best.get("in_sample", {}).get("sharpe")
+    _t_best_oos = _t_best.get("out_of_sample", {}).get("sharpe")
+    # Promotion uses IS-only ratio and Sharpe; OOS is descriptive.
     _t_promoted = (
         _t_best_robust
-        and _t_best_is  >= _dplus_is
-        and _t_best_oos >= _dplus_oos
+        and _t_best_is is not None
+        and _dplus_is is not None
+        and _t_best_is >= _dplus_is
     )
 
     # T(상시 파킹)와 콘테스트 패자는 연구 기록 전용; 승자만 승격 시 셀렉터 진입
@@ -1194,9 +1231,9 @@ def main() -> int:
         EXCLUDED_FROM_SELECTOR.add(_t_best_key)
 
     t_promotion_verdict = (
-        f"파킹 콘테스트 승자={_t_best_key}  자기벤치마크 비율={_t_best_own_ratio}x  "
-        f"IS={_t_best_is}  OOS={_t_best_oos}  D+/D IS={_dplus_is}  OOS={_dplus_oos}  "
-        f"promoted={'YES — 헤드라인 후보' if _t_promoted else 'NO — 자기 벤치마크 미달 또는 샤프 D+ 미달'}"
+        f"파킹 콘테스트 승자={_t_best_key} 자기벤치마크 IS비율={_t_best_own_ratio}x "
+        f"IS={_t_best_is} (OOS descriptive={_t_best_oos}; D+ IS={_dplus_is}) "
+        f"promoted={'YES — 헤드라인 후보' if _t_promoted else 'NO — IS 벤치마크 또는 IS 샤프 미달'}"
     )
     parking_showdown = {
         "contest": "W(올웨더 파킹, 레짐 없음) vs T-(KOSPI 파킹, KOSPI<200MA 레짐)",
@@ -1212,7 +1249,8 @@ def main() -> int:
         },
         "winner": _t_best_key,
         "promoted_to_headline_candidate": _t_promoted,
-        "criteria": "자기 파킹 벤치마크 DCA 우위 AND IS+OOS 샤프 합 우위 → 승자; 승자가 D+ 샤프 이상이면 셀렉터 승격",
+        "criteria": "IS 기간 자기 파킹 벤치마크 DCA 우위 AND IS 샤프 우위 → 승자; OOS/full-period는 사후 기술통계이며 독립 holdout 아님",
+
         "design_note": (
             "사용자 가설: KOSPI 파킹+200MA 레짐은 과적합 냄새가 나고, 올웨더 파킹이 더 자연스럽다. "
             "W는 레짐 게이트 없이 올웨더(GLD 25% 포함, 분기 리밸런스)에 상시 파킹 — "
@@ -1224,14 +1262,12 @@ def main() -> int:
     print(f"  W: IS={_w_is} OOS={_w_oos} vsKOSPI={_w_kospi_ratio}x vs올웨더={_w_aw_ratio}x", flush=True)
     print(f"  T-: IS={_tm_is} OOS={_tm_oos} vsKOSPI={_tm_kospi_ratio}x vs올웨더={_tm_aw_ratio}x", flush=True)
 
-    # ── U vs T- comparison (KOSPI DCA ratio + OOS sharpe) ──────────────────
-    # U is promoted to headline ONLY if it beats T- on full-period wealth ratio AND OOS sharpe.
-    # Otherwise T- stays headline candidate and U is presented as an honest side note.
-    _u_ratio  = (_kospi_dca_ratios.get("U_chandelier_scaleout",  {}).get("full_ratio") or 0.0)
-    _tm_ratio_cmp = (_kospi_dca_ratios.get(_t_best_key, {}).get("full_ratio") or 0.0)
-    _u_oos    = (result_U.get("out_of_sample", {}).get("sharpe") or -999.0)
-    _tm_oos_cmp = (_t_best.get("out_of_sample", {}).get("sharpe") or -999.0)
-    _u_is     = (result_U.get("in_sample", {}).get("sharpe") or -999.0)
+    # U/T comparison uses IS-only ratios and Sharpe for promotion; full-period values are descriptive.
+    _u_ratio  = _kospi_dca_ratios.get("U_chandelier_scaleout",  {}).get("is_ratio")
+    _tm_ratio_cmp = _kospi_dca_ratios.get(_t_best_key, {}).get("is_ratio")
+    _u_oos    = result_U.get("out_of_sample", {}).get("sharpe")
+    _tm_oos_cmp = _t_best.get("out_of_sample", {}).get("sharpe")
+    _u_is     = result_U.get("in_sample", {}).get("sharpe")
     _u_max_trade = result_U["metrics"].get("max_single_return_pct")
     _tm_max_trade = result_Tminus["metrics"].get("max_single_return_pct")
 
@@ -1243,13 +1279,18 @@ def main() -> int:
         if not n:
             return {"top_decile_pnl_share_pct": None, "avg_winner_hold_days": None}
         top10_n = max(1, math.ceil(n * 0.1))
-        top_decile = returns[:top10_n]
-        total_positive = sum(r for r in returns if r > 0)
-        td_share = (sum(r for r in top_decile if r > 0) / total_positive * 100) if total_positive > 0 else 0.0
+        ranked = sorted(closed, key=lambda t: t["return_pct"], reverse=True)[:top10_n]
+        monetary = [t.get("pnl_krw") for t in closed]
+        if any(v is None or not math.isfinite(float(v)) for v in monetary):
+            td_share = None
+        else:
+            positive = sum(float(v) for v in monetary if float(v) > 0)
+            top_positive = sum(float(t["pnl_krw"]) for t in ranked if float(t["pnl_krw"]) > 0)
+            td_share = (top_positive / positive * 100) if positive > 0 else 0.0
         winners = [t for t in closed if t["return_pct"] > 0]
         avg_hold = round(sum(t["days"] for t in winners) / len(winners), 1) if winners else None
         return {
-            "top_decile_pnl_share_pct": round(td_share, 1),
+            "top_decile_pnl_share_pct": round(td_share, 1) if td_share is not None else None,
             "avg_winner_hold_days": avg_hold,
             "max_single_return_pct": max((t["return_pct"] for t in closed), default=None),
         }
@@ -1257,15 +1298,17 @@ def main() -> int:
     _u_tb  = _tenbagger_metrics(result_U)
     _tm_tb = _tenbagger_metrics(result_Tminus)
 
-    _u_beats_tminus = (_u_ratio > _tm_ratio_cmp and _u_oos >= _tm_oos_cmp)
+    _u_beats_tminus = (_u_ratio is not None and _tm_ratio_cmp is not None and _u_is is not None and _tm_is is not None and _u_ratio > _tm_ratio_cmp and _u_is >= _tm_is)
     if _u_beats_tminus:
         # U promoted: remove from exclusions so it competes in headline selection
         EXCLUDED_FROM_SELECTOR.discard("U_chandelier_scaleout")
-        u_verdict_str = "PROMOTED — 과열 스케일아웃이 T- 대비 부의 비율과 OOS 샤프 모두 개선"
+        u_verdict_str = "PROMOTED — IS 기준 T- 대비 벤치마크 비율·IS 샤프 우위 (OOS descriptive)"
+
     else:
         u_verdict_str = (
             "NOT PROMOTED — "
-            + ("과열 스케일아웃은 상승 여력을 깎았다" if _u_ratio <= _tm_ratio_cmp else "부의 비율은 앞서나 OOS 샤프 미달")
+            + ("과열 스케일아웃은 상승 여력을 깎았다" if (_u_ratio is None or _tm_ratio_cmp is None or _u_ratio <= _tm_ratio_cmp) else "IS 비율은 앞서나 IS 샤프 미달")
+
         )
 
     u_vs_tminus_verdict = {
@@ -1304,22 +1347,23 @@ def main() -> int:
     print(f"  U top-decile PnL share={_u_tb.get('top_decile_pnl_share_pct')}%  T- {_tm_tb.get('top_decile_pnl_share_pct')}%", flush=True)
 
     # ── V(SPO+) 승격 판정 — 기존 승격 관례 (U와 동일): T 베스트 변형 대비
-    # 부의 비율 우위 AND OOS 샤프 동등 이상일 때만 셀렉터 승격. 아니면 연구 기록 전용.
-    _vspo_ratio = (_kospi_dca_ratios.get("V_spo", {}).get("full_ratio") or 0.0)
-    _vls_ratio  = (_kospi_dca_ratios.get("V_ls",  {}).get("full_ratio") or 0.0)
-    _vspo_is  = (result_V_spo.get("in_sample", {}).get("sharpe") or -999.0)
-    _vspo_oos = (result_V_spo.get("out_of_sample", {}).get("sharpe") or -999.0)
-    _vls_is   = (result_V_ls.get("in_sample", {}).get("sharpe") or -999.0)
-    _vls_oos  = (result_V_ls.get("out_of_sample", {}).get("sharpe") or -999.0)
+    # V promotion uses IS-only ratio and Sharpe; OOS is descriptive.
+    _vspo_ratio = _kospi_dca_ratios.get("V_spo", {}).get("is_ratio")
+    _vls_ratio  = _kospi_dca_ratios.get("V_ls",  {}).get("is_ratio")
+    _vspo_is  = result_V_spo.get("in_sample", {}).get("sharpe")
+    _vspo_oos = result_V_spo.get("out_of_sample", {}).get("sharpe")
+    _vls_is   = result_V_ls.get("in_sample", {}).get("sharpe")
+    _vls_oos  = result_V_ls.get("out_of_sample", {}).get("sharpe")
 
-    _v_promoted = (_vspo_ratio > _tm_ratio_cmp and _vspo_oos >= _tm_oos_cmp)
+    _v_promoted = (_vspo_ratio is not None and _tm_ratio_cmp is not None and _vspo_is is not None and _tm_is is not None and _vspo_ratio > _tm_ratio_cmp and _vspo_is >= _tm_is)
     if _v_promoted:
         EXCLUDED_FROM_SELECTOR.discard("V_spo")
-        v_verdict_str = "PROMOTED — SPO+가 T 베스트 대비 부의 비율·OOS 샤프 모두 우위"
+        v_verdict_str = "PROMOTED — IS 기준 T 베스트 대비 벤치마크 비율·IS 샤프 우위 (OOS descriptive)"
+
     else:
         v_verdict_str = (
             "NOT PROMOTED — "
-            + ("부의 비율이 T 베스트에 미달" if _vspo_ratio <= _tm_ratio_cmp else "부의 비율은 앞서나 OOS 샤프 미달")
+            + ("IS 비율이 T 베스트에 미달" if (_vspo_ratio is None or _tm_ratio_cmp is None or _vspo_ratio <= _tm_ratio_cmp) else "IS 비율은 앞서나 IS 샤프 미달")
             + " → 연구 기록 전용"
         )
 
@@ -1370,22 +1414,9 @@ def main() -> int:
         print(f"\n  ✗ No eligible strategy beats KOSPI DCA in full-period wealth simulation.", flush=True)
 
     # ── Headline selection among ELIGIBLE strategies only.
-    # v20 공정 타이브레이크: IS 샤프(표시 자릿수 동률 多) → OOS 샤프 → 전체 기간
-    # 부의 비율(vs KOSPI DCA). 과거에는 IS 샤프 단독 max()가 dict 삽입 순서로
-    # 동률을 깨면서 OOS·부의 비율 모두 앞선 후보가 밀리는 왜곡이 있었다.
-    def _headline_rank(item: tuple[str, dict]) -> tuple[float, float, float]:
-        k, r = item
-        is_s = r.get("in_sample", {}).get("sharpe")
-        oos_s = r.get("out_of_sample", {}).get("sharpe")
-        ratio = _kospi_dca_ratios.get(k, {}).get("full_ratio")
-        return (
-            is_s if is_s is not None else -999.0,
-            oos_s if oos_s is not None else -999.0,
-            ratio if ratio is not None else -999.0,
-        )
-
+    # Headline selection uses IS only; OOS/full-period values are descriptive and contaminated for selection.
     eligible_strategies = {k: v for k, v in all_strategies.items() if k not in EXCLUDED_FROM_SELECTOR}
-    headline_key, headline = max(eligible_strategies.items(), key=_headline_rank)
+    headline_key, headline = max(eligible_strategies.items(), key=headline_rank)
     # 키와 라벨은 항상 일치 — signals/multi_strategy/api가 같은 헤드라인을 가리켜야 한다
     headline_label = headline_key
     print(f"\nHeadline (tiebreak IS→OOS→wealth ratio, eligible only): {headline_label} [{headline_key}]", flush=True)
@@ -1410,7 +1441,9 @@ def main() -> int:
         curated_keys.append("V_spo")
     curated_keys = list(dict.fromkeys(curated_keys))
 
-    _h_is, _h_oos, _h_ratio = _headline_rank((headline_key, headline))
+    _h_is = headline.get("in_sample", {}).get("sharpe")
+    _h_oos = headline.get("out_of_sample", {}).get("sharpe")
+    _h_ratio = _kospi_dca_ratios.get(headline_key, {}).get("full_ratio")
 
     # 역할 앵커 — 구조적으로 비교용으로 설계된 전략 (성과 판정이 아니라 역할 기술)
     _RESEARCH_ROLE = {
@@ -1658,7 +1691,8 @@ def main() -> int:
             "n_trials": optuna_meta.get("n_trials"),
             "search_space": optuna_meta.get("search_space", {}),
             "methodology": optuna_meta.get("methodology", ""),
-            "adoption_criteria": "OOS sharpe ≥ 0.8 × IS sharpe AND OOS sharpe ≥ D 기본값 OOS sharpe",
+            "adoption_criteria": "IS-only parameter selection; OOS is descriptive historical validation, not an untouched holdout",
+
         }
 
     payload = {
@@ -1758,6 +1792,12 @@ def main() -> int:
                 "테스트했고 실패했다는 기록만 방법론에 유지."
             ),
             "excluded_from_selector": sorted(EXCLUDED_FROM_SELECTOR),
+            "selection_contamination": {
+                "oos_used_for_selection": False,
+                "oos_role": "descriptive_validation_only",
+                "full_period_benchmark_ratios": "not_valid_for_independent_oos_claims",
+                "independent_untouched_holdout": False,
+            },
             "P_strategy": (
                 f"P 딥바이 샹들리에: IS sharpe={result_P['in_sample'].get('sharpe')}, "
                 f"OOS sharpe={result_P['out_of_sample'].get('sharpe')}, "
@@ -1924,7 +1964,7 @@ def main() -> int:
             "spo_vs_ls_verdict": spo_vs_ls_verdict,
             "promoted_to_selector": _v_promoted,
             "promotion_verdict": v_verdict_str,
-            "promotion_criteria": "U와 동일 관례: T 베스트 변형 대비 전체 기간 부의 비율 우위 AND OOS 샤프 동등 이상",
+            "promotion_criteria": "IS 기간 T 베스트 변형 대비 벤치마크 비율 우위 AND IS 샤프 동등 이상; OOS는 descriptive historical validation",
             "warmup_note": (
                 "워크포워드 최소 24개월 학습 윈도우 — 첫 리밸런스 이전 구간은 현금 보유 "
                 "(NAV 평탄). IS 샤프는 이 현금 구간을 포함해 계산되므로 상시 투자 전략과의 "

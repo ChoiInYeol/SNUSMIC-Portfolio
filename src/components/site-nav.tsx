@@ -24,7 +24,7 @@ export function SiteNav({ className }: { className?: string }) {
   const isMac = useSyncExternalStore(noopSubscribe, isMacSnapshot, () => false);
   return (
     <nav
-      className={cn("flex items-center gap-3.5 font-mono text-[11px] font-bold uppercase tracking-[0.08em] sm:gap-5 sm:text-xs sm:tracking-[0.16em]", className)}
+      className={cn("flex flex-wrap items-center gap-x-3.5 gap-y-1 font-mono text-[11px] font-bold uppercase tracking-[0.08em] sm:gap-x-5 sm:text-xs sm:tracking-[0.16em]", className)}
       aria-label="사이트 내비게이션"
     >
       {LINKS.map((link) => {
@@ -42,7 +42,7 @@ export function SiteNav({ className }: { className?: string }) {
         title="아카이브 전체 검색 — 종목·판결 기록으로 점프"
       >
         검색
-        <kbd className="ml-1.5 rounded-sm border border-border px-1 py-px font-mono text-[9px] font-bold tracking-normal text-muted-foreground">
+        <kbd className="ml-1.5 hidden rounded-sm border border-border px-1 py-px font-mono text-[9px] font-bold tracking-normal text-muted-foreground sm:inline">
           {isMac ? "⌘K" : "Ctrl K"}
         </kbd>
       </button>

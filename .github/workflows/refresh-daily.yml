@@ -21,7 +21,7 @@ concurrency:
 jobs:
   refresh-daily:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60  # +publication gate; 45 already timed out on 2026-10-14/15
     steps:
       - uses: actions/checkout@v4
 
@@ -49,15 +49,29 @@ jobs:
           restore-keys: |
             prices-${{ runner.os }}-
 
-      # Each collector runs in incremental mode (default, no --full).
-      # continue-on-error: true ensures a single site outage does not abort the run.
+      # Every collector runs and its result is recorded; ANY failure aborts publication
+      # (stale-but-correct beats partially refreshed). See docs/AUDIT-2026-10-19.md #7.
       - name: Collect new reports (incremental)
         run: |
-          uv run python scripts/collect_reports.py --source all || true
-          uv run python scripts/collect_kuvic_browser.py || true
-          uv run python scripts/collect_smic.py || true
-          uv run python scripts/collect_ewha.py || true
-          uv run python scripts/collect_voera.py || true
+          set +e
+          mkdir -p data/source-status data/quarantine
+          failed=0
+          for spec in "reports:uv run python scripts/collect_reports.py --source all" "kuvic:uv run python scripts/collect_kuvic_browser.py" "smic:uv run python scripts/collect_smic.py" "ewha:uv run python scripts/collect_ewha.py" "voera:uv run python scripts/collect_voera.py"; do
+            name="${spec%%:*}"; cmd="${spec#*:}"
+            bash -lc "$cmd"; rc=$?
+            if [ "$rc" -eq 0 ]; then success=true; error_json=null; else success=false; error_json="\"collector exit $rc\""; failed=1; fi
+            printf '{"source":"%s","attempted":true,"exit_code":%s,"collector_success":%s,"error":%s}\n' "$name" "$rc" "$success" "$error_json" > "data/source-status/$name.json"
+          done
+          tar -czf "data/quarantine/source-status-${GITHUB_RUN_ID}.tar.gz" data/source-status
+          [ "$failed" -eq 0 ] || exit 1
+
+      - name: Upload failed-source quarantine
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-quarantine-${{ github.run_id }}
+          path: data/quarantine
+          if-no-files-found: ignore
 
       # Transcription is incremental: already-transcribed .md files are skipped.
       # ocr_fallback.py (Windows winocr) is intentionally skipped in CI.
@@ -77,26 +91,41 @@ jobs:
           uv run python scripts/build_forward_record.py
           uv run python scripts/build_stats.py
 
-      # Telegram daily digest — silent no-op until the two repo secrets are set
-      # (script exits 0 when env vars are absent or nothing changed vs yesterday).
-      # See docs/API.md "텔레그램 일일 신호 봇" for setup.
-      - name: Send Telegram daily digest
-        continue-on-error: true
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        run: |
-          uv run python scripts/send_telegram_signals.py
 
       # Pipeline health — 카운트 감소/파싱 이슈 급증/신호 신선도 점검.
-      # 이상 시에만 Telegram 운영 알림 (시크릿 없으면 콘솔 출력만, 항상 exit 0 계열).
+      # Quality failures block commit; Telegram notification runs only after the gate.
       - name: Pipeline health check
-        continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
           uv run python scripts/pipeline_health.py
+
+      - name: Send Telegram daily digest
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: uv run python scripts/send_telegram_signals.py
+
+      # GITHUB_TOKEN pushes do not trigger tests.yml, so the bot commit must pass
+      # the same gate here before it reaches main (and the Vercel build).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify publication (contracts, tests, production build)
+        env:
+          CI: "true"
+          UPDATE_GOLDEN: "0"
+        run: |
+          uv run python scripts/export_signals_api.py --check
+          uv run pytest
+          node --test tests/report-model.test.cjs tests/api-schemas.test.cjs
+          npm run build
 
       - name: Commit refreshed artifacts
         run: |

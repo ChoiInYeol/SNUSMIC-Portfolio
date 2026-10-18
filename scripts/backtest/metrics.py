@@ -24,15 +24,21 @@ def _compute_result(
 ) -> dict:
     nav_df = pd.Series({pd.Timestamp(d): v for d, v in nav_series}).sort_index()
     daily_ret = nav_df.pct_change().dropna()
-    _tr_raw = nav_df.iloc[-1] / nav_df.iloc[0] - 1
+    _tr_raw = nav_df.iloc[-1] / start_capital - 1
     total_return = float(_tr_raw) if not math.isnan(_tr_raw) else 0.0
     years = (nav_df.index[-1] - nav_df.index[0]).days / 365.25
-    _cagr_raw = (nav_df.iloc[-1] / nav_df.iloc[0]) ** (1 / years) - 1 if years > 0 else None
+    _cagr_raw = (nav_df.iloc[-1] / start_capital) ** (1 / years) - 1 if years > 0 else None
     cagr = _cagr_raw if (_cagr_raw is not None and not math.isnan(_cagr_raw) and not math.isinf(_cagr_raw)) else None
     _sharpe_raw = float(daily_ret.mean() / daily_ret.std() * math.sqrt(252)) if daily_ret.std() else None
     sharpe = _sharpe_raw if (_sharpe_raw is not None and not math.isnan(_sharpe_raw)) else None
-    _mdd_raw = float((nav_df / nav_df.cummax() - 1).min())
+    # Drawdown starts at the supplied capital, before any first-day fees/trades.
+    _mdd_path = pd.concat([
+        pd.Series([float(start_capital)], index=[nav_df.index[0] - pd.Timedelta(nanoseconds=1)]),
+        nav_df,
+    ])
+    _mdd_raw = float((_mdd_path / _mdd_path.cummax() - 1).min())
     mdd = _mdd_raw if not math.isnan(_mdd_raw) else 0.0
+
     closed_trades = [t for t in trades if not t.get("exit_reason", "").endswith("미청산")]
     wins = [t for t in closed_trades if t["return_pct"] > 0]
 
@@ -44,13 +50,18 @@ def _compute_result(
         if len(sub) < 2:
             return {}
         ret = sub.pct_change().dropna()
-        _total = sub.iloc[-1] / sub.iloc[0] - 1
+        period_start = float(start_capital) if sub.index[0] == nav_df.index[0] else float(sub.iloc[0])
+        _total = sub.iloc[-1] / period_start - 1
         _years = (sub.index[-1] - sub.index[0]).days / 365.25
-        _cagr_raw = (sub.iloc[-1] / sub.iloc[0]) ** (1 / _years) - 1 if _years > 0 else None
+        _cagr_raw = (sub.iloc[-1] / period_start) ** (1 / _years) - 1 if _years > 0 else None
         _cagr = _cagr_raw if (_cagr_raw is not None and not math.isnan(_cagr_raw) and not math.isinf(_cagr_raw)) else None
         _sharpe_raw = float(ret.mean() / ret.std() * math.sqrt(252)) if ret.std() else None
         _sharpe = _sharpe_raw if (_sharpe_raw is not None and not math.isnan(_sharpe_raw)) else None
-        _mdd_raw = float((sub / sub.cummax() - 1).min())
+        _period_path = pd.concat([
+            pd.Series([period_start], index=[sub.index[0] - pd.Timedelta(nanoseconds=1)]),
+            sub,
+        ])
+        _mdd_raw = float((_period_path / _period_path.cummax() - 1).min())
         _mdd = _mdd_raw if not math.isnan(_mdd_raw) else 0.0
         return {
             "start": sub.index[0].date().isoformat(),
@@ -64,7 +75,8 @@ def _compute_result(
     year_last = nav_df.resample("YE").last().dropna()
     yearly = year_last.pct_change()
     if len(year_last):
-        yearly.iloc[0] = year_last.iloc[0] / nav_df.iloc[0] - 1
+        # First calendar year's return is measured against initial capital, not first recorded NAV.
+        yearly.iloc[0] = year_last.iloc[0] / start_capital - 1
     yearly = (yearly * 100).round(2)
 
     equity_weekly = [
@@ -81,9 +93,13 @@ def _compute_result(
         "metrics": {
             "start": nav_series[0][0],
             "end": nav_series[-1][0],
+            "initial_capital_krw": round(float(start_capital), 2),
+            "final_nav_krw": round(float(nav_df.iloc[-1]), 2),
+            "pnl_krw": round(float(nav_df.iloc[-1] - start_capital), 2),
             "total_return_pct": round(total_return * 100, 2),
             "cagr_pct": round(cagr * 100, 2) if cagr is not None else None,
             "sharpe": round(sharpe, 2) if sharpe is not None else None,
+            "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
             "mdd_pct": round(mdd * 100, 2),
             "trades": len(closed_trades),
             "win_rate_pct": round(len(wins) / len(closed_trades) * 100, 1) if closed_trades else None,
@@ -111,16 +127,21 @@ def compute_tail_stats(trades: list[dict]) -> dict:
     n = len(returns)
     top10_n = max(1, math.ceil(n * 0.1))
     top_decile = returns[:top10_n]
-    total_positive = sum(r for r in returns if r > 0)
-    top_decile_positive = sum(r for r in top_decile if r > 0)
-    top_decile_pnl_share = (top_decile_positive / total_positive * 100) if total_positive > 0 else 0
+    monetary_pnl = [t.get("pnl_krw") for t in closed]
+    if any(v is None or not math.isfinite(float(v)) for v in monetary_pnl):
+        top_decile_pnl_share = None
+    else:
+        pnl_by_return = [t.get("pnl_krw") for t in sorted(closed, key=lambda t: t["return_pct"], reverse=True)[:top10_n]]
+        total_positive_pnl = sum(float(v) for v in monetary_pnl if float(v) > 0)
+        top_positive_pnl = sum(float(v) for v in pnl_by_return if float(v) > 0)
+        top_decile_pnl_share = (top_positive_pnl / total_positive_pnl * 100) if total_positive_pnl > 0 else 0.0
     doublers = [t for t in closed if t["return_pct"] >= 100]
     top_trades = sorted(closed, key=lambda t: t["return_pct"], reverse=True)[:top10_n]
     avg_hold_top = round(sum(t["days"] for t in top_trades) / len(top_trades), 1) if top_trades else None
     return {
         "total_trades": n,
         "top_decile_n": top10_n,
-        "top_decile_pnl_share_pct": round(top_decile_pnl_share, 1),
+        "top_decile_pnl_share_pct": round(top_decile_pnl_share, 1) if top_decile_pnl_share is not None else None,
         "top_decile_avg_return_pct": round(sum(top_decile) / len(top_decile), 1) if top_decile else None,
         "multibagger_count": len([t for t in closed if t["return_pct"] >= 400]),
         "doubler_count": len(doublers),

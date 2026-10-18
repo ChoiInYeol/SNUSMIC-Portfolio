@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { Check, ChevronLeft, ChevronRight, Link2, Printer, Search } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { SiteNav } from "@/components/site-nav";
@@ -10,7 +10,8 @@ import { CountUp } from "@/components/count-up";
 import { SourceLinks } from "@/components/source-links";
 import Link from "next/link";
 import { bucketFilters, type BucketFilter, type MarketFilter, type SchoolFilter, useReportDashboardState } from "@/components/report-dashboard/use-report-dashboard-state";
-import { dateLabel, getDisplayName, reportDataQuality, reportDataset, SCHOOL_LABELS, type ReportRecord } from "@/lib/report-model";
+import type { DataQuality, ReportDataset, ReportRecord } from "@/lib/report-model";
+import { dateLabel, getDisplayName, SCHOOL_LABELS } from "@/lib/report-meta";
 import {
   bucketBadgeClass,
   bucketLabels,
@@ -36,10 +37,13 @@ const schoolFilters: SchoolFilter[] = ["ALL", "smic", "yig", "star", "kuvic", "e
 const schoolLabels: Record<SchoolFilter, string> = { ALL: "전체 아카이브", ...SCHOOL_LABELS };
 const bucketFilterLabels: Record<BucketFilter, string> = { ALL: "전체", ...bucketLabels };
 
-/** 증거의 서가 모집단 — modern 시대 매수 의견, 발간 연대순 */
-const wallReports = [...reportDataset.records]
-  .filter((report) => report.era === "modern" && report.rating_class === "buy" && report.report_date)
-  .sort((a, b) => String(a.report_date).localeCompare(String(b.report_date)));
+const ReportDataContext = createContext<{ dataset: ReportDataset; quality: DataQuality } | null>(null);
+
+function useReportData() {
+  const data = useContext(ReportDataContext);
+  if (!data) throw new Error("Report data provider is missing");
+  return data;
+}
 
 function yearOf(report: ReportRecord) {
   return report.report_date?.slice(0, 4) ?? "????";
@@ -51,8 +55,16 @@ function diffDays(from: string | null, to: string | null) {
   return Number.isFinite(ms) ? Math.round(ms / 86_400_000) : null;
 }
 
-export function ReportDashboard() {
-  const state = useReportDashboardState();
+export function ReportDashboard(props: { dataset: ReportDataset; quality: DataQuality }) {
+  return <ReportDataContext.Provider value={props}><DashboardContent /></ReportDataContext.Provider>;
+}
+
+function DashboardContent() {
+  const { dataset: reportDataset, quality: reportDataQuality } = useReportData();
+  const wallReports = useMemo(() => [...reportDataset.records]
+    .filter((report) => report.era === "modern" && report.rating_class === "buy" && report.report_date)
+    .sort((a, b) => String(a.report_date).localeCompare(String(b.report_date))), [reportDataset]);
+  const state = useReportDashboardState(reportDataset.records);
   const selected = state.selected as ReportRecord | undefined;
   const selectedIndex = state.sorted.findIndex((report) => report.source_name === selected?.source_name);
 
@@ -109,7 +121,7 @@ export function ReportDashboard() {
     apply();
     window.addEventListener("hashchange", apply);
     return () => window.removeEventListener("hashchange", apply);
-  }, [setMarket, setBucket, setSchool, setQuery, setIncludeReference, setSelectedName]);
+  }, [reportDataset, setMarket, setBucket, setSchool, setQuery, setIncludeReference, setSelectedName]);
 
   // 안정 참조 — 서가(WallGrid memo)·신규 사건 카드가 대시보드 재렌더마다 다시 그려지지 않도록
   const pickFromWall = useCallback(
@@ -171,7 +183,7 @@ export function ReportDashboard() {
         <footer className="flex flex-col gap-2 border-t-4 border-double border-foreground/50 pb-10 pt-4 font-mono text-[11px] leading-5 text-muted-foreground sm:flex-row sm:items-baseline sm:justify-between print:hidden">
           <p>
             데이터 생성 {reportDataQuality.generatedAt?.slice(0, 10) ?? "—"} · 시세 이슈 {reportDataQuality.dataIssueCount}건 · 파싱 이슈{" "}
-            {reportDataQuality.parseIssueCount}건
+            {reportDataQuality.parseIssueCount}건 · 격리 {reportDataQuality.totalRecords - reportDataQuality.validRecords}건
           </p>
           <p>PDF → MARKDOWN 전사 → 목표가 파싱 → POINT-IN-TIME 검증</p>
         </footer>
@@ -182,8 +194,9 @@ export function ReportDashboard() {
 
 /** 마스트헤드 — modern 시대(2019-07 이후) 매수 의견, 신생 제외의 헤드라인 성적 */
 function Masthead() {
-  const stats = useMemo(() => clubStats(reportDataset.records), []);
-  const archiveCount = useMemo(() => reportDataset.records.filter((report) => report.era === "archive").length, []);
+  const { dataset: reportDataset } = useReportData();
+  const stats = useMemo(() => clubStats(reportDataset.records), [reportDataset]);
+  const archiveCount = useMemo(() => reportDataset.records.filter((report) => report.era === "archive").length, [reportDataset]);
   return (
     <header className="print:hidden">
       <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2 border-b-4 border-double border-foreground/70 pb-2">
@@ -243,13 +256,14 @@ function KpiCell({ label, value, sub, valueClass }: { label: string; value: Reac
 }
 
 function VerdictTape() {
+  const { dataset: reportDataset } = useReportData();
   const items = useMemo(
     () =>
       [...reportDataset.records]
         .filter((report) => report.era === "modern" && report.report_date && isBuy(report))
         .sort((a, b) => String(b.report_date).localeCompare(String(a.report_date)))
         .slice(0, 48),
-    [],
+    [reportDataset],
   );
   return (
     <div className="tape overflow-hidden border-y border-border bg-card/70 py-2" aria-hidden="true">
@@ -274,13 +288,14 @@ function VerdictTape() {
 
 /** 새로 접수된 사건 + 판결까지 걸린 시간 분포 — 리포트에는 숙성의 시간이 필요하다 */
 function FreshVerdicts({ onPick }: { onPick: (sourceName: string) => void }) {
+  const { dataset: reportDataset } = useReportData();
   const latest = useMemo(
     () =>
       [...reportDataset.records]
         .filter((report) => report.era === "modern" && report.report_date && isBuy(report))
         .sort((a, b) => String(b.report_date).localeCompare(String(a.report_date)))
         .slice(0, 6),
-    [],
+    [reportDataset],
   );
   if (!latest.length) return null;
   return (
@@ -329,6 +344,7 @@ function FreshVerdicts({ onPick }: { onPick: (sourceName: string) => void }) {
 
 /** 판결까지 걸린 시간 분포 — 적중 리포트의 days_to_target 히스토그램 */
 function VerdictTimeStrip() {
+  const { dataset: reportDataset } = useReportData();
   const data = useMemo(() => {
     const days = reportDataset.records
       .filter((report) => report.era === "modern" && isBuy(report) && report.target_hit_until_latest && report.days_to_target !== null)
@@ -344,7 +360,7 @@ function VerdictTimeStrip() {
       return { ...bin, count: days.filter((d) => d > min && d <= bin.max).length };
     });
     return { total: days.length, med: median(days), bins };
-  }, []);
+  }, [reportDataset]);
   if (!data.total) return null;
   const maxCount = Math.max(...data.bins.map((bin) => bin.count), 1);
   return (
@@ -500,6 +516,7 @@ function VerdictPaper({
   onPrev: () => void;
   onNext: () => void;
 }) {
+  const { dataset: reportDataset } = useReportData();
   const targetReturn = report.target_price && report.start_close ? (report.target_price / report.start_close - 1) * 100 : null;
   const fresh = report.maturity === "fresh";
   const horizons = [

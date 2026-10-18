@@ -177,19 +177,21 @@ def build_pending_entries(
     reports: list[tuple[dt.date, str, str, int]],
     calendar: list[dt.date],
     consensus_only: bool,
+    prices: dict[str, pd.DataFrame],
 ) -> dict[dt.date, list[tuple[str, str, int]]]:
-    """Returns entry_day -> [(ticker_key, source, n_clubs)]"""
-    by_report_date: dict[dt.date, list[tuple[str, str, int]]] = {}
+    """Queue reports on each ticker's next actual bar, not another market's day."""
+    pending: dict[dt.date, list[tuple[str, str, int]]] = {}
+    calendar_days = set(calendar)
+    market_calendars = {
+        ticker: sorted({ts.date() for ts in frame.index if ts.date() in calendar_days})
+        for ticker, frame in prices.items()
+    }
     for rdate, ticker, source, n_clubs in reports:
         if consensus_only and n_clubs < 2:
             continue
-        by_report_date.setdefault(rdate, []).append((ticker, source, n_clubs))
-
-    pending: dict[dt.date, list[tuple[str, str, int]]] = {}
-    for rdate, items in by_report_date.items():
-        entry_day = first_trading_day_after(rdate, calendar)
-        if entry_day:
-            pending.setdefault(entry_day, []).extend(items)
+        entry_day = first_trading_day_after(rdate, market_calendars.get(ticker, []))
+        if entry_day is not None:
+            pending.setdefault(entry_day, []).append((ticker, source, n_clubs))
     return pending
 
 
@@ -209,7 +211,7 @@ def _try_enter(
 ) -> tuple[dict | None, float]:
     """
     Try to enter a position. Returns (position_dict, new_cash) or (None, cash).
-    momentum_filter=True: only enter if close > 200MA.
+    momentum_filter=True: compare entry open with the previous available 200MA.
     entry_reason: v18 — 진입 사유 텍스트. None이면 표준 리포트 트리거 문구 자동 생성.
     """
     if ticker in positions:
@@ -221,13 +223,13 @@ def _try_enter(
     entry_price = _px(df, day_ts, "open")
     if entry_price is None:
         return None, cash
-    if entry_price <= 0:
+    if not math.isfinite(entry_price) or entry_price <= 0:
         return None, cash
 
-    # Momentum filter: price > 200MA at entry (in local currency — USD for US)
+    # The opening fill cannot depend on an MA containing this day's close.
     if momentum_filter:
-        ma200_val = asof_value(df["ma200"], day)
-        if ma200_val <= 0 or entry_price < ma200_val:
+        ma200_val = asof_value(df["ma200"], day - dt.timedelta(days=1))
+        if not math.isfinite(ma200_val) or ma200_val <= 0 or entry_price < ma200_val:
             return None, cash
 
     # Resolve market and display metadata before budget/shares (needed for FX)
@@ -310,6 +312,7 @@ def _close_trade(
         "entry": round(pos["entry_price"], 4),
         "exit": round(exit_price, 4),   # local currency (USD for US)
         "return_pct": round((proceeds / cost - 1) * 100, 2),
+        "pnl_krw": round(proceeds - cost, 2),
         "days": (exit_date - pos["entry_date"]).days,
         "exit_reason": exit_reason,
         "entry_reason": pos.get("entry_reason", ""),

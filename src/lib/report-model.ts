@@ -18,9 +18,9 @@ const EraSchema = z.enum(["modern", "archive"]);
 export const ReportRecordSchema = z.object({
   source_file: z.string(),
   source_name: z.string(),
-  school: SchoolSchema.catch("smic"),
-  report_type: z.enum(["company", "sector"]).catch("company"),
-  era: EraSchema.catch("archive"),
+  school: SchoolSchema,
+  report_type: z.enum(["company", "sector"]),
+  era: EraSchema,
   qa_flags: NullableString.optional().default(null),
   report_date: NullableString,
   authored_date: NullableString.optional().default(null),
@@ -55,10 +55,10 @@ export const ReportRecordSchema = z.object({
   days_to_target: z.number().int().nullable(),
   peak_return_24m_pct: NullableNumber.optional().default(null),
   peak_date_24m: NullableString.optional().default(null),
-  bucket_peak: BucketSchema.catch("No quote").optional().default("No quote"),
+  bucket_peak: BucketSchema.optional().default("No quote"),
   target_seq: z.number().int().nullable().optional().default(null),
   target_seq_total: z.number().int().nullable().optional().default(null),
-  rating_class: RatingClassSchema.catch("soft_buy"),
+  rating_class: RatingClassSchema,
   display_name: NullableString.optional().default(null),
   age_days: z.number().int().nullable().optional().default(null),
   maturity: MaturitySchema.nullable().optional().default(null),
@@ -112,27 +112,41 @@ export type DataQuality = {
   issueSummaries: string[];
 };
 
-function fallbackDataset(input: unknown): ReportDataset {
-  const candidate = input as Partial<ReportDataset>;
-  const records = Array.isArray(candidate.records)
-    ? candidate.records.flatMap((record) => {
-        const parsed = ReportRecordSchema.safeParse(record);
-        return parsed.success ? [parsed.data] : [];
-      })
+export type QuarantinedReport = {
+  sourceFile: string | null;
+  raw: unknown;
+  issues: string[];
+};
+
+export function validateReportDataset(input: unknown): {
+  dataset: ReportDataset;
+  quarantine: QuarantinedReport[];
+} {
+  const envelope = ReportDatasetSchema.omit({ records: true, summary: true })
+    .extend({ records: z.array(z.unknown()), summary: z.array(z.unknown()) })
+    .parse(input);
+  const quarantine: QuarantinedReport[] = [];
+  const records: ReportRecord[] = [];
+  for (const record of envelope.records) {
+    const parsed = ReportRecordSchema.safeParse(record);
+    if (parsed.success) {
+      records.push(parsed.data);
+    } else {
+      const source = record && typeof record === "object" && "source_file" in record
+        ? record.source_file
+        : null;
+      quarantine.push({
+        sourceFile: typeof source === "string" ? source : null,
+        raw: record,
+        issues: parsed.error.issues.map(summarizeZodIssue),
+      });
+    }
+  }
+  // Published aggregates cannot describe a quarantined subset truthfully.
+  const summary = quarantine.length === 0
+    ? z.array(SummaryRecordSchema).parse(envelope.summary)
     : [];
-  const summary = Array.isArray(candidate.summary)
-    ? candidate.summary.flatMap((item) => {
-        const parsed = SummaryRecordSchema.safeParse(item);
-        return parsed.success ? [parsed.data] : [];
-      })
-    : [];
-  return {
-    generated_at: typeof candidate.generated_at === "string" ? candidate.generated_at : "",
-    as_of: typeof candidate.as_of === "string" ? candidate.as_of : "",
-    excluded_sector_count: typeof candidate.excluded_sector_count === "number" ? candidate.excluded_sector_count : 0,
-    records,
-    summary,
-  };
+  return { dataset: { ...envelope, records, summary }, quarantine };
 }
 
 function summarizeZodIssue(issue: z.ZodIssue) {
@@ -141,8 +155,10 @@ function summarizeZodIssue(issue: z.ZodIssue) {
 }
 
 const parsedDataset = ReportDatasetSchema.safeParse(raw);
+const validatedDataset = validateReportDataset(raw);
 
-export const reportDataset: ReportDataset = parsedDataset.success ? parsedDataset.data : fallbackDataset(raw);
+export const reportDataset = validatedDataset.dataset;
+export const reportQuarantine = validatedDataset.quarantine;
 
 export const reportDataQuality: DataQuality = {
   valid: parsedDataset.success,

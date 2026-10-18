@@ -61,7 +61,7 @@ async function loadRecord(): Promise<ForwardRecord | null> {
 }
 
 function signColor(v: number | null | undefined): string {
-  if (v == null) return "text-muted-foreground";
+  if (v == null || !Number.isFinite(v)) return "text-muted-foreground";
   return v > 0 ? "text-up" : v < 0 ? "text-down" : "";
 }
 
@@ -70,6 +70,10 @@ function fmtLocalPrice(v: number | null, market: string): string {
   return market === "US"
     ? `$${v.toLocaleString("en-US", { maximumFractionDigits: 2 })}`
     : `${Math.round(v).toLocaleString("ko-KR")}원`;
+}
+
+function fmtPctSafe(v: number | null | undefined): string {
+  return v != null && Number.isFinite(v) ? formatPct(v, 1) : "—";
 }
 
 export default async function TrackPage() {
@@ -86,10 +90,8 @@ export default async function TrackPage() {
           백테스트가 아니라, <span className="text-stamp">기록</span>이다.
         </h1>
         <p className="mt-3 max-w-3xl text-base leading-7 text-muted-foreground">
-          이 장부의 모든 줄은 <strong className="text-foreground">미래를 보기 전에</strong> 공개
-          저장소에 커밋된 신호 스냅샷에서 나옵니다. 매일 CI가 그날의 매수 신호를 박제하고, 이
-          페이지는 그 신호를 이후의 실현 시세로 채점합니다. 사후 수정이 불가능한 구조 — 백테스트가
-          몇 번을 다시 돌아도 이 기록은 바뀌지 않습니다.
+          이 장부는 공개된 신호 스냅샷과 이후 시세를 비교합니다. 최초 공개 시각과 데이터 커버리지가 확인되지 않는 경우 결과는
+          <strong className="text-foreground"> 확인 불가</strong>로 표시하며, 사후 수정 불가나 미래 미관측을 보장하지 않습니다.
         </p>
         <p className="mt-1.5 text-sm italic text-muted-foreground">
           채점 규칙: 진입 = 신호일 익일 시가 · 수익률 = 로컬 통화 종가 기준 · 동일 티커 7일 내 반복
@@ -105,18 +107,18 @@ export default async function TrackPage() {
             { label: "공표 신호", value: `${summary.n_signals}건` },
             {
               label: "평균 수익률",
-              value: summary.avg_return_pct != null ? formatPct(summary.avg_return_pct, 1) : "—",
+              value: fmtPctSafe(summary.avg_return_pct),
               tone: signColor(summary.avg_return_pct),
             },
             {
               label: "승률",
-              value: summary.win_rate_pct != null ? `${summary.win_rate_pct}%` : "—",
+              value: summary.win_rate_pct != null && Number.isFinite(summary.win_rate_pct) ? `${summary.win_rate_pct}%` : "—",
             },
             {
               label: "최고 / 최악",
               value:
                 summary.best_pct != null
-                  ? `${formatPct(summary.best_pct, 1)} / ${formatPct(summary.worst_pct, 1)}`
+                  ? `${fmtPctSafe(summary.best_pct)} / ${fmtPctSafe(summary.worst_pct)}`
                   : "—",
             },
           ]}
@@ -186,10 +188,10 @@ export default async function TrackPage() {
                         signColor(e.return_pct),
                       )}
                     >
-                      {e.return_pct != null ? formatPct(e.return_pct, 1) : "—"}
+                      {fmtPctSafe(e.return_pct)}
                     </td>
                     <td className={cn("tnum px-3 py-2 text-right font-mono text-xs", signColor(e.peak_pct))}>
-                      {e.peak_pct != null ? formatPct(e.peak_pct, 1) : "—"}
+                      {fmtPctSafe(e.peak_pct)}
                     </td>
                     <td className="tnum px-3 py-2 text-right font-mono text-xs text-muted-foreground">
                       {e.days}

@@ -112,15 +112,14 @@ Example: `/api/v1/signals/2026-06-11.json`
 
 ### `GET /api/v1/forward.json`
 
-Forward track record (v25) — the buy signals frozen in the daily snapshots,
-scored against subsequently realized prices. Structurally out-of-sample:
-every entry was committed to the public repo *before* the future happened.
+Snapshot scoring is not automatically independent out-of-sample evidence. First-publication provenance is explicitly unknown unless it is independently verified; `as_of` and Git commit timestamps alone do not establish the time data became publicly available.
 
 | Field | Description |
 |---|---|
 | `method` | Scoring rules (entry = next-day open after signal, local-currency close returns, 7-day per-ticker dedup) |
 | `summary` | `n_signals`, `n_tracking`, `avg_return_pct`, `win_rate_pct`, `best_pct`, `worst_pct`, `first_snapshot`, `n_snapshots` |
 | `entries[]` | Per-signal: `signal_date`, `ticker`, `market`, `name`, `entry_date`, `entry_price`, `current_price`, `return_pct`, `peak_pct`, `days`, `status`, `trigger_schools` |
+| `coverage` / provenance fields | Missing prices remain in the signal denominator with `unavailable`/`pending` status and null returns; unverified first-publication evidence is disclosed, not fabricated. |
 
 Rendered at [/track](https://verdict-archive.vercel.app/track). Record starts 2026-06-11.
 
@@ -275,16 +274,25 @@ if t and y:
 
 ## Cache-Control & CORS
 
-All `/api/*` responses are served with:
+The `.json` assets are served directly; the no-extension alias remains a Next handler for GET/OPTIONS. All API responses allow `Access-Control-Allow-Origin: *`.
 
-```
-Cache-Control: public, max-age=43200, stale-while-revalidate=86400
-Access-Control-Allow-Origin: *
-```
+- `signals/latest.json`, `/signals/latest` and `strategy-details/manifest.json`: `public, max-age=300, stale-while-revalidate=60`.
+- Dated `signals/YYYY-MM-DD.json`: `public, max-age=3600, s-maxage=31536000`. Snapshots are append-only, but a header rule also
+  matches the 404 of a date that is not published yet, so browsers revalidate hourly; the CDN copy lives until the next deploy.
+- `strategy-details/<key>/<sha256>.json`: `public, max-age=31536000, immutable` (content-addressed — new bytes, new URL).
+- Other API files use the platform default cache policy; there is no blanket 12-hour API cache.
+- Invalid input to the generated alias fails the build instead of publishing a cached static 503.
 
-12-hour TTL matches the daily regeneration cadence. The serverless route
-`GET /api/v1/signals/latest` (no `.json`) also supports CORS preflight
-(`OPTIONS`) for browser `fetch()` calls.
+## Contract & versioning
+
+- `openapi.json` documents every published file and field. `tests/test_api_contract.py` validates every published payload
+  against it (undocumented fields fail), and `tests/api-schemas.test.cjs` validates them against the web app's zod schemas
+  (`src/lib/api-schemas.ts`).
+- Additive fields keep `schema_version` `1.x`; clients must ignore unknown fields. Removing/renaming a field or changing its
+  type is breaking and ships under `/api/v2/`.
+- Errors: missing files are plain static 404s (no JSON body).
+
+`strategy-details/manifest.json` maps strategy keys to `path` and `content_hash`. The page binds these references to the source signal date and loads `/api/v1/strategy-details/<key>/<hash>.json` on demand. Missing/mismatched assets are explicit errors, with no silent fallback to latest. `export_signals_api.py --details-only` prepares these assets without refreshing previously published signals. Old hash assets are currently retained; storage growth needs measurement before a Hobby suitability claim.
 
 ---
 
@@ -299,10 +307,14 @@ uv run python scripts/export_signals_api.py
 
 # Or just re-export from an existing strategy-backtest.json
 uv run python scripts/export_signals_api.py --source src/data/strategy-backtest.json
+
+# Verify committed artifacts equal a fresh export (writes nothing; exit 1 on drift)
+uv run python scripts/export_signals_api.py --check
 ```
 
-The CI workflow (`.github/workflows/`) already chains these steps; see the
-weekly-refresh job for the canonical sequence.
+`tests.yml` builds from the committed artifacts and runs `--check` instead of regenerating them, so a missing or stale
+`public/api` file fails CI rather than the Vercel build. The refresh workflows run the same gate (contracts, pytest,
+`npm run build`) before the bot commit, because `GITHUB_TOKEN` pushes do not trigger `tests.yml`.
 
 ---
 

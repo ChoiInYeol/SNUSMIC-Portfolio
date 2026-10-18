@@ -24,6 +24,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import re
+import math
 import sys
 from pathlib import Path
 
@@ -42,6 +43,7 @@ if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 
+
 def _load_price(ticker: str, market: str) -> pd.DataFrame | None:
     prefix = "US_" if market == "US" else "KR_"
     path = PRICE_DIR / f"{prefix}{ticker}.csv"
@@ -56,56 +58,49 @@ def _load_price(ticker: str, market: str) -> pd.DataFrame | None:
     return df[~df.index.duplicated(keep="last")]
 
 
-def _score_entry(sig: dict, as_of: dt.date) -> dict | None:
-    ticker = sig.get("ticker", "")
-    market = sig.get("market", "KR")
-    df = _load_price(ticker, market)
-    if df is None:
+def _finite_positive(value: object) -> float | None:
+    try:
+        number = float(value)
+    except (TypeError, ValueError):
         return None
+    return number if math.isfinite(number) and number > 0 else None
 
-    after = df[df.index > pd.Timestamp(as_of)]
-    if after.empty:
-        # 신호 직후 데이터가 아직 없음 — 진입 대기 상태로 기록
-        return {
-            "signal_date": as_of.isoformat(),
-            "ticker": ticker,
-            "market": market,
-            "name": sig.get("name", ticker),
-            "basis_price": sig.get("entry_basis_price"),
-            "entry_date": None,
-            "entry_price": None,
-            "current_price": None,
-            "return_pct": None,
-            "peak_pct": None,
-            "days": 0,
-            "status": "pending",
-            "trigger_schools": sorted({t.get("school", "") for t in sig.get("trigger_reports", [])}),
-        }
 
-    entry_row = after.iloc[0]
-    entry_price = float(entry_row.get("open") or entry_row["close"])
-    if entry_price <= 0:
-        entry_price = float(entry_row["close"])
-    entry_date = after.index[0].date()
-
-    closes = after["close"].astype(float)
-    current = float(closes.iloc[-1])
-    peak = float(closes.max())
+def _base_entry(sig: dict, as_of: dt.date, status: str) -> dict:
     return {
-        "signal_date": as_of.isoformat(),
-        "ticker": ticker,
-        "market": market,
-        "name": sig.get("name", ticker),
-        "basis_price": sig.get("entry_basis_price"),
-        "entry_date": entry_date.isoformat(),
-        "entry_price": round(entry_price, 4),
-        "current_price": round(current, 4),
-        "return_pct": round((current / entry_price - 1) * 100, 2),
-        "peak_pct": round((peak / entry_price - 1) * 100, 2),
-        "days": (closes.index[-1].date() - entry_date).days,
-        "status": "tracking",
+        "signal_date": as_of.isoformat(), "ticker": sig.get("ticker", ""),
+        "market": sig.get("market", "KR"), "name": sig.get("name", sig.get("ticker", "")),
+        "basis_price": sig.get("entry_basis_price"), "entry_date": None,
+        "entry_price": None, "current_price": None, "return_pct": None,
+        "peak_pct": None, "days": 0, "status": status,
         "trigger_schools": sorted({t.get("school", "") for t in sig.get("trigger_reports", [])}),
     }
+
+
+def _score_entry(sig: dict, as_of: dt.date) -> dict:
+    ticker, market = sig.get("ticker", ""), sig.get("market", "KR")
+    df = _load_price(ticker, market)
+    if df is None:
+        return _base_entry(sig, as_of, "unavailable")
+    after = df[df.index > pd.Timestamp(as_of)]
+    if after.empty:
+        return _base_entry(sig, as_of, "pending")
+    row = after.iloc[0]
+    entry_price = _finite_positive(row.get("open")) or _finite_positive(row.get("close"))
+    closes = pd.to_numeric(after["close"], errors="coerce")
+    closes = closes[closes.map(lambda x: math.isfinite(float(x)) and float(x) > 0)]
+    if entry_price is None or closes.empty:
+        return _base_entry(sig, as_of, "unavailable")
+    current, peak = _finite_positive(closes.iloc[-1]), _finite_positive(closes.max())
+    if current is None or peak is None:
+        return _base_entry(sig, as_of, "unavailable")
+    result = _base_entry(sig, as_of, "tracking")
+    entry_date = after.index[0].date()
+    result.update({"entry_date": entry_date.isoformat(), "entry_price": round(entry_price, 4),
+                   "current_price": round(current, 4), "return_pct": round((current / entry_price - 1) * 100, 2),
+                   "peak_pct": round((peak / entry_price - 1) * 100, 2),
+                   "days": (closes.index[-1].date() - entry_date).days})
+    return result
 
 
 def main() -> int:
@@ -117,7 +112,7 @@ def main() -> int:
         return 1
 
     entries: list[dict] = []
-    recent_by_ticker: dict[str, dt.date] = {}
+    recent_by_key: dict[tuple[str, str], dt.date] = {}
     headline_by_date: dict[str, str] = {}
 
     for snap_path in snapshots:
@@ -134,22 +129,24 @@ def main() -> int:
             ticker = sig.get("ticker", "")
             if not ticker:
                 continue
-            last = recent_by_ticker.get(ticker)
+            market = sig.get("market", "KR")
+            key = (market, ticker)
+            last = recent_by_key.get(key)
             if last is not None and (as_of - last).days < DEDUP_DAYS:
                 continue
             scored = _score_entry(sig, as_of)
-            if scored is not None:
-                # dedup 마킹은 실제로 기록된 신호에만 — 채점 실패(가격 파일 부재)가
-                # 이후 7일의 정상 신호까지 침묵 삭제하면 안 된다
-                recent_by_ticker[ticker] = as_of
-                scored["headline_strategy"] = snap.get("headline_strategy", "")
-                entries.append(scored)
+            recent_by_key[key] = as_of
+            scored["headline_strategy"] = snap.get("headline_strategy", "")
+            entries.append(scored)
 
     tracked = [e for e in entries if e["status"] == "tracking"]
     rets = [e["return_pct"] for e in tracked if e["return_pct"] is not None]
     summary = {
         "n_signals": len(entries),
         "n_tracking": len(tracked),
+        "n_unavailable": sum(1 for e in entries if e["status"] == "unavailable"),
+        "n_pending": sum(1 for e in entries if e["status"] == "pending"),
+        "coverage_pct": round(len(tracked) / len(entries) * 100, 1) if entries else None,
         "avg_return_pct": round(sum(rets) / len(rets), 2) if rets else None,
         "win_rate_pct": round(sum(1 for r in rets if r > 0) / len(rets) * 100, 1) if rets else None,
         "best_pct": max(rets) if rets else None,
@@ -164,9 +161,16 @@ def main() -> int:
         "generated_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
         "method": (
             "신호 스냅샷(append-only, 커밋 시점 박제)의 매수 신호를 이후 실현 시세로 채점. "
-            f"진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 동일 티커 {DEDUP_DAYS}일 내 중복 신호 제외. "
-            "전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적."
+            f"진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 시장+티커 {DEDUP_DAYS}일 내 중복 신호 제외. "
+            "전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적; 가격 미가용은 unavailable로 보존."
         ),
+        "provenance": {
+            "first_public_commit": "unknown",
+            "first_public_at": "unknown",
+            "publication_commit": "unknown",
+            "publication_at": "unknown",
+            "coverage": "unknown",
+        },
         "summary": summary,
         "entries": sorted(entries, key=lambda e: e["signal_date"], reverse=True),
         "headline_by_date": headline_by_date,
@@ -174,7 +178,7 @@ def main() -> int:
 
     for out in (OUT_INTERNAL, OUT_API):
         out.parent.mkdir(parents=True, exist_ok=True)
-        out.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
+        out.write_text(json.dumps(payload, ensure_ascii=False, indent=1, allow_nan=False), encoding="utf-8")
         print(f"  wrote {out.relative_to(ROOT).as_posix()}")
 
     print(f"Forward record: {summary['n_signals']} signals over {summary['n_snapshots']} snapshots "

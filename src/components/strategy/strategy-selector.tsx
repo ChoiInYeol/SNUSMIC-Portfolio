@@ -1,11 +1,23 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { OverlayChart, type OverlaySeries } from "@/components/strategy/overlay-chart";
 import { useSortable, SortableTh, type SortColumn } from "@/components/sortable";
 import { signColor } from "@/lib/verdict";
 import { cn, formatPct, formatPrice } from "@/lib/utils";
+import { AlertCircle } from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import {
+  StrategyDetailSchema,
+  type EquityPoint,
+  type OpenPosition,
+  type StrategyDetail,
+  type Trade,
+  type WealthPoint,
+} from "@/lib/api-schemas";
 import {
   STRATEGY_LABEL_KO,
   STRATEGY_DESC_KO,
@@ -14,20 +26,6 @@ import {
 } from "@/components/strategy/strategy-meta";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
-
-type WealthPoint = {
-  month: number;
-  date: string;
-  contributed: number;
-  strategy_value: number;
-  KOSPI_value?: number;
-  SP500_value?: number;
-  NASDAQ_value?: number;
-  AllWeather_value?: number;
-};
-
-type EquityPoint = { date: string; nav: number };
-type YearlyReturn = { year: number; return_pct: number };
 
 type StrategyRow = {
   key: string;
@@ -55,65 +53,12 @@ type StrategyRow = {
   verdict_reason?: string | null;
 };
 
-type StrategyWealthSim = {
-  final_strategy_value: number;
-  strategy_gain_on_contributed_pct: number | null;
-  strategy_mdd_pct: number;
-  series: WealthPoint[];
-};
-
-type TriggerReport = {
-  school: string;
-  report_date: string;
-  source_file?: string;
-  target_price?: number | null;
-  stated_upside_pct?: number | null;
-};
-
-type Trade = {
-  ticker: string;
-  market?: string;
-  display_name?: string;
-  source?: string;
-  entry_date: string;
-  exit_date: string;
-  entry: number;
-  exit: number;
-  return_pct: number;
-  days: number;
-  n_clubs?: number;
-  exit_reason?: string;
-  entry_reason?: string;     // v18: 왜 진입했는가 (전략별 실제 규칙 텍스트)
-  trigger_schools?: string[];
-  trigger_reports?: TriggerReport[];
-  trigger_target_prices?: number[];
-};
-
-type OpenPosition = {
-  ticker: string;
-  market?: string;
-  display_name?: string;
-  entry_date: string;
-  entry: number;
-  last_close: number;
-  stop?: number;
-  return_pct: number;
-  source?: string;
-  n_clubs?: number;
-  extension?: number | null;  // ATR% Multiple from 50-MA (과열 게이지)
-  entry_reason?: string;      // v18: 왜 진입했는가
-};
-
-type MultiStrategyData = {
-  strategies: StrategyRow[];
-  headline_key: string;
-  curated_keys?: string[];
-  strategy_wealth_sims: Record<string, StrategyWealthSim>;
-  equity_by_strategy: Record<string, EquityPoint[]>;
-  yearly_by_strategy: Record<string, YearlyReturn[]>;
-  open_positions_by_strategy?: Record<string, OpenPosition[]>;
-  trades_by_strategy?: Record<string, Trade[]>;
-};
+ type MultiStrategyData = {
+   strategies: StrategyRow[];
+   headline_key: string;
+   curated_keys?: string[];
+   detail_refs: Record<string, { path: string; content_hash: string; version?: string }>;
+ };
 
 type WealthSimGlobal = {
   fx_assumption: string;
@@ -175,7 +120,7 @@ function VerdictChip({ kind, reason }: { kind: string; reason?: string | null })
       className={cn("inline-block rounded-sm px-1.5 py-0.5 font-mono text-[10px] font-bold cursor-help", styles[kind] ?? styles["연구용"])}
       title={reason ?? undefined}
     >
-      {kind}
+      {kind === "SOTA" ? "선택 기준 상위" : kind}
     </span>
   );
 }
@@ -275,22 +220,23 @@ function OpenPositionsTable({ positions, stratKey }: { positions: OpenPosition[]
 
 type Candle = { time: string; open: number; high: number; low: number; close: number };
 
-/** Fetch /prices/{slug}.json and return sorted candles (module-level cache) */
-const _candleCache = new Map<string, Promise<Candle[] | null>>();
-function fetchCandles(slug: string): Promise<Candle[] | null> {
+/** Fetch /prices/{slug}.json → sorted candles; 404 = no data ([]), other failures reject (module-level cache) */
+const _candleCache = new Map<string, Promise<Candle[]>>();
+function fetchCandles(slug: string): Promise<Candle[]> {
   const hit = _candleCache.get(slug);
   if (hit) return hit;
-  const p = fetch(`/prices/${slug}.json`)
-    .then(async (r) => {
-      if (!r.ok) return null;
-      const j = await r.json() as { candles?: Candle[] };
-      const valid = (j.candles ?? []).filter(
-        (c) => typeof c?.time === "string" && typeof c.close === "number" && isFinite(c.close),
-      );
-      valid.sort((a, b) => a.time.localeCompare(b.time));
-      return valid.length >= 2 ? valid : null;
-    })
-    .catch(() => null);
+  const p = fetch(`/prices/${slug}.json`).then(async (r) => {
+    if (r.status === 404) return [];
+    if (!r.ok) throw new Error(`prices ${r.status}`);
+    const j = await r.json() as { candles?: Candle[] };
+    const valid = (j.candles ?? []).filter(
+      (c) => typeof c?.time === "string" && typeof c.close === "number" && isFinite(c.close),
+    );
+    valid.sort((a, b) => a.time.localeCompare(b.time));
+    return valid.length >= 2 ? valid : [];
+  });
+  // Failed requests are not cached so the retry button can refetch.
+  p.catch(() => _candleCache.delete(slug));
   _candleCache.set(slug, p);
   return p;
 }
@@ -309,12 +255,20 @@ function TickerHistoryPanel({
   onClose: () => void;
 }) {
   const slug = `${market}-${ticker}`.toLowerCase();
-  const [candles, setCandles] = useState<Candle[] | null>(null);
+  const [candleState, setCandleState] = useState<{ slug: string; candles: Candle[] | "error" } | null>(null);
+  const [retry, setRetry] = useState(0);
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    fetchCandles(slug).then(setCandles);
-  }, [slug]);
+    let active = true;
+    fetchCandles(slug).then(
+      (value) => { if (active) setCandleState({ slug, candles: value }); },
+      () => { if (active) setCandleState({ slug, candles: "error" }); },
+    );
+    return () => { active = false; };
+  }, [slug, retry]);
+  const loaded = candleState?.slug === slug ? candleState.candles : null;
+  const candles = Array.isArray(loaded) ? loaded : null;
 
   // Sort trades oldest first for timeline display
   const sortedTrades = [...trades].sort((a, b) => a.entry_date.localeCompare(b.entry_date));
@@ -416,8 +370,21 @@ function TickerHistoryPanel({
 
       {/* Price chart with trade markers */}
       <div className="mt-4">
-        {candles === null ? (
-          <p className="font-mono text-xs text-muted-foreground">차트 로딩 중…</p>
+        {loaded === null ? (
+          <div role="status" aria-live="polite">
+            <span className="sr-only">차트 로딩 중…</span>
+            <Skeleton className="h-[120px] w-full" />
+          </div>
+        ) : loaded === "error" ? (
+          <Alert variant="destructive">
+            <AlertCircle />
+            <AlertTitle>가격 데이터를 불러오지 못했습니다.</AlertTitle>
+            <AlertDescription>
+              <Button size="sm" variant="outline" onClick={() => { setCandleState(null); setRetry((n) => n + 1); }}>
+                다시 시도
+              </Button>
+            </AlertDescription>
+          </Alert>
         ) : chartEl ? (
           <>
             <p className="mb-1 font-mono text-[9px] text-muted-foreground">
@@ -622,12 +589,10 @@ function TradeLog({ trades, stratKey }: { trades: Trade[]; stratKey: string }) {
 export function StrategySelector({
   multiStrategy,
   wealthSimGlobal,
-  allTrades,
   curatedKeys,
 }: {
   multiStrategy: MultiStrategyData;
   wealthSimGlobal: WealthSimGlobal;
-  allTrades: Record<string, Trade[]>;
   /** 채택(셀렉터) 키 목록 — JSON multi_strategy.curated_keys (프리셋 버튼용) */
   curatedKeys?: string[];
 }) {
@@ -667,6 +632,51 @@ export function StrategySelector({
   const [benchOn, setBenchOn] = useState<Set<string>>(() => new Set(["KOSPI"]));
   const [focusKey, setFocusKey] = useState<string>(headlineKey);
   const [wealthLog, setWealthLog] = useState(true); // 자산곡선은 로그가 정직함
+  const [details, setDetails] = useState<Record<string, StrategyDetail>>({});
+  const [detailState, setDetailState] = useState<Record<string, "error">>({});
+  const [detailRetry, setDetailRetry] = useState(0);
+  const detailRequests = useRef(new Map<string, Promise<StrategyDetail>>());
+  useEffect(() => {
+    let active = true;
+    for (const key of new Set([...enabled, focusKey])) {
+      const ref = multiStrategy.detail_refs[key];
+      const requestKey = `${key}:${ref?.content_hash ?? "missing"}`;
+      let request = detailRequests.current.get(requestKey);
+      if (!request) {
+        request = Promise.resolve().then(async () => {
+          if (!ref) throw new Error("detail reference missing");
+          // No force-cache: a cached 404 would make the retry button useless; hash URLs are immutable anyway.
+          const response = await fetch(ref.path);
+          if (!response.ok) throw new Error(`detail ${response.status}`);
+          const parsed = StrategyDetailSchema.safeParse(await response.json());
+          if (!parsed.success) throw new Error("detail schema mismatch");
+          if (parsed.data.content_hash !== ref.content_hash) throw new Error("detail version mismatch");
+          return parsed.data;
+        });
+        detailRequests.current.set(requestKey, request);
+      }
+      request.then((value) => {
+        if (active) {
+          setDetails((previous) => previous[key]?.content_hash === value.content_hash ? previous : { ...previous, [key]: value });
+          setDetailState((previous) => {
+            if (!(key in previous)) return previous;
+            const next = { ...previous };
+            delete next[key];
+            return next;
+          });
+        }
+      }).catch(() => {
+        detailRequests.current.delete(requestKey);
+        if (active) setDetailState((previous) => ({ ...previous, [key]: "error" }));
+      });
+    }
+    return () => { active = false; };
+  }, [enabled, focusKey, multiStrategy.detail_refs, detailRetry]);
+  const matchingDetail = useCallback((key: string): StrategyDetail | undefined => {
+    const detail = details[key];
+    const ref = multiStrategy.detail_refs[key];
+    return detail && ref && detail.content_hash === ref.content_hash ? detail : undefined;
+  }, [details, multiStrategy.detail_refs]);
 
   const toggleStrategy = (key: string) => {
     setEnabled((prev) => {
@@ -692,12 +702,11 @@ export function StrategySelector({
   const selected =
     multiStrategy.strategies.find((s) => s.key === focusKey) ??
     multiStrategy.strategies.find((s) => s.key === headlineKey)!;
-  const wealthSim = multiStrategy.strategy_wealth_sims[focusKey];
-  const yearly = multiStrategy.yearly_by_strategy[focusKey] ?? [];
-  // Prefer trades_by_strategy (v8) over legacy allTrades prop
-  const tradesRaw = multiStrategy.trades_by_strategy?.[focusKey] ?? allTrades[focusKey] ?? [];
+  const wealthSim = matchingDetail(focusKey)?.wealth;
+  const yearly = matchingDetail(focusKey)?.yearly ?? [];
+  const tradesRaw = matchingDetail(focusKey)?.trades ?? [];
   const trades = tradesRaw.filter((t) => !t.exit_reason?.endsWith("미청산"));
-  const openPositions: OpenPosition[] = multiStrategy.open_positions_by_strategy?.[focusKey] ?? [];
+  const openPositions: OpenPosition[] = matchingDetail(focusKey)?.open_positions ?? [];
 
   const isHeadline = focusKey === headlineKey;
   const oosBoundaryYear = 2024;
@@ -712,10 +721,10 @@ export function StrategySelector({
         label: STRATEGY_LABEL_KO[k] ?? k,
         color: colorOf.get(k) ?? "#888888",
         width: (k === focusKey ? 3 : k === headlineKey ? 2 : 1) as 1 | 2 | 3,
-        data: (multiStrategy.equity_by_strategy[k] ?? []).map((p) => ({ time: p.date, value: p.nav })),
+        data: (matchingDetail(k)?.nav ?? []).map((p) => ({ time: p.date, value: p.nav })),
       }))
       .filter((s) => s.data.length >= 2);
-  }, [allKeysOrdered, enabled, colorOf, focusKey, headlineKey, multiStrategy.equity_by_strategy]);
+  }, [allKeysOrdered, enabled, colorOf, focusKey, headlineKey, matchingDetail]);
 
   const wealthSeries: OverlaySeries[] = useMemo(() => {
     const out: OverlaySeries[] = [];
@@ -739,7 +748,7 @@ export function StrategySelector({
     // 전략들
     for (const k of allKeysOrdered) {
       if (!enabled.has(k)) continue;
-      const sim = multiStrategy.strategy_wealth_sims[k];
+      const sim = matchingDetail(k)?.wealth;
       if (!sim) continue;
       out.push({
         id: k,
@@ -750,15 +759,34 @@ export function StrategySelector({
       });
     }
     return out.filter((s) => s.data.length >= 2);
-  }, [allKeysOrdered, enabled, benchOn, colorOf, focusKey, headlineKey, multiStrategy.strategy_wealth_sims, wealthSimGlobal.series]);
+  }, [allKeysOrdered, enabled, benchOn, colorOf, focusKey, headlineKey, matchingDetail, wealthSimGlobal.series]);
 
   const m = selected.metrics;
   const is = selected.in_sample;
   const oos = selected.out_of_sample;
   const curatedSet = useMemo(() => new Set(curatedKeys ?? []), [curatedKeys]);
+  const failedDetailKeys = [focusKey, ...Array.from(enabled).filter((key) => key !== focusKey)]
+    .filter((key) => detailState[key] === "error");
 
   return (
     <div className="space-y-6">
+      <div role="status" aria-live="polite" className="font-mono text-xs text-muted-foreground empty:hidden">
+        {!matchingDetail(focusKey) && detailState[focusKey] !== "error" && "전략 상세를 불러오는 중…"}
+      </div>
+      {failedDetailKeys.length > 0 && (
+        <Alert variant="destructive">
+          <AlertCircle />
+          <AlertTitle>전략 상세를 불러오지 못했습니다.</AlertTitle>
+          <AlertDescription>
+            <p>
+              {failedDetailKeys.map((key) => STRATEGY_LABEL_KO[key] ?? key).join(", ")} — 버전이 일치하는 게시 자산이 필요합니다.
+            </p>
+            <Button size="sm" variant="outline" onClick={() => { setDetailState({}); setDetailRetry((n) => n + 1); }}>
+              다시 시도
+            </Button>
+          </AlertDescription>
+        </Alert>
+      )}
       {/* ── 전략 토글 보드 — 전 전략 멀티 온/오프 + 포커스 ───────────── */}
       <div>
         <div className="mb-2 flex flex-wrap items-baseline justify-between gap-2">
@@ -835,7 +863,7 @@ export function StrategySelector({
                         {STRATEGY_LABEL_KO[key] ?? key}
                         {isHL && (
                           <span className="rounded-sm bg-stamp px-1 py-px font-mono text-[8px] font-black tracking-wider text-background">
-                            SOTA
+                            선택 기준 상위
                           </span>
                         )}
                       </span>
@@ -877,7 +905,7 @@ export function StrategySelector({
           </div>
         </div>
         <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-          켜진 곡선 {enabled.size}개 · 판정(SOTA/채택/연구용/기각)은 백테스트가 실행 시점 수치로 생성 — 칩에 마우스를 올리면 사유 표시
+          켜진 곡선 {enabled.size}개 · 판정(선택 기준 상위/채택/연구용/기각)은 백테스트 실행 시점 수치로 생성 — 칩에 마우스를 올리면 사유 표시
         </p>
       </div>
 
@@ -889,7 +917,7 @@ export function StrategySelector({
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div>
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-stamp">
-              포커스 전략 {isHeadline ? "— SOTA (타이브레이크 1위)" : ""}
+              포커스 전략 {isHeadline ? "— 선택 기준 상위 (타이브레이크 1위)" : ""}
             </p>
             <h3 className="mt-0.5 flex items-center gap-2 font-display text-2xl font-black tracking-tight">
               {STRATEGY_LABEL_KO[focusKey] ?? focusKey}

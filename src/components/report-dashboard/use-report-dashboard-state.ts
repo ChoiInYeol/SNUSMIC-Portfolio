@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { reportDataset, type Market, type ReportRecord, type School } from "@/lib/report-model";
+import type { Market, ReportRecord, School } from "@/lib/report-model";
 import { isBuy } from "@/lib/verdict";
 
 type MarketFilter = "ALL" | Market;
@@ -10,7 +10,7 @@ type SchoolFilter = "ALL" | School;
 
 export const bucketFilters: BucketFilter[] = ["ALL", "Tenbagger", "Multibagger", "Double", "Winner", "Positive", "Drawdown", "Wrecked", "No quote"];
 
-export function useReportDashboardState() {
+export function useReportDashboardState(records: ReportRecord[]) {
   const [market, setMarket] = useState<MarketFilter>("ALL");
   const [bucket, setBucket] = useState<BucketFilter>("ALL");
   const [school, setSchool] = useState<SchoolFilter>("ALL");
@@ -21,7 +21,7 @@ export function useReportDashboardState() {
 
   const baseFiltered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return reportDataset.records.filter((report) => {
+    return records.filter((report) => {
       // 채점 가능한 modern 시대(2019-07 이후)만 — SMIC 아카이브 시대는 학회·종목 페이지에서 별도 열람
       if (report.era !== "modern") return false;
       if (!report.report_date) return false;
@@ -35,7 +35,7 @@ export function useReportDashboardState() {
         .toLowerCase()
         .includes(q);
     });
-  }, [bucket, market, school, query]);
+  }, [records, bucket, market, school, query]);
 
   /** 현재 필터 안의 참고 기록 수 — 토글 칩 라벨용 */
   const referenceCounts = useMemo(
@@ -63,9 +63,9 @@ export function useReportDashboardState() {
     return (
       [...priced].sort((a, b) => (b.return_latest_pct as number) - (a.return_latest_pct as number))[0]
       ?? sorted[0]
-      ?? reportDataset.records[0]
+      ?? records[0]
     );
-  }, [sorted]);
+  }, [sorted, records]);
   const selected = sorted.find((report) => report.source_name === selectedName) ?? bestReturn;
 
   return {

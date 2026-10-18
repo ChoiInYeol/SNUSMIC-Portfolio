@@ -45,14 +45,27 @@ jobs:
           restore-keys: |
             prices-${{ runner.os }}-
 
-      # Full sweep: collectors walk all pages to catch any missed reports.
+      # Full sweep with per-source status; ANY failure blocks publication (existing artifacts are retained).
       - name: Collect all reports (full sweep)
         run: |
-          uv run python scripts/collect_reports.py --source all --full
-          uv run python scripts/collect_kuvic_browser.py
-          uv run python scripts/collect_smic.py --full
-          uv run python scripts/collect_ewha.py --full
-          uv run python scripts/collect_voera.py --full
+          set +e
+          mkdir -p data/source-status data/quarantine
+          failed=0
+          for spec in "reports:uv run python scripts/collect_reports.py --source all --full" "kuvic:uv run python scripts/collect_kuvic_browser.py" "smic:uv run python scripts/collect_smic.py --full" "ewha:uv run python scripts/collect_ewha.py --full" "voera:uv run python scripts/collect_voera.py --full"; do
+            name="${spec%%:*}"; cmd="${spec#*:}"
+            bash -lc "$cmd"; rc=$?
+            if [ "$rc" -eq 0 ]; then success=true; error_json=null; else success=false; error_json="\"collector exit $rc\""; failed=1; fi
+            printf '{"source":"%s","attempted":true,"exit_code":%s,"collector_success":%s,"error":%s}\n' "$name" "$rc" "$success" "$error_json" > "data/source-status/$name.json"
+          done
+          tar -czf "data/quarantine/source-status-${GITHUB_RUN_ID}.tar.gz" data/source-status
+          [ "$failed" -eq 0 ] || exit 1
+      - name: Upload failed-source quarantine
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-quarantine-${{ github.run_id }}
+          path: data/quarantine
+          if-no-files-found: ignore
 
       # Transcription is incremental: already-transcribed .md files are skipped.
       # ocr_fallback.py (Windows winocr) is intentionally skipped in CI.
@@ -69,6 +82,31 @@ jobs:
           uv run python scripts/export_stock_charts.py
           uv run python scripts/backtest_momentum.py
           uv run python scripts/export_signals_api.py
+
+      - name: Pipeline health gate
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: uv run python scripts/pipeline_health.py
+
+      # GITHUB_TOKEN pushes do not trigger tests.yml, so the bot commit must pass
+      # the same gate here before it reaches main (and the Vercel build).
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Verify publication (contracts, tests, production build)
+        env:
+          CI: "true"
+          UPDATE_GOLDEN: "0"
+        run: |
+          uv run python scripts/export_signals_api.py --check
+          uv run pytest
+          node --test tests/report-model.test.cjs tests/api-schemas.test.cjs
+          npm run build
 
       - name: Commit refreshed artifacts
         run: |

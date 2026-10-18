@@ -44,7 +44,7 @@ gh run watch --repo ChoiInYeol/SNUSMIC-Portfolio
 
 ## 회귀 테스트 (v23)
 
-`tests/` 의 pytest 스위트가 백테스트 회계 코어를 고정합니다. 실데이터가 아닌 **고정 시드 합성 유니버스**에서 돌므로 일일 데이터 갱신과 무관하게 코드 변경만 잡아냅니다. `.github/workflows/tests.yml`이 `scripts/**` 또는 `tests/**`를 건드리는 모든 push/PR에서 실행됩니다 (수 초 내 완료, KRX/yfinance 불필요).
+`tests/`는 합성 가격·손계산 금융 원장과 회귀 스냅샷을 함께 검증합니다. CI는 모든 main push/PR에서 `UPDATE_GOLDEN=0`을 강제하고, 프론트엔드 격리 테스트·lint·build도 실행합니다. CI에서 골든 갱신·skip 시도는 실패하며 수익률 상승은 정확성 기준이 아닙니다.
 
 - **단위 테스트** — KRX 호가단위 라운딩, FX 환산(`_fx`/`set_usdkrw`), asof 패스트패스 ≡ pandas, `_close_trade`/`_try_enter` KRW 손익, Kelly 경계.
 - **회귀 테스트** — v22 FX 리밸런스 버그(보유 US 포지션 무환율 평가 → NAV 0 수렴) 재발 시 즉시 실패. zero-NAV 가드 계약 고정.
@@ -52,16 +52,18 @@ gh run watch --repo ChoiInYeol/SNUSMIC-Portfolio
 - **골든 스냅샷** — 대표 전략 3종(고정보유/샹들리에/HRP)의 지표·거래 로그를 `tests/golden/strategies.json`과 비교. 의도된 로직 변경 시:
 
 ```bash
-UPDATE_GOLDEN=1 uv run pytest tests/test_golden.py   # 골든 재생성
+uv run pytest tests/test_financial_oracles.py tests/test_publication_safety.py  # 독립 oracle 먼저
+UPDATE_GOLDEN=1 uv run pytest tests/test_golden.py   # 로컬에서만 의도된 변경 재생성
+UPDATE_GOLDEN=0 uv run pytest                       # 갱신 후 skip 없는 전체 회귀
 git diff tests/golden/                                # 변경이 의도와 일치하는지 확인 후 커밋
 ```
 
 ## 파이프라인 헬스 체크 (v23)
 
-`scripts/pipeline_health.py`가 daily CI 마지막에 실행되어 산출물 카운트(수집 PDF·전사·파싱·성과 행), 파싱 이슈 증가량, 백테스트 신호 신선도(as_of ≤ 4일)를 직전 실행(`data/health.json`, 커밋됨)과 비교합니다. 이상 시에만 Telegram 운영 알림을 보냅니다 — 시크릿은 일일 다이제스트와 동일한 `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID`를 재사용하며, 미설정이면 콘솔 출력만 하고 조용히 통과합니다.
+수집기별 종료 상태를 `data/source-status/`에 기록하며, 하나라도 실패하면 재생성·커밋 전에 중단하고 상태를 quarantine artifact로 남깁니다. 새 산출물은 strict JSON/유한 수치·분류·시점/헤드라인·카운트/슬롯 일관성·자료 감소 검증 후에만 커밋하고 Telegram 다이제스트를 보냅니다. 품질 실패는 Telegram 설정과 무관하게 nonzero입니다. 신호의 달력상 경과일을 검사하지만 거래소 휴일 여부를 추정하여 최신성을 보장하지는 않습니다.
 
 ```bash
-uv run python scripts/pipeline_health.py --dry-run   # 로컬 점검 (전송 없음)
+uv run python scripts/pipeline_health.py --dry-run   # 전송·health 상태 변경 없는 진단; 이상이면 nonzero
 ```
 
 ## Vercel 배포
@@ -73,8 +75,16 @@ uv run python scripts/pipeline_health.py --dry-run   # 로컬 점검 (전송 없
 | 프로덕션 URL | https://verdict-archive.vercel.app |
 | 트리거 | `main` 브랜치 push 시 자동 빌드·배포 (Next.js 자동 감지, 추가 설정 없음) |
 
-사이트는 SSG이므로 Vercel 측에는 런타임 시크릿이 필요 없습니다. KRX 자격증명은 GitHub Actions에서만 사용됩니다.
+페이지와 `.json` API는 정적 제공이 중심입니다. `/api/v1/signals/latest` 별칭은 CORS/OPTIONS를 제공하는 Next 요청 핸들러가 남아 있으므로 함수 사용량이 0이라고 주장하지 않습니다. 자격증명은 브라우저 번들에 넣지 않습니다. KRX 자격증명은 수집 파이프라인에서만 사용합니다.
 자동 갱신 워크플로의 봇 커밋이 push될 때마다 재배포가 일어나므로, GitHub deployments 기록은 주기적으로 쌓입니다(2026-06 기준 최신 3건만 남기고 정리함).
+
+빌드 전에 `uv run python scripts/export_signals_api.py --details-only`로 기존 공표본의 상세 manifest와 해시 URL 자산을 준비합니다. 이 명령은 신호의 `generated_at`이나 dated snapshot을 갱신하지 않습니다. frontend는 summary만 먼저 받고 선택/표시한 전략 상세를 같은 해시로 가져옵니다. 참조가 없거나 generation이 다르면 빌드/화면에서 명시적으로 실패합니다. 해시 자산은 이전 참조 보존을 위해 현재 자동 삭제하지 않으므로 누적 저장량을 측정해야 합니다.
+
+Hobby는 개인 비상업 용도인지 먼저 확인해야 합니다. [공식 기준](https://vercel.com/docs/plans/hobby)의 월 CDN 전송·origin 전송·요청·CPU·메모리 한도를 실제 30일 usage와 대조한 뒤에만 적합성을 판단합니다. [100MB CLI source upload 제한](https://vercel.com/docs/limits)은 Git 연동 배포의 정적 파일 총량 한도와 다릅니다. 이번 감사에서 Vercel token이 유효하지 않아 usage·배포 확인은 미완료이며, 임의 플랜 전환/production 배포는 수행하지 않았습니다.
+
+**2026-10-19 레짐 게이트 look-ahead 수정 (미재계산)**: T-·U의 KOSPI 파킹 레짐 게이트가 당일 종가와 당일 200MA로 당일 파킹 수익 여부를 결정하고 있었습니다(파킹 잔액 단독 2019-07~: 당일 판정 +647% vs 전일 판정 +264%, 단순 보유 +263%). 이제 `_regime_risk_on()`이 전일 종가·전일 200MA만 읽고(`tests/test_financial_oracles.py`), Q 전략의 시가 진입 유닛도 전일 종가 기준입니다. 헤드라인(`U_chandelier_scaleout`)은 이 편향 아래에서 선택됐으므로, 공표 숫자를 재계산하고 헤드라인 선택을 다시 수행하기 전까지 기존 성과를 유효한 것으로 표시하지 않습니다.
+
+파킹 지수 캐시 `data/prices/IDX_KOSPI.csv`는 종가만 포함합니다. 종가 수익을 당일 시가 예산에 섞는 M3 수정은 실제 시가 자료 확보 또는 명시적 close-transfer 연구 정책의 결정 전까지 완료 처리하지 않습니다. 기존 공표 금융 JSON을 새 계산 결과처럼 재라벨링하지 않습니다.
 
 ## SECURITY — KRX 자격증명 노출 [DONE 2026-06-11]
 

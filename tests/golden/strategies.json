@@ -3,9 +3,13 @@
   "metrics": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 13.34,
-   "cagr_pct": 5.89,
+   "initial_capital_krw": 100000000.0,
+   "final_nav_krw": 113349707.45,
+   "pnl_krw": 13349707.45,
+   "total_return_pct": 13.35,
+   "cagr_pct": 5.9,
    "sharpe": 1.94,
+   "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
    "mdd_pct": -1.8,
    "trades": 6,
    "win_rate_pct": 83.3,
@@ -16,8 +20,8 @@
   "in_sample": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 13.34,
-   "cagr_pct": 5.89,
+   "total_return_pct": 13.35,
+   "cagr_pct": 5.9,
    "sharpe": 1.94,
    "mdd_pct": -1.8
   },
@@ -97,9 +101,13 @@
   "metrics": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 6.29,
+   "initial_capital_krw": 100000000.0,
+   "final_nav_krw": 106298447.32,
+   "pnl_krw": 6298447.32,
+   "total_return_pct": 6.3,
    "cagr_pct": 2.83,
    "sharpe": 1.82,
+   "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
    "mdd_pct": -1.16,
    "trades": 12,
    "win_rate_pct": 41.7,
@@ -110,7 +118,7 @@
   "in_sample": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 6.29,
+   "total_return_pct": 6.3,
    "cagr_pct": 2.83,
    "sharpe": 1.82,
    "mdd_pct": -1.16
@@ -257,9 +265,13 @@
   "metrics": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 60.34,
+   "initial_capital_krw": 100000000.0,
+   "final_nav_krw": 160355812.53,
+   "pnl_krw": 60355812.53,
+   "total_return_pct": 60.36,
    "cagr_pct": 24.09,
    "sharpe": 1.69,
+   "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
    "mdd_pct": -9.38,
    "trades": 60,
    "win_rate_pct": 83.3,
@@ -270,7 +282,7 @@
   "in_sample": {
    "start": "2019-07-01",
    "end": "2021-09-07",
-   "total_return_pct": 60.34,
+   "total_return_pct": 60.36,
    "cagr_pct": 24.09,
    "sharpe": 1.69,
    "mdd_pct": -9.38

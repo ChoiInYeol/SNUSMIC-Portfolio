@@ -18,6 +18,25 @@ from .config import (ROOT, ATR_PERIOD, MAX_POSITIONS, POSITION_WEIGHT,
 from .fx import _fx, set_usdkrw
 from .warehouse import (load_prices, load_kospi, _fast_asof_raw, asof_value,
     _px, _has_day, _fast_frame)
+
+
+def _atr_column(df: pd.DataFrame, period: int) -> pd.Series:
+    """Return the exact precomputed ATR series; missing periods are invalid."""
+    column = {20: "atr20", 42: "atr", 63: "atr63"}.get(period)
+    if column is None or column not in df.columns:
+        raise ValueError(f"ATR({period}) is unavailable; refusing period fallback")
+    return df[column]
+
+
+def _regime_risk_on(index: pd.Series, ma200: pd.Series, day: dt.date) -> bool:
+    """Regime gate for day's parking return, decided with the prior close only.
+
+    The return for ``day`` runs from the previous close to ``day``'s close, so the
+    decision may not read ``day``'s close or its 200MA (same-day look-ahead).
+    """
+    prior = day - dt.timedelta(days=1)
+    ma200_val = asof_value(ma200, prior)
+    return ma200_val <= 0 or asof_value(index, prior) >= ma200_val
 from .accounting import (build_ticker_reports, find_trigger_reports,
     _report_trigger_reason, round_to_tick, first_trading_day_after,
     first_trading_day_on_or_after, months_later, _get_quote, _last_month_open,
@@ -47,7 +66,7 @@ def run_fixed_hold(
     trades: list[dict] = []
     scheduled_exits: dict[str, dt.date] = {}
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     for day in calendar:
         day_ts = pd.Timestamp(day)
@@ -128,7 +147,7 @@ def run_narrative_hold(
     trades: list[dict] = []
     pending_exits: set[str] = set()  # flagged at month-end, executed next open
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     # Build set of month-end dates
     cal_s = pd.Series(calendar)
@@ -224,7 +243,7 @@ def run_chandelier(
     trades: list[dict] = []
     pending_exits: set[str] = set()
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     for day in calendar:
         day_ts = pd.Timestamp(day)
@@ -310,7 +329,7 @@ def run_half_exit_runner(
     trades: list[dict] = []
     runner_exits: set[str] = set()  # flagged for C-rule exit next open
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     cal_s = pd.Series(calendar)
     month_ends: set[dt.date] = set(
@@ -607,8 +626,7 @@ def run_dip_buy(
 
 # ──────────────────────────────────────────────────────────────────────────────
 # Strategy H: 미너비니 트렌드 템플릿
-# Consensus ≥2 required at entry.
-# Entry conditions (all must hold on entry day):
+# Entry conditions use the last available bar before the opening fill:
 #   close > 50MA > 150MA > 200MA
 #   200MA rising vs 1 month ago
 #   close ≥ 70% of 52w high
@@ -637,7 +655,7 @@ def run_minervini(
     trades: list[dict] = []
     pending_exits: set[str] = set()
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     # Weekly check days (Fridays, or last day of week in calendar)
     cal_s = pd.Series(calendar)
@@ -672,30 +690,28 @@ def run_minervini(
                 df = prices.get(ticker)
                 if df is None:
                     continue
-                close = _px(df, day_ts, "close")
-                if close is None:
+                signal_day = day - dt.timedelta(days=1)
+                close = asof_value(df["close"], signal_day)
+                if close <= 0:
                     continue
-                ma50  = asof_value(df["ma50"],  day)
-                ma150 = asof_value(df["ma150"], day)
-                ma200 = asof_value(df["ma200"], day)
-                hi52w = asof_value(df["hi52w"], day)
+                ma50  = asof_value(df["ma50"],  signal_day)
+                ma150 = asof_value(df["ma150"], signal_day)
+                ma200 = asof_value(df["ma200"], signal_day)
+                hi52w = asof_value(df["hi52w"], signal_day)
                 if any(v <= 0 for v in [ma50, ma150, ma200, hi52w]):
                     continue
-                # Template: close > 50MA > 150MA > 200MA
+                # Template: prior close > prior indicators; same-day close cannot affect open fill.
                 if not (close > ma50 > ma150 > ma200):
                     continue
-                # 200MA rising vs 1 month ago
-                ma200_1mo = asof_value(df["ma200"], day - dt.timedelta(days=30))
+                ma200_1mo = asof_value(df["ma200"], signal_day - dt.timedelta(days=30))
                 if ma200_1mo <= 0 or ma200 <= ma200_1mo:
                     continue
-                # Price ≥ 70% of 52w high
                 if close < 0.70 * hi52w:
                     continue
-                # RS vs KOSPI positive over 6mo
                 if kospi is not None:
-                    price_6mo_ago = asof_value(df["close"], day - dt.timedelta(days=182))
-                    kospi_6mo_ago = asof_value(kospi, day - dt.timedelta(days=182))
-                    kospi_now = asof_value(kospi, day)
+                    price_6mo_ago = asof_value(df["close"], signal_day - dt.timedelta(days=182))
+                    kospi_6mo_ago = asof_value(kospi, signal_day - dt.timedelta(days=182))
+                    kospi_now = asof_value(kospi, signal_day)
                     if price_6mo_ago > 0 and kospi_6mo_ago > 0 and kospi_now > 0:
                         stock_rs = close / price_6mo_ago - 1
                         kospi_rs = kospi_now / kospi_6mo_ago - 1
@@ -952,8 +968,8 @@ def run_core_satellite_leverage(
             # v18: 일복리 (1+6%)^(1/252)−1 — 단리 6%/365에서 통일
             core_units *= (1 + cr)
             borrow_cost_daily = borrowed * BORROW_RATE_DAILY
+            # Capitalize interest into debt exactly once; NAV subtracts debt below.
             borrowed += borrow_cost_daily
-            cash_buffer -= borrow_cost_daily  # cost comes from cash; can go negative
 
             # Check if we should deleverage
             if kospi_dd > -LEVERAGE_RECOVER_DD:
@@ -1016,7 +1032,7 @@ def run_rr_trend(
     trades: list[dict] = []
     pending_exits: dict[str, str] = {}  # ticker -> reason
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     for day in calendar:
         day_ts = pd.Timestamp(day)
@@ -1171,7 +1187,7 @@ def run_chandelier_parametric(
     trades: list[dict] = []
     pending_exits: set[str] = set()
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     for day in calendar:
         day_ts = pd.Timestamp(day)
@@ -1198,12 +1214,8 @@ def run_chandelier_parametric(
                 pos, cash = _try_enter(ticker, source, n_clubs, day, prices, positions, cash, nav_now, ticker_reports)
                 if pos is not None:
                     df = prices[ticker]
-                    # Use the appropriate ATR column for the given period
-                    if atr_period == 20:
-                        atr_col = "atr20"
-                    else:
-                        atr_col = "atr"  # default atr42; recalc inline for non-standard periods
-                    atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+                    atr_val = asof_value(_atr_column(df, atr_period), day)
+
                     stop = pos["entry_price"] - atr_mult * atr_val if atr_val else pos["entry_price"] * 0.75
                     pos["stop"] = stop
                     positions[ticker] = pos
@@ -1216,8 +1228,8 @@ def run_chandelier_parametric(
             pos["last_close"] = close
             pos["fx"] = _fx(pos.get("market", "KR"), day)
             pos["highest"] = max(pos.get("highest", close), close)
-            atr_col = "atr20" if atr_period == 20 else "atr"
-            atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+            atr_val = asof_value(_atr_column(df, atr_period), day)
+
             if atr_val:
                 new_stop = pos["highest"] - atr_mult * atr_val
                 pos["stop"] = max(pos.get("stop", 0.0), new_stop)
@@ -2913,7 +2925,7 @@ def run_kangto_trend(
         # Execute entry queue at open
         if q_entry_queue:
             nav_now = cash + sum(p["shares"] * p["last_close"] * p.get("fx", 1.0) for p in positions.values())
-            market_units = _q_market_units(kospi, day) if kospi is not None else 1
+            market_units = _q_market_units(kospi, day - dt.timedelta(days=1)) if kospi is not None else 1  # open fill: prior close only
             slots = MAX_POSITIONS - len(positions)
             for ticker, source_val, n_clubs_val, rs_val in q_entry_queue:
                 if slots <= 0:
@@ -3205,7 +3217,7 @@ def run_kelly_chandelier(
     pending_exits: set[str] = set()
     closed_returns: list[float] = []   # running history of closed trade returns (%)
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     for day in calendar:
         day_ts = pd.Timestamp(day)
@@ -3263,8 +3275,8 @@ def run_kelly_chandelier(
                 shares = budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 cash -= budget
 
-                atr_col = "atr20" if atr_period == 20 else "atr"
-                atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+                atr_val = asof_value(_atr_column(df, atr_period), day)
+
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 
                 positions[ticker] = {
@@ -3295,8 +3307,8 @@ def run_kelly_chandelier(
             pos["last_close"] = close
             pos["fx"] = _fx(pos.get("market", "KR"), day)
             pos["highest"] = max(pos.get("highest", close), close)
-            atr_col = "atr20" if atr_period == 20 else "atr"
-            atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+            atr_val = asof_value(_atr_column(df, atr_period), day)
+
             if atr_val:
                 new_stop = pos["highest"] - atr_mult * atr_val
                 pos["stop"] = max(pos.get("stop", 0.0), new_stop)
@@ -3903,7 +3915,7 @@ def run_parking_core_chandelier(
     parked = START_CAPITAL * (1 - KOSPI_PARK_COST)
     cash = 0.0
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
 
     prev_park_close: float | None = None
 
@@ -3917,9 +3929,7 @@ def run_parking_core_chandelier(
             if prev_park_close is not None and prev_park_close > 0:
                 # Regime gate: if regime_aware and regime_index < 200MA → cash yield instead
                 if regime_aware and regime_ma200 is not None:
-                    ma200_val = asof_value(regime_ma200, day)
-                    regime_close = asof_value(_regime_src, day)
-                    use_park_return = (ma200_val <= 0 or regime_close >= ma200_val)
+                    use_park_return = _regime_risk_on(_regime_src, regime_ma200, day)
                 else:
                     use_park_return = True
 
@@ -3996,8 +4006,8 @@ def run_parking_core_chandelier(
                 shares = stock_budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 total_spent = budget   # taken from parking
 
-                atr_col = "atr20" if atr_period == 20 else "atr"
-                atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+                atr_val = asof_value(_atr_column(df, atr_period), day)
+
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 
                 pos = {
@@ -4029,8 +4039,7 @@ def run_parking_core_chandelier(
             pos["last_close"] = close
             pos["fx"] = _fx(pos.get("market", "KR"), day)
             pos["highest"] = max(pos.get("highest", close), close)
-            atr_col = "atr20" if atr_period == 20 else "atr"
-            atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+            atr_val = asof_value(_atr_column(df, atr_period), day)
             if atr_val:
                 new_stop = pos["highest"] - atr_mult * atr_val
                 pos["stop"] = max(pos.get("stop", 0.0), new_stop)
@@ -4112,7 +4121,7 @@ def run_kospi_core_chandelier_scaleout(
     # Precompute KOSPI 200MA for regime filter
     kospi_ma200 = kospi.rolling(200, min_periods=100).mean()
 
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False)
+    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
     prev_kospi_close: float | None = None
 
     for day in calendar:
@@ -4123,8 +4132,7 @@ def run_kospi_core_chandelier_scaleout(
         kospi_close_today = asof_value(kospi, day)
         if kospi_close_today > 0:
             if prev_kospi_close is not None and prev_kospi_close > 0:
-                ma200_val = asof_value(kospi_ma200, day)
-                use_kospi_return = (ma200_val <= 0 or kospi_close_today >= ma200_val)
+                use_kospi_return = _regime_risk_on(kospi, kospi_ma200, day)
                 if kospi_parked > 0:
                     if use_kospi_return:
                         daily_kospi_ret = kospi_close_today / prev_kospi_close - 1
@@ -4196,8 +4204,8 @@ def run_kospi_core_chandelier_scaleout(
                 shares = stock_budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 total_spent = budget
 
-                atr_col = "atr20" if atr_period == 20 else "atr"
-                atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+                atr_val = asof_value(_atr_column(df, atr_period), day)
+
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 
                 pos = {
@@ -4233,8 +4241,7 @@ def run_kospi_core_chandelier_scaleout(
             pos["fx"] = _fx(pos.get("market", "KR"), day)
             pos["highest"] = max(pos.get("highest", close), close)
 
-            atr_col = "atr20" if atr_period == 20 else "atr"
-            atr_val = asof_value(df[atr_col] if atr_col in df.columns else df["atr"], day)
+            atr_val = asof_value(_atr_column(df, atr_period), day)
             if atr_val:
                 new_stop = pos["highest"] - atr_mult * atr_val
                 pos["stop"] = max(pos.get("stop", 0.0), new_stop)

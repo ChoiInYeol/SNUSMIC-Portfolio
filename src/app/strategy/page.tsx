@@ -1,3 +1,6 @@
+import { promises as fs } from "node:fs";
+import path from "node:path";
+
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
@@ -8,11 +11,12 @@ import { STRATEGY_LABEL_KO } from "@/components/strategy/strategy-meta";
 import backtest from "@/data/strategy-backtest.json";
 import { signColor } from "@/lib/verdict";
 import { cn, formatPct, formatPrice } from "@/lib/utils";
+import { z } from "zod";
 
 export const metadata: Metadata = {
   title: "전략 — 판결 아카이브",
   description:
-    "학회 리포트 유니버스에서 전체 전략 변형을 IS/OOS로 검증. SOTA 전략의 임박 매매 신호와 전체 연구 기록.",
+    "학회 리포트 유니버스에서 전체 전략 변형을 선택·검증한 결과와 공표 신호를 보여줍니다. 독립 홀드아웃이 없는 기존 공표본임을 명시합니다.",
 };
 
 function tickerSlug(market: string, ticker: string): string {
@@ -173,17 +177,13 @@ type OpenPositionItem = {
   n_clubs?: number;
 };
 
-type MultiStrategyData = {
-  strategies: StrategyRow[];
-  headline_key: string;
-  curated_keys?: string[];
-  verdict_rules?: string;
-  strategy_wealth_sims: Record<string, StrategyWealthSim>;
-  equity_by_strategy: Record<string, { date: string; nav: number }[]>;
-  yearly_by_strategy: Record<string, { year: number; return_pct: number }[]>;
-  open_positions_by_strategy?: Record<string, OpenPositionItem[]>;
-  trades_by_strategy?: Record<string, Trade[]>;
-};
+ type MultiStrategyData = {
+   strategies: StrategyRow[];
+   headline_key: string;
+   curated_keys?: string[];
+   verdict_rules?: string;
+   detail_refs: Record<string, { path: string; content_hash: string; version?: string }>;
+ };
 
 // ─── Verdict chip ─────────────────────────────────────────────────────────────
 
@@ -197,14 +197,14 @@ function VerdictChip({ kind, reason }: { kind: "SOTA" | "채택" | "기각" | "�
   return (
     <span
       className={cn("inline-block rounded-sm px-1.5 py-0.5 font-mono text-[10px] font-bold cursor-help", styles[kind])}
-      title={reason ?? (kind === "SOTA" ? "State of the art — 타이브레이크(IS 샤프 → OOS 샤프 → 부의 비율) 1위 자동 선정" : kind === "채택" ? "셀렉터 채택 전략" : undefined)}
+      title={reason ?? (kind === "SOTA" ? "선택 기준 상위 — 독립 홀드아웃 검증 없음; 기존 공표본" : kind === "채택" ? "셀렉터 채택 전략" : undefined)}
     >
-      {kind}
+      {kind === "SOTA" ? "선택 기준 상위" : kind}
     </span>
   );
 }
 
-export default function StrategyPage() {
+export default async function StrategyPage() {
   const m = backtest.metrics as {
     start: string; end: string;
     total_return_pct: number; cagr_pct: number | null;
@@ -282,7 +282,31 @@ export default function StrategyPage() {
     promotion_criteria: string;
     warmup_note: string;
   } | undefined;
-  const multiStrategy = backtest.multi_strategy as unknown as MultiStrategyData;
+  const sourceMulti = backtest.multi_strategy as unknown as Record<string, unknown> & { strategies: StrategyRow[]; headline_key: string; curated_keys?: string[]; verdict_rules?: string };
+  const manifestPath = path.join(process.cwd(), "public", "api", "v1", "strategy-details", "manifest.json");
+  const manifest = z.object({
+    as_of: z.iso.date(),
+    assets: z.record(z.string(), z.object({
+      content_hash: z.string().regex(/^[a-f0-9]{64}$/),
+      path: z.string().regex(/^strategy-details\/[A-Za-z0-9_+.-]+\/[a-f0-9]{64}\.json$/),
+    })),
+  }).parse(JSON.parse(await fs.readFile(manifestPath, "utf-8")));
+  if (manifest.as_of !== signals?.as_of) throw new Error("Strategy detail generation date mismatch");
+  const detailRefs = Object.fromEntries(sourceMulti.strategies.map(({ key }) => {
+    const ref = manifest.assets[key];
+    if (!ref || !ref.path.endsWith(`/${ref.content_hash}.json`)) {
+      throw new Error(`Missing or inconsistent detail reference for ${key}`);
+    }
+    return [key, { path: `/api/v1/${ref.path}`, content_hash: ref.content_hash }];
+  }));
+  // Never spread the producer envelope: it also contains every trade and curve.
+  const multiStrategy: MultiStrategyData = {
+    strategies: sourceMulti.strategies,
+    headline_key: sourceMulti.headline_key,
+    curated_keys: sourceMulti.curated_keys,
+    verdict_rules: sourceMulti.verdict_rules,
+    detail_refs: detailRefs,
+  };
   // U(과열 스케일아웃) vs T- 판정 — 백테스트가 생성한 에디토리얼 (하드코딩 금지: 데이터가 승자를 정한다)
   const uNote = ((backtest as Record<string, unknown>).v12_new_strategies as {
     U_chandelier_scaleout?: { vs_tminus?: { promoted?: boolean; verdict?: string; editorial?: string } };
@@ -292,10 +316,6 @@ export default function StrategyPage() {
     kr_tickers: number; us_tickers: number;
   };
 
-  const headlineTrades = (backtest.trades ?? []) as Trade[];
-  const allTradesMap: Record<string, Trade[]> = {
-    [params.headline_key]: headlineTrades,
-  };
 
   // v20: 채택(셀렉터) 키와 판정은 백테스트 JSON이 단일 소스 — 프런트 하드코딩 없음.
   const curatedKeys = multiStrategy.curated_keys ?? [multiStrategy.headline_key];
@@ -320,7 +340,7 @@ export default function StrategyPage() {
       <SiteHeader eyebrow="Strategy Lab" />
 
       {/* ══════════════════════════════════════════════════════════════
-          ① 오늘의 신호 — SOTA 전략의 임박 매매
+          ① 오늘의 신호 — 선택된 전략의 임박 매매
       ══════════════════════════════════════════════════════════════ */}
       {signals && (
         <section className="rounded-lg border-2 border-stamp bg-stamp/5 p-5" aria-label="오늘의 신호">
@@ -331,8 +351,7 @@ export default function StrategyPage() {
             </p>
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            SOTA 전략({headlineLabel})이 지금 규칙대로 굴러간다면 일어날 매매 —
-            리포트 뉴스 피드가 아니라 전략의 임박 주문서입니다.
+            선택된 전략({headlineLabel})이 현재 규칙대로 산출한 임박 주문입니다. 리포트 뉴스 피드가 아니라 전략의 공표 신호입니다.
           </p>
 
           {/* Regime banner */}
@@ -567,9 +586,7 @@ export default function StrategyPage() {
           학회 리포트 발간 후 24개월 내 피크 수익률이 거의 전부 양(+)이라는 사실 —
           하지만 라운드트립을 타면 그 이익은 사라집니다.
           {strategyCount}개 전략 변형을 인샘플({simStartDisplay.slice(0, 7)}–2023-12)로 비교하고
-          아웃오브샘플(2024–현재)로 검증, 그중 {curatedKeys.length}개를 채택했습니다.
-          SOTA는 타이브레이크(IS 샤프 → OOS 샤프 → 부의 비율) 1위 전략인{" "}
-          <strong className="text-foreground">{headlineLabel}</strong>입니다.
+          선택에 사용한 검증 구간(2024–현재)과 기존 공표본을 표시합니다. 독립 홀드아웃 검증은 제공되지 않으며, 회계 정정 재계산 전 자료입니다.
         </p>
         <p className="mt-1.5 text-sm italic text-muted-foreground">
           주의: 과거 데이터 기반 시뮬레이션. 미래 수익 보장 없음. 과최적화 방지를 위해 파라미터는 문헌 표준값 고정.
@@ -592,10 +609,10 @@ export default function StrategyPage() {
 
       <StatStrip
         items={[
-          { label: "누적 수익률 (SOTA)", value: formatPct(m.total_return_pct, 1), tone: signColor(m.total_return_pct) },
+          { label: "누적 수익률 (선택 기준 상위)", value: formatPct(m.total_return_pct, 1), tone: signColor(m.total_return_pct) },
           { label: "CAGR (전체)", value: formatPct(m.cagr_pct, 1), tone: signColor(m.cagr_pct) },
           { label: "인샘플 샤프", value: String(inSample.sharpe ?? "—") },
-          { label: "아웃오브샘플 샤프", value: String(outOfSample.sharpe ?? "—"), tone: "text-up" },
+          { label: "검증 구간 샤프", value: String(outOfSample.sharpe ?? "—"), tone: "text-up" },
           { label: "MDD", value: formatPct(m.mdd_pct, 1), tone: "text-down" },
           { label: "승률 / 거래", value: `${m.win_rate_pct ?? "—"}% / ${m.trades}건` },
         ]}
@@ -623,7 +640,6 @@ export default function StrategyPage() {
           <StrategySelector
             multiStrategy={multiStrategy}
             wealthSimGlobal={ws}
-            allTrades={allTradesMap}
             curatedKeys={curatedKeys}
           />
         </div>
@@ -644,7 +660,7 @@ export default function StrategyPage() {
         </summary>
         <div className="border-t border-border px-5 pb-5 pt-4">
           <p className="mb-3 text-xs text-muted-foreground">
-            <VerdictChip kind="SOTA" /> 타이브레이크(IS 샤프 → OOS 샤프 → 부의 비율) 1위 자동 선정 ·{" "}
+            <VerdictChip kind="SOTA" /> 선택 기준 상위(독립 홀드아웃 없음) ·{" "}
             <VerdictChip kind="채택" /> 셀렉터 채택 ·{" "}
             <VerdictChip kind="기각" /> 비용·성과 미달로 제외 ·{" "}
             <VerdictChip kind="연구용" /> 비교 앵커·오버레이·대조군 — 판정과 사유는 백테스트가 실행 시점
@@ -655,7 +671,7 @@ export default function StrategyPage() {
             headlineKey={multiStrategy.headline_key}
           />
           <p className="mt-2 text-xs text-muted-foreground">
-            IS = In-Sample {simStartDisplay.slice(0, 7)} ~ 2023-12 · OOS = Out-of-Sample 2024-01 ~ 현재 ·
+            IS = In-Sample {simStartDisplay.slice(0, 7)} ~ 2023-12 · 검증 구간 = 2024-01 ~ 현재(독립 홀드아웃 아님) ·
             vs KOSPI/올웨더 DCA = 동일 적립 스케줄 최종 자산 비율 (1.00x 초과 = 해당 적립식 우위).
           </p>
           <p className="mt-1 text-xs text-muted-foreground">
@@ -876,11 +892,11 @@ export default function StrategyPage() {
               <li>· <strong className="text-foreground">현금 이자 가정.</strong> 모든 전략의 유휴 현금에 연 3.0% 일복리(MMF/단기채 ETF 프록시)를 일괄 적용합니다 — 고정 가정이며 실제 단기 금리는 기간별로 변동했습니다.</li>
               <li>· <strong className="text-foreground">US 종목 FX.</strong> v19부터 일별 USDKRW 환율(yfinance KRW=X)로 원화 환산 적용. 원화 강세 구간에서 달러 자산 수익이 감소하며, 약세 구간에서 FX 수익이 추가됩니다.</li>
               <li>· <strong className="text-foreground">컨센서스 표본 제한.</strong> US 컨센서스 종목 소수. 통계적 유의성 낮음.</li>
-              <li>· 롱온리 전략. 대세 하락장 손실 불가피. SOTA MDD {formatPct(m.mdd_pct, 1)}.</li>
+              <li>· 롱온리 전략. 대세 하락장 손실 불가피. 선택 기준 상위 MDD {formatPct(m.mdd_pct, 1)}.</li>
               <li>· <strong className="text-foreground">컨센서스 분석.</strong>{" "}
-                SOTA 거래 기준: 단독 커버 {consensus.single_club.count}건 (평균 {formatPct(consensus.single_club.avg_return_pct, 1)}, 승률 {consensus.single_club.win_rate_pct ?? "—"}%) vs
+                선택 기준 상위 거래 기준: 단독 커버 {consensus.single_club.count}건 (평균 {formatPct(consensus.single_club.avg_return_pct, 1)}, 승률 {consensus.single_club.win_rate_pct ?? "—"}%) vs
                 멀티 커버 {consensus.multi_club.count}건 (평균 {formatPct(consensus.multi_club.avg_return_pct, 1)}, 승률 {consensus.multi_club.win_rate_pct ?? "—"}%).
-                {consensus.alpha_multi_vs_single != null && ` 멀티 커버 알파: ${formatPct(consensus.alpha_multi_vs_single, 1)}p.`}
+                {consensus.alpha_multi_vs_single != null && ` 멀티 커버 차이: ${formatPct(consensus.alpha_multi_vs_single, 1)}p.`}
               </li>
               <li>· 생존 편향: 공개를 유지한 리포트만 수집. 상장폐지 종목 시세 일부 누락 가능.</li>
               <li>· 올웨더는 25% GLD/NASDAQ/S&P500/KOSPI 분기 리밸런싱으로 단순화. 채권 미포함.</li>

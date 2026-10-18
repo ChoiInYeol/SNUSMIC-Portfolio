@@ -81,6 +81,8 @@ def test_golden_snapshot(golden_runs):
     snap = {k: _snapshot(v) for k, v in golden_runs.items()}
 
     if os.environ.get("UPDATE_GOLDEN") == "1":
+        if os.environ.get("CI", "").lower() in {"1", "true"}:
+            pytest.fail("CI cannot update or skip the golden regression gate")
         GOLDEN_DIR.mkdir(exist_ok=True)
         GOLDEN_PATH.write_text(
             json.dumps(snap, ensure_ascii=False, indent=1), encoding="utf-8"
@@ -98,7 +100,7 @@ def test_golden_universe_actually_trades(golden_runs):
     """골든이 무의미한 0-거래 스냅샷으로 퇴화하지 않았는지 보증."""
     for key, result in golden_runs.items():
         closed = [t for t in result["trades"] if "미청산" not in t["exit_reason"]]
-        assert len(result["trades"]) >= 3, f"{key}: 거래 {len(result['trades'])}건 — 유니버스 점검"
+        assert len(closed) >= 3, f"{key}: 청산 거래 {len(closed)}건 — 유니버스 점검"
     # US 종목이 실제로 거래에 등장 (FX 경로 활성 보증)
     all_trades = [t for r in golden_runs.values() for t in r["trades"]]
     assert any(t["market"] == "US" for t in all_trades), "US 거래 없음 — FX 경로 미검증"

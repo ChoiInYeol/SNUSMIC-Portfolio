@@ -140,7 +140,8 @@ def load_usdkrw() -> pd.Series:
 # float64 bit-exactly, so cached frames are identical to freshly computed ones.
 _PRICE_CACHE_DIR = PRICE_DIR / ".cache"
 # Bump when load_prices indicator logic changes (invalidates all cached frames)
-_PRICE_CACHE_VERSION = "v1"
+_PRICE_CACHE_VERSION = "v2"
+
 
 
 def _load_prices_uncached(path: Path) -> pd.DataFrame | None:
@@ -167,6 +168,8 @@ def _load_prices_uncached(path: Path) -> pd.DataFrame | None:
     df["atr"] = tr.rolling(ATR_PERIOD, min_periods=ATR_PERIOD // 2).mean()
     # ATR(20) for K R:R strategy
     df["atr20"] = tr.rolling(20, min_periods=10).mean()
+    # ATR(63) for strategies that explicitly select the long lookback.
+    df["atr63"] = tr.rolling(63, min_periods=63).mean()
     # ATR(14) for extension gauge (U 과열 스케일아웃)
     df["atr14"] = tr.rolling(14, min_periods=7).mean()
     ret = df["close"].pct_change()
