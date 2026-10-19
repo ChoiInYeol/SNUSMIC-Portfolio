@@ -30,6 +30,7 @@ import {
   type Verdict,
 } from "@/lib/verdict";
 import { cn, formatPct, formatPrice } from "@/lib/utils";
+import { unpackDashboard, type DashboardTransport } from "@/lib/dashboard-transport";
 
 const marketFilters: MarketFilter[] = ["ALL", "KR", "US"];
 const marketLabels: Record<MarketFilter, string> = { ALL: "시장 전체", KR: "국내", US: "미국" };
@@ -55,8 +56,9 @@ function diffDays(from: string | null, to: string | null) {
   return Number.isFinite(ms) ? Math.round(ms / 86_400_000) : null;
 }
 
-export function ReportDashboard(props: { dataset: ReportDataset; quality: DataQuality }) {
-  return <ReportDataContext.Provider value={props}><DashboardContent /></ReportDataContext.Provider>;
+export function ReportDashboard({ packed, quality }: { packed: DashboardTransport; quality: DataQuality }) {
+  const dataset = useMemo(() => unpackDashboard(packed), [packed]);
+  return <ReportDataContext.Provider value={{ dataset, quality }}><DashboardContent /></ReportDataContext.Provider>;
 }
 
 function DashboardContent() {

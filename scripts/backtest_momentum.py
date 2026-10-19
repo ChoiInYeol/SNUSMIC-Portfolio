@@ -2042,6 +2042,12 @@ def main() -> int:
     OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\nWrote {OUT_PATH.relative_to(ROOT).as_posix()}", flush=True)
     print(f"  Trades in JSON: {len(headline_trades_for_json)}", flush=True)
+    # Forward accounting starts at cash on first actual observation, never at historical NAV.
+    from paper_portfolio import capture as capture_paper_portfolio
+    capture_paper_portfolio(strategy=headline_key, as_of=calendar[-1].isoformat(),
+                           nav=float(headline_nav.iloc[-1]), positions=headline.get("open_positions", {}),
+                           prices=prices, fx_rate=_fx,
+                           core={"INDEX:AllWeather": all_weather, "INDEX:KOSPI": kospi})
     return 0
 
 

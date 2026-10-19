@@ -67,3 +67,29 @@ export function filterMetadata(doc: SchemaMetadata, query: string, layers: Layer
   const ids = new Set(entities.map((e) => e.id));
   return { ...doc, entities, relationships: doc.relationships.filter((r) => ids.has(r.source) && ids.has(r.target)) };
 }
+
+export function focusMetadata(doc: SchemaMetadata, id: string | null, mode: string): SchemaMetadata {
+  if (!id || mode === "all") return doc;
+  const ids = new Set([id]);
+  if (mode === "neighbors") for (const r of doc.relationships) {
+    if (r.source === id) ids.add(r.target);
+    if (r.target === id) ids.add(r.source);
+  }
+  else for (const related of lineage(doc, id, mode === "upstream" ? "upstream" : "downstream")) ids.add(related);
+  return { ...doc, entities: doc.entities.filter(e => ids.has(e.id)), relationships: doc.relationships.filter(r => ids.has(r.source) && ids.has(r.target)) };
+}
+
+/** Compare structural metadata only: changing collection timestamps or row counts is not DDL. */
+export function compareMetadata(before: SchemaMetadata, after: SchemaMetadata): { id: string; change: string }[] {
+  const old = new Map(before.entities.map(e => [e.id, e]));
+  const now = new Set(after.entities.map(e => e.id));
+  const shape = (e: SchemaEntity) => JSON.stringify({ layer: e.layer, kind: e.kind,
+    columns: [...e.columns].sort((a, b) => a.name.localeCompare(b.name)),
+  });
+  const changes = after.entities.flatMap(e => !old.has(e.id) ? [{ id: e.id, change: "추가" }] : shape(old.get(e.id)!) !== shape(e) ? [{ id: e.id, change: "컬럼·키·계층 변경" }] : []);
+  for (const id of old.keys()) if (!now.has(id)) changes.push({ id, change: "삭제" });
+  const relationShape = (doc: SchemaMetadata) => new Map(doc.relationships.map(r => [r.id, JSON.stringify(r)]));
+  const a = relationShape(before), b = relationShape(after);
+  for (const id of new Set([...a.keys(), ...b.keys()])) if (a.get(id) !== b.get(id)) changes.push({ id, change: !a.has(id) ? "관계 추가" : !b.has(id) ? "관계 삭제" : "관계 변경" });
+  return changes;
+}

@@ -44,6 +44,16 @@ def _d(id_, layer, path, fmt, producer, inputs=(), schema_file=None):
 
 R = lake.rel
 DATASETS = [
+    _d("bronze.paper_targets", "bronze", f"{R(lake.BRONZE_PAPER_TARGETS)}/*.json", "json",
+       ["paper_portfolio.py"], schema_file=None),
+    _d("silver.paper_ledger", "silver", R(lake.SILVER_PAPER_LEDGER), "json", ["paper_portfolio.py"],
+       ["bronze.paper_targets", "silver.prices"]),
+    _d("serving.paper_portfolio", "gold", R(lake.PAPER_PORTFOLIO), "json", ["paper_portfolio.py"], ["silver.paper_ledger"]),
+    _d("serving.research_review", "gold", R(lake.RESEARCH_REVIEW), "json", ["build_research_review.py"],
+       ["silver.report_parsed", "silver.report_markdown", "silver.corrections", "serving.report_performance"]),
+    _d("serving.review_evidence", "gold", f"{R(lake.RESEARCH_REVIEW.parent)}/reviews/*.json", "json", ["build_research_review.py"],
+       ["silver.report_parsed", "silver.report_markdown", "silver.corrections"]),
+    _d("serving.search_index", "gold", R(lake.SEARCH_INDEX), "json", ["build_search_index.py"], ["serving.report_performance"]),
     # ── bronze ──
     _d("bronze.report_pdfs", "bronze", f"{R(lake.BRONZE_PDFS)}/**/*.pdf", "pdf", COLLECTORS),
     _d("bronze.report_manifest", "bronze", R(lake.BRONZE_REPORT_MANIFEST), "json",

@@ -1,0 +1,49 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/2026-05-29_equity-research-soitec-sa.md",
+ "school": "smic",
+ "values": {
+  "ticker": null,
+  "company": null,
+  "report_date": "2026-05-29",
+  "rating": "Buy",
+  "target_price": 482.35,
+  "report_current_price": 166.6,
+  "stated_upside_pct": 189.5
+ },
+ "transcript_sha256": "d5950c620815edec2b00e264e09be1c0b9ca97104b2072a78375e1e31f270675",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages= -->\n\n### Soitec SA (EPA: SOIT)\n\n## 2026년 5월 22일 Solevender Of InTErConnection\n\n## Solution Of Interconnect의 마무리 투수, AM의\n\nRating\n\n### 선택이 아닌 필수, 광통신\n\nAI 인프라 경쟁의 무게중심이 '칩의 연산 속도'에서솔로'칩P간layer연결'로 이동했다. 구리가\n\n# Must Buy\n\n한계에 직면한바, 데이터센터 내부 통신은 광으로 전환되고 있다. 광 트랜시버는\n\nCurrent Price: € 166.6\n\nPluggable에서 CPO·OIO로 진화하며 연산 칩과 가까워지고 있으며, 이를 구현할\n\nTarget Price: € 482.35\n\nPIC 공정은 실리콘 포토닉스로 기울었다. NVIDIA·Broadcom·Marvell이 일제히 실리\n\nUpside: 189.5%\n\n콘 포토닉스 채택을 선언한 지금, 그 기반이 되는 P-SOI 기판의 사실상 100% 공급\n\n자는 동사다. AI 데이터센터 광 인터커넥트의 황제로 돌아온 동사를 목도해보자.\n\n12M 주가추이\n\n### 투자포인트 1: Chokepoint, Photonics Owner\n\nMarket Cap. € 5.95 bn\n\nAIDC의 규모가 커지고 AI가속기 수가 증가하는 흐름에서, 하이퍼스케일러들에게 (유로)\n\nCPO는 선택이 아닌 필수로 자리잡고 있다. CPO는 내부 광엔진인 PIC의 소재 결정 200\n\n150\n\n이 성능 전반을 좌우하며, 모든 까다로운 조건을 통과하고 선발된 단독 승자는 SiPh\n\n100\n\n이다. 동사는 현재 전방사들이 CPO 상용화에 박차를 가하며 실적이 가시화되는 구\n\n50\n\n간을 앞두고 있다. 동사는 먼저 구조적으로 증가하는 플러거블 광트랜시버의 점유율\n\n0\n\n25.05 25.08 25.11 26.02 26.05\n\n을 흡수한 뒤, CPO Scale-Out과 Scale-Up이라는 거대한 파도에 올라탈 것이다.\n\nKey Metrics\n\n### 투자포인트 2: 웨이퍼는 Smart하게 Cut, 매출은 No Cut\n\nP-SOI 매출 비중(28E) 47.9% P-SOI는 실리콘 포토닉스를 구현할 수 있는 웨이퍼로, 고유 기술 Smart Cut을 앞세\n\nSOI 시장 점유율\t약 70% 운 동사만이 전세계에서 유일하게 양산 가능하다. 동사의 주요 고객들은 앞다투어\n\nScale out 대비 Scale up\n\nCAPA 증설에 나서며, 폭발할 실리콘 포토닉스 수요에 대응하고 있다. 동사는 충분\n\n9 배\n\n광엔진 수\n\n한 CAPA를 보유하고 있으며, 생산 라인 간의 유연한 전환도 가능하다. 앞으로 수요\n\nB/S Data (25)\n\n가 폭발할 실리콘 포토닉스의 수혜를 온전히 흡수할 기업은 동사이다.\n\n자산 총계\t€ 2,844 mn\n\n### Valuation\n\n부채 총계\t€ 1,249 mn 동사의 FY28E EBITDA €525,286k에 Target EV/EBITDA 33.4x를 적용한 €482.35\n\n자본 총계\t€ 1,595 mn 를 목표 주가로 제시한다. 동사는 기존에 영위하던 통신, 자동차 사업에서 벗어나\n\n차세대 AI 기술인 CPO를 가능하게 하는 실리콘 포토닉스 공정용 웨이퍼를 공급할\n\n수 있는 전세계의 유일한 플레이어다. AI 내러티브가 동사에게 얹어지며 발생하는 멀\n\n주요 주주\n\n티플 리레이팅과 기존 사업부의 다운 사이클을 상쇄하고도 남을 만큼 폭발적인 P- Bpifrance Participations\t11.45% SOI의 실적은 동사의 주가를 지금껏 보지 못한 세계로 이끌 것이다. 차세대 AI 밸류\n\nCEA Investissement\t7.19%\n\n체인의 제후, 이견 없이 동사의 차지다.\n\nThe Capital Group Companies,INC. 6.12%\n\nConsolidated Income Statement\n\n(€ thousands) FY23 FY24 FY25 FY26E FY27E FY28E FY29E\n\nRevenue\t1,088,730 977,914 890,851 604,086 661,169 1,000,630 1,550,720\tSMIC 3팀\n\nYoY(%) 26.2% -10.2% -8.9% -32.2% 9.4% 51.3% 55.0%\n\nCost of sales\t(606,979) (548,506) (494,127) (275,553) (296,218) (370,142) (485,078)\n\nGross profit\t481,751 429,408 396,724 328,533 364,951 630,488 1,065,642\t팀장 52 기 이희원\n\nGPM(%) 44.2% 43.9% 44.5% 54.4% 55.2% 63.0% 68.7%\n\n|  | Research and development expenses (40,520) (36,034) (59,307) (23,912) (30,591) (39,030) (48,197) General, sales and administrative expenses (68,246) (59,577) (61,671) (48,338) (42,499) (64,318) (99,677) | 팀원 52 기 김성윤 |\n| --- | --- | --- |\n| Depreciation & Amortization | (105,759) (125,602) (140,145) (141,654) (148,328) (154,238) (159,484) |  |\n| Other operating income | 503 258 11 257 257 257 257 | 53 기 문상준 |\n| Other operating expenses | (55) (3,144) (16,133) (2,111) (2,111) (2,111) (2,111) |  |\n| Operating income | 267,674 205,309 119,479 112,776 141,679 371,048 756,431 | 53 기 민현석 |\n\nOPM(%) 24.6% 21.0% 13.4% 18.7% 21.4% 37.1% 48.8%\n\n| Financial income | 5,546 20,591 19,277 14,217 19,399 18,037 17,787 | 53 기 박세완 |\n| --- | --- | --- |\n| Financial expenses | (15,113) (25,360) (28,258) (26,783) (26,626) (12,809) (11,742) |  |\n| Profit before tax | 258,107 200,540 110,498 100,210 134,452 376,276 762,477 |  |\n| Income tax | (26,198) (22,714) (19,002) (12,918) (17,332) (48,506) (98,291) Net profit from continuing operations 231,909 177,826 91,496 87,292 117,120 327,770 664,185 |  |\n\nNPM(%) 21.3% 18.2% 10.3% 14.5% 17.7% 32.8% 42.8%\n\n# KEY CHARTS\n\n[Photonics-SOI 밸류체인]\n\n출처: 동사 IR, Marvell, Coherent, NVIDIA, SMIC 3팀\n\n[투자포인트 1 도식]\n\n출처: NVIDIA, SMIC 3팀\n\n# CONTENTS\n\n| 1. Bottleneck Takes All – 투자 IDEA | 4 |\n| --- | --- |\n\n| 2. 선택이 아닌 필수, 광통신 – 산업 분석 | 5 |\n| --- | --- |\n\n| 3. SOI의 황제가 돌아왔다 – 기업 분석 | 8 |\n| --- | --- |\n\n| 4. Chokepoint, Photonics Owner – 투자포인트 1 | 10 |\n| --- | --- |\n\n| 5. 웨이퍼는 Smart하게 Cut, 매출은 No Cut - 투자포인트 2 | 15 |\n| --- | --- |\n\n| 6. ISSUE & RISK | 19 |\n| --- | --- |\n|  |  |\n| 7. 매출 추정 | 20 |\n|  |  |\n| 8. Valuation | 23 |\n|  |  |\n| 9. Appendix | 27 |\n|  |  |\n|  |  |\n\n1. Bottleneck Takes All – 투자 IDEA\n\n도표 1-1. 병목 기업의 멀티플 리레이팅 선행과 실적 후행 출처: Investing.com, EDGAR, SMIC 3팀\n\n실적 증명\n\n실적 증명\n\n주가 급등\n\n주가 급등\n\n주가 급등\t실적 증명\n\n패권 차세대 기술 병목 실적을 선행하는\t리레이팅\n\n메가 트렌드:\n\n병목\n\nAI라는 메가트렌드 속에서 더 높은 수익률을 기록하는 방법은 결국 하나로 수렴한다. 바로 병목을 쥐는 것이다. AI 밸류체인에 속한 기업들의 주가는 일제히 우상향했지만, 병목을 쥔 기업들의 주가가 그 어떤 주식보다 가파르게 상승했다. 연산을 책임지는 메모리 및 비메모리, 칩과 칩을 잇는 광, 이를 뒷받침하는 전력 및 인프라까지, 밸류체인의 길목을 선점한 기업들의 주가는 우상향했다. 시장이 병목을 인식하는 속도의 차이만 존재했을 뿐, 병목을 쥔 자는 모두 승자였다.\n\n1세대 : AI 칩 병목\n\n1세대 병목의 대표주자는 “AI 칩” 병목을 쥐고 있는 기업들이었다. AI 연산에 최적화된 GPU를 설계하는 NVDA, 이를 전세계에서 유일하게 첨단 패키징할 수 있는 TSMC의 주가는 23년초에 비해 24년말 각각 861%, 150% 상승했다. 두 기업은 시장이 주목하는 AI의 핵심인 칩(GPU)에서의 병목을 차지하고 있었고, 당시 시장에서 AI 대표 수혜주로 각인되었다.\n\n2세대 : 칩 연결기술\n\n그러나 병목은 한 곳에 머무르지 않았다. 칩의 단일 연산 성능이 한계에 다다르자, 시장의 관심은 “칩 간 연결기술”로 향했다. 이에 칩 사이를 잇는 광 밸류체인이 새로운 병목으로 부상했고, 그 수혜는 Lumentum과 AXT 등의 기업들에게 돌아갔다. 광 핵심 부품인 EML칩과 소재인 InP 웨이퍼 수요는 폭증했지만 공급자는 한정되어 있는 병목 상황이 발생했다. 그 결과 25년초 대비 Lumentum은 1,027%, AXT는 5,426% 상승하며 시장은 병목을 쥔 자가 승자임을 증명했다.\n\n차세대 기술 + 병목 = 두 Case가 함의하는 바는 명확하다. AI 시대의 새로운 지배자는 시장이 미처 인식하지 못한 차리레이팅\t세대 기술에서 병목을 쥔 자 중에서 나타나며, 멀티플 리레이팅이 실적을 선행한다. 본서는 동사가 차세대 기술인 CPO 밸류체인의 가장 좁은 병목, Photonics-SOI 웨이퍼를 제조하는 전세계 유일의 기업임을 입증할 것이다. 동사의 주가는 이미 YTD +570% 상승했으나, 실적은 아직 본격 인식되기 이전이다. 변화의 초입에 선 동사의 주가가 어디까지 상승할 수 있을지 확인해보자.\n\n차세대 기술 +\n\n멀티플\n\n연산실력에서\n\n연결실력으로\n\nWhy 연결?\n\n구리도 이제 한계다\n\n광을 맞이하여라\n\n데이터센터를 위한",
+ "matches": [
+  {
+   "field": "rating",
+   "line": 15,
+   "quote": "# Must Buy"
+  },
+  {
+   "field": "target_price",
+   "line": 23,
+   "quote": "Target Price: € 482.35"
+  },
+  {
+   "field": "target_price",
+   "line": 87,
+   "quote": "부채 총계\t€ 1,249 mn 동사의 FY28E EBITDA €525,286k에 Target EV/EBITDA 33.4x를 적용한 €482.35"
+  },
+  {
+   "field": "report_current_price",
+   "line": 19,
+   "quote": "Current Price: € 166.6"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 27,
+   "quote": "Upside: 189.5%"
+  }
+ ],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

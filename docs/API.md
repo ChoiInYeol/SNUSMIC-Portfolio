@@ -368,6 +368,9 @@ uv run python scripts/export_api_v2.py --check
 
 ## 텔레그램 일일 신호 봇
 
+포트폴리오의 일별 평가·비중 알림은 [모의 포트폴리오](PORTFOLIO.md)를 따른다.
+아래 기존 신호 변화 알림은 Actions Variable `TELEGRAM_SIGNALS_ENABLED=true`일 때만 별도로 실행한다.
+
 `scripts/send_telegram_signals.py`가 매 거래일 CI(`refresh-daily.yml`)에서
 오늘의 신호를 한국어 다이제스트로 텔레그램에 보냅니다. 전일 스냅샷과
 비교해 **신규 진입 / 청산 / 매수 신호 / 매도 임박**의 변화가 있을 때만

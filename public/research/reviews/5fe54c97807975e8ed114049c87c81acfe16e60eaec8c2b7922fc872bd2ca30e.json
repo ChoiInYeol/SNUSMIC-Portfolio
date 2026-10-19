@@ -1,0 +1,59 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/star/2026-06-13_STAR_FIGR.md",
+ "school": "star",
+ "values": {
+  "ticker": null,
+  "company": "FIGR",
+  "report_date": "2026-06-13",
+  "rating": "Buy",
+  "target_price": null,
+  "report_current_price": null,
+  "stated_upside_pct": 52.1
+ },
+ "transcript_sha256": "80b15c9780969141212cadd66dd113eee8ba8d5bab2883918ae606c6df27c1cc",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price"
+ ],
+ "excerpt": "S.T.A.R Research Company Report 26.06.04\n\n## Figure Technology Solutions (NQ.FIGR)\n\nTeam 3’s Opinion\n\n###### Conviction Buy\n\n###### 피겨 안 사고 배겨?\n\n목표주가 47.12달러로 강력 매수 의견 제시\n\n###### 목표주가($) 47.12\n\n본 리서치팀은 Peer P/E Valuation에 따라 목표주가 47.12달러로 강력 매수를 주 장한다. 동사의 26, 27년 매출액은 각각 8.79억 달러(YoY +73.4%), 12.49억 달러 (YoY +42.1%), 영업이익은 2.90억 달러(YoY +149.5%), 6.03억 달러(YoY +105.6%) 으로 전망한다.\n\n현재주가($) 상승여력\n\n30.98 52.1%\n\nStock Price\n\n(25.06.04 주가 및 지수 = 100)\n\n|| | | | |\n|---|---|---|---|\n| | | | |\n| | | | |\n| | | | |\n<br><br>0<br><br>100<br><br>200<br><br>300<br><br>25-09 26-01 26-05<br><br>FIGR NASDAQ<br><br>|\n|---|\n\n\n투자포인트 1. 준비는 끝났다, 이제는 날아오를 차례\n\n동사의 매출액은 각각 8.79억 달러(YoY +72.6%), 12.49억 달러(YoY +41.7%)로 전망된다. 이는 1) HELOC의 타 대출원 대비 우위가 기대되며, 2) 동사의 M/S가 기술 적 혜자에 의해 지속 증가할 것이고, 3) 중소형 금융기관들로 이루어진 파트너 포트폴 리오에서 상대적으로 규모가 큰 금융기관이 추가될 유인이 충분함에 기인한다.\n\n투자포인트 2. Figure가 보여주는 숫자의 마법\n\nKey Information\n\n26,853.98 78.00/25.01\n\nNASDAQ 지수 52주 최고/최저($) 시가총액(십억 달러) 발행주식수(주) 25년 배당수익률(%) 주요주주 지분율(%)\n\n동사의 26년 OPM은 33.4%(YoY +10.2%p), 27년 48.3%(YoY +14.9%p)로 전망된\n\n다. 이는 1) 동사의 수수료 기반 모델의 영업 레버리지 확대가 2) 1순위 HELOC 대출 비중의 증가와 결합하여 그 효과를 극대화할 수 있음에 기인한다.\n\n7,345 221,100,000\n\n###### 체크포인트. 부동산(不動産), 진짜로 안 움직이는 중\n\n20.5\n\n장기채 금리가 높은 수준을 유지함에 따라 주택시장의 침체에 따른 동사에 대한 우려가 존재하나, 이는 제한적인 것으로 판단된다. 이는 1) 장기채 금리가 주택 가격 에 미치는 영향이 미미하며, 2) 공급이 억제되는 상황이 고착화됨에 기인한다.\n\nESG Grade\n\nESG평가 등급 N/A\n\n환경(E) N/A 사회(S) N/A 지배구조(G) N/A\n\n보너스포인트. HELOC을 넘어 대출 플랫폼으로!\n\n동사의 Figure Connect는 HELOC 시장을 넘어 모든 실물 자산을 블록체인 위에서 거래 가능하게 만드는 플랫폼으로 거듭날 것으로 기대된다. 이는 1) 실물자산 토큰화 의 효율성, 2) YLDS의 발행량 확대에 기인한다.\n\nConsensus 2026F 2027F\n\n매출액(백만 달러) 780 959 영업이익(백만 달러) 297 416 영업이익률(%) 38.1 43.4 순이익(백만 달러) 224 308 EPS(달러) 1.03 1.29\n\n|투자지표|2024 2025 2026F 2027F|\n|---|---|\n|매출액 (백만 달러)<br><br>영업이익 (백만 달러)<br><br>영업이익률 (%)<br><br>순이익 (백만 달러)<br><br>순이익률 (%)<br><br>EPS ($)<br><br>PER|341 507 879 1,249<br><br>9 118 293 603<br><br>2.7 23.2 33.4 48.3<br><br>17 134 235 477<br><br>5.0 26.4 26.7 38.2<br><br>- 0.61 1.06 2.16<br>- 67.5 29.1 14.3<br>|\n\n\nPER(배) 37.6 29.8\n\nS.T.A.R Research\n\n김성민 sung010324@g.skku.edu 52nd member\n\n신우철 uuchul@g.skku.edu 52nd member\n\n이운학 sjlima4@g.skku.edu 53rd member\n\n박유진 yujinskk@g.skku.edu 53rd member\n\n|음영|\n|---|\n\n\n|표머리|\n|---|\n\n\n|대제목|\n|---|\n\n\n|중제목|\n|---|\n\n\n|47,921원 +0.09% | 피규어 테크놀로지 솔루션스<br><br>|\n|---|\n\n\n|음영|\n|---|\n\n\n|표머리|\n|---|\n\n\n|대제목|\n|---|\n\n\n|중제목|\n|---|\n\n\nFigure Technology Solutions (NQ.FIGR) 피겨 안 사고 배겨? 22\n\n###### 용어정리 3\n\n# CONTENTS\n\n들어가며 4\n\n산업분석 7\n\n기업분석 14\n\n16\n\n투자포인트\n\n- 투자포인트1. 준비는 끝났다,이제는 날아오를 차례\n\n- 투자포인트2. Figure가보여주는 숫자의 마법\n\n\n체크포인트.부동산(不動産),진짜로 안 움직이는중 보너스포인트. HELOC을넘어 대출 플랫폼으로!\n\n매출액가정 24\n\n##### 비용가정 30\n\n밸류에이션 33\n\nPeer P/E Valuation,목표주가47.12달러로강력매수의견제시\n\nAppendix 34\n\n|음영|\n|---|\n\n\n|표머리|\n|---|\n\n\n|대제목|\n|---|\n\n\n|중제목|\n|---|\n\n\n|음영|\n|---|\n\n\n|표머리|\n|---|\n\n\nFigure Technology Solutions (NQ.FIGR) 피겨 안 사고 배겨? 33\n\n### 용어정리\n\n|HELOC|주택 자산가치(Home Equity)를 담보로 설정해 필요할 때마다 인출할 수 있는 신용한도 대출|\n|---|---|\n|모기지 리파이낸싱|기존 주택담보 대출을 새로운 대출로 옮기는 것. 금리 인하나 월 상환액 절감을 목적으로 활용됨|\n|SaaS|Software as a Service, 소프트웨어를 구매하는 대신 구독 형태로 이용하는 서비스 모델|\n|QT(양적긴축)|Quantitative Tightening. 중앙은행이 보유한 채권을 축소해 시중 유동성을 흡수하는 정책. 일반적으로 장기금리 상승 압력과 유동성 축소 효과를 유발함|\n|PCE 지수|미국 가계가 소비한 재화 및 서비스 가격 변동을 측정하는 물가지표. 연준(Fed)에서 가장 중요하게 고려하는 인플레이션 지표|\n|홈에퀴티 (Home Equity)|주택 시가에서 남은 주택담보대출 잔액을 뺀 순자산 가치. HELOC이나 담보대출의 기반이 되는 자산|\n|미시간대 소비심리지수|미국 소비자들의 경기와 가계경제에 대한 심리를 조사한 지표. 소비 전망과 경기 흐름을 예측하는 선행지표로 활용됨|\n|ABS|대출채권, 자동차 할부 채권 등을 기초자산으로 발행한 유동화 증권|\n|NIM|이자수익에서 이자비용을 차감한 뒤 운용자산으로 나눈 비율. 은행의 핵심 수익성을 나타내는 지표|\n|CET1|보통주 자본을 위험가중자산(RWA)로 나눈 비율. 은행의 손실 흡수 능력을 나타내는 대표적 건전성 지표|\n|RWA|자산별 위험도를 반영해 가중치를 적용한 자산 규모. 은행의 자본규제와 CET1 비율 계산의 기준이 됨|\n|BIS 지표|은행의 자기자본을 위험가중자산(RWA)으로 나눈 비율. 금융기관의 재무건전성을 평가하는 핵심 지표|\n|LTV (Loan To Value)|담보가치 대비 대출금액의 비율. 높을수록 대출 위험도가 커짐|\n|Take Rate|플랫폼 거래금액 중 기업이 수수료로 가져가는 비율. 플랫폼 기업의 수익성을 평가하는 핵심 지표임|\n|스마트 컨트랙트 (Smart Contract)|블록체인 위에서 조건 충족 시 자동 실행되는 프로그램 형태의 계약. 중개자 없이 거래를 처리할 수 있음|\n|오토 론 (Auto Loan)|자동차 구매 시 이용하는 할부 혹은 담보 대출. 미국 소비자 금융시장의 주요 대출 상품 중 하나|\n|SMB 대출|중소기업을 대상으로 제공하는 대출 상품. 기업 운영자금과 시설투자 자금 조달에 활용됨|\n|Case-Shiller 주택가격지수|미국 주요 지역의 주택 가격 변동을 측정하는 대표 지수. 미국 부동산 시장의 방향성을 판단하는 핵심 지표|\n\n\n|음영|\n|---|\n\n\n|표머리|\n|---|\n\n\n|대제목|\n|---|\n\n\n|중제목|\n|---|",
+ "matches": [
+  {
+   "field": "company",
+   "line": 3,
+   "quote": "## Figure Technology Solutions (NQ.FIGR)"
+  },
+  {
+   "field": "company",
+   "line": 30,
+   "quote": "<br><br>0<br><br>100<br><br>200<br><br>300<br><br>25-09 26-01 26-05<br><br>FIGR NASDAQ<br><br>|"
+  },
+  {
+   "field": "company",
+   "line": 125,
+   "quote": "Figure Technology Solutions (NQ.FIGR) 피겨 안 사고 배겨? 22"
+  },
+  {
+   "field": "rating",
+   "line": 7,
+   "quote": "###### Conviction Buy"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 19,
+   "quote": "30.98 52.1%"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 44,
+   "quote": "NASDAQ 지수 52주 최고/최저($) 시가총액(십억 달러) 발행주식수(주) 25년 배당수익률(%) 주요주주 지분율(%)"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 81,
+   "quote": "김성민 sung010324@g.skku.edu 52nd member"
+  }
+ ],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

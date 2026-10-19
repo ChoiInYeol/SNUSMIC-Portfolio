@@ -18,6 +18,7 @@ DATA = ROOT / "data"
 # ── Bronze: raw, append-only ────────────────────────────────────────────────
 BRONZE = DATA / "bronze"
 BRONZE_REPORTS = BRONZE / "reports"
+BRONZE_PAPER_TARGETS = BRONZE / "portfolio" / "published-targets"
 BRONZE_PDFS = BRONZE_REPORTS / "pdfs"                    # {school}/{stem}.pdf (git-ignored, re-downloadable)
 BRONZE_REPORT_MANIFEST = BRONZE_REPORTS / "manifest.json"  # one row per download: url, sha256, downloaded_at
 BRONZE_KUVIC_ITEMS = BRONZE_REPORTS / "kuvic_items.json"
@@ -30,6 +31,7 @@ BRONZE_KRX_NAME_OBSERVATIONS = BRONZE_REFERENCE / "krx_name_observations.jsonl" 
 # ── Silver: cleaned, standardised ───────────────────────────────────────────
 SILVER = DATA / "silver"
 SILVER_REPORTS = SILVER / "reports"
+SILVER_PAPER_LEDGER = SILVER / "portfolio" / "ledger.json"
 SILVER_MARKDOWN = SILVER_REPORTS / "markdown"            # kordoc transcripts, {school}/{stem}.md
 SILVER_REPORT_PARSED = SILVER_REPORTS / "parsed.csv"
 SILVER_REPORT_ISSUES = SILVER_REPORTS / "parse_issues.csv"
@@ -48,6 +50,10 @@ GOLD_CACHE = GOLD / "_cache"                             # deterministic backtes
 # Gold serving artifacts that must live where Next.js reads them.
 WEB_DATA = ROOT / "src" / "data"                         # build-time page inputs
 PUBLIC = ROOT / "public"
+RESEARCH_REVIEW = PUBLIC / "research" / "review.json"
+SEARCH_INDEX = PUBLIC / "research" / "search.json"
+PAPER_PORTFOLIO = PUBLIC / "research" / "portfolio.json"
+BRONZE_BACKUP = ROOT / "artifacts" / "bronze-backup"
 API_V1 = PUBLIC / "api" / "v1"                           # frozen, deprecated
 API_V2 = PUBLIC / "api" / "v2"                           # current public REST API
 

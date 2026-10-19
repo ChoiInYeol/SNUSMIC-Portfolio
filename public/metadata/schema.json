@@ -1,9 +1,511 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-19T17:55:38+00:00",
+  "generated_at": "2026-10-19T18:45:07+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
+    {
+      "id": "bronze.paper_targets",
+      "name": "paper_targets",
+      "schema_name": "bronze",
+      "layer": "bronze",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "observed_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "weights",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "quotes",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/bronze/portfolio/published-targets/*.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "paper_portfolio.py"
+      ]
+    },
+    {
+      "id": "silver.paper_ledger",
+      "name": "paper_ledger",
+      "schema_name": "silver",
+      "layer": "silver",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "started_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "initial_capital_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "nav_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_weight_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "return_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "daily_return_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fees_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "target_positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "status",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/silver/portfolio/ledger.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "paper_portfolio.py"
+      ]
+    },
+    {
+      "id": "serving.paper_portfolio",
+      "name": "paper_portfolio",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "started_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "initial_capital_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "nav_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_weight_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "return_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "daily_return_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fees_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "target_positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "status",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "public/research/portfolio.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "paper_portfolio.py"
+      ]
+    },
+    {
+      "id": "serving.research_review",
+      "name": "research_review",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "records",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "public/research/review.json",
+      "row_count": 579,
+      "description": "json · versioned artifact",
+      "producers": [
+        "build_research_review.py"
+      ]
+    },
+    {
+      "id": "serving.review_evidence",
+      "name": "review_evidence",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "school",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "values",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "transcript_sha256",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "reasons",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "excerpt",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "matches",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "pdf_url",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "markdown_url",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "correction",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "public/research/reviews/*.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "build_research_review.py"
+      ]
+    },
+    {
+      "id": "serving.search_index",
+      "name": "search_index",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "entries",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "public/research/search.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "build_search_index.py"
+      ]
+    },
     {
       "id": "bronze.report_pdfs",
       "name": "report_pdfs",
@@ -8104,6 +8606,105 @@
     }
   ],
   "relationships": [
+    {
+      "id": "etl:bronze.paper_targets:silver.paper_ledger",
+      "source": "bronze.paper_targets",
+      "target": "silver.paper_ledger",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.prices:silver.paper_ledger",
+      "source": "silver.prices",
+      "target": "silver.paper_ledger",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.paper_ledger:serving.paper_portfolio",
+      "source": "silver.paper_ledger",
+      "target": "serving.paper_portfolio",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:serving.report_performance:serving.research_review",
+      "source": "serving.report_performance",
+      "target": "serving.research_review",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.corrections:serving.research_review",
+      "source": "silver.corrections",
+      "target": "serving.research_review",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_markdown:serving.research_review",
+      "source": "silver.report_markdown",
+      "target": "serving.research_review",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_parsed:serving.research_review",
+      "source": "silver.report_parsed",
+      "target": "serving.research_review",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.corrections:serving.review_evidence",
+      "source": "silver.corrections",
+      "target": "serving.review_evidence",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_markdown:serving.review_evidence",
+      "source": "silver.report_markdown",
+      "target": "serving.review_evidence",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_parsed:serving.review_evidence",
+      "source": "silver.report_parsed",
+      "target": "serving.review_evidence",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:serving.report_performance:serving.search_index",
+      "source": "serving.report_performance",
+      "target": "serving.search_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
     {
       "id": "etl:bronze.kuvic_items:bronze.report_manifest",
       "source": "bronze.kuvic_items",

@@ -1,0 +1,45 @@
+name: portfolio-daily
+on:
+  schedule:
+    - cron: "0 11 * * *" # 20:00 KST, including weekends; after the 18:30 refresh.
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Send again even if already delivered today
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: portfolio-telegram
+  cancel-in-progress: false
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      - name: KST delivery date
+        id: date
+        run: echo "day=$(TZ=Asia/Seoul date +%F)" >> "$GITHUB_OUTPUT"
+      - uses: actions/cache@v4
+        with:
+          path: artifacts/telegram
+          key: telegram-portfolio-${{ steps.date.outputs.day }}
+      - name: Send daily paper portfolio
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          if [ "$FORCE" = "true" ]; then
+            uv run python scripts/send_telegram_portfolio.py --force
+          else
+            uv run python scripts/send_telegram_portfolio.py
+          fi

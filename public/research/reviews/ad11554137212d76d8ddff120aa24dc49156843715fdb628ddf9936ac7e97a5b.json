@@ -1,0 +1,24 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/voera/undated_[BUY] 브이티, 아자 아자 브이팅 !.md",
+ "school": "voera",
+ "values": {
+  "ticker": null,
+  "company": null,
+  "report_date": null,
+  "rating": "Buy",
+  "target_price": null,
+  "report_current_price": null,
+  "stated_upside_pct": null
+ },
+ "transcript_sha256": "79793f3dbc2629f820fb042044c8953b52d0e47c3ebc3d0e72948e303a8ca579",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+  "ocr_fallback"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=2 -->\n\n(원)\n\n40,000\n\n30,000\n\n20,000\n\n10,000\n\n0\n\n20-01 20-06 20-11 21-04 21-09 22-02 22-07 22-12 23-05 23-10 24-03\n\nVoera\n\n양인지 bw010323@naver.com\n조주현 cjhwhwngus99@naver.com\n최수경 waterglasses02@naver.com\n이선아 suna8117@naver.com\n\n| Contents I. Industry Analysis | 3p |\n| --- | --- |\n| II. Company Analysis | 8p |\n| Ⅲ. Investment Point | 10p |\n| IV.Valuation | 18p |\n| MEDL 9CTT |  |\n\n(백만 달러)\n10,000\n8,000\n6,000\n4,000\n2,000\n0\n\n(백만 원)\n14 13.34\n12\n10.43\n10\n8\n6\n2020A 2021A 2022A 2023A 2024E\n\n(천 달러)\n화장품 수출액 한류지수\n10,000 100\n8,000 80\n6,000 60\n4,000 40\n2,000 20\n0 0\n2013A 2015A 2017A 2019A 2021A 2023A\n\n120\n110\n100\n90\n80\n21-08 22-04 22-12 23-08 24-04\n\n(%) 전체 소매판매액 증감률 화장품 소매판매액 증감률 (%)\n20 20\n10 10\n0 0\n-10 -10-20 -20-30 -30\n2020-02 2021-02 2022-02 2023-02 2024-02\n\n(중국: 천 달러) (미국,일본)\n중국 미국 일본\n50,000 15,000\n40,000 12,000\n30,000 9,000\n20,000 6,000\n10,000 3,000\n0 0\n2013A 2015A 2017A 2019A 2021A 2023A\n\n(백만 달러) 수출금액 전년대비 증감률 (%)\n10,000 60\n8,000\n40\n6,000\n20\n4,000\n0\n2,000\n0 -20\n\n한국무역통계정보포털\n\n\n\n(억 달러)\n45\n40 CAGR 4.3%\n35\n30\n25\n2019A 2025E\n\n(억 달러)\n20.5\n20\nCAGR 0.8%\n19.5\n19\n18.5\n2019A 2025E\n\n8.21% 0.94%\n28.57%\n62.28%\n화장품 음반기획 및 라미네이팅 기타 매니지먼트\n\n(%)\n100\n80\n60\n40\n20\n0\n정철 강승곤 외 2인 큐브엔터 자기주식 기타주주\n\n(%)\n80\n58%\n60\n40\n20 14%\n0\n2020A 2021A\n\n(백만 원)\n200,000\n160,000 CAGR 25%\n120,000\n80,000\n40,000\n2019A 2020A 2021A 2022A 2023A\n\n\n\n(억 원)\n330\n260\n190\n120\n50\n1Q23 1Q24\n\n(억 원)\n150\n125\n100\n75\n50\n1Q23 1Q24\n\n(%)\n미국 중국\n10\n8\n6\n4\n2\n0\n2013A 2014A 2015A 2016A 2017A 2018A 2019A 2020A 2021A 2022A 2023A\n\n중국검험검역과학연구원종합테스트센터\n\n중국국가식품의약품감독관리총국\n\n(억 원)\n500\n400 +33%\n300\n200\n100\n2018A 2019A\n\n2019.01 2019.02 2019.03 2019.04 2019.05 2019.06 2019.07\n\n(개)\n오프라인 매장수 브이티 취급 매장수\n20,000\n15,000\n10,000\n5,000\n0\n1Q24 2Q24\n\n(억 원) 스킨케어 베이스 메이크업 포인트 메이크업\n300\n200\n100\n0\n2019A 2020A 2021A 2022A 2023A\n\n(개) 롭스 랄라블라 올리브영\n1,600\n1,200\n800\n400\n0\n2018A 2019A 2020A 2021A 2022A 2023A\n\n(억 원) 매출액 영업이익 (억 원)\n40,000 5,000\n4,000\n30,000\n3,000\n20,000\n2,000\n10,000\n1,000\n0 0",
+ "matches": [],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

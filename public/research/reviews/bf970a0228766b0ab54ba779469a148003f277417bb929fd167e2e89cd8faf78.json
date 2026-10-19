@@ -1,0 +1,55 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/voera/undated_[BUY] 실적이 넘쳐흘러, 이수페타시스.md",
+ "school": "voera",
+ "values": {
+  "ticker": null,
+  "company": null,
+  "report_date": "2025-11-26",
+  "rating": "Buy",
+  "target_price": 162300.0,
+  "report_current_price": 141600.0,
+  "stated_upside_pct": 14.6
+ },
+ "transcript_sha256": "8b345b5fcc98f4f6d065150e0acc33bdc8efa5a745a7a6f171b91ecf95c07773",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker",
+  "ocr_fallback;date_cover_only"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=18 -->\n\n# RECOMMENDATION\n\n# 목표주가 162,300원, 투자의견 BUY 제시\n\n# 동사의 2026E 목표주가는 원으로 매수 의견을 제시한다. 2025년 11월 26일 종가 기준 상승여력은 14.6%이다. 동사의 2026E 매출액은 1조 4,097억 원(YoY +27.8%), 영업이익 2,092억 원(YoY +24.0%)을 전망한다. 목표주가는 Peer P/E, EV/EBITDA\n\n| 목표주가 | 162,300원 Valuation 방식으로 산출하였다. |\n| --- | --- |\n| CAPA 확장에 따른 폭발적인 Q증가 |  |\n| 현재주가 | 141,600원 |\n\n동사는 글로벌 기판수요 증가에 대응하기 위해 CAPA를 월 6,500㎡에서 2025년 9,500㎡, 2028년 12,500㎡까지 순차적으로 확장할 계획이다. 회사는 CAPA 증설 효과로 2028년 매출이 2024년 대비 약 80% 성장할 것으로 제시했으며, 5공장 램프업 후연 매출은 최대 1.5조원 정도 확대될 것으로 전망된다. 동사는 AI 서버·네트워크 장비 공급 경험을 보유해 전방 수요 확대의 핵심 수혜가 될 전망이다.\n\n# 제품 믹스 개선에 따른 P 상승\n\nSequential MLB 확산에 따른 ASP 레벨업으로 동사 매출은 2025년 1조 1,301억 원에서 2030년 3조 333억 원까지 CAGR 22.4% 성장할 전망이다. 이는 단기 단가 상승이 아니라 AI 인프라 재편에 따른 구조적 고부가 제품 전환으로 ASP가 지속적으로 상향되는 국면에 진입했기 때문이다. 이와 함께, AI 트래픽 증가로 800G·1.6T급 네트워크 기판 수요가 본격화되며, 동사는 최고가 제품군(Sequential MLB 기준 약 800만 원, 기존 대비 2배+) 비중\n\n### 상승여력\n\n14.6%\n\n# STOCK PRICE\n\n160,000\n\n140,000\n\n120,000\n\n100,000\n\n80,000\n\n60,000\n\n40,000\n\n20,000\n\n0\n\n# STOCK DATA\n\n| 시가총액 | 10조 3,947억 원 확대를 통해 ASP 최상단을 추가로 끌어올릴 전망이다. |\n| --- | --- |\n| 52주 최고가 | 148,200원 Hidden point. 지정학적 프리미엄 |\n| 52주 최저가 | 20,422원 |\n\n# 미·중 갈등과 중국산 PCB 배제 흐름이 강화되면서, 동사는\n\n| 발행주식 수 | 73,409,219주 비중국계 공급사로서 탈중국화 수요의 직접적 수혜를 받을 것이다. |\n| --- | --- |\n| 외국인 지분율 | 32.27% |\n| Team 이수페타시스 |  |\n| Valuation Table |  |\n| (단위: 억堺원) | 2024A 2025F 2026F 2027F 2028F 2029F 2030F |\n| 매출액 | 8,369 11,031 14,097 17,708 23,106 29,768 30,333 |\n| (-)매출원가 | 6,803 9,184 11,607 14,292 18,243 22,939 22,946 |\n| 매출총이익 | 1,566 1,847 2,490 3,415 4,863 6,829 7,388 |\n| (-)판매비와관리비 | 547 812 1,034 1,282 1,632 2,017 2,020 |\n| 영업이익(EBIT) | 1,019 1,035 1,456 2,133 3,231 4,812 5,367 |\n| 기타수익<br>(-)기타비용<br>법인세차감전순이익<br>(-)법인세비용 | 400 195 335 360 429 546 683<br>500 184 201 217 234 238 227<br>918 1,047 1,590 2,276 3,426 5,120 5,822<br>178 237 363 521 801 1,248 1,434 |\n| 당기순이익 | 740 809 1,227 1,755 2,625 3,872 4,389 |\n\n### 김관우 kkw502147@naver.com\n\n| 김주환 | harryjhk@naver.com |\n| --- | --- |\n| 김재현 | darcy02@naver.com |\n| 김혜원 | myjxjx1@naver.com |\n\nIndustry\n1. PCB란?\n2. MLB 밸류체인\nCompany\n1. 기업개요\n2. 경쟁력\n3. 재무분석\n4. 주가분석\nInvestment Point\n1. Q의 확장\n2. P의 상승\n3. Hidden Point\nValuation\n1. 매출추정\n2. 비용추정\n3. PER & EV/EBITDA Valuation\n\n산업 분석\n\nVoera Equity Research Krafton\n\n# 1.PCB\n\n# PCB 정의 및 분류\n\nPCB는 ‘Printed Circuit Board’의 약자로, 인쇄회로기판을 의미한다. 구리 등 전도성 물질을 활용해 회로를 인쇄하듯 새겨 넣어, 저항, 커패시터, 집적회로 등 다양한 전자부품을 기판 위에 고정하고 전기적으로 연결하는 역할을 수행한다. PCB는 단순 ‘부품 고\n\n정’의 역할을 넘어, 부착된 부품 간 신호와 전력의 전달을 주관하는 ‘트레이스(경로)’를 제공한다. 최근 PCB 산업은 전방산업인 전자 장비의 소형화, 전성비 극대화, 신호 전달 고속화 수요에 고부가 가치 산업으로 진화 중이다.\n\n### [사진 1] PCB의 분류\n\n| 분류 | 특성 | 용도 |\n| --- | --- | --- |\n| MLB | 10층 이상 고다층, 고속 신호·대용량 데이터 처리 | 데이터센터,<br>AI가속기, 네트워크 스위치 |\n| HDI | 고집적, 미세 회로 패턴, 다층화 | 스마트폰, 태블릿, 모바일 기기 |\n| Package Substrate | 반도체 칩 패키징용 PCB (FC BGA, FC CSP, SiP, AiP 등) | CPU, GPU, 통신칩, 반도체 패키징 |\n| Rigid-Flex PCB | 경성 PCB와 연성 PCB가결합한 복합적 구조 | 고급 스마트폰, 군수, 항공, 의료기기 |\n\n자료: Future Market Insights, Voera\n\n# MLB\n\n## 고부가 PCB로서\n\n## MLB의 기술적 장벽\n\n이중 고부가 PCB인 MLB의 시장규모는 2025년 856.3억 달러에서 CAGR 5.4%씩 성장하여 2030년 1,114억 달러에 달할 것으로 전망된다. MLB는 ‘Multi-Layer Board’의 약자로, 기존 PCB 기판을 적층하여 제조한 다층 PCB 중에서도 10층 이상이 해당된다. 통상 10\\~20층을 저층 MLB, 20\\~30층을 중층 MLB, 30층 이상을 고층 MLB로 칭한다. 이러한 MLB의 적층 구조는 대용량의 데이터 처리와 고속 신호 전달에 특화된 설계로서, 전방 전자장비의 기술 고도화 추세에 맞춰 이루어진 범용 PCB의 진화 형태이다.\n\n이러한 배경으로, 고난도 공정인 MLB에 대한 수요가 최근 급증하고 있다. 이는 전방산업 첨단화에 따라 범용 PCB 수요가 고부가 MLB로 대거 이동하며 시장이 '스페셜티' 분야로 전환되었기 때문이다. MLB 제조에는 '기술적 해자'가 존재하며, 대부분 주문 제작(Customizing) 방식으로 이루어진다. Customizing 형태는 안정적인 매출을 확보하게 하며, 수주 실적(Reference)이 쌓여 지속적인 추가 수주를 기대할 수 있게 하는 중요한 요소이다.\n\n# Voera Equity Research Krafton\n\n### [사진 3] 기판의 구조\n\n### [사진 2] MLB 시장 성장 규모\n\n(억 달러)\n\n1,200 1114 CAGR 5.4% 1,000 800 600 400 200 0\n\n856.3\n\n2025E\t2030F\n\n자료: Cognitive Market Reports, Voera\n\n자료: Voera\n\n2. MLB 밸류체인\n\n# MLB의 밸류체인은 “후방 원재료 조달 < MLB 제작 < 전방 고객사 납품” 의 시계열로 살펴볼 수 있다.\n\n# 후방산업\n\n# MLB의 후방산업은 핵심 원재료인 CCL(동박적층판)과 PREPREG(절연접착제)로 나눠볼 수 있다.\n\nCCL은 막대기판(Core)에 구리동박(Copper Foil)이 부착된 형태이며, Core의 두께에 따라 Thin(얇은)과 Thick(두꺼운) Core로 나뉜다. 최근 MLB의 다층화 추세에 따라, 미세 회로와 고밀도 배선에 유리한 Thin Core에 대한 수요가 늘고 있다.\n\nPREPREG는 PCB의 층 사이를 연결하는 접착제이다. 유리섬유와 에폭시의 혼합으로 구성되며, 혼합 정도에 따라 A(액체)/B(유화)/C(경화) 상태로 분류할 수 있다. 이중 C(경화) 상태는 FR-4등급으로 높은 화염 저항성을 가졌으며, 기판 간 접착에 주로 활용된다. 따라서 FR-4등급의 경화 PREPREG가 사용된 PCB를 FR-4 PCB로 명명하기도 한다.\n\n최근 데이터 신호의 초고속성 및 무결성 확보가 강조되는 첨단 환경에서는 신호 손실을 최소화하고 발열을 효율적으로 관리하는 것이 핵심 기술로 부상했다. 이에 따라 핵심 원재료인 Thin core CCL과 PREPREG가 주목받고 있다.\n\n## MLB의 핵심 구조인 CCL과 PREPREG\n\n산업 분석\n\n| Voera Equity Research Krafton<br>[사진 4] CCL 및 PREPREG 생산 기업 분류 |  |  |  |  |  |\n| --- | --- | --- | --- | --- | --- |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | 기업 | 주력제품 | 특성 |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (한국) 두산전자 | High-end CCL | AI 반도체 붐의 최대 수혜자. 빅테크 공급망 진입. |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (일본) Panasonic | High-end CCL | 기존 CCL 강자였으나, 최근 두산전자와의 High-end 경쟁 심화 |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (대만) Elite Material | High-end CCL | 서버/네트워크 하이엔드 시장 강세 |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (중국) Kingboard Lamin<br>ates | 범용 CCL | 글로벌 CCL 생산량 1위. 대규모 생산능력으로 가격경쟁력 우위 |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | 자료: Verified Market Research, Voera<br>MLB 제조<br>MLB 제조는 고온 프레스 시 발생하는 수축 및 뒤틀림(Warpage)을 정밀하게 제어하는<br>기술이 제품의 품질을 결정하는 핵심이며, 이를 위해 고도의 복합 공정이 요구된다.<br>초고층 MLB 제조는 Thin Core(CCL)의 양쪽 동박에 미세한 내층 회로를 형성하는<br>작업으로 시작한다. 이어서, 높은 층수의 효율적 관리를 위한 8\\~10층 단위의 부분<br>적층체(Sub-Laminate)를 제작한다. 이 Sub-Laminate는 여러 개의 Thin Core를<br>PREPREG와 함께 쌓아 1차 경화 및 접착하여 만들어진다.<br>최종적으로는 이 완성된 Sub-Laminate들을 다시 PREPREG를 사이에 두고<br>재적층하는 Build-Up (SBU) 방식을 통해 구조를 완성한다. 그리고 마이크로<br>비아홀(Micro Via)를 포함한 정밀한 드릴링과 구리 도금을 통해 수십 개의 층을<br>전기적으로 연결하며, 외층 회로 형성 및 표면 처리를 거쳐 초고층 MLB로 탄생한다.<br>이렇듯 복잡하며 고난도인 MLB 제조 공정은 '기술적 해자'이며, 이것이 가능한 기업은<br>많지 않다.<br>[사진 5] MLB 제조 기업 분류 |  |  |  | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | 기업 | 강점 |  | 고객사 | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (한국) 이수페타시스 | 서버/AI가속기/네트워크, 초고다층 MLB |  | 구글, 엔비디아, 마이크로소프트, 인텔, 노키아, 시스코 등 | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (미국) TTM Tech. | 서버 및 통신 장비용, 초고다층 MLB |  | 델 (Dell), HPE, 시스코 등 | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (중국) Shennan Curc<br>uits | 통신 인프라 및 네트워크 장비용 초고다층 MLB |  | 화웨이, ZTE, 삼성 등 | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | (중국) Victory Giant | AI 및 HPC용 초고다층 MLB |  | 엔비디아, 구글, 아마존, AMD, 테슬라 등 | 4 |\n| 고난도 적층 공정의<br>연속인 MLB 제조과정<br>Industry | 자료: QYResearch Korea, Voera |  |  |  | 4 |\n\n# Voera Equity Research Krafton\n\n# 전방산업\n\nMLB의 전방 산업은 서버, AI 가속기, 네트워크 통신 장비 세 가지 핵심 인프라 축으로 구분된다. 이 세 가지 산업은 모두 '대(大) AI 시대 개막'이라는 거대한 흐름 아래 강력한 수요를 함께 공유하며 고속 성장을 보일 예정이다. 서버는 AI 모델 학습과 방대한 데이터 처리를 위한 필수적인 하드웨어 기반을 제공한다. AI 가속기는 고성능 병렬 연산을 담당하며 수요가 폭발적으로 증가하여 전체 AI 산업 성장을 주도하고 있다. 그리고 네트워크 통신 장비는 데이터의 전송의 고빈도화와 용량 거대화를 감당하기 위한 수요가 팽창하고 있다.\n\n# 서버 시장\n\n## MLB의 든든한 수요층 : 전방 서버기업\n\n글로벌 서버시장 규모는 2025년 1,292억 달러에서 CAGR 6.6%씩 성장하여 향후 2030년 1,778억 달러에 달할 것으로 전망된다. 클라우드 서비스 제공업체(CSP)를 필두로 기존 서버의 증설 수요는 물론 고사양화 수요가 증가하고 있다. 또한 AI 대전환을 비롯한 데이터 분석 활용 확대와 고화질 콘텐츠 상영 증가 등이 이러한 고사양화 추세를 보여주는 대표적 사례다.\n\n이에 서버 용량의 증설과 첨단 서버의 구축 및 HPC(High Performance Computing) 움직임이 확산하고 있다. 대표적인 3대 CSP업체인 Google Cloud Platform, Amazon Web Services, Microsoft Azure는 매년 CapEx 지출의 65\\~75%를 서버 구축에 투자하며, 그 규모는 증가 추세이다. Google의 경우, CapEx 집행액이 2022년 315억 달러에서 CAGR 43%씩 성장하여 2025년 920억 달러에 달할 것으로 전망된다.\n\n### [사진 7] Google CapEx 집행액\n\n(억 달러)\n\n### [사진 6] 글로벌 서버 시장 성장 규모\n\n| (억 달러)<br>2,000<br>1778<br>CAGR 6.6% |  |\n| --- | --- |\n| 1,500<br>1,000<br>500<br>0 | 1292 |\n| 1,500<br>1,000<br>500<br>0 |  |\n| 1,500<br>1,000<br>500<br>0 | 2025E 2030F |\n\n1,000 920 800 CAGR 43% 600 525 400 315 322 200 0 2022A 2023A 2024A 2025E\n\n자료: Vantage Market Research, Voera\n\nIndustry\n\n자료: Google, Voera\n\n# Voera Equity Research Krafton\n\n특히 최근 AWS의 경우, 부족한 서버 용량으로 인한 시스템 장애로 고객사들이 불편을 토로하고 있다. 이 점은 CSP들이 서버 용량을 지속적으로 증설하는 요인으로 작용할 것으로 예상된다.\n\n## MLB의 든든한 수요층 : AI 가속기\n\n# AI 가속기 시장\n\nAI가속기는 AI모델의 ‘학습’에서 시작되어 최근 ‘추론’ 수요의 폭발로 인해 그 수요가 비약적으로 증가하고 있다. 이중 하드웨어 가속기는 GPU와 ASIC으로 분화된다.\n\n# GPU\n",
+ "matches": [
+  {
+   "field": "target_price",
+   "line": 5,
+   "quote": "# 목표주가 162,300원, 투자의견 BUY 제시"
+  },
+  {
+   "field": "target_price",
+   "line": 9,
+   "quote": "| 목표주가 | 162,300원 Valuation 방식으로 산출하였다. |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 12,
+   "quote": "| 현재주가 | 141,600원 |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 7,
+   "quote": "# 동사의 2026E 목표주가는 원으로 매수 의견을 제시한다. 2025년 11월 26일 종가 기준 상승여력은 14.6%이다. 동사의 2026E 매출액은 1조 4,097억 원(YoY +27.8%), 영업이익 2,092억 원(YoY +24.0%)을 전망한다. 목표주가는 Peer P/E, EV/EBITDA"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 22,
+   "quote": "14.6%"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 61,
+   "quote": "| 매출총이익 | 1,566 1,847 2,490 3,415 4,863 6,829 7,388 |"
+  }
+ ],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

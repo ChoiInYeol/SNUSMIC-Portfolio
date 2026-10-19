@@ -24,6 +24,7 @@ data/bronze/_runs/
 # silver: clean price warehouse (rebuildable from bronze), rejected rows
 data/silver/prices/
 data/silver/_rejects/
+data/silver/reference/*.lock
 
 # local caches & session artifacts
 cache/

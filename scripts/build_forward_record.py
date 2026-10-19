@@ -6,7 +6,7 @@
 전에 커밋되었으므로 구조적으로 out-of-sample이다.
 
 채점 규칙 (단순·보수적, 전략 규칙 재현이 아니라 신호 자체의 성적):
-  * 진입 = 신호일(as_of) 다음 거래일 시가. 시가 없으면 그날 종가.
+  * 진입 = 신호일(as_of) 다음 거래일 시가. 시가 결측이면 unavailable (종가 대체 없음).
   * 수익률 = 현재 종가 / 진입가 − 1 (로컬 통화 — US는 USD 기준).
   * 피크 = 진입 후 최고 종가 기준 수익률.
   * 중복 제거 = 같은 티커가 7일 내 반복 신호되면 첫 신호만 기록.
@@ -87,7 +87,7 @@ def _score_entry(sig: dict, as_of: dt.date) -> dict:
     if after.empty:
         return _base_entry(sig, as_of, "pending")
     row = after.iloc[0]
-    entry_price = _finite_positive(row.get("open")) or _finite_positive(row.get("close"))
+    entry_price = _finite_positive(row.get("open"))
     closes = pd.to_numeric(after["close"], errors="coerce")
     closes = closes[closes.map(lambda x: math.isfinite(float(x)) and float(x) > 0)]
     if entry_price is None or closes.empty:

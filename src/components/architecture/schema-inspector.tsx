@@ -5,8 +5,9 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { lineage, LAYER_LABEL, type SchemaEntity, type SchemaMetadata } from "@/lib/schema-metadata";
 
-export function SchemaInspector({ entity, metadata, onSelect, onClose }: {
+export function SchemaInspector({ entity, metadata, onSelect, onClose, onFocus }: {
   entity: SchemaEntity | null; metadata: SchemaMetadata; onSelect: (e: SchemaEntity) => void; onClose: () => void;
+  onFocus?: (id: string) => void;
 }) {
   const links = entity ? metadata.relationships.filter((r) => r.kind === "foreign_key" && (r.source === entity.id || r.target === entity.id)) : [];
   return (
@@ -21,6 +22,7 @@ export function SchemaInspector({ entity, metadata, onSelect, onClose }: {
             <SheetDescription className="break-all">{LAYER_LABEL[entity.layer]} · {entity.schema_name} · {entity.kind}<br />{entity.location}</SheetDescription>
           </SheetHeader>
           <div className="flex flex-col gap-6 px-4 pb-8 text-sm">
+            {onFocus && <Button variant="outline" onClick={() => { onFocus(entity.id); onClose(); }}>이 테이블 주변으로 탐색</Button>}
             <div className="flex flex-col gap-1 text-muted-foreground">
               {entity.description && <p>{entity.description}</p>}
               <p className="font-mono text-xs tabular-nums">행 수: {entity.row_count?.toLocaleString("ko-KR") ?? "미집계"} · 컬럼: {entity.columns.length}</p>

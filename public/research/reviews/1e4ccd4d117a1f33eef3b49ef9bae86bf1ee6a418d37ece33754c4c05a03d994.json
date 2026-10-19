@@ -1,0 +1,95 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/yig/2025-11-10_피에스케이 (319660, KQ), Perfect Stock in Korea (발간일 240913) YIG Research.md",
+ "school": "yig",
+ "values": {
+  "ticker": "319660",
+  "company": "피에스케이",
+  "report_date": "2024-09-13",
+  "rating": "Buy",
+  "target_price": 28400.0,
+  "report_current_price": 21700.0,
+  "stated_upside_pct": 31.0
+ },
+ "transcript_sha256": "c3d0aef902a556df822e341a051730b9107e3baabec970621b6e3bfb9771b2f4",
+ "reasons": [
+  "ocr_fallback"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=1,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26 -->\n\n피에스케이(319660 KQ)\tYIG\n\nYonsei Investment Group\n\nPerfect Stock in Korea\n\n투자의견 BUY\n\n본 리서치 팀은 Historical PER Valuation 방식을 이용하여 피에스케이에 대해 목표주가\t투자의견\n\nBuy\n\n28,400원, 상승여력 31%로 투자의견 BUY를 제시한다.메모리 반도체 CAPA 증설로 인한 PR\n\nSTRIP 매출 성장과 함께 신규장비인 베벨 에처의 시장 침투는 동사의 수익구조를 다변화할 것이\n\n다.이러한 성장 동력을 근거로 2024년 매출 및 영업이익을 각각 4,284억원(YoY+21.8%),\n\n| 877억원(YoY+62.1%)으로 추정한다. | 목표주가 | 28,400W |\n| --- | --- | --- |\n|  | 현재주가 | 21,700W |\n| 메모리 반도체 CAPA 증설에 따른 전공정 수혜 | 상승여력 | 30.7% |\n| 2021년 DRAM 시장의 호황에 힘입어 매출 상승과 함께 주가가 상승하였고 이러한 흐름은 |  | YIG 44th Research Team |\n| 2022년까지 지속되었다.그러나 2023년 메모리 반도체 시장의 침체에 따라 전년 대비 23.7% | 안수진 | asj5763@yonsei.ac.kr |\n| 감소한 매출을 기록하였다.현재 DRAM시장 내 공급 감소에 대한 대응으로 삼성전자와 SK 하이 | 황희진 | kylejin@yonsei.ac.kr |\n| 닉스는 다시 DRAM 설비 증설을 계획하고 있다.더하여 레거시 메모리 시장 침투를 노리는 중국 | 이준섭 | wnstjq1231@yonsei.ac.kr |\n| CXMT의 신규 설비 확장에 따른 추가 매출 증가를 기대해 본다.이에 따라 2025년 동사의 대표 | 조세계 | sgsh0414@yonsei.ac.kr |\n| 장비인 PR STRIP 매출은 4,098억 원까지 증가할 것으로 전망된다. | Price Performance |  |\n| 60,000 |  |  |\n| 독점 구도 깨진 베벨 에처 | 50,000 40,000 |  |\n| 기존의 베벨 에처 시장은 LAM Research가 독점하고 있었으나, 동사는 2021년 최초로 베벨 | 30,000 |  |\n| 에칭 장비 PRECIA를 국산화에 성공하며 독점 구도를 개편하였다.특허소송 리스크 해소와 가격 경쟁력을 바탕으로 시장 내 입지를 탄탄히 할 수 있을 것으로 기대된다. | 20,000 10,000 |  |\n\n2020 2021 2022 2023 2024E 2025E 2026E\n\nStock Data\n\n매출액 (억원) 2,657 4,458 4,609 3,519 4,284 5,587 6,832\n\n기준날짜\t2024.09.13 영업이익(억원) 316\t941\t918 541\t877 1,389 1,871\n\nKOSDAQ\t733.20\n\n| 영업이익률(%) | 11.9 | 21.1 | 19.9 | 15.4 | 20.5 | 24.9 | 27.4 | 시가총액 | 6,286억원 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| 순이익 (억원) | 22.3 | 76.7 | 77.4 | 52.5 | 83.2 | 127.2 | 168.7 | 발행주식수 | 28,966,714주 |\n\n유통주식수\t19,417,792주\n\n순이익률(%)\t8.4\t17.2 16.8 14.9 19.4 22.8 24.7\n\n52주최고가\t39,100원 EPS (원)\t768 2,649 2,674 1,813 2,871 4,391 5,825\t52주최저가\t17,150원 외국인지분율\t29.42% BPS (원)\t7,390 9,838 12,197 13,552 14,840\t-\n\nDPS (원)\t150\t300 400 200\n\n-\t주요주주\t지분율\n\nROE (%)\t11\t30.3 24.11 14.08 18.24\t피에스케이홀딩스\t32.86%\n\n베어링자산운용\t6.02%\n\nPER (H)\t26.9 10.16 5.82 11.61 13.32\n\n국민연금공단\t5.03%\n\nPBR (배)\t2.74 2.68 1.26 1.55 2.46\t페이스케이우리사주\t0.11%\n\n# Table of Contents\n\n산업분석\t3P\n\n기업분석\t10P\n\n| 3 | 투자포인트 | 15P |\n| --- | --- | --- |\n| 4 | 매출추정 | 20p |\n| 5 | 비용추정 | 22p |\n| 6 | 밸류에이션 | 25p |\n\n피에스케oI(319660 KQ) /Perfect Stock in Korea\tPSIK\n\n반도체란?\n\n반도체 종류\n\n1.산업분석\n\n1.1 반도체의 종류\n\n반도체란 전기전도도가 도체와 부도체 중간 정도인 물질이다.순수한 상태의 반도체는 전기가 통하지 않는 부도체와 비슷한 특성을 보이지만,빛이나 열을 가하거나 특정 불순물을 첨가하면 도체처럼 전기가 흐르기 시작한다.\n\n기본적으로 개별부품(Discrete)과 집적회로(IC)로 구분한다.개별부품은 낱개로 되어있는 소자(Device)이며,제품 내에서 단일 기능을 수행한다.트랜지스터(Transistor),다이오드(Diode),LED(Light Emitting Diode)등이 속한다.집적회로(IC,Integrated Circuits)는 다이오드와 트랜지스터,캐패시터 등을 초소형화,집적화 시켜 전기적으로 동작하도록 한 것으로 개별부품보다 고난도의 작업을 수행해 하나의 칩 안에 다량의 소자가 들어간다.보통 반도체 산업에서의 반도체는 집적회로(IC,Integrated Circuits)를 의미한다.\n\n집적회로(IC)는 다시 정보 저장 및 기억 기능에 따라 메모리반도체와 비메모리반도체로 나원다.메모리 반도체의 경우,일반적으로 휘발성( V이latile)과 비휘발성(Non-V이latile)으로 분류되며 휘발성 메모리는 전원이 끊어지면 정보가 지워지게 되며 대표적으로 DRAM(Dynamic RandomAccessMemory)이 있다.비휘발성 메모리는 전원이 끊겨도 저장된 정보가 계속 남아있으며 대표적으로 NAND(Not-And)가 있다.시스템반도체는 정보의 연산,변환 등의 정보 처리를 목적으로 제작되는 반도체로 특성에 따라 아날로그,로직,마이크로(CPU,GPU 등),디스크리트,센서로 분류된다.\n\n그림 1.반도체 제품별 분류\n\nDiscrete\n\nDiode\n\nTransistor\n\nSemiconductor\n\nMemory\n\nIC\n\nSystem IC\n\nRAM\n\nROM\n\nCPU\n\nGPU\n\nAP\n\nDDI\n\nCIS\n\nDRAM\n\nSRAM\n\nFLASH\n\nMemory\n\nNOR FLASH\n\nNAND\n\nFLASH\n\n출처:언론종합,YIG\n\n피에스케ol(319660 KQ) /Perfect Stock in Korea\tPSIK\n\n1.2 반도체 8대 공정\n\n반도체 8대 공정은 웨이퍼 제조,산화,포토,식각,증착&이온주입,금속배선,EDS,패키징으로 구분된다.\n\n실리콘(Si),갈륨 아세나이드(GaAs)등을 성장시켜 만든 단결정 기둥을 적당한 두께로 얇게 썬 원판을 의미한다.웨\n\n이퍼 위에 다수의 동일 회로를 만들어 반도체 집적회로가 탄생하는 만큼,웨이퍼는 반도체의 기반이 된다.\n\n웨이퍼에 절연막 역할을 하는 산화막(SiO2)을 형성해 회로와 회로 사이에 누설전류가 흐르는 것을 차단하기 위한 공정이다.산화막은 또한 이온주입 공정에서 확산 방지막 역할을 하고,식각공정에서는 필요한 부분이 잘못 식각 되는 것을 막는 식각 방지막 역할도 한다.즉,산화공정을 통해 형성된 산화막은 반도체 제조 과정에서 든든한 보호막 역할 을한다.\n\n웨이퍼 위에 회로 패턴이 담긴 마스크 상에 빛을 비취 회로를 그리는 공정이다.감광액을 바르고 노광장비를 사용해 회로 패턴이 담긴 마스크에 빛을 통과시켜 웨이퍼에 회로를 찍어낸다.이후 웨이퍼에 현상액을 뿌려가며 영역을 선택적으로 제거해 회로 패턴을 형성한다.\n\n<u>웨이퍼에 액체 또는 기체의 부식액(Etchant)을 이용해 불필요한 부분을 선택적으로 제거한 후 반도체 회로 패턴 제</u>작하는 공정이다.포토 공정에서 형성된 감광액 부분을 남겨둔 채 나머지 부분을,부식액을 이용해 벗겨 냉으로써 회\n\n로를 형성한다.\n\n웨이퍼 위에 원하는 분자 또는 원자 단위의 박막을 입히는 공정이다.증착 방법으로는 물리적 기상증착방법(PVD),화 학적 기상증착방법(CVD)가 있다.이온주입 공정은 반도체에 전기적 성질을 갖게 하는 공정이다.순수한 반도체는 규소로 되어있어 전기가 통하지 않으나 불순물인 이온을 넣어줘 전류를 흐르게 하는 전도성을 갖게 된다.\n\n회로가 동작하기 위해서는 외부에서 전기적 신호를 가해주어야 한다.소자들을 동작 시키고 신호가 잘 전달되도록 반도체 회로 패턴에 따라 전기길(금속선)을 연결하는 작업을 금속 배선 공정이다.대표적인 재료는 알루미늄(AI)이 있다.\n\n반도체 8대 공정\n\n웨이퍼 제조공정\n\n산화공정\n\n포토공정\n\n식각공정\n\n증착&이온주입 공정\n\n금속 배선 공정\n\n전기적 특성검사를 통해 개별 칩들이 원하는 품질 수준에 도달했는지를 확인하는 공정이다.칩의 양품/불량품 선별, 불량 칩 중 수선 가능한 칩의 양품화 등의 과정을 포함한다.불량 칩을 선별해 패키징 공정 및 테스트 작업의 효율을 향상시킨다.\n\n전공정을 통해 완성된 웨이퍼의 반도체 칩은 전기 신호를 받을 수 없고,외부 충격에 의해 손상되기 쉽기 때문에 패키징을 통해 칩이 외부와 신호를 주고받을 수 있도록 길을 만들어주고 다양한 외부 환경으로부터 안전하게 보호받는 형태로 만든다.\n\nEDS\n\n패키징\n\n그림2.반도체벨류체인\n\n장비사\n\nPSIK\tLam\n\no\tE\n\nWONIK IPS EO TECHNICS\n\n소재사\n\nsoubrain SK실트론\n\nDONGJIN\to\n\nWONIK MATERIALS\n\n고객사\n\nSAMSUNG\n\n삼성전자 nVIDIA.\n\n(intel) Micron\n\n| 전공정 | 후공정 |\n| --- | --- |\n| ‘ | 증착&이온 |\n| 웨이퍼 제조 산화 포토 식각 주입 금속배선 EDS 패키징 |  |\n| S AP Systems DONGJIN PSIK SK실트론 | lotvacuum YIKC TechWing |\n| ShinEtsu V(주)예스티 S&STECH(주)에스앤에스텍 soubrain WONIK IPS STi UniTest | HANA |\n| FST Lam o UNISEM >TSE | sMco |",
+ "matches": [
+  {
+   "field": "ticker",
+   "line": 3,
+   "quote": "피에스케이(319660 KQ)\tYIG"
+  },
+  {
+   "field": "ticker",
+   "line": 82,
+   "quote": "피에스케oI(319660 KQ) /Perfect Stock in Korea\tPSIK"
+  },
+  {
+   "field": "ticker",
+   "line": 144,
+   "quote": "피에스케ol(319660 KQ) /Perfect Stock in Korea\tPSIK"
+  },
+  {
+   "field": "company",
+   "line": 3,
+   "quote": "피에스케이(319660 KQ)\tYIG"
+  },
+  {
+   "field": "company",
+   "line": 11,
+   "quote": "본 리서치 팀은 Historical PER Valuation 방식을 이용하여 피에스케이에 대해 목표주가\t투자의견"
+  },
+  {
+   "field": "company",
+   "line": 60,
+   "quote": "ROE (%)\t11\t30.3 24.11 14.08 18.24\t피에스케이홀딩스\t32.86%"
+  },
+  {
+   "field": "rating",
+   "line": 13,
+   "quote": "Buy"
+  },
+  {
+   "field": "target_price",
+   "line": 15,
+   "quote": "28,400원, 상승여력 31%로 투자의견 BUY를 제시한다.메모리 반도체 CAPA 증설로 인한 PR"
+  },
+  {
+   "field": "target_price",
+   "line": 21,
+   "quote": "| 877억원(YoY+62.1%)으로 추정한다. | 목표주가 | 28,400W |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 23,
+   "quote": "|  | 현재주가 | 21,700W |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 3,
+   "quote": "피에스케이(319660 KQ)\tYIG"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 15,
+   "quote": "28,400원, 상승여력 31%로 투자의견 BUY를 제시한다.메모리 반도체 CAPA 증설로 인한 PR"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 28,
+   "quote": "| 닉스는 다시 DRAM 설비 증설을 계획하고 있다.더하여 레거시 메모리 시장 침투를 노리는 중국 | 이준섭 | wnstjq1231@yonsei.ac.kr |"
+  }
+ ],
+ "pdf_url": "https://yig.yonsei.ac.kr/research/36",
+ "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-10_%ED%94%BC%EC%97%90%EC%8A%A4%EC%BC%80%EC%9D%B4%20%28319660%2C%20KQ%29%2C%20Perfect%20Stock%20in%20Korea%20%28%EB%B0%9C%EA%B0%84%EC%9D%BC%20240913%29%20YIG%20Research.md",
+ "correction": {
+  "ticker": "319660",
+  "company": "피에스케이",
+  "market": "KR",
+  "exchange": "KOSDAQ",
+  "_comment": "OCR 숫자 오인식: 파서가 349660으로 추출. 파일명/manifest 명시 티커 319660 (피에스케이 Inc, KOSDAQ)으로 교정."
+ }
+}

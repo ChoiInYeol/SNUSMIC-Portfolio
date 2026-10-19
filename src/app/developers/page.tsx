@@ -142,6 +142,7 @@ export default async function DevelopersPage() {
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Link href="/developers/architecture" className="nav-link font-mono text-xs font-bold">데이터 아키텍처 →</Link>
+          <Link href="/developers/review" className="nav-link font-mono text-xs font-bold">추출값 검토 →</Link>
           <ApiResourceLink uri="/api/v2" label="진입점" />
           <a
             href="/developers/swagger"

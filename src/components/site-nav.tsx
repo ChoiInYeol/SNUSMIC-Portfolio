@@ -12,6 +12,7 @@ const LINKS = [
   { href: "/stats", label: "통계" },
   { href: "/strategy", label: "전략" },
   { href: "/track", label: "전진 기록" },
+  { href: "/portfolio", label: "모의 비중" },
   { href: "/developers", label: "API" },
 ];
 

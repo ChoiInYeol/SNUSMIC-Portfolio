@@ -13,6 +13,11 @@ const exportsObject = {};
 const moduleRequire = (name) => {
   if (name === '@/data/report-performance.json') return raw;
   if (name === '@/lib/report-meta') return {};
+  if (name === '@/lib/report-contract') {
+    const contract = fs.readFileSync(path.join(__dirname, '../src/lib/report-contract.ts'), 'utf8');
+    const compiled = ts.transpileModule(contract, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
+    const result = {}; new Function('require', 'exports', compiled)(moduleRequire, result); return result;
+  }
   return require(name);
 };
 new Function('require', 'exports', outputText)(moduleRequire, exportsObject);

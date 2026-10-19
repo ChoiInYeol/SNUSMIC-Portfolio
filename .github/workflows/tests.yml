@@ -47,6 +47,9 @@ jobs:
           uv run python scripts/export_signals_api.py --check
           uv run python scripts/export_api_v2.py --check
           uv run python scripts/build_report_first_seen.py --check
+          uv run python scripts/build_research_review.py --check
+          uv run python scripts/build_search_index.py --check
+          uv run python scripts/paper_portfolio.py --check
           uv run python scripts/schema_metadata.py --check
 
       - name: Data catalog matches the committed artifacts

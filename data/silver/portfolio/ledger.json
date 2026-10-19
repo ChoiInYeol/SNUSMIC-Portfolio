@@ -1,0 +1,113 @@
+{
+ "schema_version": "1.0",
+ "as_of": "2026-10-19",
+ "started_at": "2026-10-19T18:42:46.208430+00:00",
+ "strategy": "W_allweather_chandelier",
+ "mode": "forward_paper",
+ "initial_capital_krw": 100000000.0,
+ "nav_krw": 100000000.0,
+ "cash_krw": 100000000.0,
+ "cash_weight_pct": 100.0,
+ "return_pct": 0.0,
+ "daily_return_pct": 0.0,
+ "fees_krw": 0.0,
+ "positions": [],
+ "history": [
+  {
+   "as_of": "2026-10-19",
+   "nav_krw": 100000000.0,
+   "daily_return_pct": 0.0,
+   "return_pct": 0.0,
+   "rebalanced": false
+  }
+ ],
+ "target_positions": [
+  {
+   "id": "KR:064290",
+   "name": "인텍플러스",
+   "weight_pct": 9.665192598122907
+  },
+  {
+   "id": "KR:195870",
+   "name": "해성디에스",
+   "weight_pct": 4.888607486240848
+  },
+  {
+   "id": "KR:033780",
+   "name": "KT&G",
+   "weight_pct": 5.451609947767005
+  },
+  {
+   "id": "KR:020000",
+   "name": "한섬",
+   "weight_pct": 6.396486075432996
+  },
+  {
+   "id": "KR:348210",
+   "name": "넥스틴",
+   "weight_pct": 4.545761742735667
+  },
+  {
+   "id": "KR:041830",
+   "name": "인바디",
+   "weight_pct": 4.271812959178287
+  },
+  {
+   "id": "KR:290650",
+   "name": "엘앤씨바이오",
+   "weight_pct": 6.418454104169534
+  },
+  {
+   "id": "KR:044490",
+   "name": "태웅",
+   "weight_pct": 4.040924812917822
+  },
+  {
+   "id": "KR:042520",
+   "name": "한스바이오메드",
+   "weight_pct": 4.856992816599969
+  },
+  {
+   "id": "KR:031980",
+   "name": "피에스케이홀딩스",
+   "weight_pct": 4.8250879060545
+  },
+  {
+   "id": "KR:119850",
+   "name": "지엔씨에너지",
+   "weight_pct": 3.7538711708934596
+  },
+  {
+   "id": "KR:036190",
+   "name": "금화피에스시",
+   "weight_pct": 5.903935207430057
+  },
+  {
+   "id": "KR:072710",
+   "name": "농심홀딩스",
+   "weight_pct": 5.668776806085671
+  },
+  {
+   "id": "KR:091580",
+   "name": "상신이디피",
+   "weight_pct": 7.312970152248822
+  },
+  {
+   "id": "KR:008770",
+   "name": "호텔신라",
+   "weight_pct": 4.417550609383781
+  },
+  {
+   "id": "US:MSFT",
+   "name": "MSFT",
+   "weight_pct": 3.6407466076514003
+  },
+  {
+   "id": "INDEX:AllWeather",
+   "name": "올웨더 합성지수",
+   "weight_pct": 13.94121899708728
+  }
+ ],
+ "status": "awaiting_next_close",
+ "method": "실제 기록 시작 후 공표 비중을 다음 가용 일봉 종가에서 추종. 국내외 환율 반영, 주식 편도 0.3%·지수 프록시 0.05%. 실계좌·실시간 호가·과거 백테스트 수익률 아님. 미체결 현금은 이자 없음."
+}

@@ -1,0 +1,79 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/2026-05-29_equity-research-global-unichip-corp.md",
+ "school": "smic",
+ "values": {
+  "ticker": null,
+  "company": null,
+  "report_date": "2026-05-29",
+  "rating": "Buy",
+  "target_price": 8610.0,
+  "report_current_price": 5140.0,
+  "stated_upside_pct": 67.5
+ },
+ "transcript_sha256": "c60e1219da796051ddac402194e8ec6c4cfd8e65c4fb11f86e8a1f1971b68b1c",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages= -->\n\n2026년 05월 23일\n\n# Global Unichip Corporation (TWSE:3443) Great Upside Coming!\n\n### Rating\n\n# Buy\n\n현재주가: TWD 5,140\n\n목표주가: TWD 8,610\n\nUpside: 67.5%\n\n|  | 아이디어를 칩으로: ASIC시대의 구현 파트너 |  | AI 칩 아이디어를 진짜 양산 가능한 칩으로 바꾸는 일은 누구의 몫인가? 그 답이 디자인하우스이며, 그 정점에 동사가 있다. 동사는 TSMC 생태계에 깊이 결합된 ASIC 디자인하우스로, 뛰어난 설계 역량과 첨단공정 최적화 능력, HBM PHY·UCIe 등 고속 연결용 IP를 무기로 고객의 칩을 완성한다. 지난해 수익 체력이 근본적으로 달라졌고, 올해 외형 성장과 수익성 개선이 처음으로 동반됐다. 여기에 늘어나는 ASIC 매출과 HBM4 전환의 업사이드까지, 답은 하나다 — 동사에 투자하라. |  |  |  |  |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n| Hi, Hynix |  |  |  |  |  |  |  |\n|  |  |  | HBM3까지는 Base Die의 역할이 단순했고 자체 팹에서 생산해 백엔드 설계 부담이 크지 않았다. 그러나 HBM4부터는 Base Die가 파운드리로 외주화되고 커스텀 로직과 PHY 최적화가 요구되면서, 낯선 공정·툴과 급증한 설계 물량을 동시에 감당해야 하는 상황에 놓였다. HBM4E 백엔드 설계 수요가 폭증한 가운데 가용 설계 인력은 HBM4 재설계에 묶인 상황, 바로 동사가 구원투수로 등판할 타이밍이다. |  |  |  |  |\n| Great Google, Terrific Tesla, Awesome ASIC |  |  |  |  |  |  |  |\n|  |  |  | 동사는 기확보 고객의 매출 가시성, 차세대 수주 확정, 신규 고객 유입이라는 세 축이 동시에 작동하며 거대한 성장 국면에 진입했다. Google과 Tesla는 고객사 본 업의 탄탄한 성장으로 매출 가시성을 끌어올리고 있으며, 이들의 차세대 추가 수주 역시 사실상 확실시된다. 여기에 Furiosa의 합류로 ASIC 레퍼런스가 한층더 |  |  |  |  |\n|  |  | 객을 흡수하며, 매출과 이익 체급이 한 단계 도약할 구간에 진입했다. | 두텁게 쌓이며 신규 수주 기대감도 커진다. 동사만의 강점을 앞세워 신규/기존 고 |  |  |  |  |\n|  | Valuation – Historical PER Method |  | 동사의 2027E EPS TWD 143.73에 Target 12MF PER 59.91x를 곱한 Target Price TWD 8,610, Upside 67.5%, 투자의견 Buy를 제시한다. 구글 CPU향 매출, Tesla AI5향 매출 볼륨이 커짐과 동시에 HBM향 매출까지 더해진다. 설령 HBM향 매출 |  |  |  |  |\n|  | \\<Estimated Income Statement> Estimated Income Statement | 이 실현되지 않더라도, 기존 ASIC 매출만으로도 Upside가 창출된다. |  |  |  |  |  |\n| (TWD in Millions) | 2022 | 2023 | 2024 | 2025 | 1Q26 | 2026E | 2027E 2028E |\n| Revenue | 24,040 | 26,241 | 25,044 | 34,141 | 11,448 | 81,209 | 145,397 196,418 |\n| YoY(%) | 59.1% | 9.2% | -4.6% | 36.3% | 35.1% | 63.0% 137.9% | 79.0% |\n| GPM(%) | 34.7% | 30.4% | 32.4% | 24.8% | 27.2% | 21.8% 18.8% | 17.1% |\n| Operating expenses | 4,236 | 4,007 | 4,305 | 4,104 | 1,289 | 4,512 4,809 | 5,116 |\n| Operating income (loss) | 4,099 | 3,969 | 3,803 | 4,350 | 28,473 | 1,824 13,208 | 22,484 |\n| OPM(%) | 17.1% | 15.1% | 15.2% | 12.7% | 15.9% | 16.3% 15.5% | 14.5% |\n| Interest income | 42 | 98 | 154 | 182 | 51 | 182 182 | 182 |\n| Interest expense | 4 | 6 | 4 | 4 | 4 2 | 4 | 4 |\n| Foreign exchange gain (loss) | 119 | (3) | - | 48 (150) | 41 | - | - |\n| Other income (expense) | 23 | 78 74 | 12 | 30 | 2 | 21 | 25 |\n| Abnormal gain (loss) | - | 11 23 | 50 | 36 | 8 | - | - |\n| Pretax income (loss) | 4,345 | 4,155 | 4,062 | 4,443 | 28,673 | 1,925 13,406 | 22,687 |\n| Income tax expense (benefit) | 634 | 647 | 612 | 673 | 278 | 2,024 3,425 | 4,329 |\n| Net income (loss) | 3,710 | 3,508 | 3,451 | 3,770 | 24,344 | 1,646 11,382 | 19,261 |\n| NPM(%) | 15.4% | 13.4% | 13.8% | 11.0% | 14.4% | 14.0% 13.2% | 12.4% |\n\n### 12M 주가추이\n\nMkt. Cap\tTWD 688.8 bn\n\n| (TWD)<br>6000<br>4000<br>2000<br>0<br>22.01 |  |\n| --- | --- |\n| (TWD)<br>6000<br>4000<br>2000<br>0<br>22.01 | 23.01 24.01 25.01 26.01 |\n| (원) |  |\n| Key Metrics<br>HBM4E 워크로드 20x<br>27년 NRE 매출 12.4 bn<br>TSMC 공장 거리 도보 5분 |  |\n\n### B/S Data (2025)\n\n자산 총계\tTWD 28.4 bn 부채 총계\tTWD 15.5 bn 자본 총계\tTWD 12.9 bn\n\n### 주요 주주\n\nTSMC\t34.84% CRMC\t3.60% Fubon Life Insurance 3.50%\n\n| Cost of revenue | 15,705 | 18,265 | 16,937 | 25,687 | 8,335 | 63,489 | 118,105 | 162,829 |\n| --- | --- | --- | --- | --- | --- | --- | --- | --- |\n| Gross profit | 8,335 | 7,976 | 8,108 | 8,454 | 3,113 | 17,720 | 27,293 | 33,589 |\n\n### SMIC 1팀\n\n팀장 52기 박승진\n\n팀원 52기 김혜민\n\n52기 정현우\n\n53기 서진우\n\n53기 양지안\n\n# KEY CHARTS\n\n<!-- <table id=\"t4\" /> -->\n| [Investment Thesis] 병목이라는 트리거로 무섭게 상승할 주가 |\n| --- |\n| <!-- <table parent_id=\"t4\" child_id=\"t5\" /> --> |\n| 출처: SMIC 1팀 |\n\n<!-- <table id=\"t5\" parent_id=\"t4\" /> -->\n| Trigger Rifle Shooting<br>AI exposure (%) 가벼우면서 노출도 높음 압도적인 주가상승 TP 8,610<br>HBM3/3E 설계 폭증에 백엔드 GUC NVIDIA 기대 가능<br>따른 인력 설계 Alchip<br>SK Hynix +67.5%<br>HBM4/4E 부족 병목<br>Marvell Broadcom<br>HBM 세대전환에 따라 생산 구조 변경에 따른 CP 5,140<br>백엔드 설계량 폭증과 설계 인력 병목 시가총액 26.05 26.12 |\n| --- |\n\n[Main Idea] 동사 프로젝트 파이프라인\nProject Front-end Back-end Foundry CoWoS Packaging Test 매출 (TWD bn) 영업이익 (TWD mn)\n기존 신규 Design/NRE Production/Turnkey IP NRE Turnkey IP NRE Turnkey\nCPU → Point ② : 기존 프로젝트 실적 본격화 + 후속/신규 사업 수주\nv1 100 4,000\nGoogle NRE Turnkey 3 50 2,000\nAxion 설계 일부 참여 Wafer Logistics / Yield Support\nv2 0 0\n25 26E 27E 28E 25 26E 27E 28E\n100 4,000\nMicrosoft Turnkey 3 50 2,000 Cobalt 200 Wafer Logistics / Yield Support 0 0 25 26E 27E 28E 25 26 27E 28E\nAI Accelerator / ASIC → Point ② : 기존 프로젝트 실적 본격화 + 후속/신규 사업 수주\n10 4,000\nFuriosa AI Spec-in + Turnkey 1 5 2,000 RNGD Spec-in / HBM integration / Physical Design / CoWoS Design / Wafer Logis / Manufacturing\n0 0\n25 26E 27E 28E 25 26 27E 28E\nAI5 100 4,000 Tesla Turnkey 1 No CoWoS Turnkey 1 50 2,000 Backend NRE / Wafer Logis. Yield Support 0 AI6.5 0 25 26E 27E 28E 25 26 27E 28E\nMemory → Point ① : SK하이닉스 향 HBM4E 백엔드 설계 NRE 수주\n4 4,000\nHBM4/4E NRE 2 2,000\nBase Die 백엔드 설계 0 0\n25 26E 27E 28E 25 26 27E 28E\nTotal Revenue Net Income\nCPO → Point ③ : TSMC COUPE 부상과 구조적 수혜\n200 20,000\n신규 수주 TSMC TSMC 100 10,000\n기대 COUPE CoWoS\n0 0\n25 26E 27E 28E 25 26 27E 28E\n\n출처: SMIC 1팀\n\n# CONTENTS\n\n| 0. 왕좌가 아니라, 왕좌가 통과해야 할 관문을 산다 – 인트로 | 04 |\n| --- | --- |\n\n| 1. 아이디어를 칩으로: ASIC시대의 구현 파트너 – 산업·기업 분석 | 05 |\n| --- | --- |\n\n| 2. 만년 후보에서 본진으로 – 투자 아이디어 | 09 |\n| --- | --- |\n\n| 3. Hi, Hynix – Point ① | 11 |\n| --- | --- |\n\n| 4. Great Google, Terrific Tesla, Awesome ASIC – Point ② |  | 15 |\n| --- | --- | --- |\n\n| 5. Creating Profit Opportunity – Point ③ |  | 19 |\n| --- | --- | --- |\n\n| 6. 매출 추정 | 20 |\n| --- | --- |\n\n| 7. Valuation – Historical PER Method | 23 |\n| --- | --- |\n\n| Appendix | 27 |\n| --- | --- |\n\n0. 왕좌가 아니라, 왕좌가 통과해야 할 관문을 산다– Intro\n\n<!-- <table id=\"t16\" /> -->\n| 도표 0. 병목이라는 트리거로 무섭게 상승할 주가 |\n| --- |\n| <!-- <table parent_id=\"t16\" child_id=\"t17\" /> --> |\n| 출처: SMIC 1팀 |\n\n<!-- <table id=\"t17\" parent_id=\"t16\" /> -->\n| Trigger Rifle Shooting<br>AI exposure (%) 가벼우면서 노출도 높음 압도적인 주가상승 TP 8,610<br>HBM3/3E 설계 폭증에 백엔드 GUC NVIDIA 기대 가능<br>따른 인력 설계 Alchip<br>SK Hynix +67.5%<br>HBM4/4E 부족 병목<br>Marvell Broadcom<br>HBM 세대전환에 따라 생산 구조 변경에 따른 CP 5,140<br>백엔드 설계량 폭증과 설계 인력 병목 시가총액 26.05 26.12 |\n| --- |\n\n병목은 어떤 흐름이 흐르다가 반드시 거쳐야만 하는 '대체 불가능한 좁은 길목'을 뜻한다. AI시대에서는 AI모델의 급격한 발전에 따라 인프라 투자 및 수요가 급격하게 증가했고, 이로 인해 여러 곳에서 병목들이 터져나왔다. 대표적으로 통신에 있어 광 섹터의 종목들이 병목에 힘입어 크게 상승했고, 전력 공급 측면의 종목들도 크게 올랐다.\n\n이러한 병목에서 수혜를 누리기 위해서 가장 중요한 것은 그 병목을 얼마나 꽉 쥐고 있는가이다. 병목을 혼자서 쥐고 있을때랑 여럿이서 나뉘어 쥐고 있을 때 그 수혜의 강도는 크게 달라진다. 또한 병목의 수혜에 “투자”하기 위해서는 그 병목이 크게 안 알려져 있어야 한다. 이미 모두가 아는 병목을 뒤늦게 사들이는 것은 알파가 아니다. 향후 12개월의 알파는, 왕좌가 한층 더 커지기 위해 반드시 통과해야 할 다음 관문에서 나온다.\n\n동사는 고객 ASIC의 백엔드 설계와 생산 턴키를 담당하는 디자인하우스이다. 사실상 유일한 경쟁자는 Alchip이지만, 둘을 가르는 결정적 변수는 TSMC와의 거리다. 지분 35%를 쥔 자회사로서 동사는 웨이퍼와 신공정에 누구보다 먼저 닿는다. 병목이 조여올수록, 초과이익은 생산능력을 먼저 쥔 쪽으로 흐르게 마련이다.\n\nCPU와 AI ASIC의 공급이라는 근본적인 초대형의 병목이 동시에 존재하는 상황에서, 동사는 Google CPU와 Tesla AI5를 통해 양쪽 병목 모두에 올라탔다. 기존에 비트코인 ASIC 등 대규모 턴키 매출로 이어질 메인스트림의 NRE나 턴키 프로젝트를 수주하지 못했으나, 근 1년동안 해당 프로젝트를 수주하고 양산에 돌입하면서, 특히 4월에 두 프로젝트가 모두 확인되면서 급격한 주가 상승을 겪었다. 초대형 병목에서 파생된 조그마한 기회를 차지하면서 나타난 상승이다. 본 서에서는, 해당 병목에서 자리를 차지하면서 동사가 안정적인 수혜를 누릴것으로 예상한다.\n\n거기에, 동사가 병목 자리를 꽉쥘수 있는 HBM4 설계 역량 병목이 발생했다. HBM4 시대로 가면서 Base Die가 로직화되고 파운드리 미세 공정에서 생산되는 변화를 맞았다. 하지만 SK 하이닉스는 아직 해당 미세 공정에 맞는 설계를 마칠 역량이 부족할 것으로 주장한다. 그에 대한 역량 부족이라는 병목에서, 이를 온전히 다 누릴 수혜주는 동사이다.\n\n시장은 동사의 HBM을 바라볼 때 “실행될 수 있는 옵션 중 하나” 정도로 바라본다. 본 서에서는 동사의 HBM4 base die 백엔드 설계 수주가 “실행될 수 밖에 없는 수주”라고 주장하고, 해당 병목을 기술적, 구조적 관점에서 동사가 온전히 누릴 것이라 주장한다.\n\n동사는 초대형 병목의 일부와, 소형 병목의 전부를 쥐면서 양쪽의 업사이드를 누리게 될 것이다.\n\n1. 아이디어를 칩으로: ASIC시대의 구현 파트너 – 산업·기업 분석\n\n1.1. 왜 지금 디자인하우스인가\n\nAI 반도체 시장의 중심은 범용 칩에서 고객 맞춤형 ASIC으로 옮겨가고 있다. 빅테크는 저마다 자사 모델과 데이터센터 환경에 맞는 자체 칩을 원하지만, AI ASIC은 설계도를 그리는 것만으로 완성되지 않는다. 연산 구조와 HBM 연결, 전력과 발열 조건, 패키징과 테스트, 그리고 양산 수 율까지 모두 맞아떨어져야 비로소 실제 데이터센터에 투입될 수 있다.\n\n그래서 디자인하우스의 역할도 달라지고 있다. 과거의 디자인하우스가 설계 용역에 가까웠다면, 지금은 고객의 칩 아이디어를 TSMC의 첨단공정과 패키징 위에서 실제 양산 가능한 제품으로 구현해내는 파트너에 가깝다. AI ASIC이 3nm 이하 공정과 HBM, CoWoS, 칩렛 구조를 동반하면서, 설계와 양산 사이를 잇는 구현의 난도가 그만큼 높아졌기 때문이다.\n\n1.2. 시스템 반도체 밸류체인 톺아보기\n\nAI ASIC으로 옮겨가는\n\n무게중심\n\n용역 업체에서\n\n구현 파트너로\n\n|  | 시스템 반도체 산업의 |  | 시스템 반도체 밸류체인은 칩을 기획·설계하고, 이를 제조 가능한 도면으로 구현하고, 웨이퍼를 |\n| --- | --- | --- | --- |\n|  | 분업 구조 |  | 생산하고, 패키징·테스트로 최종 제품을 만드는 단계로 나뉜다. 통상 팹리스가 아이디어·아키텍처 |\n|  |  |  | ·핵심 IP를, 파운드리가 웨이퍼 생산을, 후공정 업체가 패키징·테스트를 맡는다. 다만 기능을 내 재화하는 정도는 회사마다 다르다. NVIDIA 같은 대형 팹리스는 아키텍처와 핵심 IP를 자체 보유 |\n|  |  | 어도 이를 실제 칩으로 구현할 설계 역량과 경험이 부족한 경우가 많다. | 하고 파운드리에 제조만 맡기지만, 중소형 팹리스나 다수의 ASIC 개발 기업은 칩의 방향성은 있 |\n|  | 디자인 하우스 : |  | 디자인하우스는 바로 이 빈 공간을 메워 고객이 만들고 싶은 칩을 실제로 만들어낼 수 있게 돕 |\n|  | 설계와 제조 사이의 |  | 는다. 고객이 칩의 요구사항을 제시하면, 디자인하우스는 이를 파운드리 공정에 맞는 설계로 옮 |\n|  | 구현 파트너 |  | 기고, 필요한 IP를 통합하고, 검증과 생산 준비까지 이어받는다. 고객은 칩의 아키텍처와 제품 전 략이라는 핵심을 쥐고, 디자인하우스는 그 설계를 실제 제조 가능한 반도체로 구현하는 일을 맡는 셈이다. 이 역할은 첨단 공정으로 갈수록 중요해진다. 회로 배치와 배선, 공정 대응의 난도가 높아지는 탓에, 고객이 내부 인력만으로 모든 과정을 감당하기는 점점 더 어려워지기 때문이다. |\n|  | ASIC 고객사들이 |  | 디자인하우스는 고객사의 칩 아키텍처를 소유하지 않는다. Broadcom·Marvell 같은 IP 중심 팹리 |\n|  | 디자인하우스를 |  | 스는 SerDes 등 강력한 설계 자산을 무기로 칩을 함께 만들어주지만, 그 대가로 고객은 이들의 |\n|  | 찾는 이유 |  | IP와 플랫폼에 묶인다. 반면 디자인하우스는 칩을 구현하고 IP를 붙여 생산까지 연결할 뿐, 칩의 주도권은 고객에게 남긴다. 빅테크에게는 이 차이가 결정적이다. ASIC을 만드는 이유가 통제권 확보인데, NVIDIA 의존에서 벗어나려다 또 다른 공급자에 묶이면 그 명분이 흔들리기 때문이다. |\n| 5 |  |  |  |\n\n| 도표 1-1. 시스템 반도체 밸류체인 | 도표 1-2. 디자인하우스와 팹리스의 차이 |\n| --- | --- |\n|  |  |\n| 출처: Taiwan Semiconductor, SMIC 1팀 | 출처: 삼성전자 반도체 뉴스룸, SMIC 1팀 |\n\n<!-- <table id=\"t20\" /> -->\n| 전통 팹리스 디자인하우스 |\n| --- |\n| 주요 기업 Broadcom, Marvell GUC, Alchip |\n| 역할 <!-- <table parent_id=\"t20\" child_id=\"t21\" /> --> |\n| 칩 소유권 팹리스 기업 주문한 고객사 |\n| 수익구조 NRE + custom chip 공급 + 핵심 IP NRE + Turnkey 양산 대행 + 일부 IP |\n| 자체 설계 역량이 높은 빅테크,<br>주요 고객 Tier-1 hyperscaler 중심<br>Tier-2 CSP,AI 스타트업 |\n",
+ "matches": [
+  {
+   "field": "rating",
+   "line": 9,
+   "quote": "# Buy"
+  },
+  {
+   "field": "rating",
+   "line": 24,
+   "quote": "|  | Valuation – Historical PER Method |  | 동사의 2027E EPS TWD 143.73에 Target 12MF PER 59.91x를 곱한 Target Price TWD 8,610, Upside 67.5%, 투자의견 Buy를 제시한다. 구글 CPU향 매출, Tesla AI5향 매출 볼륨이 커짐과 동시에 HBM향 매출까지 더해진다. 설령 HBM향 매출 |  |  |  |  |"
+  },
+  {
+   "field": "target_price",
+   "line": 13,
+   "quote": "목표주가: TWD 8,610"
+  },
+  {
+   "field": "target_price",
+   "line": 24,
+   "quote": "|  | Valuation – Historical PER Method |  | 동사의 2027E EPS TWD 143.73에 Target 12MF PER 59.91x를 곱한 Target Price TWD 8,610, Upside 67.5%, 투자의견 Buy를 제시한다. 구글 CPU향 매출, Tesla AI5향 매출 볼륨이 커짐과 동시에 HBM향 매출까지 더해진다. 설령 HBM향 매출 |  |  |  |  |"
+  },
+  {
+   "field": "target_price",
+   "line": 86,
+   "quote": "| Trigger Rifle Shooting<br>AI exposure (%) 가벼우면서 노출도 높음 압도적인 주가상승 TP 8,610<br>HBM3/3E 설계 폭증에 백엔드 GUC NVIDIA 기대 가능<br>따른 인력 설계 Alchip<br>SK Hynix +67.5%<br>HBM4/4E 부족 병목<br>Marvell Broadcom<br>HBM 세대전환에 따라 생산 구조 변경에 따른 CP 5,140<br>백엔드 설계량 폭증과 설계 인력 병목 시가총액 26.05 26.12 |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 11,
+   "quote": "현재주가: TWD 5,140"
+  },
+  {
+   "field": "report_current_price",
+   "line": 86,
+   "quote": "| Trigger Rifle Shooting<br>AI exposure (%) 가벼우면서 노출도 높음 압도적인 주가상승 TP 8,610<br>HBM3/3E 설계 폭증에 백엔드 GUC NVIDIA 기대 가능<br>따른 인력 설계 Alchip<br>SK Hynix +67.5%<br>HBM4/4E 부족 병목<br>Marvell Broadcom<br>HBM 세대전환에 따라 생산 구조 변경에 따른 CP 5,140<br>백엔드 설계량 폭증과 설계 인력 병목 시가총액 26.05 26.12 |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 159,
+   "quote": "| Trigger Rifle Shooting<br>AI exposure (%) 가벼우면서 노출도 높음 압도적인 주가상승 TP 8,610<br>HBM3/3E 설계 폭증에 백엔드 GUC NVIDIA 기대 가능<br>따른 인력 설계 Alchip<br>SK Hynix +67.5%<br>HBM4/4E 부족 병목<br>Marvell Broadcom<br>HBM 세대전환에 따라 생산 구조 변경에 따른 CP 5,140<br>백엔드 설계량 폭증과 설계 인력 병목 시가총액 26.05 26.12 |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 15,
+   "quote": "Upside: 67.5%"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 24,
+   "quote": "|  | Valuation – Historical PER Method |  | 동사의 2027E EPS TWD 143.73에 Target 12MF PER 59.91x를 곱한 Target Price TWD 8,610, Upside 67.5%, 투자의견 Buy를 제시한다. 구글 CPU향 매출, Tesla AI5향 매출 볼륨이 커짐과 동시에 HBM향 매출까지 더해진다. 설령 HBM향 매출 |  |  |  |  |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 38,
+   "quote": "| Pretax income (loss) | 4,345 | 4,155 | 4,062 | 4,443 | 28,673 | 1,925 13,406 | 22,687 |"
+  }
+ ],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

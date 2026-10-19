@@ -271,7 +271,7 @@ def run_chandelier(
             for ticker, source, n_clubs in candidates[:slots]:
                 pos, cash = _try_enter(ticker, source, n_clubs, day, prices, positions, cash, nav_now, ticker_reports)
                 if pos is not None:
-                    atr_val = asof_value(prices[ticker]["atr"], day)
+                    atr_val = asof_value(prices[ticker]["atr"], day - dt.timedelta(days=1))
                     stop = pos["entry_price"] - CHANDELIER_ATR_MULT * atr_val if atr_val else pos["entry_price"] * 0.75
                     pos["stop"] = stop
                     positions[ticker] = pos
@@ -529,7 +529,7 @@ def run_dip_buy(
                     continue
                 shares = budget * (1 - COST_PER_SIDE) / (entry_price * _fx(watch["market"], day))
                 cash -= budget
-                atr_val = asof_value(df["atr"], day)
+                atr_val = asof_value(df["atr"], day - dt.timedelta(days=1))
                 stop = entry_price - DIP_ATR_MULT * atr_val if atr_val else entry_price * 0.80
                 pos = {
                     "shares": shares, "entry_price": entry_price, "entry_date": day,
@@ -1069,7 +1069,7 @@ def run_rr_trend(
                 entry_price = _px(df, day_ts, "open")
                 if entry_price is None or entry_price <= 0:
                     continue
-                atr20_val = asof_value(df["atr20"], day)
+                atr20_val = asof_value(df["atr20"], day - dt.timedelta(days=1))
                 if atr20_val <= 0:
                     continue
                 one_r = RR_STOP_MULT * atr20_val
@@ -1214,7 +1214,7 @@ def run_chandelier_parametric(
                 pos, cash = _try_enter(ticker, source, n_clubs, day, prices, positions, cash, nav_now, ticker_reports)
                 if pos is not None:
                     df = prices[ticker]
-                    atr_val = asof_value(_atr_column(df, atr_period), day)
+                    atr_val = asof_value(_atr_column(df, atr_period), day - dt.timedelta(days=1))
 
                     stop = pos["entry_price"] - atr_mult * atr_val if atr_val else pos["entry_price"] * 0.75
                     pos["stop"] = stop
@@ -1288,6 +1288,8 @@ def _dataset_fingerprint(
     """SHA-256 over every input that can influence backtest results:
     report stream, calendar span, raw OHLCV of every ticker, and USDKRW."""
     h = hashlib.sha256()
+    # Strategy accounting changes invalidate tuning/rebalance caches even on identical market data.
+    h.update(b"execution-v2-prior-close-entry-atr\n")
     for rdate, ticker, source, n_clubs in reports:
         h.update(f"{rdate.isoformat()}|{ticker}|{source}|{n_clubs}\n".encode())
     h.update(f"cal|{calendar[0].isoformat()}|{calendar[-1].isoformat()}|{len(calendar)}\n".encode())
@@ -2298,7 +2300,7 @@ def run_deepbuy_chandelier(
                 pos["cost"]        = new_cost
                 pos["entry_price"] = avg_entry   # blended avg for P&L tracking
                 # Stop is reset from combined highest-high (already tracked)
-                atr_val = asof_value(df["atr"], day)
+                atr_val = asof_value(df["atr"], day - dt.timedelta(days=1))
                 if atr_val:
                     new_stop = pos["highest"] - atr_mult * atr_val
                     pos["stop"] = max(pos.get("stop", 0.0), new_stop)
@@ -2322,7 +2324,7 @@ def run_deepbuy_chandelier(
                     continue
                 shares = budget * (1 - COST_PER_SIDE) / (entry_price * _fx(watch["market"], day))
                 cash -= budget
-                atr_val = asof_value(df["atr"], day)
+                atr_val = asof_value(df["atr"], day - dt.timedelta(days=1))
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
                 positions[ticker] = {
                     "shares": shares,
@@ -3276,7 +3278,7 @@ def run_kelly_chandelier(
                 shares = budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 cash -= budget
 
-                atr_val = asof_value(_atr_column(df, atr_period), day)
+                atr_val = asof_value(_atr_column(df, atr_period), day - dt.timedelta(days=1))
 
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 
@@ -4007,7 +4009,7 @@ def run_parking_core_chandelier(
                 shares = stock_budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 total_spent = budget   # taken from parking
 
-                atr_val = asof_value(_atr_column(df, atr_period), day)
+                atr_val = asof_value(_atr_column(df, atr_period), day - dt.timedelta(days=1))
 
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 
@@ -4205,7 +4207,7 @@ def run_kospi_core_chandelier_scaleout(
                 shares = stock_budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
                 total_spent = budget
 
-                atr_val = asof_value(_atr_column(df, atr_period), day)
+                atr_val = asof_value(_atr_column(df, atr_period), day - dt.timedelta(days=1))
 
                 stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
 

@@ -1,0 +1,45 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/voera/undated_[BUY] LG생활건강.md",
+ "school": "voera",
+ "values": {
+  "ticker": "051900",
+  "company": "LG생활건강",
+  "report_date": "2020-02-28",
+  "rating": "Buy",
+  "target_price": null,
+  "report_current_price": null,
+  "stated_upside_pct": null
+ },
+ "transcript_sha256": "bf439c7a325d50425a55fdad60763483b8a19d780519b9ff5e2cc617c59d517b",
+ "reasons": [
+  "missing_target_price",
+  "ocr_fallback;date_cover_only"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22 -->\n\n# VOERA\n\n2020.02.28\n\n•\n\n•\n\n•\n\n•\n\n••\n\n•\n\n# LG 생활건강 •••\n\n•\n\n•\n\n••\n\n•\n\n(051900)\t••\n\n•\n\n•\n\n•\n\n••\n\n•\n\n•\n\n••\n\n•\n\n# BUY 1,747,833 •••\n\n•\n\n••\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n| 유통주식수:15,618,197 | • •• • |\n| --- | --- |\n| • |  |\n| 현재 PER:32.3배 | • • • |\n| • |  |\n| 예상 EPS:51,406 | • • • |\n| • |  |\n| 예상 PER:34배 | • •• • |\n| 예상 Price:1,747,833원 | • •• |\n\n••\n\n•\n\n•\n\n•\n\n예상주가추세\t••\n\n••\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n•\n\n••\n\n•\n\n•\n\n•\n\n| 팀장 | • •• • |\n| --- | --- |\n| 오대영 | • •• • |\n| • |  |\n| 팀원 | • • • • |\n| • |  |\n| 김승훈 백승현 우지윤 | • • • |\n| 김은정 이주영 | •• • • |\n\n••\n\n•\n\n•\n\n•\n\n| 홍익대학교 중앙 금융동아리 | • • • |\n| --- | --- |\n| VOERA | • •• • |\n| • |  |\n\n••\n\n•\n\n•\n\n## 목차\n\n### 1.산업분석\n\n1.1 화장품 산업\n\n1.2음료산업\n\n1.3생활용품 산업\n\n### 2.기업분석\n\n2.1 화장품 사업\n\n2.2음료사업\n\n2.3생활용품 사업\n\n### 3.투자포인트1: ‘후’브랜드력\n\n3.1‘후’가 중국에서 고성장하고있는이유는?‘후’의 브랜드력!\n\n4.투자포인트2:3,4선 도시의 성장,새로운 기회 4.1새로운 성장동력이 될 3,4선 도시\n\n4.23,4선 시장에서 승자가 될LG생활건강\n\n4.33,4선 시장의 성공, 결국 면세점 매출의 증가로 나타날 것\n\n### 5.투자포인트3:Whoo’s next?\n\n5.1‘후’위주의 매출로 인한 큰 변동성,수익구조 다각화를 통해 기업가치 높이다\n\n5.2화장품 산업 최대 시장에 발을 내딛다.\n\n5.3 신흥 시장으로 진출\n\n6. Valuation\n\n6.1 Premium\n\n6.2 낮은 매출원가율,강한 마케팅력\n\n6.3 매출액, 코로나19 리스크로 인한 매출 저하 6.4 Tax rate 근 2년간의 실효세율 감안\n\n6.5 PER multiple\n\n7. RISK\n\n7.1 코로나19\n\nLG생활건강(051900)\n\nVOERA\n\n## 1.산업분석\n\n### 1.1 화장품 산업\n\n화장품 산업은 정밀화학기술이 요구되는 기술집약적 산업으로서,브랜드 파워를 보유한 대규모 기업들이 시장을 주도하고 있으나,자본력이 부족한 중소기업들도 시장참여가 용이한 산업이다.\n\n### 1.1.1 국내 화장품 산업 환경\n\n2018년 국내 화장품 산업 총 생산규모는 15조 5,028억 원으로 전년\n\n| 화장품 산업 총생산량은 14년 | 대비 14.7% 증가했으며, 이는 국내 GDP 증가율 3%, 제조업 GDP 증가 |\n| --- | --- |",
+ "matches": [
+  {
+   "field": "ticker",
+   "line": 29,
+   "quote": "(051900)\t••"
+  },
+  {
+   "field": "ticker",
+   "line": 205,
+   "quote": "LG생활건강(051900)"
+  },
+  {
+   "field": "company",
+   "line": 179,
+   "quote": "4.23,4선 시장에서 승자가 될LG생활건강"
+  },
+  {
+   "field": "company",
+   "line": 205,
+   "quote": "LG생활건강(051900)"
+  }
+ ],
+ "pdf_url": "https://www.voera.co.kr/forum/view/303333",
+ "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20LG%EC%83%9D%ED%99%9C%EA%B1%B4%EA%B0%95.md",
+ "correction": {}
+}

@@ -3,6 +3,7 @@
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Compass, CornerDownLeft, FileSearch, LineChart, Search } from "lucide-react";
+import { z } from "zod";
 import { cn, formatPct } from "@/lib/utils";
 
 type Entry = {
@@ -22,6 +23,8 @@ type Entry = {
 /** 기능 바로가기 — 검색어가 맞을 때만 종목보다 위에 뜬다 */
 const PAGE_ENTRIES: Entry[] = [
   { id: "p:architecture", kind: "page", title: "데이터 아키텍처", sub: "Bronze · Silver · Gold / FK · ETL 계보", href: "/developers/architecture", hay: "데이터 지도 medallion architecture 스키마 schema lineage 계보 bronze silver gold database", ret: null },
+  { id: "p:review", kind: "page", title: "추출값 검토", sub: "원문 근거 · 교정 제안", href: "/developers/review", hay: "review 검토 추출 오류 교정 원문", ret: null },
+  { id: "p:portfolio", kind: "page", title: "모의 포트폴리오", sub: "전진 평가 · 비중 · 텔레그램", href: "/portfolio", hay: "portfolio 포트폴리오 비중 수익률 텔레그램 모의 live", ret: null },
   { id: "p:developers", kind: "page", title: "API 레퍼런스", sub: "REST /api/v2 · 리소스 · Try it", href: "/developers", hay: "api 레퍼런스 개발자 developers rest v2 openapi 문서", ret: null },
   { id: "p:swagger", kind: "page", title: "Swagger UI", sub: "/api/v2/openapi.json", href: "/developers/swagger", hay: "swagger openapi api 스웨거", ret: null, hard: true },
   { id: "p:archive", kind: "page", title: "판결일보 축쇄판", sub: "지난 호 · 일별 신호 스냅샷", href: "/today/archive", hay: "축쇄판 지난호 지난 호 스냅샷 snapshot archive today 신문 판결일보", ret: null },
@@ -30,64 +33,17 @@ const PAGE_ENTRIES: Entry[] = [
 
 let indexPromise: Promise<Entry[]> | null = null;
 
-/**
- * 검색 색인 — 팔레트를 처음 열 때만 동적 import로 만든다.
- * report-performance.json이 이 컴포넌트 때문에 종목·학회 페이지 번들에 끌려오지 않는다.
- */
+const SearchDocumentSchema = z.object({ schema_version: z.literal("1.0"), as_of: z.iso.date(), entries: z.array(z.object({
+  id: z.string(), kind: z.enum(["stock", "report"]), title: z.string(), sub: z.string(),
+  href: z.string().refine(v => v.startsWith("/stocks/") || v.startsWith("/#r=")), hay: z.string(), ret: z.number().nullable(),
+})) });
+
+/** Fetch a build-time projection only on first use; retry failures on the next open. */
 function loadIndex(): Promise<Entry[]> {
-  indexPromise ??= Promise.all([import("@/lib/report-model"), import("@/lib/verdict")]).then(([model, verdict]) => {
-    const { reportDataset, getDisplayName, dateLabel } = model;
-    const { tickerSlug, schoolShort } = verdict;
-
-    const stocks = new Map<string, { title: string; ticker: string; market: string; count: number; latest: string }>();
-    const reportRows: { entry: Entry; date: string }[] = [];
-
-    for (const record of reportDataset.records) {
-      const name = getDisplayName(record);
-      const slug = tickerSlug(record);
-      if (slug) {
-        const current = stocks.get(slug);
-        if (current) {
-          current.count += 1;
-          if ((record.report_date ?? "") > current.latest) {
-            current.latest = record.report_date ?? "";
-            current.title = name;
-          }
-        } else {
-          stocks.set(slug, { title: name, ticker: record.ticker ?? "", market: record.market ?? "KR", count: 1, latest: record.report_date ?? "" });
-        }
-      }
-      // 판결문 딥링크는 대시보드에 깔리는 modern 시대 기록만 — 아카이브 시대는 종목 페이지로 닿는다
-      if (record.era === "modern" && record.report_date) {
-        reportRows.push({
-          date: record.report_date,
-          entry: {
-            id: `r:${record.source_name}`,
-            kind: "report",
-            title: name,
-            sub: `${schoolShort[record.school]} · ${dateLabel(record.report_date)}${record.ticker ? ` · ${record.ticker}` : ""}`,
-            href: `/#r=${encodeURIComponent(record.source_name)}`,
-            hay: [name, record.company, record.ticker, record.source_name].filter(Boolean).join(" ").toLowerCase(),
-            ret: record.return_latest_pct,
-          },
-        });
-      }
-    }
-
-    const stockEntries: Entry[] = [...stocks.entries()]
-      .sort((a, b) => b[1].count - a[1].count)
-      .map(([slug, s]) => ({
-        id: `s:${slug}`,
-        kind: "stock",
-        title: s.title,
-        sub: `${s.market} · ${s.ticker} · 리포트 ${s.count}건`,
-        href: `/stocks/${slug}`,
-        hay: `${s.title} ${s.ticker} ${slug}`.toLowerCase(),
-        ret: null,
-      }));
-    const reportEntries = reportRows.sort((a, b) => b.date.localeCompare(a.date)).map((row) => row.entry);
-    return [...PAGE_ENTRIES, ...stockEntries, ...reportEntries];
-  });
+  indexPromise ??= fetch("/research/search.json").then(async response => {
+    if (!response.ok) throw new Error(`검색 자료 요청 실패 (${response.status})`);
+    return [...PAGE_ENTRIES, ...SearchDocumentSchema.parse(await response.json()).entries];
+  }).catch(error => { indexPromise = null; throw error; });
   return indexPromise;
 }
 
@@ -100,6 +56,7 @@ export function CommandPalette() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [entries, setEntries] = useState<Entry[] | null>(null);
+  const [indexError, setIndexError] = useState("");
   const [query, setQuery] = useState("");
   const [activeIdx, setActiveIdx] = useState(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -130,7 +87,7 @@ export function CommandPalette() {
 
   useEffect(() => {
     if (!open) return;
-    loadIndex().then(setEntries);
+    loadIndex().then(data => { setEntries(data); setIndexError(""); }).catch(() => setIndexError("검색 자료를 불러오지 못했습니다. 닫고 다시 열어 주세요."));
     const timer = window.setTimeout(() => inputRef.current?.focus(), 0);
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -229,7 +186,7 @@ export function CommandPalette() {
         </div>
 
         <ul id="cmdk-list" ref={listRef} role="listbox" aria-label="검색 결과" className="max-h-[52vh] overflow-y-auto py-1.5">
-          {entries === null && <li className="px-4 py-8 text-center font-mono text-[11px] text-muted-foreground">색인 불러오는 중…</li>}
+          {entries === null && <li role={indexError ? "alert" : "status"} className="px-4 py-8 text-center font-mono text-[11px] text-muted-foreground">{indexError || "색인 불러오는 중…"}</li>}
           {entries !== null && results.length === 0 && (
             <li className="px-4 py-8 text-center text-sm text-muted-foreground">‘{query}’ — 일치하는 기록이 없습니다.</li>
           )}

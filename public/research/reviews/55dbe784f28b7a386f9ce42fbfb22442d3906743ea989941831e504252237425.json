@@ -1,0 +1,94 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/ewha/2024-07-26_[240726] 디아이티(110990).md",
+ "school": "ewha",
+ "values": {
+  "ticker": "110990",
+  "company": "디아이티",
+  "report_date": "2024-07-27",
+  "rating": "Buy",
+  "target_price": 28570.0,
+  "report_current_price": 18730.0,
+  "stated_upside_pct": 52.51
+ },
+ "transcript_sha256": "638cd6f9e74cead8e6818d961d2ccfeb15942c89f1a0eb5bbe4c44175c7ae14e",
+ "reasons": [
+  "ocr_fallback"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=1,2,3,4,5,6,7,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37 -->\n\n# 2024/07/27Summer Sssion\n\nWe seek further insight.\n\n# 디아이티(10990)\n\n# 레이저장비 다먹는 기업, D\n\n# Buy(신규)\n\n# 목표주가(신규) 28,50원\n\n현재주가K07/26)\n\n# 상승여력\t18,730원\n\n# 시가총액\t52.01%\n\n# 발행주식수\t3,542억원\n\n# 52주 최고가/최저가\t18,900천주\n\n# 90일평균거래대금\t32,350/9,940원\n\n# 외국인지분율\t148억원\n\n# 주주구성\t1.45%\n\n# 박종철(외10)\n\n| 기타 |  | 38.66%59% | 어에 |\n| --- | --- | --- | --- |\n| 주기수익물(%)절대수익률 상대수익를(KOSDAQ) | 1개월3개일6개월 12개월 |  |  |\n| 재무정보 매출액 | 2023(단우위:억원원% 배2024F 2025F | 2022 133 |  |\n| 영업이익 | 98 | 163 | 107 |\n| EBITDA | 18 39 EPS지배주주순이익 97 1310 19 40 | 9 | 6 |\n| 509 | 1,07420 | 37 | 717 |\n| 순차입금 | -117 -124 | 1,994 |  |\n| PER | -131 -155 | 11 |  |\n| PBR | 17 | 26 | 9 퓨주가250인, 자의경B |\n| EV/EBIDA | 2 2 | 1 | 1 |\n| ROE | 18 | 8 | -2 23 |\n| Researcher | 17 | 16 | 5 7 |\n| 김가영 |  |  | 디아이티주가추이(1개년) |\n| Ycand@ewhainnet손예지 |  |  | 210 |\n| P ? | nosyes21@ewhianet이서연 dtidu54@w。。hainet |  | 140 70 0 2023/07/28 |\n|  |  | 2024/03/28 | 2023/11/28 |\n| 2024/07/26 | 디아이티 | KOSDAQ | 자료: RX,EA |\n\n## Valuation\n\n## PER Valuation-투자의견 Buy와 목표주가 28,570원\n\n## PER Valuation 선택 근거 및 결과\n\n디아이티는반도체레이저 어닐링 장비,레이저커팅기, 웨이퍼검사장비 제조기업으로,2024F고마진레이저 어닐링장비\n\n수익성 개선으로 인한 EPS 성장과 반도체 기업으로의 체질 개선에 따른 밸류 리레이팅 기대돼 PER Valuation을주 가치 평가 수단으로 선정했다.동사의 2024F 예상 EPS를1,072원으로 추정한다.산출한 예상 EPS에 Target Multiple 26.50배를 곱해\n\n적정주가28,570원과 상승여력 52.51%를 도출했다.\n\n[그림1] PER Valuation\t(단위:십억원,천주,원)\n\n2024F 추정 당기순이익\t20\n\n유통주식수(천주)\t18,420\n\n2024F EPS\t1,072\n\nPER Mutiple\t26.66\n\n| 적정주가 | 28,565 |\n| --- | --- |\n| 적정주가(환산) | 28,570 |\n| 현재주가(07/26) | 18,730 |\n| 상승여력 자료:디아이티 EA추정 | 52.51% |\n\n## Peer Group 선정 이유\n\n동사의 적정주가를산출하기 위해 이오테크닉스,VEECO,HPSP를Peer Group으로 선정했다.이오테크닉스는 반도체향 레이저 어닐링 장비 및레이저커팅기 제조하는업체로,레이저사업부 매출비중이74%를 차지하며 동사와 취급 제품이 유사함에 따라Peer로선정했다.VEECO는반도체용 박막및 증착공정장비,에칭 장비,레이저 어닐링 장비를 제조하는 기업으로반도체레이저 장비 매출비증이70%를차지한다.VEECO가반도체장비회사로체질개선해2022년반도체매출비중 57%에서 1Q24기준70%까지 상승해 주가 상승한 것과 유사하게 동사는2023년부터 고마진 반도체 검사장비 매출비중 상승해 주가 상승할 것으로전망되므로VEECO가 4Q23에서1Q24로 갈당시 받은PER Multiple사용해 Peer로선정했다. HPSP는반도체향 어닐링 장비 및 웨이퍼 가공 장비를 제조하는업체로 반도체 어닐링 장비 매출비중이 93%를 차지하며, 2H24F 어닐링 장비 수주 증가할 전망임에 따라 동사와 유사한 기대감을 받는다는 점을 고려해 Peer로 선정했다.최종 선정한 각 기업의 12m Forward P/E를 통해 Average P/E 26.66를 산출했다.\n\n**[그림2] Peer Group Analysis**\n\n|  | Peer Group 영위사업 12m Fwd P/E Average P/E |\n| --- | --- |\n| 이오테크닉스 반도체 레이저 마커,레이저 응용 기기 제조 | 25.11 VEECO 반도체 레이저 어닐링 장비,에칭 장비 제조 30.60 26.66 |\n| HPSP 반도체 어닐링 장비,웨이퍼 가공 장비 제조 | 25.40 |\n| 자료:디아이티EA추정 |  |\n\nDCF Valuation\n\n## DCF Valuation선택 근거\n\n디아이티는 디스플레이·반도체 검사 장비 및레이저 장비 제조업을 영위하는 기업이다.동사는2024F부터 반도체 레이저 솔루션 장비의 적용처 확대 및 고객사 다각화가 예상된다.동사는 자산 내 설비자산 비중이 적으나 배당가치가 크기 때문에 RIM밸류에이션선정 시순이익과실제 기업가치의 차이로 과대추정될우려가있어DCF Valuation을 보조 가치평가 수단으로 선정했다.\n\n## DCF Valuation 결과\n\nWACC 산출을위해 COD와 COE를 추정했다. COD는평균차입금리 3.3%에서 절세효과 0.5%를차감한2.8%를 도출했다. 평균차입금리는1Q24이자비용을 총차입금으로 나누어 도출했으며,절세효과는2024F 추정 법인세율에 평균차입금리를\n\n곱해 도출했다.COE는무위험이자율에 Equity Risk Premium을급해 14.3%를 도출했다.무위험이자율은3년 만기국채 금리\n\n3.1%를가정하였으며, Equity Risk Premium은시장위험 프리미엄 7.4%에 베타값 1.52를 곱해 11.2%를 도출했다.\n\n영구성장률은0.0%로 가정하였으며 유통주식수 18,420천 주를 반영해 적정주가 26,310원과상승여력 40.47%를 도출했다.\n\n[그림3]DCF Valuation 기본 가정\n\n(단위: 십억원)\t2024F\n\n2025F\t2026F\n\n2027F\t2028F\n\n| 총현금흐름(A) | 16 | 33 | 52 | 63 | 82 |\n| --- | --- | --- | --- | --- | --- |\n| NOPLAT | 15 | 32 | 51 | 62 | 81 |\n| 감가상각비 | 1 | 1 | 1 | 1 | 1 |\n| 총투자(B) | -22 | 17 | 3 | -6 | 8 |\n| Capex | 0 | 0 | 0 | 0 | 0 |\n| 유형자산의감소 | 0 | 0 | 0 | 0 | 0 |\n| 무형자산의순투자 | 0 | 0 | 0 | 0 | 0 |\n| 영업관련자산부채변동 | -22 | 17 | 4 | -6 | 8 |\n| 자료:디아이티 EA추정 |  |  |  |  |  |\n\n| FCF(A+B) -6 50 55 57 89 |  |\n| --- | --- |\n| COE 14.3% Risk free rte 3.1% Equty risk premium 11.2% Market risk premium 7.4% Beta 1.52 COD 2.8%<br>2024F평균차입금리 3.3%<br>WACC 14.3%<br>영구성장률 0.0% | Operatin value of FCFF(C) 350 PV of Forecasted FCFF 160 PV of Teminal Value 190<br>비영업활동 투자자산(D) 140<br>Non-equity claims(E) 6 |\n| COE 14.3% Risk free rte 3.1% Equty risk premium 11.2% Market risk premium 7.4% Beta 1.52 COD 2.8%<br>2024F평균차입금리 3.3%<br>WACC 14.3%<br>영구성장률 0.0% | Curent Equity Value(C+D-E) 485 |\n| COE 14.3% Risk free rte 3.1% Equty risk premium 11.2% Market risk premium 7.4% Beta 1.52 COD 2.8%<br>2024F평균차입금리 3.3%<br>WACC 14.3%<br>영구성장률 0.0% | 현재주가(원)(07/26) 18,730<br>유통주식수 18,420 (천주) |\n| COE 14.3% Risk free rte 3.1% Equty risk premium 11.2% Market risk premium 7.4% Beta 1.52 COD 2.8%<br>2024F평균차입금리 3.3%<br>WACC 14.3%<br>영구성장률 0.0% | 추정주당가치(원) 26,309▲ 40.47% |\n\n디아이티(110990) \\| 레이저 장비 다 먹는 기업,DIT\n\n\\|I.산업분석 1.이미 반도체 좋은 건 다 알고 계시겠지만\\~\n\n# 올해 반도체 전망은 맑음입니다\n\n생성형A로\t오픈 AI의 ChatGPT가 급부상하며 미국 빅테크 기업들을 중심으로 데이터 서버 용량 확보 수요가 상승하고 데이터 센터\t있다.이에 빅테크 기업들은 AI서비스 개발을 위해 데이터 센터 투자 규모를 확대하고 있으며 글로벌 빅테크 수요증가\t기업의 AI 지출액은 2023년 700억 원에서 2024F 2,000억 원 까지 증가할 전망이다.모델 학습에 사용되는 데이터 수 및 용량의 증가는 정교한 AI 모델 구축에 필수적임에 따라 데이터를 보관하는 데이터 센터에 대한 수요는 동반 상승할 것으로 예상된다.AI 모델의 연산 속도 증가로 수요가 공급을 넘어서며 AI 데이터 센터를 확보하기 위한 빅테크 기업의 CAPEX 증가는 지속될 전망이다.\n\n생성형AI\t<u>GPU 수요는 빅테크 기업의 AI 모델 고도화로 AI 데이터 서버 용량이 증가함에 따라 동반 상승할 전망이다.</u> 발전으로 GPU 일반 서버는 파일 저장,웹호스팅,데이터베이스 관리 목적으로 설계된 반면 AI 서버는 학습,추론 특화된 수요상승\t설계로 다량의 정보를 동시에 처리하는 고용량 GPU 탑재가 필수적이다.동시에 많은 작업을 병렬로 수행할 수 있어 CPU 대비 높은 속도로 데이터 처리가 가능한 GPU는 AI에 대한 수요를 흡수할 전망이다.\n\n2024F 반도체 산업은 생성형 AI 서비스의 수요 증가에 따라GPU중심으로 성장할 전망이다.생성형 AI는 기존 데이터와의 비교 학습을 통해 데이터를 가공하는 능력이 요구됨에 따라 학습량이 높아 버전이 상승할수록 고성능 GPU를 요구한다.대표적인 생성형 AI ChatGPT는 버전 상승으로 외부 학습 데이터 양이 증가함에 따라 2023년에 출시한 GPT-4는 2020년에 나온 기존 버전인 GPT-3.5 대비 4배 큰 GPU의 탑재가 필요했다.2024F GPT-5 출시 예정으로 새로운 버전의 생성형 AI 출시에 따른 소비자의 수요는 증가할 전망이며 버전 상승함에 따라 외부 학습 데이터 양이 증가할 예정이다.빅테크 기업의 생성형 AI모델 고도화를 위한 기술 경쟁이 치열해짐에 따라 GPU 수요는 지속될 전망이다.\n\nGPU 대비\t<u>엔비디아의 GPU는 수요 대비 공급이 부족한 상황으로, GPU 시장의 확대는 GPU 지원하는 HBM 시장</u>\n\n성장세높을 성장으로 이어질 전망이다.GPU는 공급이 부족함에 따라 레거시 제품 수요까지 증가하고 있는 상황으로\n\nHBM\tGPU 수요가 상승하는 추세다.HBM은 3D 적층 구조를 사용해 디램 대비 공간 효율성이 높아 용량이 4배 상승함에 따라 GPU의 메모리 용량 증가를 위해 필수적이다.GPU 한 개에는 여러 개의 HBM 탑재가 필요해 GPU대비 HBM의 공급 요구량이 높아 HBM은 GPU대비 성장성이 크다.웨이퍼당 생산 가능한 칩의 수가 낮으며 메모리 제조사별 첨단 제조 라인으로 만들어낼 수 있는 제품 수량 한계가 존재하는 HBM은 생산하는\n\n전량이 GPU로 사용될 예정으로 공급 과잉 문제는 없을 예정이다.HBM의 생산가능 개수 한계 및 AI 고수요가\n\n<u>예상됨에 따라 2025F까지 GPU에 탑재될 HBM의 공급 부족 상황은 지속되며 HBM 시장은 성장할 전망이다.</u>\n\nEwha /nvestment Analysis Association\t4\n\n[그림4]글글로벌 빅테크 기업AI 관련 지출액 전망\n\n단위: 백억달러\n\n60\n\n48\n\n36\n\n| 24 | 52 |\n| --- | --- |\n| 28 | 38 |\n| 12 | 20 |\n\n7 <u>8</u> 7\n\n0\n\n2021 2022 2023 2024F2025F2026F 2027F\n\n자료:비즈니스인사이더, EA\n\n[그림6] AI서버용 GPU 시장 전망\n\n단위:억달러\n\n60\n\n48\n\n36\n\n24\t51\n\n41\n\n33\n\n12\t25\n\n8 14 19\n\n0\n\n2022 2023 2024F 2025F 2026F 2027F 2028F\n\n자료:Bloomberg, EA\n\nEwha Investment Analysis Association\n\n[그림5] ChatGPT버전별 GPU 요구량\n\n단위:만개\n\n5\n\n4\n\n3\n\n4배\n",
+ "matches": [
+  {
+   "field": "ticker",
+   "line": 134,
+   "quote": "디아이티(110990) \\| 레이저 장비 다 먹는 기업,DIT"
+  },
+  {
+   "field": "company",
+   "line": 7,
+   "quote": "# 디아이티(10990)"
+  },
+  {
+   "field": "company",
+   "line": 46,
+   "quote": "| 김가영 |  |  | 디아이티주가추이(1개년) |"
+  },
+  {
+   "field": "company",
+   "line": 50,
+   "quote": "| 2024/07/26 | 디아이티 | KOSDAQ | 자료: RX,EA |"
+  },
+  {
+   "field": "rating",
+   "line": 11,
+   "quote": "# Buy(신규)"
+  },
+  {
+   "field": "rating",
+   "line": 54,
+   "quote": "## PER Valuation-투자의견 Buy와 목표주가 28,570원"
+  },
+  {
+   "field": "target_price",
+   "line": 54,
+   "quote": "## PER Valuation-투자의견 Buy와 목표주가 28,570원"
+  },
+  {
+   "field": "target_price",
+   "line": 62,
+   "quote": "적정주가28,570원과 상승여력 52.51%를 도출했다."
+  },
+  {
+   "field": "target_price",
+   "line": 76,
+   "quote": "| 적정주가(환산) | 28,570 |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 17,
+   "quote": "# 상승여력\t18,730원"
+  },
+  {
+   "field": "report_current_price",
+   "line": 77,
+   "quote": "| 현재주가(07/26) | 18,730 |"
+  },
+  {
+   "field": "report_current_price",
+   "line": 131,
+   "quote": "| COE 14.3% Risk free rte 3.1% Equty risk premium 11.2% Market risk premium 7.4% Beta 1.52 COD 2.8%<br>2024F평균차입금리 3.3%<br>WACC 14.3%<br>영구성장률 0.0% | 현재주가(원)(07/26) 18,730<br>유통주식수 18,420 (천주) |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 62,
+   "quote": "적정주가28,570원과 상승여력 52.51%를 도출했다."
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 78,
+   "quote": "| 상승여력 자료:디아이티 EA추정 | 52.51% |"
+  }
+ ],
+ "pdf_url": "https://ewhainvest.com/research?bmode=view&idx=100404305&t=board",
+ "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/ewha/2024-07-26_%5B240726%5D%20%EB%94%94%EC%95%84%EC%9D%B4%ED%8B%B0%28110990%29.md",
+ "correction": {}
+}

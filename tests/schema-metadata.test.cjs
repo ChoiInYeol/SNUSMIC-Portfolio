@@ -19,6 +19,18 @@ const svg = compile('src/components/architecture/svg-export.ts', (id) => id === 
 const raw = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/metadata/schema.json'), 'utf8'));
 const doc = model.SchemaMetadataSchema.parse(raw);
 
+test('focus scopes and structural comparisons share the validated model', () => {
+  const id = 'silver.report_parsed';
+  const scoped = model.focusMetadata(doc, id, 'upstream');
+  assert.ok(scoped.entities.some(e => e.id === id));
+  assert.ok(scoped.entities.some(e => e.id === 'bronze.report_pdfs'));
+  assert.ok(!scoped.entities.some(e => e.id === 'serving.api_v2'));
+  const copy = structuredClone(doc); copy.generated_at = '2026-10-20T00:00:00Z'; copy.entities[0].row_count = 9999;
+  assert.deepEqual(model.compareMetadata(doc, copy), []);
+  copy.entities[0].columns.push({name: 'new_field', data_type: 'string', nullable: true, primary_key: false});
+  assert.ok(model.compareMetadata(doc, copy).some(c => c.id === copy.entities[0].id));
+});
+
 test('Python metadata snapshot satisfies the frontend boundary contract', () => {
   assert.ok(doc.entities.length >= 26);
   const bad = structuredClone(doc);

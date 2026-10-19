@@ -11,7 +11,7 @@ import { Empty, EmptyDescription, EmptyHeader, EmptyTitle } from "@/components/u
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useTheme } from "@/components/theme-provider";
-import { filterMetadata, LAYERS, LAYER_LABEL, SchemaMetadataSchema, type Layer, type SchemaEntity, type SchemaMetadata } from "@/lib/schema-metadata";
+import { compareMetadata, focusMetadata, lineage, filterMetadata, LAYERS, LAYER_LABEL, SchemaMetadataSchema, type Layer, type SchemaEntity, type SchemaMetadata } from "@/lib/schema-metadata";
 import { layoutMetadata, type GraphLayout } from "./graph-layout";
 import { MedallionLayerNode, OpenEntityContext, SchemaTableNode } from "./schema-nodes";
 import { SchemaInspector } from "./schema-inspector";
@@ -35,6 +35,10 @@ function Explorer() {
   const [selected, setSelected] = useState<SchemaEntity | null>(null);
   const [reload, setReload] = useState(0);
   const [layoutRevision, setLayoutRevision] = useState(0);
+  const [focusId, setFocusId] = useState<string | null>(null);
+  const [focusMode, setFocusMode] = useState("all");
+  const [comparison, setComparison] = useState<{ name: string; changes: { id: string; change: string }[] } | null>(null);
+  const [comparisonError, setComparisonError] = useState("");
   const opener = useRef<HTMLElement | null>(null);
   const canvas = useRef<HTMLDivElement | null>(null);
   const flow = useReactFlow();
@@ -65,9 +69,15 @@ function Explorer() {
 
   const filtered = useMemo(() => {
     if (!metadata) return null;
-    const doc = filterMetadata(metadata, query, layers);
+    const doc = filterMetadata(focusMetadata(metadata, focusId, focusMode), query, layers);
     return { ...doc, relationships: doc.relationships.filter((r) => edgeKinds.includes(r.kind)) };
-  }, [metadata, query, layers, edgeKinds]);
+  }, [metadata, query, layers, edgeKinds, focusId, focusMode]);
+
+  const highlighted = useMemo(() => {
+    if (!metadata || !focusId) return graph.edges;
+    const path = new Set([focusId, ...lineage(metadata, focusId, "upstream"), ...lineage(metadata, focusId, "downstream")]);
+    return graph.edges.map(e => ({ ...e, style: { ...e.style, opacity: path.has(e.source) && path.has(e.target) ? 1 : 0.15, strokeWidth: path.has(e.source) && path.has(e.target) ? 3 : 1 } }));
+  }, [metadata, graph.edges, focusId]);
 
   useEffect(() => {
     let active = true;
@@ -111,7 +121,7 @@ function Explorer() {
     if (!filtered || !graph.nodes.length) return;
     const style = getComputedStyle(canvas.current ?? document.documentElement);
     const color = (token: string) => `hsl(${style.getPropertyValue(token).trim()})`;
-    const svg = graphSvg(filtered, graph, { background: color("--background"), card: color("--card"), foreground: color("--foreground"),
+    const svg = graphSvg(filtered, { ...graph, edges: highlighted }, { background: color("--background"), card: color("--card"), foreground: color("--foreground"),
       muted: color("--muted-foreground"), border: color("--border"), accent: color("--architecture-fk"),
       etl: color("--architecture-etl"), layers: Object.fromEntries(LAYERS.map((layer) => [layer, color(`--architecture-${layer}`)])) as Record<Layer, string> });
     const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }));
@@ -125,6 +135,25 @@ function Explorer() {
       <div><h1 className="font-sans text-3xl font-bold tracking-tight sm:text-4xl">데이터 아키텍처</h1><p className="mt-2 text-sm text-muted-foreground">Bronze → Silver → Gold. 스키마와 처리 흐름을 한눈에.</p></div>
       <Button variant="outline" size="sm" onClick={() => setReload((v) => v + 1)} disabled={loading}><RefreshCw data-icon="inline-start" />다시 연결</Button>
     </div>
+    <div className="flex flex-wrap items-center gap-3">
+      <p className="max-w-full break-all text-xs text-muted-foreground">탐색 기준: {focusId ?? "테이블 선택 후 상세에서 주변 탐색"}</p>
+      <ToggleGroup type="single" value={focusMode} onValueChange={v => { if (v) setFocusMode(v); }} disabled={!focusId} aria-label="계보 탐색 범위">
+        <ToggleGroupItem value="all">전체</ToggleGroupItem><ToggleGroupItem value="neighbors">인접</ToggleGroupItem><ToggleGroupItem value="upstream">상류</ToggleGroupItem><ToggleGroupItem value="downstream">하류</ToggleGroupItem>
+      </ToggleGroup>
+      {focusId && <Button variant="ghost" size="sm" onClick={() => { setFocusId(null); setFocusMode("all"); }}>탐색 해제</Button>}
+      <label className="flex flex-col gap-1 text-xs text-muted-foreground">이전 메타데이터 JSON과 비교<Input aria-label="이전 메타데이터 JSON" type="file" accept=".json,application/json" disabled={!metadata} onChange={async e => {
+        const file = e.target.files?.[0]; if (!file || !metadata) return;
+        setComparisonError(""); setComparison(null);
+        try {
+          if (file.size > 10_000_000) throw new Error("10MB 이하 파일을 선택하세요.");
+          const before = SchemaMetadataSchema.parse(JSON.parse(await file.text()));
+          setComparison({ name: file.name, changes: compareMetadata(before, metadata) });
+        } catch { setComparisonError("메타데이터 계약과 파일 크기를 확인하세요."); }
+        e.target.value = "";
+      }} /></label>
+    </div>
+    {comparisonError && <Alert variant="destructive"><AlertTitle>비교 실패</AlertTitle><AlertDescription>{comparisonError}</AlertDescription></Alert>}
+    {comparison && <Alert><AlertTitle>{comparison.name} 대비 구조 변경 {comparison.changes.length}건</AlertTitle><AlertDescription><ul className="max-h-40 overflow-auto text-xs">{comparison.changes.map(c => <li key={`${c.id}-${c.change}`}>{c.change} · {c.id}</li>)}</ul>{!comparison.changes.length && "컬럼·키·계층·관계가 같습니다. 수집 시각과 행 수 차이는 제외합니다."}</AlertDescription></Alert>}
     <div className="flex flex-wrap items-center gap-3 border-y border-border py-3">
       <label className="relative min-w-0 flex-1 basis-60"><span className="sr-only">테이블·컬럼 검색</span><Search className="pointer-events-none absolute top-2.5 left-3 size-4 text-muted-foreground" /><Input aria-label="테이블·컬럼 검색" placeholder="테이블, 스키마, 컬럼 검색" value={query} onChange={(e) => setQuery(e.target.value)} className="pl-9" disabled={!metadata} /></label>
       <ToggleGroup className="architecture-filter" type="multiple" value={layers} onValueChange={(values) => setLayers(values.filter((v): v is Layer => LAYERS.includes(v as Layer)))} aria-label="계층 필터" disabled={!metadata}>
@@ -158,7 +187,7 @@ function Explorer() {
       {busy && <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-background/90" role="status"><Skeleton className="h-28 w-60" /><p className="text-sm text-muted-foreground">{loading ? "실제 메타데이터를 읽는 중…" : "ELK 자동 배치 중…"}</p></div>}
       {!busy && metadata && !filtered?.entities.length && <Empty className="h-full"><EmptyHeader><EmptyTitle>{metadata.entities.length ? "검색 결과가 없습니다" : "등록된 테이블이 없습니다"}</EmptyTitle><EmptyDescription>{metadata.entities.length ? "검색어 또는 계층 필터를 바꿔 보세요." : "메타데이터 서버의 스키마 설정을 확인하세요."}</EmptyDescription></EmptyHeader></Empty>}
       {!busy && graph.nodes.length > 0 && <OpenEntityContext.Provider value={open}>
-        <ReactFlow nodes={graph.nodes} edges={graph.edges} nodeTypes={nodeTypes} onNodeClick={(_, node) => { if (node.type === "schema") open(node.data.entity); }}
+        <ReactFlow nodes={graph.nodes} edges={highlighted} nodeTypes={nodeTypes} onNodeClick={(_, node) => { if (node.type === "schema") open(node.data.entity); }}
           nodesDraggable={false} nodesConnectable={false} edgesReconnectable={false} deleteKeyCode={null} minZoom={0.04} maxZoom={2} colorMode={resolvedTheme}
           fitView fitViewOptions={{ padding: 0.12, maxZoom: 0.85 }} aria-label="데이터 스키마 그래프">
           <Background gap={24} color="hsl(var(--border))" /><Controls showInteractive={false} />
@@ -167,7 +196,7 @@ function Explorer() {
     </div>
     <p className="text-xs leading-5 text-muted-foreground">실선 FK: 참조 테이블 → 대상 키 · 점선 ETL: 입력 → 산출물. 노드를 선택하면 전체 컬럼과 상·하류 계보를 볼 수 있습니다. 검색·필터는 SVG에도 적용됩니다.</p>
     {metadata && <p className="break-all font-mono text-[10px] text-muted-foreground">{metadata.source === "database" ? "DB 메타데이터 실시간 조회" : "파일 레이크 메타데이터 · PK/FK를 추측하지 않음"} · {metadata.generated_at} · {ENDPOINT}</p>}
-    {metadata && <SchemaInspector entity={selected} metadata={metadata} onSelect={setSelected} onClose={() => { setSelected(null); window.setTimeout(() => opener.current?.focus(), 0); }} />}
+    {metadata && <SchemaInspector entity={selected} metadata={metadata} onSelect={setSelected} onFocus={id => { setFocusId(id); setFocusMode("neighbors"); setQuery(""); setLayers(LAYERS); }} onClose={() => { setSelected(null); window.setTimeout(() => opener.current?.focus(), 0); }} />}
   </div>;
 }
 

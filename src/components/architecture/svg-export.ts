@@ -26,11 +26,12 @@ export function graphSvg(doc: SchemaMetadata, graph: GraphLayout, palette: Graph
     shapes.push(text(group.position.x + 24, group.position.y + 80, group.data.label + "", 18, true));
   }
   for (const edge of doc.relationships) {
+    const presentation = graph.edges.find(e => e.id === edge.id)?.style;
     const source = positions.get(edge.source), target = positions.get(edge.target);
     if (!source || !target) continue;
     const sx = source.x + NODE_WIDTH, sy = source.y + 50 + nodeHeight(entities.get(edge.source)!) / 2;
     const tx = target.x, ty = target.y + 50 + nodeHeight(entities.get(edge.target)!) / 2;
-    shapes.push(`<path d="M${sx} ${sy} C${sx + 65} ${sy},${tx - 65} ${ty},${tx} ${ty}" fill="none" stroke="${esc(edge.kind === "foreign_key" ? palette.accent : palette.etl ?? palette.muted)}" stroke-width="1.8"${edge.kind === "etl" ? ' stroke-dasharray="6 4"' : ""} marker-end="url(#${edge.kind})"/>`);
+    shapes.push(`<path d="M${sx} ${sy} C${sx + 65} ${sy},${tx - 65} ${ty},${tx} ${ty}" fill="none" stroke="${esc(edge.kind === "foreign_key" ? palette.accent : palette.etl ?? palette.muted)}" stroke-width="${Number(presentation?.strokeWidth ?? 1.8)}" opacity="${Number(presentation?.opacity ?? 1)}"${edge.kind === "etl" ? ' stroke-dasharray="6 4"' : ""} marker-end="url(#${edge.kind})"/>`);
     if (edge.kind === "foreign_key") shapes.push(text((sx + tx) / 2, (sy + ty) / 2 - 5, "FK", 10));
   }
   for (const entity of doc.entities) {

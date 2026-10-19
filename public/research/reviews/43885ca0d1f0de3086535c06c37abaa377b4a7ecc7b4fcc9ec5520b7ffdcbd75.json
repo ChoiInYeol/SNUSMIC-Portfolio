@@ -1,0 +1,39 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/smic/2014-06-24_Equity Research, KG ETS.md",
+ "school": "smic",
+ "values": {
+  "ticker": null,
+  "company": null,
+  "report_date": "2014-06-24",
+  "rating": "Buy",
+  "target_price": 5850.0,
+  "report_current_price": 4825.0,
+  "stated_upside_pct": 21.0
+ },
+ "transcript_sha256": "5c16dcb4528019695064397da3578cecfd430acb7f7a05e5a8b1fb1a1efa49bc",
+ "reasons": [
+  "non_us_kr_or_unparsed_market;missing_ticker"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages= -->\n\n# Equity Investment Research\n\n# KG ETS (A151860)\n\n## 쓰레ww기가 곧 돈이다\n\n1. 확실한 Cash Cow, 폐기물 처리 부문\n- 사업부 간의 시너지 효과로 배가 되는 경쟁력\n- 경제 성장과 산업단지 증가로 인한 수혜 예상\n2. 잘나가는 고순도 산화동\n- 전방 산업 PCB 가 크고 있다!\n- 가격 경쟁력과 기술력으로 시장 점유율 1 위를\n- 74.1% CAPA 증설로 수익성은 더욱 높아진다\n3. 스팀 매출, 퀀텀점프가 기대된다!\n- MTV 산업용 스팀 신규 공급으로 실적 레벨업!\n- 남이 버린 폐열로 수익성 UP!\n- 독점적 지위를 바탕으로 한 안정적 성장\n4. ISSUE & RISK\n- 동가격 하락 이슈\n- 보호예수 해제\n\nFinancials\n\n## Year to 31 December\n\nRevenue (억원)\n\nYoY(%)\n\nOP (억원)\n\nOPM\n\n## 12A\n\n940\n\n## 13A\n\n1008\n\n7%\n\n187\n\n19%\n\n156\n\n17%\n\n### 2014년 5월 31일\n\nRating\n\n# BUY\n\n목표주가: 5850 원\n\n현재주가: 4825 원\n\n상승여력: 21%\n\nTrading data\n\n| 시가총액 | 52wk 주가범위 - 3950 | 1737 억원 5940 |\n| --- | --- | --- |\n| 발행주식수 |  | 주 |\n| 유통비율 |  | 89.8% |\n\n36,000,000\n\n### 지킨다\n\nBalance sheet data\n\n| 순자산 | 1,062 억원 |\n| --- | --- |\n| PBR | 0.94 배 |\n| ROE | 10.82% |\n| ROA | 8.37% |\n\nchart\n\n## 14E\n\n1193\n\n18%\n\n240\n\n20%\n\n## 15E\n\n1427\n\n20%\n\n308\n\n22%\n\n## 16E\n\n1597\n\n12%\n\n343\n\n22%\n\n주요 주주\n\n케이지 외 5 인: 45.05%\n\nKB 자산운용: 7.23%\n\nNI (억원)\t98\t125\t175\t230\t259\n\nYoY(%)\n\nEPS\n\nPE(X)\n\nSource : SMIC\n\n28%\n\n347\n\n13.90\n\n272\n\n17.72\n\n40%\n\n480\n\n10.04\n\n32%\n\n633\n\n7.62\n\n13%\n\n709\n\n6.80\n\n팀장\n\n팀원\n\nSMIC 2 팀\n\n윤정환\n\n공내영 김민희\n\n장준호 정용균\n\n# 1. 산업분석\n\n# 1.1 폐기물 처리 산업\n\n폐기물은 크게 사업장에서 발생하는 사업장폐기물과 그 외의 폐기물인 생활폐기물로 구분된다. 여기서 사업장폐기물은 발생특성에 따라 다시 사업장일반폐기물, 건설폐기물, 지정폐기물(폐유독물)로 세분화된다.\n\n폐기물 처리업은 폐기\n\n물 수집 및 운반, 중간\n\n처리업, 최종처리업으로\n\n구별됨\n\n이러한 폐기물들을 처리하는 폐기물 처리업은 크게 폐기물 수집 및 운반업, 소각 및 처리를 담당하는 폐기물 중간처리업, 매립 등의 방법으로 최종 처리하는 폐기물 최종처리업으로 구별된다.\n\n**그림 1. 폐기물 분류 : 그림 2. 폐기물 처리업 과정별 분류**\n\n| 출처: SMIC Research 2 Team | 출처: SMIC Research 2 Team |\n| --- | --- |\n\n경기변동과 밀접한\n\n관련이 있는 사업장\n\n폐기물 처리업\n\n특히, 사업장 폐기물 처리업은 경기변동과 밀접한 관련이 있다. 사업장 폐기물 발생량은 각종 산업의 확대 또는 축소 등에 따라 변화하기 때문이다. 앞으로는 경제성장과 함께 제품의 라이프 사이클 단축으로 폐기물 발생량이 꾸준히 증가할 것으로 보인다.\n\n폐기물 처리업은 정\n\n부의 허가 사업으로\n\n신규진입이 힘들다\n\n폐기물 처리업은 정부의 허가 사업이며, 소각 시설 및 토지 등에 대한 투자가 크기 때문에 일반 사업자들이 이러한 지역 환경사업에 신규 진입하는 것이 어렵다. 또한, 수집운반 업체와 중간처리업자, 매립 업체는 각각의 정부 허가 사업이기 때문에 서로 경쟁하지 않는다는 특징이 있다.\n\n1.2 집단에너지사업\n\n집단에너지 사업은\n\n크게 지역 냉-난방사\n\n업과 산업단지 집단\n\n에너지사업으로 나뉨\n\n집단에너지 사업이란 대규모 주택단지와 건물, 산업단지와 같이 다수의 에너지를 필요로 하는 밀집된 지역을 대상으로 필요한 열 또는 전기를 열병합발전소에서 생산하여 공급해 주는 시스템을 말한다. 집단에너지 사업은 크게 주택, 상가 등 각종 건물을 대상으로 열과 전기를 공급하는 지역 냉-난방사업과 산업단지 입주업체를 대상으로 고정용 열",
+ "matches": [
+  {
+   "field": "target_price",
+   "line": 60,
+   "quote": "목표주가: 5850 원"
+  },
+  {
+   "field": "report_current_price",
+   "line": 62,
+   "quote": "현재주가: 4825 원"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 64,
+   "quote": "상승여력: 21%"
+  }
+ ],
+ "pdf_url": null,
+ "markdown_url": null,
+ "correction": {}
+}

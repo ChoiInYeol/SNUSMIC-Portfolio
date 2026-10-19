@@ -49,6 +49,22 @@
    "updated_at": null
   },
   {
+   "bytes": 2635,
+   "files": 1,
+   "format": "json",
+   "id": "bronze.paper_targets",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/portfolio/published-targets/*.json",
+   "producer": [
+    "paper_portfolio.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
    "bytes": null,
    "files": null,
    "format": "jsonl",
@@ -218,7 +234,7 @@
    "updated_at": null
   },
   {
-   "bytes": 9365995,
+   "bytes": 9355805,
    "files": 107,
    "format": "json",
    "id": "serving.api_v1",
@@ -235,11 +251,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:58+00:00"
+   "updated_at": "2026-10-19T18:44:56+00:00"
   },
   {
-   "bytes": 165189562,
-   "files": 2020,
+   "bytes": 166834660,
+   "files": 2024,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -276,7 +292,25 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:59+00:00"
+   "updated_at": "2026-10-19T18:44:57+00:00"
+  },
+  {
+   "bytes": 2460,
+   "files": 1,
+   "format": "json",
+   "id": "serving.paper_portfolio",
+   "inputs": [
+    "silver.paper_ledger"
+   ],
+   "layer": "gold",
+   "path": "public/research/portfolio.json",
+   "producer": [
+    "paper_portfolio.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19"
   },
   {
    "bytes": 155984,
@@ -318,7 +352,48 @@
    "updated_at": "2026-10-19T17:44:36.645332+00:00"
   },
   {
-   "bytes": 226222,
+   "bytes": 504983,
+   "files": 1,
+   "format": "json",
+   "id": "serving.research_review",
+   "inputs": [
+    "serving.report_performance",
+    "silver.corrections",
+    "silver.report_markdown",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "public/research/review.json",
+   "producer": [
+    "build_research_review.py"
+   ],
+   "rows": 579,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19"
+  },
+  {
+   "bytes": 10696534,
+   "files": 579,
+   "format": "json",
+   "id": "serving.review_evidence",
+   "inputs": [
+    "silver.corrections",
+    "silver.report_markdown",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "public/research/reviews/*.json",
+   "producer": [
+    "build_research_review.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 241689,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -335,7 +410,25 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:55:38+00:00"
+   "updated_at": "2026-10-19T18:45:07+00:00"
+  },
+  {
+   "bytes": 507498,
+   "files": 1,
+   "format": "json",
+   "id": "serving.search_index",
+   "inputs": [
+    "serving.report_performance"
+   ],
+   "layer": "gold",
+   "path": "public/research/search.json",
+   "producer": [
+    "build_search_index.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19"
   },
   {
    "bytes": 74094,
@@ -354,10 +447,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T02:52:06"
+   "updated_at": "2026-10-20T03:45:05"
   },
   {
-   "bytes": 16190295,
+   "bytes": 16173411,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -374,10 +467,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:56+00:00"
+   "updated_at": "2026-10-19T18:42:45+00:00"
   },
   {
-   "bytes": 3426013,
+   "bytes": 3421424,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -425,6 +518,25 @@
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
+  },
+  {
+   "bytes": 2460,
+   "files": 1,
+   "format": "json",
+   "id": "silver.paper_ledger",
+   "inputs": [
+    "bronze.paper_targets",
+    "silver.prices"
+   ],
+   "layer": "silver",
+   "path": "data/silver/portfolio/ledger.json",
+   "producer": [
+    "paper_portfolio.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19"
   },
   {
    "bytes": null,

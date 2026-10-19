@@ -1,0 +1,84 @@
+{
+ "schema_version": "1.0",
+ "id": "data/silver/reports/markdown/yig/2025-11-10_디스플레이, OLED라는 봄바람과 함께 YIG Research.md",
+ "school": "yig",
+ "values": {
+  "ticker": "171090",
+  "company": "선익시스템",
+  "report_date": "2024-05-18",
+  "rating": "Buy",
+  "target_price": 110000.0,
+  "report_current_price": 57100.0,
+  "stated_upside_pct": 92.7
+ },
+ "transcript_sha256": "f9617f7baa06ad476dbf9ee230ab1160ddfc24f7c86c5516076a35e2e2b7c66d",
+ "reasons": [
+  "ocr_fallback"
+ ],
+ "excerpt": "<!-- kordoc 4.22.13 ocr_pages=1,2,3 -->\n\n2024년 5월 18일\n\nYIG\n\nYonsei Investment jroup\n\nYIG 42nd Research Team\n\n디스플레이\t송현아 2020123193@yonsei.ac.kr 양희승 didgmltmd88@yonsei.ac.kr\n\n신승민 wrq1234@yonsei.ac.kr\n\n<u>Overweight</u> OLED라는 봄바람과 함께\n\nLCD는 중국이 잘하지만 □LED는 한국이 잘한다\n\nX Top Pick\n\n2022년 까지 COVID-19 특수를 누리며 성장하던 디스플레이 산업은 2023년 꺾이고 말았다.\n\n선익시스템\t하지만 IT 디바이스향 수요와 차량용 수요에 힘입어 OLED를 중심으로 턴어라운드 할 전망이 (171090 KQ)\t다.중국이 꽉 잡고 있는LCD가 아닌 OLED 중심으로 재편될 디스플레이 산업의 새로운 질서 를 기대하며 디스플레이 색터 비중확대 의견 제시한다.\n\n| 목표주가 | W110,000 최선호주-선익시스템(171090 KQ) |\n| --- | --- |\n| 현재주가(04.29) | W57,100 |\n| 상승여력 | 92.7% 선익시스템(171090 KQ)는1990년 설립된 기업으로 OLED 증착 장비사업을 영위하고 있다. 주로 삼성디스플레이와 LG디스플레이향으로 R&D용 증착장비를 공급해왔으나,올해 중국 디 |\n| 스플레이 패널업체 BOE와 수천억 규모의 양산용 8.6세대 증착장비 수주계약을 따내며 기존과 |  |\n\nYonsei Investment Group\t차원이 다른 규모의 매출을 고대하고 있다.또한 본 리서치 팀은 해당 매출이 전방 패널업체의 yigyonsei@gmail.com\t업황과 동사의 경쟁력을 고려해보았을 때 추가적인 매출 개연성을 발생시킬 수 있다고 판단하 https://yig.yonsei.ac.kr\t였다.목표 주가110,000원,상승여력 92.7%가 있다고 판단하여 색터 내 최선호주 선익시스 서울시 서대문구 연세로 50대우관\t템에 대해 투자의견 Conviction BUY를 제시한다.\n\n# Table of Contents\n\n| 1 | 산업분석 | 3p |\n| --- | --- | --- |\n| 최선호주:선익시스템 |  |  |\n| 2 | (171090 KQ) | 11p |\n| 차선호주:피엔에이치테크 |  |  |\n| 3 | (239098 KQ) | 16P |\n| 차선호주:아바코 |  |  |\n| 4 | (083930 KQ) | 18P |\n\nIG\n\ntment Group\n\n디스플레이(Overweight)\n\n1.디스플레이의 종류\n\n1.1발광형(Emissive)vs비발광형(Non-Emissive)\n\n최근 OLED 디스플레이와 LCD 디스플레이가 디스플레이 시장을 양분하고 있음을 고려하면 디스플레이는 크게 발광형(Emissive)디스플레이와 비발광형(Non-Emissive)디스플레이로 구분 할수있다.\n\n발광형 디스플레이는 스스로 빛을 내는 자체발광소자를 사용한다.따라서 백라이트가 필요하지 않기 때문에 더 얇고,전력 소모가 적다.대표적으로 OLED(유기 발광 다이오드)와 AMOLED(능 동형 유기 발광 다이오드)디스플레이가 있다.\n\n비발광형 디스플레이는 다른 광원의 빛이 액정과 컬러 필터를 통과하여 이미지를 표현하는 디스플레이를 말한다.대표적으로 LCD(액정 디스플레이)가 있으며.일반적으로 OLED보다는 두껍고, 더 많은 전력을 소모하지만 생산 비용이 낮아 대형 디스플레이에 주로 사용된다.\n\n발광형디스플레이\n\n(Emissive Display)\n\n비발광형디스플레이\n\n(Non-Emissive Display)\n\n**그림1.디스플레이의종류**\n\n| 구분 | 상세종류 | 특징 |\n| --- | --- | --- |\n|  | OLED | 유기 화합물을 사용하여 빛을 발산.각 픽셀이 독립적으로 빛을 내거나 끌 수 있기에,대비비가 뛰어남 |\n| 발광형디스플레이 | AMOLED | OLED를 기반으로 각 픽셀을 더 정밀하게 제어할 수 있는 TFT(ThinFilm |\n| (Emissive Display) | CRT | Transistor) 배열을포함하여성능을향상 전자총이라는 부품으로 전자를 발사하여 전자들이 인광성 물질에 부딪히며 이미지를 형성하는 방식.과거에 주로 사용 |\n|  | LCD | 전기적 신호에 의해 배열이 변경되는 액정 셀을 통해 백라이트빛의 통과를 조절하며 이를 통해 이미지를 형성하는 방식 |\n| 비발광형 디스플레이 | Reflective LCD | 외부 빛을 반사하여 이미지를 보여주는LCD 방식.백라이트 없이도 |\n| (Non-Emissive Display | E-ink | 동작하며 햇빛 아래에서도 화면이 비교적 잘 보이는 방식 Reflective LCD와 유사하며 눈의 피로와 전력 소모를 줄여 전자책 리더기에 주로 사용되는 방식 |\n| 출처 :삼성디스플레이,YIG 그림2.LCD,OLED 구조비교 |  |  |\n| LCD |  |  |\n|  |  | 기판 백라이트반사판 TFT광학필름편광판 액정컬러필터편광판전극 화면 |\n| OLED |  |  |\n|  |  | 기판 TFT OLED발광층 봉지층 화면 출처:YIG |\n| 3 |  | Yonsei Investment Group |\n\n\n\n2. LCD In-Depth\n\n# 2.1 LCD 디스플레이의 구조\n\nLCD 디스플레이란?\n\nLCD 동작원리\n\n| R | G |  | B |\n| --- | --- | --- | --- |\n|  |  |  |  |\n\n그림 8. 사용처별 LCD 패널 가격 인상률 (4월, 5월(F))\n\n그림 9. LCD 패널 총 출하량 추이\n\n\n\n\n\n# 라미네이팅\t본딩\n\n# 테스트\n\n\n\n\n\n\n\n그림 18. IT 디바이스용 OLED 패널 출하량 전망\n\n60\n\n그림 19. 차량용 디스플레이 내 OLED 침투율 전망\n\n48.8\n\n50\n\n43.5\n\n33.4\n\n40\n\n30\n\n22\n\n20\n\n10\n\n13.2\n\n9.5\n\n0\n\n2022\n\n2023\n\n2024\n\n2025\n\n2026 2027\n\n\n\n| 세대 | 원장패널 크기 |\n| --- | --- |\n|  |  |\n|  |  |\n|  |  |\n|  |  |\n\n그림 21. LG디스플레이 주가추이\n\n그림 22. 디스플레이 소재 업체 주가추이\n\n그림 23. 삼성디스플레이 납품 장비업체 주가추이\n\n그림 24. LG디스플레이 납품 장비업체 주가추이\n\n# 최선호주\n차선호주 차선호주 : 기업분석 선익시스템(171090 KQ)\n투자의견 : CONVICTION BUY\n피엔에이치테크(239098 KQ)\n투자의견 : Not Rated\n아바코(083930 KQ)\n투자의견 : Not Rated\nYonsei Investment Group\n\n# 최선호주\n\n# 선익시스템(171090 KQ)\n\n선익시스템(171090 KQ) 손익계산서\n\n2021\n\n2022\n\n매출액 (억원)\n\n영업이익 (억원)\n\n영업이익률 (%)\n\n순이익 (억원)\n\n순이익률 (%)\n\nEPS (원)\n\n2023\n\n2024E 2025E\n\n1. 기업분석\n\n# 1.1 기업개요\n\n그림 26. 선익시스템 주주 구성\n\n그림 25. 선익시스템 매출 및 영업이익율 추이\n\n그림 27. 선익 시스템 매출 비중\n\n그림 28. OLED 증착장비 구조\n",
+ "matches": [
+  {
+   "field": "ticker",
+   "line": 23,
+   "quote": "선익시스템\t하지만 IT 디바이스향 수요와 차량용 수요에 힘입어 OLED를 중심으로 턴어라운드 할 전망이 (171090 KQ)\t다.중국이 꽉 잡고 있는LCD가 아닌 OLED 중심으로 재편될 디스플레이 산업의 새로운 질서 를 기대하며 디스플레이 색터 비중확대 의견 제시한다."
+  },
+  {
+   "field": "ticker",
+   "line": 25,
+   "quote": "| 목표주가 | W110,000 최선호주-선익시스템(171090 KQ) |"
+  },
+  {
+   "field": "ticker",
+   "line": 28,
+   "quote": "| 상승여력 | 92.7% 선익시스템(171090 KQ)는1990년 설립된 기업으로 OLED 증착 장비사업을 영위하고 있다. 주로 삼성디스플레이와 LG디스플레이향으로 R&D용 증착장비를 공급해왔으나,올해 중국 디 |"
+  },
+  {
+   "field": "company",
+   "line": 23,
+   "quote": "선익시스템\t하지만 IT 디바이스향 수요와 차량용 수요에 힘입어 OLED를 중심으로 턴어라운드 할 전망이 (171090 KQ)\t다.중국이 꽉 잡고 있는LCD가 아닌 OLED 중심으로 재편될 디스플레이 산업의 새로운 질서 를 기대하며 디스플레이 색터 비중확대 의견 제시한다."
+  },
+  {
+   "field": "company",
+   "line": 25,
+   "quote": "| 목표주가 | W110,000 최선호주-선익시스템(171090 KQ) |"
+  },
+  {
+   "field": "company",
+   "line": 28,
+   "quote": "| 상승여력 | 92.7% 선익시스템(171090 KQ)는1990년 설립된 기업으로 OLED 증착 장비사업을 영위하고 있다. 주로 삼성디스플레이와 LG디스플레이향으로 R&D용 증착장비를 공급해왔으나,올해 중국 디 |"
+  },
+  {
+   "field": "target_price",
+   "line": 25,
+   "quote": "| 목표주가 | W110,000 최선호주-선익시스템(171090 KQ) |"
+  },
+  {
+   "field": "target_price",
+   "line": 31,
+   "quote": "Yonsei Investment Group\t차원이 다른 규모의 매출을 고대하고 있다.또한 본 리서치 팀은 해당 매출이 전방 패널업체의 yigyonsei@gmail.com\t업황과 동사의 경쟁력을 고려해보았을 때 추가적인 매출 개연성을 발생시킬 수 있다고 판단하 https://yig.yonsei.ac.kr\t였다.목표 주가110,000원,상승여력 92.7%가 있다고 판단하여 색터 내 최선호주 선익시스 서울시 서대문구 연세로 50대우관\t템에 대해 투자의견 Conviction BUY를 제시한다."
+  },
+  {
+   "field": "report_current_price",
+   "line": 27,
+   "quote": "| 현재주가(04.29) | W57,100 |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 11,
+   "quote": "디스플레이\t송현아 2020123193@yonsei.ac.kr 양희승 didgmltmd88@yonsei.ac.kr"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 28,
+   "quote": "| 상승여력 | 92.7% 선익시스템(171090 KQ)는1990년 설립된 기업으로 OLED 증착 장비사업을 영위하고 있다. 주로 삼성디스플레이와 LG디스플레이향으로 R&D용 증착장비를 공급해왔으나,올해 중국 디 |"
+  },
+  {
+   "field": "stated_upside_pct",
+   "line": 31,
+   "quote": "Yonsei Investment Group\t차원이 다른 규모의 매출을 고대하고 있다.또한 본 리서치 팀은 해당 매출이 전방 패널업체의 yigyonsei@gmail.com\t업황과 동사의 경쟁력을 고려해보았을 때 추가적인 매출 개연성을 발생시킬 수 있다고 판단하 https://yig.yonsei.ac.kr\t였다.목표 주가110,000원,상승여력 92.7%가 있다고 판단하여 색터 내 최선호주 선익시스 서울시 서대문구 연세로 50대우관\t템에 대해 투자의견 Conviction BUY를 제시한다."
+  }
+ ],
+ "pdf_url": "https://yig.yonsei.ac.kr/research/32",
+ "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-10_%EB%94%94%EC%8A%A4%ED%94%8C%EB%A0%88%EC%9D%B4%2C%20OLED%EB%9D%BC%EB%8A%94%20%EB%B4%84%EB%B0%94%EB%9E%8C%EA%B3%BC%20%ED%95%A8%EA%BB%98%20YIG%20Research.md",
+ "correction": {}
+}
