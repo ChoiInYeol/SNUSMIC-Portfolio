@@ -1,6 +1,3 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
@@ -11,7 +8,8 @@ import { STRATEGY_LABEL_KO } from "@/components/strategy/strategy-meta";
 import backtest from "@/data/strategy-backtest.json";
 import { signColor } from "@/lib/verdict";
 import { cn, formatPct, formatPrice } from "@/lib/utils";
-import { z } from "zod";
+import { StrategyDocumentSchema } from "@/lib/api-v2";
+import { readV2 } from "@/lib/api-v2-server";
 
 export const metadata: Metadata = {
   title: "전략 — 판결 아카이브",
@@ -283,22 +281,18 @@ export default async function StrategyPage() {
     warmup_note: string;
   } | undefined;
   const sourceMulti = backtest.multi_strategy as unknown as Record<string, unknown> & { strategies: StrategyRow[]; headline_key: string; curated_keys?: string[]; verdict_rules?: string };
-  const manifestPath = path.join(process.cwd(), "public", "api", "v1", "strategy-details", "manifest.json");
-  const manifest = z.object({
-    as_of: z.iso.date(),
-    assets: z.record(z.string(), z.object({
-      content_hash: z.string().regex(/^[a-f0-9]{64}$/),
-      path: z.string().regex(/^strategy-details\/[A-Za-z0-9_+.-]+\/[a-f0-9]{64}\.json$/),
-    })),
-  }).parse(JSON.parse(await fs.readFile(manifestPath, "utf-8")));
-  if (manifest.as_of !== signals?.as_of) throw new Error("Strategy detail generation date mismatch");
-  const detailRefs = Object.fromEntries(sourceMulti.strategies.map(({ key }) => {
-    const ref = manifest.assets[key];
-    if (!ref || !ref.path.endsWith(`/${ref.content_hash}.json`)) {
-      throw new Error(`Missing or inconsistent detail reference for ${key}`);
+  // Detail refs come from each strategy's v2 resource: links.current_revision is the content-addressed URI.
+  // The strategy documents must describe the same as_of as the signals this page renders — fail the build otherwise.
+  const detailRefs = Object.fromEntries(await Promise.all(sourceMulti.strategies.map(async ({ key }) => {
+    const doc = await readV2(`/api/v2/strategies/${key}`, StrategyDocumentSchema);
+    if (doc.meta.as_of !== signals?.as_of) throw new Error(`Strategy resource ${key} as_of ${doc.meta.as_of} ≠ signals ${signals?.as_of}`);
+    const revision = doc.links.current_revision;
+    const hash = revision.match(/\/revisions\/([0-9a-f]{64})$/)?.[1];
+    if (doc.data.id !== key || !hash || !revision.startsWith(`/api/v2/strategies/${key}/revisions/`)) {
+      throw new Error(`Missing or inconsistent revision link for ${key}: ${revision}`);
     }
-    return [key, { path: `/api/v1/${ref.path}`, content_hash: ref.content_hash }];
-  }));
+    return [key, { path: revision, content_hash: hash }] as const;
+  })));
   // Never spread the producer envelope: it also contains every trade and curve.
   const multiStrategy: MultiStrategyData = {
     strategies: sourceMulti.strategies,

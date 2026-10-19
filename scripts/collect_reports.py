@@ -2,7 +2,7 @@
 
 원칙:
 - 모든 HTTP 요청 사이에 DELAY_SECONDS 지연을 두어 원 서버에 부하를 주지 않는다.
-- 각 PDF는 1회만 다운로드한다: data/sources/manifest.json에 기록하고,
+- 각 PDF는 1회만 다운로드한다: data/bronze/reports/manifest.json에 기록하고,
   재실행 시 manifest에 있고 파일이 존재하면 건너뛴다.
 - 다운로드 실패는 기록만 하고 전체 수집을 중단하지 않는다.
 
@@ -26,13 +26,15 @@ from urllib.parse import parse_qs, unquote, unquote_to_bytes, urljoin, urlparse
 
 import requests
 
+from lake import BRONZE_KUVIC_ITEMS, BRONZE_PDFS, BRONZE_REPORT_MANIFEST, SILVER_MARKDOWN, resolve_data_path
+
 # Windows 콘솔(cp949)에서 NFD 한글 등 출력 크래시 방지
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF_ROOT = ROOT / "data" / "pdfs"
-MANIFEST_PATH = ROOT / "data" / "sources" / "manifest.json"
+PDF_ROOT = BRONZE_PDFS
+MANIFEST_PATH = BRONZE_REPORT_MANIFEST
 
 DELAY_SECONDS = 2.5
 MAX_PDF_BYTES = 120 * 1024 * 1024
@@ -85,8 +87,8 @@ def build_sha_index(manifest: list[dict]) -> dict[str, Path]:
     index: dict[str, Path] = {}
     for e in manifest:
         sha, file = e.get("sha256"), e.get("file")
-        if sha and file and (ROOT / file).exists():
-            index[sha] = ROOT / file
+        if sha and file and resolve_data_path(file).exists():
+            index[sha] = resolve_data_path(file)
     return index
 
 
@@ -96,7 +98,7 @@ def download_pdf(entry: dict, manifest: list[dict], known: dict[str, dict],
     pdf_url = entry["pdf_url"]
     existing = known.get(pdf_url)
     if existing and existing.get("file") and existing.get("sha256"):
-        path = ROOT / existing["file"]
+        path = resolve_data_path(existing["file"])
         if path.exists():
             # 이미 다운로드됨 → 재다운로드 없이 메타데이터만 갱신
             changed = False
@@ -383,7 +385,7 @@ def collect_kuvic(limit: int | None) -> list[dict]:
 
 def collect_kuvic_items(limit: int | None) -> list[dict]:
     """collect_kuvic_browser.py가 수확한 전체 목록(JSON)을 읽는다."""
-    path = ROOT / "data" / "sources" / "kuvic_items.json"
+    path = BRONZE_KUVIC_ITEMS
     if not path.exists():
         print("  ! kuvic_items.json 없음 — scripts/collect_kuvic_browser.py 먼저 실행", flush=True)
         return []
@@ -420,7 +422,7 @@ def main() -> int:
     # 재다운로드 경로가 사라져 영구 누락된다 (markdown까지 확인하는 이유).
     known_ids: set[str] | None = None
     if not args.full:
-        md_root = ROOT / "data" / "markdown"
+        md_root = SILVER_MARKDOWN
         known_ids = {
             e["source_id"] for e in manifest
             if e.get("file") and e.get("source_id")

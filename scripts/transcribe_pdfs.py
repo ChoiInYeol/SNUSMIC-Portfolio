@@ -1,10 +1,10 @@
-"""data/pdfs/ 의 PDF를 kordoc으로 data/markdown/ 마크다운에 전사한다.
+"""bronze PDF(data/bronze/reports/pdfs/)를 kordoc으로 silver 마크다운(data/silver/reports/markdown/)에 전사한다.
 
 - 엔진: kordoc (tools/kordoc 에 버전 고정, `npm ci --prefix tools/kordoc`). 먼저 텍스트층으로
   전사하고, kordoc 페이지 품질 판정상 표지나 문서 대부분에 텍스트층이 없는 문서만 내장 PP-OCRv5
   한국어 OCR(`--ocr`)로 다시 전사한다. 표는 GFM 파이프 표.
-- 대상: data/pdfs/{school}/*.pdf → data/markdown/{school}/{stem}.md, 그리고 레거시 SMIC
-  data/pdfs/*.pdf → data/markdown/{stem}.md.
+- 대상: {pdfs}/{school}/*.pdf → {markdown}/{school}/{stem}.md, 그리고 레거시 SMIC
+  {pdfs}/*.pdf → {markdown}/{stem}.md. 경로는 scripts/lake.py 가 정한다.
 - 각 .md 첫 줄은 출처 헤더다: `<!-- kordoc 4.22.13 ocr_pages=1,2 -->` (OCR 없으면 `ocr_pages=`).
   같은 kordoc 버전 헤더가 있는 파일은 건너뛴다 → 엔진 버전을 올리거나 --force 로만 재전사.
 
@@ -23,9 +23,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-PDF_ROOT = ROOT / "data" / "pdfs"
-MD_ROOT = ROOT / "data" / "markdown"
+from lake import BRONZE_PDFS as PDF_ROOT, ROOT, SILVER_MARKDOWN as MD_ROOT, resolve_data_path
+
 KORDOC_DIR = ROOT / "tools" / "kordoc"
 KORDOC_CLI = KORDOC_DIR / "node_modules" / "kordoc" / "dist" / "cli.js"
 NO_MODELS_DIR = ROOT / "cache" / "kordoc-no-models"
@@ -142,15 +141,15 @@ def main() -> int:
     parser.add_argument("--shard", default=None, help="i:n — 정렬된 대기열의 i번째 1/n만 처리")
     parser.add_argument("--force", action="store_true", help="헤더가 최신이어도 재전사")
     parser.add_argument("--jobs", type=int, default=max(1, min(8, (os.cpu_count() or 2) // 2)))
-    parser.add_argument("--pages", default=None, help="쪽 범위 (예: 1-3). 지정 시 --md-root 를 data/markdown 밖으로 둘 것")
-    parser.add_argument("--md-root", type=Path, default=MD_ROOT, help="출력 루트 (기본 data/markdown)")
-    parser.add_argument("--only", type=Path, default=None, help="처리할 PDF 경로 JSON 목록 (저장소 루트 기준)")
+    parser.add_argument("--pages", default=None, help="쪽 범위 (예: 1-3). 지정 시 --md-root 를 본문 전사본 밖으로 둘 것")
+    parser.add_argument("--md-root", type=Path, default=MD_ROOT, help="출력 루트 (기본 data/silver/reports/markdown)")
+    parser.add_argument("--only", type=Path, default=None, help="처리할 PDF 경로 JSON 목록 (저장소 루트 기준, 구 data/pdfs/... 경로도 허용)")
     args = parser.parse_args()
     if args.pages and args.md_root.resolve() == MD_ROOT.resolve():
-        parser.error("--pages 결과로 본문 전사본(data/markdown)을 덮어쓸 수 없다 — --md-root 를 지정하라")
+        parser.error("--pages 결과로 본문 전사본(data/silver/reports/markdown)을 덮어쓸 수 없다 — --md-root 를 지정하라")
     only = None
     if args.only:
-        only = {(ROOT / p).resolve() for path in [args.only] for p in json.loads(path.read_text(encoding="utf-8"))}
+        only = {resolve_data_path(p).resolve() for path in [args.only] for p in json.loads(path.read_text(encoding="utf-8"))}
 
     version = kordoc_version()
     total_done, total_failed = 0, []

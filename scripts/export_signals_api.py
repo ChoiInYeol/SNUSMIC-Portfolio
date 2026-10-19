@@ -1,4 +1,4 @@
-"""Export static JSON API files to public/api/v1/ from strategy-backtest.json.
+"""Export the frozen, deprecated /api/v1 static JSON files from strategy-backtest.json.
 
 Run this immediately after backtest_momentum.py has written
 src/data/strategy-backtest.json.  It produces:
@@ -7,9 +7,15 @@ src/data/strategy-backtest.json.  It produces:
   public/api/v1/signals/{YYYY-MM-DD}.json  — immutable daily snapshot
   public/api/v1/strategies.json            — all strategy IS/OOS metrics
   public/api/v1/trades/{strategy_key}.json — closed-trade log per strategy
-  public/api/v1/openapi.json               — OpenAPI 3.1 spec
-  public/strategy-marks/{slug}.json        — headline-strategy trade marks per ticker
-                                             (slug = "{market}-{ticker}".lower(), e.g. kr-005930)
+  public/api/v1/strategy-details/manifest.json
+  public/api/v1/openapi.json               — OpenAPI 3.1 spec (every operation deprecated → /api/v2)
+  public/api/v2/strategies/{key}/revisions/{sha256}.json
+                                           — content-addressed strategy details, shared with v2;
+                                             /api/v1/strategy-details/{key}/{sha256}.json is a
+                                             next.config.ts rewrite to these exact bytes
+
+Headline-strategy trade marks moved to /api/v2/instruments/{id}/trade-marks
+(scripts/export_api_v2.py, built from build_strategy_marks below).
 
 Usage:
     python scripts/export_signals_api.py
@@ -30,7 +36,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_SOURCE = ROOT / "src" / "data" / "strategy-backtest.json"
 API_DIR = ROOT / "public" / "api" / "v1"
-MARKS_DIR = ROOT / "public" / "strategy-marks"
+# v1 strategy-detail URLs are served from the v2 revision files (identical bytes, no duplication).
+REVISIONS_DIR = ROOT / "public" / "api" / "v2" / "strategies"
 
 SCHEMA_VERSION = "1.0"
 
@@ -290,7 +297,7 @@ def build_strategy_details(data: dict) -> dict[str, tuple[str, dict]]:
     return result
 
 
-# ── strategy-marks/{slug}.json ───────────────────────────────────────────────
+# ── headline-strategy trade marks (served by v2 as /instruments/{id}/trade-marks) ──
 
 def _exit_side(exit_reason: str) -> str:
     """Stop-style exits (chandelier/trailing/stop) → 'stop', everything else → 'sell'."""
@@ -303,7 +310,7 @@ def _exit_side(exit_reason: str) -> str:
 def build_strategy_marks(data: dict) -> dict[str, dict]:
     """Per-ticker trade marks for the HEADLINE strategy.
 
-    Returns {slug: payload} where slug matches public/prices/{slug}.json
+    Returns {slug: payload} where slug is the v2 instrument id
     (\"{market}-{ticker}\".lower()).  Each payload carries the full buy/sell/stop
     mark list from the backtest trade log plus the current trailing-stop level
     for tickers still held.
@@ -386,15 +393,40 @@ def build_strategy_marks(data: dict) -> dict[str, dict]:
 
 # ── openapi.json ─────────────────────────────────────────────────────────────
 
+# v1 operation → its v2 successor, stated on each deprecated operation.
+V2_SUCCESSORS = {
+    "/signals/latest.json": "/api/v2/signals/latest",
+    "/signals/{date}.json": "/api/v2/signals/{date}",
+    "/strategies.json": "/api/v2/strategies",
+    "/trades/{strategy_key}.json": "/api/v2/strategies/{strategy_id}/trades",
+    "/signals/latest": "/api/v2/signals/latest",
+    "/forward.json": "/api/v2/track-record",
+    "/strategy-details/manifest.json": "/api/v2/strategies/{strategy_id} (links.current_revision)",
+    "/strategy-details/{strategy_key}/{content_hash}.json": "/api/v2/strategies/{strategy_id}/revisions/{sha256}",
+    "/openapi.json": "/api/v2/openapi.json",
+}
+
+
+def _deprecate(spec: dict) -> dict:
+    for route, item in spec["paths"].items():
+        op = item["get"]
+        op["deprecated"] = True
+        note = f"Deprecated: use `GET {V2_SUCCESSORS[route]}`."
+        op["description"] = f"{note} {op['description']}" if op.get("description") else note
+    return spec
+
+
 def build_openapi(as_of: str) -> dict:
     # 라이브 도메인 — layout.tsx metadataBase와 반드시 일치 (과거 smic-easy 표기는 stale)
     base = "https://verdict-archive.vercel.app"
-    return {
+    return _deprecate({
         "openapi": "3.1.0",
         "info": {
             "title": "SMIC Strategy Signal API",
             "version": SCHEMA_VERSION,
             "description": (
+                "DEPRECATED — frozen since 2026-10-19; use /api/v2 (spec: /api/v2/openapi.json). "
+                "Responses carry `Deprecation` and `Link: </api/v2>; rel=\"successor-version\"` headers. "
                 "Static JSON endpoints exposing backtested trading signals from the "
                 "SMIC (Student Managed Investment Club) momentum strategy research pipeline. "
                 f"Last updated: {as_of}. "
@@ -725,7 +757,7 @@ def build_openapi(as_of: str) -> dict:
                 },
             }
         },
-    }
+    })
 
 
 # ── main ─────────────────────────────────────────────────────────────────────
@@ -751,7 +783,7 @@ def plan_outputs(data: dict, *, details_only: bool = False) -> tuple[dict[Path, 
     # Immutable content-addressed detail assets; never prune old hashes.
     details = build_strategy_details(data)
     for key, (digest, payload) in details.items():
-        path = API_DIR / "strategy-details" / key / f"{digest}.json"
+        path = REVISIONS_DIR / key / "revisions" / f"{digest}.json"
         outputs[path] = payload
         append_only.add(path)
     outputs[API_DIR / "strategy-details" / "manifest.json"] = _manifest(as_of, details)
@@ -774,8 +806,6 @@ def plan_outputs(data: dict, *, details_only: bool = False) -> tuple[dict[Path, 
             "trades": trades,
         }
     outputs[API_DIR / "openapi.json"] = build_openapi(as_of)
-    for slug, payload in sorted(build_strategy_marks(data).items()):
-        outputs[MARKS_DIR / f"{slug}.json"] = payload
     return outputs, append_only
 
 
@@ -788,7 +818,7 @@ def _comparable(value: object) -> object:
     return value
 
 
-def check_outputs(outputs: dict[Path, dict | list], append_only: set[Path], *, prune_marks: bool) -> list[str]:
+def check_outputs(outputs: dict[Path, dict | list], append_only: set[Path]) -> list[str]:
     """Committed artifacts must equal what the committed source would export.
 
     Append-only paths only need to exist: a dated snapshot is frozen at first
@@ -807,11 +837,6 @@ def check_outputs(outputs: dict[Path, dict | list], append_only: set[Path], *, p
             actual = json.load(f)
         if _comparable(actual) != _comparable(expected):
             problems.append(f"stale {rel}")
-    fresh_marks = {p for p in outputs if p.parent == MARKS_DIR}
-    if prune_marks and MARKS_DIR.exists():
-        for old in MARKS_DIR.glob("*.json"):
-            if old not in fresh_marks:
-                problems.append(f"orphan {old.relative_to(ROOT).as_posix()}")
     return problems
 
 
@@ -839,7 +864,7 @@ def main(argv: list[str] | None = None) -> int:
     outputs, append_only = plan_outputs(data, details_only=args.details_only)
 
     if args.check:
-        problems = check_outputs(outputs, append_only, prune_marks=not args.details_only)
+        problems = check_outputs(outputs, append_only)
         for problem in problems:
             print(f"  DRIFT {problem}", file=sys.stderr)
         if problems:
@@ -854,15 +879,7 @@ def main(argv: list[str] | None = None) -> int:
             print(f"  skipped (exists) {path.relative_to(ROOT).as_posix()}", flush=True)
             continue
         _write_json(path, payload)
-    # Write-then-prune (NOT wipe-then-write): 새 파일을 전부 쓴 뒤 스테일만 지운다.
-    if not args.details_only:
-        fresh_marks = {p for p in outputs if p.parent == MARKS_DIR}
-        if MARKS_DIR.exists():
-            for old in MARKS_DIR.glob("*.json"):
-                if old not in fresh_marks:
-                    old.unlink()
-        print(f"  strategy-marks: {len(fresh_marks)} tickers", flush=True)
-    print("\nDone. API files written to public/api/v1/", flush=True)
+    print("\nDone. API files written to public/api/v1/ (strategy details: public/api/v2/strategies/)", flush=True)
     return 0
 
 

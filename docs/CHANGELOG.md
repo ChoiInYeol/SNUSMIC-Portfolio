@@ -5,6 +5,25 @@
 
 ---
 
+## Unreleased — REST API v2 · Medallion · 스키마·계보 지도 (2026-10-19)
+
+- `feat/api-v2-medallion`은 kordoc 위에 쌓인 로컬 작업 브랜치. main 병합·푸시 없음.
+- 리소스 중심 URI, OpenAPI 3.1·Zod 계약, 개발자 레퍼런스·요청 콘솔·Swagger UI.
+  정적 파일보다 앞에서 메서드를 처리해 OPTIONS=204, 쓰기=405(problem+json)로 통일.
+- Bronze/Silver/Gold 물리 재배치, 단일 경로 모듈, 시세 원천 기록·검증·격리·재생성,
+  카탈로그 계보와 CI 커밋 정합 검증. Bronze 로그 재시도 후 파일 참조 보존 회귀 수정.
+- 날짜별 판결일보·축쇄판·스냅샷 비교, 화면별 API 출처 링크, 전략 공유 URL.
+  과거 지면은 first-seen 기준으로 리포트를 제한하고 부고는 당시 스냅샷으로 계산.
+- 이동 후 깨질 1,462건의 전사본 링크를 `refresh_report_links.py`로 갱신하고 v2 재생성.
+  수익률·파싱·source_file 등 연구 결과와 원천 식별자는 유지.
+- `/developers/architecture`: React Flow·ELK, 계층 그룹·스키마 노드·FK/ETL 구분,
+  검색·필터·확대축소·키보드 Sheet·상하류 계보·다크모드·벡터 SVG 내보내기.
+- 선택적 FastAPI 메타데이터 서비스와 Next 프록시. 실제 파일 카탈로그 또는 SQLAlchemy DB
+  reflection, 복합 PK/FK·뷰 지원. 서버 중단·재시작·실제 SQLite 통신 검증.
+  실행과 배포 설정: `docs/METADATA.md`. 기본 파이프라인에 런타임 DB를 도입하지 않음.
+
+---
+
 ## Unreleased — 2026-10 감사 P0 · 에이전트 규칙 · kordoc 엔진 (2026-10-19)
 
 인수인계: `docs/HANDOFF-2026-10-19.md`. 감사 근거: `docs/AUDIT-2026-10-19.md`.

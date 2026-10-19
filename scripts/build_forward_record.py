@@ -32,7 +32,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 SIGNALS_DIR = ROOT / "public" / "api" / "v1" / "signals"
-PRICE_DIR = ROOT / "data" / "prices"
+sys.path.insert(0, str(ROOT / "scripts"))
+from lake import SILVER_PRICES as PRICE_DIR  # noqa: E402
 OUT_INTERNAL = ROOT / "src" / "data" / "forward-record.json"
 OUT_API = ROOT / "public" / "api" / "v1" / "forward.json"
 

@@ -2,12 +2,12 @@
 
 import { Fragment, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { CornerDownLeft, FileSearch, LineChart, Search } from "lucide-react";
+import { Compass, CornerDownLeft, FileSearch, LineChart, Search } from "lucide-react";
 import { cn, formatPct } from "@/lib/utils";
 
 type Entry = {
   id: string;
-  kind: "stock" | "report";
+  kind: "page" | "stock" | "report";
   title: string;
   sub: string;
   /** /stocks/{slug} 또는 /#r={source_name} 딥링크 */
@@ -15,7 +15,18 @@ type Entry = {
   /** 소문자 검색 건초더미 */
   hay: string;
   ret: number | null;
+  /** 라우트 핸들러(정적 HTML)처럼 클라이언트 라우터가 그릴 수 없는 곳 — 전체 페이지 이동 */
+  hard?: boolean;
 };
+
+/** 기능 바로가기 — 검색어가 맞을 때만 종목보다 위에 뜬다 */
+const PAGE_ENTRIES: Entry[] = [
+  { id: "p:architecture", kind: "page", title: "데이터의 지도", sub: "Bronze · Silver · Gold / FK · ETL 계보", href: "/developers/architecture", hay: "데이터 지도 medallion architecture 스키마 schema lineage 계보 bronze silver gold database", ret: null },
+  { id: "p:developers", kind: "page", title: "API 레퍼런스", sub: "REST /api/v2 · 리소스 · Try it", href: "/developers", hay: "api 레퍼런스 개발자 developers rest v2 openapi 문서", ret: null },
+  { id: "p:swagger", kind: "page", title: "Swagger UI", sub: "/api/v2/openapi.json", href: "/developers/swagger", hay: "swagger openapi api 스웨거", ret: null, hard: true },
+  { id: "p:archive", kind: "page", title: "판결일보 축쇄판", sub: "지난 호 · 일별 신호 스냅샷", href: "/today/archive", hay: "축쇄판 지난호 지난 호 스냅샷 snapshot archive today 신문 판결일보", ret: null },
+  { id: "p:strategy", kind: "page", title: "전략 랩", sub: "전략 비교 · 공유 링크 ?s=전략", href: "/strategy", hay: "전략 strategy 랩 lab 백테스트 backtest", ret: null },
+];
 
 let indexPromise: Promise<Entry[]> | null = null;
 
@@ -75,7 +86,7 @@ function loadIndex(): Promise<Entry[]> {
         ret: null,
       }));
     const reportEntries = reportRows.sort((a, b) => b.date.localeCompare(a.date)).map((row) => row.entry);
-    return [...stockEntries, ...reportEntries];
+    return [...PAGE_ENTRIES, ...stockEntries, ...reportEntries];
   });
   return indexPromise;
 }
@@ -139,7 +150,7 @@ export function CommandPalette() {
     const tokens = q.split(/\s+/);
     return entries
       .filter((entry) => tokens.every((token) => entry.hay.includes(token)))
-      .map((entry) => ({ entry, score: (entry.hay.startsWith(tokens[0]) ? 2 : 0) + (entry.kind === "stock" ? 1 : 0) }))
+      .map((entry) => ({ entry, score: (entry.hay.startsWith(tokens[0]) ? 2 : 0) + (entry.kind === "page" ? 3 : entry.kind === "stock" ? 1 : 0) }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 14)
       .map((scored) => scored.entry);
@@ -152,7 +163,9 @@ export function CommandPalette() {
   const go = useCallback(
     (entry: Entry) => {
       setOpen(false);
-      if (entry.href.startsWith("/#")) {
+      if (entry.hard) {
+        window.location.assign(entry.href);
+      } else if (entry.href.startsWith("/#")) {
         const hash = entry.href.slice(1); // "#r=..."
         if (pathname === "/") {
           if (window.location.hash === hash) window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -224,7 +237,7 @@ export function CommandPalette() {
             <Fragment key={entry.id}>
               {(idx === 0 || results[idx - 1].kind !== entry.kind) && (
                 <li aria-hidden="true" className="px-4 pb-1 pt-2.5 font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
-                  {entry.kind === "stock" ? "종목 페이지" : "판결 기록"}
+                  {entry.kind === "page" ? "바로가기" : entry.kind === "stock" ? "종목 페이지" : "판결 기록"}
                 </li>
               )}
               <li id={`cmdk-${idx}`} data-idx={idx} role="option" aria-selected={idx === activeIdx}>
@@ -238,7 +251,9 @@ export function CommandPalette() {
                     idx === activeIdx ? "bg-foreground text-background" : "hover:bg-secondary",
                   )}
                 >
-                  {entry.kind === "stock" ? (
+                  {entry.kind === "page" ? (
+                    <Compass className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />
+                  ) : entry.kind === "stock" ? (
                     <LineChart className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />
                   ) : (
                     <FileSearch className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />

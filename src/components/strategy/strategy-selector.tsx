@@ -1,6 +1,7 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef, useCallback } from "react";
+import { Suspense, useMemo, useState, useEffect, useRef, useCallback } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { OverlayChart, type OverlaySeries } from "@/components/strategy/overlay-chart";
 import { useSortable, SortableTh, type SortColumn } from "@/components/sortable";
@@ -10,14 +11,16 @@ import { AlertCircle } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { ApiResourceLink } from "@/components/api-resource-link";
 import {
-  StrategyDetailSchema,
   type EquityPoint,
   type OpenPosition,
   type StrategyDetail,
   type Trade,
   type WealthPoint,
 } from "@/lib/api-schemas";
+import { PriceSeriesDocumentSchema, StrategyRevisionSchema } from "@/lib/api-v2";
+import { revisionContentHash } from "@/lib/canonical-json";
 import {
   STRATEGY_LABEL_KO,
   STRATEGY_DESC_KO,
@@ -218,20 +221,21 @@ function OpenPositionsTable({ positions, stratKey }: { positions: OpenPosition[]
 
 // ─── Ticker history panel ─────────────────────────────────────────────────────
 
-type Candle = { time: string; open: number; high: number; low: number; close: number };
+type Candle = { time: string; close: number };
 
-/** Fetch /prices/{slug}.json → sorted candles; 404 = no data ([]), other failures reject (module-level cache) */
+/** GET /api/v2/instruments/{id}/prices → sorted closes; 404 = no data ([]), other failures reject (module-level cache) */
 const _candleCache = new Map<string, Promise<Candle[]>>();
 function fetchCandles(slug: string): Promise<Candle[]> {
   const hit = _candleCache.get(slug);
   if (hit) return hit;
-  const p = fetch(`/prices/${slug}.json`).then(async (r) => {
+  const p = fetch(`/api/v2/instruments/${slug}/prices`).then(async (r) => {
     if (r.status === 404) return [];
     if (!r.ok) throw new Error(`prices ${r.status}`);
-    const j = await r.json() as { candles?: Candle[] };
-    const valid = (j.candles ?? []).filter(
-      (c) => typeof c?.time === "string" && typeof c.close === "number" && isFinite(c.close),
-    );
+    const parsed = PriceSeriesDocumentSchema.safeParse(await r.json());
+    if (!parsed.success) throw new Error("prices schema mismatch");
+    const valid = parsed.data.data.candles
+      .filter((c) => isFinite(c.close))
+      .map((c) => ({ time: c.time, close: c.close }));
     valid.sort((a, b) => a.time.localeCompare(b.time));
     return valid.length >= 2 ? valid : [];
   });
@@ -580,6 +584,77 @@ function TradeLog({ trades, stratKey }: { trades: Trade[]; stratKey: string }) {
   );
 }
 
+// ─── URL state (?s=<focus>&on=<enabled,...>) ──────────────────────────────────
+// Lives in its own Suspense boundary: useSearchParams opts only this null-rendering child out of static
+// prerendering, so the selector itself is still in the static HTML. Writes go through history.replaceState,
+// which Next.js syncs with useSearchParams without a server round-trip (shallow, no scroll).
+
+function sameKeys(a: Set<string>, b: Set<string>) {
+  return a.size === b.size && [...a].every((k) => b.has(k));
+}
+
+function SelectionUrlSync({
+  focusKey,
+  enabled,
+  defaultFocus,
+  defaultEnabled,
+  orderedKeys,
+  presentKeys,
+  onRestore,
+}: {
+  focusKey: string;
+  enabled: Set<string>;
+  defaultFocus: string;
+  defaultEnabled: Set<string>;
+  orderedKeys: string[];
+  presentKeys: Set<string>;
+  onRestore: (focus: string | null, enabled: string[] | null) => void;
+}) {
+  const searchParams = useSearchParams();
+  const restored = useRef(false);
+  // True between restoring from the URL and the render that carries the restored state: skip writing once,
+  // so the not-yet-updated defaults never overwrite the incoming query.
+  const pendingRestore = useRef(false);
+
+  // Restore once from the incoming URL; unknown keys are ignored. A raw "+" in a hand-typed query decodes
+  // to a space, so map it back (strategy ids may contain "+").
+  useEffect(() => {
+    if (restored.current) return;
+    restored.current = true;
+    const valid = (k: string) => {
+      const key = k.trim().replace(/ /g, "+");
+      return presentKeys.has(key) ? key : null;
+    };
+    const focus = valid(searchParams.get("s") ?? "");
+    const on = searchParams.get("on");
+    const keys = on === null ? null : on.split(",").map(valid).filter((k): k is string => k !== null);
+    if (focus || keys) {
+      pendingRestore.current = true;
+      onRestore(focus, keys);
+    }
+  }, [searchParams, presentKeys, onRestore]);
+
+  useEffect(() => {
+    if (!restored.current) return;
+    if (pendingRestore.current) {
+      pendingRestore.current = false;
+      return;
+    }
+    const params = new URLSearchParams(window.location.search);
+    if (focusKey === defaultFocus) params.delete("s");
+    else params.set("s", focusKey);
+    if (sameKeys(enabled, defaultEnabled)) params.delete("on");
+    else params.set("on", orderedKeys.filter((k) => enabled.has(k)).join(","));
+    const query = params.toString();
+    const next = `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`;
+    if (next !== `${window.location.pathname}${window.location.search}${window.location.hash}`) {
+      window.history.replaceState(window.history.state, "", next);
+    }
+  }, [focusKey, enabled, defaultFocus, defaultEnabled, orderedKeys]);
+
+  return null;
+}
+
 // ─── Main component ────────────────────────────────────────────────────────────
 // v20 UX: 단일 선택 탭 → 멀티 온/오프 오버레이 토글 + 포커스.
 //   · 색 스와치 클릭 = 곡선 표시 토글 (자산곡선 + 적립 시뮬 동시 오버레이)
@@ -625,10 +700,11 @@ export function StrategySelector({
   }, [allKeysOrdered, headlineKey]);
 
   // 기본 ON: SOTA + D + B (+ KOSPI DCA 벤치마크)
-  const [enabled, setEnabled] = useState<Set<string>>(() => {
-    const def = [headlineKey, "D_chandelier", "B_36mo"].filter((k) => presentKeys.has(k));
-    return new Set(def);
-  });
+  const defaultEnabled = useMemo(
+    () => new Set([headlineKey, "D_chandelier", "B_36mo"].filter((k) => presentKeys.has(k))),
+    [headlineKey, presentKeys],
+  );
+  const [enabled, setEnabled] = useState<Set<string>>(() => new Set(defaultEnabled));
   const [benchOn, setBenchOn] = useState<Set<string>>(() => new Set(["KOSPI"]));
   const [focusKey, setFocusKey] = useState<string>(headlineKey);
   const [wealthLog, setWealthLog] = useState(true); // 자산곡선은 로그가 정직함
@@ -648,9 +724,15 @@ export function StrategySelector({
           // No force-cache: a cached 404 would make the retry button useless; hash URLs are immutable anyway.
           const response = await fetch(ref.path);
           if (!response.ok) throw new Error(`detail ${response.status}`);
-          const parsed = StrategyDetailSchema.safeParse(await response.json());
+          // Revisions are content-addressed and not enveloped (StrategyRevision in the v2 spec): re-derive the
+          // sha256 from the bytes so a corrupted or substituted payload is rejected, not just a mislabelled one.
+          const text = await response.text();
+          const digest = await revisionContentHash(text);
+          if (digest !== null && digest !== ref.content_hash) throw new Error("detail integrity mismatch");
+          const parsed = StrategyRevisionSchema.safeParse(JSON.parse(text));
           if (!parsed.success) throw new Error("detail schema mismatch");
           if (parsed.data.content_hash !== ref.content_hash) throw new Error("detail version mismatch");
+          if (parsed.data.strategy_key !== key) throw new Error("detail strategy mismatch");
           return parsed.data;
         });
         detailRequests.current.set(requestKey, request);
@@ -690,6 +772,15 @@ export function StrategySelector({
     setFocusKey(key);
     setEnabled((prev) => (prev.has(key) ? prev : new Set(prev).add(key)));
   };
+  // 공유 링크(?s=&on=)에서 복원 — 포커스 전략은 항상 곡선도 켠다
+  const restoreSelection = useCallback((focus: string | null, keys: string[] | null) => {
+    const next = new Set(keys ?? defaultEnabled);
+    if (focus) {
+      setFocusKey(focus);
+      next.add(focus);
+    }
+    setEnabled(next);
+  }, [defaultEnabled]);
   const toggleBench = (id: string) => {
     setBenchOn((prev) => {
       const next = new Set(prev);
@@ -770,6 +861,17 @@ export function StrategySelector({
 
   return (
     <div className="space-y-6">
+      <Suspense fallback={null}>
+        <SelectionUrlSync
+          focusKey={focusKey}
+          enabled={enabled}
+          defaultFocus={headlineKey}
+          defaultEnabled={defaultEnabled}
+          orderedKeys={allKeysOrdered}
+          presentKeys={presentKeys}
+          onRestore={restoreSelection}
+        />
+      </Suspense>
       <div role="status" aria-live="polite" className="font-mono text-xs text-muted-foreground empty:hidden">
         {!matchingDetail(focusKey) && detailState[focusKey] !== "error" && "전략 상세를 불러오는 중…"}
       </div>
@@ -796,7 +898,7 @@ export function StrategySelector({
           <div className="flex gap-1.5">
             <button
               onClick={() => {
-                setEnabled(new Set([headlineKey, "D_chandelier", "B_36mo"].filter((k) => presentKeys.has(k))));
+                setEnabled(new Set(defaultEnabled));
                 setBenchOn(new Set(["KOSPI"]));
               }}
               className="rounded border border-border px-2 py-0.5 font-mono text-[10px] text-muted-foreground hover:border-stamp/40 hover:text-foreground transition-colors"
@@ -856,6 +958,7 @@ export function StrategySelector({
                     </button>
                     <button
                       onClick={() => focusStrategy(key)}
+                      aria-pressed={isFocus}
                       title={`${row?.verdict ?? ""} ${row?.verdict_reason ?? ""}`.trim() || undefined}
                       className={cn("px-2 py-1.5 text-left hover:bg-stamp/5 transition-colors", isFocus && "bg-stamp/10")}
                     >
@@ -915,11 +1018,11 @@ export function StrategySelector({
         isHeadline ? "border-stamp bg-stamp/5" : "border-border bg-card"
       )}>
         <div className="flex flex-wrap items-start justify-between gap-3">
-          <div>
+          <div className="min-w-0 flex-1 basis-64">
             <p className="font-mono text-[10px] font-semibold uppercase tracking-[0.25em] text-stamp">
               포커스 전략 {isHeadline ? "— 선택 기준 상위 (타이브레이크 1위)" : ""}
             </p>
-            <h3 className="mt-0.5 flex items-center gap-2 font-display text-2xl font-black tracking-tight">
+            <h3 className="mt-0.5 flex flex-wrap items-center gap-2 break-words font-display text-2xl font-black tracking-tight">
               {STRATEGY_LABEL_KO[focusKey] ?? focusKey}
               {selected.verdict && <VerdictChip kind={selected.verdict} reason={selected.verdict_reason} />}
             </h3>
@@ -931,6 +1034,7 @@ export function StrategySelector({
                 판정 사유: <span className="text-foreground">{selected.verdict_reason}</span>
               </p>
             )}
+            <ApiResourceLink uri={`/api/v2/strategies/${focusKey}`} label="전략 리소스" className="mt-2" />
           </div>
           <a
             href={`/strategy-trades-${focusKey}.csv`}

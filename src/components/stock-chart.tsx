@@ -1,58 +1,36 @@
-import { promises as fs } from "node:fs";
-import path from "node:path";
-import { CandleChart, type Candle, type ReportMark, type TradeMark } from "@/components/candle-chart";
+import { CandleChart, type Candle, type ReportMark } from "@/components/candle-chart";
+import { PriceSeriesDocumentSchema, TradeMarksDocumentSchema, type TradeMarksDocument } from "@/lib/api-v2";
+import { readV2Optional } from "@/lib/api-v2-server";
 import { dateLabel, type ReportRecord } from "@/lib/report-model";
 import { schoolShort } from "@/lib/verdict";
 import { formatPrice } from "@/lib/utils";
 
+/** GET /api/v2/instruments/{id}/prices — 404(가격 데이터 없음)이면 null, 스키마 위반은 빌드 실패. */
 async function loadCandles(slug: string): Promise<Candle[] | null> {
-  try {
-    const raw = await fs.readFile(path.join(process.cwd(), "public", "prices", `${slug}.json`), "utf-8");
-    const parsed = JSON.parse(raw) as { candles?: Candle[] };
-    const valid = (parsed.candles ?? []).filter(
-      (c) =>
-        typeof c?.time === "string" &&
-        [c.open, c.high, c.low, c.close].every((v) => typeof v === "number" && Number.isFinite(v)),
-    );
-    // lightweight-charts는 시간 오름차순·중복 없는 데이터를 요구한다
-    valid.sort((a, b) => a.time.localeCompare(b.time));
-    const candles = valid.filter((c, i) => i === 0 || c.time !== valid[i - 1].time);
-    return candles.length >= 2 ? candles : null;
-  } catch {
-    return null;
+  const doc = await readV2Optional(`/api/v2/instruments/${slug}/prices`, PriceSeriesDocumentSchema);
+  if (!doc) return null;
+  const valid: Candle[] = [];
+  for (const c of doc.data.candles) {
+    const { open, high, low, close } = c;
+    // 거래정지일(시·고·저 0 또는 null)은 캔들로 그릴 수 없다
+    if (open === null || high === null || low === null || ![open, high, low, close].every(Number.isFinite)) continue;
+    if (open === 0 || high === 0 || low === 0) continue;
+    valid.push({ time: c.time, open, high, low, close, volume: c.volume ?? 0 });
   }
+  // lightweight-charts는 시간 오름차순·중복 없는 데이터를 요구한다
+  valid.sort((a, b) => a.time.localeCompare(b.time));
+  const candles = valid.filter((c, i) => i === 0 || c.time !== valid[i - 1].time);
+  return candles.length >= 2 ? candles : null;
 }
 
-type StrategyMarksFile = {
-  strategy_key: string;
-  marks: TradeMark[];
-  open_stop: { stop_level: number; entry_date: string; as_of: string } | null;
-};
-
-/** SOTA 전략 매매 마크 — 헤드라인 전략이 거래한 종목에만 파일이 존재한다 (없으면 null). */
-async function loadStrategyMarks(slug: string): Promise<StrategyMarksFile | null> {
-  try {
-    const raw = await fs.readFile(path.join(process.cwd(), "public", "strategy-marks", `${slug}.json`), "utf-8");
-    const parsed = JSON.parse(raw) as Partial<StrategyMarksFile>;
-    const marks = (parsed.marks ?? []).filter(
-      (m): m is TradeMark =>
-        typeof m?.date === "string" && (m.side === "buy" || m.side === "sell" || m.side === "stop"),
-    );
-    if (!marks.length && !parsed.open_stop) return null;
-    return {
-      strategy_key: typeof parsed.strategy_key === "string" ? parsed.strategy_key : "",
-      marks,
-      open_stop:
-        parsed.open_stop && typeof parsed.open_stop.stop_level === "number"
-          ? (parsed.open_stop as StrategyMarksFile["open_stop"])
-          : null,
-    };
-  } catch {
-    return null;
-  }
+/** GET /api/v2/instruments/{id}/trade-marks — 헤드라인 전략이 거래한 종목에만 존재한다 (404 = 마크 없음). */
+async function loadStrategyMarks(slug: string): Promise<TradeMarksDocument["data"] | null> {
+  const doc = await readV2Optional(`/api/v2/instruments/${slug}/trade-marks`, TradeMarksDocumentSchema);
+  if (!doc || (!doc.data.marks.length && !doc.data.open_stop)) return null;
+  return doc.data;
 }
 
-/** 종목 캔들 차트 — SSG 시점에 public/prices의 캔들을 읽어 클라이언트 차트에 넘긴다. */
+/** 종목 캔들 차트 — SSG 시점에 v2 instrument prices 리소스를 읽어 클라이언트 차트에 넘긴다. */
 export async function StockChart({ slug, reports }: { slug: string; reports: ReportRecord[] }) {
   const [candles, strategyMarks] = await Promise.all([loadCandles(slug), loadStrategyMarks(slug)]);
   if (!candles) {
@@ -101,7 +79,7 @@ export async function StockChart({ slug, reports }: { slug: string; reports: Rep
         <p className="mt-2 font-mono text-[10px] text-muted-foreground">
           <span className="font-bold text-up">▲ 매수</span> · <span className="font-bold text-down">▼ 매도/스탑</span>
           {strategyMarks.open_stop && <> · ┄ 현재 추적 스탑 {formatPrice(strategyMarks.open_stop.stop_level, market)}</>}
-          {" — "}전략 랩 SOTA({strategyMarks.strategy_key})의 백테스트 매매 지점 · 시뮬레이션 결과이며 투자 권유가 아닙니다
+          {" — "}전략 랩 SOTA({strategyMarks.strategy_id})의 백테스트 매매 지점 · 시뮬레이션 결과이며 투자 권유가 아닙니다
         </p>
       )}
       {(schools.length > 1 || hasSequence) && (

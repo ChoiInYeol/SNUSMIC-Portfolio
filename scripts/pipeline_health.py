@@ -1,14 +1,14 @@
 """Pipeline health check — 데이터 파이프라인 헬스 체크 & Telegram 운영 알림.
 
 매일 CI 마지막에 실행한다. 파이프라인 산출물의 핵심 카운트를 집계해
-직전 실행(data/health.json, 커밋됨)과 비교하고, 이상 징후가 있으면
+직전 실행(data/gold/ops/health.json, 커밋됨)과 비교하고, 이상 징후가 있으면
 Telegram으로 운영 알림을 보낸다. "조용한 데이터 부패" 방지가 목적:
 수집기가 죽어도, 파서가 빈 줄만 뱉어도, CI는 green이기 때문이다.
 
 점검 항목:
   * 카운트 감소 — manifest PDF / 전사 markdown / 파싱 행 / 성과 행이 줄면
     데이터 손실 (append-only 파이프라인에서 감소는 버그).
-  * 파싱 이슈 급증 — report_parse_issues.csv +15행 이상이면 소스 포맷 변경 의심.
+  * 파싱 이슈 급증 — data/silver/reports/parse_issues.csv +15행 이상이면 소스 포맷 변경 의심.
   * 백테스트 신선도 — signals.as_of가 4일(주말 버퍼) 이상 묵으면 갱신 실패.
   * 전략 수 변동 — multi_strategy.strategies 수가 바뀌면 의도 여부 확인 필요.
 
@@ -30,10 +30,12 @@ import os
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-HEALTH_PATH = ROOT / "data" / "health.json"
-MANIFEST_PATH = ROOT / "data" / "sources" / "manifest.json"
-MARKDOWN_DIR = ROOT / "data" / "markdown"
+import lake
+
+ROOT = lake.ROOT
+HEALTH_PATH = lake.GOLD_HEALTH
+MANIFEST_PATH = lake.BRONZE_REPORT_MANIFEST
+MARKDOWN_DIR = lake.SILVER_MARKDOWN
 BACKTEST_PATH = ROOT / "src" / "data" / "strategy-backtest.json"
 SIGNALS_LATEST = ROOT / "public" / "api" / "v1" / "signals" / "latest.json"
 REPORT_STATS_PATHS = (ROOT / "src" / "data" / "forward-record.json", ROOT / "src" / "data" / "stats.json")
@@ -164,16 +166,16 @@ def collect_metrics() -> dict:
     metrics["transcripts_md"] = (
         len(list(MARKDOWN_DIR.glob("**/*.md"))) if MARKDOWN_DIR.exists() else None
     )
-    metrics["parsed_rows"] = _csv_rows(ROOT / "data" / "report_parsed.csv")
-    metrics["parse_issue_rows"] = _csv_rows(ROOT / "data" / "report_parse_issues.csv")
-    metrics["performance_rows"] = _csv_rows(ROOT / "data" / "report_performance.csv")
+    metrics["parsed_rows"] = _csv_rows(lake.SILVER_REPORT_PARSED)
+    metrics["parse_issue_rows"] = _csv_rows(lake.SILVER_REPORT_ISSUES)
+    metrics["performance_rows"] = _csv_rows(lake.GOLD_REPORT_PERFORMANCE)
     metrics["report_performance_json_valid"] = _strict_json(REPORT_PERFORMANCE_PATH)
     metrics["backtest_json_valid"] = _strict_json(BACKTEST_PATH)
     metrics["signals_json_valid"] = _strict_json(SIGNALS_LATEST)
     metrics["aux_json_invalid"] = [p.name for p in REPORT_STATS_PATHS if _load_strict(p) is None]
     metrics["shape_issues"] = _shape_issues()
     metrics["source_status_failures"] = []
-    status_dir = ROOT / "data" / "source-status"
+    status_dir = lake.SOURCE_STATUS
     if status_dir.exists():
         for status_path in sorted(status_dir.glob("*.json")):
             status = _load_strict(status_path)

@@ -66,7 +66,8 @@ def _published() -> list[tuple[Path, str]]:
              (API / "strategy-details" / "manifest.json", "StrategyDetailsManifest")]
     files += [(p, "SignalsPayload") for p in sorted((API / "signals").glob("*.json")) if DATED.match(p.name)]
     files += [(p, "TradesPayload") for p in sorted((API / "trades").glob("*.json"))]
-    files += [(p, "StrategyDetail") for p in sorted((API / "strategy-details").glob("*/*.json"))]
+    # v1 strategy-detail URLs are a next.config.ts rewrite to the shared v2 revision files.
+    files += [(p, "StrategyDetail") for p in sorted(api.REVISIONS_DIR.glob("*/revisions/*.json"))]
     return files
 
 
@@ -74,6 +75,12 @@ def _published() -> list[tuple[Path, str]]:
 def test_published_payload_matches_openapi(path: Path, schema: str):
     payload = json.loads(path.read_text(encoding="utf-8"))
     assert _errors(payload, {"$ref": f"#/components/schemas/{schema}"}, path.name) == []
+
+
+def test_every_v1_operation_is_deprecated_toward_v2():
+    for route, item in SPEC["paths"].items():
+        assert item["get"]["deprecated"] is True, route
+        assert "/api/v2" in item["get"]["description"], route
 
 
 def test_every_concrete_openapi_path_is_published():
@@ -88,7 +95,9 @@ def test_manifest_points_at_published_detail_assets():
     latest = json.loads((API / "signals" / "latest.json").read_text(encoding="utf-8"))
     assert manifest["as_of"] == latest["as_of"]
     for key, asset in manifest["assets"].items():
-        detail = json.loads((API / asset["path"]).read_text(encoding="utf-8"))
+        served = api.REVISIONS_DIR / key / "revisions" / f"{asset['content_hash']}.json"  # rewrite target
+        assert asset["path"] == f"strategy-details/{key}/{asset['content_hash']}.json"
+        detail = json.loads(served.read_text(encoding="utf-8"))
         assert detail["strategy_key"] == key
         assert detail["content_hash"] == asset["content_hash"]
 
@@ -96,7 +105,7 @@ def test_manifest_points_at_published_detail_assets():
 def test_committed_api_artifacts_match_a_fresh_export():
     data = api._load_source(api.DEFAULT_SOURCE)
     outputs, append_only = api.plan_outputs(data)
-    assert api.check_outputs(outputs, append_only, prune_marks=True) == []
+    assert api.check_outputs(outputs, append_only) == []
 
 
 def test_check_freezes_dated_snapshot_on_same_day_rerun(tmp_path, monkeypatch):
@@ -105,5 +114,5 @@ def test_check_freezes_dated_snapshot_on_same_day_rerun(tmp_path, monkeypatch):
     snapshot.write_text('{"buy_signals": []}', encoding="utf-8")
     latest.write_text('{"buy_signals": []}', encoding="utf-8")
     rerun = {"buy_signals": [{"ticker": "NEW"}]}
-    problems = api.check_outputs({snapshot: rerun, latest: rerun}, {snapshot}, prune_marks=False)
+    problems = api.check_outputs({snapshot: rerun, latest: rerun}, {snapshot})
     assert problems == ["stale latest.json"]

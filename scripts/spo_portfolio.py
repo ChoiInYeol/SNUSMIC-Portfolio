@@ -538,7 +538,7 @@ if __name__ == "__main__":
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
     print("SPO smoke test: loading data...", flush=True)
-    perf_all = pd.read_csv(bt.ROOT / "data" / "report_performance.csv", encoding="utf-8-sig")
+    perf_all = pd.read_csv(bt.REPORT_PERFORMANCE_CSV, encoding="utf-8-sig")
     perf = perf_all[
         perf_all["ticker"].notna()
         & perf_all["report_date"].notna()

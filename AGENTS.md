@@ -7,10 +7,23 @@ Rules for AI coding agents (Codex, Claude Code, Cursor) working in this repo.
 
 - **Pipeline (Python 3.12, `uv`)**: `scripts/` collects reports → transcribes → scores → backtests →
   writes static artifacts. There is no runtime database; the "DB" is versioned JSON/CSV artifacts.
-- **Artifacts**: `src/data/*.json` (build-time inputs for pages), `public/api/v1/**` (public static REST API,
-  described by `public/api/v1/openapi.json`, documented in `docs/API.md`).
+- **Artifacts**: `src/data/*.json` (build-time inputs for pages), `public/api/v2/**` (current public static REST
+  API, spec `public/api/v2/openapi.json`, zod mirror `src/lib/api-v2.ts`, documented in `docs/API.md`; writers
+  `scripts/export_api_v2.py` + `scripts/export_stock_charts.py`), `public/api/v1/**` (frozen and deprecated,
+  `scripts/export_signals_api.py`; its strategy-detail URLs are rewrites to the v2 revision files).
+- **Data lake (`data/`)**: medallion layout — `bronze/` raw and append-only (never rewritten), `silver/`
+  validated and standardised, `gold/` purpose-built aggregates; lineage in `data/catalog.json`
+  (`scripts/build_catalog.py`). All paths come from `scripts/lake.py` — never spell `data/...` literals.
+  See `docs/DATA-LAYERS.md`.
+- **Optional metadata sidecar**: `scripts/metadata_api.py` (FastAPI), contract `scripts/schema_metadata.py`
+  mirrored by `src/lib/schema-metadata.ts`. `/developers/architecture` fetches it through
+  `/api/metadata/schema`; DB reflection is read-only and optional. Default source is the actual file lake.
+  Static metadata/OpenAPI snapshots are generated with `uv run python scripts/schema_metadata.py`;
+  regenerate `data/catalog.json` afterward. Local setup: `docs/METADATA.md`.
 - **Web (Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, shadcn/ui new-york + Radix, Lucide)**:
-  statically generated; the only route handler is `src/app/api/v1/signals/latest/route.ts`.
+  statically generated; `next.config.ts` rewrites extensionless `/api/v2/*` URIs to their JSON files. Route
+  handlers: `src/app/api/v2/[...path]/route.ts` (problem+json 404/405 fallback only) and
+  `src/app/api/v1/signals/latest/route.ts` (v1 extensionless alias).
 
 ## Agent tooling setup (once per clone)
 

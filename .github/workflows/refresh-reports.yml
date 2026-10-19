@@ -32,34 +32,60 @@ jobs:
       - name: Install Playwright + browsers
         run: uv run python -m playwright install chromium --with-deps
 
+      # Price lake (git-ignored): silver clean prices, bronze raw fetches, derived price-frame cache.
       - name: Restore price cache
         uses: actions/cache@v4
         with:
+          path: |
+            data/silver/prices
+            data/bronze/prices
+            data/gold/_cache/price_frames
+          key: lake-prices-${{ runner.os }}-${{ github.run_id }}
+          restore-keys: |
+            lake-prices-${{ runner.os }}-
+
+      # One-time migration (2026-10 medallion relayout, docs/DATA-LAYERS.md): seed silver from the
+      # pre-relayout data/prices cache so the first run stays incremental, and snapshot it into bronze.
+      - name: Restore legacy price cache (pre-medallion)
+        if: hashFiles('data/silver/prices/*.csv') == ''
+        uses: actions/cache/restore@v4
+        with:
           path: data/prices
-          key: prices-${{ runner.os }}-${{ github.run_id }}
+          key: prices-${{ runner.os }}-legacy
           restore-keys: |
             prices-${{ runner.os }}-
+
+      - name: Migrate legacy price cache into the lake
+        run: |
+          if [ -d data/prices ] && [ ! -d data/silver/prices ]; then
+            mkdir -p data/silver data/gold/_cache
+            if [ -d data/prices/.cache ]; then mv data/prices/.cache data/gold/_cache/price_frames; fi
+            mv data/prices data/silver/prices
+          fi
+          if [ -d data/silver/prices ] && [ ! -d data/bronze/prices/legacy_import ]; then
+            uv run python scripts/rebuild_silver_prices.py --bootstrap-from-silver
+          fi
 
       # Full sweep with per-source status; ANY failure blocks publication (existing artifacts are retained).
       - name: Collect all reports (full sweep)
         run: |
           set +e
-          mkdir -p data/source-status data/quarantine
+          mkdir -p data/bronze/_runs/source-status data/bronze/_runs/quarantine
           failed=0
           for spec in "reports:uv run python scripts/collect_reports.py --source all --full" "kuvic:uv run python scripts/collect_kuvic_browser.py" "smic:uv run python scripts/collect_smic.py --full" "ewha:uv run python scripts/collect_ewha.py --full" "voera:uv run python scripts/collect_voera.py --full"; do
             name="${spec%%:*}"; cmd="${spec#*:}"
             bash -lc "$cmd"; rc=$?
             if [ "$rc" -eq 0 ]; then success=true; error_json=null; else success=false; error_json="\"collector exit $rc\""; failed=1; fi
-            printf '{"source":"%s","attempted":true,"exit_code":%s,"collector_success":%s,"error":%s}\n' "$name" "$rc" "$success" "$error_json" > "data/source-status/$name.json"
+            printf '{"source":"%s","attempted":true,"exit_code":%s,"collector_success":%s,"error":%s}\n' "$name" "$rc" "$success" "$error_json" > "data/bronze/_runs/source-status/$name.json"
           done
-          tar -czf "data/quarantine/source-status-${GITHUB_RUN_ID}.tar.gz" data/source-status
+          tar -czf "data/bronze/_runs/quarantine/source-status-${GITHUB_RUN_ID}.tar.gz" data/bronze/_runs/source-status
           [ "$failed" -eq 0 ] || exit 1
       - name: Upload failed-source quarantine
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: source-quarantine-${{ github.run_id }}
-          path: data/quarantine
+          path: data/bronze/_runs/quarantine
           if-no-files-found: ignore
 
       - uses: actions/setup-node@v4
@@ -84,15 +110,22 @@ jobs:
           KRX_PW: ${{ secrets.KRX_PW }}
         run: |
           uv run python scripts/build_report_performance.py --sleep 0.3
+          uv run python scripts/build_report_first_seen.py
           uv run python scripts/export_stock_charts.py
           uv run python scripts/backtest_momentum.py
           uv run python scripts/export_signals_api.py
+          uv run python scripts/export_api_v2.py
+          uv run python scripts/schema_metadata.py
 
       - name: Pipeline health gate
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: uv run python scripts/pipeline_health.py
+
+      # Lineage catalog last: it records every committed artifact above, including health.json.
+      - name: Build data catalog
+        run: uv run python scripts/build_catalog.py
 
       # GITHUB_TOKEN pushes do not trigger tests.yml, so the bot commit must pass
       # the same gate here before it reaches main (and the Vercel build).
@@ -104,19 +137,30 @@ jobs:
           UPDATE_GOLDEN: "0"
         run: |
           uv run python scripts/export_signals_api.py --check
+          uv run python scripts/export_api_v2.py --check
+          uv run python scripts/build_report_first_seen.py --check
+          uv run python scripts/schema_metadata.py --check
+          uv run python scripts/build_catalog.py --check
           uv run pytest
-          node --test tests/report-model.test.cjs tests/api-schemas.test.cjs
+          node --test tests/*.test.cjs
           npm run build
 
       - name: Commit refreshed artifacts
         run: |
           git config user.name "verdict-archive-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add src/data/report-performance.json src/data/strategy-backtest.json public/prices \
-            public/api public/strategy-marks \
-            data/report_performance.csv data/report_parsed.csv data/report_parse_issues.csv \
-            data/sources/manifest.json data/markdown
-          # data/pdfs는 gitignore — add하면 커밋 스텝이 죽는다 (refresh-daily와 동일)
+          git add src/data/report-performance.json src/data/strategy-backtest.json src/data/report-first-seen.json \
+            public/api public/metadata 'public/strategy-trades*.csv' \
+            data/gold/reports data/silver/reports/parsed.csv data/silver/reports/parse_issues.csv \
+            data/bronze/reports/manifest.json data/bronze/reports/kuvic_items.json data/silver/reports/markdown \
+            data/gold/ops/health.json data/silver/reference data/bronze/reference data/catalog.json
+          # The catalog describes the working tree; prove the commit holds exactly that tree for every
+          # committed dataset: catalog fresh + no unstaged or untracked file left under any catalog path.
+          uv run python scripts/build_catalog.py --check
+          mapfile -t specs < <(uv run python scripts/build_catalog.py --tracked-pathspecs | tr -d '\r')
+          leftover=$(git status --porcelain --untracked-files=all -- "${specs[@]}" | grep -E '^(.[^ ]|\?\?)' || true)
+          if [ -n "$leftover" ]; then echo "catalogued files not staged:"; echo "$leftover"; exit 1; fi
+          # data/bronze/reports/pdfs, data/*/prices는 gitignore — add하면 커밋 스텝이 죽는다 (refresh-daily와 동일)
           git diff --cached --quiet && echo "no changes" && exit 0
           git commit -m "chore: weekly full sweep ($(date -u +%F))"
           git push

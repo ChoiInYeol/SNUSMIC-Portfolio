@@ -14,7 +14,7 @@ from . import fx
 from .config import *  # noqa: F401,F403
 from .config import (ROOT, ATR_PERIOD, MAX_POSITIONS, POSITION_WEIGHT,
     COST_PER_SIDE, REGIME_MA, CHANDELIER_ATR_MULT, MA200_MONTHLY_CHECK,
-    CASH_YIELD_DAILY, BORROW_RATE_DAILY, IS_END, OOS_START, PRICE_DIR)
+    CASH_YIELD_DAILY, BORROW_RATE_DAILY, IS_END, OOS_START, PRICE_DIR, GOLD_CACHE)
 from .fx import _fx, set_usdkrw
 from .warehouse import (load_prices, load_kospi, _fast_asof_raw, asof_value,
     _px, _has_day, _fast_frame)
@@ -1268,9 +1268,9 @@ IS_FOLD2_END   = dt.date(2023, 12, 31)
 # Both stages are fully deterministic given (prices, reports, calendar, FX,
 # seeds). We fingerprint those inputs; on an exact match the previously found
 # result is reused — identical to re-running. `--retune` forces a re-run.
-OPTUNA_CACHE_PATH = ROOT / "data" / "optuna_cache.json"
-SPO_CACHE_PATH = ROOT / "data" / "spo_cache.pkl"
-S_WEIGHTS_CACHE_PATH = ROOT / "data" / "s_weights_cache.pkl"
+OPTUNA_CACHE_PATH = GOLD_CACHE / "optuna_cache.json"
+SPO_CACHE_PATH = GOLD_CACHE / "spo_cache.pkl"
+S_WEIGHTS_CACHE_PATH = GOLD_CACHE / "s_weights_cache.pkl"
 # Bump when _hrp_weights/_msharpe_weights/_mincvar_weights logic changes
 S_WEIGHTS_CODE_TAG = "s_v1"
 # Bump when load_prices indicator math or chandelier objective logic changes —
@@ -1409,6 +1409,7 @@ def run_optuna_chandelier(
                     "n_trials": OPTUNA_N_TRIALS,
                     "cached_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
                 }
+                OPTUNA_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
                 OPTUNA_CACHE_PATH.write_text(
                     json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
             except Exception as e:

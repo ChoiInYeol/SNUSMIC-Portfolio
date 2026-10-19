@@ -598,7 +598,7 @@ def compute_today_signals(
 
 def main() -> int:
     print("Loading report data...", flush=True)
-    perf_all = pd.read_csv(ROOT / "data" / "report_performance.csv", encoding="utf-8-sig")
+    perf_all = pd.read_csv(REPORT_PERFORMANCE_CSV, encoding="utf-8-sig")
 
     # ── Load both KR and US buy reports
     perf = perf_all[
@@ -918,6 +918,7 @@ def main() -> int:
     print(f"   IS sharpe={result_S_mincvar['in_sample'].get('sharpe')}  OOS sharpe={result_S_mincvar['out_of_sample'].get('sharpe')}", flush=True)
 
     try:
+        strategies.S_WEIGHTS_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
         with open(strategies.S_WEIGHTS_CACHE_PATH, "wb") as _fh:
             pickle.dump((_s_cache_key, s_weights_memos), _fh, protocol=pickle.HIGHEST_PROTOCOL)
     except Exception as e:
@@ -960,6 +961,7 @@ def main() -> int:
     if spo_schedules is None:
         spo_schedules, spo_meta = compute_spo_weight_schedules(prices, reports, calendar, ticker_reports)
         try:
+            strategies.SPO_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
             with open(strategies.SPO_CACHE_PATH, "wb") as _fh:
                 pickle.dump((_spo_key, spo_schedules, spo_meta), _fh, protocol=pickle.HIGHEST_PROTOCOL)
         except Exception as e:
@@ -2045,8 +2047,11 @@ def main() -> int:
 
 if __name__ == "__main__":
     # --retune: ignore the Optuna/SPO artifact caches and re-run both searches.
-    # (Price-frame caches in data/prices/.cache/ auto-invalidate on CSV change.)
+    # (Price-frame caches in data/gold/_cache/price_frames/ auto-invalidate on CSV change.)
     if "--retune" in sys.argv[1:]:
         strategies.FORCE_RETUNE = True
         print("[--retune] Optuna/SPO caches bypassed — full re-search/re-train", flush=True)
-    sys.exit(main())
+    status = main()
+    from lake_prices import flush_bronze
+    flush_bronze()  # a failed bronze write must fail the run; atexit cannot change the exit code
+    sys.exit(status)

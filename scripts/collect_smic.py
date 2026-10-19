@@ -2,7 +2,7 @@
 
 원칙:
 - 모든 HTTP 요청 사이에 DELAY_SECONDS 지연을 두어 원 서버에 부하를 주지 않는다.
-- 각 PDF는 1회만 다운로드한다: data/sources/manifest.json에 기록하고,
+- 각 PDF는 1회만 다운로드한다: data/bronze/reports/manifest.json에 기록하고,
   재실행 시 manifest에 URL이 있고 파일이 존재하면 건너뛴다.
 - SHA256 중복 검사: 기존에 다른 경로로 수집된 동일 파일은 재다운로드하지 않는다.
 - 증분 수집: 기본적으로 목록 첫 페이지(들)에서 이미 알려진 항목을 만나면 조기 종료한다.
@@ -33,12 +33,14 @@ from urllib.parse import urljoin
 
 import requests
 
+from lake import BRONZE_PDFS, BRONZE_REPORT_MANIFEST, resolve_data_path
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 ROOT = Path(__file__).resolve().parents[1]
-PDF_ROOT = ROOT / "data" / "pdfs"
-MANIFEST_PATH = ROOT / "data" / "sources" / "manifest.json"
+PDF_ROOT = BRONZE_PDFS
+MANIFEST_PATH = BRONZE_REPORT_MANIFEST
 
 DELAY_SECONDS = 2.5
 MAX_PDF_BYTES = 120 * 1024 * 1024
@@ -89,7 +91,7 @@ def slugify(name: str, max_len: int = 80) -> str:
 
 
 def build_sha_index() -> dict[str, Path]:
-    """data/pdfs/ 아래 모든 PDF의 SHA256 → Path 인덱스를 구축한다."""
+    """data/bronze/reports/pdfs/ 아래 모든 PDF의 SHA256 → Path 인덱스를 구축한다."""
     index: dict[str, Path] = {}
     for p in PDF_ROOT.rglob("*.pdf"):
         try:
@@ -145,7 +147,7 @@ def download_pdf(
     # URL 기준 중복 검사
     existing = known_urls.get(pdf_url)
     if existing:
-        path = ROOT / existing["file"] if existing.get("file") else None
+        path = resolve_data_path(existing["file"]) if existing.get("file") else None
         if path and path.exists():
             # 메타데이터만 갱신
             changed = False
@@ -304,7 +306,7 @@ def collect_smic(limit: int | None, full: bool) -> list[dict]:
             pdf_url = entry["pdf_url"]
             if pdf_url in known_urls:
                 existing = known_urls[pdf_url]
-                if existing.get("file") and (ROOT / existing["file"]).exists():
+                if existing.get("file") and (resolve_data_path(existing["file"])).exists():
                     skipped_count += 1
                     continue
             download_pdf(entry, manifest, known_urls, sha_index)

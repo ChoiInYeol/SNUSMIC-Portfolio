@@ -15,8 +15,9 @@ dist/
 build/
 
 # Large data blobs — mount as volumes at runtime instead
-data/pdfs
-data/markdown
+data/bronze/reports/pdfs
+data/bronze/prices
+data/silver/reports/markdown
 
 # Git / IDE
 .git

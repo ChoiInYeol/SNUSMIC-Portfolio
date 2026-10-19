@@ -38,12 +38,19 @@ jobs:
       - run: npm ci
 
       - name: Schema quarantine and API contract tests
-        run: node --test tests/report-model.test.cjs tests/api-schemas.test.cjs
+        run: node --test tests/*.test.cjs
 
       # Build from the committed artifacts, never from a fresh export: a missing or
       # stale public/api file must fail here, not pass CI and break the Vercel build.
       - name: Committed API artifacts match the committed source
-        run: uv run python scripts/export_signals_api.py --check
+        run: |
+          uv run python scripts/export_signals_api.py --check
+          uv run python scripts/export_api_v2.py --check
+          uv run python scripts/build_report_first_seen.py --check
+          uv run python scripts/schema_metadata.py --check
+
+      - name: Data catalog matches the committed artifacts
+        run: uv run python scripts/build_catalog.py --check
 
       - run: npm run lint
 

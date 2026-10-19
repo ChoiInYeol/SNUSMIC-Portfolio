@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ApiResourceLink } from "@/components/api-resource-link";
 import { SiteHeader } from "@/components/site-header";
 import { ReportLedger, StatStrip } from "@/components/report-ledger";
 import { StockChart } from "@/components/stock-chart";
 import { dateLabel, getDisplayName, reportDataset, SCHOOL_LABELS, type ReportRecord } from "@/lib/report-model";
 import { isBuy, signColor, tickerSlug } from "@/lib/verdict";
 import { formatPct, formatPrice } from "@/lib/utils";
+import { v2Exists } from "@/lib/api-v2-server";
 
 function groupBySlug() {
   const groups = new Map<string, ReportRecord[]>();
@@ -44,6 +46,8 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
   const buys = sorted.filter(isBuy);
   const hits = buys.filter((r) => r.target_hit_until_latest).length;
   const targets = buys.filter((r) => r.target_price !== null).map((r) => r.target_price as number);
+  const instrumentUri = `/api/v2/instruments/${ticker.toLowerCase()}`;
+  const hasInstrument = await v2Exists(instrumentUri);
   const upsides = buys.filter((r) => r.stated_upside_pct !== null).map((r) => r.stated_upside_pct as number);
 
   return (
@@ -62,6 +66,11 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
               ? `${schools.map((s) => SCHOOL_LABELS[s]).join(" · ")} — ${schools.length}개 학회가 이 종목을 다뤘습니다. 같은 종목에 대한 서로 다른(또는 같은) 판단을 시간 순으로 비교해 보세요.`
               : `${SCHOOL_LABELS[latest.school]}가 이 종목을 ${sorted.length}회 다뤘습니다.${archive.length > 0 ? ` 2019-07 이전 아카이브 ${archive.length}건은 하단에 따로 보관됩니다.` : ""}`}
         </p>
+        {hasInstrument && (
+          <div className="mt-3">
+            <ApiResourceLink uri={instrumentUri} label="종목 리소스" />
+          </div>
+        )}
       </header>
 
       {sorted.length > 0 && (

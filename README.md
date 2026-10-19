@@ -1,5 +1,7 @@
 # 판결 아카이브 (Verdict Archive)
 
+데이터 스키마·계보 지도: `/developers/architecture` — [FastAPI + 프런트 로컬 실행 안내](docs/METADATA.md).
+
 > **모든 리포트는, 결국 시장의 판결을 받는다.**
 
 [![Daily Refresh](https://github.com/ChoiInYeol/SNUSMIC-Portfolio/actions/workflows/refresh-daily.yml/badge.svg)](https://github.com/ChoiInYeol/SNUSMIC-Portfolio/actions/workflows/refresh-daily.yml)
@@ -64,7 +66,7 @@ flowchart LR
 ```
 
 데이터 복구 체인: kordoc 전사(텍스트층, 필요 시 내장 한국어 OCR) → 파일명/수집 메타데이터 힌트 → 네이버 자동완성 티커 복구.
-사람이 검증한 교정값은 `data/sources/corrections.json`으로 유지됩니다.
+사람이 검증한 교정값은 `data/silver/reference/corrections.json`으로 유지됩니다.
 
 ## 데이터 소스
 
@@ -77,7 +79,7 @@ flowchart LR
 | KUVIC | 고려대학교 | 104건 | https://www.kuvic.com/research |
 | VOERA | 홍익대학교 | 104건 | https://www.voera.co.kr/Research |
 
-**수집 원칙**: 각 PDF는 **1회만 다운로드**하고 SHA256 manifest(`data/sources/manifest.json`)로 관리하며,
+**수집 원칙**: 각 PDF는 **1회만 다운로드**하고 SHA256 manifest(`data/bronze/reports/manifest.json`)로 관리하며,
 요청 간 지연(2.5초)을 두어 원 서버에 부하를 주지 않습니다. 이메일 등 비공개 채널 수집은 하지 않습니다.
 
 ## Quick Start
@@ -97,7 +99,8 @@ npm install && npm run dev          # http://localhost:3000
 npm ci --prefix tools/kordoc
 .venv/Scripts/python scripts/transcribe_pdfs.py
 
-# 3) 파싱 + 시세 결합 (.env의 KRX_ID/KRX_PW 사용, data/prices/ 증분 캐시)
+# 3) 파싱 + 시세 결합 (.env의 KRX_ID/KRX_PW 사용, data/silver/prices/ 증분 캐시, 원본 응답은 data/bronze/prices/)
+#    데이터 레이어(bronze/silver/gold)는 docs/DATA-LAYERS.md
 .venv/Scripts/python scripts/build_report_performance.py
 
 # 4) 종목 차트 데이터 → public/prices/{slug}.json

@@ -1,9 +1,9 @@
-# Signal API — Reference
+# Verdict Archive API v2 — Reference
 
 > **DISCLAIMER / 투자 경고**
 >
-> All data served by this API is derived from **backtested simulations** of
-> momentum strategies applied to student investment-club reports.
+> All data served by this API is derived from student investment-club reports and
+> **backtested simulations** of strategies built on them.
 > It is provided for **research and educational purposes only**.
 > It does **NOT** constitute investment advice or a solicitation to buy or sell
 > any security.  
@@ -13,308 +13,354 @@
 
 ---
 
-## Overview
+- Base URL: `https://verdict-archive.vercel.app/api/v2`
+- Machine-readable contract: [`/api/v2/openapi.json`](https://verdict-archive.vercel.app/api/v2/openapi.json) (OpenAPI 3.1)
+- Status: **v2 is current.** `/api/v1` is frozen and deprecated — see [Migration from v1](#migration-from-v1).
+- Design record: [`docs/adr/0001-api-v2-and-medallion.md`](adr/0001-api-v2-and-medallion.md)
+- Schema and lineage explorer: `/developers/architecture`; optional FastAPI metadata service and local setup: [METADATA.md](METADATA.md).
 
-The API is a set of **static JSON files** regenerated once daily by the CI
-pipeline (`scripts/backtest_momentum.py` → `scripts/export_signals_api.py`) and
-deployed as public assets on Vercel.  There is no server-side compute at request
-time — Vercel serves the files directly from CDN.
+The API is a set of static JSON documents written by the daily CI pipeline and served from Vercel's CDN.
+Reads serve static files; a method guard handles OPTIONS and rejects writes before file resolution,
+and a fallback route formats missing-resource errors.
 
-Base URL: `https://verdict-archive.vercel.app/api/v1`
+## 1. Design principles
 
-An OpenAPI 3.1 machine-readable spec is available at
-[`/api/v1/openapi.json`](https://verdict-archive.vercel.app/api/v1/openapi.json).
+### 1.1 REST는 프로토콜이 아니라 아키텍처 설계 원칙이다
 
----
+REST does not ship with a wire format or a library; it is a set of constraints. v2 applies them as concrete,
+checkable choices:
 
-## Endpoints
+- **URI = resource identifier.** Plural nouns, hierarchical, no verbs, no file extensions:
+  `/api/v2/strategies/{id}/trades`, not `/getTrades?key=…` or `/trades/{key}.json`.
+- **HTTP method = action and meaning.** Reading is `GET`; there is nothing else to do with a published
+  research record, so there is no other method (see 1.2).
+- **Stable identifiers.** A strategy id is its pipeline key (`W_allweather_chandelier`, also `D+_chandelier_optuna`,
+  `T-_kospi_core_regime`), an instrument id is `{market}-{ticker}` lower-cased (`kr-005930`, `us-fix`), a club id is
+  its school code (`smic`). They are the same ids the website uses (`/stocks/kr-005930`, `/clubs/smic`).
+- **Uniform interface.** Every document has the same envelope and navigates by links (1.4).
+- **Stateless.** Every request is self-contained; no sessions, cookies or auth.
 
-### `GET /api/v1/signals/latest.json`
-
-The **headline strategy's current signals** — refreshed each trading day.
-
-| Field | Type | Description |
+| URI | Resource | Mutability |
 |---|---|---|
-| `schema_version` | string | API schema version (`"1.0"`) |
-| `as_of` | date | Date the signals were computed |
-| `generated_at` | datetime | ISO-8601 UTC timestamp of generation |
-| `headline_strategy` | string | Strategy key (e.g. `W_allweather_chandelier`) |
-| `disclaimer` | string | English disclaimer text |
-| `disclaimer_ko` | string | Korean disclaimer text |
-| `regime` | object | Market regime state (see below) |
-| `slots` | object | `{max_positions, open, available}` |
-| `open_positions` | array | Currently held positions |
-| `buy_signals` | array | Imminent buy candidates (last 5 trading days) |
-| `sell_signals` | array | Positions approaching or hitting stop |
-| `counts` | object | Summary counts |
+| `/api/v2` | entry point: links to every collection | daily |
+| `/api/v2/openapi.json` | this contract (keeps `.json` by convention) | daily |
+| `/api/v2/signals` | signal snapshot index, newest first | daily |
+| `/api/v2/signals/latest` | latest snapshot | daily |
+| `/api/v2/signals/{date}` | snapshot of one market date | **immutable** |
+| `/api/v2/strategies` | all strategies with metrics | daily |
+| `/api/v2/strategies/{id}` | one strategy | daily |
+| `/api/v2/strategies/{id}/trades` | closed-trade log | daily |
+| `/api/v2/strategies/{id}/revisions/{sha256}` | NAV, wealth, trades, positions, yearly — content-addressed | **immutable** |
+| `/api/v2/track-record` | forward record of published buy signals | daily |
+| `/api/v2/instruments` | instruments with a price series | daily |
+| `/api/v2/instruments/{id}` | instrument summary + every club report on it | daily |
+| `/api/v2/instruments/{id}/prices` | daily OHLCV candles | daily |
+| `/api/v2/instruments/{id}/trade-marks` | headline-strategy buy/sell/stop marks | daily |
+| `/api/v2/clubs` | clubs with scorecards | daily |
+| `/api/v2/clubs/{id}` | one club | daily |
+| `/api/v2/clubs/{id}/reports` | that club's scored reports | daily |
 
-**`regime` object**
+### 1.2 CRUD 매핑보다 HTTP 특성 이해가 중요하다
 
-| Field | Type | Description |
+What makes an API predictable under duplicate requests, network failures and retries is using HTTP's own
+properties correctly, not mapping tables onto POST/GET/PUT/DELETE.
+
+| Method | Safe | Idempotent | Cacheable | v2 |
+|---|---|---|---|---|
+| `GET` | yes | yes | yes | every resource |
+| `HEAD` | yes | yes | yes | every resource (headers only — cheap existence/freshness check) |
+| `OPTIONS` | yes | yes | no | `204` with CORS headers on every v2 URI, handled before static files |
+| `POST` `PUT` `PATCH` `DELETE` | no | `PUT`/`DELETE` only | no | **none** |
+
+**Why no write methods.** Data changes only through the reviewed pipeline (collect → transcribe → score →
+backtest → export → CI gate → commit). Writing over HTTP would bypass that review and the point-in-time
+guarantees (no look-ahead). Because every operation is safe and idempotent, **any request may be retried
+any number of times** — there is no side effect to duplicate.
+
+**Status codes**
+
+| Code | When | Body |
 |---|---|---|
-| `kospi_above_200ma` | bool | KOSPI close > 200-day MA |
-| `state` | `"ON"` \| `"OFF"` | Regime gate state |
-| `kospi_close` | number | Last KOSPI close |
-| `kospi_ma200` | number | KOSPI 200-day MA value |
-| `parking` | `"allweather"` \| `"kospi"` \| `"cash"` | Idle-cash parking vehicle |
-| `applies` | bool | Whether the regime filter is active for this strategy |
+| `200 OK` | resource exists | the document |
+| `304 Not Modified` | `If-None-Match` matches the current `ETag` | none |
+| `308 Permanent Redirect` | legacy chart paths (`/prices/*`, `/strategy-marks/*`) and `/api/v2/` → `/api/v2` | none |
+| `404 Not Found` | unknown URI — including a date with no snapshot (weekend, holiday, future) | `application/problem+json` ([RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)) |
+| `405 Method Not Allowed` | unsupported method on any v2 URI | `application/problem+json`, `Allow: GET, HEAD, OPTIONS`, `Cache-Control: no-store` |
 
-**`open_positions[]` item**
+```json
+{"type": "about:blank", "title": "Not Found", "status": 404,
+ "detail": "No /api/v2 resource at this URI. Start from /api/v2 and follow links.",
+ "instance": "/api/v2/strategies/UNKNOWN"}
+```
 
-| Field | Type | Description |
+`src/proxy.ts` handles OPTIONS and unsupported methods before static-file resolution, so existing
+and missing resources use the same method contract.
+
+**Caching follows mutability**
+
+| Mutability | Resources | `Cache-Control` |
 |---|---|---|
-| `ticker` | string | KR 6-digit code or US ticker |
-| `market` | `"KR"` \| `"US"` | Market |
-| `name` | string | Company display name |
-| `entry_date` | date | Position open date |
-| `entry_price` | number | Entry price |
-| `current_price` | number | Last close price |
-| `stop_level` | number | Chandelier trailing stop level |
-| `unrealized_pct` | number | Unrealised return % |
-| `days_held` | integer | Calendar days since entry |
-| `entry_reason` | string | Human-readable entry rationale |
-| `trigger_reports` | array | Club reports that triggered entry |
+| daily | everything else | `public, max-age=300, stale-while-revalidate=86400` |
+| immutable (dated) | `/signals/{date}` | `public, max-age=3600, s-maxage=31536000` |
+| immutable (content-addressed) | `/strategies/{id}/revisions/{sha256}` | `public, max-age=31536000, immutable` |
+| missing resource | `404` from the fallback | same rule as the URI it was asked for |
+| unsupported method / preflight | `405` / `204` from the method guard | `no-store` |
 
-**`buy_signals[]` item**
+- Daily resources: fresh for 5 minutes, then served stale while revalidating for up to a day. Data changes once
+  per trading day, so a day-old copy during an outage is better than an error.
+- Dated snapshots never change, but the same header rule also matches the `404` of a date that is not published
+  yet — so browsers revalidate hourly while the CDN keeps its copy until the next deploy.
+- Revisions are content-addressed: new bytes get a new URI, so caching forever is safe. They also send
+  `Link: </api/v2/strategies/{id}>; rel="up"`.
 
-| Field | Type | Description |
-|---|---|---|
-| `ticker` | string | |
-| `market` | string | |
-| `name` | string | |
-| `signal_date` | date | Date signal was generated |
-| `entry_basis_price` | number\|null | Suggested entry reference price |
-| `entry_reason` | string | |
-| `trigger_reports` | array | |
+**ETag / 304.** Every response has an `ETag`. Send it back as `If-None-Match`; an unchanged resource answers `304`
+with no body. Polling more often than `max-age` returns `304` (or a CDN hit) at negligible cost.
 
-**`sell_signals[]` item**
+**Retry guidance.** Retry network errors and `5xx` with exponential backoff (1 s, 2 s, 4 s … plus jitter) and
+honour `Retry-After` when present. Do not retry `404`/`405` — they are answers, not failures. A `404` on today's
+dated snapshot means it is not published yet; use `/signals/latest` or retry after the evening refresh (KST).
 
-| Field | Type | Description |
-|---|---|---|
-| `ticker` | string | |
-| `market` | string | |
-| `name` | string | |
-| `reason` | `"approaching_stop"` \| `"stop_hit"` | Why it's flagged |
-| `stop_level` | number | Stop price |
-| `dist_to_stop_pct` | number | Distance to stop as % of current price |
+### 1.3 REST가 정답은 아니다 — 도메인에 맞게, 일관성 있게
 
----
+Stateless and Uniform Interface are kept everywhere; where the domain is not CRUD, the domain wins:
 
-### `GET /api/v1/signals/{YYYY-MM-DD}.json`
+- **A signal snapshot** is a domain event (what the strategy said on a market date). It is its own immutable
+  resource `/signals/{date}`, not a filter on a mutable list. `/signals/latest` is a separate resource whose
+  `links.snapshot` names the dated copy.
+- **A strategy revision** is a backtest result identified by the sha256 of its canonical JSON. It is the one
+  document without the envelope: its bytes *are* the hashed payload (verify integrity by recomputing the hash),
+  and the same bytes answer the deprecated v1 URL, so nothing is stored twice.
+- **Track record** is a computed view over the append-only snapshots, exposed as one read-only resource rather
+  than as an "evaluate" action.
+- **No query parameters.** Filtering, sorting and pagination would need a server; collections are small enough
+  (the largest, `/clubs/smic/reports`, is ~0.9 MB) to fetch whole, and every item links to its detail.
 
-Immutable daily snapshot — same shape as `latest.json`.  
-The CI pipeline appends a new file each day but never overwrites historical ones,
-so consumers can diff day-over-day.
+### 1.4 Envelope and links
 
-Example: `/api/v1/signals/2026-06-11.json`
+Every v2 document (except revisions) is:
 
----
+```json
+{
+  "schema_version": "2.0",
+  "links": {"self": "/api/v2/strategies/D+_chandelier_optuna", "collection": "/api/v2/strategies",
+            "trades": "/api/v2/strategies/D+_chandelier_optuna/trades",
+            "current_revision": "/api/v2/strategies/D+_chandelier_optuna/revisions/81d0…6c1e"},
+  "meta": {"generated_at": "2026-10-19T09:58:46+00:00", "as_of": "2026-10-16",
+           "disclaimer": "…", "disclaimer_ko": "…"},
+  "data": { … }
+}
+```
 
-### `GET /api/v1/forward.json`
+- `links` are root-relative hrefs (`/api/v2/…`); resolve them against the API origin. Collection items carry
+  `links.self`; payload items (positions, buy/sell signals, trades, reports, track-record entries) carry
+  `links.instrument` when that instrument resource exists. **Navigate by link instead of building URIs.**
+- `meta.generated_at` is when the pipeline last produced *different* content for the document (an unchanged
+  re-export keeps the previous value); `meta.as_of` is the market date the data refers to; `meta.count` is the
+  number of items in `data` for collections.
+- `+` in strategy ids is a literal path character; `%2B` also works.
 
-Snapshot scoring is not automatically independent out-of-sample evidence. First-publication provenance is explicitly unknown unless it is independently verified; `as_of` and Git commit timestamps alone do not establish the time data became publicly available.
+## 2. Resources
 
-| Field | Description |
-|---|---|
-| `method` | Scoring rules (entry = next-day open after signal, local-currency close returns, 7-day per-ticker dedup) |
-| `summary` | `n_signals`, `n_tracking`, `avg_return_pct`, `win_rate_pct`, `best_pct`, `worst_pct`, `first_snapshot`, `n_snapshots` |
-| `entries[]` | Per-signal: `signal_date`, `ticker`, `market`, `name`, `entry_date`, `entry_price`, `current_price`, `return_pct`, `peak_pct`, `days`, `status`, `trigger_schools` |
-| `coverage` / provenance fields | Missing prices remain in the signal denominator with `unavailable`/`pending` status and null returns; unverified first-publication evidence is disclosed, not fabricated. |
+Field-level schemas, with an example for every response, are in `openapi.json`
+(`components/schemas`). Objects there are closed: the contract test fails on any undocumented field.
 
-Rendered at [/track](https://verdict-archive.vercel.app/track). Record starts 2026-06-11.
+### Signals
 
----
+- `GET /api/v2/signals` — `data[]`: `{date, headline_strategy, counts, links.self}`, newest first. History starts
+  2026-06-11 and includes every snapshot first published under v1.
+- `GET /api/v2/signals/latest`, `GET /api/v2/signals/{date}` — `data`: `as_of`, `headline_strategy`,
+  `regime {kospi_above_200ma, state, kospi_close, kospi_ma200, parking, applies}`,
+  `slots {max_positions, open, available}`, `counts`, `open_positions[]`, `buy_signals[]`, `sell_signals[]`.
+  Item fields are those of v1 (`ticker, market, name, entry_date, entry_price, current_price, stop_level,
+  unrealized_pct, days_held, entry_reason, trigger_reports[]`; buy: `signal_date, entry_basis_price`; sell:
+  `reason: approaching_stop|stop_hit, stop_level, dist_to_stop_pct`) plus `links.instrument`.
+  Dated snapshots are frozen at first publication; `meta.generated_at` is that publication time.
 
-### `GET /api/v1/strategies.json`
+### Strategies
 
-All 26 strategies with full IS/OOS metrics.
+- `GET /api/v2/strategies` / `GET /api/v2/strategies/{id}` — `id, label, is_headline, is_curated, verdict
+  (SOTA·채택·연구용·기각), verdict_reason, trade_count, metrics {start, end, total_return_pct, cagr_pct, sharpe,
+  mdd_pct, win_rate_pct, avg_hold_days}, in_sample, out_of_sample, best_trade {ticker, name, return_pct},
+  top_decile_pnl_share_pct, benchmarks {kospi_dca_ratio, kospi_dca_beats, aw_dca_ratio, aw_dca_beats},
+  dsr {psr, dsr, sr0_annualized, n_trials, significant_after_deflation}, walkforward, walkforward_oos`.
+- `GET /api/v2/strategies/{id}/trades` — closed trades, oldest first:
+  `ticker, market, name, entry_date, exit_date, entry_price, exit_price, return_pct, days, exit_reason,
+  entry_reason, trigger_reports[], links.instrument`.
+- `GET /api/v2/strategies/{id}/revisions/{sha256}` — `{schema_version: "1.0", strategy_key, nav[], wealth,
+  trades[], open_positions[], yearly[], content_hash}`; `content_hash` = sha256 of the canonical JSON
+  (sorted keys, `,`/`:` separators, UTF-8) of the object without `content_hash`. Old revisions stay published.
 
-| Field | Description |
-|---|---|
-| `strategies[].key` | Internal strategy key |
-| `strategies[].is_headline` | `true` for the current headline strategy |
-| `strategies[].metrics` | Full-period stats: `total_return_pct`, `cagr_pct`, `sharpe`, `mdd_pct`, `win_rate_pct`, `avg_hold_days` |
-| `strategies[].in_sample` | IS period stats |
-| `strategies[].out_of_sample` | OOS period stats |
-| `strategies[].kospi_dca_ratio` | Final value vs KOSPI buy-and-hold (>1 = beats market) |
-| `strategies[].aw_dca_ratio` | Final value vs All-Weather DCA |
-| `strategies[].dsr` | v24 — Deflated Sharpe Ratio block: `psr`, `dsr`, `sr0_annualized`, `n_trials`, `significant_after_deflation` (Bailey & López de Prado 2014; DSR ≥ 0.95 = significant after multiple-testing correction) |
-| `strategies[].walkforward` / `walkforward_oos` | v24 — 6-month rolling-window consistency: `n_windows`, `positive_pct`, `beat_kospi_pct`, `median_sharpe`, `worst_window_return_pct` (no refit; `_oos` = windows from 2024-01) |
+### Track record
 
----
+- `GET /api/v2/track-record` — `method, summary {n_signals, n_tracking, n_unavailable, n_pending, coverage_pct,
+  avg_return_pct, win_rate_pct, best_pct, worst_pct, first_snapshot, last_snapshot, n_snapshots}, entries[]
+  {signal_date, ticker, market, name, basis_price, entry_date, entry_price, current_price, return_pct, peak_pct,
+  days, status: tracking|pending|unavailable, trigger_schools, headline_strategy, links.instrument},
+  headline_by_date`. Rendered at [/track](https://verdict-archive.vercel.app/track).
+  Snapshot scoring is not automatically independent out-of-sample evidence; first-publication provenance is
+  unknown unless independently verified.
 
-### `GET /api/v1/trades/{strategy_key}.json`
+### Instruments
 
-Full closed-trade log for one strategy.  Open (未청산) positions are excluded.
+- `GET /api/v2/instruments` — every instrument with a published price series:
+  `id, market, ticker, name, exchange, report_count, club_report_counts {club id: n}, first_report_date,
+  latest_report_date, links {self, prices, trade_marks?}`.
+- `GET /api/v2/instruments/{id}` — the same summary plus `reports[]` (the report subset below, each with
+  `links.club`), newest first.
+- `GET /api/v2/instruments/{id}/prices` — `data.candles[] {time, open, high, low, close, volume}` (local currency,
+  missing fields `null`) and `data.report_dates[]`; `meta.as_of` = last candle.
+- `GET /api/v2/instruments/{id}/trade-marks` — only for instruments the headline strategy traded:
+  `strategy_id, ticker, market, name, marks[] {date, side: buy|sell|stop, price, reason}, open_stop
+  {stop_level, entry_date, as_of} | null`.
 
-`strategy_key` values: `A_12mo`, `B_36mo`, `C_narrative`, `D_chandelier`,
-`E_half_runner`, `F_momentum_narrative`, `G_dip_buy`, `H_minervini`,
-`I_supertrend`, `J_core_satellite`, `K_rr_trend`, `N_52w_high`,
-`O_mtt_alpha16`, `P_deepbuy_chandelier`, `Q_kangto_trend`,
-`R_kelly_chandelier`, `S_hrp`, `S_msharpe`, `S_mincvar`, `V_spo`, `V_ls`,
-`T_kospi_core_chandelier`, `T-_kospi_core_regime`, `W_allweather_chandelier`,
-`U_chandelier_scaleout`
+### Clubs and reports
 
-**`trades[]` item**
+- `GET /api/v2/clubs`, `GET /api/v2/clubs/{id}` — `id, name, full_name, report_count, first_report_date,
+  latest_report_date, scorecard` (scored subset: buy-side reports since 2019-07 — `reports, priced_reports,
+  with_target, up_latest, down_latest, target_hit, avg_return_latest_pct, median_return_latest_pct`).
+- `GET /api/v2/clubs/{id}/reports` — newest first, undated last. **Report subset:** identity (`school, report_type,
+  era, market, ticker, exchange, company, display_name`), dates (`report_date, authored_date` — as transcribed and
+  unvalidated, `first_trade_date, latest_trade_date`), rating (`rating, rating_class`), prices (`target_price,
+  report_current_price, stated_upside_pct, start_close, latest_close`), returns (`return_latest_pct,
+  return_30d/90d/180d/365d_pct, benchmark_return_pct, alpha_latest_pct, max_high_return_pct, peak_return_24m_pct,
+  peak_date_24m`), target hit (`target_hit_until_latest, first_target_hit_date, days_to_target`), status (`age_days,
+  maturity, performance_bucket, bucket_peak, data_issue`), sources (`source_name, source_md_url, source_pdf_url`).
+  Internal pipeline fields (repo paths, raw parser text, QA flags) are not published.
 
-| Field | Description |
-|---|---|
-| `ticker` | KR 6-digit or US ticker |
-| `market` | `"KR"` or `"US"` |
-| `name` | Company name |
-| `entry_date` / `exit_date` | ISO dates |
-| `entry_price` / `exit_price` | Prices |
-| `return_pct` | Trade return % (net of transaction cost) |
-| `days` | Holding period in calendar days |
-| `exit_reason` | e.g. `"chandelier_stop"`, `"time_exit"` |
-| `entry_reason` | Human-readable entry rationale |
-| `trigger_reports` | Club reports that triggered entry |
-
----
-
-### `GET /strategy-marks/{slug}.json`
-
-Per-ticker **backtest trade marks of the headline strategy** — used by the
-stock pages to overlay buy/sell points on the candle chart.  
-`slug` matches the price-chart files: `"{market}-{ticker}".lower()`
-(e.g. `kr-278470`, `us-fix`). One file exists for every ticker the headline
-strategy ever traded (plus current open positions).
-
-| Field | Description |
-|---|---|
-| `strategy_key` | Headline strategy key |
-| `ticker` / `market` / `name` | Instrument identity |
-| `marks[]` | `{date, side: "buy"\|"sell"\|"stop", price, reason}` — entry/exit points |
-| `open_stop` | `{stop_level, entry_date, as_of}` for currently held tickers, else `null` |
-
-Example: `/strategy-marks/kr-278470.json`
-
----
-
-### `GET /api/v1/openapi.json`
-
-OpenAPI 3.1 spec — use with any OpenAPI client generator to get typed
-access in your language.
-
----
-
-## Worked Examples
+## 3. Examples
 
 ### curl
 
 ```bash
-# Latest signals
-curl https://verdict-archive.vercel.app/api/v1/signals/latest.json | python -m json.tool
+# Entry point, then follow links
+curl -s https://verdict-archive.vercel.app/api/v2 | python -m json.tool
 
-# Headline strategy trades
-curl https://verdict-archive.vercel.app/api/v1/trades/W_allweather_chandelier.json | python -m json.tool
+# Conditional request: 304 when nothing changed
+etag=$(curl -sI https://verdict-archive.vercel.app/api/v2/signals/latest | awk -F': ' 'tolower($1)=="etag"{print $2}' | tr -d '\r')
+curl -s -o /dev/null -w '%{http_code}\n' -H "If-None-Match: $etag" https://verdict-archive.vercel.app/api/v2/signals/latest
+
+# Unknown resource → RFC 9457 problem
+curl -s https://verdict-archive.vercel.app/api/v2/strategies/UNKNOWN
 ```
 
-### Python — print today's buy and sell signals
+### Python — today's signals by link navigation, with retries
 
 ```python
-import urllib.request
-import json
+import json, time, urllib.error, urllib.request
 
-url = "https://verdict-archive.vercel.app/api/v1/signals/latest.json"
-with urllib.request.urlopen(url) as resp:
-    data = json.load(resp)
+ORIGIN = "https://verdict-archive.vercel.app"
 
-print(f"Signals as of {data['as_of']}  (strategy: {data['headline_strategy']})")
-print(f"Regime: {data['regime']['state']}  parking: {data['regime']['parking']}")
-print()
+def get(href, attempts=4):
+    for i in range(attempts):
+        try:
+            with urllib.request.urlopen(ORIGIN + href, timeout=10) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            if e.code < 500:          # 404/405 are answers, not failures
+                raise
+        except urllib.error.URLError:
+            pass
+        time.sleep(2 ** i)            # safe to retry: every request is GET
+    raise RuntimeError(f"gave up on {href}")
 
-buys = data["buy_signals"]
-if buys:
-    print(f"=== BUY signals ({len(buys)}) ===")
-    for b in buys:
-        print(f"  {b['ticker']} ({b['market']}) — {b['name']}")
-        print(f"    signal_date: {b['signal_date']}  basis: {b['entry_basis_price']}")
-        print(f"    reason: {b['entry_reason']}")
-else:
-    print("No buy signals today.")
-
-print()
-sells = data["sell_signals"]
-if sells:
-    print(f"=== SELL alerts ({len(sells)}) ===")
-    for s in sells:
-        print(f"  {s['ticker']} — {s['name']}  [{s['reason']}]")
-        print(f"    stop: {s['stop_level']}  dist: {s['dist_to_stop_pct']:.1f}%")
-else:
-    print("No sell alerts today.")
+index = get("/api/v2")
+latest = get(index["links"]["latest_signals"])
+snap = latest["data"]
+print(f"as of {snap['as_of']} · {snap['headline_strategy']} · regime {snap['regime']['state']}")
+for b in snap["buy_signals"]:
+    print("BUY", b["ticker"], b["name"], b["entry_reason"])
+    if "links" in b:                  # instrument resource exists
+        inst = get(b["links"]["instrument"])["data"]
+        print("   ", inst["report_count"], "club reports, latest", inst["latest_report_date"])
+for s in snap["sell_signals"]:
+    print("SELL", s["ticker"], s["reason"], s["dist_to_stop_pct"])
 ```
 
-### Python — diff yesterday vs today
+### Python — what changed between two snapshots
 
 ```python
-import urllib.request, json, datetime
-
-base = "https://verdict-archive.vercel.app/api/v1/signals"
-today = datetime.date.today().isoformat()
-yesterday = (datetime.date.today() - datetime.timedelta(days=1)).isoformat()
-
-def fetch(date):
-    try:
-        with urllib.request.urlopen(f"{base}/{date}.json") as r:
-            return json.load(r)
-    except Exception:
-        return None
-
-t = fetch(today)
-y = fetch(yesterday)
-if t and y:
-    t_tickers = {p["ticker"] for p in t["open_positions"]}
-    y_tickers = {p["ticker"] for p in y["open_positions"]}
-    print("Entered:", t_tickers - y_tickers)
-    print("Exited: ", y_tickers - t_tickers)
+index = get("/api/v2/signals")["data"]          # newest first
+today, prev = (get(e["links"]["self"])["data"] for e in index[:2])
+held = lambda s: {p["ticker"] for p in s["open_positions"]}
+print("entered", held(today) - held(prev), "exited", held(prev) - held(today))
 ```
 
----
+### JavaScript — strategy curve via `current_revision`
 
-## Cache-Control & CORS
+```js
+const origin = "https://verdict-archive.vercel.app";
+const get = async (href) => {
+  const res = await fetch(origin + href);
+  if (!res.ok) throw new Error(`${res.status} ${href}`);
+  return res.json();
+};
 
-The `.json` assets are served directly; the no-extension alias remains a Next handler for GET/OPTIONS. All API responses allow `Access-Control-Allow-Origin: *`.
+const strategies = await get("/api/v2/strategies");
+const headline = strategies.data.find((s) => s.is_headline);
+const strategy = await get(headline.links.self);
+const revision = await get(strategy.links.current_revision); // immutable: cache forever
+console.log(headline.id, revision.nav.at(-1), `${revision.trades.length} trades`);
+```
 
-- `signals/latest.json`, `/signals/latest` and `strategy-details/manifest.json`: `public, max-age=300, stale-while-revalidate=60`.
-- Dated `signals/YYYY-MM-DD.json`: `public, max-age=3600, s-maxage=31536000`. Snapshots are append-only, but a header rule also
-  matches the 404 of a date that is not published yet, so browsers revalidate hourly; the CDN copy lives until the next deploy.
-- `strategy-details/<key>/<sha256>.json`: `public, max-age=31536000, immutable` (content-addressed — new bytes, new URL).
-- Other API files use the platform default cache policy; there is no blanket 12-hour API cache.
-- Invalid input to the generated alias fails the build instead of publishing a cached static 503.
+## 4. Migration from v1
 
-## Contract & versioning
+| v1 (deprecated) | v2 |
+|---|---|
+| `GET /api/v1/signals/latest.json`, `/api/v1/signals/latest` | `GET /api/v2/signals/latest` |
+| `GET /api/v1/signals/{date}.json` | `GET /api/v2/signals/{date}` |
+| `GET /api/v1/strategies.json` (`strategies[].key`) | `GET /api/v2/strategies` (`data[].id`, `links.self`) |
+| `GET /api/v1/trades/{key}.json` | `GET /api/v2/strategies/{id}/trades` |
+| `GET /api/v1/strategy-details/manifest.json` | `links.current_revision` of `GET /api/v2/strategies/{id}` |
+| `GET /api/v1/strategy-details/{key}/{hash}.json` | `GET /api/v2/strategies/{id}/revisions/{sha256}` (identical bytes) |
+| `GET /api/v1/forward.json` | `GET /api/v2/track-record` |
+| `GET /prices/{slug}.json` | `GET /api/v2/instruments/{id}/prices` (old path answers `308`) |
+| `GET /strategy-marks/{slug}.json` | `GET /api/v2/instruments/{id}/trade-marks` (old path answers `308`) |
+| — | `/api/v2/instruments`, `/instruments/{id}`, `/clubs`, `/clubs/{id}`, `/clubs/{id}/reports`, `/signals` |
 
-- `openapi.json` documents every published file and field. `tests/test_api_contract.py` validates every published payload
-  against it (undocumented fields fail), and `tests/api-schemas.test.cjs` validates them against the web app's zod schemas
-  (`src/lib/api-schemas.ts`).
-- Additive fields keep `schema_version` `1.x`; clients must ignore unknown fields. Removing/renaming a field or changing its
-  type is breaking and ships under `/api/v2/`.
-- Errors: missing files are plain static 404s (no JSON body).
+Shape changes: top-level fields move into `{links, meta, data}` (`generated_at`, `as_of`, disclaimers → `meta`);
+v1's top-level arrays become `data`; strategy `key` → `id`; `in_sample.period` ("start ~ end") → `start`/`end`;
+`kospi_dca_*`/`aw_dca_*` → `benchmarks`; price files lose `slug` (it is in `links`); trade-mark `strategy_key` →
+`strategy_id`.
 
-`strategy-details/manifest.json` maps strategy keys to `path` and `content_hash`. The page binds these references to the source signal date and loads `/api/v1/strategy-details/<key>/<hash>.json` on demand. Missing/mismatched assets are explicit errors, with no silent fallback to latest. `export_signals_api.py --details-only` prepares these assets without refreshing previously published signals. Old hash assets are currently retained; storage growth needs measurement before a Hobby suitability claim.
+## 5. Versioning and deprecation policy
 
----
+- `/api/v1` is **frozen**: same URIs, same payloads, still refreshed daily, every operation marked
+  `deprecated: true` in [`/api/v1/openapi.json`](https://verdict-archive.vercel.app/api/v1/openapi.json).
+  Every v1 response carries `Deprecation: @1792368000` (RFC 9745; 2026-10-19T00:00:00Z) and
+  `Link: </api/v2>; rel="successor-version"`. No sunset date is promised yet; when one is set it will be announced
+  with a `Sunset` header (RFC 8594).
+- Within v2, additive fields keep `schema_version` `2.x`; clients must ignore unknown fields. Removing or renaming
+  a field, changing its type, or changing a URI is breaking and ships as `/api/v3`.
 
-## Pipeline integration — regenerating the API
+## 6. Contract and regeneration
 
-The export step runs automatically after `backtest_momentum.py`:
+Writers: `scripts/export_stock_charts.py` (instrument prices — its output defines the instrument set),
+`scripts/export_signals_api.py` (v1 + revision files), `scripts/export_api_v2.py` (every other v2 document and
+`openapi.json`). Run after the backtest and the forward record:
 
 ```bash
-# Full pipeline
+uv run python scripts/export_stock_charts.py
 uv run python scripts/backtest_momentum.py
 uv run python scripts/export_signals_api.py
+uv run python scripts/build_forward_record.py
+uv run python scripts/export_api_v2.py
 
-# Or just re-export from an existing strategy-backtest.json
-uv run python scripts/export_signals_api.py --source src/data/strategy-backtest.json
-
-# Verify committed artifacts equal a fresh export (writes nothing; exit 1 on drift)
+# CI gates: write nothing, exit 1 on drift (generated_at ignored; append-only files only need to exist)
 uv run python scripts/export_signals_api.py --check
+uv run python scripts/export_api_v2.py --check
 ```
 
-`tests.yml` builds from the committed artifacts and runs `--check` instead of regenerating them, so a missing or stale
-`public/api` file fails CI rather than the Vercel build. The refresh workflows run the same gate (contracts, pytest,
-`npm run build`) before the bot commit, because `GITHUB_TOKEN` pushes do not trigger `tests.yml`.
+- Exports are write-then-prune and deterministic: an unchanged document is not rewritten, so a no-op re-run
+  leaves no diff. Dated snapshots and revisions are append-only and never pruned.
+- Invalid input fails the export (non-finite numbers, missing fields, unknown club ids, invalid ids).
+- `tests/test_api_v2_contract.py` validates every published file against the spec (closed objects), checks
+  that every `links.*` resolves, every spec path is published, examples are valid, revisions hash correctly,
+  committed append-only files never change, and `--check` passes. `tests/api-v2-schemas.test.cjs` validates
+  every document against the web app's zod schemas (`src/lib/api-v2.ts`). v1 keeps `tests/test_api_contract.py`
+  and `tests/api-schemas.test.cjs`.
+- Serving: `next.config.ts` rewrites extensionless URIs to `public/api/v2/<uri>.json`, sets the cache/CORS/v1
+  deprecation headers, and redirects the legacy chart paths. `src/app/api/v2/[...path]/route.ts` is the
+  problem+json fallback; `src/app/api/v1/signals/latest/route.ts` keeps the v1 extensionless alias.
 
 ---
 

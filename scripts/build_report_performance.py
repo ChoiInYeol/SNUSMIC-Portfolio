@@ -22,11 +22,14 @@ load_dotenv(ROOT / ".env")  # pykrx가 import 시점에 KRX_ID/KRX_PW를 읽으�
 
 from pykrx import stock  # noqa: E402
 
+import lake  # noqa: E402
+from lake_prices import flush_bronze, record_raw_prices, write_silver_prices  # noqa: E402
+
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 SCHOOLS = ("smic", "yig", "star", "kuvic", "ewha", "voera")
-PRICE_CACHE_DIR = ROOT / "data" / "prices"
+PRICE_CACHE_DIR = lake.SILVER_PRICES
 
 KOREAN_DATE_RE = re.compile(r"(20\d{2})\s*년\s*(\d{1,2})\s*월\s*(\d{1,2})\s*일")
 FILENAME_DATE_RE = re.compile(r"(20\d{2})-(\d{2})-(\d{2})")
@@ -990,10 +993,10 @@ def compute_issues(r: ParsedReport) -> None:
 def resolve_missing_tickers(parsed: list[ParsedReport]) -> None:
     """티커 미식별 + 회사명 보유 레코드를 네이버 증권 자동완성으로 복구한다.
 
-    결과는 data/sources/kr_name_ticker.json에 캐시되어 조회는 이름당 1회만 발생한다.
+    결과는 data/silver/reference/kr_name_ticker.json에 캐시되어 조회는 이름당 1회만 발생한다.
     이름이 정확히 일치할 때만 채택한다.
     """
-    cache_path = ROOT / "data" / "sources" / "kr_name_ticker.json"
+    cache_path = lake.SILVER_NAME_TICKER
     cache: dict[str, dict | None] = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     session = None
     changed = False
@@ -1035,11 +1038,11 @@ def resolve_missing_tickers(parsed: list[ParsedReport]) -> None:
 def canonicalize_kr_names(parsed: list[ParsedReport]) -> None:
     """KR 6자리 티커 보유 레코드의 회사명을 pykrx 공식명으로 교정한다.
 
-    결과는 data/sources/krx_names.json에 캐시 (없는 티커만 조회).
+    결과는 data/bronze/reference/krx_names.json에 캐시 (없는 티커만 조회).
     상장폐지 등으로 pykrx가 빈 문자열을 반환하면 기존 이름을 유지한다.
     US 레코드는 건드리지 않는다.
     """
-    cache_path = ROOT / "data" / "sources" / "krx_names.json"
+    cache_path = lake.BRONZE_KRX_NAMES
     cache: dict[str, str] = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
     changed = False
     for r in parsed:
@@ -1115,6 +1118,8 @@ def build_display_name(market: str | None, company: str | None, ticker: str | No
 
 def fetch_kr_prices(ticker: str, start: dt.date, end: dt.date) -> pd.DataFrame:
     df = stock.get_market_ohlcv_by_date(start.strftime("%Y%m%d"), end.strftime("%Y%m%d"), ticker)
+    record_raw_prices("pykrx_stock", f"KR_{ticker}", df, library="pykrx",
+                      request={"ticker": ticker, "start": start.isoformat(), "end": end.isoformat(), "adjusted": True})
     if df.empty:
         return pd.DataFrame(columns=["open", "high", "low", "close", "volume"])
     out = pd.DataFrame(index=pd.to_datetime(df.index))
@@ -1131,8 +1136,10 @@ INDEX_CODES = {"KOSPI": "1001", "KOSDAQ": "2001"}
 
 def fetch_index(name: str, start: dt.date, end: dt.date) -> pd.DataFrame:
     if name == "US":
-        return fetch_us_prices("^GSPC", start, end)
+        return fetch_us_prices("^GSPC", start, end, symbol="IDX_US")
     df = stock.get_index_ohlcv(start.strftime("%Y%m%d"), end.strftime("%Y%m%d"), INDEX_CODES[name])
+    record_raw_prices("pykrx_index", f"IDX_{name}", df, library="pykrx",
+                      request={"ticker": INDEX_CODES[name], "start": start.isoformat(), "end": end.isoformat(), "adjusted": False})
     if df.empty:
         return pd.DataFrame(columns=["close"])
     out = pd.DataFrame(index=pd.to_datetime(df.index))
@@ -1155,12 +1162,11 @@ def fetch_index_cached(name: str, start: dt.date, as_of: dt.date) -> pd.DataFram
         tail = fetch_index(name, last + dt.timedelta(days=1), as_of)
         if not tail.empty:
             cached = pd.concat([cached, tail[tail.index > cached.index[-1]]])
-            cached.to_csv(cache_path, encoding="utf-8")
+            cached = write_silver_prices(f"IDX_{name}", cached, out_dir=PRICE_CACHE_DIR)
         return cached
     df = fetch_index(name, start, as_of)
     if not df.empty:
-        PRICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        df.to_csv(cache_path, encoding="utf-8")
+        df = write_silver_prices(f"IDX_{name}", df, out_dir=PRICE_CACHE_DIR)
     return df
 
 
@@ -1171,7 +1177,7 @@ def fetch_prices(market: str, ticker: str, start: dt.date, end: dt.date) -> pd.D
 
 
 def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date, sleep: float) -> pd.DataFrame:
-    """일별 시세를 data/prices/에 캐시하고 누락 구간만 증분 조회한다."""
+    """일별 시세를 silver 시세(data/silver/prices/)에 캐시하고 누락 구간만 증분 조회한다."""
     cache_path = PRICE_CACHE_DIR / f"{market}_{ticker}.csv"
     cached: pd.DataFrame | None = None
     if cache_path.exists():
@@ -1188,21 +1194,21 @@ def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date
         time.sleep(sleep)
         if not tail.empty:
             cached = pd.concat([cached, tail[tail.index > cached.index[-1]]])
-            PRICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-            cached.to_csv(cache_path, encoding="utf-8")
+            cached = write_silver_prices(f"{market}_{ticker}", cached, out_dir=PRICE_CACHE_DIR)
         return cached
 
     df = fetch_prices(market, ticker, start, as_of)
     time.sleep(sleep)
     if not df.empty:
-        PRICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
-        df.to_csv(cache_path, encoding="utf-8")
+        df = write_silver_prices(f"{market}_{ticker}", df, out_dir=PRICE_CACHE_DIR)
     return df
 
 
-def fetch_us_prices(ticker: str, start: dt.date, end: dt.date) -> pd.DataFrame:
+def fetch_us_prices(ticker: str, start: dt.date, end: dt.date, symbol: str | None = None) -> pd.DataFrame:
     # yfinance end is exclusive; add one day at call site if an inclusive as-of is desired.
     df = yf.download(ticker, start=start.isoformat(), end=(end + dt.timedelta(days=1)).isoformat(), progress=False, auto_adjust=True, threads=False)
+    record_raw_prices("yfinance", symbol or f"US_{ticker}", df, library="yfinance",
+                      request={"ticker": ticker, "start": start.isoformat(), "end": end.isoformat(), "adjusted": True})
     if df.empty:
         return pd.DataFrame(columns=["open", "high", "low", "close", "volume"])
     if isinstance(df.columns, pd.MultiIndex):
@@ -1453,7 +1459,7 @@ def write_csv(path: Path, rows: Iterable[object]) -> None:
 
 def load_hints() -> dict[str, dict]:
     """수집 매니페스트의 메타데이터를 (파일 stem → 항목)으로 인덱싱."""
-    manifest_path = ROOT / "data" / "sources" / "manifest.json"
+    manifest_path = lake.BRONZE_REPORT_MANIFEST
     hints: dict[str, dict] = {}
     if manifest_path.exists():
         for entry in json.loads(manifest_path.read_text(encoding="utf-8")):
@@ -1464,7 +1470,7 @@ def load_hints() -> dict[str, dict]:
 
 def load_corrections() -> dict[str, dict]:
     """사람이 검증한 교정값 (source_name → 필드 오버라이드). 재파싱해도 유지된다."""
-    path = ROOT / "data" / "sources" / "corrections.json"
+    path = lake.SILVER_CORRECTIONS
     if path.exists():
         return json.loads(path.read_text(encoding="utf-8"))
     return {}
@@ -1806,7 +1812,8 @@ def _build_sha_url_index(hints: dict[str, dict]) -> dict[str, str]:
 def _sha256_of_pdf(md_path: str) -> str | None:
     """마크다운 경로에서 대응 PDF 경로를 유추하고 SHA256을 계산한다.
 
-    data/markdown/{school}/stem.md → data/pdfs/{school}/stem.pdf (또는 data/pdfs/stem.pdf)
+    {silver markdown}/{school}/stem.md → {bronze pdfs}/{school}/stem.pdf (또는 {bronze pdfs}/stem.pdf).
+    구 경로(data/markdown/...)도 "markdown" 세그먼트 기준이라 그대로 동작한다.
     파일이 없거나 0바이트면 None을 반환한다.
     """
     import hashlib
@@ -1814,12 +1821,12 @@ def _sha256_of_pdf(md_path: str) -> str | None:
     p = Path(md_path)
     # 마크다운 경로에서 school 추론
     parts = p.parts
-    # "data", "markdown", [school,] "stem.md"
+    # ..., "markdown", [school,] "stem.md"
     try:
         md_idx = parts.index("markdown")
     except ValueError:
         return None
-    pdf_root = ROOT / "data" / "pdfs"
+    pdf_root = lake.BRONZE_PDFS
     stem = p.stem
     # school subdir 경로 먼저
     if md_idx + 2 < len(parts) - 1:
@@ -1845,7 +1852,7 @@ def build_source_urls(source_file: str, hints: dict[str, dict], sha_url_index: d
     sha_url_index: 미리 구성한 sha256→page_url 역인덱스 (stem 미일치 sha256_dedup 케이스).
     """
     # Normalise to forward-slash relative path from repo root
-    rel = source_file.replace("\\", "/").lstrip("./")  # e.g. "data/markdown/yig/2025-11-10_피에스케이.md"
+    rel = lake.current_rel(source_file)  # e.g. "data/silver/reports/markdown/yig/2025-11-10_피에스케이.md"
     md_url = f"{GITHUB_RAW_BASE}/{_url_encode_path(rel)}"
 
     stem = Path(source_file).stem
@@ -1894,10 +1901,10 @@ def write_web_json(path: Path, rows: list[PerformanceRow], as_of: dt.date, exclu
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="Build point-in-time report target and price-performance dataset from converted Markdown equity reports.")
-    parser.add_argument("--markdown-dir", default="data/markdown")
-    parser.add_argument("--output", default="data/report_performance.csv")
-    parser.add_argument("--parsed-output", default="data/report_parsed.csv")
-    parser.add_argument("--issues-output", default="data/report_parse_issues.csv")
+    parser.add_argument("--markdown-dir", default=lake.rel(lake.SILVER_MARKDOWN))
+    parser.add_argument("--output", default=lake.rel(lake.GOLD_REPORT_PERFORMANCE))
+    parser.add_argument("--parsed-output", default=lake.rel(lake.SILVER_REPORT_PARSED))
+    parser.add_argument("--issues-output", default=lake.rel(lake.SILVER_REPORT_ISSUES))
     parser.add_argument("--web-output", default="src/data/report-performance.json")
     parser.add_argument("--as-of", default=dt.date.today().isoformat())
     parser.add_argument("--markets", nargs="+", default=["KR", "US"], choices=["KR", "US"])
@@ -2051,4 +2058,6 @@ def main() -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    status = main()
+    flush_bronze()  # a failed bronze write must fail the run; atexit cannot change the exit code
+    raise SystemExit(status)

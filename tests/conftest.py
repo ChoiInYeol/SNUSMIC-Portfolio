@@ -1,7 +1,7 @@
 """공용 픽스처 — 합성 가격 유니버스 위에서 backtest_momentum의 실제 엔진을 구동한다.
 
 설계 원칙:
-- 실데이터(data/prices)는 매일 갱신되므로 회귀 게이트로 쓸 수 없다.
+- 실데이터(data/silver/prices)는 매일 갱신되므로 회귀 게이트로 쓸 수 없다.
   고정 시드 합성 데이터 → 코드 변경만이 결과를 바꾼다.
 - 가격 로딩은 실제 _load_prices_uncached를 통과시켜 지표 파이프라인(ATR, MA,
   supertrend, RSI2)까지 함께 검증한다.

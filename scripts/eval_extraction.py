@@ -3,16 +3,16 @@
 방식 (전사본 × 추출기):
   A   legacy  parse_report  on 기존 opendataloader 전사본 (--baseline-dir)
   A'  candidate extract     on 기존 전사본                (추출기 효과 분리)
-  B   legacy  parse_report  on kordoc 전사본 (data/markdown)  (엔진 효과 분리)
+  B   legacy  parse_report  on kordoc 전사본 (data/silver/reports/markdown)  (엔진 효과 분리)
   C   candidate extract     on kordoc 전사본
-  D   C + 발간일 종가 정합 (data/prices, 티커·날짜는 legacy identity 파서)
+  D   C + 발간일 종가 정합 (data/silver/prices, 티커·날짜는 legacy identity 파서)
 
 필드별로 correct / wrong(다른 값) / missed(값 없음) / spurious(정답이 null인데 값) 를 세고
 error = (wrong + missed + spurious) / n, critical = (wrong + spurious) / n 을 낸다.
 틀린 값은 빈 값보다 해롭다 → 방식 선택은 critical 우선, 그다음 error.
 
 사용:
-    python scripts/eval_extraction.py --baseline-dir <old data/markdown 사본> [--kordoc-dir cache/kordoc_covers] [--json out.json]
+    python scripts/eval_extraction.py --baseline-dir <구 전사본 markdown 루트 사본> [--kordoc-dir cache/kordoc_covers] [--json out.json]
 """
 from __future__ import annotations
 
@@ -27,10 +27,11 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_report_performance as brp  # noqa: E402
 from report_extract import extract  # noqa: E402
+from lake import BRONZE_PDFS, SILVER_MARKDOWN, current_rel, rel  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 GOLD_DIR = ROOT / "tests" / "fixtures" / "parse_gold"
-MD_ROOT = ROOT / "data" / "markdown"
+MD_ROOT = SILVER_MARKDOWN
 FIELDS = ("rating", "target", "current", "upside", "ticker")
 RATING_CLASS = {
     "buy": {"strong buy", "buy", "outperform", "overweight", "매수", "적극매수", "강력매수"},
@@ -71,9 +72,9 @@ def gold_rows() -> list[dict]:
 
 
 def md_path(source_pdf: str, md_root: Path) -> Path:
-    pdf = Path(source_pdf)
-    rel = pdf.relative_to("data/pdfs")
-    return md_root / rel.with_suffix(".md")
+    """Gold rows name PDFs by their pre-medallion path (data/pdfs/...); both forms resolve."""
+    pdf = Path(current_rel(source_pdf))
+    return md_root / pdf.relative_to(rel(BRONZE_PDFS)).with_suffix(".md")
 
 
 def market_close(market: str | None, ticker: str | None, date: str | None) -> float | None:
@@ -123,9 +124,9 @@ def grade(field: str, pred: dict, gold: dict) -> str:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--baseline-dir", type=Path, required=True, help="기존 엔진 전사본의 data/markdown 사본")
+    parser.add_argument("--baseline-dir", type=Path, required=True, help="기존 엔진 전사본의 markdown 루트 사본 (구 data/markdown)")
     parser.add_argument("--kordoc-dir", type=Path, default=MD_ROOT,
-                        help="kordoc 전사본 루트 (기본 data/markdown; 표지 캐시는 cache/kordoc_covers)")
+                        help="kordoc 전사본 루트 (기본 data/silver/reports/markdown; 표지 캐시는 cache/kordoc_covers)")
     parser.add_argument("--json", type=Path, default=None)
     parser.add_argument("--high-confidence-only", action="store_true")
     parser.add_argument("--all-types", action="store_true", help="섹터 리포트 포함 (기본: company만 — 성과 집계 대상)")

@@ -9,7 +9,8 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from .config import PRICE_DIR, ATR_PERIOD
+from .config import GOLD_CACHE, PRICE_DIR, ATR_PERIOD  # config puts scripts/ on sys.path
+from lake_prices import record_raw_prices, write_silver_prices  # noqa: E402
 
 
 
@@ -18,7 +19,7 @@ from .config import PRICE_DIR, ATR_PERIOD
 # ──────────────────────────────────────────────────────────────────────────────
 
 def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
-    """yfinance로 지수 종가 다운로드, data/prices에 캐시."""
+    """yfinance로 지수 종가 다운로드, silver 시세(PRICE_DIR)에 캐시. 원본 응답은 bronze에 기록."""
     cache_path = PRICE_DIR / f"IDX_{cache_name}.csv"
     import yfinance as yf  # type: ignore
 
@@ -31,6 +32,8 @@ def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
                 return df["close"].sort_index()
             start_upd = last_date + dt.timedelta(days=1)
             raw = yf.download(ticker, start=start_upd.isoformat(), progress=False, auto_adjust=True, threads=False)
+            record_raw_prices("yfinance", f"IDX_{cache_name}", raw, library="yfinance",
+                              request={"ticker": ticker, "start": start_upd.isoformat(), "end": None, "adjusted": True})
             if not raw.empty:
                 raw.index = pd.to_datetime(raw.index)
                 if isinstance(raw.columns, pd.MultiIndex):
@@ -38,15 +41,13 @@ def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
                 else:
                     raw.columns = [c.lower() for c in raw.columns]
                 if "close" in raw.columns:
-                    new_rows = raw[["close"]].copy()
-                    new_rows.index.name = "Date"
-                    combined = pd.concat([df, new_rows])
-                    combined = combined[~combined.index.duplicated(keep="last")]
-                    combined.to_csv(cache_path)
-                    return combined["close"].sort_index()
+                    combined = write_silver_prices(f"IDX_{cache_name}", pd.concat([df, raw[["close"]]]), out_dir=PRICE_DIR)
+                    return combined["close"]
             return df["close"].sort_index()
 
     raw = yf.download(ticker, start="2007-01-01", progress=False, auto_adjust=True, threads=False)
+    record_raw_prices("yfinance", f"IDX_{cache_name}", raw, library="yfinance",
+                      request={"ticker": ticker, "start": "2007-01-01", "end": None, "adjusted": True})
     if raw.empty:
         raise RuntimeError(f"yfinance returned empty data for {ticker}")
     raw.index = pd.to_datetime(raw.index)
@@ -54,19 +55,18 @@ def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
         raw.columns = [c[0].lower() for c in raw.columns]
     else:
         raw.columns = [c.lower() for c in raw.columns]
-    out = raw[["close"]].copy()
-    out.index.name = "Date"
-    out.to_csv(cache_path)
-    return out["close"].sort_index()
+    out = write_silver_prices(f"IDX_{cache_name}", raw[["close"]], out_dir=PRICE_DIR)
+    return out["close"]
 
 
 def _fetch_us_stock_yf(ticker: str) -> bool:
-    """US 주식 가격 yfinance로 다운로드 → data/prices/US_{ticker}.csv 저장."""
+    """US 주식 가격 yfinance로 다운로드 → silver US_{ticker}.csv 저장 (원본 응답은 bronze)."""
     import yfinance as yf  # type: ignore
-    cache_path = PRICE_DIR / f"US_{ticker}.csv"
     print(f"  Fetching US/{ticker} via yfinance...", flush=True)
     try:
         raw = yf.download(ticker, start="2007-01-01", progress=False, auto_adjust=True, threads=False)
+        record_raw_prices("yfinance", f"US_{ticker}", raw, library="yfinance",
+                          request={"ticker": ticker, "start": "2007-01-01", "end": None, "adjusted": True})
         if raw.empty:
             print(f"    WARNING: empty data for {ticker}", flush=True)
             return False
@@ -76,10 +76,8 @@ def _fetch_us_stock_yf(ticker: str) -> bool:
         else:
             raw.columns = [c.lower() for c in raw.columns]
         needed = [c for c in ["open", "high", "low", "close", "volume"] if c in raw.columns]
-        out = raw[needed].copy()
-        out.index.name = "Date"
-        out.to_csv(cache_path)
-        print(f"    Saved {cache_path.name} ({len(out)} rows)", flush=True)
+        out = write_silver_prices(f"US_{ticker}", raw[needed], out_dir=PRICE_DIR)
+        print(f"    Saved US_{ticker}.csv ({len(out)} rows)", flush=True)
         return True
     except Exception as e:
         print(f"    ERROR fetching {ticker}: {e}", flush=True)
@@ -122,7 +120,7 @@ def load_gld() -> pd.Series:
 
 
 def load_usdkrw() -> pd.Series:
-    """USDKRW 일별 환율 로드. KRW=X yfinance 심볼, data/prices/IDX_USDKRW.csv 캐시."""
+    """USDKRW 일별 환율 로드. KRW=X yfinance 심볼, silver IDX_USDKRW.csv 캐시."""
     path = PRICE_DIR / "IDX_USDKRW.csv"
     if path.exists():
         df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
@@ -135,10 +133,10 @@ def load_usdkrw() -> pd.Series:
 
 
 # ── Price warehouse cache (perf only — results identical) ─────────────────────
-# Parsed CSV + indicator columns are pickled to data/prices/.cache/, keyed by the
+# Parsed CSV + indicator columns are pickled to data/gold/_cache/price_frames/, keyed by the
 # source file's (mtime_ns, size) plus a code version tag. Pickle round-trips
 # float64 bit-exactly, so cached frames are identical to freshly computed ones.
-_PRICE_CACHE_DIR = PRICE_DIR / ".cache"
+_PRICE_CACHE_DIR = GOLD_CACHE / "price_frames"
 # Bump when load_prices indicator logic changes (invalidates all cached frames)
 _PRICE_CACHE_VERSION = "v2"
 
@@ -258,7 +256,7 @@ def load_prices(ticker: str, market: str = "KR") -> pd.DataFrame | None:
     if df is None:
         return None
     try:
-        _PRICE_CACHE_DIR.mkdir(exist_ok=True)
+        _PRICE_CACHE_DIR.mkdir(parents=True, exist_ok=True)
         tmp = cache_file.with_suffix(".tmp")
         with open(tmp, "wb") as fh:
             pickle.dump((cache_key, df), fh, protocol=pickle.HIGHEST_PROTOCOL)

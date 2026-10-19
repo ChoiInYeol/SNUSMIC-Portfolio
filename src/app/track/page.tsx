@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { ApiResourceLink } from "@/components/api-resource-link";
 import { SiteHeader } from "@/components/site-header";
 import { StatStrip } from "@/components/report-ledger";
 import { cn, formatPct } from "@/lib/utils";
@@ -97,6 +98,9 @@ export default async function TrackPage() {
           채점 규칙: 진입 = 신호일 익일 시가 · 수익률 = 로컬 통화 종가 기준 · 동일 티커 7일 내 반복
           신호 제외. 전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 성적입니다.
         </p>
+        <div className="mt-3">
+          <ApiResourceLink uri="/api/v2/track-record" label="이 장부의 원본" />
+        </div>
       </header>
 
       {summary && (
@@ -203,14 +207,25 @@ export default async function TrackPage() {
           </table>
           <p className="mt-2 font-mono text-[10px] leading-4 text-muted-foreground">
             신호 스냅샷 원본은{" "}
-            <a href="/api/v1/signals/latest.json" className="underline">
-              /api/v1/signals/latest.json
+            <Link href="/today/archive" className="underline">
+              판결일보 축쇄판
+            </Link>{" "}
+            또는{" "}
+            {/* JSON resource, not a page: a full navigation is intended (the catch-all API route confuses the rule). */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/api/v2/signals" className="underline">
+              /api/v2/signals
             </a>{" "}
-            (일별 박제본: /api/v1/signals/{"{YYYY-MM-DD}"}.json, append-only) · 채점 데이터는{" "}
-            <a href="/api/v1/forward.json" className="underline">
-              /api/v1/forward.json
+            (일별 박제본: /api/v2/signals/{"{YYYY-MM-DD}"}, immutable) · 채점 데이터는{" "}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/api/v2/track-record" className="underline">
+              /api/v2/track-record
             </a>
-            에서 그대로 받을 수 있습니다.
+            에서 그대로 받을 수 있습니다 (
+            <Link href="/developers" className="underline">
+              API 레퍼런스
+            </Link>
+            ).
           </p>
         </div>
       )}

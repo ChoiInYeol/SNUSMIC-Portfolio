@@ -7,7 +7,11 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-PRICE_DIR = ROOT / "data" / "prices"
+sys.path.insert(0, str(ROOT / "scripts"))  # lake.py: medallion paths
+from lake import GOLD_CACHE, GOLD_REPORT_PERFORMANCE, SILVER_PRICES  # noqa: E402
+
+PRICE_DIR = SILVER_PRICES
+REPORT_PERFORMANCE_CSV = GOLD_REPORT_PERFORMANCE
 OUT_PATH = ROOT / "src" / "data" / "strategy-backtest.json"
 CSV_PATH = ROOT / "public" / "strategy-trades.csv"
 PUBLIC_DIR = ROOT / "public"

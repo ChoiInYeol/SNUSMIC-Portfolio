@@ -2,7 +2,7 @@
 
 Wix가 페이지네이션을 클라이언트 JS로 처리해 ?page=N이 서버에서 무시되므로,
 실제 브라우저로 페이지 버튼을 눌러가며 전체(~108건) 메타데이터를 수집한다.
-PDF 다운로드는 하지 않는다 → 결과를 data/sources/kuvic_items.json에 저장하고,
+PDF 다운로드는 하지 않는다 → 결과를 data/bronze/reports/kuvic_items.json에 저장하고,
 다운로드는 collect_reports.py --source kuvic-items 가 매니페스트 규칙대로 수행한다.
 
 사용:
@@ -21,12 +21,12 @@ from bs4 import BeautifulSoup
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT_PATH = ROOT / "data" / "sources" / "kuvic_items.json"
 URL = "https://www.kuvic.com/research"
 PAGE_DELAY = 2.5
 MAX_PAGES = 40
 
 sys.path.insert(0, str(ROOT / "scripts"))
+from lake import BRONZE_KUVIC_ITEMS as OUT_PATH  # noqa: E402
 from collect_reports import USER_AGENT, _kuvic_parse_item  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):

@@ -1,0 +1,512 @@
+{
+ "datasets": [
+  {
+   "bytes": 20340,
+   "files": 1,
+   "format": "json",
+   "id": "bronze.krx_names",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/reference/krx_names.json",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 44426,
+   "files": 1,
+   "format": "json",
+   "id": "bronze.kuvic_items",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/reports/kuvic_items.json",
+   "producer": [
+    "collect_kuvic_browser.py"
+   ],
+   "rows": 104,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "jsonl",
+   "id": "bronze.price_ingest_log",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/prices/_ingest.jsonl",
+   "producer": [
+    "lake_prices.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "csv.gz",
+   "id": "bronze.prices",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/prices/*/ingest_date=*/*.csv.gz",
+   "producer": [
+    "lake_prices.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": 1744611,
+   "files": 1,
+   "format": "json",
+   "id": "bronze.report_manifest",
+   "inputs": [
+    "bronze.kuvic_items"
+   ],
+   "layer": "bronze",
+   "path": "data/bronze/reports/manifest.json",
+   "producer": [
+    "collect_ewha.py",
+    "collect_reports.py",
+    "collect_smic.py",
+    "collect_voera.py"
+   ],
+   "rows": 2409,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16T14:16:41+00:00"
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "pdf",
+   "id": "bronze.report_pdfs",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/reports/pdfs/**/*.pdf",
+   "producer": [
+    "collect_ewha.py",
+    "collect_reports.py",
+    "collect_smic.py",
+    "collect_voera.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "json",
+   "id": "bronze.source_status",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/_runs/source-status/*.json",
+   "producer": [
+    ".github/workflows/refresh-daily.yml",
+    ".github/workflows/refresh-reports.yml"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "json/pickle",
+   "id": "gold.backtest_cache",
+   "inputs": [
+    "gold.report_performance",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "data/gold/_cache/**/*",
+   "producer": [
+    "backtest_momentum.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": 243,
+   "files": 1,
+   "format": "json",
+   "id": "gold.health",
+   "inputs": [
+    "bronze.report_manifest",
+    "bronze.source_status",
+    "gold.report_performance",
+    "serving.api_v1",
+    "serving.strategy_backtest",
+    "silver.report_markdown",
+    "silver.report_parse_issues",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "data/gold/ops/health.json",
+   "producer": [
+    "pipeline_health.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16"
+  },
+  {
+   "bytes": 608185,
+   "files": 1,
+   "format": "csv",
+   "id": "gold.report_performance",
+   "inputs": [
+    "silver.prices",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "data/gold/reports/performance.csv",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": 1462,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 504,
+   "files": 1,
+   "format": "csv",
+   "id": "gold.report_performance_summary",
+   "inputs": [
+    "silver.prices",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "data/gold/reports/performance_summary.csv",
+   "producer": [],
+   "rows": 8,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 8967324,
+   "files": 106,
+   "format": "json",
+   "id": "serving.api_v1",
+   "inputs": [
+    "serving.strategy_backtest",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "public/api/v1/**/*.json",
+   "producer": [
+    "export_signals_api.py",
+    "build_forward_record.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19T10:32:17+00:00"
+  },
+  {
+   "bytes": 149647030,
+   "files": 1933,
+   "format": "json",
+   "id": "serving.api_v2",
+   "inputs": [
+    "serving.forward_record",
+    "serving.report_performance",
+    "serving.strategy_backtest",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "public/api/v2/**/*.json",
+   "producer": [
+    "export_api_v2.py",
+    "export_stock_charts.py"
+   ],
+   "rows": null,
+   "schema_version": "2.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19T09:58:46+00:00"
+  },
+  {
+   "bytes": 14854,
+   "files": 1,
+   "format": "json",
+   "id": "serving.forward_record",
+   "inputs": [
+    "serving.api_v1",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "src/data/forward-record.json",
+   "producer": [
+    "build_forward_record.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16T14:30:28+00:00"
+  },
+  {
+   "bytes": 126145,
+   "files": 1,
+   "format": "json",
+   "id": "serving.report_first_seen",
+   "inputs": [
+    "bronze.report_manifest",
+    "serving.report_performance"
+   ],
+   "layer": "gold",
+   "path": "src/data/report-first-seen.json",
+   "producer": [
+    "build_report_first_seen.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19T10:46:29+00:00"
+  },
+  {
+   "bytes": 2763336,
+   "files": 1,
+   "format": "json",
+   "id": "serving.report_performance",
+   "inputs": [
+    "bronze.report_manifest",
+    "silver.prices",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "src/data/report-performance.json",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": 1462,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16T14:23:28.563896+00:00"
+  },
+  {
+   "bytes": 217981,
+   "files": 3,
+   "format": "json",
+   "id": "serving.schema_metadata",
+   "inputs": [
+    "bronze.report_manifest",
+    "silver.prices",
+    "silver.report_parsed"
+   ],
+   "layer": "gold",
+   "path": "public/metadata/*.json",
+   "producer": [
+    "schema_metadata.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19T11:09:22+00:00"
+  },
+  {
+   "bytes": 75370,
+   "files": 1,
+   "format": "json",
+   "id": "serving.stats",
+   "inputs": [
+    "serving.report_performance",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "src/data/stats.json",
+   "producer": [
+    "build_stats.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16T14:30:31"
+  },
+  {
+   "bytes": 15097700,
+   "files": 1,
+   "format": "json",
+   "id": "serving.strategy_backtest",
+   "inputs": [
+    "gold.backtest_cache",
+    "gold.report_performance",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "src/data/strategy-backtest.json",
+   "producer": [
+    "backtest_momentum.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": "2026-10-16T14:30:26+00:00"
+  },
+  {
+   "bytes": 3071451,
+   "files": 27,
+   "format": "csv",
+   "id": "serving.strategy_trades_csv",
+   "inputs": [
+    "serving.strategy_backtest"
+   ],
+   "layer": "gold",
+   "path": "public/strategy-trades*.csv",
+   "producer": [
+    "backtest_momentum.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 8343,
+   "files": 1,
+   "format": "json",
+   "id": "silver.corrections",
+   "inputs": [],
+   "layer": "silver",
+   "path": "data/silver/reference/corrections.json",
+   "producer": [
+    "manual"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 4958,
+   "files": 1,
+   "format": "json",
+   "id": "silver.name_ticker",
+   "inputs": [],
+   "layer": "silver",
+   "path": "data/silver/reference/kr_name_ticker.json",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "jsonl",
+   "id": "silver.price_rejects",
+   "inputs": [
+    "bronze.prices"
+   ],
+   "layer": "silver",
+   "path": "data/silver/_rejects/*.jsonl",
+   "producer": [
+    "lake_prices.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "csv",
+   "id": "silver.prices",
+   "inputs": [
+    "bronze.prices"
+   ],
+   "layer": "silver",
+   "path": "data/silver/prices/*.csv",
+   "producer": [
+    "build_report_performance.py",
+    "backtest/warehouse.py",
+    "rebuild_silver_prices.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": false,
+   "updated_at": null
+  },
+  {
+   "bytes": 115628796,
+   "files": 1649,
+   "format": "md",
+   "id": "silver.report_markdown",
+   "inputs": [
+    "bronze.report_pdfs"
+   ],
+   "layer": "silver",
+   "path": "data/silver/reports/markdown/**/*.md",
+   "producer": [
+    "transcribe_pdfs.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 50298,
+   "files": 1,
+   "format": "csv",
+   "id": "silver.report_parse_issues",
+   "inputs": [
+    "silver.report_markdown"
+   ],
+   "layer": "silver",
+   "path": "data/silver/reports/parse_issues.csv",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": 238,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 331563,
+   "files": 1,
+   "format": "csv",
+   "id": "silver.report_parsed",
+   "inputs": [
+    "bronze.krx_names",
+    "bronze.report_manifest",
+    "silver.corrections",
+    "silver.name_ticker",
+    "silver.report_markdown"
+   ],
+   "layer": "silver",
+   "path": "data/silver/reports/parsed.csv",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": 1647,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  }
+ ],
+ "layout": "docs/DATA-LAYERS.md",
+ "schema_version": "1.0"
+}

@@ -2,7 +2,7 @@
 """배거의 관상 — 발간 시점 공통 요인 통계 빌더.
 
 modern 매수 리포트(src/data/report-performance.json) 각각에 대해 가격 창고
-(data/prices/{KR,US}_*.csv)에서 *발간일 기준 point-in-time* 피처를 계산하고,
+(data/silver/prices/{KR,US}_*.csv)에서 *발간일 기준 point-in-time* 피처를 계산하고,
 bucket_peak 등급(Tenbagger/Multibagger/Double/Winner/Positive)별 분포·사분위
 리프트 테이블·로지스틱 회귀(참고용)·현재 후보 스크리닝을 src/data/stats.json으로 내보낸다.
 
@@ -20,6 +20,7 @@ from __future__ import annotations
 import datetime as dt
 import json
 import math
+import sys
 from pathlib import Path
 
 import numpy as np
@@ -27,7 +28,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parent.parent
 PERF_PATH = ROOT / "src" / "data" / "report-performance.json"
-PRICES_DIR = ROOT / "data" / "prices"
+sys.path.insert(0, str(ROOT / "scripts"))
+from lake import SILVER_PRICES as PRICES_DIR  # noqa: E402
 OUT_PATH = ROOT / "src" / "data" / "stats.json"
 
 SUCCESS_TIERS = {"Double", "Multibagger", "Tenbagger"}

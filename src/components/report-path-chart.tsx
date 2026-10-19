@@ -11,25 +11,27 @@ import {
   type Time,
 } from "lightweight-charts";
 import { useTheme } from "@/components/theme-provider";
+import { PriceSeriesDocumentSchema } from "@/lib/api-v2";
 import { chartMonoFamily, cssHsl } from "@/lib/chart-colors";
 import { cn } from "@/lib/utils";
 
-type Candle = { time: string; open: number; high: number; low: number; close: number; volume: number };
-type PriceFile = { candles?: Candle[] };
+type Candle = { time: string; close: number };
 
 /** 같은 종목 JSON을 여러 카드가 다시 받지 않도록 모듈 레벨에서 공유한다 */
 const priceCache = new Map<string, Promise<Candle[] | null>>();
 
+/** GET /api/v2/instruments/{id}/prices — 404·네트워크 오류·스키마 위반은 모두 "시세 없음"(null)으로 그린다 */
 function fetchCandles(slug: string): Promise<Candle[] | null> {
   const cached = priceCache.get(slug);
   if (cached) return cached;
-  const promise = fetch(`/prices/${slug}.json`)
+  const promise = fetch(`/api/v2/instruments/${slug}/prices`)
     .then(async (res): Promise<Candle[] | null> => {
       if (!res.ok) return null;
-      const parsed = (await res.json()) as PriceFile;
-      const valid = (parsed.candles ?? []).filter(
-        (c) => typeof c?.time === "string" && typeof c.close === "number" && Number.isFinite(c.close),
-      );
+      const parsed = PriceSeriesDocumentSchema.safeParse(await res.json());
+      if (!parsed.success) return null;
+      const valid = parsed.data.data.candles
+        .filter((c) => Number.isFinite(c.close))
+        .map((c) => ({ time: c.time, close: c.close }));
       valid.sort((a, b) => a.time.localeCompare(b.time));
       const candles = valid.filter((c, i) => i === 0 || c.time !== valid[i - 1].time);
       return candles.length >= 2 ? candles : null;

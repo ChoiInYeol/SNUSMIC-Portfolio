@@ -13,8 +13,8 @@
 
 공통 사항:
 
-- 커밋 주체는 `verdict-archive-bot`이며 `src/data/*.json`, `public/prices/`, `data/` 산출물만 스테이징합니다. 변경이 없으면 커밋 없이 종료합니다.
-- `data/prices/` 시세 캐시는 `actions/cache`로 복원되어 증분 조회만 발생합니다.
+- 커밋 주체는 `verdict-archive-bot`이며 `src/data/*.json`, `public/api/`, `data/` 의 추적 산출물(bronze manifest·reference, silver 전사·파싱, gold 성과·health, `data/catalog.json`)만 스테이징합니다. 변경이 없으면 커밋 없이 종료합니다. 레이어 구조는 [`DATA-LAYERS.md`](DATA-LAYERS.md).
+- 시세 레이크(`data/silver/prices/`, `data/bronze/prices/`, `data/gold/_cache/price_frames/`)는 `actions/cache`로 복원되어 증분 조회만 발생합니다. 구 `data/prices` 캐시는 첫 실행에서 한 번 silver로 옮겨지고 bronze `legacy_import` 스냅샷이 만들어집니다.
 - **2026-06-12 CI 소생 인시던트**: refresh-daily가 출범 후 한 번도 완주하지 못했던 사실이 발견됨 (yig/star 수집기 전수 재열거 36분 → 45분 타임아웃 + gitignore된 `data/pdfs`를 add하는 커밋 스텝). 증분 단락 도입 후 30분대 완주, 사상 첫 봇 커밋. 상세는 [`CHANGELOG.md`](CHANGELOG.md)의 "CI 소생" 절.
 - 전사는 kordoc(`tools/kordoc`, 버전 고정) 단일 엔진입니다. 텍스트층으로 먼저 전사하고, kordoc 페이지 품질 판정상 표지나 문서 대부분에 텍스트층이 없으면 내장 PP-OCRv5 한국어 OCR로 다시 전사합니다. CI(Linux)에서도 동일하게 동작하므로 Windows 전용 OCR 단계는 없습니다. 엔진 버전을 올리면 헤더 버전이 달라진 파일만 재전사됩니다.
 
@@ -60,7 +60,7 @@ git diff tests/golden/                                # 변경이 의도와 일�
 
 ## 파이프라인 헬스 체크 (v23)
 
-수집기별 종료 상태를 `data/source-status/`에 기록하며, 하나라도 실패하면 재생성·커밋 전에 중단하고 상태를 quarantine artifact로 남깁니다. 새 산출물은 strict JSON/유한 수치·분류·시점/헤드라인·카운트/슬롯 일관성·자료 감소 검증 후에만 커밋하고 Telegram 다이제스트를 보냅니다. 품질 실패는 Telegram 설정과 무관하게 nonzero입니다. 신호의 달력상 경과일을 검사하지만 거래소 휴일 여부를 추정하여 최신성을 보장하지는 않습니다.
+수집기별 종료 상태를 `data/bronze/_runs/source-status/`에 기록하며, 하나라도 실패하면 재생성·커밋 전에 중단하고 상태를 quarantine artifact로 남깁니다. 새 산출물은 strict JSON/유한 수치·분류·시점/헤드라인·카운트/슬롯 일관성·자료 감소 검증 후에만 커밋하고 Telegram 다이제스트를 보냅니다. 품질 실패는 Telegram 설정과 무관하게 nonzero입니다. 신호의 달력상 경과일을 검사하지만 거래소 휴일 여부를 추정하여 최신성을 보장하지는 않습니다.
 
 ```bash
 uv run python scripts/pipeline_health.py --dry-run   # 전송·health 상태 변경 없는 진단; 이상이면 nonzero
@@ -84,7 +84,7 @@ Hobby는 개인 비상업 용도인지 먼저 확인해야 합니다. [공식 �
 
 **2026-10-19 레짐 게이트 look-ahead 수정 (미재계산)**: T-·U의 KOSPI 파킹 레짐 게이트가 당일 종가와 당일 200MA로 당일 파킹 수익 여부를 결정하고 있었습니다(파킹 잔액 단독 2019-07~: 당일 판정 +647% vs 전일 판정 +264%, 단순 보유 +263%). 이제 `_regime_risk_on()`이 전일 종가·전일 200MA만 읽고(`tests/test_financial_oracles.py`), Q 전략의 시가 진입 유닛도 전일 종가 기준입니다. 헤드라인(`U_chandelier_scaleout`)은 이 편향 아래에서 선택됐으므로, 공표 숫자를 재계산하고 헤드라인 선택을 다시 수행하기 전까지 기존 성과를 유효한 것으로 표시하지 않습니다.
 
-파킹 지수 캐시 `data/prices/IDX_KOSPI.csv`는 종가만 포함합니다. 종가 수익을 당일 시가 예산에 섞는 M3 수정은 실제 시가 자료 확보 또는 명시적 close-transfer 연구 정책의 결정 전까지 완료 처리하지 않습니다. 기존 공표 금융 JSON을 새 계산 결과처럼 재라벨링하지 않습니다.
+파킹 지수 캐시 `data/silver/prices/IDX_KOSPI.csv`는 종가만 포함합니다. 종가 수익을 당일 시가 예산에 섞는 M3 수정은 실제 시가 자료 확보 또는 명시적 close-transfer 연구 정책의 결정 전까지 완료 처리하지 않습니다. 기존 공표 금융 JSON을 새 계산 결과처럼 재라벨링하지 않습니다.
 
 ## SECURITY — KRX 자격증명 노출 [DONE 2026-06-11]
 

@@ -12,6 +12,7 @@ const LINKS = [
   { href: "/stats", label: "통계" },
   { href: "/strategy", label: "전략" },
   { href: "/track", label: "전진 기록" },
+  { href: "/developers", label: "API" },
 ];
 
 const noopSubscribe = () => () => {};

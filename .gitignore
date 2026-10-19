@@ -16,18 +16,22 @@ __pycache__/
 .DS_Store
 *.tsbuildinfo
 
-# large binary source data (재수집 가능, manifest로 관리)
-data/pdfs/
+# medallion data lake (scripts/lake.py, docs/DATA-LAYERS.md)
+# bronze: large raw PDFs (재수집 가능, manifest로 관리), raw vendor price rows, CI run status
+data/bronze/reports/pdfs/
+data/bronze/prices/
+data/bronze/_runs/
+# silver: clean price warehouse (rebuildable from bronze), rejected rows
+data/silver/prices/
+data/silver/_rejects/
 
 # local caches & session artifacts
 cache/
 artifacts/
 .omc/
 
-# backtest stage caches (deterministic; keyed by dataset fingerprint, --retune to rebuild)
-data/optuna_cache.json
-data/spo_cache.pkl
-data/s_weights_cache.pkl
+# gold: backtest stage caches (deterministic; keyed by dataset fingerprint, --retune to rebuild)
+data/gold/_cache/
 
 # session/orchestration state
 .gjc/
@@ -35,9 +39,6 @@ data/s_weights_cache.pkl
 
 # local toolchains
 .tools/
-
-# price warehouse (derived, incrementally refreshed)
-data/prices/
 
 .vercel
 

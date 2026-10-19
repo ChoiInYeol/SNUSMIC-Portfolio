@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { ApiResourceLink } from "@/components/api-resource-link";
 import { SiteHeader } from "@/components/site-header";
 import { ReportLedger, StatStrip } from "@/components/report-ledger";
 import { reportDataset, SCHOOL_LABELS, type School } from "@/lib/report-model";
@@ -51,6 +52,9 @@ export default async function ClubPage({ params }: { params: Promise<{ school: s
           미만의 신생 {stats.fresh}건은 판결 보류, 약한 매수·매도 등 참고 기록 {stats.reference}건은 집계에서 제외했습니다.
           {archive.length > 0 && ` 2019년 7월 이전 수집분 ${archive.length}건은 페이지 하단에 채점 없이 보관되어 있습니다.`}
         </p>
+        <div className="mt-3">
+          <ApiResourceLink uri={`/api/v2/clubs/${club}/reports`} label="학회 리포트 원본" />
+        </div>
       </header>
 
       <StatStrip

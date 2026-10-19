@@ -1,0 +1,16 @@
+.architecture-canvas {
+  --xy-background-color: hsl(var(--card));
+  --xy-edge-label-background-color: hsl(var(--card));
+  --xy-edge-label-color: hsl(var(--foreground));
+  --xy-controls-button-background-color: hsl(var(--card));
+  --xy-controls-button-background-color-hover: hsl(var(--muted));
+  --xy-controls-button-color: hsl(var(--foreground));
+  --xy-controls-button-border-color: hsl(var(--border));
+  --xy-attribution-background-color: hsl(var(--card));
+}
+.architecture-canvas .react-flow__node-layer { pointer-events: none; }
+.architecture-canvas .react-flow__node-schema { font-family: var(--font-sans); }
+.architecture-canvas .react-flow__node:focus-visible,
+.architecture-canvas .schema-node[data-selected="true"] { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
+.architecture-canvas .react-flow__controls-button { min-width: 32px; min-height: 32px; }
+.architecture-canvas .react-flow__handle { background: hsl(var(--muted-foreground)); border-color: hsl(var(--card)); }
