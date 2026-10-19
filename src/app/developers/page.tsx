@@ -141,7 +141,7 @@ export default async function DevelopersPage() {
           바이트를 받습니다. 아래 콘솔에서 바로 보내 보세요.
         </p>
         <div className="mt-4 flex flex-wrap items-center gap-2">
-          <Link href="/developers/architecture" className="nav-link font-mono text-xs font-bold">데이터의 지도 →</Link>
+          <Link href="/developers/architecture" className="nav-link font-mono text-xs font-bold">데이터 아키텍처 →</Link>
           <ApiResourceLink uri="/api/v2" label="진입점" />
           <a
             href="/developers/swagger"

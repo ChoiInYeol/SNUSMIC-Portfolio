@@ -54,6 +54,17 @@ def test_naive_download_timestamp_is_rejected():
         fs.build_first_seen(manifest, [])
 
 
+def test_title_collision_alias_keeps_the_original_collection_date():
+    manifest = [{"school": "ewha", "file": "data/pdfs/ewha/2020-10-10_ewha-14218835.pdf",
+                 "title": "[201010] Device(187870)", "published_hint": "2020-10-10",
+                 "downloaded_at": "2026-06-10T08:28:34+00:00"}]
+    canonical = "data/markdown/ewha/2020-10-10_ewha-14218835.md"
+    alias = "data/markdown/ewha/2020-10-10_[201010] Device(187870).md"
+    records = [{"school": "ewha", "source_file": key} for key in (canonical, alias)]
+    days, missing = fs.build_first_seen(manifest, records)
+    assert days == {canonical: "2026-06-10", alias: "2026-06-10"} and not missing
+
+
 def test_unchanged_result_keeps_generated_at():
     doc, _, _ = fs.build(COMMITTED)
     assert doc["generated_at"] == COMMITTED["generated_at"]

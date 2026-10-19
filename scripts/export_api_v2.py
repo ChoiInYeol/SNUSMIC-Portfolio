@@ -659,6 +659,7 @@ def _component_schemas() -> dict:
         "BacktestTrade": _obj({
             "ticker": S, "market": _ref("Market"), "display_name": S, "source": S, "n_clubs": I,
             "entry_date": DATE, "exit_date": DATE, "entry": N, "exit": N, "return_pct": N, "days": I,
+            "pnl_krw": {"type": "number", "description": "Realized monetary P&L in KRW after accounting costs; absent in older revisions."},
             "exit_reason": S, "entry_reason": S, "trigger_reports": {"type": "array", "items": _ref("TriggerReport")},
             "trigger_schools": {"type": "array", "items": S}, "trigger_target_prices": {"type": "array", "items": N},
         }, required=["ticker", "entry_date", "exit_date", "entry", "exit", "return_pct", "days"]),

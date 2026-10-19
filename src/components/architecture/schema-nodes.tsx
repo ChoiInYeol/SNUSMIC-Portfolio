@@ -15,9 +15,9 @@ export const SchemaTableNode = memo(function SchemaTableNode({ data, selected }:
   const open = useContext(OpenEntityContext);
   const Icon = entity.kind === "dataset" ? FileJson : Database;
   return (
-    <div className="schema-node h-full overflow-hidden rounded-md border border-border bg-card text-card-foreground shadow-sm" data-selected={selected}>
+    <div className="schema-node h-full overflow-hidden rounded-md border border-border bg-card text-card-foreground shadow-sm" data-selected={selected} data-layer={entity.layer}>
       <Handle type="target" position={Position.Left} isConnectable={false} />
-      <div className="border-b border-border px-3 py-2">
+      <div className="schema-node-header border-b border-border px-3 py-2">
         <p className="flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-wider text-muted-foreground"><Icon className="size-4" />{LAYER_LABEL[entity.layer]} · {entity.kind === "dataset" ? "파일 데이터셋" : entity.schema_name}</p>
         <Button variant="ghost" size="sm" className="nodrag mt-1 h-6 w-full justify-start truncate px-0 text-xs font-bold" onClick={() => open(entity)} title={entity.name}>{entity.name}</Button>
       </div>
@@ -41,5 +41,5 @@ export const SchemaTableNode = memo(function SchemaTableNode({ data, selected }:
 });
 
 export const MedallionLayerNode = memo(function MedallionLayerNode({ data }: NodeProps<LayerNode>) {
-  return <div className="h-full w-full rounded-lg border border-dashed border-border bg-muted/25 p-5"><p className="font-display text-xl font-bold">{data.label}<span className="ml-2 font-mono text-xs font-normal tabular-nums text-muted-foreground">{data.count}</span></p></div>;
+  return <div className="medallion-layer h-full w-full rounded-lg border p-5" data-layer={data.layer}><p className="flex items-baseline gap-3 font-sans text-2xl font-bold tracking-tight">{data.label}<span className="font-mono text-sm font-medium tabular-nums">{data.count}</span></p></div>;
 });

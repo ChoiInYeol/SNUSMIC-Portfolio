@@ -6,6 +6,7 @@
   B   legacy  parse_report  on kordoc 전사본 (data/silver/reports/markdown)  (엔진 효과 분리)
   C   candidate extract     on kordoc 전사본
   D   C + 발간일 종가 정합 (data/silver/prices, 티커·날짜는 legacy identity 파서)
+  H   production parser: GFM identity + candidate prices + rating fallback + source hints/QA
 
 필드별로 correct / wrong(다른 값) / missed(값 없음) / spurious(정답이 null인데 값) 를 세고
 error = (wrong + missed + spurious) / n, critical = (wrong + spurious) / n 을 낸다.
@@ -89,7 +90,7 @@ def market_close(market: str | None, ticker: str | None, date: str | None) -> fl
 
 
 def run_legacy(path: Path, school: str, hint: dict | None) -> dict:
-    r = brp.parse_report(path, school, hint)
+    r = brp.parse_report(path, school, hint, extractor="legacy")
     return {"rating": r.rating, "target": r.target_price, "current": r.report_current_price,
             "upside": r.stated_upside_pct, "ticker": r.ticker, "market": r.market, "date": r.report_date}
 
@@ -100,6 +101,12 @@ def run_candidate(path: Path, school: str, hint: dict | None, with_market: bool)
     close = market_close(ident["market"], ident["ticker"], ident["date"]) if with_market else None
     e = extract(text, ident["market"], close)
     return {**ident, "rating": e.rating, "target": e.target, "current": e.current, "upside": e.upside}
+
+
+def run_pipeline(path: Path, school: str, hint: dict | None) -> dict:
+    r = brp.parse_report(path, school, hint)
+    return {"rating": r.rating, "target": r.target_price, "current": r.report_current_price,
+            "upside": r.stated_upside_pct, "ticker": r.ticker, "market": r.market, "date": r.report_date}
 
 
 def grade(field: str, pred: dict, gold: dict) -> str:
@@ -142,6 +149,7 @@ def main() -> int:
         "B": lambda g: run_legacy(md_path(g["source_pdf"], args.kordoc_dir), g["school"], g["hint"]),
         "C": lambda g: run_candidate(md_path(g["source_pdf"], args.kordoc_dir), g["school"], g["hint"], False),
         "D": lambda g: run_candidate(md_path(g["source_pdf"], args.kordoc_dir), g["school"], g["hint"], True),
+        "H": lambda g: run_pipeline(md_path(g["source_pdf"], args.kordoc_dir), g["school"], g["hint"]),
     }
     counts: dict[str, dict[str, Counter]] = {m: defaultdict(Counter) for m in methods}
     by_school: dict[str, dict[str, Counter]] = {m: defaultdict(Counter) for m in methods}

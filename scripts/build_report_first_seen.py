@@ -28,6 +28,7 @@ from pathlib import Path, PurePosixPath
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import lake  # noqa: E402
+from report_sources import manifest_stems  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -56,9 +57,10 @@ def build_first_seen(manifest: list[dict], records: list[dict]) -> tuple[dict[st
     for row in manifest:
         if not row.get("file") or not row.get("downloaded_at"):
             continue  # failed downloads carry no file and no timestamp
-        key = _key(row["school"], row["file"])
         day = _utc_date(row["downloaded_at"])
-        seen[key] = min(day, seen.get(key, day))
+        for stem in manifest_stems(row):
+            key = row["school"], stem
+            seen[key] = min(day, seen.get(key, day))
     first_seen: dict[str, str] = {}
     missing: list[str] = []
     for record in records:

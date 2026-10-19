@@ -123,7 +123,6 @@ jobs:
           uv run python scripts/build_forward_record.py
           uv run python scripts/export_api_v2.py
           uv run python scripts/build_stats.py
-          uv run python scripts/schema_metadata.py
 
 
       # Pipeline health — 카운트 감소/파싱 이슈 급증/신호 신선도 점검.
@@ -136,8 +135,10 @@ jobs:
           uv run python scripts/pipeline_health.py
 
       # Lineage catalog last: it records every committed artifact above, including health.json.
-      - name: Build data catalog
-        run: uv run python scripts/build_catalog.py
+      - name: Build metadata and data catalog
+        run: |
+          uv run python scripts/schema_metadata.py
+          uv run python scripts/build_catalog.py
 
       - name: Send Telegram daily digest
         continue-on-error: true

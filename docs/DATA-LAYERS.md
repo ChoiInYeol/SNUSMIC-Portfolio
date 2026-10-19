@@ -23,7 +23,8 @@ data/
     reports/kuvic_items.json                KUVIC 목록 원본
     prices/{vendor}/ingest_date=YYYY-MM-DD/{run_id}-{seq}.csv.gz   시세 원본 응답 (git 제외)
     prices/_ingest.jsonl                    조회 1건당 1줄 (git 제외)
-    reference/krx_names.json                pykrx 공식 종목명
+    reference/krx_names.json                기존 pykrx 공식 종목명 스냅샷 (보존)
+    reference/krx_name_observations.jsonl    새 공식명 조회: 수집 시각·벤더 버전 포함, append-only
     _runs/source-status/, _runs/quarantine/ CI 수집기 상태 (git 제외)
   silver/                                   검증·표준화
     reports/markdown/{school}/*.md          kordoc 전사본
@@ -58,6 +59,15 @@ src/data/*.json, public/api/**, public/strategy-trades*.csv   gold 서빙 산출
 
 ## 시세: bronze 기록 → silver 표준화
 
+- **완료 일봉**: `market_clock.closed_bar_end`가 정규장 종료 후 15분(KR 15:45 KST,
+  US 16:15 America/New_York; DST 반영)을 기준으로 요청 상한을 정한다. FX는 UTC 하루가
+  지난 뒤 사용하며 주말은 제외한다. 조기 폐장일은 정규장 기준 시각까지 보수적으로 대기하고,
+  공휴일에는 벤더가 반환하는 실제 거래일을 따른다. 역사적 `as_of`보다 뒤의 캐시는 읽지 않는다.
+  정규장 근거: [KRX](https://global.krx.co.kr/contents/GLB/06/0602/0602010201/GLB0602010201T1.jsp),
+  [NYSE](https://www.nyse.com/trade/trading-information).
+- **벤치마크 갱신**: KOSPI·S&P500·NASDAQ·GLD·USDKRW는 파일 존재 여부만으로 캐시를 신뢰하지 않고
+  누락된 꼬리를 조회한다. 갱신 후에도 마지막 거래일이 요청 상한보다 10일 넘게 오래되면 백테스트를
+  실패시킨다(긴 연휴 여유 포함). 응답이 비어도 수개월 전 지수로 성과를 게시하지 않는다.
 - **bronze**: 벤더 응답 DataFrame을 정제 전 그대로 기록해 `{vendor}/ingest_date=…/{run_id}-{seq:05d}.csv.gz`
   (열: `symbol`, 벤더 원본 열, `fetched_at`)로 쓰고, `_ingest.jsonl` 에 조회마다 `{vendor, symbol,
   request{ticker,start,end,adjusted}, fetched_at(UTC, μs), rows, sha256(원본 csv 바이트), library, library_version, run_id, file}`

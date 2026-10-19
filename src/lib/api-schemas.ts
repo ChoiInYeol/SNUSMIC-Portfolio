@@ -45,6 +45,7 @@ export const TradeSchema = z.object({
   entry: num,
   exit: num,
   return_pct: num,
+  pnl_krw: num.optional(),
   days: num,
   n_clubs: num.optional(),
   exit_reason: z.string().optional(),

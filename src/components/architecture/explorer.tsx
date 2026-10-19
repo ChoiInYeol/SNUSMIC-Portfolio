@@ -109,10 +109,11 @@ function Explorer() {
   }, []);
   const exportSvg = () => {
     if (!filtered || !graph.nodes.length) return;
-    const style = getComputedStyle(document.documentElement);
+    const style = getComputedStyle(canvas.current ?? document.documentElement);
     const color = (token: string) => `hsl(${style.getPropertyValue(token).trim()})`;
     const svg = graphSvg(filtered, graph, { background: color("--background"), card: color("--card"), foreground: color("--foreground"),
-      muted: color("--muted-foreground"), border: color("--border"), accent: color("--stamp") });
+      muted: color("--muted-foreground"), border: color("--border"), accent: color("--architecture-fk"),
+      etl: color("--architecture-etl"), layers: Object.fromEntries(LAYERS.map((layer) => [layer, color(`--architecture-${layer}`)])) as Record<Layer, string> });
     const url = URL.createObjectURL(new Blob([svg], { type: "image/svg+xml;charset=utf-8" }));
     const anchor = document.createElement("a"); anchor.href = url; anchor.download = "medallion-architecture.svg"; anchor.click();
     window.setTimeout(() => URL.revokeObjectURL(url), 1000);
@@ -121,13 +122,13 @@ function Explorer() {
 
   return <div className="flex min-w-0 flex-col gap-4">
     <div className="flex flex-wrap items-center justify-between gap-3">
-      <div><h1 className="font-display text-3xl font-black sm:text-4xl">데이터의 지도</h1><p className="mt-2 text-sm text-muted-foreground">원천에서 서빙까지, 실제 스키마와 데이터 계보를 따라갑니다.</p></div>
+      <div><h1 className="font-sans text-3xl font-bold tracking-tight sm:text-4xl">데이터 아키텍처</h1><p className="mt-2 text-sm text-muted-foreground">Bronze → Silver → Gold. 스키마와 처리 흐름을 한눈에.</p></div>
       <Button variant="outline" size="sm" onClick={() => setReload((v) => v + 1)} disabled={loading}><RefreshCw data-icon="inline-start" />다시 연결</Button>
     </div>
     <div className="flex flex-wrap items-center gap-3 border-y border-border py-3">
       <label className="relative min-w-0 flex-1 basis-60"><span className="sr-only">테이블·컬럼 검색</span><Search className="pointer-events-none absolute top-2.5 left-3 size-4 text-muted-foreground" /><Input aria-label="테이블·컬럼 검색" placeholder="테이블, 스키마, 컬럼 검색" value={query} onChange={(e) => setQuery(e.target.value)} className="pl-9" disabled={!metadata} /></label>
-      <ToggleGroup type="multiple" value={layers} onValueChange={(values) => setLayers(values.filter((v): v is Layer => LAYERS.includes(v as Layer)))} aria-label="계층 필터" disabled={!metadata}>
-        {LAYERS.filter((l) => l !== "unassigned" || metadata?.entities.some((e) => e.layer === l)).map((layer) => <ToggleGroupItem key={layer} value={layer} aria-label={`${LAYER_LABEL[layer]} 계층`} className="font-mono text-xs">{LAYER_LABEL[layer]}</ToggleGroupItem>)}
+      <ToggleGroup className="architecture-filter" type="multiple" value={layers} onValueChange={(values) => setLayers(values.filter((v): v is Layer => LAYERS.includes(v as Layer)))} aria-label="계층 필터" disabled={!metadata}>
+        {LAYERS.filter((l) => l !== "unassigned" || metadata?.entities.some((e) => e.layer === l)).map((layer) => <ToggleGroupItem key={layer} value={layer} data-layer={layer} aria-label={`${LAYER_LABEL[layer]} 계층`} className="font-mono text-xs">{LAYER_LABEL[layer]}</ToggleGroupItem>)}
       </ToggleGroup>
       <div className="flex flex-wrap gap-2">
         <Button variant="outline" size="sm" onClick={() => setLayoutRevision((v) => v + 1)} disabled={busy || !filtered?.entities.length}><Network data-icon="inline-start" />자동 배치</Button>
@@ -146,9 +147,9 @@ function Explorer() {
           <SelectLabel>{LAYER_LABEL[layer]}</SelectLabel>{filtered?.entities.filter((e) => e.layer === layer).map((e) => <SelectItem key={e.id} value={e.id}>{e.schema_name}.{e.name}</SelectItem>)}
         </SelectGroup>)}</SelectContent>
       </Select>
-      <ToggleGroup type="multiple" value={edgeKinds} onValueChange={setEdgeKinds} aria-label="관계 필터" disabled={!metadata}>
-        <ToggleGroupItem value="foreign_key" aria-label="FK 관계" className="gap-2 text-xs"><span className="inline-block w-5 border-t-2 border-stamp" />FK</ToggleGroupItem>
-        <ToggleGroupItem value="etl" aria-label="ETL 의존성" className="gap-2 text-xs"><span className="inline-block w-5 border-t-2 border-dashed border-muted-foreground" />ETL</ToggleGroupItem>
+      <ToggleGroup className="architecture-filter" type="multiple" value={edgeKinds} onValueChange={setEdgeKinds} aria-label="관계 필터" disabled={!metadata}>
+        <ToggleGroupItem value="foreign_key" data-relation="foreign_key" aria-label="FK 관계" className="gap-2 text-xs"><span className="architecture-fk inline-block w-5 border-t-2" />FK</ToggleGroupItem>
+        <ToggleGroupItem value="etl" data-relation="etl" aria-label="ETL 의존성" className="gap-2 text-xs"><span className="architecture-etl inline-block w-5 border-t-2 border-dashed" />ETL</ToggleGroupItem>
       </ToggleGroup>
     </div>
     {error && <Alert variant="destructive"><AlertCircle /><AlertTitle>연결 실패</AlertTitle><AlertDescription>{error}<Button variant="outline" size="sm" onClick={() => setReload((v) => v + 1)}>다시 시도</Button></AlertDescription></Alert>}

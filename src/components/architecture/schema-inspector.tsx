@@ -11,13 +11,13 @@ export function SchemaInspector({ entity, metadata, onSelect, onClose }: {
   const links = entity ? metadata.relationships.filter((r) => r.kind === "foreign_key" && (r.source === entity.id || r.target === entity.id)) : [];
   return (
     <Sheet open={entity !== null} onOpenChange={(open) => { if (!open) onClose(); }}>
-      <SheetContent className="w-full overflow-y-auto sm:max-w-xl" onCloseAutoFocus={(event) => {
+      <SheetContent className="architecture-page w-full overflow-y-auto sm:max-w-xl" onCloseAutoFocus={(event) => {
         event.preventDefault();
         if (entity) document.querySelector<HTMLElement>(`.react-flow__node[data-id="${CSS.escape(entity.id)}"] button`)?.focus();
       }}>
         {entity && <>
           <SheetHeader>
-            <SheetTitle className="break-all font-display">{entity.name}</SheetTitle>
+            <SheetTitle className="break-all font-sans">{entity.name}</SheetTitle>
             <SheetDescription className="break-all">{LAYER_LABEL[entity.layer]} · {entity.schema_name} · {entity.kind}<br />{entity.location}</SheetDescription>
           </SheetHeader>
           <div className="flex flex-col gap-6 px-4 pb-8 text-sm">

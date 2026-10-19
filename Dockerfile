@@ -65,6 +65,7 @@ COPY --from=node:24-slim /usr/local/lib/node_modules /usr/local/lib/node_modules
 RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
 COPY tools/kordoc/package.json tools/kordoc/package-lock.json ./tools/kordoc/
 RUN npm ci --prefix tools/kordoc --no-audit --no-fund
+COPY tools/kordoc/cpu-limits.mjs ./tools/kordoc/cpu-limits.mjs
 
 # Install Playwright Chromium browser
 RUN uv run playwright install chromium

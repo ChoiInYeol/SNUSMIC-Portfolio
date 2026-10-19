@@ -15,23 +15,41 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
 import tempfile
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
-from lake import BRONZE_PDFS as PDF_ROOT, ROOT, SILVER_MARKDOWN as MD_ROOT, resolve_data_path
+from lake import BRONZE_PDFS as PDF_ROOT, BRONZE_REPORT_MANIFEST, ROOT, SILVER_MARKDOWN as MD_ROOT, resolve_data_path
+from report_sources import manifest_stems
+from report_text import strip_missing_images
 
 KORDOC_DIR = ROOT / "tools" / "kordoc"
 KORDOC_CLI = KORDOC_DIR / "node_modules" / "kordoc" / "dist" / "cli.js"
+OCR_CPU_LIMITS = KORDOC_DIR / "cpu-limits.mjs"
 NO_MODELS_DIR = ROOT / "cache" / "kordoc-no-models"
 SCHOOLS = ("smic", "yig", "star", "kuvic", "ewha", "voera")
 BATCH_SIZE = 32
 LONE_SURROGATE_RE = re.compile("[\ud800-\udfff]")
 HEADER_RE = re.compile(r"^<!-- kordoc (?P<version>\S+) ocr_pages=(?P<pages>[\d,]*) -->")
+# Some embedded numeral fonts decode to ordinary CJK ideographs, which pass the
+# engine's Hangul/PUA checks. Detect numeric structure, never guess a glyph-to-digit map.
+CJK = r"[\u3400-\u9fff]"
+CORRUPT_NUMERIC_RE = re.compile(rf"{CJK}{{4}}[./]{CJK}{{1,2}}[./]{CJK}{{1,2}}"
+                                rf"|{CJK}{{1,3}},{CJK}{{3}}(?!{CJK})"
+                                rf"|{CJK}{{1,3}}\.{CJK}{{1,2}}\s*%")
+OVERPRINT_CODE_RE = re.compile(r"\(\d{6,18}\(\d{6}\)|\(\d{12,24}\)")
+
+
+def unreliable_numeric_page(page: dict) -> bool:
+    text = page.get("markdown", "")
+    return bool(CORRUPT_NUMERIC_RE.search(text) or
+                (page["pageNumber"] <= 3 and OVERPRINT_CODE_RE.search(text)))
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -59,7 +77,7 @@ def is_current(md_path: Path, version: str) -> bool:
 def render(result: dict, version: str) -> str:
     ocr_pages = [q["page"] for q in result.get("pageQuality", []) if q.get("ocrApplied")]
     # 일부 PDF 텍스트층은 짝 없는 UTF-16 서로게이트를 내보낸다 → UTF-8로 쓸 수 없으므로 U+FFFD로 치환
-    body = LONE_SURROGATE_RE.sub("�", result.get("markdown", "").strip())
+    body = LONE_SURROGATE_RE.sub("�", strip_missing_images(result.get("markdown", "")).strip())
     return f"{header(version, ocr_pages)}\n\n{body}\n"
 
 
@@ -69,6 +87,8 @@ def needs_ocr(result: dict) -> bool:
     차트 이미지 페이지까지 전부 OCR하면 문서당 수 분이 걸리고 추출에는 기여하지 않는다.
     """
     pages = result.get("pageQuality", [])
+    if any(unreliable_numeric_page(p) for p in result.get("pages", [])):
+        return True
     if not pages:
         return False
     cover = any(q.get("needsOcr") for q in pages if q.get("page", 99) <= 3)
@@ -76,10 +96,36 @@ def needs_ocr(result: dict) -> bool:
     return cover or scanned
 
 
+def ocr_page_numbers(result: dict) -> tuple[int, ...]:
+    """OCR only bad cover pages, or all bad pages of a mostly-scanned document.
+
+    Passing --ocr for the entire PDF also OCRs charts on pages with good text layers.
+    Page-specific OCR prevents that without truncating the full transcript.
+    """
+    quality = result.get("pageQuality", [])
+    mostly_scanned = sum(bool(q.get("needsOcr")) for q in quality) > len(quality) / 2
+    selected = {q["page"] for q in quality if q.get("needsOcr") and (mostly_scanned or q["page"] <= 3)}
+    selected.update(p["pageNumber"] for p in result.get("pages", [])
+                    if unreliable_numeric_page(p))
+    return tuple(sorted(selected))
+
+
+def merge_ocr_pages(base: dict, recovered: dict, selected: tuple[int, ...]) -> dict:
+    """Replace requested pages only; retain every other text-layer page in document order."""
+    replacements = {p["pageNumber"]: p for p in recovered.get("pages", []) if p["pageNumber"] in selected}
+    pages = {p["pageNumber"]: p for p in base["pages"]}
+    pages.update(replacements)
+    ordered = [pages[n] for n in sorted(pages)]
+    quality = {q["page"]: q for q in base.get("pageQuality", [])}
+    quality.update({q["page"]: q for q in recovered.get("pageQuality", []) if q["page"] in replacements})
+    return {**base, "pages": ordered, "markdown": "\n\n".join(p["markdown"] for p in ordered),
+            "pageQuality": [quality[n] for n in sorted(quality)]}
+
+
 def run_kordoc(pdfs: list[Path], out_dir: Path, jobs: int, ocr: bool, pages: str | None) -> dict[Path, dict]:
-    cmd = ["node", str(KORDOC_CLI), *map(str, pdfs), "--format", "json", "--no-images",
+    cmd = ["node", *(["--import", OCR_CPU_LIMITS.as_uri()] if ocr else []), str(KORDOC_CLI), *map(str, pdfs), "--format", "json", "--no-images",
            "--table-format", "gfm", "--silent", "--jobs", str(jobs), "-d", str(out_dir),
-           *(["--ocr"] if ocr else []), *(["--pages", pages] if pages else [])]
+           *(["--ocr-force"] if ocr else []), *(["--pages", pages] if pages else [])]
     env = os.environ.copy()
     if not ocr:
         # kordoc은 OCR 모델이 캐시돼 있으면 --ocr 없이도 PDF 안의 이미지(차트)를 자동 OCR한다:
@@ -97,7 +143,34 @@ def run_kordoc(pdfs: list[Path], out_dir: Path, jobs: int, ocr: bool, pages: str
             out.unlink()
     if proc.returncode != 0 and len(results) == len(pdfs):
         print(f"  ! kordoc exit {proc.returncode} without missing outputs: {proc.stderr.strip()[-300:]}", flush=True)
+    elif len(results) < len(pdfs) and proc.stderr.strip():
+        print(f"  ! kordoc missing outputs (exit {proc.returncode}): {proc.stderr.strip()[-600:]}", flush=True)
     return results
+
+
+def canonical_pdf(pdf: Path) -> Path | None:
+    """Recover an empty filename collision only from a checksum-verified manifest source.
+
+    Keep both Bronze objects untouched. Never substitute a merely similar company report.
+    """
+    if pdf.stat().st_size:
+        return pdf
+    candidates = {}
+    if BRONZE_REPORT_MANIFEST.exists():
+        for row in json.loads(BRONZE_REPORT_MANIFEST.read_text(encoding="utf-8")):
+            if row.get("school") != pdf.parent.name or pdf.stem not in manifest_stems(row) or not row.get("file"):
+                continue
+            source = resolve_data_path(row["file"]).resolve()
+            if not source.is_relative_to(PDF_ROOT.resolve()) or source == pdf.resolve() or not source.is_file():
+                continue
+            content = source.read_bytes()
+            if content.startswith(b"%PDF-") and hashlib.sha256(content).hexdigest() == row.get("sha256"):
+                candidates[row["sha256"]] = source
+    if len(candidates) == 1:
+        source = next(iter(candidates.values()))
+        print(f"    Verified canonical source: {pdf.name} <- {source.name}", flush=True)
+        return source
+    return None
 
 
 def transcribe_batch(pdfs: list[Path], target_dir: Path, version: str, jobs: int,
@@ -106,25 +179,59 @@ def transcribe_batch(pdfs: list[Path], target_dir: Path, version: str, jobs: int
 
     반환: (성공 수, OCR 적용 문서 수, 실패 파일명)
     """
-    valid = [pdf for pdf in pdfs if pdf.stat().st_size > 0]
-    failed = [pdf.name for pdf in pdfs if pdf.stat().st_size == 0]
+    sources = {pdf: canonical_pdf(pdf) for pdf in pdfs}
+    valid = [pdf for pdf in pdfs if sources[pdf] is not None]
+    failed = [pdf.name for pdf in pdfs if sources[pdf] is None]
     if not valid:
         return 0, 0, failed
-    with tempfile.TemporaryDirectory(prefix="kordoc_") as tmp:
-        results = run_kordoc(valid, Path(tmp), jobs, ocr=False, pages=pages)
-        scans = [pdf for pdf in valid if pdf not in results or needs_ocr(results[pdf])]
-        if scans:
-            results.update(run_kordoc(scans, Path(tmp), jobs, ocr=True, pages=pages))
     done = 0
-    for pdf in valid:
-        if pdf not in results:
-            failed.append(pdf.name)
-            continue
+
+    def save(pdf: Path, result: dict) -> None:
+        nonlocal done
         target = target_dir / f"{pdf.stem}.md"
         partial = target.with_suffix(".md.partial")
-        partial.write_text(render(results[pdf], version), encoding="utf-8")
+        partial.write_text(render(result, version), encoding="utf-8")
         partial.replace(target)
         done += 1
+
+    with tempfile.TemporaryDirectory(prefix="kordoc_") as tmp:
+        source_results = run_kordoc(list(dict.fromkeys(sources[pdf] for pdf in valid)), Path(tmp), jobs, ocr=False, pages=pages)
+        results = {pdf: source_results[sources[pdf]] for pdf in valid if sources[pdf] in source_results}
+        scans = [pdf for pdf in valid if pdf not in results or needs_ocr(results[pdf])]
+        # Checkpoint each complete document, including text-only results, so interruption
+        # never discards an entire batch while one long scanned report is still running.
+        for pdf in valid:
+            if pdf not in scans:
+                save(pdf, results[pdf])
+        def recover_one(index: int, pdf: Path) -> tuple[Path, tuple[int, ...], dict | None]:
+            base = results.get(pdf)
+            selected = ocr_page_numbers(base) if base and base.get("pages") else ()
+            page_spec = ",".join(map(str, selected)) if selected else pages
+            out = Path(tmp) / f"ocr-{index}"
+            out.mkdir()
+            source = sources[pdf]
+            recovered = run_kordoc([source], out, 1, ocr=True, pages=page_spec)
+            return pdf, selected, recovered.get(source)
+
+        # Different documents need different page ranges. Four single-job CLI calls keep OCR
+        # parallelism bounded without serialising whole groups behind one long scanned PDF.
+        with ThreadPoolExecutor(max_workers=jobs) as pool:
+            futures = [pool.submit(recover_one, index, pdf) for index, pdf in enumerate(scans)]
+            for future in as_completed(futures):
+                pdf, selected, result = future.result()
+                if result is None:
+                    failed.append(pdf.name)
+                    print(f"    OCR FAILED: {pdf.name}", flush=True)
+                    continue
+                if selected and result.get("pages"):
+                    results[pdf] = merge_ocr_pages(results[pdf], result, selected)
+                elif selected:
+                    # Never replace a whole document with a page-range result lacking page boundaries.
+                    raise ValueError(f"OCR output has no page boundaries: {pdf.name}")
+                else:
+                    results[pdf] = result
+                save(pdf, results[pdf])
+                print(f"    OCR saved: {pdf.name} ({len(selected) if selected else 'all'} pages)", flush=True)
     return done, len(scans), failed
 
 
@@ -140,10 +247,11 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--shard", default=None, help="i:n — 정렬된 대기열의 i번째 1/n만 처리")
     parser.add_argument("--force", action="store_true", help="헤더가 최신이어도 재전사")
-    parser.add_argument("--jobs", type=int, default=max(1, min(8, (os.cpu_count() or 2) // 2)))
+    parser.add_argument("--jobs", type=int, default=max(1, min(4, (os.cpu_count() or 2) // 2)))
     parser.add_argument("--pages", default=None, help="쪽 범위 (예: 1-3). 지정 시 --md-root 를 본문 전사본 밖으로 둘 것")
     parser.add_argument("--md-root", type=Path, default=MD_ROOT, help="출력 루트 (기본 data/silver/reports/markdown)")
     parser.add_argument("--only", type=Path, default=None, help="처리할 PDF 경로 JSON 목록 (저장소 루트 기준, 구 data/pdfs/... 경로도 허용)")
+    parser.add_argument("--normalize-current", action="store_true", help="현재 kordoc 전사본의 미저장 이미지 자리표시자만 정규화 (OCR/원천 변경 없음)")
     args = parser.parse_args()
     if args.pages and args.md_root.resolve() == MD_ROOT.resolve():
         parser.error("--pages 결과로 본문 전사본(data/silver/reports/markdown)을 덮어쓸 수 없다 — --md-root 를 지정하라")
@@ -152,6 +260,23 @@ def main() -> int:
         only = {resolve_data_path(p).resolve() for path in [args.only] for p in json.loads(path.read_text(encoding="utf-8"))}
 
     version = kordoc_version()
+    if args.normalize_current:
+        count = 0
+        for path in args.md_root.rglob("*.md"):
+            text = path.read_text(encoding="utf-8")
+            match = HEADER_RE.match(text)
+            if not match or match["version"] != version:
+                continue
+            body = text.split("\n", 1)[1]
+            quality = [{"page": int(page), "ocrApplied": True} for page in match["pages"].split(",") if page]
+            normalized = render({"markdown": body, "pageQuality": quality}, version)
+            if normalized != text:
+                partial = path.with_suffix(".md.partial")
+                partial.write_text(normalized, encoding="utf-8")
+                partial.replace(path)
+                count += 1
+        print(f"normalized: {count} current kordoc transcripts", flush=True)
+        return 0
     total_done, total_failed = 0, []
     for school in ([args.school] if args.school else [*SCHOOLS, "legacy"]):
         pdf_dir, md_dir = targets(school, args.md_root)
@@ -177,8 +302,8 @@ def main() -> int:
     print(f"done: {total_done} transcribed, {len(total_failed)} failed", flush=True)
     for name in total_failed:
         print(f"  FAILED {name}", flush=True)
-    # 개별 PDF 실패는 기존 .md(있다면)를 보존하고 진행한다; 전부 실패하면 엔진 장애다.
-    return 1 if total_failed and total_done == 0 else 0
+    # Preserve earlier transcripts for failed PDFs, but never call a partial run publication-ready.
+    return 1 if total_failed else 0
 
 
 if __name__ == "__main__":

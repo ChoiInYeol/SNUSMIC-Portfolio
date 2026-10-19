@@ -25,6 +25,7 @@ BRONZE_PRICES = BRONZE / "prices"                        # {vendor}/ingest_date=
 BRONZE_PRICE_LOG = BRONZE_PRICES / "_ingest.jsonl"       # one line per raw price fetch
 BRONZE_REFERENCE = BRONZE / "reference"
 BRONZE_KRX_NAMES = BRONZE_REFERENCE / "krx_names.json"   # pykrx official names, cached as fetched
+BRONZE_KRX_NAME_OBSERVATIONS = BRONZE_REFERENCE / "krx_name_observations.jsonl"  # append-only new lookups
 
 # ── Silver: cleaned, standardised ───────────────────────────────────────────
 SILVER = DATA / "silver"

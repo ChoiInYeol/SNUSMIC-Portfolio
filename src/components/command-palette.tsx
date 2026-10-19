@@ -21,7 +21,7 @@ type Entry = {
 
 /** 기능 바로가기 — 검색어가 맞을 때만 종목보다 위에 뜬다 */
 const PAGE_ENTRIES: Entry[] = [
-  { id: "p:architecture", kind: "page", title: "데이터의 지도", sub: "Bronze · Silver · Gold / FK · ETL 계보", href: "/developers/architecture", hay: "데이터 지도 medallion architecture 스키마 schema lineage 계보 bronze silver gold database", ret: null },
+  { id: "p:architecture", kind: "page", title: "데이터 아키텍처", sub: "Bronze · Silver · Gold / FK · ETL 계보", href: "/developers/architecture", hay: "데이터 지도 medallion architecture 스키마 schema lineage 계보 bronze silver gold database", ret: null },
   { id: "p:developers", kind: "page", title: "API 레퍼런스", sub: "REST /api/v2 · 리소스 · Try it", href: "/developers", hay: "api 레퍼런스 개발자 developers rest v2 openapi 문서", ret: null },
   { id: "p:swagger", kind: "page", title: "Swagger UI", sub: "/api/v2/openapi.json", href: "/developers/swagger", hay: "swagger openapi api 스웨거", ret: null, hard: true },
   { id: "p:archive", kind: "page", title: "판결일보 축쇄판", sub: "지난 호 · 일별 신호 스냅샷", href: "/today/archive", hay: "축쇄판 지난호 지난 호 스냅샷 snapshot archive today 신문 판결일보", ret: null },

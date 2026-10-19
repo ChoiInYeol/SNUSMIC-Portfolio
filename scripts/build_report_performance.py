@@ -24,6 +24,9 @@ from pykrx import stock  # noqa: E402
 
 import lake  # noqa: E402
 from lake_prices import flush_bronze, record_raw_prices, write_silver_prices  # noqa: E402
+from report_extract import extract  # noqa: E402
+from market_clock import closed_bar_end  # noqa: E402
+from report_text import strip_missing_images  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -85,6 +88,7 @@ KUVIC_PRICE_BLOCK_RE = re.compile(
     re.I | re.S,
 )
 RATING_RE = re.compile(r"\b(Strong\s+Buy|Buy|Sell|Hold|Neutral|Outperform|Underperform|Overweight|Underweight)\b|(강력\s*매수|적극\s*매수|매수|매도|중립|보유)", re.I)
+UNRATED_OPINION_RE = re.compile(r"^\s*#*\s*(?:N\s*/?\s*R|Not\s+Rated|투자의견\s*없음)(?:\s*[\[(].*)?\s*$", re.I)
 KOREAN_RATINGS = {"강력매수": "Buy", "적극매수": "Buy", "매수": "Buy", "매도": "Sell", "중립": "Neutral", "보유": "Hold"}
 PRICE_TOKEN_RE = re.compile(
     r"(?P<prefix>[$₩])?\s*(?P<a>\d[\d,]*(?:\.\d+)?)\s*(?:[~\-–]\s*(?P<prefix2>[$₩])?\s*(?P<b>\d[\d,]*(?:\.\d+)?))?\s*(?P<suffix>원|엔|달러|USD|KRW|[$₩])?",
@@ -631,6 +635,45 @@ def parse_identity(path: Path, lines: list[str]) -> tuple[str | None, str | None
     return None, None, None, None
 
 
+def parse_table_identity(path: Path, lines: list[str]) -> tuple[str | None, str | None, str | None, str | None]:
+    """Read GFM cells as header candidates without treating bare price cells as tickers."""
+    if re.search(r"\b(?:Industry\s+In[ -]?depth|Sector\s+(?:Report|Analysis))\b", "\n".join(lines[:40]), re.I):
+        return None, None, None, None
+    expanded = []
+    for line in lines[:200]:
+        cells = [re.sub(r"<[^>]+>", "", part).strip() for cell in re.split(r"(?<!\\)\|", line)
+                 for part in re.split(r"<br\s*/?>", cell, flags=re.I)] if "|" in line else []
+        candidates = [(cell, TITLE_WITH_CODE_RE.search(compact_line(cell))) for cell in cells]
+        candidates = [(cell, match) for cell, match in candidates if match]
+        # A named company wins over an unlabelled stray code in the same table row.
+        candidates.sort(key=lambda item: bool(clean_name(item[1].group("name"))), reverse=True)
+        expanded.extend(cell for cell, _ in candidates)
+        for cell in cells:
+            # Older covers have a clipped opening parenthesis before a code and industry.
+            clipped = re.match(r"^(\d{6})\)\s+[가-힣 ]+업\b", cell)
+            if clipped:
+                expanded.append(f"({clipped[1]})")
+        expanded.append(line)
+    identity = parse_identity(path, expanded)
+    if identity[0]:
+        if identity[3] in {"Initial Coverage", "Company Analysis Report", "Research Report"}:
+            company = re.sub(r"^\d{4}-\d{2}-\d{2}_(?:Equity Research,\s*|equity-research-)", "", path.stem, flags=re.I)
+            if company != path.stem:
+                return *identity[:3], clean_name(company)
+        return identity
+    labelled = re.search(r"\b(?:Ticker|Stock\s+Code|종목코드|VOERA)\s*[:：]?\s*(\d{6})\b",
+                         "\n".join(expanded[:80]), re.I)
+    if labelled:
+        return "KR", labelled[1], "KRX", None
+    # Collection titles can contain a competition/year bracket before the company code.
+    for match in re.finditer(r"(?P<name>[^()]+)\((?P<inside>[^)]{2,80})\)", path.stem):
+        market, ticker, exchange = parse_market_from_inside(match["inside"])
+        if market:
+            name = re.sub(r"^(?:undated|\d{4}-\d{2}-\d{2})_", "", match["name"])
+            return market, ticker, exchange, clean_name(_strip_company_prefixes(name))
+    return identity
+
+
 def normalize_rating(m: re.Match[str]) -> str:
     if m.group(1):
         return m.group(1).title()
@@ -872,16 +915,28 @@ def parse_prices(lines: list[str], market: str | None) -> tuple[float | None, st
     return target, target_raw, current, current_raw, upside
 
 
-def parse_report(path: Path, school: str = "smic", hint: dict | None = None) -> ParsedReport:
+def parse_report(path: Path, school: str = "smic", hint: dict | None = None, *, extractor: str = "candidate") -> ParsedReport:
     text = path.read_text(encoding="utf-8", errors="ignore")
+    if extractor == "candidate":
+        text = strip_missing_images(text)
     lines = [line.rstrip("\n") for line in text.splitlines()]
     ocr_recovered = bool(KORDOC_OCR_HEADER_RE.match(text)) or "<!-- ocr_fallback -->" in text[:200]
     report_date, filename_date, authored_date = resolve_report_date(path, lines, school, hint)
-    market, ticker, exchange, company = parse_identity(path, lines)
-    rating = parse_rating(lines)
+    market, ticker, exchange, company = (parse_table_identity(path, lines) if extractor == "candidate"
+                                        else parse_identity(path, lines))
+    if extractor not in {"candidate", "legacy"}:
+        raise ValueError(f"unknown extractor: {extractor}")
+    # Identity/date resolution and downstream QA stay shared. Keep the old extractor only
+    # as an explicit evaluation baseline; a missing candidate rating may use its regex.
+    result = extract(text, market) if extractor == "candidate" else None
+    explicitly_unrated = extractor == "candidate" and any(UNRATED_OPINION_RE.fullmatch(line) for line in lines[:80])
+    rating = None if explicitly_unrated else (result.rating if result else None) or parse_rating(lines)
     # For foreign-exchange listings prices are in non-KRW/USD units — don't parse them
     if market == "FOREIGN":
         target = target_raw = current = current_raw = upside = None
+    elif result is not None:
+        target, target_raw, current, current_raw, upside = (
+            result.target, result.target_raw, result.current, result.current_raw, result.upside)
     else:
         target, target_raw, current, current_raw, upside = parse_prices(lines, market)
 
@@ -931,7 +986,7 @@ def parse_report(path: Path, school: str = "smic", hint: dict | None = None) -> 
 
     # ── Voera: rating + TP hints from title bracket ───────────────────────────
     if school == "voera" and hint:
-        if not rating:
+        if not rating and not explicitly_unrated:
             rating_hint = hint.get("rating_hint")
             if rating_hint:
                 rating = rating_hint.capitalize()
@@ -1038,34 +1093,44 @@ def resolve_missing_tickers(parsed: list[ParsedReport]) -> None:
 def canonicalize_kr_names(parsed: list[ParsedReport]) -> None:
     """KR 6자리 티커 보유 레코드의 회사명을 pykrx 공식명으로 교정한다.
 
-    결과는 data/bronze/reference/krx_names.json에 캐시 (없는 티커만 조회).
+    기존 Bronze 종목명 스냅샷은 보존하고, 새 조회는 관측 로그에 추가한다 (없는 티커만 조회).
     상장폐지 등으로 pykrx가 빈 문자열을 반환하면 기존 이름을 유지한다.
     US 레코드는 건드리지 않는다.
     """
     cache_path = lake.BRONZE_KRX_NAMES
     cache: dict[str, str] = json.loads(cache_path.read_text(encoding="utf-8")) if cache_path.exists() else {}
-    changed = False
+    observations = lake.BRONZE_KRX_NAME_OBSERVATIONS
+    if observations.exists():
+        for line in observations.read_text(encoding="utf-8").splitlines():
+            row = json.loads(line)
+            if row["schema_version"] != "1.0":
+                raise ValueError("unsupported KRX name observation schema")
+            cache[row["ticker"]] = row["name"]
     for r in parsed:
         if r.market != "KR" or not r.ticker or not re.fullmatch(r"\d{6}", r.ticker):
             continue
         if r.ticker not in cache:
             try:
                 official = stock.get_market_ticker_name(r.ticker)
-                # pykrx returns a plain str for a valid ticker; may return None or an
-                # unexpected object for delisted/unknown tickers — normalise to str.
+                # Preserve actual vendor strings, including an empty delisted name.
+                # An unexpected object is not an authoritative empty response.
                 if not isinstance(official, str):
-                    official = ""
+                    continue
             except Exception:  # noqa: BLE001
-                official = ""
+                # A network failure is not an authoritative empty vendor response.
+                continue
+            from importlib.metadata import version
+            from lake_prices import append_block
+
+            observation = {"schema_version": "1.0", "collected_at": dt.datetime.now(dt.timezone.utc).isoformat(),
+                           "source": "pykrx.get_market_ticker_name", "library_version": version("pykrx"),
+                           "ticker": r.ticker, "name": official}
+            append_block(observations, (json.dumps(observation, ensure_ascii=False) + "\n").encode("utf-8"))
             cache[r.ticker] = official
-            changed = True
         official_name = cache.get(r.ticker, "")
         if official_name:
             r.company = official_name
             compute_issues(r)
-    if changed:
-        cache_path.parent.mkdir(parents=True, exist_ok=True)
-        cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
 
 
 def safe_pct(new: float | None, old: float | None) -> float | None:
@@ -1117,6 +1182,9 @@ def build_display_name(market: str | None, company: str | None, ticker: str | No
 
 
 def fetch_kr_prices(ticker: str, start: dt.date, end: dt.date) -> pd.DataFrame:
+    end = closed_bar_end("KR", end)
+    if start > end:
+        return pd.DataFrame(columns=["open", "high", "low", "close", "volume"])
     df = stock.get_market_ohlcv_by_date(start.strftime("%Y%m%d"), end.strftime("%Y%m%d"), ticker)
     record_raw_prices("pykrx_stock", f"KR_{ticker}", df, library="pykrx",
                       request={"ticker": ticker, "start": start.isoformat(), "end": end.isoformat(), "adjusted": True})
@@ -1137,6 +1205,9 @@ INDEX_CODES = {"KOSPI": "1001", "KOSDAQ": "2001"}
 def fetch_index(name: str, start: dt.date, end: dt.date) -> pd.DataFrame:
     if name == "US":
         return fetch_us_prices("^GSPC", start, end, symbol="IDX_US")
+    end = closed_bar_end("KR", end)
+    if start > end:
+        return pd.DataFrame(columns=["close"])
     df = stock.get_index_ohlcv(start.strftime("%Y%m%d"), end.strftime("%Y%m%d"), INDEX_CODES[name])
     record_raw_prices("pykrx_index", f"IDX_{name}", df, library="pykrx",
                       request={"ticker": INDEX_CODES[name], "start": start.isoformat(), "end": end.isoformat(), "adjusted": False})
@@ -1148,11 +1219,13 @@ def fetch_index(name: str, start: dt.date, end: dt.date) -> pd.DataFrame:
 
 
 def fetch_index_cached(name: str, start: dt.date, as_of: dt.date) -> pd.DataFrame:
+    as_of = closed_bar_end("US" if name == "US" else "KR", as_of)
     cache_path = PRICE_CACHE_DIR / f"IDX_{name}.csv"
     cached: pd.DataFrame | None = None
     if cache_path.exists():
         try:
             cached = pd.read_csv(cache_path, index_col=0, parse_dates=True)
+            cached = cached.loc[cached.index <= pd.Timestamp(as_of)]
         except Exception:  # noqa: BLE001
             cached = None
     if cached is not None and not cached.empty and cached.index[0].date() <= start + dt.timedelta(days=12):
@@ -1178,11 +1251,13 @@ def fetch_prices(market: str, ticker: str, start: dt.date, end: dt.date) -> pd.D
 
 def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date, sleep: float) -> pd.DataFrame:
     """일별 시세를 silver 시세(data/silver/prices/)에 캐시하고 누락 구간만 증분 조회한다."""
+    as_of = closed_bar_end(market, as_of)
     cache_path = PRICE_CACHE_DIR / f"{market}_{ticker}.csv"
     cached: pd.DataFrame | None = None
     if cache_path.exists():
         try:
             cached = pd.read_csv(cache_path, index_col=0, parse_dates=True)
+            cached = cached.loc[cached.index <= pd.Timestamp(as_of)]
         except Exception:  # noqa: BLE001 - 손상 캐시는 새로 받는다
             cached = None
 
@@ -1205,6 +1280,9 @@ def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date
 
 
 def fetch_us_prices(ticker: str, start: dt.date, end: dt.date, symbol: str | None = None) -> pd.DataFrame:
+    end = closed_bar_end("US", end)
+    if start > end:
+        return pd.DataFrame(columns=["open", "high", "low", "close", "volume"])
     # yfinance end is exclusive; add one day at call site if an inclusive as-of is desired.
     df = yf.download(ticker, start=start.isoformat(), end=(end + dt.timedelta(days=1)).isoformat(), progress=False, auto_adjust=True, threads=False)
     record_raw_prices("yfinance", symbol or f"US_{ticker}", df, library="yfinance",

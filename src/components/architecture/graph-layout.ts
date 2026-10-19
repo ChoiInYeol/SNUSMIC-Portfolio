@@ -1,11 +1,11 @@
 import type { Node, Edge } from "@xyflow/react";
-import { LAYERS, LAYER_LABEL, type SchemaEntity, type SchemaMetadata } from "@/lib/schema-metadata";
+import { LAYERS, LAYER_LABEL, type Layer, type SchemaEntity, type SchemaMetadata } from "@/lib/schema-metadata";
 
 export const NODE_WIDTH = 280;
 export const VISIBLE_COLUMNS = 5;
 export const nodeHeight = (entity: SchemaEntity) => 92 + Math.max(1, Math.min(entity.columns.length, VISIBLE_COLUMNS)) * 26;
 export type TableNode = Node<{ entity: SchemaEntity; foreignKeys: string[] }, "schema">;
-export type LayerNode = Node<{ label: string; count: number }, "layer">;
+export type LayerNode = Node<{ label: string; count: number; layer: Layer }, "layer">;
 export type GraphNode = TableNode | LayerNode;
 export type GraphLayout = { nodes: GraphNode[]; edges: Edge[] };
 
@@ -33,7 +33,7 @@ export async function layoutMetadata(doc: SchemaMetadata): Promise<GraphLayout> 
     for (const group of result.children ?? []) {
       const layer = LAYERS.find((l) => group.id === `layer:${l}`)!;
       nodes.push({ id: group.id, type: "layer", position: { x: group.x ?? 0, y: group.y ?? 0 },
-        data: { label: LAYER_LABEL[layer], count: group.children?.length ?? 0 },
+        data: { label: LAYER_LABEL[layer], count: group.children?.length ?? 0, layer },
         style: { width: group.width, height: group.height }, selectable: false, draggable: false });
       for (const child of group.children ?? []) {
         nodes.push({ id: child.id, type: "schema", parentId: group.id, extent: "parent",
@@ -45,9 +45,9 @@ export async function layoutMetadata(doc: SchemaMetadata): Promise<GraphLayout> 
     return { nodes, edges: doc.relationships.map((r) => ({
       id: r.id, source: r.source, target: r.target, type: "smoothstep", label: r.kind === "foreign_key" ? "FK" : undefined,
       ariaLabel: `${r.kind === "foreign_key" ? "FK" : "ETL"}: ${r.source} → ${r.target}`,
-      style: { stroke: r.kind === "foreign_key" ? "hsl(var(--stamp))" : "hsl(var(--muted-foreground))", strokeWidth: 1.5,
+      style: { stroke: r.kind === "foreign_key" ? "hsl(var(--architecture-fk))" : "hsl(var(--architecture-etl))", strokeWidth: 1.8,
         strokeDasharray: r.kind === "etl" ? "6 4" : undefined },
-      markerEnd: { type: "arrowclosed" as const, color: r.kind === "foreign_key" ? "hsl(var(--stamp))" : "hsl(var(--muted-foreground))" },
+      markerEnd: { type: "arrowclosed" as const, color: r.kind === "foreign_key" ? "hsl(var(--architecture-fk))" : "hsl(var(--architecture-etl))" },
     })) };
   }
 }

@@ -279,5 +279,58 @@
  "셀트리온": {
   "code": "068270",
   "market": "KOSPI"
- }
+ },
+ "동화약품공업": null,
+ "배터리재활용산업": null,
+ "레인보우로보틱스": {
+  "code": "277810",
+  "market": "KOSDAQ"
+ },
+ "슈피겐코리아": {
+  "code": "192440",
+  "market": "KOSDAQ"
+ },
+ "SK리츠": {
+  "code": "395400",
+  "market": "KOSPI"
+ },
+ "제주항공": {
+  "code": "089590",
+  "market": "KOSPI"
+ },
+ "티이엠씨": {
+  "code": "425040",
+  "market": "KOSDAQ"
+ },
+ "FANUC": null,
+ "FIGR": null,
+ "패권의시대_pdf": null,
+ "하반기투자전략": null,
+ "전략광물": null,
+ "건강기능식품": null,
+ "인카금융서비스": {
+  "code": "211050",
+  "market": "KOSDAQ"
+ },
+ "광통신": null,
+ "방산": null,
+ "화학": null,
+ "로봇": null,
+ "증권": null,
+ "반도체와반도체장비": null,
+ "은행": null,
+ "심텍": {
+  "code": "222800",
+  "market": "KOSDAQ"
+ },
+ "티씨머티리얼즈": {
+  "code": "125020",
+  "market": "KOSDAQ"
+ },
+ "000720": null,
+ "의료기기/화장품": null,
+ "MLCC": null,
+ "반도체/반도체와장비": null,
+ "우주/항공": null,
+ "제약/바이오": null
 }

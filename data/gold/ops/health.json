@@ -1,11 +1,17 @@
 {
- "checked_at": "2026-10-16",
+ "checked_at": "2026-10-20",
  "manifest_pdfs": 2409,
  "transcripts_md": 1649,
  "parsed_rows": 1647,
- "parse_issue_rows": 238,
- "performance_rows": 1462,
- "backtest_as_of": "2026-10-16",
+ "parse_issue_rows": 207,
+ "performance_rows": 1471,
+ "report_performance_json_valid": true,
+ "backtest_json_valid": true,
+ "signals_json_valid": true,
+ "aux_json_invalid": [],
+ "shape_issues": [],
+ "source_status_failures": [],
+ "backtest_as_of": "2026-10-19",
  "strategy_count": 26,
  "signals_latest_exists": true
 }

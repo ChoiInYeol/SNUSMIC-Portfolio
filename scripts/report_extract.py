@@ -12,6 +12,7 @@ from __future__ import annotations
 import itertools
 import re
 from dataclasses import dataclass
+from report_text import strip_missing_images
 
 COVER_LINES = 200
 HEADER_RE = re.compile(r"^<!--.*?-->\s*$")
@@ -82,7 +83,7 @@ class Extraction:
 def cover_rows(text: str, limit: int = COVER_LINES) -> list[list[str]]:
     """표지 영역을 '행 = 세그먼트 목록'으로. GFM 표는 셀, <br>은 하위 행, 탭/넓은 공백은 세그먼트."""
     rows: list[list[str]] = []
-    for line in text.splitlines()[:limit]:
+    for line in strip_missing_images(text).splitlines()[:limit]:
         line = line.strip()
         if not line or HEADER_RE.match(line) or TABLE_SEPARATOR_RE.match(line):
             continue

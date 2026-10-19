@@ -115,7 +115,6 @@ jobs:
           uv run python scripts/backtest_momentum.py
           uv run python scripts/export_signals_api.py
           uv run python scripts/export_api_v2.py
-          uv run python scripts/schema_metadata.py
 
       - name: Pipeline health gate
         env:
@@ -124,8 +123,10 @@ jobs:
         run: uv run python scripts/pipeline_health.py
 
       # Lineage catalog last: it records every committed artifact above, including health.json.
-      - name: Build data catalog
-        run: uv run python scripts/build_catalog.py
+      - name: Build metadata and data catalog
+        run: |
+          uv run python scripts/schema_metadata.py
+          uv run python scripts/build_catalog.py
 
       # GITHUB_TOKEN pushes do not trigger tests.yml, so the bot commit must pass
       # the same gate here before it reaches main (and the Vercel build).

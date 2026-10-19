@@ -107,11 +107,21 @@ def _type(value) -> str:
     return "string"
 
 
-def observed_columns(spec: dict) -> list[Column]:
-    if not build_catalog.tracked_in_git(spec["path"]):
+def observed_columns(spec: dict, tracked: bool | None = None) -> list[Column]:
+    if tracked is None:
+        tracked = build_catalog.tracked_in_git(spec["path"])
+    if not tracked:
         return []
-    files = build_catalog._files(spec["path"])
-    candidate = next((p for p in files if p.suffix in {".csv", ".json", ".jsonl"}), None)
+    if spec["format"] not in {"csv", "json", "jsonl"}:
+        return []
+    # Dataset writers designate a representative schema file for heterogeneous API
+    # collections. Do not stat thousands of JSON/markdown files to find its first item.
+    preferred = lake.ROOT / spec["schema_file"] if spec.get("schema_file") else None
+    if preferred and preferred.is_file():
+        candidate = preferred
+    else:
+        files = build_catalog._files(spec["path"])
+        candidate = next((p for p in files if p.suffix in {".csv", ".json", ".jsonl"}), None)
     if candidate is None:
         return []
     if candidate.suffix == ".csv":
@@ -131,10 +141,18 @@ def observed_columns(spec: dict) -> list[Column]:
 
 def catalog_metadata() -> SchemaMetadata:
     specs = [s for s in build_catalog.DATASETS if s["id"] != "serving.schema_metadata"]
+    # The versioned catalog already records Git policy. Re-running git check-ignore twice
+    # per dataset made a metadata request exceed 15 seconds during CPU-bound OCR jobs.
+    catalog = json.loads(lake.CATALOG.read_text(encoding="utf-8"))
+    if catalog.get("schema_version") != build_catalog.CATALOG_SCHEMA_VERSION:
+        raise ValueError("unsupported data catalog schema")
+    tracked_by_id = {entry["id"]: entry["tracked_in_git"] for entry in catalog["datasets"]}
     entities = []
     for spec in specs:
-        columns = observed_columns(spec)
-        tracked = build_catalog.tracked_in_git(spec["path"])
+        tracked = tracked_by_id.get(spec["id"])
+        if tracked is None:  # a newly added dataset, before its first catalog regeneration
+            tracked = build_catalog.tracked_in_git(spec["path"])
+        columns = observed_columns(spec, tracked)
         exact_path = lake.ROOT / spec["path"]
         rows = build_catalog._rows(exact_path, spec["format"]) if tracked and exact_path.is_file() else None
         entities.append(Entity(

@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-19T11:09:22+00:00",
+  "generated_at": "2026-10-19T17:55:38+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -5205,6 +5205,64 @@
       ]
     },
     {
+      "id": "bronze.krx_name_observations",
+      "name": "krx_name_observations",
+      "schema_name": "bronze",
+      "layer": "bronze",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "collected_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "library_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "ticker",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "name",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/bronze/reference/krx_name_observations.jsonl",
+      "row_count": 23,
+      "description": "jsonl · versioned artifact",
+      "producers": [
+        "build_report_performance.py"
+      ]
+    },
+    {
       "id": "bronze.prices",
       "name": "prices",
       "schema_name": "bronze",
@@ -5571,7 +5629,7 @@
       ],
       "column_status": "observed",
       "location": "data/silver/reports/parse_issues.csv",
-      "row_count": 238,
+      "row_count": 207,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -6311,6 +6369,209 @@
           "nullable": null,
           "primary_key": false,
           "description": null
+        },
+        {
+          "name": "동화약품공업",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "배터리재활용산업",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "레인보우로보틱스",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "슈피겐코리아",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "SK리츠",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "제주항공",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "티이엠씨",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "FANUC",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "FIGR",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "패권의시대_pdf",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "하반기투자전략",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "전략광물",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "건강기능식품",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "인카금융서비스",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "광통신",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "방산",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "화학",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "로봇",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "증권",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "반도체와반도체장비",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "은행",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "심텍",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "티씨머티리얼즈",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "000720",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "의료기기/화장품",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "MLCC",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "반도체/반도체와장비",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "우주/항공",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "제약/바이오",
+          "data_type": "null",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
         }
       ],
       "column_status": "observed",
@@ -6932,7 +7193,7 @@
       ],
       "column_status": "observed",
       "location": "data/gold/reports/performance.csv",
-      "row_count": 1462,
+      "row_count": 1471,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -7065,6 +7326,48 @@
           "description": null
         },
         {
+          "name": "report_performance_json_valid",
+          "data_type": "boolean",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "backtest_json_valid",
+          "data_type": "boolean",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "signals_json_valid",
+          "data_type": "boolean",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "aux_json_invalid",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "shape_issues",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source_status_failures",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
           "name": "backtest_as_of",
           "data_type": "string",
           "nullable": null,
@@ -7154,7 +7457,7 @@
       ],
       "column_status": "observed",
       "location": "src/data/report-performance.json",
-      "row_count": 1462,
+      "row_count": 1471,
       "description": "json · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -7531,6 +7834,13 @@
           "description": null
         },
         {
+          "name": "provenance",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
           "name": "summary",
           "data_type": "object",
           "nullable": null,
@@ -7710,29 +8020,29 @@
           "description": null
         },
         {
-          "name": "method",
+          "name": "headline_key",
           "data_type": "string",
           "nullable": null,
           "primary_key": false,
           "description": null
         },
         {
-          "name": "summary",
-          "data_type": "object",
+          "name": "disclaimer",
+          "data_type": "string",
           "nullable": null,
           "primary_key": false,
           "description": null
         },
         {
-          "name": "entries",
+          "name": "disclaimer_ko",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategies",
           "data_type": "array",
-          "nullable": null,
-          "primary_key": false,
-          "description": null
-        },
-        {
-          "name": "headline_by_date",
-          "data_type": "object",
           "nullable": null,
           "primary_key": false,
           "description": null
@@ -7777,7 +8087,7 @@
         },
         {
           "name": "data",
-          "data_type": "array",
+          "data_type": "object",
           "nullable": null,
           "primary_key": false,
           "description": null
@@ -7807,6 +8117,15 @@
       "id": "etl:bronze.report_pdfs:silver.report_markdown",
       "source": "bronze.report_pdfs",
       "target": "silver.report_markdown",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:bronze.krx_name_observations:silver.report_parsed",
+      "source": "bronze.krx_name_observations",
+      "target": "silver.report_parsed",
       "kind": "etl",
       "source_columns": [],
       "target_columns": [],

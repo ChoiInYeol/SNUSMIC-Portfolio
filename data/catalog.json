@@ -1,6 +1,22 @@
 {
  "datasets": [
   {
+   "bytes": 4432,
+   "files": 1,
+   "format": "jsonl",
+   "id": "bronze.krx_name_observations",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/reference/krx_name_observations.jsonl",
+   "producer": [
+    "build_report_performance.py"
+   ],
+   "rows": 23,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
    "bytes": 20340,
    "files": 1,
    "format": "json",
@@ -141,7 +157,7 @@
    "updated_at": null
   },
   {
-   "bytes": 243,
+   "bytes": 419,
    "files": 1,
    "format": "json",
    "id": "gold.health",
@@ -163,10 +179,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-16"
+   "updated_at": "2026-10-20"
   },
   {
-   "bytes": 608185,
+   "bytes": 634829,
    "files": 1,
    "format": "csv",
    "id": "gold.report_performance",
@@ -179,7 +195,7 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1462,
+   "rows": 1471,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
@@ -202,8 +218,8 @@
    "updated_at": null
   },
   {
-   "bytes": 8967324,
-   "files": 106,
+   "bytes": 9365995,
+   "files": 107,
    "format": "json",
    "id": "serving.api_v1",
    "inputs": [
@@ -219,11 +235,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T10:32:17+00:00"
+   "updated_at": "2026-10-19T17:51:58+00:00"
   },
   {
-   "bytes": 149647030,
-   "files": 1933,
+   "bytes": 165189562,
+   "files": 2020,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -241,10 +257,10 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T09:58:46+00:00"
+   "updated_at": "2026-10-19T17:51:59+00:00"
   },
   {
-   "bytes": 14854,
+   "bytes": 15184,
    "files": 1,
    "format": "json",
    "id": "serving.forward_record",
@@ -260,10 +276,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-16T14:30:28+00:00"
+   "updated_at": "2026-10-19T17:51:59+00:00"
   },
   {
-   "bytes": 126145,
+   "bytes": 155984,
    "files": 1,
    "format": "json",
    "id": "serving.report_first_seen",
@@ -279,10 +295,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T10:46:29+00:00"
+   "updated_at": "2026-10-19T17:44:37+00:00"
   },
   {
-   "bytes": 2763336,
+   "bytes": 2809622,
    "files": 1,
    "format": "json",
    "id": "serving.report_performance",
@@ -296,13 +312,13 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1462,
+   "rows": 1471,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-16T14:23:28.563896+00:00"
+   "updated_at": "2026-10-19T17:44:36.645332+00:00"
   },
   {
-   "bytes": 217981,
+   "bytes": 226222,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -319,10 +335,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T11:09:22+00:00"
+   "updated_at": "2026-10-19T17:55:38+00:00"
   },
   {
-   "bytes": 75370,
+   "bytes": 74094,
    "files": 1,
    "format": "json",
    "id": "serving.stats",
@@ -338,10 +354,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-16T14:30:31"
+   "updated_at": "2026-10-20T02:52:06"
   },
   {
-   "bytes": 15097700,
+   "bytes": 16190295,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -358,10 +374,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-16T14:30:26+00:00"
+   "updated_at": "2026-10-19T17:51:56+00:00"
   },
   {
-   "bytes": 3071451,
+   "bytes": 3426013,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -395,7 +411,7 @@
    "updated_at": null
   },
   {
-   "bytes": 4958,
+   "bytes": 6001,
    "files": 1,
    "format": "json",
    "id": "silver.name_ticker",
@@ -449,7 +465,7 @@
    "updated_at": null
   },
   {
-   "bytes": 115628796,
+   "bytes": 138448102,
    "files": 1649,
    "format": "md",
    "id": "silver.report_markdown",
@@ -467,7 +483,7 @@
    "updated_at": null
   },
   {
-   "bytes": 50298,
+   "bytes": 46446,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parse_issues",
@@ -479,17 +495,18 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 238,
+   "rows": 207,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
   },
   {
-   "bytes": 331563,
+   "bytes": 358984,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parsed",
    "inputs": [
+    "bronze.krx_name_observations",
     "bronze.krx_names",
     "bronze.report_manifest",
     "silver.corrections",

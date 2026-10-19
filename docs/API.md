@@ -14,6 +14,8 @@
 ---
 
 - Base URL: `https://verdict-archive.vercel.app/api/v2`
+- Immutable strategy revision trades may include the accounting producer's `pnl_krw`
+  (realized P&L in KRW after costs). Older revisions omit it; the existing revision format remains valid.
 - Machine-readable contract: [`/api/v2/openapi.json`](https://verdict-archive.vercel.app/api/v2/openapi.json) (OpenAPI 3.1)
 - Status: **v2 is current.** `/api/v1` is frozen and deprecated — see [Migration from v1](#migration-from-v1).
 - Design record: [`docs/adr/0001-api-v2-and-medallion.md`](adr/0001-api-v2-and-medallion.md)

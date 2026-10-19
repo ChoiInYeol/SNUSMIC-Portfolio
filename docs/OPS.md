@@ -82,7 +82,7 @@ uv run python scripts/pipeline_health.py --dry-run   # 전송·health 상태 변
 
 Hobby는 개인 비상업 용도인지 먼저 확인해야 합니다. [공식 기준](https://vercel.com/docs/plans/hobby)의 월 CDN 전송·origin 전송·요청·CPU·메모리 한도를 실제 30일 usage와 대조한 뒤에만 적합성을 판단합니다. [100MB CLI source upload 제한](https://vercel.com/docs/limits)은 Git 연동 배포의 정적 파일 총량 한도와 다릅니다. 이번 감사에서 Vercel token이 유효하지 않아 usage·배포 확인은 미완료이며, 임의 플랜 전환/production 배포는 수행하지 않았습니다.
 
-**2026-10-19 레짐 게이트 look-ahead 수정 (미재계산)**: T-·U의 KOSPI 파킹 레짐 게이트가 당일 종가와 당일 200MA로 당일 파킹 수익 여부를 결정하고 있었습니다(파킹 잔액 단독 2019-07~: 당일 판정 +647% vs 전일 판정 +264%, 단순 보유 +263%). 이제 `_regime_risk_on()`이 전일 종가·전일 200MA만 읽고(`tests/test_financial_oracles.py`), Q 전략의 시가 진입 유닛도 전일 종가 기준입니다. 헤드라인(`U_chandelier_scaleout`)은 이 편향 아래에서 선택됐으므로, 공표 숫자를 재계산하고 헤드라인 선택을 다시 수행하기 전까지 기존 성과를 유효한 것으로 표시하지 않습니다.
+**2026-10-19 레짐 게이트 look-ahead 수정 (10월 20일 재계산 완료)**: T-·U의 KOSPI 파킹 레짐 게이트가 당일 종가와 당일 200MA로 당일 파킹 수익 여부를 결정하고 있었습니다(파킹 잔액 단독 2019-07~: 당일 판정 +647% vs 전일 판정 +264%, 단순 보유 +263%). 이제 `_regime_risk_on()`이 전일 종가·전일 200MA만 읽고(`tests/test_financial_oracles.py`), Q 전략의 시가 진입 유닛도 전일 종가 기준입니다. 기존 헤드라인(`U_chandelier_scaleout`)은 이 편향 아래에서 선택됐습니다. 10월 20일 새 전사본·완료 일봉으로 전체 백테스트와 공표 숫자를 재계산하고 `W_allweather_chandelier`를 재선정했습니다. 과거 불변 스냅샷은 보존하며, 자세한 결과는 [전체 전사 기록](KORDOC-ROLLOUT-2026-10-20.md)을 봅니다.
 
 파킹 지수 캐시 `data/silver/prices/IDX_KOSPI.csv`는 종가만 포함합니다. 종가 수익을 당일 시가 예산에 섞는 M3 수정은 실제 시가 자료 확보 또는 명시적 close-transfer 연구 정책의 결정 전까지 완료 처리하지 않습니다. 기존 공표 금융 JSON을 새 계산 결과처럼 재라벨링하지 않습니다.
 

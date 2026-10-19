@@ -1,7 +1,9 @@
-# 데이터의 지도 · 메타데이터 서비스
+# 데이터 아키텍처 · 메타데이터 서비스
 
 페이지: `/developers/architecture`. React Flow와 ELK가 FastAPI 응답 하나를 기준으로
 노드·그룹·FK·ETL·검색·Sheet·SVG를 만든다. 데모 테이블은 포함하지 않는다.
+화면은 차가운 블루·화이트 바탕에 Bronze 구리색, Silver 파랑, Gold 황금색을 쓴다.
+FK 보라 실선과 ETL 청록 점선은 계층 색과 독립적이며, 다크모드와 SVG도 같은 토큰을 따른다.
 
 ## 로컬 실행
 

@@ -11,6 +11,7 @@ import pandas as pd
 
 from .config import GOLD_CACHE, PRICE_DIR, ATR_PERIOD  # config puts scripts/ on sys.path
 from lake_prices import record_raw_prices, write_silver_prices  # noqa: E402
+from market_clock import closed_bar_end  # noqa: E402
 
 
 
@@ -18,22 +19,30 @@ from lake_prices import record_raw_prices, write_silver_prices  # noqa: E402
 # Data loading helpers
 # ──────────────────────────────────────────────────────────────────────────────
 
+def _index_close(frame: pd.DataFrame, name: str, end: dt.date) -> pd.Series:
+    if frame.empty or (end - frame.index[-1].date()).days > 10:
+        raise RuntimeError(f"benchmark {name} is stale after refresh (requested through {end})")
+    return frame["close"].sort_index()
+
+
 def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
     """yfinance로 지수 종가 다운로드, silver 시세(PRICE_DIR)에 캐시. 원본 응답은 bronze에 기록."""
     cache_path = PRICE_DIR / f"IDX_{cache_name}.csv"
     import yfinance as yf  # type: ignore
 
-    today = dt.date.today()
+    end = closed_bar_end("KR" if ticker == "^KS11" else "FX" if cache_name == "USDKRW" else "US")
+    exclusive_end = (end + dt.timedelta(days=1)).isoformat()
     if cache_path.exists():
         df = pd.read_csv(cache_path, index_col=0, parse_dates=True)
+        df = df.loc[df.index <= pd.Timestamp(end)]
         if not df.empty:
             last_date = df.index[-1].date()
-            if last_date >= today - dt.timedelta(days=5):
-                return df["close"].sort_index()
+            if last_date >= end:
+                return _index_close(df, cache_name, end)
             start_upd = last_date + dt.timedelta(days=1)
-            raw = yf.download(ticker, start=start_upd.isoformat(), progress=False, auto_adjust=True, threads=False)
+            raw = yf.download(ticker, start=start_upd.isoformat(), end=exclusive_end, progress=False, auto_adjust=True, threads=False)
             record_raw_prices("yfinance", f"IDX_{cache_name}", raw, library="yfinance",
-                              request={"ticker": ticker, "start": start_upd.isoformat(), "end": None, "adjusted": True})
+                              request={"ticker": ticker, "start": start_upd.isoformat(), "end": end.isoformat(), "adjusted": True})
             if not raw.empty:
                 raw.index = pd.to_datetime(raw.index)
                 if isinstance(raw.columns, pd.MultiIndex):
@@ -42,12 +51,12 @@ def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
                     raw.columns = [c.lower() for c in raw.columns]
                 if "close" in raw.columns:
                     combined = write_silver_prices(f"IDX_{cache_name}", pd.concat([df, raw[["close"]]]), out_dir=PRICE_DIR)
-                    return combined["close"]
-            return df["close"].sort_index()
+                    return _index_close(combined, cache_name, end)
+            return _index_close(df, cache_name, end)
 
-    raw = yf.download(ticker, start="2007-01-01", progress=False, auto_adjust=True, threads=False)
+    raw = yf.download(ticker, start="2007-01-01", end=exclusive_end, progress=False, auto_adjust=True, threads=False)
     record_raw_prices("yfinance", f"IDX_{cache_name}", raw, library="yfinance",
-                      request={"ticker": ticker, "start": "2007-01-01", "end": None, "adjusted": True})
+                      request={"ticker": ticker, "start": "2007-01-01", "end": end.isoformat(), "adjusted": True})
     if raw.empty:
         raise RuntimeError(f"yfinance returned empty data for {ticker}")
     raw.index = pd.to_datetime(raw.index)
@@ -56,7 +65,7 @@ def _fetch_index_yf(ticker: str, cache_name: str) -> pd.Series:
     else:
         raw.columns = [c.lower() for c in raw.columns]
     out = write_silver_prices(f"IDX_{cache_name}", raw[["close"]], out_dir=PRICE_DIR)
-    return out["close"]
+    return _index_close(out, cache_name, end)
 
 
 def _fetch_us_stock_yf(ticker: str) -> bool:
@@ -64,9 +73,10 @@ def _fetch_us_stock_yf(ticker: str) -> bool:
     import yfinance as yf  # type: ignore
     print(f"  Fetching US/{ticker} via yfinance...", flush=True)
     try:
-        raw = yf.download(ticker, start="2007-01-01", progress=False, auto_adjust=True, threads=False)
+        end = closed_bar_end("US")
+        raw = yf.download(ticker, start="2007-01-01", end=(end + dt.timedelta(days=1)).isoformat(), progress=False, auto_adjust=True, threads=False)
         record_raw_prices("yfinance", f"US_{ticker}", raw, library="yfinance",
-                          request={"ticker": ticker, "start": "2007-01-01", "end": None, "adjusted": True})
+                          request={"ticker": ticker, "start": "2007-01-01", "end": end.isoformat(), "adjusted": True})
         if raw.empty:
             print(f"    WARNING: empty data for {ticker}", flush=True)
             return False
@@ -86,49 +96,23 @@ def _fetch_us_stock_yf(ticker: str) -> bool:
 
 def load_kospi() -> pd.Series:
     # CI 콜드스타트(빈 캐시)에서도 동작하도록 파일이 없으면 yfinance로 받아 캐시한다
-    path = PRICE_DIR / "IDX_KOSPI.csv"
-    if not path.exists():
-        return _fetch_index_yf("^KS11", "KOSPI")
-    df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
-    return df["close"]
+    return _fetch_index_yf("^KS11", "KOSPI")
 
 
 def load_sp500() -> pd.Series:
-    path = PRICE_DIR / "IDX_US.csv"
-    if not path.exists():
-        return _fetch_index_yf("^GSPC", "US")
-    df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
-    return df["close"]
+    return _fetch_index_yf("^GSPC", "US")
 
 
 def load_nasdaq() -> pd.Series:
-    path = PRICE_DIR / "IDX_NASDAQ.csv"
-    if path.exists():
-        df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
-        if not df.empty and "close" in df.columns:
-            return df["close"]
     return _fetch_index_yf("^IXIC", "NASDAQ")
 
 
 def load_gld() -> pd.Series:
-    path = PRICE_DIR / "IDX_GLD.csv"
-    if path.exists():
-        df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
-        if not df.empty and "close" in df.columns:
-            return df["close"]
     return _fetch_index_yf("GLD", "GLD")
 
 
 def load_usdkrw() -> pd.Series:
     """USDKRW 일별 환율 로드. KRW=X yfinance 심볼, silver IDX_USDKRW.csv 캐시."""
-    path = PRICE_DIR / "IDX_USDKRW.csv"
-    if path.exists():
-        df = pd.read_csv(path, index_col=0, parse_dates=True).sort_index()
-        if not df.empty and "close" in df.columns:
-            last_date = df.index[-1].date()
-            today = dt.date.today()
-            if last_date >= today - dt.timedelta(days=5):
-                return df["close"]
     return _fetch_index_yf("KRW=X", "USDKRW")
 
 
