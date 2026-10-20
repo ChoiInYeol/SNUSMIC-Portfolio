@@ -3,7 +3,7 @@
 The file-level contract (tests/test_api_v2_contract.py) cannot see what Next.js serves: header-rule
 precedence, rewrites, the method guard in src/proxy.ts, redirects. This module starts `next start` from
 the existing build (`npm run build` first) on a free port and checks those over the wire.
-Set API_HTTP_BASE=http://host:port to test an already running server instead.
+Set API_HTTP_BASE=http(s)://host[:port] to test an already running server or a deployment instead.
 Skipped, with the reason, when there is no build or the build is older than the API serving sources.
 """
 from __future__ import annotations
@@ -86,10 +86,11 @@ def _free_port() -> int:
 
 
 @pytest.fixture(scope="module")
-def base() -> tuple[str, int]:
+def base() -> tuple[str, int, bool]:
     if url := os.getenv("API_HTTP_BASE"):
         parsed = urllib.parse.urlsplit(url)
-        yield parsed.hostname, parsed.port or 80
+        tls = parsed.scheme == "https"
+        yield parsed.hostname, parsed.port or (443 if tls else 80), tls
         return
     project = Path(os.getenv("API_HTTP_PROJECT", ROOT))
     build_id = project / ".next" / "BUILD_ID"
@@ -112,14 +113,15 @@ def base() -> tuple[str, int]:
                 if proc.poll() is not None:
                     pytest.fail("next start exited before listening")
                 time.sleep(0.5)
-        yield "127.0.0.1", port
+        yield "127.0.0.1", port, False
     finally:
         proc.terminate()
         proc.wait(timeout=30)
 
 
-def fetch(base: tuple[str, int], method: str, uri: str, headers: dict | None = None):
-    conn = http.client.HTTPConnection(*base, timeout=30)
+def fetch(base: tuple[str, int, bool], method: str, uri: str, headers: dict | None = None):
+    host, port, tls = base
+    conn = (http.client.HTTPSConnection if tls else http.client.HTTPConnection)(host, port, timeout=30)
     try:
         conn.request(method, uri, headers=headers or {})
         res = conn.getresponse()
@@ -220,6 +222,8 @@ def test_v1_is_deprecated_and_shares_revision_bytes(base):
     assert status == 200
     assert headers["deprecation"] == "@1792368000"
     assert headers["link"] == '</api/v2>; rel="successor-version"'
+    alias_status, alias_headers, _ = fetch(base, "GET", "/api/v1/signals/latest")
+    assert (alias_status, alias_headers["cache-control"]) == (200, headers["cache-control"])
     revision = next(k for k in INDEX["resources"] if "/revisions/" in k)
     sid, digest = revision.removeprefix("strategies/").split("/revisions/")
     _, _, v2_bytes = fetch(base, "GET", f"/api/v2/{revision}")

@@ -58,6 +58,9 @@ const nextConfig: NextConfig = {
     // Header rules match the request path (before rewrites); a later rule overrides an earlier one per key.
     return [
       { source: "/api/v1/signals/latest.json", headers: [shortCache, ...cors] },
+      // Same rule for the route-handler alias: on Vercel a prerendered route's own Cache-Control loses its
+      // stale-while-revalidate, so the config rule (applied by the platform router) keeps the two identical.
+      { source: "/api/v1/signals/latest", headers: [shortCache, ...cors] },
       { source: "/api/v1/strategy-details/manifest.json", headers: [shortCache, ...cors] },
       { source: `/api/v1/signals/${DATE}.json`, headers: [snapshotCache, ...cors] },
       { source: `/api/v1/strategy-details/:key/${SHA256}.json`, headers: [immutableCache, ...cors] },

@@ -7,9 +7,9 @@ from code. Three sources are kept apart:
 |---|---|---|
 | **A. before** | the user's `next start` on `127.0.0.1:3100`, built 2026-10-20 20:30 from the tree before this change (GET/HEAD only, so it was not disturbed) | the bug |
 | **B. after (local)** | `next build` + `next start` of the current working tree on `127.0.0.1:3125`, built in a private copy (so the `.next` of the 3100 server was never touched), stopped afterwards | the fix and the full matrix |
-| **C. production** | `https://verdict-archive.vercel.app` (base URL in `docs/API.md`), **read-only GET/HEAD**, deployment *older* than this change | deployed CDN behaviour of the currently deployed build |
+| **C. production** | `https://verdict-archive.vercel.app`: section 4 after the change (commit 7bd2b7b9f, full matrix), section 4a the older deployment (read-only GET/HEAD) | deployed CDN behaviour before and after |
 
-Deployed behaviour of **this** change on Vercel is **unverified** until it is deployed; re-run section C then.
+Section 4 verifies this change on the production CDN; the one remaining delta (v1 alias `Cache-Control`) has a fix in the working tree that is unverified on Vercel until the next deploy.
 
 ## 1. Root cause of the cached 404s
 
@@ -197,7 +197,189 @@ ETag/Last-Modified columns: `y` = present. Revision used: the first committed re
 - **Unpublished instrument**: `kr-005930` (used as an id example in older docs) has no price series, so it is
   not an API resource; `docs/API.md` now uses `kr-000080`, which is both a stock page and an instrument.
 
-## 4. Production (source C, read-only), captured 2026-10-20T12:59:52Z
+## 4. Production after the change (source C), captured 2026-10-20T19:12:45Z
+
+`https://verdict-archive.vercel.app` serving commit `7bd2b7b9f` (`/api/v2/openapi.json` reports `info.version`
+2.0.1 and two servers). Same `matrix.sh` as section 3, including OPTIONS/POST/PUT/PATCH/DELETE on API URIs
+(static and read-only, so no state changes; approved by the lead).
+
+| resource | request | status | body bytes | Content-Type | Cache-Control | ETag | Last-Modified | ACAO | Allow / Location |
+|---|---|---|---|---|---|---|---|---|---|
+| entry point | `GET /api/v2` | 200 | 1189 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| entry point | `HEAD /api/v2` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| openapi | `GET /api/v2/openapi.json` | 200 | 90822 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| openapi | `HEAD /api/v2/openapi.json` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| collection | `GET /api/v2/strategies` | 200 | 35083 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| collection | `HEAD /api/v2/strategies` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (+ literal) | `GET /api/v2/strategies/D+_chandelier_optuna` | 200 | 2247 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (+ literal) | `HEAD /api/v2/strategies/D+_chandelier_optuna` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (%2B) | `GET /api/v2/strategies/D%2B_chandelier_optuna` | 200 | 2247 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (%2B) | `HEAD /api/v2/strategies/D%2B_chandelier_optuna` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (.json) | `GET /api/v2/strategies/D+_chandelier_optuna.json` | 200 | 2247 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item (.json) | `HEAD /api/v2/strategies/D+_chandelier_optuna.json` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item + query | `GET /api/v2/strategies/D+_chandelier_optuna?foo=1&bar` | 200 | 2247 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| item + query | `HEAD /api/v2/strategies/D+_chandelier_optuna?foo=1&bar` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| latest snapshot | `GET /api/v2/signals/latest` | 200 | 10632 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| latest snapshot | `HEAD /api/v2/signals/latest` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| dated snapshot | `GET /api/v2/signals/2026-10-19` | 200 | 11669 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | y | y | * |  |
+| dated snapshot | `HEAD /api/v2/signals/2026-10-19` | 200 | 0 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | y | y | * |  |
+| revision | `GET /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 200 | 268332 | application/json; charset=utf-8 | public, max-age=31536000, immutable | y | y | * |  |
+| revision | `HEAD /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 200 | 0 | application/json; charset=utf-8 | public, max-age=31536000, immutable | y | y | * |  |
+| prices | `GET /api/v2/instruments/kr-000120/prices` | 200 | 301138 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| prices | `HEAD /api/v2/instruments/kr-000120/prices` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| trade marks | `GET /api/v2/instruments/kr-000120/trade-marks` | 200 | 1239 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| trade marks | `HEAD /api/v2/instruments/kr-000120/trade-marks` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| 404 unpublished instrument prices | `GET /api/v2/instruments/kr-005930/prices` | 404 | 186 | application/problem+json | no-store | - | - | * |  |
+| 404 unpublished instrument prices | `HEAD /api/v2/instruments/kr-005930/prices` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown | `GET /api/v2/no-such-resource` | 404 | 174 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown | `HEAD /api/v2/no-such-resource` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown id | `GET /api/v2/strategies/UNKNOWN` | 404 | 176 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown id | `HEAD /api/v2/strategies/UNKNOWN` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| 404 future date | `GET /api/v2/signals/2099-01-01` | 404 | 176 | application/problem+json | no-store | - | - | * |  |
+| 404 future date | `HEAD /api/v2/signals/2099-01-01` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown hash | `GET /api/v2/strategies/W_allweather_chandelier/revisions/0000000000000000000000000000000000000000000000000000000000000000` | 404 | 267 | application/problem+json | no-store | - | - | * |  |
+| 404 unknown hash | `HEAD /api/v2/strategies/W_allweather_chandelier/revisions/0000000000000000000000000000000000000000000000000000000000000000` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| v1 latest (deprecated) | `GET /api/v1/signals/latest.json` | 200 | 9558 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=60 | y | y | * |  |
+| v1 latest (deprecated) | `HEAD /api/v1/signals/latest.json` | 200 | 0 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=60 | y | y | * |  |
+| v1 latest alias | `GET /api/v1/signals/latest` | 200 | 9428 | application/json | public, max-age=300 | - | - | * |  |
+| v1 latest alias | `HEAD /api/v1/signals/latest` | 200 | 0 | application/json | public, max-age=300 | - | - | * |  |
+| v1 dated | `GET /api/v1/signals/2026-10-19.json` | 200 | 10633 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | y | y | * |  |
+| v1 dated | `HEAD /api/v1/signals/2026-10-19.json` | 200 | 0 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | y | y | * |  |
+| v1 revision alias | `GET /api/v1/strategy-details/W_allweather_chandelier/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c.json` | 200 | 268332 | application/json; charset=utf-8 | public, max-age=31536000, immutable | y | y | * |  |
+| v1 revision alias | `HEAD /api/v1/strategy-details/W_allweather_chandelier/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c.json` | 200 | 0 | application/json; charset=utf-8 | public, max-age=31536000, immutable | y | y | * |  |
+| v1 404 future date | `GET /api/v1/signals/2099-01-01.json` | 404 | 181 | application/problem+json | no-store | - | - | * |  |
+| v1 404 future date | `HEAD /api/v1/signals/2099-01-01.json` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+| v1 404 unknown hash | `GET /api/v1/strategy-details/W_allweather_chandelier/0000000000000000000000000000000000000000000000000000000000000000.json` | 404 | 268 | application/problem+json | no-store | - | - | * |  |
+| v1 404 unknown hash | `HEAD /api/v1/strategy-details/W_allweather_chandelier/0000000000000000000000000000000000000000000000000000000000000000.json` | 404 | 0 | application/problem+json | no-store | - | - | * |  |
+
+### Other methods
+
+| resource | request | status | body bytes | Content-Type | Cache-Control | ETag | Last-Modified | ACAO | Allow / Location |
+|---|---|---|---|---|---|---|---|---|---|
+| methods | `OPTIONS /api/v2/strategies` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `POST /api/v2/strategies` | 405 | 155 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PUT /api/v2/strategies` | 405 | 155 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PATCH /api/v2/strategies` | 405 | 155 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `DELETE /api/v2/strategies` | 405 | 155 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `OPTIONS /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `POST /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 405 | 254 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PUT /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 405 | 254 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PATCH /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 405 | 254 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `DELETE /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 405 | 254 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `OPTIONS /api/v2/no-such-resource` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `POST /api/v2/no-such-resource` | 405 | 161 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PUT /api/v2/no-such-resource` | 405 | 161 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PATCH /api/v2/no-such-resource` | 405 | 161 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `DELETE /api/v2/no-such-resource` | 405 | 161 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `OPTIONS /api/v1/signals/latest.json` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `POST /api/v1/signals/latest.json` | 405 | 164 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PUT /api/v1/signals/latest.json` | 405 | 164 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PATCH /api/v1/signals/latest.json` | 405 | 164 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `DELETE /api/v1/signals/latest.json` | 405 | 164 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `OPTIONS /api/v1/signals/latest` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `POST /api/v1/signals/latest` | 405 | 159 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PUT /api/v1/signals/latest` | 405 | 159 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `PATCH /api/v1/signals/latest` | 405 | 159 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+| methods | `DELETE /api/v1/signals/latest` | 405 | 159 | application/problem+json | no-store | - | - | * | GET, HEAD, OPTIONS |
+
+### Conditional requests, redirects, CORS preflight
+
+| resource | request | status | body bytes | Content-Type | Cache-Control | ETag | Last-Modified | ACAO | Allow / Location |
+|---|---|---|---|---|---|---|---|---|---|
+| If-None-Match: "70bd82593adb95ae13bfbb3249268eac" | `GET /api/v2/strategies` | 304 | 0 |  | public, max-age=300, stale-while-revalidate=86400 | y | - |  |  |
+| If-None-Match: "stale" | `GET /api/v2/strategies` | 200 | 35083 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| If-Modified-Since: Tue, 20 Oct 2026 19:11:50 GMT | `GET /api/v2/strategies` | 304 | 0 |  | public, max-age=300, stale-while-revalidate=86400 | y | - |  |  |
+| If-None-Match: "e6b543776f214ed3ffe0e6d9b7621e71" | `GET /api/v2/signals/2026-10-19` | 304 | 0 |  | public, max-age=3600, s-maxage=31536000 | y | - |  |  |
+| If-None-Match: "stale" | `GET /api/v2/signals/2026-10-19` | 200 | 11669 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | y | y | * |  |
+| If-Modified-Since: Tue, 20 Oct 2026 19:11:58 GMT | `GET /api/v2/signals/2026-10-19` | 304 | 0 |  | public, max-age=3600, s-maxage=31536000 | y | - |  |  |
+| If-None-Match: "38eda36cfeaedac66ac73302193a82cf" | `GET /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 304 | 0 |  | public, max-age=31536000, immutable | y | - |  |  |
+| If-None-Match: "stale" | `GET /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 200 | 268332 | application/json; charset=utf-8 | public, max-age=31536000, immutable | y | y | * |  |
+| If-Modified-Since: Tue, 20 Oct 2026 19:12:00 GMT | `GET /api/v2/strategies/W_allweather_chandelier/revisions/3b49bb047658055efaaf7f5273f934187b50088f5082d846d67cc896a07ad61c` | 304 | 0 |  | public, max-age=31536000, immutable | y | - |  |  |
+| If-None-Match: "1d5f06f6c319740e4f1fe519918a9949" | `GET /api/v1/signals/latest.json` | 304 | 0 |  | public, max-age=300, stale-while-revalidate=60 | y | - |  |  |
+| If-None-Match: "stale" | `GET /api/v1/signals/latest.json` | 200 | 9558 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=60 | y | y | * |  |
+| If-Modified-Since: Tue, 20 Oct 2026 19:12:11 GMT | `GET /api/v1/signals/latest.json` | 304 | 0 |  | public, max-age=300, stale-while-revalidate=60 | y | - |  |  |
+| trailing slash | `GET /api/v2/` | 308 | 15 | text/plain | public, max-age=0, must-revalidate | - | - |  |  Location: /api/v2 |
+| legacy prices | `GET /prices/kr-000120.json` | 308 | 15 | text/plain | public, max-age=0, must-revalidate | - | - |  |  Location: /api/v2/instruments/kr-000120/prices |
+| legacy trade marks | `GET /strategy-marks/kr-000120.json` | 308 | 15 | text/plain | public, max-age=0, must-revalidate | - | - |  |  Location: /api/v2/instruments/kr-000120/trade-marks |
+| preflight from other origin | `OPTIONS /api/v2/strategies` | 204 | 0 |  | no-store | - | - | * | GET, HEAD, OPTIONS |
+| simple CORS GET | `GET /api/v2/strategies` | 200 | 35083 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | y | * |  |
+| swagger page | `GET /developers/swagger` | 200 | 2868 | text/html; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | y | - | * |  |
+
+### Repeat requests: does the CDN cache any 404?
+
+Three consecutive GETs per URI. 404s carry no `X-Vercel-Cache` at all: the guard (middleware) answers them
+before the CDN cache and they are `no-store`. 200s are CDN `HIT`s with a growing `Age`.
+
+| request | try | status | Content-Type | Cache-Control | X-Vercel-Cache | Age |
+|---|---|---|---|---|---|---|
+| `GET /api/v2/clubs%2Fewha` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/clubs%2Fewha` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/clubs%2Fewha` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/clubs%2fewha/reports` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/clubs%2fewha/reports` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/clubs%2fewha/reports` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index.json` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index.json` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/index.json` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/signals/2099-01-01` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/signals/2099-01-01` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/signals/2099-01-01` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/signals/2099-01-01.json` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/signals/2099-01-01.json` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/signals/2099-01-01.json` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/W_allweather_chandelier/revisions/0000000000000000000000000000000000000000000000000000000000000000` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/W_allweather_chandelier/revisions/0000000000000000000000000000000000000000000000000000000000000000` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/W_allweather_chandelier/revisions/0000000000000000000000000000000000000000000000000000000000000000` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/strategy-details/W_allweather_chandelier/0000000000000000000000000000000000000000000000000000000000000000.json` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/strategy-details/W_allweather_chandelier/0000000000000000000000000000000000000000000000000000000000000000.json` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v1/strategy-details/W_allweather_chandelier/0000000000000000000000000000000000000000000000000000000000000000.json` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/UNKNOWN` | 1 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/UNKNOWN` | 2 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies/UNKNOWN` | 3 | 404 | application/problem+json | no-store |  |  |
+| `GET /api/v2/strategies` | 1 | 200 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | HIT | 82 |
+| `GET /api/v2/strategies` | 2 | 200 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | HIT | 83 |
+| `GET /api/v2/strategies` | 3 | 200 | application/json; charset=utf-8 | public, max-age=300, stale-while-revalidate=86400 | HIT | 83 |
+| `GET /api/v2/signals/2026-10-19` | 1 | 200 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | HIT | 75 |
+| `GET /api/v2/signals/2026-10-19` | 2 | 200 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | HIT | 75 |
+| `GET /api/v2/signals/2026-10-19` | 3 | 200 | application/json; charset=utf-8 | public, max-age=3600, s-maxage=31536000 | HIT | 76 |
+| `GET /api/v1/signals/latest` | 1 | 200 | application/json | public, max-age=300 | HIT | 61 |
+| `GET /api/v1/signals/latest` | 2 | 200 | application/json | public, max-age=300 | HIT | 61 |
+| `GET /api/v1/signals/latest` | 3 | 200 | application/json | public, max-age=300 | HIT | 62 |
+
+`GET /api/v2/clubs%2Fewha` → `{"title":"Not Found","status":404,…,"instance":"/api/v2/clubs%2Fewha"}`;
+`GET /api/v2/index` → the same problem with `instance` `/api/v2/index`.
+`/developers/swagger` → `SwaggerUIBundle({url: "/api/v2/openapi.json"})` on the production origin; the spec
+offers `/` as a second server, and every parameter example is a published id
+(`StrategyId` W_allweather_chandelier / D+_chandelier_optuna / T-_kospi_core_regime, `RevisionHash` the
+headline's current revision, `InstrumentId` kr-000120 / us-alab, `ClubId` smic).
+
+The automated contract test was also run against production:
+`API_HTTP_BASE=https://verdict-archive.vercel.app uv run pytest tests/test_http_contract.py` → **51 passed**
+before the v1 alias assertion below was added (that assertion now fails on production until the next deploy).
+
+### Previously CDN-cached v1 404: fixed
+
+Before (old deployment, section 4a): `GET /api/v1/signals/2099-01-01.json` → `404 text/html`,
+`Cache-Control: public, max-age=3600, s-maxage=31536000`, `X-Vercel-Cache: HIT`. Now it is
+`404 application/problem+json`, `no-store`, no `X-Vercel-Cache`, on all three repeats.
+
+### Local (`next start`) vs CDN deltas
+
+| Aspect | Local :3125 | Production CDN | Assessment |
+|---|---|---|---|
+| ETag | weak `W/"…"` | strong `"…"` (Vercel content hash) | both validate; `If-None-Match` and `If-Modified-Since` → `304` on both |
+| `304` headers | `Cache-Control`, `ETag`, `Last-Modified`, CORS | `Cache-Control`, `ETag`; no `Last-Modified`, no CORS header | allowed (RFC 9110 §15.4.5); browsers reuse the stored response's CORS headers |
+| `Content-Type` charset | `UTF-8` | `utf-8` | equivalent |
+| 308 body / headers | 7–41 bytes, no `Cache-Control` | 15 bytes `text/plain`, `public, max-age=0, must-revalidate` | equivalent |
+| Swagger page | no `ETag`, no CORS | `ETag`, `Access-Control-Allow-Origin: *` | harmless |
+| v1 alias `/api/v1/signals/latest` `Cache-Control` | `public, max-age=300, stale-while-revalidate=60` | `public, max-age=300` | **defect (minor)**: the alias must match `/api/v1/signals/latest.json` (route comment). Vercel drops `stale-while-revalidate` from the prerendered route's own header. Fix in the working tree: a `next.config.ts` header rule for `/api/v1/signals/latest` (the config rules are applied by the platform router, as for the `.json` file); the live test now asserts the two are equal. Locally 51/51 pass; **unverified on Vercel until deployed**. |
+| 404 for every kind, OPTIONS, 405 | `no-store` problem+json from the guard | identical | no delta |
+
+## 4a. Production before the change (old deployment), captured 2026-10-20T12:59:52Z
+
 
 The deployment predates this change (its `openapi.json` is `info.version` `2.0.0` with one server).
 
