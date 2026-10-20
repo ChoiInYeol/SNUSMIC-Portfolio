@@ -22,8 +22,8 @@
 - Schema and lineage explorer: `/developers/architecture`; optional FastAPI metadata service and local setup: [METADATA.md](METADATA.md).
 
 The API is a set of static JSON documents written by the daily CI pipeline and served from Vercel's CDN.
-Reads serve static files; a method guard handles OPTIONS and rejects writes before file resolution,
-and a fallback route formats missing-resource errors.
+Reads serve static files. A guard in front of them (`src/proxy.ts`) answers OPTIONS, rejects writes and
+answers URIs that are not published resources with `404`, all before file resolution.
 
 ## 1. Design principles
 
@@ -37,8 +37,8 @@ checkable choices:
 - **HTTP method = action and meaning.** Reading is `GET`; there is nothing else to do with a published
   research record, so there is no other method (see 1.2).
 - **Stable identifiers.** A strategy id is its pipeline key (`W_allweather_chandelier`, also `D+_chandelier_optuna`,
-  `T-_kospi_core_regime`), an instrument id is `{market}-{ticker}` lower-cased (`kr-005930`, `us-fix`), a club id is
-  its school code (`smic`). They are the same ids the website uses (`/stocks/kr-005930`, `/clubs/smic`).
+  `T-_kospi_core_regime`), an instrument id is `{market}-{ticker}` lower-cased (`kr-000080`, `us-fix`), a club id is
+  its school code (`smic`). They are the same ids the website uses (`/stocks/kr-000080`, `/clubs/smic`).
 - **Uniform interface.** Every document has the same envelope and navigates by links (1.4).
 - **Stateless.** Every request is self-contained; no sessions, cookies or auth.
 
@@ -86,7 +86,7 @@ any number of times** — there is no side effect to duplicate.
 | `200 OK` | resource exists | the document |
 | `304 Not Modified` | `If-None-Match` matches the current `ETag` | none |
 | `308 Permanent Redirect` | legacy chart paths (`/prices/*`, `/strategy-marks/*`) and `/api/v2/` → `/api/v2` | none |
-| `404 Not Found` | unknown URI — including a date with no snapshot (weekend, holiday, future) | `application/problem+json` ([RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)) |
+| `404 Not Found` | unknown URI — including a date with no snapshot (weekend, holiday, future) | `application/problem+json` ([RFC 9457](https://www.rfc-editor.org/rfc/rfc9457)), `Cache-Control: no-store` |
 | `405 Method Not Allowed` | unsupported method on any v2 URI | `application/problem+json`, `Allow: GET, HEAD, OPTIONS`, `Cache-Control: no-store` |
 
 ```json
@@ -95,8 +95,13 @@ any number of times** — there is no side effect to duplicate.
  "instance": "/api/v2/strategies/UNKNOWN"}
 ```
 
-`src/proxy.ts` handles OPTIONS and unsupported methods before static-file resolution, so existing
-and missing resources use the same method contract.
+`src/proxy.ts` handles OPTIONS, unsupported methods and unknown URIs before static-file resolution, so
+existing and missing resources use the same method contract. It knows what exists from
+`src/data/api-v2-resources.json` (every published URI, written by `export_api_v2.py`). It has to: Next.js
+applies the `next.config.ts` header rules before any route runs and only *adds* a route handler's headers
+when the rule did not set them, so a 404 from a fallback route would inherit the cache rule of the URI it was
+asked for — a year for an unpublished revision hash or snapshot date under `next start` (see
+[HTTP-EVIDENCE-2026-10-20.md](HTTP-EVIDENCE-2026-10-20.md)).
 
 **Caching follows mutability**
 
@@ -105,13 +110,18 @@ and missing resources use the same method contract.
 | daily | everything else | `public, max-age=300, stale-while-revalidate=86400` |
 | immutable (dated) | `/signals/{date}` | `public, max-age=3600, s-maxage=31536000` |
 | immutable (content-addressed) | `/strategies/{id}/revisions/{sha256}` | `public, max-age=31536000, immutable` |
-| missing resource | `404` from the fallback | same rule as the URI it was asked for |
-| unsupported method / preflight | `405` / `204` from the method guard | `no-store` |
+| missing resource | `404` from the guard, every kind of URI | `no-store` |
+| unsupported method / preflight | `405` / `204` from the guard | `no-store` |
 
 - Daily resources: fresh for 5 minutes, then served stale while revalidating for up to a day. Data changes once
   per trading day, so a day-old copy during an outage is better than an error.
-- Dated snapshots never change, but the same header rule also matches the `404` of a date that is not published
-  yet — so browsers revalidate hourly while the CDN keeps its copy until the next deploy.
+- Dated snapshots never change; browsers still revalidate hourly as a safety margin while the CDN keeps its copy
+  until the next deploy.
+- Errors are never cached, per resource kind: a future or today's snapshot date is published by the evening
+  refresh, a new revision hash and a new instrument, strategy or club appear with the next export, and an
+  unknown URI may become a resource in an additive 2.x release. Every one of them can turn from `404` into `200`
+  at the next deploy, and the guard (middleware) runs on every request before cached files are served, so
+  caching its answer saves nothing.
 - Revisions are content-addressed: new bytes get a new URI, so caching forever is safe. They also send
   `Link: </api/v2/strategies/{id}>; rel="up"`.
 
@@ -361,8 +371,42 @@ uv run python scripts/export_api_v2.py --check
   every document against the web app's zod schemas (`src/lib/api-v2.ts`). v1 keeps `tests/test_api_contract.py`
   and `tests/api-schemas.test.cjs`.
 - Serving: `next.config.ts` rewrites extensionless URIs to `public/api/v2/<uri>.json`, sets the cache/CORS/v1
-  deprecation headers, and redirects the legacy chart paths. `src/app/api/v2/[...path]/route.ts` is the
-  problem+json fallback; `src/app/api/v1/signals/latest/route.ts` keeps the v1 extensionless alias.
+  deprecation headers, and redirects the legacy chart paths. `src/proxy.ts` answers OPTIONS, writes and unknown
+  URIs (`src/data/api-v2-resources.json`); `src/app/api/v2/[...path]/route.ts` remains the problem+json fallback
+  for a listed file that is not deployed; `src/app/api/v1/signals/latest/route.ts` keeps the v1 extensionless alias.
+- `tests/api-http.test.cjs` checks the guard against the real resource index; `tests/test_http_contract.py`
+  starts `next start` from the production build and checks status, headers, `304`, problem bodies and the
+  Swagger default examples over real HTTP (skipped, with the reason, without a fresh build).
+
+## 7. API inventory and boundaries
+
+Everything below is read-only. Only the first two rows are a public, versioned API contract.
+
+| Surface | Served by | Audience | Contract |
+|---|---|---|---|
+| `/api/v2/**` | static files + `src/proxy.ts` | public | this document, `openapi.json`, Swagger at `/developers/swagger` |
+| `/api/v1/**` | static files, `src/app/api/v1/signals/latest/route.ts`, `src/proxy.ts` (methods, missing snapshot/revision) | public, **deprecated** | frozen payloads; `/api/v1/openapi.json` |
+| `/research/*.json`, `/research/reviews/{sha256}.json` | static files | the site's own pages (public URLs, no API guarantees) | per-file `schema_version`, Python writer + zod reader; not in Swagger |
+| `/api/metadata/schema` | Next route → FastAPI | the `/developers/architecture` page | `src/lib/schema-metadata.ts`; `503` problem+json when the sidecar is down |
+| FastAPI `:8000` `/metadata/schema`, `/docs`, `/openapi.json` | `npm run dev:metadata` | **local / ops only**, never deployed | [METADATA.md](METADATA.md) |
+
+- **v2 and v1** get CORS (`*`), the cache rules above, and the guard's method contract (v1 static files used to
+  answer `OPTIONS`/writes with `500`). The guard's matcher is `/api/v2/:path*` and `/api/v1/:path*`, so it runs on
+  every v1 request too (a set lookup; non-matching v1 GETs pass straight through).
+- URI spelling: a percent-encoded `/` (`%2F`) inside a segment is never a separator (`/api/v2/clubs%2Fewha` is
+  `404`), and the entry point has one URI, `/api/v2` (`/api/v2/index` and `/api/v2/index.json` are `404`).
+- **`/research/*.json`** are build-time/static inputs of research pages: `portfolio.json` (paper portfolio,
+  `paper_portfolio.py`), `strategy-robustness.json` (`build_strategy_robustness.py`), `review.json` and
+  `reviews/*.json` (`build_research_review.py`), `search.json` and full-text shards (`build_search_index.py`,
+  `build_fulltext_index.py`), `funded-account.json` (`funded_account.py`). They have no CORS or cache rule
+  (Next's default static `Cache-Control: public, max-age=0` + `ETag`), no `/api/` path, and may change shape
+  with a `schema_version` bump without a deprecation period. Integrations should use `/api/v2`. See
+  [연구 보조 서빙 계약](#연구-보조-서빙-계약) for the two files with published field lists.
+- **Metadata** is schema/lineage only — no data rows, no SQL, no writes. The FastAPI sidecar keeps database
+  credentials server-side, answers `ETag` + `Cache-Control: private, no-cache` (`304` on `If-None-Match`), and
+  allows CORS only from `METADATA_CORS_ORIGINS`. The Next route `/api/metadata/schema` is `no-store` and returns
+  `503` problem+json when `METADATA_API_URL` (default `http://127.0.0.1:8000/metadata/schema`) is unreachable —
+  which is the expected state on a deployment without the sidecar.
 
 ---
 

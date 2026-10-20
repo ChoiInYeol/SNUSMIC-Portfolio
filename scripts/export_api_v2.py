@@ -11,7 +11,8 @@ Inputs (gold, read-only):
   public/api/v1/signals/{YYYY-MM-DD}.json         append-only signal history (frozen at first publication)
   public/api/v2/instruments/{id}/prices.json      written by export_stock_charts.py; defines the instrument set
 
-Outputs: public/api/v2/<uri>.json (`/api/v2` -> index.json) and public/api/v2/openapi.json.
+Outputs: public/api/v2/<uri>.json (`/api/v2` -> index.json), public/api/v2/openapi.json, and
+src/data/api-v2-resources.json (every published URI; src/proxy.ts answers anything else with 404).
 Dated snapshots and revisions are append-only; everything else is write-then-prune.
 
 Usage:
@@ -37,11 +38,12 @@ API = lake.API_V2
 PREFIX = "/api/v2"
 SITE = "https://verdict-archive.vercel.app"
 SCHEMA_VERSION = "2.0"
-API_VERSION = "2.0.0"
+API_VERSION = "2.0.1"
 
 STRATEGY_SOURCE = lake.WEB_DATA / "strategy-backtest.json"
 REPORTS_SOURCE = lake.WEB_DATA / "report-performance.json"
 FORWARD_SOURCE = lake.WEB_DATA / "forward-record.json"
+RESOURCE_INDEX = lake.WEB_DATA / "api-v2-resources.json"
 V1_SIGNALS = lake.API_V1 / "signals"
 
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
@@ -767,6 +769,7 @@ def _component_schemas() -> dict:
 DAILY_CACHE = "public, max-age=300, stale-while-revalidate=86400"
 SNAPSHOT_CACHE = "public, max-age=3600, s-maxage=31536000"
 IMMUTABLE_CACHE = "public, max-age=31536000, immutable"
+NO_STORE = "no-store"
 
 INFO_DESCRIPTION = f"""\
 Read-only REST API over the **Verdict Archive** research pipeline: Korean university investment-club
@@ -805,15 +808,15 @@ clients navigate by link instead of building URIs. Links are root-relative. The 
 | immutable | `/api/v2/strategies/{{id}}/revisions/{{sha256}}` | `{IMMUTABLE_CACHE}` |
 
 Responses carry an `ETag`; send it back as `If-None-Match` to get `304 Not Modified` without a body.
-Dated snapshots revalidate hourly in browsers only because the same header rule also matches the `404` of a
-date that is not published yet.
+Errors are never cached: `404`, `405` and the `OPTIONS` preflight send `Cache-Control: {NO_STORE}`, so a date,
+revision or instrument published later is visible on the first request after its deploy.
 
 ## Status codes and retries
 
 `200` found · `304` not modified · `404` unknown resource (`application/problem+json`, RFC 9457) ·
-`405` unsupported method on any v2 URI (`application/problem+json`, `Allow: GET, HEAD, OPTIONS`,
-`Cache-Control: no-store`). A method guard handles writes and OPTIONS before static-file resolution;
-unknown-URI errors are `application/problem+json` from a fallback route. On network errors or `5xx`, retry with exponential backoff
+`405` unsupported method on any v2 URI (`application/problem+json`, `Allow: GET, HEAD, OPTIONS`).
+A guard in front of the static files answers OPTIONS, writes and unknown URIs (checked against the list of
+published resources) before file resolution. On network errors or `5xx`, retry with exponential backoff
 (e.g. 1 s, 2 s, 4 s; honour `Retry-After` if present). Data refreshes once per trading day (KST evening), so
 polling more often than `max-age` only returns `304`.
 
@@ -953,7 +956,8 @@ def build_openapi(examples: dict[str, object]) -> dict:
             "contact": {"name": "Verdict Archive", "url": SITE},
             "license": {"name": "MIT", "identifier": "MIT"},
         },
-        "servers": [{"url": SITE, "description": "Production (Vercel static hosting)"}],
+        "servers": [{"url": SITE, "description": "Production (Vercel static hosting)"},
+                    {"url": "/", "description": "This deployment (same origin as the loaded specification)"}],
         "tags": [
             {"name": "Signals", "description": "Daily snapshots of the headline strategy's positions and signals."},
             {"name": "Strategies", "description": "Backtested strategies, their trades and content-addressed revisions."},
@@ -974,17 +978,19 @@ def build_openapi(examples: dict[str, object]) -> dict:
                                "description": "Strategy key. `+` is a literal path character (no encoding needed; "
                                               "`%2B` also works).",
                                "schema": _ref("StrategyId"),
-                               "examples": {"plus": {"value": "D+_chandelier_optuna"},
-                                            "minus": {"value": "T-_kospi_core_regime"},
-                                            "plain": {"value": "W_allweather_chandelier"}}},
+                               # Swagger pre-fills the first example of each parameter: the headline strategy
+                               # owns the RevisionHash example, so it comes first. All ids are published ones.
+                               "examples": {name: {"value": sid} for name, sid in examples["strategy_ids"].items()}},
                 "RevisionHash": {"name": "sha256", "in": "path", "required": True,
                                  "description": "Content hash from `links.current_revision` of the strategy.",
                                  "schema": {"type": "string", "pattern": SHA256_RE.pattern},
-                                 "examples": {"current": {"value": examples["revision_hash"]}}},
+                                 "examples": {"current": {"value": examples["revision_hash"],
+                                                          "summary": "Current revision of the headline strategy"}}},
                 "InstrumentId": {"name": "instrument_id", "in": "path", "required": True,
                                  "description": "`{market}-{ticker}` lower-cased.",
                                  "schema": _ref("InstrumentId"),
-                                 "examples": {"kr": {"value": "kr-000020"}, "us": {"value": "us-fix"}}},
+                                 "examples": {name: {"value": iid}
+                                              for name, iid in examples["instrument_ids"].items()}},
                 "ClubId": {"name": "club_id", "in": "path", "required": True, "description": "Club (school) code.",
                            "schema": _ref("ClubId"), "examples": {"smic": {"value": "smic"}}},
             },
@@ -996,6 +1002,8 @@ def build_openapi(examples: dict[str, object]) -> dict:
                 "CacheControlImmutable": header("Content-addressed: new bytes, new URI.", IMMUTABLE_CACHE),
                 "ETag": header("Validator of the response bytes; send as `If-None-Match`.", '"5f2b0c-19a8e3"'),
                 "AccessControlAllowOrigin": header("Any origin may read the API.", "*"),
+                "CacheControlNoStore": header(
+                    "Errors are not cached: the resource may be published by a later deploy.", NO_STORE),
                 "LinkUp": header("The strategy this revision belongs to.",
                                  '</api/v2/strategies/D+_chandelier_optuna>; rel="up"'),
             },
@@ -1003,11 +1011,15 @@ def build_openapi(examples: dict[str, object]) -> dict:
                 "NotModified": {"description": "The `If-None-Match` ETag still matches; no body.",
                                 "headers": {"ETag": {"$ref": "#/components/headers/ETag"},
                                             "Cache-Control": {"$ref": "#/components/headers/CacheControlDaily"}}},
-                "NotFound": {"description": "No such resource.",
+                "NotFound": {"description": "No such resource (yet); never cached.",
+                             "headers": {"Cache-Control": {"$ref": "#/components/headers/CacheControlNoStore"},
+                                         "Access-Control-Allow-Origin": {
+                                             "$ref": "#/components/headers/AccessControlAllowOrigin"}},
                              "content": {"application/problem+json": {
                                  "schema": _ref("ProblemDetails"),
                                  "example": {"type": "about:blank", "title": "Not Found", "status": 404,
-                                             "detail": "No resource at /api/v2/strategies/UNKNOWN.",
+                                             "detail": "No /api/v2 resource at this URI. "
+                                                       "Start from /api/v2 and follow links.",
                                              "instance": "/api/v2/strategies/UNKNOWN"}}}},
             },
         },
@@ -1064,6 +1076,8 @@ def plan_outputs(now: str | None = None) -> tuple[dict[Path, dict], set[Path]]:
         "trades": docs[href("strategies", headline, "trades")],
         "revision": details[headline][1],
         "revision_hash": details[headline][0],
+        "strategy_ids": _example_ids(("headline", headline), sorted(details), ("+", "plus"), ("-", "minus")),
+        "instrument_ids": _example_ids(("traded", sample_instrument), sorted(instruments), ("us-", "us")),
         "track_record": docs[href("track-record")],
         "instruments": docs[href("instruments")],
         "instrument": docs[href("instruments", sample_instrument)],
@@ -1073,9 +1087,36 @@ def plan_outputs(now: str | None = None) -> tuple[dict[Path, dict], set[Path]]:
         "club": docs[href("clubs", sample_club)],
         "club_reports": docs[href("clubs", sample_club, "reports")],
     }
-    examples = {k: (v if k == "revision_hash" else _example(v)) for k, v in examples.items() if v is not None}
+    raw = {"revision_hash", "strategy_ids", "instrument_ids"}
+    examples = {k: (v if k in raw else _example(v)) for k, v in examples.items() if v is not None}
     outputs[API / "openapi.json"] = build_openapi(examples)
+    outputs[RESOURCE_INDEX] = resource_index(outputs)
     return outputs, append_only
+
+
+def _example_ids(first: tuple[str, str], ids: list[str], *wanted: tuple[str, str]) -> dict[str, str]:
+    """Parameter examples drawn from published ids: `first` (which the other examples depend on), then the first
+    id containing each marker, so no example goes stale when an instrument or strategy is retired."""
+    out = dict([first])
+    for marker, name in wanted:
+        match = next((i for i in ids if marker in i and i not in out.values()), None)
+        if match:
+            out[name] = match
+    return out
+
+
+def resource_index(outputs: dict[Path, dict]) -> dict:
+    """Every URI under /api/v2 that answers 200: this export's files plus the foreign/append-only ones on disk.
+
+    Under `next start`, next.config.ts header rules are applied before any route runs and a route handler
+    cannot override them, so a fallback 404 would inherit the long cache of the URI it was asked for. The method
+    guard (src/proxy.ts) answers URIs missing from this list itself, with an explicit no-store 404.
+    """
+    files = {p for p in outputs if p.is_relative_to(API)}
+    if API.exists():
+        files |= {p for p in API.rglob("*.json") if not p.name.startswith(".") and _is_foreign_or_frozen(p)}
+    keys = sorted(p.relative_to(API).as_posix().removesuffix(".json") for p in files)
+    return {"schema_version": "1.0", "prefix": PREFIX, "resources": keys}
 
 
 def _is_foreign_or_frozen(path: Path) -> bool:

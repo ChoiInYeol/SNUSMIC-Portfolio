@@ -5,84 +5,22 @@ emits but the spec does not document is drift and fails here.
 """
 from __future__ import annotations
 
-import datetime as dt
-import hashlib
 import json
 import re
-import subprocess
 from pathlib import Path
 
 import pytest
 
 import export_api_v2 as v2
 import export_signals_api as v1
+from _contract import canonical_sha256, changed_since_head, committed_blobs, openapi
 
 API = v2.API
 ROOT = v2.ROOT
-SPEC = json.loads((API / "openapi.json").read_text(encoding="utf-8"))
-COMPONENTS = SPEC["components"]
-SCHEMAS = COMPONENTS["schemas"]
-JSON_TYPES = {
-    "object": dict, "array": list, "string": str, "boolean": bool, "null": type(None),
-    "integer": int, "number": (int, float),
-}
-
-
-def _resolve(node: dict) -> dict:
-    while "$ref" in node:
-        section, name = node["$ref"].removeprefix("#/components/").split("/")
-        node = COMPONENTS[section][name]
-    return node
-
-
-def _errors(value: object, schema: dict, where: str) -> list[str]:
-    schema = _resolve(schema)
-    if "anyOf" in schema:
-        if any(not _errors(value, option, where) for option in schema["anyOf"]):
-            return []
-        return [f"{where}: matches no anyOf option"]
-    if "const" in schema and value != schema["const"]:
-        return [f"{where}: {value!r} != const {schema['const']!r}"]
-    types = schema.get("type")
-    if types is not None:
-        types = [types] if isinstance(types, str) else types
-        ok = any(isinstance(value, JSON_TYPES[t]) and not (t in ("integer", "number") and isinstance(value, bool))
-                 for t in types)
-        if not ok:
-            return [f"{where}: expected {types}, got {type(value).__name__}"]
-    if "enum" in schema and value not in schema["enum"]:
-        return [f"{where}: {value!r} not in {schema['enum']}"]
-    if isinstance(value, str):
-        if "pattern" in schema and not re.search(schema["pattern"], value):
-            return [f"{where}: {value!r} does not match {schema['pattern']}"]
-        try:
-            if schema.get("format") == "date":
-                dt.date.fromisoformat(value)
-            elif schema.get("format") == "date-time":
-                dt.datetime.fromisoformat(value)
-        except ValueError:
-            return [f"{where}: {value!r} is not a {schema['format']}"]
-    if isinstance(value, (int, float)) and not isinstance(value, bool):
-        if value < schema.get("minimum", value) or value > schema.get("maximum", value):
-            return [f"{where}: {value} out of range"]
-    out: list[str] = []
-    if isinstance(value, dict):
-        props = schema.get("properties", {})
-        out += [f"{where}: missing required {k}" for k in schema.get("required", []) if k not in value]
-        extra = schema.get("additionalProperties")
-        for key, item in value.items():
-            if key in props:
-                out += _errors(item, props[key], f"{where}.{key}")
-            elif isinstance(extra, dict):
-                out += _errors(item, extra, f"{where}.{key}")
-            elif extra is False or (props and extra is not True):
-                out.append(f"{where}: undocumented field {key}")
-    if isinstance(value, list) and "items" in schema:
-        for i, item in enumerate(value):
-            out += _errors(item, schema["items"], f"{where}[{i}]")
-            if len(out) > 20:
-                break
-    return out
+OPENAPI = openapi(API / "openapi.json")
+SPEC = OPENAPI.spec
+_resolve = OPENAPI.resolve
+_errors = OPENAPI.errors
 
 
 # ── spec path ↔ published file ──────────────────────────────────────────────
@@ -164,27 +102,30 @@ def _hrefs(value: object):
             yield from _hrefs(item)
 
 
-def test_every_link_resolves_to_a_published_resource():
-    files = {_uri(p) for p in PUBLISHED} | {f"{v2.PREFIX}/openapi.json"}
-    broken = []
+@pytest.fixture(scope="module")
+def published_links() -> dict[Path, tuple[str, list[str]]]:
+    """(links.self, every href) per non-revision document, parsed once for the link tests below."""
+    out = {}
     for path in PUBLISHED:
-        if path.name == "prices.json" or "revisions" in path.parts:
-            continue  # links are fixed by construction: self + parent instrument (checked below)
-        for target in _hrefs(json.loads(path.read_text(encoding="utf-8"))):
-            if target not in files:
-                broken.append(f"{_id(path)} -> {target}")
-    for path in API.glob("instruments/*/prices.json"):
-        links = json.loads(path.read_text(encoding="utf-8"))["links"]
-        if links["instrument"] not in files or links["self"] != _uri(path):
-            broken.append(_id(path))
+        if "revisions" in path.parts:
+            continue  # revisions carry no links: they are addressed by content hash
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        # prices.json links are fixed by construction: self + parent instrument.
+        hrefs = list(doc["links"].values()) if path.name == "prices.json" else list(_hrefs(doc))
+        out[path] = (doc["links"]["self"], hrefs)
+    return out
+
+
+def test_every_link_resolves_to_a_published_resource(published_links):
+    files = {_uri(p) for p in PUBLISHED} | {f"{v2.PREFIX}/openapi.json"}
+    broken = [f"{_id(path)} -> {target}"
+              for path, (_, hrefs) in published_links.items() for target in hrefs if target not in files]
     assert broken == []
 
 
-def test_self_links_match_their_uri():
-    for path in PUBLISHED:
-        if "revisions" in path.parts:
-            continue
-        assert json.loads(path.read_text(encoding="utf-8"))["links"]["self"] == _uri(path), _id(path)
+def test_self_links_match_their_uri(published_links):
+    wrong = [f"{_id(path)}: {self_link}" for path, (self_link, _) in published_links.items() if self_link != _uri(path)]
+    assert wrong == []
 
 
 def test_operations_are_documented_and_extension_free():
@@ -224,30 +165,26 @@ def test_dated_snapshots_mirror_the_append_only_v1_history():
         assert data == {k: original[k] for k in v2.SNAPSHOT_FIELDS}, date
 
 
-def _committed(path: Path) -> bytes | None:
-    rel = path.relative_to(ROOT).as_posix()
-    result = subprocess.run(["git", "show", f"HEAD:{rel}"], cwd=ROOT, capture_output=True)
-    return result.stdout if result.returncode == 0 else None
-
-
 def test_append_only_files_never_change_once_committed():
     frozen = [p for p in API.glob("signals/*.json") if v2.DATE_RE.match(p.stem)]
     frozen += list(API.glob("strategies/*/revisions/*.json"))
-    changed = [_id(p) for p in frozen if (old := _committed(p)) is not None and old != p.read_bytes()]
-    assert changed == []
+    assert committed_blobs(frozen, ROOT), "no committed frozen files found: the check would be vacuous"
+    assert [_id(p) for p in changed_since_head(frozen, ROOT)] == []
 
 
 @pytest.mark.parametrize("path", sorted(API.glob("strategies/*/revisions/*.json")), ids=_id)
 def test_revision_is_content_addressed(path: Path):
     payload = json.loads(path.read_text(encoding="utf-8"))
     body = {k: v for k, v in payload.items() if k != "content_hash"}
-    canonical = json.dumps(body, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False)
-    assert hashlib.sha256(canonical.encode()).hexdigest() == payload["content_hash"] == path.stem
+    assert canonical_sha256(body) == payload["content_hash"] == path.stem
     assert payload["strategy_key"] == path.parents[1].name
 
 
 def test_v1_strategy_detail_urls_are_served_from_v2_revisions():
+    # Detail identity (strategy_key, content_hash) is carried by test_revision_is_content_addressed.
     manifest = json.loads((v1.API_DIR / "strategy-details" / "manifest.json").read_text(encoding="utf-8"))
+    latest = json.loads((v1.API_DIR / "signals" / "latest.json").read_text(encoding="utf-8"))
+    assert manifest["as_of"] == latest["as_of"]
     for key, asset in manifest["assets"].items():
         assert asset["path"] == f"strategy-details/{key}/{asset['content_hash']}.json"
         target = API / "strategies" / key / "revisions" / f"{asset['content_hash']}.json"
@@ -365,10 +302,9 @@ def test_trade_marks_are_optional_when_the_headline_never_traded(monkeypatch):
 
 
 def test_revisions_of_retired_strategies_stay_valid_without_a_parent():
+    # Schema validity of every revision, retired or not, is test_published_document_matches_openapi.
     current = {item["id"] for item in json.loads((API / "strategies.json").read_text(encoding="utf-8"))["data"]}
     for path in API.glob("strategies/*/revisions/*.json"):
-        payload = json.loads(path.read_text(encoding="utf-8"))
-        assert _errors(payload, {"$ref": "#/components/schemas/StrategyRevision"}, _id(path)) == []
         assert path.parents[1].name in current or not (API / "strategies" / f"{path.parents[1].name}.json").exists()
     # The export never prunes a revision, whatever the strategy collection says.
     retired = API / "strategies" / "RETIRED_x" / "revisions" / f"{'0' * 64}.json"

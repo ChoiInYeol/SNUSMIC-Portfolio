@@ -11,8 +11,9 @@ const shortCache = { key: "Cache-Control", value: "public, max-age=300, stale-wh
 // v2 mutable resources: fresh for 5 minutes, then served stale while revalidating for up to a day
 // (data changes once per trading day, so a day of staleness during an outage beats an error).
 const dailyCache = { key: "Cache-Control", value: "public, max-age=300, stale-while-revalidate=86400" };
-// Dated snapshots never change once published, but header rules also match a not-yet-published
-// date's 404 — so browsers revalidate hourly; the CDN cache lives until the next deploy.
+// Dated snapshots never change once published; browsers still revalidate hourly as a safety margin and
+// the CDN cache lives until the next deploy. Header rules apply before routes and win over a route
+// handler's headers, so v2 404s are answered by src/proxy.ts (no-store) before these rules can matter.
 const snapshotCache = { key: "Cache-Control", value: "public, max-age=3600, s-maxage=31536000" };
 // Content-addressed: the hash in the path changes whenever the bytes do.
 const immutableCache = { key: "Cache-Control", value: "public, max-age=31536000, immutable" };
