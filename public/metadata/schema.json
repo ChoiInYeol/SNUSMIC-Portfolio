@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-20T11:22:19+00:00",
+  "generated_at": "2026-10-20T13:09:26+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -610,6 +610,51 @@
       ]
     },
     {
+      "id": "bronze.funded_account",
+      "name": "funded_account",
+      "schema_name": "bronze",
+      "layer": "bronze",
+      "kind": "dataset",
+      "columns": [],
+      "column_status": "unavailable",
+      "location": "data/bronze/portfolio/funded-w50-v1/**/*.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "funded_account.py"
+      ]
+    },
+    {
+      "id": "silver.funded_ledger",
+      "name": "funded_ledger",
+      "schema_name": "silver",
+      "layer": "silver",
+      "kind": "dataset",
+      "columns": [],
+      "column_status": "unavailable",
+      "location": "data/silver/portfolio/funded-w50-v1-ledger.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "funded_account.py"
+      ]
+    },
+    {
+      "id": "serving.funded_account",
+      "name": "funded_account",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [],
+      "column_status": "unavailable",
+      "location": "public/research/funded-account.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "funded_account.py"
+      ]
+    },
+    {
       "id": "serving.research_review",
       "name": "research_review",
       "schema_name": "serving",
@@ -774,6 +819,21 @@
       "description": "json · versioned artifact",
       "producers": [
         "build_search_index.py"
+      ]
+    },
+    {
+      "id": "serving.fulltext_index",
+      "name": "fulltext_index",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [],
+      "column_status": "unavailable",
+      "location": "public/research/fulltext/**/*",
+      "row_count": null,
+      "description": "json/json.gz · versioned artifact",
+      "producers": [
+        "build_fulltext_index.py"
       ]
     },
     {
@@ -7588,6 +7648,64 @@
       ]
     },
     {
+      "id": "silver.search_synonyms",
+      "name": "search_synonyms",
+      "schema_name": "silver",
+      "layer": "silver",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "_comment",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "groups",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "related",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "stock_aliases",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "alias_stoplist",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/silver/reference/search_synonyms.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "manual"
+      ]
+    },
+    {
       "id": "silver.prices",
       "name": "prices",
       "schema_name": "silver",
@@ -8922,6 +9040,24 @@
       "label": "ETL"
     },
     {
+      "id": "etl:bronze.funded_account:silver.funded_ledger",
+      "source": "bronze.funded_account",
+      "target": "silver.funded_ledger",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.funded_ledger:serving.funded_account",
+      "source": "silver.funded_ledger",
+      "target": "serving.funded_account",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
       "id": "etl:serving.report_performance:serving.research_review",
       "source": "serving.report_performance",
       "target": "serving.research_review",
@@ -8988,6 +9124,51 @@
       "id": "etl:serving.report_performance:serving.search_index",
       "source": "serving.report_performance",
       "target": "serving.search_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:serving.report_first_seen:serving.fulltext_index",
+      "source": "serving.report_first_seen",
+      "target": "serving.fulltext_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:serving.report_performance:serving.fulltext_index",
+      "source": "serving.report_performance",
+      "target": "serving.fulltext_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_markdown:serving.fulltext_index",
+      "source": "silver.report_markdown",
+      "target": "serving.fulltext_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.report_parsed:serving.fulltext_index",
+      "source": "silver.report_parsed",
+      "target": "serving.fulltext_index",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.search_synonyms:serving.fulltext_index",
+      "source": "silver.search_synonyms",
+      "target": "serving.fulltext_index",
       "kind": "etl",
       "source_columns": [],
       "target_columns": [],

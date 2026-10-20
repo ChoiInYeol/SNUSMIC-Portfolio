@@ -1,6 +1,7 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { z } from "zod";
+import { seenBy } from "@/lib/report-meta";
 
 // When each report first entered the archive (gold artifact src/data/report-first-seen.json, keyed by the
 // records' source_file). A report's report_date can precede its collection by months, so back issues use this
@@ -30,6 +31,5 @@ export function knownBy(
   asOf: string,
   firstSeen: ReportFirstSeen["first_seen"],
 ): boolean {
-  const seen = firstSeen[record.source_file];
-  return record.report_date !== null && record.report_date <= asOf && seen !== undefined && seen <= asOf;
+  return seenBy(record.report_date, firstSeen[record.source_file], asOf);
 }

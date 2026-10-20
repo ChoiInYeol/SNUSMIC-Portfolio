@@ -8,10 +8,10 @@ import { cn, formatPct } from "@/lib/utils";
 
 type Entry = {
   id: string;
-  kind: "page" | "stock" | "report";
+  kind: "page" | "stock" | "report" | "fulltext";
   title: string;
   sub: string;
-  /** /stocks/{slug} 또는 /#r={source_name} 딥링크 */
+  /** /stocks/{slug}, /#r={source_name} 딥링크 또는 /search?q= 본문 검색 */
   href: string;
   /** 소문자 검색 건초더미 */
   hay: string;
@@ -22,6 +22,7 @@ type Entry = {
 
 /** 기능 바로가기 — 검색어가 맞을 때만 종목보다 위에 뜬다 */
 const PAGE_ENTRIES: Entry[] = [
+  { id: "p:search", kind: "page", title: "보고서 본문 검색", sub: "주제 → 관련 종목 → 근거 문단 → 주가 시점", href: "/search", hay: "본문 검색 전문 full text search 주제 테마 근거 문단 리포트 내용", ret: null },
   { id: "p:architecture", kind: "page", title: "데이터 아키텍처", sub: "Bronze · Silver · Gold / FK · ETL 계보", href: "/developers/architecture", hay: "데이터 지도 medallion architecture 스키마 schema lineage 계보 bronze silver gold database", ret: null },
   { id: "p:review", kind: "page", title: "추출값 검토", sub: "원문 근거 · 교정 제안", href: "/developers/review", hay: "review 검토 추출 오류 교정 원문", ret: null },
   { id: "p:portfolio", kind: "page", title: "모의 포트폴리오", sub: "전진 평가 · 비중 · 텔레그램", href: "/portfolio", hay: "portfolio 포트폴리오 비중 수익률 텔레그램 모의 live", ret: null },
@@ -105,12 +106,18 @@ export function CommandPalette() {
       return [...entries.filter((e) => e.kind === "stock").slice(0, 6), ...entries.filter((e) => e.kind === "report").slice(0, 6)];
     }
     const tokens = q.split(/\s+/);
-    return entries
+    const matches = entries
       .filter((entry) => tokens.every((token) => entry.hay.includes(token)))
       .map((entry) => ({ entry, score: (entry.hay.startsWith(tokens[0]) ? 2 : 0) + (entry.kind === "page" ? 3 : entry.kind === "stock" ? 1 : 0) }))
       .sort((a, b) => b.score - a.score)
       .slice(0, 14)
       .map((scored) => scored.entry);
+    // 본문 검색으로 넘기기 — 이름·티커 바로가기가 없으면 맨 위, 있으면 맨 아래
+    const fulltext: Entry = {
+      id: "f:fulltext", kind: "fulltext", title: `본문에서 ‘${query.trim()}’ 찾기`,
+      sub: "보고서 본문 · 관련 종목 · 근거 문단 (/search)", href: `/search?q=${encodeURIComponent(query.trim())}`, hay: "", ret: null,
+    };
+    return matches.length ? [...matches, fulltext] : [fulltext];
   }, [entries, query]);
 
   useEffect(() => {
@@ -180,7 +187,7 @@ export function CommandPalette() {
             aria-controls="cmdk-list"
             aria-activedescendant={results[activeIdx] ? `cmdk-${activeIdx}` : undefined}
             className="w-full bg-transparent text-sm font-semibold outline-none placeholder:font-normal placeholder:text-muted-foreground/70"
-            placeholder="종목 · 리포트 검색 — 회사명, 티커, 파일명"
+            placeholder="종목 · 리포트 검색 — 회사명, 티커, 파일명, 본문 주제어"
           />
           <kbd className="rounded-sm border border-border px-1.5 py-0.5 font-mono text-[9px] font-bold text-muted-foreground">ESC</kbd>
         </div>
@@ -194,7 +201,7 @@ export function CommandPalette() {
             <Fragment key={entry.id}>
               {(idx === 0 || results[idx - 1].kind !== entry.kind) && (
                 <li aria-hidden="true" className="px-4 pb-1 pt-2.5 font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-muted-foreground">
-                  {entry.kind === "page" ? "바로가기" : entry.kind === "stock" ? "종목 페이지" : "판결 기록"}
+                  {entry.kind === "page" ? "바로가기" : entry.kind === "stock" ? "종목 페이지" : entry.kind === "fulltext" ? "본문 검색" : "판결 기록"}
                 </li>
               )}
               <li id={`cmdk-${idx}`} data-idx={idx} role="option" aria-selected={idx === activeIdx}>
@@ -208,7 +215,9 @@ export function CommandPalette() {
                     idx === activeIdx ? "bg-foreground text-background" : "hover:bg-secondary",
                   )}
                 >
-                  {entry.kind === "page" ? (
+                  {entry.kind === "fulltext" ? (
+                    <Search className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />
+                  ) : entry.kind === "page" ? (
                     <Compass className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />
                   ) : entry.kind === "stock" ? (
                     <LineChart className={cn("h-3.5 w-3.5 shrink-0", idx === activeIdx ? "opacity-70" : "text-muted-foreground")} aria-hidden="true" />
@@ -239,7 +248,7 @@ export function CommandPalette() {
         </ul>
 
         <p className="border-t border-dashed border-border px-4 py-2 font-mono text-[9px] text-muted-foreground">
-          ↑↓ 이동 · ↵ 열기 — 리포트는 판결문으로, 종목은 종목 페이지로 · 어디서든 Ctrl(⌘)+K
+          ↑↓ 이동 · ↵ 열기 — 리포트는 판결문으로, 종목은 종목 페이지로, 주제어는 본문 검색으로 · 어디서든 Ctrl(⌘)+K
         </p>
       </div>
     </div>

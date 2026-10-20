@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 
-// Fallback for /api/v2 URIs that no static file answers. Existing resources are public/api/v2/**.json,
-// reached through the next.config.ts rewrite before dynamic routes run, so this handler only ever
-// produces errors: RFC 9457 problem+json 404 for unknown resources, 405 for write methods.
+// Fallback for /api/v2 URIs that no static file answers. src/proxy.ts already answers unknown URIs (also the
+// v1 strategy-details alias of a missing revision) and write methods, so this is reached only when
+// src/data/api-v2-resources.json lists a file that is not deployed.
+// Note: next.config.ts header rules win over the headers below (Next.js only adds absent headers).
 
 const headers = {
   "Access-Control-Allow-Origin": "*",

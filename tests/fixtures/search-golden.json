@@ -1,0 +1,24 @@
+{
+  "judged_at": "2026-10-20",
+  "judgment_method": "Relevance for the robot topic was judged from report text, not from the ranking: a stock is 'relevant' when its own (primary) report mentions 로봇/로보틱스/휴머노이드/robot at least 100 times, 'acceptable' when at least 10 times. The counts were read from the evidence packs once and frozen here; a stock that is only named inside other companies' robot reports is neither, so precision measured against these lists is conservative.",
+  "queries": [
+    {
+      "id": "robot_topic",
+      "q": "로봇",
+      "top1_stock": "kr-108490",
+      "relevant_stocks": ["kr-108490", "kr-277810", "us-isrg", "kr-058610", "kr-079370", "kr-005850", "kr-012330", "kr-098460", "kr-448900", "kr-267250"],
+      "acceptable_stocks": ["kr-195870", "kr-079550", "kr-089850", "us-se", "kr-307950", "kr-054950", "kr-373220", "kr-474650", "kr-000150", "us-srs", "kr-236200", "kr-009150", "kr-137400"],
+      "recall_at": 20,
+      "min_recall": 0.6,
+      "precision_at": 10,
+      "min_precision": 0.8
+    },
+    {"id": "ticker", "q": "108490", "plan_stock": "kr-108490", "top1_stock": "kr-108490", "primary_reports_first": true},
+    {"id": "synonym", "q": "로보틱스", "stocks_in_top": ["kr-108490", "kr-277810"], "top_n": 10},
+    {"id": "synonym_english", "q": "humanoid", "stocks_in_top": ["kr-108490"], "top_n": 10},
+    {"id": "passing_mention_below_primary", "q": "로보티즈", "plan_stock": "kr-108490", "primary_reports_first": true, "passing_groups_below": "kr-108490"},
+    {"id": "typo_hangul", "q": "휴머노이두", "stocks_in_top": ["kr-108490"], "top_n": 3},
+    {"id": "typo_stock_name", "q": "로보티스", "plan_stock": "kr-108490", "top1_stock": "kr-108490"},
+    {"id": "no_results", "q": "qwxzv 없는말", "empty": true}
+  ]
+}

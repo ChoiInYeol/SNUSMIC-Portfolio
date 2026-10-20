@@ -98,7 +98,7 @@ export default async function StockPage({ params }: { params: Promise<{ ticker: 
       />
       )}
 
-      <StockChart slug={ticker.toLowerCase()} reports={sorted} />
+      <StockChart slug={ticker.toLowerCase()} name={name} reports={sorted} archived={archive} />
 
       {sorted.length > 0 && (
         <section aria-label="학회별 주장 비교">

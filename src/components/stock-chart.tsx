@@ -1,6 +1,9 @@
-import { CandleChart, type Candle, type ReportMark } from "@/components/candle-chart";
+import { createHash } from "node:crypto";
+import type { Candle } from "@/components/candle-chart";
+import { StockResearch, type StockReport } from "@/components/research/stock-research";
 import { PriceSeriesDocumentSchema, TradeMarksDocumentSchema, type TradeMarksDocument } from "@/lib/api-v2";
 import { readV2Optional } from "@/lib/api-v2-server";
+import { loadReportFirstSeen } from "@/lib/report-first-seen";
 import { dateLabel, type ReportRecord } from "@/lib/report-model";
 import { schoolShort } from "@/lib/verdict";
 import { formatPrice } from "@/lib/utils";
@@ -30,9 +33,19 @@ async function loadStrategyMarks(slug: string): Promise<TradeMarksDocument["data
   return doc.data;
 }
 
-/** 종목 캔들 차트 — SSG 시점에 v2 instrument prices 리소스를 읽어 클라이언트 차트에 넘긴다. */
-export async function StockChart({ slug, reports }: { slug: string; reports: ReportRecord[] }) {
-  const [candles, strategyMarks] = await Promise.all([loadCandles(slug), loadStrategyMarks(slug)]);
+/** Full-text search report id (scripts/build_fulltext_index.py report_id): sha256 of the transcript's repo path. */
+function searchReportId(sourceFile: string): string {
+  const rel = sourceFile.replaceAll("\\", "/").replace(/^data\/markdown\//, "data/silver/reports/markdown/");
+  return createHash("sha256").update(rel).digest("hex").slice(0, 12);
+}
+
+/**
+ * 종목 캔들 차트 — SSG 시점에 v2 instrument prices 리소스를 읽어 클라이언트 차트에 넘긴다.
+ * `archived` 기록은 평소에 그리지 않고, 본문 검색이 ?report=<id> 로 그 리포트를 가리킬 때만 표시한다.
+ * 리서치 동선(마커 ⇄ 근거 Sheet, 관점 전환, 비교)은 클라이언트 StockResearch가 맡고, 여기서는 이 종목의 작은 조각만 넘긴다.
+ */
+export async function StockChart({ slug, name, reports, archived = [] }: { slug: string; name: string; reports: ReportRecord[]; archived?: ReportRecord[] }) {
+  const [candles, strategyMarks, firstSeen] = await Promise.all([loadCandles(slug), loadStrategyMarks(slug), loadReportFirstSeen()]);
   if (!candles) {
     return (
       <div className="rounded-lg border border-dashed border-border px-6 py-10 text-center text-sm text-muted-foreground">
@@ -44,51 +57,67 @@ export async function StockChart({ slug, reports }: { slug: string; reports: Rep
   const market = reports[0]?.market ?? null;
   const first = candles[0];
   const last = candles[candles.length - 1];
-  const marks: ReportMark[] = reports
-    .filter((r) => r.report_date)
-    .map((r) => ({
-      sourceName: r.source_name,
-      school: r.school,
-      date: r.report_date as string,
-      targetPrice: r.target_price,
-      targetSeq: r.target_seq,
-      targetSeqTotal: r.target_seq_total,
-    }));
-  const schools = [...new Set(marks.map((m) => m.school))];
-  const hasSequence = marks.some((m) => (m.targetSeqTotal ?? 0) > 1);
+  const toMark = (r: ReportRecord, isArchived: boolean): StockReport => ({
+    sourceName: r.source_name,
+    reportId: searchReportId(r.source_file),
+    archived: isArchived,
+    school: r.school,
+    date: r.report_date as string,
+    targetPrice: r.target_price,
+    targetSeq: r.target_seq,
+    targetSeqTotal: r.target_seq_total,
+    firstSeen: firstSeen[r.source_file] ?? null,
+    rating: r.rating,
+    ratingClass: r.rating_class,
+    startClose: r.start_close,
+    returns: { d30: r.return_30d_pct, d90: r.return_90d_pct, d365: r.return_365d_pct, latest: r.return_latest_pct },
+    sourceMdUrl: r.source_md_url,
+    sourcePdfUrl: r.source_pdf_url,
+  });
+  const dated = (r: ReportRecord) => Boolean(r.report_date);
+  const marks: StockReport[] = [...reports.filter(dated).map((r) => toMark(r, false)), ...archived.filter(dated).map((r) => toMark(r, true))];
+  const drawn = marks.filter((m) => !m.archived);
+  const schools = [...new Set(drawn.map((m) => m.school))];
+  const hasSequence = drawn.some((m) => (m.targetSeqTotal ?? 0) > 1);
 
   return (
-    <figure className="rounded-lg border border-border bg-card p-5">
-      <figcaption className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-        <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
-          가격 경로 — ▲ 발간 시점 · ┄ 학회 목표가
-        </span>
-        <span className="font-mono text-[11px] text-muted-foreground">
-          {dateLabel(first.time)} ~ {dateLabel(last.time)} · 캔들 {candles.length.toLocaleString("ko-KR")}개 · 마지막 종가{" "}
-          {formatPrice(last.close, market)}
-        </span>
-      </figcaption>
-      <CandleChart
-        candles={candles}
-        marks={marks}
-        market={market}
-        tradeMarks={strategyMarks?.marks}
-        currentStop={strategyMarks?.open_stop?.stop_level ?? null}
-      />
-      {strategyMarks && (
-        <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-          <span className="font-bold text-up">▲ 매수</span> · <span className="font-bold text-down">▼ 매도/스탑</span>
-          {strategyMarks.open_stop && <> · ┄ 현재 추적 스탑 {formatPrice(strategyMarks.open_stop.stop_level, market)}</>}
-          {" — "}전략 랩 SOTA({strategyMarks.strategy_id})의 백테스트 매매 지점 · 시뮬레이션 결과이며 투자 권유가 아닙니다
-        </p>
-      )}
-      {(schools.length > 1 || hasSequence) && (
-        <p className="mt-2 font-mono text-[10px] text-muted-foreground">
-          {schools.length > 1 && <>마커 색상: {schools.map((school) => schoolShort[school]).join(" · ")} — 학회별로 다른 잉크가 찍힙니다</>}
-          {schools.length > 1 && hasSequence && " · "}
-          {hasSequence && "같은 학회가 목표를 거듭 제시한 경우, 목표 1/3 → 2/3 → 3/3 순으로 번호가 붙습니다"}
-        </p>
-      )}
-    </figure>
+    <StockResearch
+      slug={slug}
+      name={name}
+      market={market}
+      candles={candles}
+      reports={marks}
+      tradeMarks={strategyMarks?.marks}
+      currentStop={strategyMarks?.open_stop?.stop_level ?? null}
+      caption={
+        <figcaption className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
+          <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+            가격 경로 — ▲ 발간 시점 · ┄ 학회 목표가
+          </span>
+          <span className="font-mono text-[11px] text-muted-foreground">
+            {dateLabel(first.time)} ~ {dateLabel(last.time)} · 캔들 {candles.length.toLocaleString("ko-KR")}개 · 마지막 종가{" "}
+            {formatPrice(last.close, market)}
+          </span>
+        </figcaption>
+      }
+      legend={
+        <>
+          {strategyMarks && (
+            <p className="mt-2 font-mono text-[10px] text-muted-foreground">
+              <span className="font-bold text-up">▲ 매수</span> · <span className="font-bold text-down">▼ 매도/스탑</span>
+              {strategyMarks.open_stop && <> · ┄ 현재 추적 스탑 {formatPrice(strategyMarks.open_stop.stop_level, market)}</>}
+              {" — "}전략 랩 SOTA({strategyMarks.strategy_id})의 백테스트 매매 지점 · 시뮬레이션 결과이며 투자 권유가 아닙니다
+            </p>
+          )}
+          {(schools.length > 1 || hasSequence) && (
+            <p className="mt-2 font-mono text-[10px] text-muted-foreground">
+              {schools.length > 1 && <>마커 색상: {schools.map((school) => schoolShort[school]).join(" · ")} — 학회별로 다른 잉크가 찍힙니다</>}
+              {schools.length > 1 && hasSequence && " · "}
+              {hasSequence && "같은 학회가 목표를 거듭 제시한 경우, 목표 1/3 → 2/3 → 3/3 순으로 번호가 붙습니다"}
+            </p>
+          )}
+        </>
+      }
+    />
   );
 }

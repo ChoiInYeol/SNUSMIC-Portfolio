@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "_comment": "Curated query-expansion data for full-text report search (scripts/build_fulltext_index.py). Groups are interchangeable search words, NOT theme-stock lists: related stocks always come from report text. stock_aliases adds extra names for a stock slug; alias_stoplist removes names that are ordinary words in report prose.",
+  "groups": [
+    [
+      "로봇",
+      "로보틱스",
+      "robot",
+      "robotics"
+    ],
+    [
+      "협동로봇",
+      "코봇",
+      "cobot"
+    ],
+    [
+      "휴머노이드",
+      "humanoid",
+      "인간형 로봇"
+    ],
+    [
+      "감속기",
+      "reducer",
+      "하모닉 드라이브"
+    ],
+    [
+      "액추에이터",
+      "액츄에이터",
+      "actuator"
+    ],
+    [
+      "반도체",
+      "semiconductor"
+    ],
+    [
+      "고대역폭메모리",
+      "hbm"
+    ],
+    [
+      "이차전지",
+      "2차전지",
+      "배터리",
+      "battery"
+    ],
+    [
+      "전기차",
+      "ev",
+      "electric vehicle"
+    ],
+    [
+      "인공지능",
+      "ai"
+    ],
+    [
+      "데이터센터",
+      "data center",
+      "datacenter"
+    ],
+    [
+      "원전",
+      "원자력",
+      "smr",
+      "nuclear"
+    ],
+    [
+      "조선",
+      "shipbuilding",
+      "선박"
+    ],
+    [
+      "방산",
+      "방위산업",
+      "defense"
+    ],
+    [
+      "엔터",
+      "엔터테인먼트",
+      "entertainment"
+    ],
+    [
+      "바이오",
+      "biotech",
+      "제약"
+    ],
+    [
+      "화장품",
+      "cosmetics",
+      "k-뷰티"
+    ],
+    [
+      "광통신",
+      "광트랜시버",
+      "optical"
+    ]
+  ],
+  "related": {
+    "로봇": [
+      "협동로봇",
+      "휴머노이드",
+      "감속기",
+      "액추에이터"
+    ],
+    "휴머노이드": [
+      "로봇",
+      "액추에이터",
+      "감속기"
+    ]
+  },
+  "stock_aliases": {
+    "kr-000660": [
+      "하이닉스"
+    ],
+    "kr-005380": [
+      "현대자동차"
+    ]
+  },
+  "alias_stoplist": [
+    "나노",
+    "레이",
+    "디오",
+    "선광",
+    "경농",
+    "후성",
+    "디바이스"
+  ]
+}

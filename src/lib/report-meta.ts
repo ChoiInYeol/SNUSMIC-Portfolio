@@ -26,3 +26,11 @@ export function dateLabel(value: string | null) {
   if (!value) return "날짜 없음";
   return value.replaceAll("-", ".");
 }
+
+/**
+ * Visible in a view dated `asOf`: published by then AND already collected by then. Unknown collection = hidden.
+ * Client-safe; report-first-seen.ts `knownBy` (server, reads the Gold file) applies the same rule.
+ */
+export function seenBy(reportDate: string | null, firstSeen: string | null | undefined, asOf: string): boolean {
+  return reportDate !== null && reportDate <= asOf && firstSeen !== undefined && firstSeen !== null && firstSeen <= asOf;
+}

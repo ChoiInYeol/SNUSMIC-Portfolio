@@ -1,6 +1,22 @@
 {
  "datasets": [
   {
+   "bytes": null,
+   "files": null,
+   "format": "json",
+   "id": "bronze.funded_account",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/portfolio/funded-w50-v1/**/*.json",
+   "producer": [
+    "funded_account.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
    "bytes": 4432,
    "files": 1,
    "format": "jsonl",
@@ -270,7 +286,7 @@
    "updated_at": "2026-10-20T11:28:55+00:00"
   },
   {
-   "bytes": 168397707,
+   "bytes": 168398266,
    "files": 2028,
    "format": "json",
    "id": "serving.api_v2",
@@ -289,7 +305,7 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:59+00:00"
+   "updated_at": "2026-10-20T12:45:40+00:00"
   },
   {
    "bytes": 15184,
@@ -309,6 +325,46 @@
    "schema_version": "1.0",
    "tracked_in_git": true,
    "updated_at": "2026-10-20T11:28:56+00:00"
+  },
+  {
+   "bytes": 57128099,
+   "files": 2162,
+   "format": "json/json.gz",
+   "id": "serving.fulltext_index",
+   "inputs": [
+    "serving.report_first_seen",
+    "serving.report_performance",
+    "silver.report_markdown",
+    "silver.report_parsed",
+    "silver.search_synonyms"
+   ],
+   "layer": "gold",
+   "path": "public/research/fulltext/**/*",
+   "producer": [
+    "build_fulltext_index.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "json",
+   "id": "serving.funded_account",
+   "inputs": [
+    "silver.funded_ledger"
+   ],
+   "layer": "gold",
+   "path": "public/research/funded-account.json",
+   "producer": [
+    "funded_account.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
   },
   {
    "bytes": 2638,
@@ -409,7 +465,7 @@
    "updated_at": null
   },
   {
-   "bytes": 249105,
+   "bytes": 254070,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -426,7 +482,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T11:22:19+00:00"
+   "updated_at": "2026-10-20T13:09:26+00:00"
   },
   {
    "bytes": 507498,
@@ -533,6 +589,24 @@
    "path": "data/silver/reference/corrections.json",
    "producer": [
     "manual"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": null,
+   "files": null,
+   "format": "json",
+   "id": "silver.funded_ledger",
+   "inputs": [
+    "bronze.funded_account"
+   ],
+   "layer": "silver",
+   "path": "data/silver/portfolio/funded-w50-v1-ledger.json",
+   "producer": [
+    "funded_account.py"
    ],
    "rows": null,
    "schema_version": null,
@@ -667,6 +741,22 @@
    ],
    "rows": 1647,
    "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 2136,
+   "files": 1,
+   "format": "json",
+   "id": "silver.search_synonyms",
+   "inputs": [],
+   "layer": "silver",
+   "path": "data/silver/reference/search_synonyms.json",
+   "producer": [
+    "manual"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
    "tracked_in_git": true,
    "updated_at": null
   }

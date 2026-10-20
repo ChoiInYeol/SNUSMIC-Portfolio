@@ -26,11 +26,13 @@ data/
     reference/krx_names.json                기존 pykrx 공식 종목명 스냅샷 (보존)
     reference/krx_name_observations.jsonl    새 공식명 조회: 수집 시각·벤더 버전 포함, append-only
     _runs/source-status/, _runs/quarantine/ CI 수집기 상태 (git 제외)
+    portfolio/funded-w50-v1/                납입식 모의 계정: genesis·납입·신호·세션·동결 주문 계획 (docs/FUNDED-ACCOUNT.md)
   silver/                                   검증·표준화
     reports/markdown/{school}/*.md          kordoc 전사본
     reports/parsed.csv, parse_issues.csv    리포트 1건당 1행 / 파싱 이슈
     reference/kr_name_ticker.json           이름→티커 (네이버 자동완성 캐시)
     reference/corrections.json              사람이 검증한 교정값
+    reference/search_synonyms.json          본문 검색 동의어·종목 별칭 (사람이 관리, docs/SEARCH.md)
     prices/{KR|US|IDX}_{symbol}.csv         정제 OHLCV (git 제외, bronze로 재생성 가능)
     _rejects/{symbol}.jsonl                 검증에 걸린 시세 행 + 사유 (git 제외)
   gold/                                     목적별 집계
@@ -49,7 +51,8 @@ src/data/*.json, public/api/**, public/strategy-trades*.csv   gold 서빙 산출
 | bronze PDF · manifest | `collect_smic/ewha/voera/reports.py`, `collect_kuvic_browser.py`(kuvic_items) | `transcribe_pdfs.py`, `build_report_performance.py`(힌트), `pipeline_health.py` |
 | bronze 시세 | `lake_prices.record_raw_prices` (← `build_report_performance.py` pykrx·yfinance, `backtest/warehouse.py` yfinance) | `rebuild_silver_prices.py` |
 | bronze krx_names | `build_report_performance.py` | `build_report_performance.py` |
-| silver markdown | `transcribe_pdfs.py` | `build_report_performance.py`, `eval_extraction.py`, 웹 원문 뷰어(GitHub 링크) |
+| silver markdown | `transcribe_pdfs.py` | `build_report_performance.py`, `eval_extraction.py`, `build_fulltext_index.py`, 웹 원문 뷰어(GitHub 링크) |
+| 본문 검색 색인 `public/research/fulltext/` | `build_fulltext_index.py` (silver markdown·parsed·synonyms + 서빙 report-performance·first-seen) | `/search`, 커맨드 팔레트 링크 — [SEARCH.md](SEARCH.md) |
 | silver parsed · issues | `build_report_performance.py` | `pipeline_health.py` |
 | silver reference | `build_report_performance.py`(name_ticker), 사람(corrections) | `build_report_performance.py` |
 | silver 시세 | `lake_prices.write_silver_prices` (← 위 두 수집 경로, `rebuild_silver_prices.py`) | `build_report_performance.py`, 백테스트, `build_stats.py`, `build_forward_record.py`, `export_stock_charts.py` |
