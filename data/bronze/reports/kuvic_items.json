@@ -1,10 +1,190 @@
 [
   {
     "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_928223d84030450cbc5181f68ada4040",
+    "title": "마이크로소프트 - 마소를 팔지 마소",
+    "company_hint": "마이크로소프트",
+    "author_hint": "KUVIC 리서치 5팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_928223d84030450cbc5181f68ada4040.pdf",
+    "published_hint": "2026-10-01"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_ae0fb8ea49414b779b0d3e174717859d",
+    "title": "심텍 - 하트(心) 어택(텍) 내 심장을 공격해~",
+    "company_hint": "심텍",
+    "author_hint": "KUVIC 리서치 3팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ae0fb8ea49414b779b0d3e174717859d.pdf",
+    "published_hint": "2026-10-01"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_dd8cb1d8ae444cceae519c6155d1cff9",
+    "title": "티씨머티리얼즈 - 너 T야? 아니 TC야",
+    "company_hint": "티씨머티리얼즈",
+    "author_hint": "KUVIC 리서치 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_dd8cb1d8ae444cceae519c6155d1cff9.pdf",
+    "published_hint": "2026-10-01"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_9b2e4d2eb6c64a50ad73948c6dea20dc",
+    "title": "한양디지텍 - 삼성: 그냥 한양없이 눈물이 나",
+    "company_hint": "한양디지텍",
+    "author_hint": "KUVIC 리서치 4팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_9b2e4d2eb6c64a50ad73948c6dea20dc.pdf",
+    "published_hint": "2026-10-01"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_f2219356c0a7489cb3f2987f81d57060",
+    "title": "피에스케이홀딩스 - 성장이 다시 흐른다(Re-flow)~~",
+    "company_hint": "피에스케이홀딩스",
+    "author_hint": "KUVIC 리서치 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_f2219356c0a7489cb3f2987f81d57060.pdf",
+    "published_hint": "2026-10-01"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_fd7117e0341442bd9b225dc4c3601c41",
+    "title": "제약/바이오 - 바이오 바이(BUY)요~",
+    "company_hint": "제약/바이오",
+    "author_hint": "KUVIC 리서치 산업 5팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_fd7117e0341442bd9b225dc4c3601c41.pdf",
+    "published_hint": "2026-09-14"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_2656a58426c84d90b658901a9f1e2c57",
+    "title": "우주/항공 - Fly me to the moon",
+    "company_hint": "우주/항공",
+    "author_hint": "KUVIC 리서치 산업 4팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_2656a58426c84d90b658901a9f1e2c57.pdf",
+    "published_hint": "2026-09-14"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_1600cc5aead44f72bdb4823d1344aa59",
+    "title": "이차전지 - ESSential",
+    "company_hint": "이차전지",
+    "author_hint": "KUVIC 리서치 산업 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_1600cc5aead44f72bdb4823d1344aa59.pdf",
+    "published_hint": "2026-09-14"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_62c4af383e614f32a5b8bc3e37c3a2a3",
+    "title": "ISC - 베트남에서 누가돌아왔~게",
+    "company_hint": "ISC",
+    "author_hint": "KUVIC 리서치 기업 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_62c4af383e614f32a5b8bc3e37c3a2a3.pdf",
+    "published_hint": "2026-08-06"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_81f0ae232b844ae6910bb0be29607f8d",
+    "title": "로봇 - 로봇도 하체다",
+    "company_hint": "로봇",
+    "author_hint": "KUVIC 리서치 산업 3팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_81f0ae232b844ae6910bb0be29607f8d.pdf",
+    "published_hint": "2026-09-15"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_46fff632ba634eeaac01d1debfec481a",
+    "title": "은행 - 이제는 은행나무가 노래질 때",
+    "company_hint": "은행",
+    "author_hint": "KUVIC 리서치 산업 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_46fff632ba634eeaac01d1debfec481a.pdf",
+    "published_hint": "2026-09-14"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_480b4174954f41d29637a63afadae745",
+    "title": "지엔씨에너지 - 전력 질주하는 DC, 그 뒤엔 전력 질주하는 지엔씨",
+    "company_hint": "지엔씨에너지",
+    "author_hint": "KUVIC 리서치 기업 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_480b4174954f41d29637a63afadae745.pdf",
+    "published_hint": "2026-08-06"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_d20dd348dd8849a79b2598e8f11996da",
+    "title": "반도체와 반도체 장비 - 후(後)공정, 후(厚)한 수익",
+    "company_hint": "반도체와 반도체 장비",
+    "author_hint": "KUVIC 리서치 산업 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_d20dd348dd8849a79b2598e8f11996da.pdf",
+    "published_hint": "2026-07-30"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_679ae86c127a43a49ce06ec2a6615d80",
+    "title": "증권 - 만스피를 향해 가는 지금",
+    "company_hint": "증권",
+    "author_hint": "KUVIC 리서치 4팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_679ae86c127a43a49ce06ec2a6615d80.pdf",
+    "published_hint": "2026-06-08"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_2bcd8837d90341909e2fa913488e60ba",
+    "title": "반도체와 반도체 장비 - NAND, LOVE LOVE LOVE",
+    "company_hint": "반도체와 반도체 장비",
+    "author_hint": "KUVIC 리서치 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_2bcd8837d90341909e2fa913488e60ba.pdf",
+    "published_hint": "2026-06-08"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_0e14bd4cbb924e428dc48b4d4b94f007",
+    "title": "반도체와 반도체 장비 - 간장공전공정정",
+    "company_hint": "반도체와 반도체 장비",
+    "author_hint": "KUVIC 리서치 산업 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_0e14bd4cbb924e428dc48b4d4b94f007.pdf",
+    "published_hint": "2026-07-30"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_fbbfda08f4f24c4ba1690cd6282fec42",
+    "title": "MLCC - 우릴 불러 “쟤네 믈크크(MLCC)”",
+    "company_hint": "MLCC",
+    "author_hint": "KUVIC 리서치 3팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_fbbfda08f4f24c4ba1690cd6282fec42.pdf",
+    "published_hint": "2026-06-08"
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_4a838a749a564f30b060b846467d8d15",
+    "title": "로봇 - Touch My Body",
+    "company_hint": "로봇",
+    "author_hint": "KUVIC 리서치 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_4a838a749a564f30b060b846467d8d15.pdf",
+    "published_hint": "2026-06-08"
+  },
+  {
+    "school": "kuvic",
     "source_id": "kuvic-5ec6f7_ee5d01addce24dc2b43fd995cbb464a3",
     "title": "에스티아이 - 에브리바디 에스티아이",
     "company_hint": "에스티아이",
-    "author_hint": "Kuvic 리서치 5팀",
+    "author_hint": "KUVIC 리서치 5팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ee5d01addce24dc2b43fd995cbb464a3.pdf",
     "published_hint": "2026-05-18"
@@ -14,7 +194,7 @@
     "source_id": "kuvic-5ec6f7_7302d46cd033470899f067eb2d01c2e2",
     "title": "코스텍시스 - 코스텍시스, 800V짜리 카타르시스",
     "company_hint": "코스텍시스",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_7302d46cd033470899f067eb2d01c2e2.pdf",
     "published_hint": "2026-05-18"
@@ -24,7 +204,7 @@
     "source_id": "kuvic-5ec6f7_e7de3a7f601b4b2cba34e8dd2886eed9",
     "title": "게임 - 한 판만 더 할게요",
     "company_hint": "게임",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_e7de3a7f601b4b2cba34e8dd2886eed9.pdf",
     "published_hint": "2026-04-07"
@@ -34,7 +214,7 @@
     "source_id": "kuvic-5ec6f7_71fb9260d1674d06a8e99afc8acb9387",
     "title": "진성티이씨 - 진성이 진짜예요",
     "company_hint": "진성티이씨",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_71fb9260d1674d06a8e99afc8acb9387.pdf",
     "published_hint": "2026-05-18"
@@ -44,7 +224,7 @@
     "source_id": "kuvic-5ec6f7_081ab629c2444d31b9b1f0cbe01ae138",
     "title": "한화엔진 - 데센 상륙작전",
     "company_hint": "한화엔진",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_081ab629c2444d31b9b1f0cbe01ae138.pdf",
     "published_hint": "2026-05-21"
@@ -54,7 +234,7 @@
     "source_id": "kuvic-5ec6f7_b1addc042d604e47b07a4123cff95730",
     "title": "의료기기/화장품 - Glow up, Scale up",
     "company_hint": "의료기기/화장품",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_b1addc042d604e47b07a4123cff95730.pdf",
     "published_hint": "2026-04-07"
@@ -64,7 +244,7 @@
     "source_id": "kuvic-5ec6f7_7022772ee9e64e9da38e844022d84da4",
     "title": "화학 - 비료 피료해!",
     "company_hint": "화학",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_7022772ee9e64e9da38e844022d84da4.pdf",
     "published_hint": "2026-04-07"
@@ -74,7 +254,7 @@
     "source_id": "kuvic-5ec6f7_975c7aec0a224b05892220199ae015b0",
     "title": "Lumentum Holdings - 루멘상스의 시대가 왔다",
     "company_hint": "Lumentum Holdings",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_975c7aec0a224b05892220199ae015b0.pdf",
     "published_hint": "2026-03-27"
@@ -84,7 +264,7 @@
     "source_id": "kuvic-5ec6f7_146be79a21f34e0f933a4f97c9188073",
     "title": "LS머트리얼즈 - 울트라캡숑시터",
     "company_hint": "LS머트리얼즈",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_146be79a21f34e0f933a4f97c9188073.pdf",
     "published_hint": "2026-03-27"
@@ -94,7 +274,7 @@
     "source_id": "kuvic-5ec6f7_ecf516313eb44c22a89da7263d15dc67",
     "title": "호텔/레저 - 여기 20층에 사람 있어요~",
     "company_hint": "호텔/레저",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ecf516313eb44c22a89da7263d15dc67.pdf",
     "published_hint": "2026-04-07"
@@ -104,7 +284,7 @@
     "source_id": "kuvic-5ec6f7_1e834018985e48ce82e574d49889e430",
     "title": "엠앤씨솔루션 - OPM 올라가는 주파수는 없나요?",
     "company_hint": "엠앤씨솔루션",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_1e834018985e48ce82e574d49889e430.pdf",
     "published_hint": "2026-03-27"
@@ -114,7 +294,7 @@
     "source_id": "kuvic-5ec6f7_a87293b66e3d47168aa0a7c949f47280",
     "title": "인텔리안테크 - 인텔리안테크를 아니?",
     "company_hint": "인텔리안테크",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_a87293b66e3d47168aa0a7c949f47280.pdf",
     "published_hint": "2026-03-27"
@@ -124,7 +304,7 @@
     "source_id": "kuvic-5ec6f7_5fd9164ee09d4adb8c8f52096d7e6411",
     "title": "광통신 - 광(光)통신.. 그저 “빛”",
     "company_hint": "광통신",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_5fd9164ee09d4adb8c8f52096d7e6411.pdf",
     "published_hint": "2026-03-16"
@@ -134,7 +314,7 @@
     "source_id": "kuvic-5ec6f7_5523eea976914fb0ae4a67fdbbbed30a",
     "title": "우주 - 우주를 줄게",
     "company_hint": "우주",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_5523eea976914fb0ae4a67fdbbbed30a.pdf",
     "published_hint": "2026-03-16"
@@ -144,7 +324,7 @@
     "source_id": "kuvic-5ec6f7_57860cca2f0547a893ab2b183c5e5748",
     "title": "비나텍 - 팔려요.. 슈퍼캡 계속 팔려요!!",
     "company_hint": "비나텍",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_57860cca2f0547a893ab2b183c5e5748.pdf",
     "published_hint": "2026-02-09"
@@ -154,7 +334,7 @@
     "source_id": "kuvic-5ec6f7_14b12a110a7549959b8b83e5c83208b4",
     "title": "방산 - 가격 낮게, 성능 높게 언~발란스",
     "company_hint": "방산",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_14b12a110a7549959b8b83e5c83208b4.pdf",
     "published_hint": "2026-03-16"
@@ -164,7 +344,7 @@
     "source_id": "kuvic-5ec6f7_4997982d337148cab0dd44967e211d5b",
     "title": "이차전지 - 전고체: 내가 왕이 될 상인가",
     "company_hint": "이차전지",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_4997982d337148cab0dd44967e211d5b.pdf",
     "published_hint": "2026-03-16"
@@ -174,7 +354,7 @@
     "source_id": "kuvic-5ec6f7_070a62db302c4a4ba466d7b383beed5b",
     "title": "파두 - 호재가 파두파두 끝이 없네",
     "company_hint": "파두",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_070a62db302c4a4ba466d7b383beed5b.pdf",
     "published_hint": "2026-02-09"
@@ -184,7 +364,7 @@
     "source_id": "kuvic-5ec6f7_b540903d264940cc8e3d1aaac4156451",
     "title": "유틸리티 - I got the POWER POWER POWER",
     "company_hint": "유틸리티",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_b540903d264940cc8e3d1aaac4156451.pdf",
     "published_hint": "2026-01-27"
@@ -194,7 +374,7 @@
     "source_id": "kuvic-5ec6f7_f68de1aed1a84f2c99e0f62222aa5864",
     "title": "한국피아이엠 - 나는 한국의 블러드(피)! 한국 피아이엠",
     "company_hint": "한국피아이엠",
-    "author_hint": "Kuvic 리서치 5팀",
+    "author_hint": "KUVIC 리서치 5팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_f68de1aed1a84f2c99e0f62222aa5864.pdf",
     "published_hint": "2025-11-17"
@@ -204,7 +384,7 @@
     "source_id": "kuvic-5ec6f7_b7a4ad1bf57c455797d27cdf5b271fb7",
     "title": "이오테크닉스 - 이오가 짱이오",
     "company_hint": "이오테크닉스",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_b7a4ad1bf57c455797d27cdf5b271fb7.pdf",
     "published_hint": "2025-11-17"
@@ -214,7 +394,7 @@
     "source_id": "kuvic-5ec6f7_a129e924279c48189746165b659302dc",
     "title": "반도체 - 이번 사이클 운동 많이 될 거야",
     "company_hint": "반도체",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_a129e924279c48189746165b659302dc.pdf",
     "published_hint": "2026-01-27"
@@ -224,7 +404,7 @@
     "source_id": "kuvic-5ec6f7_fb124a38685648ba8365f92fad969f1d",
     "title": "프로티나 - 빅파마에게 백‘프로’ 불‘티나’",
     "company_hint": "프로티나",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_fb124a38685648ba8365f92fad969f1d.pdf",
     "published_hint": "2025-11-17"
@@ -234,7 +414,7 @@
     "source_id": "kuvic-5ec6f7_decc115e6a1745a3b8b28e8c7e1c42ee",
     "title": "제이에스링크 - 영구자석 업고 주가 튀어",
     "company_hint": "제이에스링크",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_decc115e6a1745a3b8b28e8c7e1c42ee.pdf",
     "published_hint": "2025-11-17"
@@ -244,7 +424,7 @@
     "source_id": "kuvic-5ec6f7_e7681d44a2e048f8b2a8886ef183be5b",
     "title": "인카금융서비스 - 내 성장이 멈추지 않는 탓일까?ㅜ.ㅜ",
     "company_hint": "인카금융서비스",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_e7681d44a2e048f8b2a8886ef183be5b.pdf",
     "published_hint": "2025-11-17"
@@ -254,7 +434,7 @@
     "source_id": "kuvic-5ec6f7_5bce3e54639d4455a895b9c37da09fe6",
     "title": "식음료/말차 - like Jennie, I like Matcha",
     "company_hint": "식음료/말차",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_5bce3e54639d4455a895b9c37da09fe6.pdf",
     "published_hint": "2025-09-30"
@@ -264,7 +444,7 @@
     "source_id": "kuvic-5ec6f7_5f9e569bb70c4572a35ee03eb75328be",
     "title": "건강기능식품 - 트렌드가 된 건기식, 중요한 기회",
     "company_hint": "건강기능식품",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_5f9e569bb70c4572a35ee03eb75328be.pdf",
     "published_hint": "2025-09-30"
@@ -284,7 +464,7 @@
     "source_id": "kuvic-5ec6f7_242f3be73c354c6cba2f705159d84934",
     "title": "핀테크/스테이블코인 - Stablecoin gonna be Golden",
     "company_hint": "핀테크/스테이블코인",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_242f3be73c354c6cba2f705159d84934.pdf",
     "published_hint": "2025-09-30"
@@ -294,7 +474,7 @@
     "source_id": "kuvic-5ec6f7_80a3dd9e95e04159a16214534829645c",
     "title": "AVAV - 드(론)좋(아) 국방시대",
     "company_hint": "AVAV",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_80a3dd9e95e04159a16214534829645c.pdf",
     "published_hint": "2025-08-19"
@@ -304,7 +484,7 @@
     "source_id": "kuvic-5ec6f7_0646a26ad397403d901f01e25c47d169",
     "title": "디앤디파마텍 - 간단히 말해, 비만도 MASH도 한 큐에",
     "company_hint": "디앤디파마텍",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_0646a26ad397403d901f01e25c47d169.pdf",
     "published_hint": "2025-08-19"
@@ -314,7 +494,7 @@
     "source_id": "kuvic-5ec6f7_0e43c049b20045c5a9f63d9c60cb4c38",
     "title": "산일전기 - BESS를 연결하고, 미국 전력망을 점령하다",
     "company_hint": "산일전기",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_0e43c049b20045c5a9f63d9c60cb4c38.pdf",
     "published_hint": "2025-08-19"
@@ -324,7 +504,7 @@
     "source_id": "kuvic-5ec6f7_a12839b7460349f988f09db8daad90d8",
     "title": "태웅 - '태'동했던 바람은 '웅'장한 실적으로",
     "company_hint": "태웅",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_a12839b7460349f988f09db8daad90d8.pdf",
     "published_hint": "2025-06-26"
@@ -334,7 +514,7 @@
     "source_id": "kuvic-5ec6f7_434fc3c768584e40b4a8a58678d90059",
     "title": "두산 - GPU와 ASIC이라는 '두 산'",
     "company_hint": "두산",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_434fc3c768584e40b4a8a58678d90059.pdf",
     "published_hint": "2025-08-19"
@@ -344,7 +524,7 @@
     "source_id": "kuvic-5ec6f7_8bec74ad51b94c4a808d71f2b663ac4d",
     "title": "SK이터닉스 - 나니가 SK???",
     "company_hint": "SK이터닉스",
-    "author_hint": "Kuvic 리서치 5팀",
+    "author_hint": "KUVIC 리서치 5팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_8bec74ad51b94c4a808d71f2b663ac4d.pdf",
     "published_hint": "2025-06-27"
@@ -354,7 +534,7 @@
     "source_id": "kuvic-5ec6f7_ce6f0f49183a48b3a316a42003404637",
     "title": "SAMG엔터 - 나만 믿어핑!",
     "company_hint": "SAMG엔터",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ce6f0f49183a48b3a316a42003404637.pdf",
     "published_hint": "2025-06-27"
@@ -364,7 +544,7 @@
     "source_id": "kuvic-5ec6f7_c25a0512cdfa4969b581ab665d893021",
     "title": "티씨케이 - 중국은 8대 핵심산업 중 반도체만 남았다.",
     "company_hint": "티씨케이",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_c25a0512cdfa4969b581ab665d893021.pdf",
     "published_hint": "2025-06-27"
@@ -374,7 +554,7 @@
     "source_id": "kuvic-5ec6f7_063d3934b00f4d63bca9c2143764f19b",
     "title": "한국콜마 - 선크림하면 ~ 한국콜마INDI?",
     "company_hint": "한국콜마",
-    "author_hint": "Kuvic 리서치 5팀",
+    "author_hint": "KUVIC 리서치 5팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_063d3934b00f4d63bca9c2143764f19b.pdf",
     "published_hint": "2025-05-13"
@@ -384,7 +564,7 @@
     "source_id": "kuvic-5ec6f7_19a7f831a92e46d1903b8f7cea62ccb4",
     "title": "에이피알 - (A)안 (P)팔 (R)릴 이유가 없다",
     "company_hint": "에이피알",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_19a7f831a92e46d1903b8f7cea62ccb4.pdf",
     "published_hint": "2025-05-15"
@@ -394,7 +574,7 @@
     "source_id": "kuvic-5ec6f7_e6e4b6ef0eeb4e4dbcdf70751fe60fe7",
     "title": "SYM - 심보틱으로 심봤다",
     "company_hint": "SYM",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_e6e4b6ef0eeb4e4dbcdf70751fe60fe7.pdf",
     "published_hint": "2025-06-27"
@@ -404,7 +584,7 @@
     "source_id": "kuvic-5ec6f7_0576f6e8982040018fc6aebe9f14e476",
     "title": "파마리서치 - 폭싹 삭아버리기 전에 리쥬란",
     "company_hint": "파마리서치",
-    "author_hint": "Kuvic 리서치 4팀",
+    "author_hint": "KUVIC 리서치 4팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_0576f6e8982040018fc6aebe9f14e476.pdf",
     "published_hint": "2025-05-15"
@@ -414,7 +594,7 @@
     "source_id": "kuvic-5ec6f7_ab5636e41be3412faad8a589a4b1c08f",
     "title": "두산에너빌리티 - 두에빌은 뭐든지 두어블(Do-able)",
     "company_hint": "두산에너빌리티",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ab5636e41be3412faad8a589a4b1c08f.pdf",
     "published_hint": "2025-05-15"
@@ -424,7 +604,7 @@
     "source_id": "kuvic-5ec6f7_9f75dbbfd03540679c317eedadc700a5",
     "title": "실리콘투 - 진격의 실리콘투",
     "company_hint": "실리콘투",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_9f75dbbfd03540679c317eedadc700a5.pdf",
     "published_hint": "2025-05-15"
@@ -434,7 +614,7 @@
     "source_id": "kuvic-5ec6f7_80431e458da744ce8feb8e7da09ea4df",
     "title": "AdTech - AI 수익성? 증명이 되.",
     "company_hint": "AdTech",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_80431e458da744ce8feb8e7da09ea4df.pdf",
     "published_hint": "2025-03-21"
@@ -444,7 +624,7 @@
     "source_id": "kuvic-5ec6f7_b7bfedca822c48b2add2b741f9c2c58b",
     "title": "SK바이오팜 - 바이오팜, 꿈과 미래를 팜",
     "company_hint": "SK바이오팜",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_b7bfedca822c48b2add2b741f9c2c58b.pdf",
     "published_hint": "2025-02-24"
@@ -454,7 +634,7 @@
     "source_id": "kuvic-5ec6f7_ef59f34fb49c493f93221ca5b8d571d5",
     "title": "여행업/OTA - What's your OTA",
     "company_hint": "여행업/OTA",
-    "author_hint": "Kuvic 리서치 3팀",
+    "author_hint": "KUVIC 리서치 3팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_ef59f34fb49c493f93221ca5b8d571d5.pdf",
     "published_hint": "2025-03-21"
@@ -464,7 +644,7 @@
     "source_id": "kuvic-5ec6f7_45d5b1ad5ddc42889e88e382f3cd0c6b",
     "title": "패션/명품 - Better than your 루이비통, Your 루이비통~",
     "company_hint": "패션/명품",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_45d5b1ad5ddc42889e88e382f3cd0c6b.pdf",
     "published_hint": "2025-03-21"
@@ -474,7 +654,7 @@
     "source_id": "kuvic-5ec6f7_8ab9035f159f4c2999da1d584deb5822",
     "title": "SK가스 - LNG도 ESS도 사로잡GAS!",
     "company_hint": "SK가스",
-    "author_hint": "Kuvic 리서치 2팀",
+    "author_hint": "KUVIC 리서치 2팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_8ab9035f159f4c2999da1d584deb5822.pdf",
     "published_hint": "2025-02-24"
@@ -484,7 +664,7 @@
     "source_id": "kuvic-5ec6f7_4312dfbad1c94971aeb97844d09a91b6",
     "title": "하이브 - 하이브'리드' 엔터",
     "company_hint": "하이브",
-    "author_hint": "Kuvic 리서치 1팀",
+    "author_hint": "KUVIC 리서치 1팀",
     "page_url": "https://www.kuvic.com/research",
     "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_4312dfbad1c94971aeb97844d09a91b6.pdf",
     "published_hint": "2025-02-24"

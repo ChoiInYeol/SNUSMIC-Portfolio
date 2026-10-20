@@ -1,0 +1,1796 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "policy_version": "w-open-plan-v1",
+ "market": "KR",
+ "trading_day": "2026-10-21",
+ "open_at": "2026-10-21T00:00:00+00:00",
+ "basis_session": "2026-10-20",
+ "basis_observed_at": "2026-10-20T16:33:50.074116+00:00",
+ "skipped_closures": [],
+ "quantity_basis": "estimate_from_close",
+ "account_snapshot": {
+  "nav_est_krw": 272231867.45,
+  "cash_krw": 34305024.65,
+  "incoming_contributions_krw": 0,
+  "reserved_for_earlier_plans_krw": 0,
+  "est_sell_proceeds_krw": 0,
+  "cash_after_plan_est_krw": 0.0,
+  "target_budget_krw": 13611593.37,
+  "position_count": 17,
+  "slots_free": 10,
+  "marks": {
+   "KR": "2026-10-20",
+   "US": "2026-10-19"
+  },
+  "principal_krw": 146000000.0
+ },
+ "contributions": [],
+ "orders": [
+  {
+   "side": "buy",
+   "ticker": "060250",
+   "market": "KR",
+   "name": "NHN KCP",
+   "instrument": {
+    "symbol": "KRX:060250",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "9183495b326e773696ba6deee57190936051ae7f3f74de91cb80f10a75a0a83e",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2019-08-11 (1개 학회) · 최초 관측 2026-10-21 01:33 KST",
+   "budget_krw": 13611593.37,
+   "est_price": 12640.0,
+   "est_fx": 1.0,
+   "est_shares": 1073,
+   "est_gross_krw": 13562720.0,
+   "est_cost_krw": 40688.16,
+   "est_cash_flow_krw": -13603408.16,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.9820471523895895,
+   "atr_prior": 823.3333333333334,
+   "conditions": [
+    "수량은 2026-10-20 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 1,
+   "order_id": "8a10b4e1677c98e4-01"
+  },
+  {
+   "side": "buy",
+   "ticker": "075580",
+   "market": "KR",
+   "name": "세진중공업",
+   "instrument": {
+    "symbol": "KRX:075580",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "ca0c42cb41cd8f46c4c768e563d15f3272937ddc95ccc50cb23b04ee72a74652",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2019-08-11 (1개 학회) · 최초 관측 2026-10-21 01:33 KST",
+   "budget_krw": 13611593.37,
+   "est_price": 7870.0,
+   "est_fx": 1.0,
+   "est_shares": 1724,
+   "est_gross_krw": 13567880.0,
+   "est_cost_krw": 40703.64,
+   "est_cash_flow_krw": -13608583.64,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.983942595435404,
+   "atr_prior": 461.1904761904762,
+   "conditions": [
+    "수량은 2026-10-20 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 2,
+   "order_id": "8a10b4e1677c98e4-02"
+  },
+  {
+   "side": "buy",
+   "ticker": "091120",
+   "market": "KR",
+   "name": "이엠텍",
+   "instrument": {
+    "symbol": "KRX:091120",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "6be7e96d62c29001bf9f3fbac4e1e751109e20da54d0ff8e74248ddeca0cc2a9",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2019-08-11 (1개 학회) · 최초 관측 2026-10-21 01:33 KST",
+   "budget_krw": 7081837.91,
+   "est_price": 6800.0,
+   "est_fx": 1.0,
+   "est_shares": 1038,
+   "est_gross_krw": 7058400.0,
+   "est_cost_krw": 21175.2,
+   "est_cash_flow_krw": -7079575.2,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 2.59278976639101,
+   "atr_prior": 358.45238095238096,
+   "conditions": [
+    "수량은 2026-10-20 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 3,
+   "order_id": "8a10b4e1677c98e4-03"
+  }
+ ],
+ "excluded": [
+  {
+   "ticker": "104460",
+   "name": "디와이피엔에프",
+   "signal_id": "f18cdf0cea3e9d96a2109eba760e117e7c9633ac992478a8ad4a9b906c500991",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "131370",
+   "name": "알서포트",
+   "signal_id": "8110a55612049b4592ef2887d15670a01adbf2024602baca0a663b6814e42a6b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "200130",
+   "name": "콜마비앤에이치",
+   "signal_id": "e7d57926120f03c1a41c7d60d842b92947ecceb22a46237289d3b91bba0623e7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "206560",
+   "name": "덱스터",
+   "signal_id": "b83d7581b06371013fbda1572f18d5919a32da7a76c4fd4c751f98acde92f6ff",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "228760",
+   "name": "지노믹트리",
+   "signal_id": "463ab909f47d9b628f98c9e894789091c457097096151c1c4986ae919f72786d",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "298050",
+   "name": "HS효성첨단소재",
+   "signal_id": "da37076dc7ea9e2ed6c2cebdb3f97bc213c82054215683b5b0ba29339991a43f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "161390",
+   "name": "한국타이어앤테크놀로지",
+   "signal_id": "3ae8f5f3b6fef7bb621921a5b2109a6b2decfd84836b635216a3ec3171f4d0f7",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "086450",
+   "name": "동국제약",
+   "signal_id": "2b0e2d85379854283d833de844ec11e7a9f68deee23a4fc943c352101f1a3256",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "090460",
+   "name": "비에이치",
+   "signal_id": "d5fdd6f0569100eafe7d6362535895b76342c4a23032be24068402f0458be994",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "1617586559950b54b21207ac9cb514d1c571497da990ba04a4debe2fb5f0cb20",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "272550",
+   "name": "삼양패키징",
+   "signal_id": "7581e129f0f6d5c6713a1241bccda6fb6cb47b4ef27c228892d6b44fcea5dc02",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "282880",
+   "name": "코윈테크",
+   "signal_id": "24a38187fcb0e6a753a2a399228ff0456a274acb61f86f5010efb77883c4b4d3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "034730",
+   "name": "SK",
+   "signal_id": "23ffc332f5a30b8e6f23d091c24f8ad5e028f90ff92be103f0ea5d7c9bf29ef8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036540",
+   "name": "SFA반도체",
+   "signal_id": "22add9a67d56856a6adc5246e0a491c40481b3a0737d1acb164ff314840a7419",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036560",
+   "name": "KZ정밀",
+   "signal_id": "1f683c0e430f2aad47b0273a0c00ac9de5020d85d845d3fd7da0b889213cc4d7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "082920",
+   "name": "비츠로셀",
+   "signal_id": "18795965f9d098c7fe755762292a231ee04c2f674d72c34438975ca9916b2eb3",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "084850",
+   "name": "아이티엠반도체",
+   "signal_id": "1157cbba5c698485da0a970a6cb217accdf1960bd247569ed36b77f0d3c7c771",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "018880",
+   "name": "한온시스템",
+   "signal_id": "33778318a41385047cb650485ece27c1c70a19d2ee2762c4581cce32460b9f08",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "075580",
+   "name": "세진중공업",
+   "signal_id": "b10216c110f6f713c255e396c0cb6a5532c51bea2efec60c536935be3e62b515",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "081660",
+   "name": "미스토홀딩스",
+   "signal_id": "fb9022d5ab13b4c94ce593da7027b503df0a6bd57a41a4faf87191053088c718",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "090350",
+   "name": "노루페인트",
+   "signal_id": "ab9c95e3fece6a7f4843c89dd8ce68bac013c2ad4c498348005ce42e2b15e2ad",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "120240",
+   "name": "대정화금",
+   "signal_id": "423139eb0f9379e57ecce05fc650b80b04428757f7d56b54ab2377de323f75e1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "298000",
+   "name": "효성화학",
+   "signal_id": "4767461b478a3d26fabd01c9cdc029e7e1c865572714a31ab567e660fca85ed9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "051900",
+   "name": "LG생활건강",
+   "signal_id": "d598496b72cf605b4c991b519789b03eabba8fc97c6f09f2fa09032034a4f106",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "064290",
+   "name": "인텍플러스",
+   "signal_id": "457f07b285d85c6d931b73e3efd149bdec4e6e650a1f2ed36df5229646cb331a",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "140860",
+   "name": "파크시스템스",
+   "signal_id": "23844bff5aa9bdf1584686af568deff6ebb57bc9c3b4aadb4a6a292aefc91b37",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "194700",
+   "name": "노바렉스",
+   "signal_id": "c7ee5086b30edbd3486a74f5dd204fd88703557a9a47c948be8d2bed6b6575e9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "230240",
+   "name": "에치에프알",
+   "signal_id": "07633d68fbd4eb438673bc699033c1cc24a06fb52200732fb01e859fa6c118ba",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "251970",
+   "name": "펌텍코리아",
+   "signal_id": "f262175af6432f1ac1e322e51896896de8c051e61af6c24771e3fc425888508c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "004170",
+   "name": "신세계",
+   "signal_id": "5e6070c92570c4a2ed42e3551bd0dc439bae16ada8fe8da692458080715a62f8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "089590",
+   "name": "제주항공",
+   "signal_id": "66710a62cbc7de909a149bc1e4d265aa1a827179666fa313a4674cc3b142b1e7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "097950",
+   "name": "CJ제일제당",
+   "signal_id": "feae4e21fd95f6479cf6b75725c323dd559afb9e03333353695ad2fdcffed51f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "131390",
+   "name": "원익피앤이",
+   "signal_id": "7a56f8410081103dec5eef81970a5733e2620178508702c71bf9d959cdedf02d",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "302430",
+   "name": "이노메트리",
+   "signal_id": "f8f1333831c5de178a0c8665db8c47bcca899c312d4f4a72ca10a5ed11635cc7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "011790",
+   "name": "SKC",
+   "signal_id": "2131bbd79e03ea97e8a17695d3a845e01b0e5c0ea127876d09ee679f00da4e5b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "039030",
+   "name": "이오테크닉스",
+   "signal_id": "b94e29e3b5b9702e73178e89bdac6297c1e3fec45a378c015d5868c42bab8bc8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "137400",
+   "name": "피엔티",
+   "signal_id": "773bedd31fc6267669cdc5d7bfc5f8197f34d4e6effd9ede204000dc6e9f2c8c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "187870",
+   "name": "디바이스",
+   "signal_id": "179633befd6d627c75a5e8c395eac8233c3cffd2df3ba3a748888cab783bda32",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "302550",
+   "name": "리메드",
+   "signal_id": "f31d1fcabc12409de67d28bc1ed1350851875fe2de2618ac4fea1199cb95c42a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "007070",
+   "name": "GS리테일",
+   "signal_id": "f5e37c490a0e99a6fa002246e4320270b690397f2342cddd939917e76116bd2f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035420",
+   "name": "NAVER",
+   "signal_id": "e7bc3a99a483c547490638a7d0aa45dcc2e0d8c23929644b0321135c5447c1f9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "033640",
+   "name": "네패스",
+   "signal_id": "581cb21409e1d772c66e7df5e3bfe109debde21eee70d76e533e9a79a4da11a3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "075580",
+   "name": "세진중공업",
+   "signal_id": "7191da9a1380990ce1ca161b309b6a97e761a82005c80ec489c7590e6f2c5b9f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "131970",
+   "name": "두산테스나",
+   "signal_id": "bb59238750fc28d284a632fdf7e81b97521b233afc104efc5f3ddf5c7dd79869",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "317400",
+   "name": "자이에스앤디",
+   "signal_id": "bc9c6d3774ff3ccb18961fe6901f6df8713b45bf593df502d3d9ee20d5c5f622",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "009410",
+   "name": "태영건설",
+   "signal_id": "b6e869c1be3c7a7dcce9ef9305882198837628e25eb846ea18e995e79e20afac",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "073490",
+   "name": "LIG아큐버",
+   "signal_id": "32c78c8785fc7bc11bf2f4af8a7193f2fcdfc06f42014c8452bd08b8c593e88b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "041930",
+   "name": "SY동아",
+   "signal_id": "bc2851fce8957b627e214482856303e288e92d74db735af9e87bd4ffcb2d0be5",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "053610",
+   "name": "프로텍",
+   "signal_id": "dd22f8fd59049e4c22e2e623f537b80afb8a9830189d0dd5e01a8f7a780b0ceb",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "112610",
+   "name": "씨에스윈드",
+   "signal_id": "8f4c6d1c08b4cacf8cafe4c289cdd86e24402af0e07d2e122436b50f8b5de9dc",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "213420",
+   "name": "덕산네오룩스",
+   "signal_id": "da498c8bd9a8c74761d1491e921b7d73995f4ca8c357498cc1e1cd433c3aa996",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "278280",
+   "name": "천보",
+   "signal_id": "4d5fa75c44df3bc02707bcd28a545eff3683951c56d6de9946d59bde16842b3a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "253450",
+   "name": "스튜디오드래곤",
+   "signal_id": "2d93fad7439b0c1b68d61d1bf66cd0ee8ea57a130491d9a4af51d69d3bde8a62",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "108320",
+   "name": "LX세미콘",
+   "signal_id": "af4fd9b18ca84b932d28a69bf7c75b8207c9f9bc25e4d11742892b2a6d58769a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "189300",
+   "name": "인텔리안테크",
+   "signal_id": "e556e66d4386579670f9bd94ad6c24c319dfc3e4747295651e29997fdf9062c4",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "187870",
+   "name": "디바이스",
+   "signal_id": "a1032c39565ec41036eaf1ad194a29921280514422190e186606d439b8477932",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "025900",
+   "name": "동화기업",
+   "signal_id": "feacbbae4b5277660f2aede52563130ecfdcf7a0b26ccea3332608ad9297d7fc",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036890",
+   "name": "진성티이씨",
+   "signal_id": "5dea3cecef4653965fe36bd553bafe3e1c6ec3b064f7b7e1f4df1950551145d2",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "048260",
+   "name": "오스템임플란트",
+   "signal_id": "fc09a2b2ee04091e77d203f3d8eaa3e97a9a3378c5b5556b6a8caf1bd37329df",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "079810",
+   "name": "APS이노베이션",
+   "signal_id": "4419dcfa674aa1657edfa0ce2e78ef7d9480566ca08c419caed6f8ce8c52ed64",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "092870",
+   "name": "엑시콘",
+   "signal_id": "8a31ae9920086ffa0d6a7db237fc79aab3893a95b7eac75d098baa50b713a795",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "101360",
+   "name": "에코앤드림",
+   "signal_id": "641a6d17cf7b0adc246f45268f5901143fd66895a990681c0fdbc1ffae002463",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "138080",
+   "name": "오이솔루션",
+   "signal_id": "265367838a3d2a2c87a56e42f4744feb5cfe1febe1a35271de9c40538d1eafe8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "192820",
+   "name": "코스맥스",
+   "signal_id": "c6b6f83861f6d21486c90de137faa0ab153af4a04be92621cb77bb6a117b6fe9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "347770",
+   "name": "핌스",
+   "signal_id": "213fb965acb30f0734815150379175fd47916fe02b909e98d09945947e4e0f67",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036890",
+   "name": "진성티이씨",
+   "signal_id": "d6e31c75f943038d9ce208c326f9fb6833500af60bce7044d004dbfdee8b662e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "090850",
+   "name": "현대이지웰",
+   "signal_id": "526a587114c7cec3eea92e8562d09f57476701a4c042249adf4ac09f138544c0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "115450",
+   "name": "HLB테라퓨틱스",
+   "signal_id": "1c52621b550de0ffa5340b0e5a1cf0eb06b7bc9cf635e711e15f95eb89093a2f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "306040",
+   "name": "에스제이그룹",
+   "signal_id": "a1c7a907c2d27baa2594719fee4bbb7d8997c1a6d89adb757e9cec2b68b9e621",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "353810",
+   "name": "이지바이오",
+   "signal_id": "39a38afb577185891187373441aad909ad445627140f92f091a4cd4dc110e287",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "d6a82c4e2f23b92a86b0ed00f14df30ab35edccb541b4f5ea10880c57197ce62",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "139480",
+   "name": "이마트",
+   "signal_id": "76bdd267cff3a0a2928a9c888ba7c2e0c9a67808e5e367f0b66f81f399f99814",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "018880",
+   "name": "한온시스템",
+   "signal_id": "a440ce03522fbcf1d61c723fa58c824595836e6bfc6f24549927f9be65989cf9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036890",
+   "name": "진성티이씨",
+   "signal_id": "623f0723d6ffdc981081059c9ca6e6190a0a1e76a21e3c6f54681290b6b28876",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "060150",
+   "name": "인선이엔티",
+   "signal_id": "1892b6eb86c14ee6c7ca8623a1d17feeb45d4cf74dcb92333a28a300f492d0bf",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "105740",
+   "name": "디케이락",
+   "signal_id": "62f2c25da7b959bfcf4434737fd4892c673701ce7c9be444b4410ebe274a76d1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "006650",
+   "name": "대한유화",
+   "signal_id": "0100948d99a6348073bd8afca0ab1fc4e020c035046d3a7fa7d0b6b80a3aaca7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "166090",
+   "name": "하나머티리얼즈",
+   "signal_id": "23ce576f2bacb01b74dff53035902dcf25f1e0bdea2c5ea4e5015a06d0152af0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "170790",
+   "name": "파이오링크",
+   "signal_id": "25cf8b7a39145ba4e41f5cda44dd9f5a8d77acf4a9ba5c671a8d6ca3996e9b37",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "285490",
+   "name": "노바텍",
+   "signal_id": "3d82cf900c52117570428dae3b4815a06713c91eadd6af4461140cd81593aca3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "006650",
+   "name": "대한유화",
+   "signal_id": "3845091041386a9749b2b2a633488de5d1bc3de834de7a90ec40ad0a55cf1639",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "079810",
+   "name": "APS이노베이션",
+   "signal_id": "44ff181cb90bd0632db2869460dfd06acc9154e79b96f2b7c4ab008e46d58c13",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "004710",
+   "name": "한솔테크닉스",
+   "signal_id": "05eb43006e3f7a5262ec37723d1234e78fc1bac90cbfaf86392ef7f3dd13ad91",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "010620",
+   "name": "HD현대미포",
+   "signal_id": "96def1ad5d37c7eb5e735a922a7dff2aaf207edc26476cfe567c30f246dcef02",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "036200",
+   "name": "유니셈",
+   "signal_id": "504f80aa2897d5b4337a164ff0b9e2ec55ab93aeed56347d0dcbd7cc21072495",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "092190",
+   "name": "서울바이오시스",
+   "signal_id": "abd1d4f476a61ca3abe321f10219ae972f710a3300605353be7bfc98c27b5fda",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "097520",
+   "name": "엠씨넥스",
+   "signal_id": "562d3407a6afaeca74e0d85e55b30fdc51bbc0ddef1d66e150f126261cba92b8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "308170",
+   "name": "씨티알모빌리티",
+   "signal_id": "f4b29ea033ba4bd911a11fd07e5b2428a7b73b0056aaedebdc3b7673dde819ad",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "028670",
+   "name": "팬오션",
+   "signal_id": "95e44e94c1950a73e4f412ffd5e467e43bfce3fb152fc1225982632ffc9b5782",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "195870",
+   "name": "해성디에스",
+   "signal_id": "3b7a2e9283d22609c41aee2dd74c83d8261fbc2556c22babf64937e76b294c69",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "008490",
+   "name": "서흥",
+   "signal_id": "d7efb030c7c1337e71b8000be407d29bed1ec9f562cb9dc87eea327415214b23",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "009830",
+   "name": "한화솔루션",
+   "signal_id": "082360e460909bd94e2533f5694d1f72ac653687e5490ef85ff9e2ab8971c49b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "033780",
+   "name": "KT&G",
+   "signal_id": "13c9d0c656e803dfd9cc6abea57a2d2f034bbdd3970e993aee339d25787b0d18",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "115960",
+   "name": "연우",
+   "signal_id": "f6fcb8e7062056b72baaed8ee60f42cb9e2c9bacfb4d7c09b0f41db112c3a51b",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "064290",
+   "name": "인텍플러스",
+   "signal_id": "1978e44cac1b7d345627ae8f2607474e641a3d4da1ee1b7f465a329b38584ab4",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "005850",
+   "name": "에스엘",
+   "signal_id": "847ad308076e05da0c26f1a34b6f4fcebb902e0e2949a22ffa1d69d7a59c3aa3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "011070",
+   "name": "LG이노텍",
+   "signal_id": "2da8fc08b71b6d0b809499d774798cc3f38268b7b52b608f70f152e75151ffcf",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036810",
+   "name": "에프에스티",
+   "signal_id": "565aee886d4c53583b9523de711e425096290499c6308422b662ddd8e60ff366",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "089030",
+   "name": "테크윙",
+   "signal_id": "2a4edae6012dea5937e3836c794bddc3d789f2a922e62f86d606c39e3d589c9b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "060150",
+   "name": "인선이엔티",
+   "signal_id": "107f4f29c89c6dfcee73b7dcf6e29c8fbffc7a2f41279dd37775d5854bd87f95",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "c69d1cf25f049a1bbdb547f09612f51ce48de23bc1baf0ecd0d07ebad4854cac",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "004020",
+   "name": "현대제철",
+   "signal_id": "ebfe6865e2e59dc9a62d67621a4ff4f4d1a75a40bc48db18588d5bbfffc3f040",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "007690",
+   "name": "국도화학",
+   "signal_id": "0c9069e58c1850c11f90889c1cf8531b6019a8367752fe4424740eaf391f2865",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "017650",
+   "name": "대림제지",
+   "signal_id": "02edc1ea09cc5062d3187e881270a57fc5239219a1ae964a1344c3896e2484c9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "210e1e9a709b92eb6aa6b8f3ac4553fe335184ebbfcfdc96fcc236a0d46df233",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "053030",
+   "name": "바이넥스",
+   "signal_id": "b65f7bb1ae854a63c29e4f33a47d64acf503f60ca454c02aec3b0f2da4886d3f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "194480",
+   "name": "데브시스터즈",
+   "signal_id": "404678979b5678c2f477c7ca7db0f9e937aeb30cc33826cbb5776f0d6112707c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "248070",
+   "name": "솔루엠",
+   "signal_id": "8e928aeca55129cce9740a67cac02b09fe02ac1a50c5d9435519adb1247d7772",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "344820",
+   "name": "KCC글라스",
+   "signal_id": "a59b41abf78e24e3ea78d8bcb805fcbd090eda9339ca17077c2da9d3e473a1a4",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035420",
+   "name": "NAVER",
+   "signal_id": "e68af566db2af048b7d52861a4699cc54f100be9f826ce60c1308fdf3cc00e3b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "112610",
+   "name": "씨에스윈드",
+   "signal_id": "b8f8db4c97638cf1eaa8e4d3a7e00d9b2f8b7f4f0489052b6efffa3da5c8f811",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "108670",
+   "name": "LX하우시스",
+   "signal_id": "84ded5c4b717fba3070a9d9e310a03a6ac65c98bfd3160cc12c65ec7ff9b229a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "131970",
+   "name": "두산테스나",
+   "signal_id": "1abaddecd474482c5921d9641b67cd874238bd037913295d10e44436a58e0333",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "074600",
+   "name": "원익QnC",
+   "signal_id": "d36c73ab1a4f57bd1260935c038049b3a7178e11f255b8c05b35304c74105350",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "126340",
+   "name": "비나텍",
+   "signal_id": "8f5fd4963b07dcf7b70f673770933e1a5517ca4fd92643b6eb94f754f10ef03a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "005850",
+   "name": "에스엘",
+   "signal_id": "fdbfac1e6a4c0f1ea92794bced9b4e6ebd60ce1555d810a87f9bec03a1a55563",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "032640",
+   "name": "LG유플러스",
+   "signal_id": "2618385a6052d0277c9626744b23214783e2b65363df6c83a5142756785806c8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036420",
+   "name": "콘텐트리중앙",
+   "signal_id": "b533558abcc842f01a8cfee3d149cf22c28208c343419b16716ff4c12c9fb43a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "298020",
+   "name": "효성티앤씨",
+   "signal_id": "215c08c4d1206548c2c07ff4755af9529721578d0cbdba9774891c216fa292bb",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "207940",
+   "name": "삼성바이오로직스",
+   "signal_id": "48f92d7fb915feb924870d8162154f4ec8cd8a0dc663e00813d4f84b386042e7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035420",
+   "name": "NAVER",
+   "signal_id": "631b9fdb5556dd6593595ce2dd24b772f31de3db75e8ebbe5653881fbe36d738",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "253450",
+   "name": "스튜디오드래곤",
+   "signal_id": "f3ba6cd68ddf33730a16374a77c6c6a0761881785f9e0f0ef3dd391ac68dd8f2",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "004000",
+   "name": "롯데정밀화학",
+   "signal_id": "b5ced0f12ad53041d2c6585dac3d97d5852b02071c6499d355c6501795ed720b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "010060",
+   "name": "OCI홀딩스",
+   "signal_id": "e79aee0463ae2db8bb8f5fb8a20ac0b95a44611a50885dd73fc8e6f11c92f2c3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "012330",
+   "name": "현대모비스",
+   "signal_id": "bf67bfdf4b756259d62014032c577f3d482b90010d76f58a9a11d32e4cce61a7",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035760",
+   "name": "CJ ENM",
+   "signal_id": "7dd9cf7dd7dfc0427c536dc19a6678baf8368f9944a0e9d18fdd779bac9b3de1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "120110",
+   "name": "코오롱인더",
+   "signal_id": "45f5e5d2d5e70e3c1d7525b5004057bb77f188a2d91cef88d0b584f8b22a6114",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "263720",
+   "name": "디앤씨미디어",
+   "signal_id": "05165f9c46955bb961d016215d099934b95a7ee65f606227a26959cdd0d5936b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "097950",
+   "name": "CJ제일제당",
+   "signal_id": "1cc06f8e38f5ad442b8f3f246deb31cb16f2da97cfeb1a6ec1915fa98cb979b4",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035600",
+   "name": "KG이니시스",
+   "signal_id": "04f176528d501f85f36f76491924178a6d481182c29817316cd027e0cbdb9cbe",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "067160",
+   "name": "SOOP",
+   "signal_id": "beb21e665d42e7268b346d1744303a2322d5e754628ff247ea77f841246dfc97",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "020000",
+   "name": "한섬",
+   "signal_id": "49ee97b356582c918ae509b05230c2ea793d516852ed04583e6a66631e84bc00",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "069960",
+   "name": "현대백화점",
+   "signal_id": "025215c2535c02e9a7fe23e273d312822c7a19319100be1630622555d7f105b1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "383220",
+   "name": "F&F",
+   "signal_id": "c677ed26628af39f7406cdc42f987fb4a015af02fdc60dff1f91e3713f0cc7a3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "003670",
+   "name": "포스코퓨처엠",
+   "signal_id": "bdcc623e5b3824aef74cc2103f64c5fff2d8a4b682250e0caa380616cc4622e0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "011790",
+   "name": "SKC",
+   "signal_id": "544569d527bbb5ee55266d6c6aea7aa129ea808b5dd0cff166551ba40041d73f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "001530",
+   "name": "DI동일",
+   "signal_id": "b632c871a8235a2b5adbddd136792eed807a09818753befbc638e0ead6de9b68",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "204320",
+   "name": "HL만도",
+   "signal_id": "f3a9361159de4a0679ae0bcbee033296a92c38f70cbb45935511eef2f2f204b4",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "229640",
+   "name": "LS에코에너지",
+   "signal_id": "62ff2007ee5bb2eafb7cf3ad04e6004ff55b23ff5d9785a422c6f92b2dc48a92",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036930",
+   "name": "주성엔지니어링",
+   "signal_id": "71ddac8249362eaba1ebf99f6791de34abf47ceee4c2766cbb62cad9eb58476f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "054780",
+   "name": "키이스트",
+   "signal_id": "a088f007c835253b42054a8db02020871c8026389a85d402b5d574608a062ede",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "148150",
+   "name": "세경하이테크",
+   "signal_id": "0740a8d101ebd2fd772f284b876e29ee1adbc33fd3f4a6b295850f09085ef4b3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "348210",
+   "name": "넥스틴",
+   "signal_id": "079858896d4ca8000e94f71bf70e92fd458487f12626da620671a6f64693bb25",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "004250",
+   "name": "NPC",
+   "signal_id": "ee107498ebb515d0429b81e2f95f54d828c9725f61e5dc82d6dcec37a07fffbe",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "122640",
+   "name": "예스티",
+   "signal_id": "b30d47d034d97ea5342f78433cb21b735e47dc9bc515544083946196c33c1148",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "293490",
+   "name": "카카오게임즈",
+   "signal_id": "561f866dc1423d75a7f4128ecd8715cfa98e8700ac5edba5479c295863f58ec9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "352820",
+   "name": "하이브",
+   "signal_id": "6f59486a0d85413ebff815d96046ed421fb57170279795172720d9a72a61b068",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "376980",
+   "name": "원티드랩",
+   "signal_id": "b22a29dae65ba1c357be2be5cbdacd47e36d13471a243e66c5b8128cf4e592ed",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "069960",
+   "name": "현대백화점",
+   "signal_id": "2a46a432d36c1c71c058df346b9f713c9c34f563870b2ba1391cd8082e10fce9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "078600",
+   "name": "대주전자재료",
+   "signal_id": "58cfacf62e72d056b63e0987af15a14024d5dc3974d986d0ae9bcfe6deb70396",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "216050",
+   "name": "인크로스",
+   "signal_id": "d4542bfb419b5c89d501672199bdeac3ec215708da1b3e2769665de4b5d028d6",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "189300",
+   "name": "인텔리안테크",
+   "signal_id": "2efd7161c2d6ef191d62dfe39389f93e032b1442f7534048e4a092a5d1324f30",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "003030",
+   "name": "세아제강지주",
+   "signal_id": "c3656353003eadfd1e92aa2e739b2acd367fe5975df921ec076ae4487ddf31f4",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "237690",
+   "name": "에스티팜",
+   "signal_id": "7ae0229b3da222d703deee15fab1897f4169a1185c65bd2c7067b90b168e88e1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "294570",
+   "name": "쿠콘",
+   "signal_id": "a3fac6fb1d79fd226227ad1cc42ee07496ed75c1116b640bce9072f400d849c3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "348370",
+   "name": "엔켐",
+   "signal_id": "30f02d0dd9409166192619c37310049e563af909ac383c1418387e3504834daf",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "067160",
+   "name": "SOOP",
+   "signal_id": "0e0727189979bbb8203707853b6bc20117b110b3474767175a6bab50c936f345",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "294570",
+   "name": "쿠콘",
+   "signal_id": "55e91e7c81c7086b63789b140dd7f0c135231f2338f58480148592ffe937ed05",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "298000",
+   "name": "효성화학",
+   "signal_id": "7d48a7d409a494a63823874840f611d255a937132d3f3fe0d307b17856a63adb",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "000720",
+   "name": "현대건설",
+   "signal_id": "8355b5f4462ad2399d46f7809066e293dfce87221f0f03ee584fae582f89c4f5",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "039840",
+   "name": "디오",
+   "signal_id": "5cfc2c1010ff0d340b6a57e6108d2398eb853b4f5d9d6f19e6278bba659251a0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "091700",
+   "name": "파트론",
+   "signal_id": "9d46b1369b3ad5314483c9a0d7f172088528c79a0bf27a77586af32240579edc",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "307950",
+   "name": "현대오토에버",
+   "signal_id": "2f0cef6331bc57daad7ca8dad4f022319af5bf96eb1f8502aba6999857563c02",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "005300",
+   "name": "롯데칠성",
+   "signal_id": "a258d71d26e2076b5683d80faba7b456312630bea34ee7f5e879778b8eaa219d",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "222800",
+   "name": "심텍",
+   "signal_id": "bd5e01f704f95ae388cf7bc78255d74a21d214826c2dba368261fffe98f853fe",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "241560",
+   "name": "두산밥캣",
+   "signal_id": "814cbacfa5edac1cde1ca3427b7dff8cece7be1904cf4cdaaae8c17af67de80d",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "195870",
+   "name": "해성디에스",
+   "signal_id": "e80f247c63b22874baaa19c65028db323d552f3079a8ea91189d556370a426f4",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "002310",
+   "name": "아세아제지",
+   "signal_id": "ea9f90a8a9f80076e3c79b5b4731ce6c8c6f3c52672aea8c42de7292c2b92f76",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "009150",
+   "name": "삼성전기",
+   "signal_id": "dd539e12b9a74fafbe24cb80ac3b7b87ef1cfce829f2f5651ec264ebdeb56423",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "035250",
+   "name": "강원랜드",
+   "signal_id": "f8935a3cd80cfe23712f22de29b701794ec7c52f2d176a4ad837e05d0910b0c3",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "051600",
+   "name": "한전KPS",
+   "signal_id": "708b513bc3b63af0aa8c0db9b6d58c5faa2f947a7ab09f49c0c7ab954bfb9b63",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "241840",
+   "name": "에이스토리",
+   "signal_id": "e250842c8e6d8417671cc91969a81e39e6b644f6ea3672b40e6232b2e629b6ec",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "042700",
+   "name": "한미반도체",
+   "signal_id": "705a6ed23de90bc2c4c2c607a7f1881556f1ea89cd21d5ba74cb2efe3da5b8d9",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "073490",
+   "name": "LIG아큐버",
+   "signal_id": "1e0a11068278ba13fd3c41487fcfc43c5231c35500401bb5041c9d436d2369c0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "006360",
+   "name": "GS건설",
+   "signal_id": "f47ecb58d36823c6d0af484682d73812477aea222b73a63e5b70db03080c2af5",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "036930",
+   "name": "주성엔지니어링",
+   "signal_id": "fd63d4fdf8f2a6e641550bdb2eca371a606591656481520536779fa51ccdb507",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "077360",
+   "name": "덕산하이메탈",
+   "signal_id": "9abbde7bba7cb6d212e6907a3916745bc476222a71aac1e59733557ee3774079",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "194370",
+   "name": "제이에스코퍼레이션",
+   "signal_id": "50567915a41ff104aa63854a4e72c0e7fe5296f6d22d77839788ab5e9fb29e8a",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "009150",
+   "name": "삼성전기",
+   "signal_id": "9046fe1e5464b5727b953f96f5dd2e1741e5068434493d82add0920a766f5657",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "020150",
+   "name": "롯데에너지머티리얼즈",
+   "signal_id": "90e6dd356b256d703ae0dfee6fc8a4b21afd82532b8bb2f9864c433c68c06e4c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "178920",
+   "name": "PI첨단소재",
+   "signal_id": "b1571f844dce8ef0ba12d31dc5f5c00d8fd034cb9769e7afb55520903db79b7d",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "287410",
+   "name": "제이시스메디칼",
+   "signal_id": "55ce476f44c64c34dbdcbb30d0a771038508425e928a4431b6b598aa0911c825",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "035900",
+   "name": "JYP Ent.",
+   "signal_id": "ad012599566eb848da69d17a94df57cf70de7a20c85a48ccfa8874923028816c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "043650",
+   "name": "국순당",
+   "signal_id": "493cc8bab8a1def8c4377e40e87fa2188512643941a6e0ccdfe5a4957632453e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "089860",
+   "name": "롯데렌탈",
+   "signal_id": "202bcfee52a67120d01ec7f3ab41b987fc5d3fd1ddfffed9f25071d0184749b6",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "119610",
+   "name": "인터로조",
+   "signal_id": "d0163ec588781895e3ef04e61dc8d7ede02a9cdc541ab78a8bd9716d919431aa",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "007210",
+   "name": "벽산",
+   "signal_id": "f6af416a809625a64de42220099a2c532efbe9aee965eeddf753cd76096a159f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "041830",
+   "name": "인바디",
+   "signal_id": "fba83eab86d375a0066cc77bfbca148a04dddeeb5d6f28e7b07613ff4b0de6e3",
+   "reason_code": "already_held",
+   "reason": "이미 보유 중",
+   "final": true
+  },
+  {
+   "ticker": "114810",
+   "name": "한솔아이원스",
+   "signal_id": "14cf773f1e23875e8e9c8f8640fefda6d11367234c5cfadfd07ba2f36988f2f0",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "215000",
+   "name": "골프존",
+   "signal_id": "5bc9f7c13a0e2cb54e9bbffecad95b948297c3691eab1422ef84b779a0154519",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "310200",
+   "name": "애니플러스",
+   "signal_id": "f4ff1d819540f3c7f1dfe04c622c5247477661941133982f6dacbe5063226910",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "237690",
+   "name": "에스티팜",
+   "signal_id": "42a226b4133b906c4869512ea684168816db116bf81173af216f95859b5e190b",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "025860",
+   "name": "남해화학",
+   "signal_id": "84b7a99091940fa1265319750ac0b4ec51338d97fe3810b15da203213a0709ec",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "112610",
+   "name": "씨에스윈드",
+   "signal_id": "981b0322e24bb714e29b188478055146204fa1cd0ca393a3d0f431e7e8d7654f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "105630",
+   "name": "한세실업",
+   "signal_id": "54c6e2d1bb63411d625911eec35f8b1694062e92a57a1b19064a0258e300211e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "097520",
+   "name": "엠씨넥스",
+   "signal_id": "893d6a51360588324789d70db5ca823609d5a6ffde7a0a41f3d166726018b3c2",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "001060",
+   "name": "JW중외제약",
+   "signal_id": "24f133aa28223990f5449e1e43277c994119680152a78b44b57733a9e2355bd2",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "006890",
+   "name": "태경케미컬",
+   "signal_id": "221fc2f81d20c8d5ad779e49ce697cb7eb4c34196e5ae1a63daf845f1895113e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "058610",
+   "name": "에스피지",
+   "signal_id": "c78b7776af7577185f813f756929780f5feaf1cc19c54a8e630b43b90aefc369",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "085370",
+   "name": "루트로닉",
+   "signal_id": "973b4bb3575fb7dec54c3f850cd20574043e7b75f3a442a0ab005325c258139f",
+   "reason_code": "no_close",
+   "reason": "2026-10-20 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "088980",
+   "name": "맥쿼리인프라",
+   "signal_id": "37d5e30affd23707fb9a7d6395e241bdc85f1f80d69a1a2d471a3a101d29ddc5",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "105840",
+   "name": "우진",
+   "signal_id": "0686c780cb9414eb804bbecc8262255266aa287acfd9ebf9526e66eb76f9a11f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "195940",
+   "name": "HK이노엔",
+   "signal_id": "1db01daf255368119cb06e4c69d0704189849cd8aad006869987c5f1cbb5095e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "353200",
+   "name": "대덕전자",
+   "signal_id": "942dc4bf8bece0276d452392b85def157b588bb2e965afdf5a59ed6b032dcbeb",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "267260",
+   "name": "HD현대일렉트릭",
+   "signal_id": "4ccc383e0200bd0e6426aa186120552a1db77a25dda9bff6168d974ed64315fa",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "011070",
+   "name": "LG이노텍",
+   "signal_id": "c51b30d344418645af41d3eaf6d9315dc27c2489857167ec8ae9800a3f670083",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "222800",
+   "name": "심텍",
+   "signal_id": "5cbe64d87740e866a784bdb57a9804f85309e73d7c942ac4568b0b8584c5ef25",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 0원 < 진입 예산의 50%",
+   "final": true
+  }
+ ],
+ "no_trade_reason": null,
+ "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
+ "status": "active",
+ "plan_id": "8a10b4e1677c98e4",
+ "revision": 1,
+ "frozen_at": "2026-10-20T16:33:50.074116+00:00",
+ "supersedes": null,
+ "revision_reason": null
+}

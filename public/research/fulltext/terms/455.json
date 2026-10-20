@@ -1,6 +1,6 @@
 {
 "schema_version":"1.0",
-"version":"805b72da297f107f",
+"version":"b7eaaa0b83d44c8d",
 "terms":{
 "allerga":"7.0031:qX7",
 "approvable":"7.0031:slH",
@@ -35,7 +35,7 @@
 "jethro":"7.0031:qoD",
 "killing":"5.5367:q5riHtSsa4sXArT",
 "leased":"7.0031:zO",
-"lv":"4.3405:pf4o2o4r_1uW2rb3tr1tLtg1tZ6ue4x2-7wq1re1-H-sBop6sVyI_3",
+"lv":"4.3405:pf4o2o4r_1uW2rb3tr1tLtg1tZ6ue4x2-7wq1re1-H-sBop6rVyI_3",
 "mcneno":"7.0031:vbn1",
 "mdi":"4.2099:xo7re1-W2xn2-o3yj1pP-w1zg1wVzh3rk2-Nw_3yi1_d2-7zk2-p1_g1zAuP-p1ph1",
 "mihck":"7.0031:pcG",
@@ -92,8 +92,7 @@
 "달볶":"7.0031:qoE",
 "당급":"5.2685:ud2rm2tLsgBr1ss4qv7reK",
 "독약":"5.9045:rZ2sNxcW1q-8",
-"동합":"5.7038:ueCrlIpzAsk3pa6",
-"등송":"7.0031:rip1",
+"동합":"5.7038:ueCrlIpzAsk3qa6",
 "딪은":"7.0031:rrn1",
 "렊토":"6.4922:xfVsd3",
 "력생":"3.6130:ug1qVuo1q6sz1q_2vg2qk1q8wt1y3r4tHtGtPo1uQx8qMtArX1q6oe1x9qAmo1q_4sX2yg1sUxh1vg1x1yb2sJqMu6u5un1ok7tHsW1r2s1",
@@ -115,7 +114,7 @@
 "빠짂":"6.1558:suUsp4v_4",
 "삶이":"7.0031:plE",
 "상긱":"5.9045:pjMs-MrKuR",
-"생략":"2.6336:tClUt4mAn4t2qBsAt2tHqFpDp7p5ql1r4u3qCr9vHrTs2sh1rOr5rCrd1tDq5p4sb1p1qj1qMqRp4qMqBqHs5sBtDqDq3p1t3q3p1pb1qItGlCp7m9q8uc2sh1qPr6r1r5r2q1q6r8qBu2r1r6rCr4r2r4sa1s4u5si1wr3pe2u6w4v3r3x7o9sCp1uDs3r3sOuIr6u8qErDu4q4r2r3q6r4q3s5vIsBrJpUp5p4o7oNq5sp2p4w1s5p7",
+"생략":"2.6336:tClUt4mAn4t2qBsAt2tHqFpDp7p5ql1r4u3qCr9vHrTs2sh1rOr5rCrd1tDq5p4sb1p1qj1qMqRp4qMqBqHs5sBtDqDq3p1t3q3p1pb1qItGlCp7m9q8uc2sh1qPr6r1r5r2q1q6r8qBu2r1r6rCr4r2r4sa1s4u5si1wr3pe2u6w4v3r3x7o9sCp1uDs3r3sOuIr6u8qErDu4q4r2r3q6r4q3s5vIsBrJpUp5p4o7oNq5sp2p4w1t5p7",
 "생억":"7.0031:qmS",
 "생통":"6.4922:tz4ssX1",
 "성액":"5.1572:-d2pb2o4vo5od6rm6wZ3ra8vWC",
@@ -140,7 +139,7 @@
 "육양":"7.0031:ppX1",
 "융청":"6.4922:utIxuH",
 "읯퓣":"7.0031:tbk1",
-"이맞":"4.2950:lf1l1q6p1p1q1l4m1qfEu8q1q5q1u3s3r1q3n6rd1rlTri3t9",
+"이맞":"4.3405:lf1l1q6p1p1q1l4m1qfEu8q1q5q1u3s3r1q3n6rd1rlTtr3",
 "읶체":"5.0572:zY3rfRsw1s7sCut1s9tFth2zj2",
 "쟁성":"6.4922:ql1qp3",
 "적등":"6.4922:osGqfK",
@@ -172,6 +171,6 @@
 "핑북":"7.0031:tae1",
 "핯웣":"6.4922:tyj1z9",
 "핳맿":"7.0031:wyj1",
-"해맞":"6.4922:qvFosZ1"
+"해맞":"7.0031:qvF"
 }
 }

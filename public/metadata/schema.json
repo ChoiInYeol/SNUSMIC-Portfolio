@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-20T16:13:14+00:00",
+  "generated_at": "2026-10-20T16:34:19+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -1271,7 +1271,7 @@
       ],
       "column_status": "observed",
       "location": "public/research/review.json",
-      "row_count": 579,
+      "row_count": 581,
       "description": "json · versioned artifact",
       "producers": [
         "build_research_review.py"
@@ -1541,7 +1541,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reports/manifest.json",
-      "row_count": 2409,
+      "row_count": 2419,
       "description": "json · versioned artifact",
       "producers": [
         "collect_ewha.py",
@@ -1616,7 +1616,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reports/kuvic_items.json",
-      "row_count": 104,
+      "row_count": 122,
       "description": "json · versioned artifact",
       "producers": [
         "collect_kuvic_browser.py"
@@ -7047,7 +7047,7 @@
       ],
       "column_status": "observed",
       "location": "data/silver/reports/parse_issues.csv",
-      "row_count": 207,
+      "row_count": 205,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -8669,7 +8669,7 @@
       ],
       "column_status": "observed",
       "location": "data/gold/reports/performance.csv",
-      "row_count": 1471,
+      "row_count": 1472,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -8933,7 +8933,7 @@
       ],
       "column_status": "observed",
       "location": "src/data/report-performance.json",
-      "row_count": 1471,
+      "row_count": 1472,
       "description": "json · versioned artifact",
       "producers": [
         "build_report_performance.py"

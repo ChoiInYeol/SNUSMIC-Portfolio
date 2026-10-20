@@ -12,7 +12,7 @@
   "parking_cost": 0.0005
  },
  "as_of": "2026-10-19",
- "source_as_of": "2026-10-19",
+ "source_as_of": "2026-10-20",
  "started_at": "2026-10-20T11:14:52.781189+00:00",
  "strategy": "W_allweather_chandelier",
  "mode": "forward_paper",
@@ -114,6 +114,21 @@
   {
    "id": "KR:064290",
    "name": "인텍플러스",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:267260",
+   "name": "HD현대일렉트릭",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:011070",
+   "name": "LG이노텍",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:222800",
+   "name": "심텍",
    "weight_pct": 5.0
   }
  ],

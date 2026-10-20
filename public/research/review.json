@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "as_of": "2026-10-19",
+ "as_of": "2026-10-21",
  "records": [
   {
    "id": "data/silver/reports/markdown/2020-10-31_equity-research-지트리비앤티.md",
@@ -9799,7 +9799,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "4977ca04bceb62b8b3d9a4707069c226ff06ef4666725f997134523968100385",
+   "transcript_sha256": "0aa6a42949520148141400bf0169ec378b73f53f02ddf5c10ac83ffc54d5a883",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price"
    ],
@@ -9828,6 +9828,48 @@
    "markdown_url": null,
    "correction": {},
    "detail_url": "/research/reviews/9c86803d4e51643d3dd965b4f44489e0956f183996cf5eee54aacb8c0fef00ef.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/kuvic/2026-10-01_심텍 - 하트(心) 어택(텍) 내 심장을 공격해~.md",
+   "school": "kuvic",
+   "values": {
+    "ticker": "222800",
+    "company": "심텍",
+    "report_date": "2026-10-08",
+    "rating": "Buy",
+    "target_price": 249000.0,
+    "report_current_price": 170700.0,
+    "stated_upside_pct": 45.8
+   },
+   "transcript_sha256": "d5226407da3ab3f1bc6fd7e75a1d65ff9c857eb12d940742b4225dd83243b37a",
+   "reasons": [
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.kuvic.com/research?page=1",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/kuvic/2026-10-01_%EC%8B%AC%ED%85%8D%20-%20%ED%95%98%ED%8A%B8%28%E5%BF%83%29%20%EC%96%B4%ED%83%9D%28%ED%85%8D%29%20%EB%82%B4%20%EC%8B%AC%EC%9E%A5%EC%9D%84%20%EA%B3%B5%EA%B2%A9%ED%95%B4~.md",
+   "correction": {},
+   "detail_url": "/research/reviews/f6766e1d5950fc8b1dfcfe7e1163452bc1752763b739b60c2e34a452207d11b3.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/kuvic/2026-10-01_티씨머티리얼즈 - 너 T야 아니 TC야.md",
+   "school": "kuvic",
+   "values": {
+    "ticker": "125020",
+    "company": "티씨머티리얼즈",
+    "report_date": "2026-10-01",
+    "rating": null,
+    "target_price": null,
+    "report_current_price": 35037.0,
+    "stated_upside_pct": 84.1
+   },
+   "transcript_sha256": "e7b5554e204909a4a11465d2180de3e0351d890160044cbbf965c3e05fccaad0",
+   "reasons": [
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.kuvic.com/research?page=1",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/kuvic/2026-10-01_%ED%8B%B0%EC%94%A8%EB%A8%B8%ED%8B%B0%EB%A6%AC%EC%96%BC%EC%A6%88%20-%20%EB%84%88%20T%EC%95%BC%20%EC%95%84%EB%8B%88%20TC%EC%95%BC.md",
+   "correction": {},
+   "detail_url": "/research/reviews/261e5497f60c4b86ce85c697cd15bd0908043e12fe1e0c5d3a3aac280041a8de.json"
   },
   {
    "id": "data/silver/reports/markdown/kuvic/undated_kuvic-5ec6f7_7302d46cd033470899f067eb2d01c2e2.md",
@@ -10268,15 +10310,15 @@
    "values": {
     "ticker": "267260",
     "company": "HD현대일렉트릭",
-    "report_date": null,
+    "report_date": "2023-01-01",
     "rating": "Buy",
     "target_price": 1061986.0,
     "report_current_price": 778000.0,
     "stated_upside_pct": 36.5
    },
-   "transcript_sha256": "58ee1a0ae286d8bfab4bd4069f79846858d8e75b316f22610c22a07f10175a5f",
+   "transcript_sha256": "03010869f5243c24a98ffd34c137d68a594387297405392e64780a5d8eb35870",
    "reasons": [
-    "missing_report_date"
+    "date_cover_only"
    ],
    "pdf_url": "https://www.voera.co.kr/forum/view/1529214",
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20High%20Demand%20%EC%A0%84%EB%A0%A5%EC%9D%98%20%ED%98%84%EB%8C%80%ED%99%94%20%EB%A7%88%EC%A7%84%EC%9D%98%20%EA%B3%A0%EB%8F%84%ED%99%94%2C%20HD%ED%98%84%EB%8C%80%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD.md",
@@ -10466,7 +10508,7 @@
     "report_current_price": 2417000.0,
     "stated_upside_pct": 73.8
    },
-   "transcript_sha256": "8a5e41e0754869c8d15efd39b947521aeb1efd27f0fd66e7fbf4fa8a8807eaba",
+   "transcript_sha256": "483afe93fc88dd903f92f6baf6a2ab23463c942a8a05ef37766cae118ef1db73",
    "reasons": [
     "date_cover_only"
    ],
@@ -10759,20 +10801,20 @@
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 광학의 재도약과 FC-BGA의 본격 성장, LG 이노텍.md",
    "school": "voera",
    "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
+    "ticker": "011070",
+    "company": "LG이노텍",
+    "report_date": "2026-08-21",
     "rating": "Buy",
     "target_price": 1233000.0,
-    "report_current_price": null,
+    "report_current_price": 550000.0,
     "stated_upside_pct": 124.0
    },
-   "transcript_sha256": "7d98c43a7917346767597750a9e25dee4083b186cf7a4fc4751a367449d4fed5",
+   "transcript_sha256": "2f2d9932c8ca3c970433204d54bb10983dddd98e59d8c6f4298111203a6369b6",
    "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date"
+    "ocr_fallback;date_cover_only"
    ],
-   "pdf_url": null,
-   "markdown_url": null,
+   "pdf_url": "https://www.voera.co.kr/forum/view/1529220",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EA%B4%91%ED%95%99%EC%9D%98%20%EC%9E%AC%EB%8F%84%EC%95%BD%EA%B3%BC%20FC-BGA%EC%9D%98%20%EB%B3%B8%EA%B2%A9%20%EC%84%B1%EC%9E%A5%2C%20LG%20%EC%9D%B4%EB%85%B8%ED%85%8D.md",
    "correction": {},
    "detail_url": "/research/reviews/05fc250c7a6eea1ef25d5422a51f5ef544d34f95e761a721c47c47888b41c0ba.json"
   },
@@ -10916,7 +10958,7 @@
     "report_current_price": null,
     "stated_upside_pct": 47.1
    },
-   "transcript_sha256": "231b127a3e33dd3b4ee5de25d73ab83fd991c8e6f9ea0b5b5b499c0e2cad4e4a",
+   "transcript_sha256": "e628bc0c4638a7c60d0b57ed7459a63ece19ebded077958e89c650e6c4058928",
    "reasons": [
     "date_cover_only"
    ],
@@ -11085,7 +11127,7 @@
     "report_current_price": 32100.0,
     "stated_upside_pct": 38.0
    },
-   "transcript_sha256": "264036145b8db7b7449b4c33b53bafaeb1d38a0bdf0aa0a5e31db662071fb84f",
+   "transcript_sha256": "09668817417b1b126c671f34936aa95e41918dda677e0761e3c7f8e3a5afe6ca",
    "reasons": [
     "date_cover_only"
    ],
