@@ -27,13 +27,21 @@ def test_historical_as_of_is_preserved_and_future_dates_are_capped():
         closed_bar_end("US", now=instant.replace(tzinfo=None))
 
 
-def test_cached_benchmark_is_refreshed_before_it_is_used(tmp_path, monkeypatch):
+@pytest.fixture
+def stale_gld_cache(tmp_path, monkeypatch):
+    """A GLD cache last written 2026-06-09, read when the last closed US bar is 2026-10-18."""
     from backtest import warehouse
-    import yfinance
 
     pd.DataFrame({"close": [100.]}, index=pd.to_datetime(["2026-06-09"])).to_csv(tmp_path / "IDX_GLD.csv")
     monkeypatch.setattr(warehouse, "PRICE_DIR", tmp_path)
     monkeypatch.setattr(warehouse, "closed_bar_end", lambda market: dt.date(2026, 10, 18))
+    return warehouse
+
+
+def test_cached_benchmark_is_refreshed_before_it_is_used(stale_gld_cache, monkeypatch):
+    import yfinance
+
+    warehouse = stale_gld_cache
     calls = []
 
     def download(ticker, **kwargs):
@@ -53,13 +61,10 @@ def test_cached_benchmark_is_refreshed_before_it_is_used(tmp_path, monkeypatch):
     assert calls[0]["start"] == "2026-06-10" and calls[0]["end"] == "2026-10-19"
 
 
-def test_empty_vendor_response_cannot_publish_a_four_month_stale_benchmark(tmp_path, monkeypatch):
-    from backtest import warehouse
+def test_empty_vendor_response_cannot_publish_a_four_month_stale_benchmark(stale_gld_cache, monkeypatch):
     import yfinance
 
-    pd.DataFrame({"close": [100.]}, index=pd.to_datetime(["2026-06-09"])).to_csv(tmp_path / "IDX_GLD.csv")
-    monkeypatch.setattr(warehouse, "PRICE_DIR", tmp_path)
-    monkeypatch.setattr(warehouse, "closed_bar_end", lambda market: dt.date(2026, 10, 18))
+    warehouse = stale_gld_cache
     monkeypatch.setattr(yfinance, "download", lambda *args, **kwargs: pd.DataFrame())
     monkeypatch.setattr(warehouse, "record_raw_prices", lambda *args, **kwargs: None)
     with pytest.raises(RuntimeError, match="benchmark GLD is stale"):

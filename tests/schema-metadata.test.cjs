@@ -1,22 +1,11 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const fs = require('node:fs');
-const path = require('node:path');
-const ts = require('typescript');
+const { loadTs: compile, readJson } = require('./_ts-module.cjs');
 
-function compile(file, resolve = require) {
-  const source = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
-  const { outputText } = ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true },
-  });
-  const exports = {};
-  new Function('require', 'exports', outputText)(resolve, exports);
-  return exports;
-}
 const model = compile('src/lib/schema-metadata.ts');
-const layout = compile('src/components/architecture/graph-layout.ts', (id) => id === '@/lib/schema-metadata' ? model : require(id));
-const svg = compile('src/components/architecture/svg-export.ts', (id) => id === '@/lib/schema-metadata' ? model : id === './graph-layout' ? layout : require(id));
-const raw = JSON.parse(fs.readFileSync(path.join(__dirname, '../public/metadata/schema.json'), 'utf8'));
+const layout = compile('src/components/architecture/graph-layout.ts', { '@/lib/schema-metadata': model });
+const svg = compile('src/components/architecture/svg-export.ts', { '@/lib/schema-metadata': model, './graph-layout': layout });
+const raw = readJson('public/metadata/schema.json');
 const doc = model.SchemaMetadataSchema.parse(raw);
 
 test('focus scopes and structural comparisons share the validated model', () => {

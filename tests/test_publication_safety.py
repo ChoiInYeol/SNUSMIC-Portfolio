@@ -70,7 +70,8 @@ def test_health_failure_is_nonzero_without_telegram(tmp_path, monkeypatch):
     assert not (tmp_path / "health.json").exists()
 
 
-@pytest.mark.parametrize("text", ['{"value":NaN}', '{"value":Infinity}', '{"value":1e309}', '{"value":-1e309}', '{'])
+@pytest.mark.parametrize("text", ['{"value":NaN}', '{"value":Infinity}', '{"value":1e309}', '{"value":-1e309}', '{'],
+                         ids=["nan", "infinity", "overflow", "negative-overflow", "truncated"])
 def test_strict_publication_json_rejects_nonfinite_and_malformed(tmp_path, text):
     path = tmp_path / "invalid.json"
     path.write_text(text, encoding="utf-8")
@@ -78,11 +79,16 @@ def test_strict_publication_json_rejects_nonfinite_and_malformed(tmp_path, text)
     assert not health._strict_json(path)
 
 
-@pytest.fixture
-def published_shapes(tmp_path, monkeypatch):
+@pytest.fixture(scope="module")
+def published_texts():
     root = Path(__file__).resolve().parents[1]
-    back = json.loads((root / "src/data/strategy-backtest.json").read_text(encoding="utf-8"))
-    latest = json.loads((root / "public/api/v1/signals/latest.json").read_text(encoding="utf-8"))
+    return ((root / "src/data/strategy-backtest.json").read_text(encoding="utf-8"),
+            (root / "public/api/v1/signals/latest.json").read_text(encoding="utf-8"))
+
+
+@pytest.fixture
+def published_shapes(published_texts, tmp_path, monkeypatch):
+    back, latest = (json.loads(text) for text in published_texts)  # fresh copies: each case mutates them
     back_path = tmp_path / "back.json"
     latest_path = tmp_path / "latest.json"
     monkeypatch.setattr(health, "BACKTEST_PATH", back_path)
@@ -90,14 +96,17 @@ def published_shapes(tmp_path, monkeypatch):
     return back, latest, back_path, latest_path
 
 
-@pytest.mark.parametrize("mutate", [
-    lambda back, latest: back.update(multi_strategy=None),
-    lambda back, latest: back.update(multi_strategy=[]),
-    lambda back, latest: latest.update(slots="invalid"),
-    lambda back, latest: latest["counts"].update(open_positions=True),
-    lambda back, latest: latest["counts"].update(open_positions=999),
-    lambda back, latest: latest.update(headline_strategy="MISSING"),
-])
+SHAPE_CORRUPTIONS = {
+    "backtest.multi_strategy=null": lambda back, latest: back.update(multi_strategy=None),
+    "backtest.multi_strategy=[]": lambda back, latest: back.update(multi_strategy=[]),
+    "latest.slots=str": lambda back, latest: latest.update(slots="invalid"),
+    "latest.counts.open_positions=bool": lambda back, latest: latest["counts"].update(open_positions=True),
+    "latest.counts.open_positions=999": lambda back, latest: latest["counts"].update(open_positions=999),
+    "latest.headline_strategy=unknown": lambda back, latest: latest.update(headline_strategy="MISSING"),
+}
+
+
+@pytest.mark.parametrize("mutate", SHAPE_CORRUPTIONS.values(), ids=SHAPE_CORRUPTIONS.keys())
 def test_shape_corruption_is_reported_not_silently_published(published_shapes, mutate):
     back, latest, back_path, latest_path = published_shapes
     mutate(back, latest)

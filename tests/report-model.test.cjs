@@ -1,27 +1,11 @@
 const assert = require('node:assert/strict');
 const test = require('node:test');
-const fs = require('node:fs');
-const path = require('node:path');
-const ts = require('typescript');
+const { loadTs, readJson } = require('./_ts-module.cjs');
 
-const raw = JSON.parse(fs.readFileSync(path.join(__dirname, '../src/data/report-performance.json'), 'utf8'));
-const source = fs.readFileSync(path.join(__dirname, '../src/lib/report-model.ts'), 'utf8');
-const { outputText } = ts.transpileModule(source, {
-  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
-});
-const exportsObject = {};
-const moduleRequire = (name) => {
-  if (name === '@/data/report-performance.json') return raw;
-  if (name === '@/lib/report-meta') return {};
-  if (name === '@/lib/report-contract') {
-    const contract = fs.readFileSync(path.join(__dirname, '../src/lib/report-contract.ts'), 'utf8');
-    const compiled = ts.transpileModule(contract, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 } }).outputText;
-    const result = {}; new Function('require', 'exports', compiled)(moduleRequire, result); return result;
-  }
-  return require(name);
-};
-new Function('require', 'exports', outputText)(moduleRequire, exportsObject);
-const { validateReportDataset, ReportRecordSchema } = exportsObject;
+const raw = readJson('src/data/report-performance.json');
+const deps = { '@/data/report-performance.json': raw, '@/lib/report-meta': {} };
+deps['@/lib/report-contract'] = loadTs('src/lib/report-contract.ts', deps);
+const { validateReportDataset, ReportRecordSchema } = loadTs('src/lib/report-model.ts', deps);
 
 for (const [field, invalid] of [
   ['school', 'unknown-school'], ['rating_class', 'unexpected'],

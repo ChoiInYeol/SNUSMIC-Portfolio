@@ -1,14 +1,10 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const fs = require('node:fs');
-const ts = require('typescript');
-function compile(file, dependencies = {}) {
-  const code = ts.transpileModule(fs.readFileSync(file, 'utf8'), {compilerOptions: {module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022}}).outputText;
-  const exports = {}; new Function('require', 'exports', code)(id => dependencies[id] ?? require(id), exports); return exports;
-}
+const { loadTs: compile, readJson } = require('./_ts-module.cjs');
+
 const contract = compile('src/lib/report-contract.ts', {'@/lib/report-meta': {}});
 const transport = compile('src/lib/dashboard-transport.ts', {'@/lib/report-contract': contract});
-const raw = JSON.parse(fs.readFileSync('src/data/report-performance.json', 'utf8'));
+const raw = readJson('src/data/report-performance.json');
 const doc = contract.ReportDatasetSchema.parse(raw);
 test('home projection preserves every modern record and field with a smaller payload', () => {
   const packed = transport.packDashboard(doc);
@@ -20,13 +16,13 @@ test('home projection preserves every modern record and field with a smaller pay
 test('review and paper serving artifacts validate at frontend boundaries', () => {
   const review = compile('src/lib/research-review.ts');
   const paper = compile('src/lib/paper-portfolio.ts');
-  review.ReviewDocumentSchema.parse(JSON.parse(fs.readFileSync('public/research/review.json', 'utf8')));
-  paper.PaperPortfolioSchema.parse(JSON.parse(fs.readFileSync('public/research/portfolio.json', 'utf8')));
+  review.ReviewDocumentSchema.parse(readJson('public/research/review.json'));
+  paper.PaperPortfolioSchema.parse(readJson('public/research/portfolio.json'));
 });
 
 test('sensitivity artifact has seven unique fixed-policy conditions', () => {
   const { StrategyRobustnessSchema } = compile('src/lib/strategy-robustness.ts');
-  const raw = JSON.parse(fs.readFileSync('public/research/strategy-robustness.json', 'utf8'));
+  const raw = readJson('public/research/strategy-robustness.json');
   StrategyRobustnessSchema.parse(raw);
   assert.equal(StrategyRobustnessSchema.safeParse({...raw, reoptimized: true}).success, false);
   assert.equal(StrategyRobustnessSchema.safeParse({...raw, scenarios: Array(7).fill(raw.scenarios[0])}).success, false);

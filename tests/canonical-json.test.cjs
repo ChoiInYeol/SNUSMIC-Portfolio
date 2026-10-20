@@ -3,18 +3,13 @@ const test = require('node:test');
 const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
-const ts = require('typescript');
+const { ROOT, loadTs } = require('./_ts-module.cjs');
 
 // The browser re-derives each revision's content_hash (src/lib/canonical-json.ts); it must agree with the
 // Python writer's sha256 over sort_keys/compact JSON for every published revision.
-const source = fs.readFileSync(path.join(__dirname, '../src/lib/canonical-json.ts'), 'utf8');
-const { outputText } = ts.transpileModule(source, {
-  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
-});
-const lib = {};
-new Function('require', 'exports', outputText)(require, lib);
+const lib = loadTs('src/lib/canonical-json.ts');
 
-const root = path.join(__dirname, '../public/api/v2/strategies');
+const root = path.join(ROOT, 'public/api/v2/strategies');
 const revisions = fs.existsSync(root)
   ? fs.readdirSync(root, { withFileTypes: true })
       .filter((d) => d.isDirectory() && fs.existsSync(path.join(root, d.name, 'revisions')))

@@ -2,21 +2,11 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const fs = require('node:fs');
 const path = require('node:path');
-const ts = require('typescript');
+const { ROOT, loadTs, readJson } = require('./_ts-module.cjs');
 
 // The web app's v2 zod contracts must accept every published /api/v2 document the pipeline wrote.
-const api = path.join(__dirname, '../public/api/v2');
-const load = (file, aliases = {}) => {
-  const source = fs.readFileSync(path.join(__dirname, '../src/lib', file), 'utf8');
-  const { outputText } = ts.transpileModule(source, {
-    compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022 },
-  });
-  const exports = {};
-  new Function('require', 'exports', outputText)((id) => aliases[id] ?? require(id), exports);
-  return exports;
-};
-const schemas = load('api-v2.ts', { '@/lib/api-schemas': load('api-schemas.ts') });
-const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
+const api = path.join(ROOT, 'public/api/v2');
+const schemas = loadTs('src/lib/api-v2.ts', { '@/lib/api-schemas': loadTs('src/lib/api-schemas.ts') });
 const files = (dir, pattern) =>
   fs.existsSync(path.join(api, dir))
     ? fs.readdirSync(path.join(api, dir)).filter((name) => pattern.test(name)).map((name) => path.join(dir, name))

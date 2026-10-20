@@ -2,12 +2,11 @@
 from __future__ import annotations
 
 import copy
-import hashlib
-import json
 
 import pytest
 
 import export_signals_api as api
+from _contract import canonical_sha256
 
 
 @pytest.fixture
@@ -33,8 +32,7 @@ def test_curves_trades_positions_and_wealth_are_preserved(source):
     assert payload["open_positions"][0]["ticker"] == "OTHER"
     assert payload["yearly"][0]["return_pct"] == 10
     body = {key: value for key, value in payload.items() if key != "content_hash"}
-    canonical = json.dumps(body, ensure_ascii=False, sort_keys=True, separators=(",", ":"), allow_nan=False).encode()
-    assert hashlib.sha256(canonical).hexdigest() == digest
+    assert canonical_sha256(body) == digest
 
 
 def test_hash_reuses_identical_content_but_changes_with_curve(source):
