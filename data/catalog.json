@@ -33,7 +33,7 @@
    "updated_at": null
   },
   {
-   "bytes": 44426,
+   "bytes": 52130,
    "files": 1,
    "format": "json",
    "id": "bronze.kuvic_items",
@@ -43,7 +43,7 @@
    "producer": [
     "collect_kuvic_browser.py"
    ],
-   "rows": 104,
+   "rows": 122,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
@@ -81,7 +81,7 @@
    "updated_at": null
   },
   {
-   "bytes": 1744611,
+   "bytes": 1755487,
    "files": 1,
    "format": "json",
    "id": "bronze.report_manifest",
@@ -96,10 +96,10 @@
     "collect_smic.py",
     "collect_voera.py"
    ],
-   "rows": 2409,
+   "rows": 2419,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-16T14:16:41+00:00"
+   "updated_at": "2026-10-20T14:35:00+00:00"
   },
   {
    "bytes": null,
@@ -182,7 +182,7 @@
    "updated_at": "2026-10-20"
   },
   {
-   "bytes": 634829,
+   "bytes": 613164,
    "files": 1,
    "format": "csv",
    "id": "gold.report_performance",
@@ -195,7 +195,7 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1471,
+   "rows": 1472,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
@@ -218,8 +218,8 @@
    "updated_at": null
   },
   {
-   "bytes": 9365995,
-   "files": 107,
+   "bytes": 9155395,
+   "files": 108,
    "format": "json",
    "id": "serving.api_v1",
    "inputs": [
@@ -235,11 +235,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:58+00:00"
+   "updated_at": "2026-10-20T15:14:38+00:00"
   },
   {
-   "bytes": 165189562,
-   "files": 2020,
+   "bytes": 175220484,
+   "files": 2051,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -257,10 +257,10 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:59+00:00"
+   "updated_at": "2026-10-20T15:14:39+00:00"
   },
   {
-   "bytes": 15184,
+   "bytes": 15228,
    "files": 1,
    "format": "json",
    "id": "serving.forward_record",
@@ -276,10 +276,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:59+00:00"
+   "updated_at": "2026-10-20T15:14:39+00:00"
   },
   {
-   "bytes": 155984,
+   "bytes": 149004,
    "files": 1,
    "format": "json",
    "id": "serving.report_first_seen",
@@ -295,10 +295,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:44:37+00:00"
+   "updated_at": "2026-10-20T15:03:08+00:00"
   },
   {
-   "bytes": 2809622,
+   "bytes": 2791079,
    "files": 1,
    "format": "json",
    "id": "serving.report_performance",
@@ -312,10 +312,10 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1471,
+   "rows": 1472,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:44:36.645332+00:00"
+   "updated_at": "2026-10-20T15:03:07.871951+00:00"
   },
   {
    "bytes": 226222,
@@ -335,10 +335,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:55:38+00:00"
+   "updated_at": "2026-10-20T15:14:47+00:00"
   },
   {
-   "bytes": 74094,
+   "bytes": 64317,
    "files": 1,
    "format": "json",
    "id": "serving.stats",
@@ -354,10 +354,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T02:52:06"
+   "updated_at": "2026-10-20T15:14:45"
   },
   {
-   "bytes": 16190295,
+   "bytes": 15826776,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -374,10 +374,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T17:51:56+00:00"
+   "updated_at": "2026-10-20T15:14:37+00:00"
   },
   {
-   "bytes": 3426013,
+   "bytes": 3332024,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -465,7 +465,7 @@
    "updated_at": null
   },
   {
-   "bytes": 138448102,
+   "bytes": 138754876,
    "files": 1649,
    "format": "md",
    "id": "silver.report_markdown",
@@ -483,7 +483,7 @@
    "updated_at": null
   },
   {
-   "bytes": 46446,
+   "bytes": 45938,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parse_issues",
@@ -495,13 +495,13 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 207,
+   "rows": 205,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
   },
   {
-   "bytes": 358984,
+   "bytes": 359131,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parsed",
