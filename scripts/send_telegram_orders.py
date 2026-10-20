@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -31,7 +32,8 @@ def validate(doc: dict) -> None:
     if doc.get("schema_version") != "1.0" or doc.get("mode") != "forward_paper_funded" or doc.get("account_id") != ACCOUNT_ID:
         raise ValueError("expected the funded forward-paper account artifact")
     perf = doc["performance"]
-    if abs(perf["initial_capital_krw"] + sum(c["amount_krw"] for c in doc["contributions"]) - perf["principal_krw"]) > 0.01:
+    start = doc["seed"]["principal_krw"] if doc.get("seed") else perf["initial_capital_krw"]
+    if abs(start + sum(c["amount_krw"] for c in doc["contributions"]) - perf["principal_krw"]) > 0.01:
         raise ValueError("principal does not reconcile with contributions")
     if abs(perf["cash_krw"] + sum(p["value_krw"] for p in doc["positions"]) - perf["nav_krw"]) > 1:
         raise ValueError("NAV does not reconcile with cash and positions")
@@ -71,7 +73,15 @@ def messages(doc: dict, plan: dict) -> list[str]:
               f"현금 {snap['cash_krw']:,.0f}원 + 납입 {snap['incoming_contributions_krw']:,.0f}원"
               f" − 선행 계획 예약 {snap['reserved_for_earlier_plans_krw']:,.0f}원"
               f" → 계획 후 추정 {snap['cash_after_plan_est_krw']:,.0f}원",
-              f"누적 TWR(납입 제외) {perf['twr_pct']:+.2f}% · 보유 {snap['position_count']}종목 · 계획 후 빈 슬롯 {snap['slots_free']}"]
+              f"보유 {snap['position_count']}종목 · 계획 후 빈 슬롯 {snap['slots_free']}"]
+    seg = doc["segments"]; live = seg["live"]
+    lines.append(f"{live['label']}({_kst(live['start_at'])[:10]}~) TWR {live['twr_pct']:+.2f}% · 손익 {live['investment_pnl_krw']:+,.0f}원 (납입 제외)")
+    if seg["backtest"]:
+        bt = seg["backtest"]
+        lines += [f"{bt['label']} {bt['start_at'][:10]}~{bt['end_at'][:10]} TWR {bt['twr_pct']:+.2f}% (공표일 기준, 파이프라인 최초 관측 아님)"
+                  if bt["availability"] == "publication_date" else
+                  f"{bt['label']} {bt['start_at'][:10]}~{bt['end_at'][:10]} TWR {bt['twr_pct']:+.2f}% (모의, 실거래 아님)",
+                  f"합산(백테스트 포함) TWR {seg['combined']['twr_pct']:+.2f}% · 손익 {seg['combined']['investment_pnl_krw']:+,.0f}원"]
     for c in plan["contributions"]:
         lines.append(f"납입 {c['installment']}회차 {c['amount_krw']:,.0f}원 · {c['scheduled_date']} 시가 전 → 현금(신규 진입 재원) · {label}")
     lines.append("")
@@ -122,6 +132,10 @@ def main(argv=None) -> int:
     for problem in problems:
         print(problem)
     status = 0
+    if plans and not args.dry_run and not (os.environ.get("TELEGRAM_BOT_TOKEN", "").strip() and os.environ.get("TELEGRAM_CHAT_ID", "").strip()):
+        # Not configured is not a failure of today's pipeline: warn (visible in Actions) and skip.
+        print("::warning::TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID not set — skipping delivery (nothing sent).")
+        return 1 if problems else 0
     for plan in plans:
         chunks = messages(doc, plan)
         if args.dry_run:

@@ -35,6 +35,7 @@ SILVER = DATA / "silver"
 SILVER_REPORTS = SILVER / "reports"
 SILVER_PAPER_LEDGER = SILVER / "portfolio" / "ledger.json"
 SILVER_FUNDED_LEDGER = SILVER / "portfolio" / "funded-w50-v1-ledger.json"
+SILVER_FUNDED_BACKTEST = SILVER / "portfolio" / "funded-w50-v1-backtest.json"  # funded_backtest.py (seed of the live genesis)
 SILVER_MARKDOWN = SILVER_REPORTS / "markdown"            # kordoc transcripts, {school}/{stem}.md
 SILVER_REPORT_PARSED = SILVER_REPORTS / "parsed.csv"
 SILVER_REPORT_ISSUES = SILVER_REPORTS / "parse_issues.csv"

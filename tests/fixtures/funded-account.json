@@ -39,6 +39,7 @@
   "US": "2026-11-02"
  },
  "performance": {
+  "scope": "live",
   "initial_capital_krw": 50000000,
   "contributions_krw": 2000000.0,
   "installments_applied": 1,
@@ -52,6 +53,29 @@
   "twr_pct": -1.086823,
   "xirr_pct": null
  },
+ "segments": {
+  "backtest": null,
+  "live": {
+   "label": "실전 구간",
+   "start_at": "2026-10-20T11:30:00+00:00",
+   "start_nav_krw": 50000000.0,
+   "start_principal_krw": 50000000.0,
+   "contributions_krw": 2000000,
+   "installments_applied": 1,
+   "nav_krw": 51456588.7,
+   "investment_pnl_krw": -543411.3,
+   "twr_pct": -1.086823,
+   "xirr_pct": null
+  },
+  "combined": {
+   "label": "실전 구간",
+   "principal_krw": 52000000.0,
+   "nav_krw": 51456588.7,
+   "investment_pnl_krw": -543411.3,
+   "twr_pct": -1.086823
+  }
+ },
+ "seed": null,
  "positions": [
   {
    "id": "US:AAPL",
@@ -606,7 +630,8 @@
    "cash_krw": 50000000.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": 0.0,
-   "twr_pct": 0.0
+   "twr_pct": 0.0,
+   "segment": "live"
   },
   {
    "at": "2026-10-20T11:30:00+00:00",
@@ -616,7 +641,8 @@
    "cash_krw": 50000000.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": 0.0,
-   "twr_pct": 0.0
+   "twr_pct": 0.0,
+   "segment": "live"
   },
   {
    "at": "2026-10-20T11:30:00+00:00",
@@ -626,7 +652,8 @@
    "cash_krw": 50000000.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": 0.0,
-   "twr_pct": 0.0
+   "twr_pct": 0.0,
+   "segment": "live"
   },
   {
    "at": "2026-10-20T20:00:00+00:00",
@@ -636,7 +663,8 @@
    "cash_krw": 50000000.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": 0.0,
-   "twr_pct": 0.0
+   "twr_pct": 0.0,
+   "segment": "live"
   },
   {
    "at": "2026-10-21T06:30:00+00:00",
@@ -646,7 +674,8 @@
    "cash_krw": 47502530.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -7470.0,
-   "twr_pct": -0.01494
+   "twr_pct": -0.01494,
+   "segment": "live"
   },
   {
    "at": "2026-10-21T20:00:00+00:00",
@@ -656,7 +685,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -14610.0,
-   "twr_pct": -0.02922
+   "twr_pct": -0.02922,
+   "segment": "live"
   },
   {
    "at": "2026-10-22T06:30:00+00:00",
@@ -666,7 +696,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -14610.0,
-   "twr_pct": -0.02922
+   "twr_pct": -0.02922,
+   "segment": "live"
   },
   {
    "at": "2026-10-22T20:00:00+00:00",
@@ -676,7 +707,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -14610.0,
-   "twr_pct": -0.02922
+   "twr_pct": -0.02922,
+   "segment": "live"
   },
   {
    "at": "2026-10-23T06:30:00+00:00",
@@ -686,7 +718,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -512610.0,
-   "twr_pct": -1.02522
+   "twr_pct": -1.02522,
+   "segment": "live"
   },
   {
    "at": "2026-10-23T20:00:00+00:00",
@@ -696,7 +729,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -512610.0,
-   "twr_pct": -1.02522
+   "twr_pct": -1.02522,
+   "segment": "live"
   },
   {
    "at": "2026-10-26T06:30:00+00:00",
@@ -706,7 +740,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -512610.0,
-   "twr_pct": -1.02522
+   "twr_pct": -1.02522,
+   "segment": "live"
   },
   {
    "at": "2026-10-26T20:00:00+00:00",
@@ -716,7 +751,8 @@
    "cash_krw": 45115390.0,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -512610.0,
-   "twr_pct": -1.02522
+   "twr_pct": -1.02522,
+   "segment": "live"
   },
   {
    "at": "2026-10-27T06:30:00+00:00",
@@ -726,7 +762,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-10-27T20:00:00+00:00",
@@ -736,7 +773,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-10-28T06:30:00+00:00",
@@ -746,7 +784,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-10-28T20:00:00+00:00",
@@ -756,7 +795,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -305411.3,
-   "twr_pct": -0.610823
+   "twr_pct": -0.610823,
+   "segment": "live"
   },
   {
    "at": "2026-10-29T06:30:00+00:00",
@@ -766,7 +806,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -305411.3,
-   "twr_pct": -0.610823
+   "twr_pct": -0.610823,
+   "segment": "live"
   },
   {
    "at": "2026-10-29T20:00:00+00:00",
@@ -776,7 +817,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-10-30T06:30:00+00:00",
@@ -786,7 +828,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-10-30T20:00:00+00:00",
@@ -796,7 +839,8 @@
    "cash_krw": 47076588.7,
    "principal_krw": 50000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-11-02T06:30:00+00:00",
@@ -806,7 +850,8 @@
    "cash_krw": 49076588.7,
    "principal_krw": 52000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-11-02T21:00:00+00:00",
@@ -816,7 +861,8 @@
    "cash_krw": 49076588.7,
    "principal_krw": 52000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   },
   {
    "at": "2026-11-03T06:30:00+00:00",
@@ -826,7 +872,8 @@
    "cash_krw": 49076588.7,
    "principal_krw": 52000000.0,
    "investment_pnl_krw": -543411.3,
-   "twr_pct": -1.086823
+   "twr_pct": -1.086823,
+   "segment": "live"
   }
  ],
  "excluded_instruments": [

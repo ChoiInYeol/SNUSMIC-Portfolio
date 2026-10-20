@@ -398,4 +398,4 @@ def test_delivery_workflow_gates_and_receipt_persistence():
     for workflow in ("refresh-daily.yml", "refresh-reports.yml"):  # every workflow that freezes plans gates them
         assert "scripts/funded_account.py --check" in (root / ".github/workflows" / workflow).read_text(encoding="utf-8")
     assert "FUNDED_ACCOUNT_START" not in (root / "src/lib/funded-account-data.ts").read_text(encoding="utf-8")
-    assert "늦게 수집된 오래된 리포트의 신호 유효기간" in (root / "docs/FUNDED-ACCOUNT.md").read_text(encoding="utf-8")
+    assert "신호 유효기간: 제한 없음(사용자 결정" in (root / "docs/FUNDED-ACCOUNT.md").read_text(encoding="utf-8")

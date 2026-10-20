@@ -38,3 +38,20 @@ def test_sample_artifact_is_current(lake_tmp):  # noqa: F811
     if os.environ.get("UPDATE_GOLDEN") == "1":
         FIXTURE.write_text(text, encoding="utf-8", newline="\n")
     assert FIXTURE.read_text(encoding="utf-8") == text, "stale fixture: rerun with UPDATE_GOLDEN=1"
+
+
+SEEDED = Path(__file__).parent / "fixtures" / "funded-account-seeded.json"
+
+
+def test_seeded_sample_artifact_is_current(lake_tmp):  # noqa: F811
+    from test_funded_account_seed import seeded
+    doc, _ = seeded(lake_tmp, at("2026-10-20", dt.time(11, 0)))
+    for day in ("2026-10-20", "2026-10-30", "2026-11-02"):
+        run(at(day))
+    out = gold()
+    out["seed"]["artifact"] = "tests/fixtures/funded-backtest-sample.json"  # tmp path → stable placeholder
+    assert out["segments"]["backtest"]["run_id"] == doc["run_id"] and out["performance"]["scope"] == "combined_backtest_and_live"
+    text = json.dumps(out, ensure_ascii=False, indent=1, allow_nan=False) + "\n"
+    if os.environ.get("UPDATE_GOLDEN") == "1":
+        SEEDED.write_text(text, encoding="utf-8", newline="\n")
+    assert SEEDED.read_text(encoding="utf-8") == text, "stale fixture: rerun with UPDATE_GOLDEN=1"

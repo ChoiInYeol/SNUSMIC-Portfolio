@@ -18,6 +18,8 @@ Contributions are external cash flows: they raise principal, never returns (TWR 
 from __future__ import annotations
 
 import argparse
+import bisect
+import copy
 import datetime as dt
 import hashlib
 import json
@@ -42,6 +44,8 @@ SCHEMA_VERSION = "1.0"
 ACCOUNT_ID = "funded-w50-v1"
 POLICY_VERSION = "w-open-plan-v1"
 PROPOSED_LABEL = "제안값(미확정)"
+BACKTEST_LABEL = "백테스트 구간 (simulated)"
+LIVE_LABEL = "실전 구간"
 CONFIRMED_LABEL = "사용자 확정"
 MARKETS = ("KR", "US")
 BENCHMARKS = {"KR": "INDEX:KOSPI", "US": "INDEX:SP500"}  # presence of the session bar = market data ready
@@ -86,8 +90,14 @@ def principal_after(installments: int, config: dict = CONFIG) -> int:
     return config["initial_capital_krw"] + sum(contribution_amount(n, config) for n in range(1, installments + 1))
 
 
-def contribution_day_rule(choice: str, status: str) -> dict:
-    """`first-trading-day` or a calendar day 1..28 (rolled forward to a KRX trading day); proposed or confirmed."""
+def contribution_day_rule(choice: str, status: str, first_installment: str = "month_after_epoch") -> dict:
+    """`first-trading-day` or a calendar day 1..28 (rolled forward to a KRX trading day); proposed or confirmed.
+
+    `first_installment`: "month_after_epoch" (installment 1 in the month after the schedule anchor) or
+    "anchor_month" (installment 1 in the anchor's own month, e.g. the 2023-07 backtest start).
+    """
+    if first_installment not in ("month_after_epoch", "anchor_month"):
+        raise ValueError("first installment must be 'month_after_epoch' or 'anchor_month'")
     if status not in ("proposed", "confirmed"):
         raise ValueError("contribution-day status must be 'proposed' or 'confirmed'")
     if choice == "first-trading-day":
@@ -96,19 +106,31 @@ def contribution_day_rule(choice: str, status: str) -> dict:
         rule, day, text = "kr_trading_day_on_or_after_day_of_month_before_open", int(choice), f"매월 {int(choice)}일(휴장 시 다음 KRX 거래일)"
     else:
         raise ValueError("contribution day must be 'first-trading-day' or a day of month 1..28")
-    return {"rule": rule, "day_of_month": day, "first_installment": "month_after_epoch", "holiday": "roll_forward",
+    start = "개시 다음 달부터" if first_installment == "month_after_epoch" else "시작 월부터"
+    return {"rule": rule, "day_of_month": day, "first_installment": first_installment, "holiday": "roll_forward",
             "status": "proposed_unconfirmed" if status == "proposed" else "user_confirmed",
             "label": PROPOSED_LABEL if status == "proposed" else CONFIRMED_LABEL,
-            "description": f"개시 다음 달부터 {text} 시가 30분 전(08:30 KST) 입금, 휴장일은 다음 거래일로 순연"}
+            "description": f"{start} {text} 시가 30분 전(08:30 KST) 입금, 휴장일은 다음 거래일로 순연"}
 
 
-def contribution_date(installment: int, epoch_day: dt.date, config: dict = CONFIG) -> dt.date:
-    month = epoch_day.month - 1 + installment
-    year, month = epoch_day.year + month // 12, month % 12 + 1
+def contribution_date(installment: int, anchor: dt.date, config: dict = CONFIG) -> dt.date:
+    """Installment date counted from the schedule anchor (the epoch, or the backtest start for a seeded account)."""
+    offset = installment - (1 if config["contribution_day"]["first_installment"] == "anchor_month" else 0)
+    month = anchor.month - 1 + offset
+    year, month = anchor.year + month // 12, month % 12 + 1
     day = config["contribution_day"]["day_of_month"]
     if day is None:
         return first_trading_day_of_month(year, month, "KR")
     return next_trading_day(dt.date(year, month, day) - dt.timedelta(days=1), "KR")
+
+
+def schedule_anchor(genesis: dict) -> dt.date:
+    return dt.date.fromisoformat(genesis.get("schedule_anchor") or _instant(genesis["epoch_at"]).astimezone(KST).date().isoformat())
+
+
+def first_installment(genesis: dict) -> int:
+    """Seeded accounts continue the backtest's installment numbering."""
+    return (genesis.get("seed") or {}).get("installments_applied", 0) + 1
 
 
 def _contribution_effective(c: dict) -> dt.datetime:
@@ -162,6 +184,20 @@ def _instant(value: str) -> dt.datetime:
     return instant
 
 
+def canonical_sha256(doc: dict) -> str:
+    """Line-ending independent content hash used for the backtest seed provenance."""
+    return hashlib.sha256(json.dumps(doc, ensure_ascii=False, sort_keys=True, separators=(",", ":"),
+                                     allow_nan=False).encode()).hexdigest()
+
+
+def load_backtest(seed: dict) -> dict:
+    """The Silver backtest artifact a seeded genesis points to, verified against the recorded hash."""
+    doc = json.loads((lake.ROOT / seed["artifact"]).read_text(encoding="utf-8"))  # absolute paths pass through /
+    if canonical_sha256(doc) != seed["artifact_sha256"] or doc["run_id"] != seed["run_id"]:
+        raise ValueError("backtest artifact differs from the one recorded in the genesis seed")
+    return doc
+
+
 def load_bronze() -> dict | None:
     base = _base()
     if not (base / "account.json").exists():
@@ -170,13 +206,13 @@ def load_bronze() -> dict | None:
     if genesis.get("schema_version") != SCHEMA_VERSION or genesis.get("account_id") != ACCOUNT_ID:
         raise ValueError("unexpected funded account genesis")
     epoch = _instant(genesis["epoch_at"])
-    epoch_day = epoch.astimezone(KST).date()
+    anchor = schedule_anchor(genesis)
     contributions = [_read(p) for p in sorted((base / "contributions").glob("*.json"))]
-    for n, c in enumerate(contributions, 1):
+    for n, c in enumerate(contributions, first_installment(genesis)):
         if (c["account_id"], c["installment"]) != (ACCOUNT_ID, n):
-            raise ValueError("contributions must be one record per installment, contiguous from 1")
+            raise ValueError("contributions must be one record per installment, contiguous from the first live one")
         if c["amount_krw"] != contribution_amount(n, genesis["config"]) or \
-                c["scheduled_date"] != contribution_date(n, epoch_day, genesis["config"]).isoformat():
+                c["scheduled_date"] != contribution_date(n, anchor, genesis["config"]).isoformat():
             raise ValueError(f"contribution {n} does not match the frozen schedule")
         _instant(c["recorded_at"])
     sessions = {}
@@ -188,7 +224,8 @@ def load_bronze() -> dict | None:
             observed = _instant(doc["observed_at"])
             key = (market, doc["session_date"])
             addendum = "~" in path.stem
-            if doc["market"] != market or path.stem.split("~")[0] != doc["session_date"] or not is_trading_day(day, market)                     or addendum != (key in sessions):
+            if doc["market"] != market or path.stem.split("~")[0] != doc["session_date"] or not is_trading_day(day, market) \
+                    or addendum != (key in sessions):
                 raise ValueError(f"invalid session record {path.name}")
             if closed_bar_end(market, now=observed) < day:
                 raise ValueError(f"session {market} {day} recorded before its bar was complete")
@@ -240,9 +277,10 @@ def _fx_rows(bronze: dict) -> dict[str, float]:
     return rates
 
 
-def _fx(rates: dict[str, float], day: str, *, strict: bool) -> float | None:
-    eligible = [d for d in rates if (d < day if strict else d <= day)]
-    return rates[max(eligible)] if eligible else None
+def _fx(rates: dict[str, float], day: str, *, strict: bool, keys: list[str] | None = None) -> float | None:
+    keys = keys if keys is not None else sorted(rates)
+    i = (bisect.bisect_left if strict else bisect.bisect_right)(keys, day)
+    return rates[keys[i - 1]] if i else None
 
 
 def _signals(bronze: dict) -> dict[str, dict]:
@@ -259,7 +297,8 @@ def _run(bronze: dict, until: dt.datetime | None = None) -> dict:
     active = {}
     for plan in bronze["plans"]:
         active[(plan["market"], plan["trading_day"])] = plan  # sorted by revision: latest wins
-    events = [(epoch, 0, "cash", {"kind": "initial", "amount_krw": cfg["initial_capital_krw"]})]
+    seed = g.get("seed")
+    events = [] if seed else [(epoch, 0, "cash", {"kind": "initial", "amount_krw": cfg["initial_capital_krw"]})]
     events += [(_contribution_effective(c), 0, "cash", {"kind": "contribution", **c}) for c in bronze["contributions"]]
     for market, day in bronze["sessions"]:
         d = dt.date.fromisoformat(day)
@@ -269,12 +308,16 @@ def _run(bronze: dict, until: dt.datetime | None = None) -> dict:
     events.sort(key=lambda e: (e[0], e[1], str(e[3].get("installment", "")) if isinstance(e[3], dict) else e[3]))
     if until is not None:
         events = [e for e in events if e[0] <= until]
-    rates = _fx_rows(bronze)
+    rates = _fx_rows(bronze); keys = sorted(rates)
     signals = _signals(bronze)
     st = {"cash": 0.0, "principal": 0.0, "fees": 0.0, "realized": 0.0, "positions": {}, "fills": [],
           "history": [], "applied": [], "marks": {"KR": None, "US": None}, "issues": [], "signals": signals,
           "executed_plans": set()}
     twr = {"factor": 1.0, "prev_nav": 0.0, "pending_cf": 0.0}
+    if seed:  # the live segment starts from the backtest's end state; its P&L and TWR start at zero here
+        st.update(cash=seed["cash_krw"], principal=seed["principal_krw"], marks=dict(seed["marks"]),
+                  positions={p["ticker"]: copy.deepcopy(p) for p in seed["positions"]})
+        twr["prev_nav"] = seed["nav_krw"]
 
     def nav():
         return st["cash"] + sum(p["shares"] * p["last_close"] * p["fx"] for p in st["positions"].values())
@@ -322,7 +365,7 @@ def _run(bronze: dict, until: dt.datetime | None = None) -> dict:
             st["executed_plans"].add(plan["plan_id"])
             if plan["status"] == "cancelled":
                 continue
-            fx_fill = 1.0 if market == "KR" else _fx(rates, day, strict=True)
+            fx_fill = 1.0 if market == "KR" else _fx(rates, day, strict=True, keys=keys)
             for order in plan["orders"]:
                 ticker = order["ticker"]; bar = bars.get(ticker)
                 opening = bar.get("open") if bar else None
@@ -383,7 +426,7 @@ def _run(bronze: dict, until: dt.datetime | None = None) -> dict:
                     retry(signal, item["reason"])
             continue
         # close: marks, stops, valuation
-        fx_mark = 1.0 if market == "KR" else _fx(rates, day, strict=False)
+        fx_mark = 1.0 if market == "KR" else _fx(rates, day, strict=False, keys=keys)
         for pos in st["positions"].values():
             if pos["market"] != market:
                 continue
@@ -399,6 +442,8 @@ def _run(bronze: dict, until: dt.datetime | None = None) -> dict:
                 pos["pending_exit"] = True
         st["marks"][market] = day
         value(at, market, day)
+    if seed and not st["history"]:
+        value(epoch, None, None)
     st["nav"] = nav(); st["twr_factor"] = twr["factor"]
     return st
 
@@ -421,7 +466,9 @@ def _xirr(flows: list[tuple[dt.datetime, float]]) -> float | None:
 
 def _horizon(bronze: dict) -> dt.datetime:
     """Latest instant any Bronze record was written: the replay never applies events after it."""
-    stamps = [bronze["genesis"]["epoch_at"]] + [d["observed_at"] for d in bronze["sessions"].values()] +         [c["recorded_at"] for c in bronze["contributions"]] + [p["frozen_at"] for p in bronze["plans"]] +         [s["observed_at"] for s in bronze["signals"]]
+    stamps = [bronze["genesis"]["epoch_at"]] + [d["observed_at"] for d in bronze["sessions"].values()] + \
+        [c["recorded_at"] for c in bronze["contributions"]] + [p["frozen_at"] for p in bronze["plans"]] + \
+        [s["observed_at"] for s in bronze["signals"]]
     return max(_instant(t) for t in stamps)
 
 
@@ -440,15 +487,40 @@ def replay(bronze: dict) -> dict:
         "halted": p["halted"], "pending_exit": p["pending_exit"]} for p in st["positions"].values()),
         key=lambda p: -p["value_krw"])
     epoch = _instant(g["epoch_at"]); epoch_day = epoch.astimezone(KST).date()
-    upcoming = len(bronze["contributions"]) + 1
+    seed = g.get("seed")
+    upcoming = first_installment(g) + len(bronze["contributions"])
     try:
-        next_day = contribution_date(upcoming, epoch_day, cfg).isoformat()
+        next_day = contribution_date(upcoming, schedule_anchor(g), cfg).isoformat()
     except ValueError:
         next_day = None  # beyond the holiday table; capture fails loudly before it is due
-    flows = [(epoch, -float(cfg["initial_capital_krw"]))] + \
+    start_nav = seed["nav_krw"] if seed else float(cfg["initial_capital_krw"])
+    start_principal = seed["principal_krw"] if seed else float(cfg["initial_capital_krw"])
+    live_contrib = sum(c["amount_krw"] for c in st["applied"])
+    flows = [(epoch, -start_nav)] + \
         [(dt.datetime.fromisoformat(c["effective_at"]), -float(c["amount_krw"])) for c in st["applied"]]
     if st["history"]:
         flows.append((dt.datetime.fromisoformat(st["history"][-1]["at"]), nav))
+    live_twr = (st["twr_factor"] - 1) * 100
+    live = {"label": LIVE_LABEL, "start_at": g["epoch_at"], "start_nav_krw": round(start_nav, 2),
+            "start_principal_krw": round(start_principal, 2), "contributions_krw": live_contrib,
+            "installments_applied": len(st["applied"]), "nav_krw": round(nav, 2),
+            "investment_pnl_krw": round(nav - start_nav - live_contrib, 2) if seed else round(nav - st["principal"], 2),
+            "twr_pct": round(live_twr, 6), "xirr_pct": _xirr(flows)}
+    backtest = None; history = []
+    if seed:
+        bt = load_backtest(seed)
+        summary = bt["summary"]
+        backtest = {"label": BACKTEST_LABEL, "availability": bt["availability"], "start_at": bt["start_at"],
+                    "end_at": bt["end_at"], "marks": bt["marks"], "run_id": bt["run_id"],
+                    "artifact_sha256": seed["artifact_sha256"], **{k: summary[k] for k in (
+                        "principal_krw", "nav_krw", "investment_pnl_krw", "twr_pct", "installments_applied",
+                        "fees_krw", "xirr_pct")}}
+        history = [{**row, "segment": "backtest"} for row in bt["history"]]
+    bt_factor = 1 + backtest["twr_pct"] / 100 if backtest else 1.0
+    combined = {"label": "백테스트+실전 합산" if seed else LIVE_LABEL, "principal_krw": round(st["principal"], 2),
+                "nav_krw": round(nav, 2), "investment_pnl_krw": round(nav - st["principal"], 2),
+                "twr_pct": round((bt_factor * st["twr_factor"] - 1) * 100, 6)}
+    history += [{**row, "segment": "live"} for row in st["history"]]
     fills_by_plan: dict[str, list] = {}
     for fill in st["fills"]:
         fills_by_plan.setdefault(fill["plan_id"], []).append(fill)
@@ -464,15 +536,25 @@ def replay(bronze: dict) -> dict:
         "schema_version": SCHEMA_VERSION, "account_id": ACCOUNT_ID, "policy_version": cfg["policy_version"],
         "mode": "forward_paper_funded", "strategy": cfg["strategy"], "started_at": g["epoch_at"],
         "epoch_kst_date": epoch_day.isoformat(), "config": cfg, "marks": st["marks"],
+        # Whole-account balances. With a backtest seed, principal/P&L/TWR here span both segments
+        # (scope says so); the live-only track record is segments.live.
         "performance": {
+            "scope": "combined_backtest_and_live" if seed else "live",
             "initial_capital_krw": cfg["initial_capital_krw"],
             "contributions_krw": round(st["principal"] - cfg["initial_capital_krw"], 2),
-            "installments_applied": len(st["applied"]), "principal_krw": round(st["principal"], 2),
+            "installments_applied": first_installment(g) - 1 + len(st["applied"]),
+            "principal_krw": round(st["principal"], 2),
             "nav_krw": round(nav, 2), "cash_krw": round(st["cash"], 2),
             "cash_weight_pct": st["cash"] / nav * 100 if nav else 100.0,
             "investment_pnl_krw": round(nav - st["principal"], 2),
-            "realized_pnl_krw": round(st["realized"], 2), "fees_krw": round(st["fees"], 2),
-            "twr_pct": round((st["twr_factor"] - 1) * 100, 6), "xirr_pct": _xirr(flows)},
+            # combined scope: the backtest's fees/realized P&L are part of the account totals too
+            "realized_pnl_krw": round(st["realized"] + (bt["summary"]["realized_pnl_krw"] if seed else 0), 2),
+            "fees_krw": round(st["fees"] + (bt["summary"]["fees_krw"] if seed else 0), 2),
+            "twr_pct": combined["twr_pct"], "xirr_pct": live["xirr_pct"] if not seed else None},
+        "segments": {"backtest": backtest, "live": live, "combined": combined},
+        "seed": ({k: seed[k] for k in ("source", "artifact", "artifact_sha256", "run_id", "availability",
+                                       "start_at", "end_at", "principal_krw", "nav_krw", "cash_krw",
+                                       "installments_applied", "marks")} if seed else None),
         "positions": positions,
         "as_of": horizon.isoformat(),
         "contributions": st["applied"],
@@ -494,7 +576,7 @@ def replay(bronze: dict) -> dict:
         "signals": [{"id": s["id"], "ticker": s["ticker"], "market": s["market"], "name": s["name"],
                      "report_date": s["report_date"], "observed_at": s["observed_at"], "status": s["status"],
                      "outcome": s["outcome"]} for s in st["signals"].values()],
-        "history": st["history"],
+        "history": history,
         "excluded_instruments": [PARKING_EXCLUSION],
         "data_issues": st["issues"],
         "method": METHOD,
@@ -649,15 +731,19 @@ def freeze_plan(body: dict, now: dt.datetime, *, status: str = "active", reason:
         return latest  # same decision: no new revision, no duplicate alert
     if now >= market_open(dt.date.fromisoformat(body["trading_day"]), body["market"]):
         raise ValueError("plans are immutable once the targeted open has passed")
+    plan = finalize_plan(candidate, latest, now, reason)
+    _publish(folder / f"r{plan['revision']:02d}.json", plan)
+    return plan
+
+
+def finalize_plan(candidate: dict, latest: dict | None, now: dt.datetime, reason: str | None = None) -> dict:
+    """Assign revision, ids and freeze time (shared by live Bronze plans and the in-memory backtest)."""
     revision = latest["revision"] + 1 if latest else 1
-    plan_id = hashlib.sha256(f"{ACCOUNT_ID}|{body['market']}|{body['trading_day']}|{POLICY_VERSION}|r{revision}".encode()).hexdigest()[:16]
-    for seq, order in enumerate(candidate["orders"], 1):
-        order["order_id"] = f"{plan_id}-{seq:02d}"
-    plan = {**candidate, "plan_id": plan_id, "revision": revision, "frozen_at": now.isoformat(),
+    plan_id = hashlib.sha256(f"{ACCOUNT_ID}|{candidate['market']}|{candidate['trading_day']}|{POLICY_VERSION}|r{revision}".encode()).hexdigest()[:16]
+    orders = [{**order, "order_id": f"{plan_id}-{seq:02d}"} for seq, order in enumerate(candidate["orders"], 1)]
+    return {**candidate, "orders": orders, "plan_id": plan_id, "revision": revision, "frozen_at": now.isoformat(),
             "supersedes": latest["plan_id"] if latest else None,
             "revision_reason": reason or ("새 관측으로 결정이 바뀌어 개정" if latest else None)}
-    _publish(folder / f"r{revision:02d}.json", plan)
-    return plan
 
 
 def cancel_plan(market: str, day: str, reason: str, now: dt.datetime) -> dict:
@@ -679,8 +765,13 @@ def uncancel_plan(market: str, day: str, reason: str, now: dt.datetime) -> dict:
 
 # ── capture (pipeline hook) ─────────────────────────────────────────────────
 
-def start_account(*, epoch: dt.datetime, contribution_day: dict, as_of: str, positions: dict, reports: list, policy: dict) -> dict:
-    """Write the genesis. Every caller passes the epoch and contribution-day rule explicitly."""
+def start_account(*, epoch: dt.datetime, contribution_day: dict, as_of: str, positions: dict, reports: list, policy: dict,
+                  seed: dict | None = None) -> dict:
+    """Write the genesis. Every caller passes the epoch and contribution-day rule explicitly.
+
+    `seed` (from `seed_from_backtest`) starts the live segment from a backtest end state; its queued signals
+    become the bootstrap and its known reports stay known, so nothing is re-signalled or lost at the seam.
+    """
     now = epoch
     if now.tzinfo is None:
         raise ValueError("epoch requires a timezone")
@@ -690,9 +781,15 @@ def start_account(*, epoch: dt.datetime, contribution_day: dict, as_of: str, pos
     bootstrap = [{"id": f"bootstrap:{t}", "ticker": t, "market": p.get("market", "KR"), "name": p.get("display_name", t),
                   "source": "bootstrap-published-holding", "clubs": p.get("n_clubs", 1), "report_date": as_of,
                   "observed_at": now.isoformat()} for t, p in sorted(positions.items())]
+    known = sorted({report_id(d, t, s) for d, t, s, _ in reports if d.isoformat() <= as_of})
+    anchor = None
+    if seed:
+        if _instant(seed["end_at"]) >= now:
+            raise ValueError("the backtest seed must end before the live epoch")
+        bootstrap, known, anchor = seed.pop("queued_signals"), seed.pop("known_report_ids"), seed["schedule_anchor"]
     genesis = {"schema_version": SCHEMA_VERSION, "account_id": ACCOUNT_ID, "epoch_at": now.isoformat(),
                "as_of": as_of, "config": {**CONFIG, "contribution_day": contribution_day}, "bootstrap": bootstrap,
-               "known_report_ids": sorted({report_id(d, t, s) for d, t, s, _ in reports if d.isoformat() <= as_of}),
+               "known_report_ids": known, "schedule_anchor": anchor, "seed": seed,
                "note": "새 계정. execution-v2(1억원) 계정과 그 Bronze는 읽지도 재해석하지도 않음"}
     _publish(_base() / "account.json", genesis)
     return genesis
@@ -731,19 +828,21 @@ def _bar(frame: pd.DataFrame | None, day: dt.date, atr_column: str) -> dict | No
 
 
 def record_sessions(market: str, *, universe: list[str], prices: dict, benchmark: pd.Series, fx_series: pd.Series,
-                    atr_column: str, now: dt.datetime) -> dict:
+                    atr_column: str, now: dt.datetime, after: str | None = None) -> dict:
     """Record every completed, data-ready session up to this market's own cutoff. Never a future bar."""
     folder = _base() / "sessions" / market
     recorded = sorted(p.stem for p in folder.glob("*.json"))
     cap = expected_session(market, now)
     bench = benchmark.dropna()
-    window_start = dt.date.fromisoformat(recorded[-1]) if recorded else cap - dt.timedelta(days=14)
+    # `after`: a seeded account's last backtest mark; sessions since then are recorded (closes only, no plans).
+    last = recorded[-1] if recorded else after
+    window_start = dt.date.fromisoformat(last) if last else cap - dt.timedelta(days=14)
     for ts in bench.index:
         if window_start < ts.date() <= cap and not is_trading_day(ts.date(), market):
             raise ValueError(f"{market} benchmark has a bar on calendar holiday {ts.date()}: fix market_calendars.py")
-    days = [cap] if not recorded else []
-    if recorded:
-        day = dt.date.fromisoformat(recorded[-1])
+    days = [cap] if not last else []
+    if last:
+        day = dt.date.fromisoformat(last)
         while (day := next_trading_day(day, market)) <= cap:
             days.append(day)
     fx_cap = closed_bar_end("FX", now=now)
@@ -778,20 +877,24 @@ def record_sessions(market: str, *, universe: list[str], prices: dict, benchmark
 
 def record_due_contributions(genesis: dict, *, until: dt.datetime, now: dt.datetime) -> list[int]:
     """Record installments whose deposit lands at or before `until` (the latest planned open)."""
-    epoch_day = _instant(genesis["epoch_at"]).astimezone(KST).date()
-    folder = _base() / "contributions"; added = []; n = 1
+    anchor = schedule_anchor(genesis)
+    folder = _base() / "contributions"; added = []; n = first_installment(genesis)
     while True:
-        day = contribution_date(n, epoch_day, genesis["config"])
+        day = contribution_date(n, anchor, genesis["config"])
         if market_open(day, "KR") - CONTRIBUTION_LEAD > until:
             return added
         path = folder / f"{n:04d}.json"
         if not path.exists():
-            _publish(path, {"schema_version": SCHEMA_VERSION, "account_id": ACCOUNT_ID, "installment": n,
-                            "amount_krw": contribution_amount(n, genesis["config"]), "scheduled_date": day.isoformat(),
-                            "recorded_at": now.isoformat(), "rule_status": genesis["config"]["contribution_day"]["status"],
-                            "rule_label": genesis["config"]["contribution_day"]["label"]})
+            _publish(path, contribution_record(genesis, n, day, now))
             added.append(n)
         n += 1
+
+
+def contribution_record(genesis: dict, n: int, day: dt.date, now: dt.datetime) -> dict:
+    return {"schema_version": SCHEMA_VERSION, "account_id": ACCOUNT_ID, "installment": n,
+            "amount_krw": contribution_amount(n, genesis["config"]), "scheduled_date": day.isoformat(),
+            "recorded_at": now.isoformat(), "rule_status": genesis["config"]["contribution_day"]["status"],
+            "rule_label": genesis["config"]["contribution_day"]["label"]}
 
 
 def capture(*, as_of, positions, prices, core, reports, ticker_reports, policy, now=None, **_) -> dict | None:
@@ -811,9 +914,11 @@ def capture(*, as_of, positions, prices, core, reports, ticker_reports, policy, 
     atr_column = ATR_COLUMN[genesis["config"]["atr_period"]]
     readiness = {}
     for market in MARKETS:
-        universe = [s["ticker"] for s in genesis["bootstrap"] + bronze["signals"] if s["market"] == market]
+        universe = [s["ticker"] for s in genesis["bootstrap"] + bronze["signals"] if s["market"] == market] + \
+            [p["ticker"] for p in (genesis.get("seed") or {}).get("positions", []) if p["market"] == market]
         readiness[market] = record_sessions(market, universe=universe, prices=prices, benchmark=core[BENCHMARKS[market]],
-                                            fx_series=fx._USDKRW, atr_column=atr_column, now=instant)
+                                            fx_series=fx._USDKRW, atr_column=atr_column, now=instant,
+                                            after=(genesis.get("seed") or {}).get("marks", {}).get(market))
     bronze = load_bronze()
     targets = {}
     for market in MARKETS:
@@ -830,7 +935,24 @@ def capture(*, as_of, positions, prices, core, reports, ticker_reports, policy, 
     return readiness
 
 
-def init(*, epoch: dt.datetime, contribution_day: str, status: str, now: dt.datetime | None = None) -> dict:
+def seed_from_backtest(path: Path) -> dict:
+    """Explicit live seed: the backtest end state plus its provenance (artifact path, content hash, run id)."""
+    doc = json.loads(path.read_text(encoding="utf-8"))
+    if doc.get("segment") != "backtest" or doc.get("account_id") != ACCOUNT_ID:
+        raise ValueError("not a funded-account backtest artifact")
+    end = doc["end_state"]
+    path = Path(path).resolve()
+    artifact = lake.rel(path) if path.is_relative_to(lake.ROOT) else path.as_posix()
+    return {"source": "backtest", "artifact": artifact, "artifact_sha256": canonical_sha256(doc),
+            "run_id": doc["run_id"], "availability": doc["availability"], "start_at": doc["start_at"],
+            "end_at": doc["end_at"], "schedule_anchor": doc["schedule_anchor"],
+            "contribution_day": doc["config"]["contribution_day"], **{k: end[k] for k in (
+                "cash_krw", "principal_krw", "nav_krw", "installments_applied", "marks", "positions",
+                "queued_signals", "known_report_ids")}}
+
+
+def init(*, epoch: dt.datetime, contribution_day: str, status: str, now: dt.datetime | None = None,
+         seed_path: Path | None = None) -> dict:
     """Operator start. Bootstrap = W holdings published before the epoch; known reports = buy reports so far.
 
     The epoch must be explicit, timezone-aware, not in the future and at most a day old: an old epoch would
@@ -840,6 +962,15 @@ def init(*, epoch: dt.datetime, contribution_day: str, status: str, now: dt.date
     now = now or dt.datetime.now(dt.timezone.utc)
     if epoch.tzinfo is None or not now - dt.timedelta(days=1) <= epoch <= now:
         raise ValueError("--epoch must be a timezone-aware instant within the last 24 hours")
+    if seed_path is not None:
+        seed = seed_from_backtest(seed_path)
+        rule = seed.pop("contribution_day")
+        if (rule["day_of_month"], rule["status"]) != (contribution_day_rule(contribution_day, status)["day_of_month"],
+                                                      contribution_day_rule(contribution_day, status)["status"]):
+            raise ValueError("--contribution-day/--contribution-day-status disagree with the backtest's rule")
+        return start_account(epoch=epoch, contribution_day=rule, as_of=epoch.astimezone(KST).date().isoformat(),
+                             positions={}, reports=[], seed=seed,
+                             policy={k: CONFIG[k] for k in ("atr_period", "atr_mult", "max_positions")})
     rule = contribution_day_rule(contribution_day, status)
     published = json.loads((lake.WEB_DATA / "strategy-backtest.json").read_text(encoding="utf-8"))
     if _instant(published["generated_at"]) > epoch:
@@ -890,6 +1021,7 @@ if __name__ == "__main__":
     start.add_argument("--contribution-day", required=True, help="'first-trading-day' or a day of month 1..28")
     start.add_argument("--contribution-day-status", required=True, choices=("proposed", "confirmed"),
                        help="'proposed' keeps the 제안값(미확정) label everywhere")
+    start.add_argument("--seed-backtest", type=Path, help="start the live segment from this backtest artifact's end state")
     sub.add_parser("write", help="replay Bronze into the Silver ledger and Gold artifact")
     sub.add_parser("check", help="fail if the Silver/Gold artifacts drift from a Bronze replay")
     cancel = sub.add_parser("cancel", help="explicitly cancel a frozen plan before its open")
@@ -906,7 +1038,7 @@ if __name__ == "__main__":
         write(check=True)
     elif args.command == "init":
         init(epoch=dt.datetime.fromisoformat(args.epoch), contribution_day=args.contribution_day,
-             status=args.contribution_day_status)
+             status=args.contribution_day_status, seed_path=args.seed_backtest)
         write()
     elif args.command == "cancel":
         cancel_plan(args.market, args.day, args.reason, dt.datetime.now(dt.timezone.utc))

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { AlertTriangle, ArrowRight, CircleSlash, Info } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { StaleNotice } from "@/components/account/stale-notice";
 import type { AccountFlow, FlowAction, FlowPlan } from "@/lib/account-flow";
 import { cn, formatPct } from "@/lib/utils";
@@ -128,8 +128,40 @@ function Valuation({ flow }: { flow: AccountFlow }) {
         </dl>
         <PrincipalBar v={v} />
         <p className="mt-2 text-xs text-muted-foreground">투자 손익 = 평가액 − 누적 원금. 납입은 원금이며 수익률(TWR)에 들어가지 않습니다.</p>
+        {v.scopeNote && <p className="mt-1 text-xs font-bold text-warn">{v.scopeNote}</p>}
       </div>
+      {flow.segments && <Segments segments={flow.segments} />}
     </section>
+  );
+}
+
+/** Backtest, live and combined side by side so a simulated result never reads as the live track record. */
+function Segments({ segments }: { segments: NonNullable<AccountFlow["segments"]> }) {
+  return (
+    <div className="mt-3">
+      <Table>
+        <TableCaption className="text-left text-xs">구간별 성과 — TWR은 각 구간 안에서 납입을 제외해 계산합니다.</TableCaption>
+        <TableHeader>
+          <TableRow><TableHead>구간</TableHead><TableHead className="text-right">원금</TableHead><TableHead className="text-right">평가액</TableHead>
+            <TableHead className="text-right">손익</TableHead><TableHead className="text-right">TWR</TableHead></TableRow>
+        </TableHeader>
+        <TableBody>
+          {segments.map((g) => (
+            <TableRow key={g.key} className={g.key === "backtest" ? "bg-muted/40" : undefined}>
+              <TableCell className="whitespace-normal">
+                <span className="font-bold">{g.label}</span>
+                <span className="block font-mono text-[10px] text-muted-foreground tnum">{g.period}</span>
+                <span className="block text-[11px] text-muted-foreground">{g.note}</span>
+              </TableCell>
+              <TableCell className="text-right font-mono tnum">{won(g.principalKrw)}</TableCell>
+              <TableCell className="text-right font-mono tnum">{won(g.navKrw)}</TableCell>
+              <TableCell className={cn("text-right font-mono tnum", tone(g.pnlKrw))}>{signed(g.pnlKrw)}</TableCell>
+              <TableCell className={cn("text-right font-mono tnum", tone(g.twrPct))}>{formatPct(g.twrPct, 2)}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   );
 }
 

@@ -140,6 +140,14 @@ function Started({ account }: { account: FundedAccount }) {
           다음 {next.installment}회 {won(next.amount_krw)} · {next.scheduled_date ?? "날짜 미정"} ({next.label})
         </span>
       </p>
+      {account.seed && (
+        <p className="rounded-md border border-dashed border-border px-3 py-2 text-xs text-muted-foreground">
+          <b className="text-foreground">실전 구간</b> {account.started_at.slice(0, 10)} 개시 — 백테스트 구간(
+          {account.seed.start_at.slice(0, 10)}~{account.seed.end_at.slice(0, 10)}, run <code className="font-mono">{account.seed.run_id}</code>)의
+          종료 상태(평가액 {won(account.seed.nav_krw)}, 원금 {won(account.seed.principal_krw)}, 납입 {account.seed.installments_applied}회)를 승계했습니다.
+          개시 이후 계획만 동결된 실전 계획입니다.
+        </p>
+      )}
       <AccountFlowView flow={flow} method={account.method} />
     </div>
   );

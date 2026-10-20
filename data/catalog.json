@@ -1,8 +1,8 @@
 {
  "datasets": [
   {
-   "bytes": null,
-   "files": null,
+   "bytes": 65340,
+   "files": 1,
    "format": "json",
    "id": "bronze.funded_account",
    "inputs": [],
@@ -349,11 +349,12 @@
    "updated_at": null
   },
   {
-   "bytes": null,
-   "files": null,
+   "bytes": 452339,
+   "files": 1,
    "format": "json",
    "id": "serving.funded_account",
    "inputs": [
+    "silver.funded_backtest",
     "silver.funded_ledger"
    ],
    "layer": "gold",
@@ -362,9 +363,9 @@
     "funded_account.py"
    ],
    "rows": null,
-   "schema_version": null,
+   "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": null
+   "updated_at": "2026-10-20T16:12:31+00:00"
   },
   {
    "bytes": 2638,
@@ -465,7 +466,7 @@
    "updated_at": null
   },
   {
-   "bytes": 254070,
+   "bytes": 269488,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -482,7 +483,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T13:09:26+00:00"
+   "updated_at": "2026-10-20T16:13:14+00:00"
   },
   {
    "bytes": 507498,
@@ -596,8 +597,27 @@
    "updated_at": null
   },
   {
-   "bytes": null,
-   "files": null,
+   "bytes": 616319,
+   "files": 1,
+   "format": "json",
+   "id": "silver.funded_backtest",
+   "inputs": [
+    "gold.report_performance",
+    "silver.prices"
+   ],
+   "layer": "silver",
+   "path": "data/silver/portfolio/funded-w50-v1-backtest.json",
+   "producer": [
+    "funded_backtest.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
+   "bytes": 452339,
+   "files": 1,
    "format": "json",
    "id": "silver.funded_ledger",
    "inputs": [
@@ -609,9 +629,9 @@
     "funded_account.py"
    ],
    "rows": null,
-   "schema_version": null,
+   "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": null
+   "updated_at": "2026-10-20T16:12:31+00:00"
   },
   {
    "bytes": 6001,

@@ -63,8 +63,9 @@ export const FundedAccountSchema = z.object({
     ])),
   }).loose(),
   marks: z.object({ KR: z.iso.date().nullable(), US: z.iso.date().nullable() }),
+  // Whole-account balances; with a backtest seed they span both segments (scope). Live-only numbers: segments.live.
   performance: z.object({
-    initial_capital_krw: Krw.positive(), contributions_krw: Krw.nonnegative(), installments_applied: z.number().int().nonnegative(),
+    scope: z.enum(["live", "combined_backtest_and_live"]), initial_capital_krw: Krw.positive(), contributions_krw: Krw.nonnegative(), installments_applied: z.number().int().nonnegative(),
     principal_krw: Krw.positive(), nav_krw: Krw.positive(), cash_krw: Krw, cash_weight_pct: z.number(),
     investment_pnl_krw: Krw, realized_pnl_krw: Krw, fees_krw: Krw.nonnegative(), twr_pct: z.number(), xirr_pct: z.number().nullable(),
   }),
@@ -93,16 +94,39 @@ export const FundedAccountSchema = z.object({
   fills: z.array(FundedFillSchema),
   signals: z.array(z.object({ id: z.string(), ticker: z.string(), market: Market, name: z.string(), report_date: z.iso.date(),
     observed_at: z.iso.datetime({ offset: true }), status: z.enum(["queued", "filled", "dropped", "expired"]), outcome: z.string().nullable() })),
+  // twr_pct is per segment: 백테스트 구간 rows chain from the backtest start, 실전 구간 rows from the live epoch.
   history: z.array(z.object({ at: z.iso.datetime({ offset: true }), market: Market.nullable(), session: z.iso.date().nullable(),
-    nav_krw: Krw.positive(), cash_krw: Krw, principal_krw: Krw.positive(), investment_pnl_krw: Krw, twr_pct: z.number() })),
+    nav_krw: Krw.positive(), cash_krw: Krw, principal_krw: Krw.positive(), investment_pnl_krw: Krw, twr_pct: z.number(),
+    segment: z.enum(["backtest", "live"]) })),
+  segments: z.object({
+    backtest: z.object({ label: z.literal("백테스트 구간 (simulated)"), availability: z.enum(["publication_date", "first_seen"]),
+      start_at: z.iso.datetime({ offset: true }), end_at: z.iso.datetime({ offset: true }),
+      marks: z.object({ KR: z.iso.date().nullable(), US: z.iso.date().nullable() }), run_id: z.string(), artifact_sha256: z.string(),
+      principal_krw: Krw.positive(), nav_krw: Krw.positive(), investment_pnl_krw: Krw, twr_pct: z.number(),
+      installments_applied: z.number().int().nonnegative(), fees_krw: Krw.nonnegative(), xirr_pct: z.number().nullable() }).nullable(),
+    live: z.object({ label: z.literal("실전 구간"), start_at: z.iso.datetime({ offset: true }), start_nav_krw: Krw.positive(),
+      start_principal_krw: Krw.positive(), contributions_krw: Krw.nonnegative(), installments_applied: z.number().int().nonnegative(),
+      nav_krw: Krw.positive(), investment_pnl_krw: Krw, twr_pct: z.number(), xirr_pct: z.number().nullable() }),
+    combined: z.object({ label: z.string(), principal_krw: Krw.positive(), nav_krw: Krw.positive(), investment_pnl_krw: Krw, twr_pct: z.number() }),
+  }),
+  seed: z.object({ source: z.literal("backtest"), artifact: z.string(), artifact_sha256: z.string(), run_id: z.string(),
+    availability: z.enum(["publication_date", "first_seen"]), start_at: z.iso.datetime({ offset: true }), end_at: z.iso.datetime({ offset: true }),
+    principal_krw: Krw.positive(), nav_krw: Krw.positive(), cash_krw: Krw, installments_applied: z.number().int().nonnegative(),
+    marks: z.object({ KR: z.iso.date().nullable(), US: z.iso.date().nullable() }) }).nullable(),
   excluded_instruments: z.array(z.object({ ticker: z.string(), reason_code: z.literal("not_orderable"), reason: z.string() })),
 }).superRefine((d, ctx) => {
   const p = d.performance;
-  // Contributions are principal, never return: principal = initial + contributions, P&L = NAV − principal.
-  if (Math.abs(p.initial_capital_krw + d.contributions.reduce((a, c) => a + c.amount_krw, 0) - p.principal_krw) > 0.01)
+  // Contributions are principal, never return: principal = start (initial, or the backtest seed) + live contributions.
+  const start = d.seed ? d.seed.principal_krw : p.initial_capital_krw;
+  if (Math.abs(start + d.contributions.reduce((a, c) => a + c.amount_krw, 0) - p.principal_krw) > 0.01)
     ctx.addIssue({ code: "custom", message: "Principal does not reconcile with contributions" });
   if (Math.abs(p.nav_krw - p.principal_krw - p.investment_pnl_krw) > 0.02)
     ctx.addIssue({ code: "custom", message: "Investment P&L must equal NAV minus principal" });
+  if ((p.scope === "combined_backtest_and_live") !== (d.segments.backtest !== null && d.seed !== null))
+    ctx.addIssue({ code: "custom", message: "A seeded account must label its totals as combined and carry the backtest segment" });
+  const live = d.segments.live;
+  if (Math.abs(live.nav_krw - live.start_nav_krw - live.contributions_krw - live.investment_pnl_krw) > 0.02 && d.seed)
+    ctx.addIssue({ code: "custom", message: "Live P&L must exclude the seeded backtest result and live contributions" });
   if (Math.abs(p.cash_krw + d.positions.reduce((a, x) => a + x.value_krw, 0) - p.nav_krw) > 1)
     ctx.addIssue({ code: "custom", message: "NAV does not reconcile with cash and positions" });
   for (const plan of [d.latest_plans.KR, d.latest_plans.US])

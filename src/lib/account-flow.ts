@@ -49,8 +49,20 @@ export type FlowLogRow = {
   feesKrw: number;
   note: string;
 };
+export type FlowSegment = {
+  key: "backtest" | "live" | "combined";
+  label: string;
+  period: string;
+  principalKrw: number;
+  navKrw: number;
+  pnlKrw: number;
+  twrPct: number;
+  note: string;
+};
 export type AccountFlow = {
   asOf: string;
+  /** Backtest vs live vs combined, never merged without a label. null = single live segment only. */
+  segments: FlowSegment[] | null;
   marks: { KR: string | null; US: string | null } | null;
   valuation: {
     navKrw: number;
@@ -64,6 +76,8 @@ export type AccountFlow = {
     cashLabel: string;
     cashWeightPct: number;
     feesKrw: number;
+    /** Says what the totals cover when they include a seeded backtest. */
+    scopeNote: string | null;
     change: { navKrw: number; principalKrw: number; pnlKrw: number; since: string } | null;
   };
   changes: string[];
@@ -163,6 +177,7 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
 
   return {
     asOf: d.as_of,
+    segments: null,
     marks: null,
     valuation: {
       navKrw: d.nav_krw,
@@ -176,6 +191,7 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
       cashLabel: parked ? "파킹 · 현금" : "현금",
       cashWeightPct: idlePct,
       feesKrw: d.fees_krw,
+      scopeNote: null,
       change: prev ? { navKrw: last.nav_krw - prev.nav_krw, principalKrw: 0, pnlKrw: last.nav_krw - prev.nav_krw, since: prev.as_of } : null,
     },
     changes,
@@ -297,8 +313,29 @@ export function fundedFlow(a: FundedAccount): AccountFlow {
   const plannedStock = weights.reduce((acc, w) => acc + (w.plannedPct ?? 0), 0);
   weights.push({ id: "cash", name: "현금 (무이자 원화)", currentPct: p.cash_weight_pct, plannedPct: Math.max(0, 100 - plannedStock) });
 
+  const seg = a.segments;
+  const kst = (iso: string) => new Date(iso).toLocaleDateString("sv-SE", { timeZone: "Asia/Seoul" });
+  const segments: FlowSegment[] | null = seg.backtest
+    ? [
+        { key: "backtest", label: seg.backtest.label, period: `${kst(seg.backtest.start_at)} ~ ${kst(seg.backtest.end_at)}`,
+          principalKrw: seg.backtest.principal_krw, navKrw: seg.backtest.nav_krw, pnlKrw: seg.backtest.investment_pnl_krw,
+          twrPct: seg.backtest.twr_pct,
+          note: seg.backtest.availability === "publication_date"
+            ? "같은 W 결정 코드로 과거를 재생한 모의 결과. 리포트는 발간일에 공개된 것으로 가정(파이프라인 최초 관측 아님). 동결된 실전 계획이 아님."
+            : "같은 W 결정 코드로 과거를 재생한 모의 결과(파이프라인 최초 수집일 기준). 동결된 실전 계획이 아님." },
+        { key: "live", label: seg.live.label, period: `${kst(seg.live.start_at)} ~`,
+          principalKrw: seg.live.start_principal_krw + seg.live.contributions_krw, navKrw: seg.live.nav_krw,
+          pnlKrw: seg.live.investment_pnl_krw, twrPct: seg.live.twr_pct,
+          note: `개시 시점 평가액 ${won(seg.live.start_nav_krw)}(백테스트 종료 상태)에서 출발. 손익·TWR은 개시 후 변화만, 납입 제외.` },
+        { key: "combined", label: seg.combined.label, period: `${kst(seg.backtest.start_at)} ~`,
+          principalKrw: seg.combined.principal_krw, navKrw: seg.combined.nav_krw, pnlKrw: seg.combined.investment_pnl_krw,
+          twrPct: seg.combined.twr_pct, note: "백테스트 구간을 포함한 합산 — 실전 성과로 읽지 마세요." },
+      ]
+    : null;
+
   return {
     asOf,
+    segments,
     marks: a.marks,
     valuation: {
       navKrw: p.nav_krw,
@@ -312,6 +349,9 @@ export function fundedFlow(a: FundedAccount): AccountFlow {
       cashLabel: "현금",
       cashWeightPct: p.cash_weight_pct,
       feesKrw: p.fees_krw,
+      scopeNote: p.scope === "combined_backtest_and_live"
+        ? "누적 원금·투자 손익·TWR은 백테스트 구간을 포함한 합산입니다. 실전 구간만의 성과는 아래 구간별 표를 보세요."
+        : null,
       change: prev && last
         ? { navKrw: last.nav_krw - prev.nav_krw, principalKrw: last.principal_krw - prev.principal_krw,
             pnlKrw: last.investment_pnl_krw - prev.investment_pnl_krw, since: prev.session ?? prev.at.slice(0, 10) }

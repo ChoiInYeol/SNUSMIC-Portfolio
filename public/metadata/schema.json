@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-20T13:09:26+00:00",
+  "generated_at": "2026-10-20T16:13:14+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -615,8 +615,79 @@
       "schema_name": "bronze",
       "layer": "bronze",
       "kind": "dataset",
-      "columns": [],
-      "column_status": "unavailable",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "account_id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "epoch_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "config",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "bootstrap",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "known_report_ids",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "schedule_anchor",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "seed",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "note",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
       "location": "data/bronze/portfolio/funded-w50-v1/**/*.json",
       "row_count": null,
       "description": "json · versioned artifact",
@@ -630,8 +701,191 @@
       "schema_name": "silver",
       "layer": "silver",
       "kind": "dataset",
-      "columns": [],
-      "column_status": "unavailable",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "account_id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "started_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "epoch_kst_date",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "config",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "marks",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "performance",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "segments",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "seed",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "contributions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "scheduled_contributions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "recorded_contributions",
+          "data_type": "integer",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "next_contribution",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "latest_plans",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "plans",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fills",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "signals",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "excluded_instruments",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "data_issues",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
       "location": "data/silver/portfolio/funded-w50-v1-ledger.json",
       "row_count": null,
       "description": "json · versioned artifact",
@@ -640,13 +894,345 @@
       ]
     },
     {
+      "id": "silver.funded_backtest",
+      "name": "funded_backtest",
+      "schema_name": "silver",
+      "layer": "silver",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "account_id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "segment",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "label",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "availability",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "start_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "end_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "schedule_anchor",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "config",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "inputs",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "marks",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "summary",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fills",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "contributions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "end_state",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "data_issues",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "run_id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/silver/portfolio/funded-w50-v1-backtest.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "funded_backtest.py"
+      ]
+    },
+    {
       "id": "serving.funded_account",
       "name": "funded_account",
       "schema_name": "serving",
       "layer": "gold",
       "kind": "dataset",
-      "columns": [],
-      "column_status": "unavailable",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "account_id",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "started_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "epoch_kst_date",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "config",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "marks",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "performance",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "segments",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "seed",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "contributions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "scheduled_contributions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "recorded_contributions",
+          "data_type": "integer",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "next_contribution",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "latest_plans",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "plans",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fills",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "signals",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "excluded_instruments",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "data_issues",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
       "location": "public/research/funded-account.json",
       "row_count": null,
       "description": "json · versioned artifact",
@@ -9043,6 +9629,33 @@
       "id": "etl:bronze.funded_account:silver.funded_ledger",
       "source": "bronze.funded_account",
       "target": "silver.funded_ledger",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:gold.report_performance:silver.funded_backtest",
+      "source": "gold.report_performance",
+      "target": "silver.funded_backtest",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.prices:silver.funded_backtest",
+      "source": "silver.prices",
+      "target": "silver.funded_backtest",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.funded_backtest:serving.funded_account",
+      "source": "silver.funded_backtest",
+      "target": "serving.funded_account",
       "kind": "etl",
       "source_columns": [],
       "target_columns": [],
