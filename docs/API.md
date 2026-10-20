@@ -373,7 +373,9 @@ uv run python scripts/export_api_v2.py --check
 - Serving: `next.config.ts` rewrites extensionless URIs to `public/api/v2/<uri>.json`, sets the cache/CORS/v1
   deprecation headers, and redirects the legacy chart paths. `src/proxy.ts` answers OPTIONS, writes and unknown
   URIs (`src/data/api-v2-resources.json`); `src/app/api/v2/[...path]/route.ts` remains the problem+json fallback
-  for a listed file that is not deployed; `src/app/api/v1/signals/latest/route.ts` keeps the v1 extensionless alias.
+  for a listed file that is not deployed. The v1 extensionless alias `/api/v1/signals/latest` is a rewrite to
+  `latest.json` (identical bytes and headers); `npm run build` first runs `scripts/check-build-inputs.cjs`, which
+  fails the build when that file does not satisfy the web app's zod `SignalsPayloadSchema`.
 - `tests/api-http.test.cjs` checks the guard against the real resource index; `tests/test_http_contract.py`
   starts `next start` from the production build and checks status, headers, `304`, problem bodies and the
   Swagger default examples over real HTTP (skipped, with the reason, without a fresh build).
@@ -385,7 +387,7 @@ Everything below is read-only. Only the first two rows are a public, versioned A
 | Surface | Served by | Audience | Contract |
 |---|---|---|---|
 | `/api/v2/**` | static files + `src/proxy.ts` | public | this document, `openapi.json`, Swagger at `/developers/swagger` |
-| `/api/v1/**` | static files, `src/app/api/v1/signals/latest/route.ts`, `src/proxy.ts` (methods, missing snapshot/revision) | public, **deprecated** | frozen payloads; `/api/v1/openapi.json` |
+| `/api/v1/**` | static files (+ rewrites for the `signals/latest` alias and strategy-details), `src/proxy.ts` (methods, missing snapshot/revision) | public, **deprecated** | frozen payloads; `/api/v1/openapi.json` |
 | `/research/*.json`, `/research/reviews/{sha256}.json` | static files | the site's own pages (public URLs, no API guarantees) | per-file `schema_version`, Python writer + zod reader; not in Swagger |
 | `/api/metadata/schema` | Next route → FastAPI | the `/developers/architecture` page | `src/lib/schema-metadata.ts`; `503` problem+json when the sidecar is down |
 | FastAPI `:8000` `/metadata/schema`, `/docs`, `/openapi.json` | `npm run dev:metadata` | **local / ops only**, never deployed | [METADATA.md](METADATA.md) |

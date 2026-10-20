@@ -118,6 +118,7 @@ RUN npm ci
 COPY next.config.ts tsconfig.json postcss.config.* tailwind.config.* ./
 COPY src/ ./src/
 COPY public/ ./public/
+COPY scripts/check-build-inputs.cjs ./scripts/
 
 # Build the Next.js static site
 RUN npm run build

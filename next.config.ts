@@ -6,7 +6,7 @@ const cors = [
   { key: "Access-Control-Allow-Headers", value: "Content-Type" },
 ];
 
-// Mutable daily artifacts. Keep in sync with src/app/api/v1/signals/latest/route.ts.
+// Mutable daily v1 artifacts (latest signals, strategy-details manifest).
 const shortCache = { key: "Cache-Control", value: "public, max-age=300, stale-while-revalidate=60" };
 // v2 mutable resources: fresh for 5 minutes, then served stale while revalidating for up to a day
 // (data changes once per trading day, so a day of staleness during an outage beats an error).
@@ -52,14 +52,15 @@ const nextConfig: NextConfig = {
         source: `/api/v1/strategy-details/:key/${SHA256}.json`,
         destination: "/api/v2/strategies/:key/revisions/:sha.json",
       },
+      // v1 extensionless alias: the static file's exact bytes and headers (a route handler's Cache-Control
+      // was rewritten by Vercel). Its zod gate runs at build time: scripts/check-build-inputs.cjs.
+      { source: "/api/v1/signals/latest", destination: "/api/v1/signals/latest.json" },
     ];
   },
   async headers() {
     // Header rules match the request path (before rewrites); a later rule overrides an earlier one per key.
     return [
       { source: "/api/v1/signals/latest.json", headers: [shortCache, ...cors] },
-      // Same rule for the route-handler alias: on Vercel a prerendered route's own Cache-Control loses its
-      // stale-while-revalidate, so the config rule (applied by the platform router) keeps the two identical.
       { source: "/api/v1/signals/latest", headers: [shortCache, ...cors] },
       { source: "/api/v1/strategy-details/manifest.json", headers: [shortCache, ...cors] },
       { source: `/api/v1/signals/${DATE}.json`, headers: [snapshotCache, ...cors] },

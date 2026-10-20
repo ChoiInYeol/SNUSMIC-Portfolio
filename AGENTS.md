@@ -21,9 +21,10 @@ Rules for AI coding agents (Codex, Claude Code, Cursor) working in this repo.
   Static metadata/OpenAPI snapshots are generated with `uv run python scripts/schema_metadata.py`;
   regenerate `data/catalog.json` afterward. Local setup: `docs/METADATA.md`.
 - **Web (Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4, shadcn/ui new-york + Radix, Lucide)**:
-  statically generated; `next.config.ts` rewrites extensionless `/api/v2/*` URIs to their JSON files. Route
-  handlers: `src/app/api/v2/[...path]/route.ts` (problem+json 404/405 fallback only) and
-  `src/app/api/v1/signals/latest/route.ts` (v1 extensionless alias).
+  statically generated; `next.config.ts` rewrites extensionless `/api/v2/*` URIs and the v1 alias
+  `/api/v1/signals/latest` to their JSON files; `src/proxy.ts` answers OPTIONS, writes and unknown API URIs.
+  API route handler: `src/app/api/v2/[...path]/route.ts` (problem+json 404 fallback only). Static JSON served
+  as-is is zod-checked before `next build` by `scripts/check-build-inputs.cjs` (part of `npm run build`).
 
 ## Agent tooling setup (once per clone)
 

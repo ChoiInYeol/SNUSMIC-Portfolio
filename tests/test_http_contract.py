@@ -218,12 +218,15 @@ def test_redirects(base):
 
 
 def test_v1_is_deprecated_and_shares_revision_bytes(base):
-    status, headers, _ = fetch(base, "GET", "/api/v1/signals/latest.json")
+    status, headers, latest = fetch(base, "GET", "/api/v1/signals/latest.json")
     assert status == 200
     assert headers["deprecation"] == "@1792368000"
     assert headers["link"] == '</api/v2>; rel="successor-version"'
-    alias_status, alias_headers, _ = fetch(base, "GET", "/api/v1/signals/latest")
-    assert (alias_status, alias_headers["cache-control"]) == (200, headers["cache-control"])
+    # The extensionless alias is a rewrite to the same static file: same bytes, same headers.
+    alias_status, alias_headers, alias = fetch(base, "GET", "/api/v1/signals/latest")
+    assert (alias_status, alias) == (200, latest)
+    for name in ("cache-control", "content-type", "etag", "deprecation", "access-control-allow-origin"):
+        assert alias_headers.get(name) == headers.get(name), name
     revision = next(k for k in INDEX["resources"] if "/revisions/" in k)
     sid, digest = revision.removeprefix("strategies/").split("/revisions/")
     _, _, v2_bytes = fetch(base, "GET", f"/api/v2/{revision}")
