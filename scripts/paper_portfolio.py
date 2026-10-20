@@ -102,6 +102,9 @@ def capture(**kwargs) -> None:
     from paper_execution import capture as capture_execution
     capture_execution(**kwargs)
     write()
+    # The funded account is a separate epoch; it never reads the execution-v2 Bronze above.
+    from funded_account import capture as capture_funded
+    capture_funded(**kwargs)
 
 
 def write(check: bool = False) -> dict:

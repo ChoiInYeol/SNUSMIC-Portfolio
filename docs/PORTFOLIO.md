@@ -1,5 +1,8 @@
 # 전략 모의 포트폴리오와 텔레그램
 
+> 초기 5천만원·체증식 월 납입·정수 주식·익일 시가 주문 계획 계정(`funded-w50-v1`)은 별도 계정이다.
+> [FUNDED-ACCOUNT.md](FUNDED-ACCOUNT.md) 참조. 아래 내용은 1억원 `execution-v2` 계정에 대한 것이다.
+
 ## 계산 의미
 
 `/portfolio`와 `public/research/portfolio.json`은 **기록 시작 이후의 전진 모의 평가**다.

@@ -42,11 +42,37 @@ def messages(doc: dict, report_day: str) -> list[str]:
     if doc["status"].startswith("awaiting_"):
         lines += ["", "다음 진입 후보 · 종목당 기본 비중 (슬롯·잔고 제한)"]
         lines.extend(f"· {p['name']} ({p['id']}) {p['weight_pct']:.2f}%" for p in doc["target_positions"])
+    return chunk(lines, "📊 포트폴리오 (계속)\n")
+
+
+def chunk(lines: list[str], continuation: str) -> list[str]:
+    """Split lines into Telegram-sized messages (sendMessage allows 4096 chars; keep headroom)."""
     chunks = [""]
     for line in lines:
-        if len(chunks[-1]) + len(line) + 1 > 3500: chunks.append("📊 포트폴리오 (계속)\n")
+        if len(chunks[-1]) + len(line) + 1 > 3500: chunks.append(continuation)
         chunks[-1] += line + "\n"
     return chunks
+
+
+def deliver(chunks: list[str], *, scope: str, receipt: Path, force: bool = False) -> int:
+    """Send once per recipient and `scope`; store a hashed receipt only after every chunk succeeded."""
+    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip(); chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
+    if not token or not chat:
+        print("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID required. See docs/PORTFOLIO.md."); return 1
+    key = hashlib.sha256(f"{scope}:{chat}".encode()).hexdigest()
+    receipts = json.loads(receipt.read_text(encoding="utf-8")) if receipt.exists() else {"schema_version": "1.0", "delivered": []}
+    if key in receipts["delivered"] and not force:
+        print("Already delivered for this recipient and scope."); return 0
+    for text in chunks:
+        try:
+            response = requests.post(f"https://api.telegram.org/bot{token}/sendMessage", json={"chat_id": chat, "text": text, "disable_web_page_preview": True}, timeout=30)
+            if response.status_code != 200 or response.json().get("ok") is not True:
+                print(f"Telegram delivery failed (HTTP {response.status_code})."); return 1
+        except (requests.RequestException, ValueError):
+            print("Telegram delivery failed; check connection and bot settings."); return 1
+    receipts["delivered"].append(key)
+    replace_atomic(receipt, lambda fh: json.dump(receipts, fh))
+    print(f"Delivered {len(chunks)} message(s) for {scope}."); return 0
 
 
 def main(argv=None) -> int:
@@ -59,23 +85,7 @@ def main(argv=None) -> int:
     chunks = messages(doc, day)
     if args.dry_run:
         print("\n\n".join(chunks)); return 0
-    token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip(); chat = os.environ.get("TELEGRAM_CHAT_ID", "").strip()
-    if not token or not chat:
-        print("TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID required. See docs/PORTFOLIO.md."); return 1
-    key = hashlib.sha256(f"{day}:{chat}".encode()).hexdigest()
-    receipts = json.loads(args.receipt.read_text(encoding="utf-8")) if args.receipt.exists() else {"schema_version": "1.0", "delivered": []}
-    if key in receipts["delivered"] and not args.force:
-        print("Already delivered for this recipient and KST date."); return 0
-    for chunk in chunks:
-        try:
-            response = requests.post(f"https://api.telegram.org/bot{token}/sendMessage", json={"chat_id": chat, "text": chunk, "disable_web_page_preview": True}, timeout=30)
-            if response.status_code != 200 or response.json().get("ok") is not True:
-                print(f"Telegram delivery failed (HTTP {response.status_code})."); return 1
-        except (requests.RequestException, ValueError):
-            print("Telegram delivery failed; check connection and bot settings."); return 1
-    receipts["delivered"].append(key)
-    replace_atomic(args.receipt, lambda fh: json.dump(receipts, fh))
-    print(f"Delivered {len(chunks)} portfolio message(s) for {day}."); return 0
+    return deliver(chunks, scope=day, receipt=args.receipt, force=args.force)  # receipt key stays sha256("{day}:{chat}")
 
 
 if __name__ == "__main__":

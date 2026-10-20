@@ -1,0 +1,66 @@
+name: funded-orders
+# Next-open order plans for the funded paper account (funded-w50-v1).
+# Gated on data readiness, not a fixed clock: runs only after a refresh workflow on main succeeded
+# (pipeline, publication checks incl. funded_account.py --check, and the artifact commit). Both refresh
+# workflows run the same backtest hook, so plans frozen by the manual full sweep are delivered too;
+# per-revision receipts prevent duplicates. The sender re-checks that each market's plan was
+# frozen from that market's latest completed session and that its open has not started; otherwise it
+# sends nothing for that market and exits nonzero, so a stale plan is never re-sent as today's.
+on:
+  workflow_run:
+    workflows: [refresh-daily, full-sweep-manual]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Render without sending
+        type: boolean
+        default: true
+      force:
+        description: Send again even if this plan revision was already delivered
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: funded-orders-telegram
+  cancel-in-progress: false
+jobs:
+  notify:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # refresh-daily pushes its artifacts to main after the run's own head SHA, so read main.
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv sync --frozen
+      - name: Artifact replays from Bronze
+        run: uv run python scripts/funded_account.py --check
+      # restore/save split: receipts written before a failure (partial delivery) are still saved.
+      - uses: actions/cache/restore@v4
+        with:
+          path: artifacts/telegram
+          key: telegram-orders-${{ github.run_id }}
+          restore-keys: telegram-orders-
+      - name: Send today's order plans
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          FORCE: ${{ inputs.force }}
+        run: |
+          args=()
+          if [ "$DRY_RUN" = "true" ]; then args+=(--dry-run); fi
+          if [ "$FORCE" = "true" ]; then args+=(--force); fi
+          uv run python scripts/send_telegram_orders.py "${args[@]}"
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: artifacts/telegram
+          key: telegram-orders-${{ github.run_id }}-${{ github.run_attempt }}
