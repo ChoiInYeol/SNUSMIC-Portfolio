@@ -1,9 +1,209 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-19T18:45:07+00:00",
+  "generated_at": "2026-10-20T11:22:19+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
+    {
+      "id": "bronze.paper_execution",
+      "name": "paper_execution",
+      "schema_name": "bronze",
+      "layer": "bronze",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "complete_through",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "observed_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "known_report_ids",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "report_events",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "bootstrap",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "bars",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "parking",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fx",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/bronze/portfolio/execution-v2/*.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "paper_execution.py"
+      ]
+    },
+    {
+      "id": "serving.strategy_robustness",
+      "name": "strategy_robustness",
+      "schema_name": "serving",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "engine_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "input_fingerprint",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "reoptimized",
+          "data_type": "boolean",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "method",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "ranking",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "top5_positive_pnl_share_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "scenarios",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "historical_reference",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "public/research/strategy-robustness.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "build_strategy_robustness.py"
+      ]
+    },
     {
       "id": "bronze.paper_targets",
       "name": "paper_targets",
@@ -84,7 +284,28 @@
           "description": null
         },
         {
+          "name": "engine_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
           "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source_as_of",
           "data_type": "string",
           "nullable": null,
           "primary_key": false,
@@ -169,6 +390,20 @@
         },
         {
           "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fills",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "data_issues",
           "data_type": "array",
           "nullable": null,
           "primary_key": false,
@@ -219,7 +454,28 @@
           "description": null
         },
         {
+          "name": "engine_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "policy",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
           "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source_as_of",
           "data_type": "string",
           "nullable": null,
           "primary_key": false,
@@ -304,6 +560,20 @@
         },
         {
           "name": "history",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "fills",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "data_issues",
           "data_type": "array",
           "nullable": null,
           "primary_key": false,
@@ -8607,17 +8877,35 @@
   ],
   "relationships": [
     {
-      "id": "etl:bronze.paper_targets:silver.paper_ledger",
-      "source": "bronze.paper_targets",
-      "target": "silver.paper_ledger",
+      "id": "etl:gold.report_performance:serving.strategy_robustness",
+      "source": "gold.report_performance",
+      "target": "serving.strategy_robustness",
       "kind": "etl",
       "source_columns": [],
       "target_columns": [],
       "label": "ETL"
     },
     {
-      "id": "etl:silver.prices:silver.paper_ledger",
+      "id": "etl:serving.strategy_backtest:serving.strategy_robustness",
+      "source": "serving.strategy_backtest",
+      "target": "serving.strategy_robustness",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.prices:serving.strategy_robustness",
       "source": "silver.prices",
+      "target": "serving.strategy_robustness",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:bronze.paper_execution:silver.paper_ledger",
+      "source": "bronze.paper_execution",
       "target": "silver.paper_ledger",
       "kind": "etl",
       "source_columns": [],

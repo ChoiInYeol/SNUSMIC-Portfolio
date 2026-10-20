@@ -1,7 +1,19 @@
 {
- "schema_version": "1.0",
+ "schema_version": "2.0",
+ "engine_version": "parking-open-v2",
+ "policy": {
+  "atr_period": 42,
+  "atr_mult": 5.75,
+  "max_positions": 30,
+  "strategy": "W_allweather_chandelier",
+  "engine_version": "parking-open-v2",
+  "position_weight": 0.05,
+  "cost_per_side": 0.003,
+  "parking_cost": 0.0005
+ },
  "as_of": "2026-10-19",
- "started_at": "2026-10-19T18:42:46.208430+00:00",
+ "source_as_of": "2026-10-19",
+ "started_at": "2026-10-20T11:14:52.781189+00:00",
  "strategy": "W_allweather_chandelier",
  "mode": "forward_paper",
  "initial_capital_krw": 100000000.0,
@@ -21,93 +33,90 @@
    "rebalanced": false
   }
  ],
+ "fills": [],
+ "data_issues": [],
  "target_positions": [
-  {
-   "id": "KR:064290",
-   "name": "인텍플러스",
-   "weight_pct": 9.665192598122907
-  },
-  {
-   "id": "KR:195870",
-   "name": "해성디에스",
-   "weight_pct": 4.888607486240848
-  },
-  {
-   "id": "KR:033780",
-   "name": "KT&G",
-   "weight_pct": 5.451609947767005
-  },
-  {
-   "id": "KR:020000",
-   "name": "한섬",
-   "weight_pct": 6.396486075432996
-  },
-  {
-   "id": "KR:348210",
-   "name": "넥스틴",
-   "weight_pct": 4.545761742735667
-  },
-  {
-   "id": "KR:041830",
-   "name": "인바디",
-   "weight_pct": 4.271812959178287
-  },
-  {
-   "id": "KR:290650",
-   "name": "엘앤씨바이오",
-   "weight_pct": 6.418454104169534
-  },
-  {
-   "id": "KR:044490",
-   "name": "태웅",
-   "weight_pct": 4.040924812917822
-  },
-  {
-   "id": "KR:042520",
-   "name": "한스바이오메드",
-   "weight_pct": 4.856992816599969
-  },
-  {
-   "id": "KR:031980",
-   "name": "피에스케이홀딩스",
-   "weight_pct": 4.8250879060545
-  },
-  {
-   "id": "KR:119850",
-   "name": "지엔씨에너지",
-   "weight_pct": 3.7538711708934596
-  },
-  {
-   "id": "KR:036190",
-   "name": "금화피에스시",
-   "weight_pct": 5.903935207430057
-  },
   {
    "id": "KR:072710",
    "name": "농심홀딩스",
-   "weight_pct": 5.668776806085671
-  },
-  {
-   "id": "KR:091580",
-   "name": "상신이디피",
-   "weight_pct": 7.312970152248822
+   "weight_pct": 5.0
   },
   {
    "id": "KR:008770",
    "name": "호텔신라",
-   "weight_pct": 4.417550609383781
+   "weight_pct": 5.0
   },
   {
    "id": "US:MSFT",
    "name": "MSFT",
-   "weight_pct": 3.6407466076514003
+   "weight_pct": 5.0
   },
   {
-   "id": "INDEX:AllWeather",
-   "name": "올웨더 합성지수",
-   "weight_pct": 13.94121899708728
+   "id": "KR:195870",
+   "name": "해성디에스",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:348210",
+   "name": "넥스틴",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:020000",
+   "name": "한섬",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:033780",
+   "name": "KT&G",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:036190",
+   "name": "금화피에스시",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:044490",
+   "name": "태웅",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:041830",
+   "name": "인바디",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:119850",
+   "name": "지엔씨에너지",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:031980",
+   "name": "피에스케이홀딩스",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:042520",
+   "name": "한스바이오메드",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:290650",
+   "name": "엘앤씨바이오",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:091580",
+   "name": "상신이디피",
+   "weight_pct": 5.0
+  },
+  {
+   "id": "KR:064290",
+   "name": "인텍플러스",
+   "weight_pct": 5.0
   }
  ],
- "status": "awaiting_next_close",
- "method": "실제 기록 시작 후 공표 비중을 다음 가용 일봉 종가에서 추종. 국내외 환율 반영, 주식 편도 0.3%·지수 프록시 0.05%. 실계좌·실시간 호가·과거 백테스트 수익률 아님. 미체결 현금은 이자 없음."
+ "status": "awaiting_next_open",
+ "method": "W 백테스트와 동일한 parking-open-v2 엔진. 관측 이후 시장별 다음 시가 진입·종가 스탑 신호 후 다음 시가 청산. 전일 ATR·환율·잔고, 주식 0.3%·파킹 0.05%. KR/US/FX 전체 완료 일봉까지만 평가하므로 국내 날짜보다 늦을 수 있음. 올웨더는 시가 없는 합성지수 프록시. 새 계정은 과거 수익을 승계하지 않으며 실계좌 주문이 아님."
 }

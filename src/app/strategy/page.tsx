@@ -10,6 +10,7 @@ import { signColor } from "@/lib/verdict";
 import { cn, formatPct, formatPrice } from "@/lib/utils";
 import { StrategyDocumentSchema } from "@/lib/api-v2";
 import { readV2 } from "@/lib/api-v2-server";
+import { StrategyRobustness } from "@/components/strategy/strategy-robustness";
 
 export const metadata: Metadata = {
   title: "전략 — 판결 아카이브",
@@ -923,6 +924,7 @@ export default async function StrategyPage() {
           </section>
         </div>
       </details>
+      <StrategyRobustness />
     </main>
   );
 }

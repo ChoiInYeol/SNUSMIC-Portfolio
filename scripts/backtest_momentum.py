@@ -2047,7 +2047,9 @@ def main() -> int:
     capture_paper_portfolio(strategy=headline_key, as_of=calendar[-1].isoformat(),
                            nav=float(headline_nav.iloc[-1]), positions=headline.get("open_positions", {}),
                            prices=prices, fx_rate=_fx,
-                           core={"INDEX:AllWeather": all_weather, "INDEX:KOSPI": kospi})
+                           core={"INDEX:AllWeather": all_weather, "INDEX:KOSPI": kospi},
+                           reports=reports, ticker_reports=ticker_reports,
+                           policy={"atr_period": t_atr_period, "atr_mult": t_atr_mult, "max_positions": t_max_pos})
     return 0
 
 

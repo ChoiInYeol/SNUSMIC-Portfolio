@@ -3865,7 +3865,6 @@ def run_portfolio_opt(
 # CSV: 주식 거래만 기록 + 헤더 주석에 "KOSPI 파킹 거래 미포함" 명시.
 # ──────────────────────────────────────────────────────────────────────────────
 
-KOSPI_PARK_COST = 0.0005   # 0.05%/side for index ETF switches (KODEX200 기준 가정)
 
 
 def run_parking_core_chandelier(
@@ -3882,197 +3881,15 @@ def run_parking_core_chandelier(
     regime_aware: bool = False,
     regime_index: pd.Series | None = None,
     parking_name: str = "KOSPI",
+    *, entry_schedule: dict | None = None, initial_capital: float = 100_000_000.0,
+    collect_history: bool = False,
 ) -> dict:
-    """
-    T/T-/W 코어-파킹 샹들리에 (v18: 파킹 시리즈 일반화).
-
-    D+ Chandelier 규칙 완전 동일; 유휴 현금을 parking 시리즈 익스포저로 주차.
-      T  : parking=KOSPI, regime_aware=False
-      T- : parking=KOSPI, regime_aware=True (KOSPI < 200MA → 파킹 수익 대신 현금 이자 3%)
-      W  : parking=올웨더(25% GLD/NASDAQ/S&P500/KOSPI 분기 리밸런스), 레짐 게이트 없음
-
-    진입: 파킹 → 주식 (0.05% + 0.3% 편도 각각).
-    청산: 주식 → 파킹 (0.3% + 0.05% 편도 각각).
-
-    regime_aware=True: regime_index(기본 KOSPI=parking) < 200MA이면 파킹 수익률 대신
-    현금 이자(연 3% 일복리, v18)를 적용.
-
-    비용 공시: 인덱스 ETF 전환 비용 0.05%/side는 KODEX200 기준 추정값
-    (올웨더는 4종 ETF 바스켓 평균 가정). 실제 스프레드·세금·운용보수는 상이할 수 있음.
-    """
-    START_CAPITAL = 100_000_000
-    cash = float(START_CAPITAL)          # this is now the "stock cash" reserve (should stay ~0)
-    parked = 0.0                         # notional parking exposure (in KRW value)
-    positions: dict[str, dict] = {}
-    nav_series: list[tuple[str, float]] = []
-    trades: list[dict] = []
-    pending_exits: set[str] = set()
-
-    # Precompute regime 200MA series (on regime_index, default = parking series)
-    _regime_src = regime_index if regime_index is not None else parking
-    regime_ma200: pd.Series | None = None
-    if regime_aware:
-        regime_ma200 = _regime_src.rolling(200, min_periods=100).mean()
-
-    # Initialise: all START_CAPITAL goes to parking at cost (0.05% entry)
-    parked = START_CAPITAL * (1 - KOSPI_PARK_COST)
-    cash = 0.0
-
-    pending_entries = build_pending_entries(reports, calendar, consensus_only=False, prices=prices)
-
-    prev_park_close: float | None = None
-
-    for day in calendar:
-        day_ts = pd.Timestamp(day)
-        cash *= (1 + CASH_YIELD_DAILY)  # v18: 유휴 현금 일복리 이자 (연 3% MMF 프록시)
-
-        # ── Daily parking return on parked balance ────────────────────────────
-        park_close_today = asof_value(parking, day)
-        if park_close_today > 0:
-            if prev_park_close is not None and prev_park_close > 0:
-                # Regime gate: if regime_aware and regime_index < 200MA → cash yield instead
-                if regime_aware and regime_ma200 is not None:
-                    use_park_return = _regime_risk_on(_regime_src, regime_ma200, day)
-                else:
-                    use_park_return = True
-
-                if parked > 0:
-                    if use_park_return:
-                        daily_park_ret = park_close_today / prev_park_close - 1
-                        parked *= (1 + daily_park_ret)
-                    else:
-                        # v18: 레짐 OFF — 파킹 잔액은 현금으로 간주, 연 3% 일복리 이자
-                        parked *= (1 + CASH_YIELD_DAILY)
-            prev_park_close = park_close_today
-        else:
-            if prev_park_close is None:
-                prev_park_close = asof_value(parking, day) or None
-
-        # ── Execute pending exits (next open after stop signal) ───────────────
-        to_exit = [t for t in sorted(pending_exits) if t in positions]
-        for ticker in to_exit:
-            pos = positions[ticker]
-            q = _get_quote(prices, ticker, day)
-            if q is None or float(q["open"]) <= 0:
-                continue
-            exit_price = float(q["open"])
-            stock_proceeds = pos["shares"] * exit_price * _fx(pos.get("market", "KR"), day) * (1 - COST_PER_SIDE)
-            # Park proceeds back into the parking vehicle (0.05% entry cost)
-            parked += stock_proceeds * (1 - KOSPI_PARK_COST)
-            trades.append(_close_trade(ticker, pos, day, exit_price,
-                                       f"t_chandelier_ATR{atr_mult}",
-                                       ticker_reports, record_full_trades, None))
-            del positions[ticker]
-            pending_exits.discard(ticker)
-
-        # ── Execute pending entries ───────────────────────────────────────────
-        if day in pending_entries:
-            nav_now = (
-                parked
-                + sum(p["shares"] * p["last_close"] * p.get("fx", 1.0) for p in positions.values())
-            )
-            slots = max_positions - len(positions)
-            candidates = list(
-                {t: (t, s, nc) for t, s, nc in pending_entries[day]
-                 if t not in positions}.values()
-            )
-            for ticker, source, n_clubs in candidates[:slots]:
-                df = prices.get(ticker)
-                if df is None or not _has_day(df, day_ts):
-                    continue
-                entry_price = _px(df, day_ts, "open")
-                if entry_price <= 0:
-                    continue
-
-                budget = nav_now * POSITION_WEIGHT
-                if budget > parked:
-                    budget = parked
-                if budget < nav_now * POSITION_WEIGHT * 0.5:
-                    continue
-
-                display_name = ticker
-                tp = None
-                market = "KR"
-                if ticker_reports is not None:
-                    tr_list = ticker_reports.get(ticker, [])
-                    past_tr = [x for x in tr_list if x["report_date"] < day]
-                    if past_tr:
-                        latest = max(past_tr, key=lambda x: x["report_date"])
-                        display_name = latest["display_name"]
-                        tps = [x["target_price"] for x in past_tr if x["target_price"]]
-                        tp = max(tps) if tps else None
-                        market = past_tr[0].get("market", "KR")
-
-                # Sell parking exposure (0.05% cost) → receive cash for stock purchase
-                parked -= budget
-                stock_budget = budget * (1 - KOSPI_PARK_COST)  # proceeds after ETF sell cost
-                shares = stock_budget * (1 - COST_PER_SIDE) / (entry_price * _fx(market, day))
-                total_spent = budget   # taken from parking
-
-                atr_val = asof_value(_atr_column(df, atr_period), day - dt.timedelta(days=1))
-
-                stop = entry_price - atr_mult * atr_val if atr_val else entry_price * 0.75
-
-                pos = {
-                    "shares": shares,
-                    "entry_price": entry_price,
-                    "entry_date": day,
-                    "cost": total_spent,
-                    "last_close": entry_price,
-                    "highest": entry_price,
-                    "stop": stop,
-                    "source": source,
-                    "n_clubs": n_clubs,
-                    "display_name": display_name,
-                    "market": market,
-                    "target_price": tp,
-                    "entry_reason": _report_trigger_reason(
-                        ticker, day, ticker_reports,
-                        prefix=f"학회 매수리포트 발간 → 익일 시가 진입 ({parking_name} 파킹 매도 후 전환)",
-                    ),
-                }
-                positions[ticker] = pos
-
-        # ── Update positions + check chandelier stop ──────────────────────────
-        for ticker, pos in list(positions.items()):
-            df = prices.get(ticker)
-            if df is None or not _has_day(df, day_ts):
-                continue
-            close = _px(df, day_ts, "close")
-            pos["last_close"] = close
-            pos["fx"] = _fx(pos.get("market", "KR"), day)
-            pos["highest"] = max(pos.get("highest", close), close)
-            atr_val = asof_value(_atr_column(df, atr_period), day)
-            if atr_val:
-                new_stop = pos["highest"] - atr_mult * atr_val
-                pos["stop"] = max(pos.get("stop", 0.0), new_stop)
-            if pos.get("stop") and close < pos["stop"] and ticker not in pending_exits:
-                pending_exits.add(ticker)
-
-        nav = parked + sum(p["shares"] * p["last_close"] * p.get("fx", 1.0) for p in positions.values())
-        nav_series.append((day.isoformat(), nav))
-
-    # Force-close remaining positions at end
-    last_day = calendar[-1]
-    for ticker, pos in list(positions.items()):
-        trades.append(_close_trade(ticker, pos, last_day, pos["last_close"],
-                                   "데이터_종료_미청산",
-                                   ticker_reports, record_full_trades, None))
-
-    result = _compute_result(nav_series, trades, START_CAPITAL, label,
-                             open_positions=positions)
-    result["kospi_parking_note"] = (
-        f"코어-{parking_name} 샹들리에: 유휴 현금을 {parking_name} 익스포저로 주차. "
-        "인덱스 ETF 전환 비용 0.05%/side 가정 (실제 스프레드·세금 상이 가능). "
-        "주식 편도 비용 0.3% (기존 동일). "
-        f"CSV는 주식 거래만 기록; {parking_name} 파킹 전환은 별도 미기록."
-    )
-    if regime_aware:
-        result["kospi_parking_note"] += (
-            " 레짐 변형: 레짐 지수 < 200MA 구간에서는 파킹 수익률 대신 현금 이자 연 3% 일복리 (v18). "
-            "참조: Faber (2007) 10개월 이동평균 레짐 필터."
-        )
-    return result
+    """Shared daily engine for T/T-/W backtests and timestamped forward paper accounts."""
+    from .parking_engine import simulate
+    return simulate(prices, reports, calendar, label, parking, atr_period, atr_mult, max_positions,
+                    ticker_reports, record_full_trades, regime_aware, regime_index, parking_name,
+                    entry_schedule=entry_schedule, initial_capital=initial_capital,
+                    collect_history=collect_history)
 
 
 # ──────────────────────────────────────────────────────────────────────────────

@@ -49,6 +49,22 @@
    "updated_at": null
   },
   {
+   "bytes": 77205,
+   "files": 1,
+   "format": "json",
+   "id": "bronze.paper_execution",
+   "inputs": [],
+   "layer": "bronze",
+   "path": "data/bronze/portfolio/execution-v2/*.json",
+   "producer": [
+    "paper_execution.py"
+   ],
+   "rows": null,
+   "schema_version": null,
+   "tracked_in_git": true,
+   "updated_at": null
+  },
+  {
    "bytes": 2635,
    "files": 1,
    "format": "json",
@@ -234,7 +250,7 @@
    "updated_at": null
   },
   {
-   "bytes": 9355805,
+   "bytes": 9327875,
    "files": 107,
    "format": "json",
    "id": "serving.api_v1",
@@ -251,11 +267,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T18:44:56+00:00"
+   "updated_at": "2026-10-20T11:28:55+00:00"
   },
   {
-   "bytes": 166834660,
-   "files": 2024,
+   "bytes": 168397707,
+   "files": 2028,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -292,10 +308,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T18:44:57+00:00"
+   "updated_at": "2026-10-20T11:28:56+00:00"
   },
   {
-   "bytes": 2460,
+   "bytes": 2638,
    "files": 1,
    "format": "json",
    "id": "serving.paper_portfolio",
@@ -308,7 +324,7 @@
     "paper_portfolio.py"
    ],
    "rows": null,
-   "schema_version": "1.0",
+   "schema_version": "2.0",
    "tracked_in_git": true,
    "updated_at": "2026-10-19"
   },
@@ -393,7 +409,7 @@
    "updated_at": null
   },
   {
-   "bytes": 241689,
+   "bytes": 249105,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -410,7 +426,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T18:45:07+00:00"
+   "updated_at": "2026-10-20T11:22:19+00:00"
   },
   {
    "bytes": 507498,
@@ -447,10 +463,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T03:45:05"
+   "updated_at": "2026-10-20T20:29:00"
   },
   {
-   "bytes": 16173411,
+   "bytes": 16131792,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -467,10 +483,30 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-19T18:42:45+00:00"
+   "updated_at": "2026-10-20T11:28:32+00:00"
   },
   {
-   "bytes": 3421424,
+   "bytes": 30777,
+   "files": 1,
+   "format": "json",
+   "id": "serving.strategy_robustness",
+   "inputs": [
+    "gold.report_performance",
+    "serving.strategy_backtest",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "public/research/strategy-robustness.json",
+   "producer": [
+    "build_strategy_robustness.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-19"
+  },
+  {
+   "bytes": 3389351,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -520,13 +556,12 @@
    "updated_at": null
   },
   {
-   "bytes": 2460,
+   "bytes": 2638,
    "files": 1,
    "format": "json",
    "id": "silver.paper_ledger",
    "inputs": [
-    "bronze.paper_targets",
-    "silver.prices"
+    "bronze.paper_execution"
    ],
    "layer": "silver",
    "path": "data/silver/portfolio/ledger.json",
@@ -534,7 +569,7 @@
     "paper_portfolio.py"
    ],
    "rows": null,
-   "schema_version": "1.0",
+   "schema_version": "2.0",
    "tracked_in_git": true,
    "updated_at": "2026-10-19"
   },

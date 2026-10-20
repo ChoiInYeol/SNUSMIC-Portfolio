@@ -23,3 +23,11 @@ test('review and paper serving artifacts validate at frontend boundaries', () =>
   review.ReviewDocumentSchema.parse(JSON.parse(fs.readFileSync('public/research/review.json', 'utf8')));
   paper.PaperPortfolioSchema.parse(JSON.parse(fs.readFileSync('public/research/portfolio.json', 'utf8')));
 });
+
+test('sensitivity artifact has seven unique fixed-policy conditions', () => {
+  const { StrategyRobustnessSchema } = compile('src/lib/strategy-robustness.ts');
+  const raw = JSON.parse(fs.readFileSync('public/research/strategy-robustness.json', 'utf8'));
+  StrategyRobustnessSchema.parse(raw);
+  assert.equal(StrategyRobustnessSchema.safeParse({...raw, reoptimized: true}).success, false);
+  assert.equal(StrategyRobustnessSchema.safeParse({...raw, scenarios: Array(7).fill(raw.scenarios[0])}).success, false);
+});

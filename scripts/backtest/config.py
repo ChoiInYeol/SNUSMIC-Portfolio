@@ -26,6 +26,7 @@ ATR_PERIOD = 42
 MAX_POSITIONS = 20
 POSITION_WEIGHT = 0.05
 COST_PER_SIDE = 0.003
+KOSPI_PARK_COST = 0.0005  # shared synthetic parking conversion cost
 REGIME_MA = 200
 
 # Literature-grounded, fixed parameters (no grid search)

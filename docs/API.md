@@ -414,3 +414,18 @@ uv run python scripts/send_telegram_signals.py --dry-run
 TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... \
   uv run python scripts/send_telegram_signals.py --force
 ```
+
+
+## 연구 보조 서빙 계약
+
+- `/research/portfolio.json`: `schema_version=2.0`, `engine_version=parking-open-v2`.
+  `policy`(고정 W 정책), `source_as_of`(원천 기준일), `as_of`(전체 시장 완료 평가일),
+  `fills`(시장·방향·시가·환율·수량·원화 현금흐름·비용), `data_issues`를 제공한다.
+  `status`는 `awaiting_next_open` 또는 `tracking`. 관측 이후 모의 계정이며 상세는 [PORTFOLIO.md](PORTFOLIO.md).
+- `/research/strategy-robustness.json`: `schema_version=1.0`, 동일 엔진의 고정 정책 7조건 진단.
+  `policy`, `input_fingerprint`, `reoptimized=false`, `ranking`(원화 순손익), `scenarios`,
+  `top5_positive_pnl_share_pct`, `historical_reference`를 제공한다.
+  최고 수익 종목 제외는 사후 민감도 진단이며 별도 투자 신호가 아니다.
+
+위 파일은 연구 화면의 정적 보조 계약이며 v2 REST 리소스나 Swagger 작업을 추가하지 않는다.
+Python 작성기와 zod 경계 모델이 검증하고, 잘못된 입력은 빌드/파이프라인을 실패시킨다.

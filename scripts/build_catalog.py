@@ -44,10 +44,14 @@ def _d(id_, layer, path, fmt, producer, inputs=(), schema_file=None):
 
 R = lake.rel
 DATASETS = [
+    _d("bronze.paper_execution", "bronze", f"{R(lake.BRONZE_PAPER_EXECUTION)}/*.json", "json",
+       ["paper_execution.py"]),
+    _d("serving.strategy_robustness", "gold", R(lake.STRATEGY_ROBUSTNESS), "json", ["build_strategy_robustness.py"],
+       ["serving.strategy_backtest", "silver.prices", "gold.report_performance"]),
     _d("bronze.paper_targets", "bronze", f"{R(lake.BRONZE_PAPER_TARGETS)}/*.json", "json",
        ["paper_portfolio.py"], schema_file=None),
     _d("silver.paper_ledger", "silver", R(lake.SILVER_PAPER_LEDGER), "json", ["paper_portfolio.py"],
-       ["bronze.paper_targets", "silver.prices"]),
+       ["bronze.paper_execution"]),
     _d("serving.paper_portfolio", "gold", R(lake.PAPER_PORTFOLIO), "json", ["paper_portfolio.py"], ["silver.paper_ledger"]),
     _d("serving.research_review", "gold", R(lake.RESEARCH_REVIEW), "json", ["build_research_review.py"],
        ["silver.report_parsed", "silver.report_markdown", "silver.corrections", "serving.report_performance"]),

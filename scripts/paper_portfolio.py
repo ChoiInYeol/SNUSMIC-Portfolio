@@ -1,4 +1,4 @@
-"""Forward-only paper portfolio following published strategy weights at subsequent daily closes.
+"""Paper publication and archived v1 replay. Current v2 uses the shared W opening engine.
 
 No historical backtest returns are counted. The first observation starts at cash. Rebalances require
 new quotes whose market close is strictly AFTER the preceding observation's actual timestamp.
@@ -97,49 +97,20 @@ def replay(observations: list[dict]) -> dict:
             "method": "실제 기록 시작 후 공표 비중을 다음 가용 일봉 종가에서 추종. 국내외 환율 반영, 주식 편도 0.3%·지수 프록시 0.05%. 실계좌·실시간 호가·과거 백테스트 수익률 아님. 미체결 현금은 이자 없음."}
 
 
-def capture(*, strategy: str, as_of: str, nav: float, positions: dict, prices: dict, fx_rate, core) -> None:
-    """Called only after successful backtest: observe current allocation, never seed past dates."""
-    import pandas as pd
-    weights = {}; quotes = {}
-    prior_keys = set()
-    existing = list(lake.BRONZE_PAPER_TARGETS.glob("*.json"))
-    if existing and as_of < max(p.stem for p in existing):
-        return  # Historical backtest reruns cannot backfill a forward record.
-    for path in existing:
-        prior_keys.update(json.loads(path.read_text(encoding="utf-8"))["quotes"])
-    for ticker, df in prices.items():
-        p = positions.get(ticker)
-        market = p.get("market", "KR") if p else ("US" if not ticker.isdigit() else "KR")
-        key = f"{market}:{ticker}"
-        if not p and key not in prior_keys: continue
-        available = df[df.index <= pd.Timestamp(as_of)]
-        if available.empty: raise ValueError(f"missing paper quote: {key}")
-        row = available.iloc[-1]; date = available.index[-1].date()
-        price = float(row["close"]) * fx_rate(market, dt.date.fromisoformat(as_of))
-        quotes[key] = {"market": market, "name": p.get("display_name", ticker) if p else ticker,
-                       "price_krw": price, "date": date.isoformat()}
-        if p: weights[key] = p["shares"] * price / nav
-    residual = 1 - sum(weights.values())
-    if residual < -0.000001: raise ValueError("leveraged headline requires a separate paper mandate")
-    for key, values in core.items():
-        series = values[values.index <= pd.Timestamp(as_of)]
-        quotes[key] = {"market": "KR", "name": "올웨더 합성지수" if key == "INDEX:AllWeather" else "KOSPI 합성지수",
-                       "price_krw": float(series.iloc[-1]), "date": series.index[-1].date().isoformat()}
-    if strategy.startswith(("W_", "T_", "T-_", "U_")):
-        key = "INDEX:AllWeather" if strategy.startswith("W_") else "INDEX:KOSPI"
-        weights[key] = max(0, residual)
-    observation = {"schema_version": "1.0", "source": "published strategy allocation", "as_of": as_of,
-                   "observed_at": dt.datetime.now(dt.timezone.utc).isoformat(), "strategy": strategy,
-                   "weights": weights, "quotes": quotes}
-    validate(observation)
-    target = lake.BRONZE_PAPER_TARGETS / f"{as_of}.json"
-    if not target.exists(): publish_new(target, json.dumps(observation, ensure_ascii=False, allow_nan=False).encode())
+def capture(**kwargs) -> None:
+    """Capture a new versioned mandate without rewriting the archived v1 observations."""
+    from paper_execution import capture as capture_execution
+    capture_execution(**kwargs)
     write()
 
 
 def write(check: bool = False) -> dict:
-    docs = [json.loads(p.read_text(encoding="utf-8")) for p in sorted(lake.BRONZE_PAPER_TARGETS.glob("*.json"))]
-    result = replay(docs)
+    from paper_execution import replay as replay_execution
+    paths = sorted(lake.BRONZE_PAPER_EXECUTION.glob("*.json"))
+    if not paths:
+        raise ValueError("capture execution-v2 inputs before publishing the new paper contract")
+    docs = [json.loads(p.read_text(encoding="utf-8")) for p in paths]
+    result = replay_execution(docs)
     if check:
         for target in (lake.SILVER_PAPER_LEDGER, lake.PAPER_PORTFOLIO):
             if not target.exists() or json.loads(target.read_text(encoding="utf-8")) != result:

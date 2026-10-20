@@ -22,7 +22,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 
 def messages(doc: dict, report_day: str) -> list[str]:
-    if doc.get("schema_version") != "1.0" or doc.get("mode") != "forward_paper":
+    if doc.get("schema_version") not in ("1.0", "2.0") or doc.get("mode") != "forward_paper":
         raise ValueError("expected forward paper portfolio")
     if abs(sum(p["weight_pct"] for p in doc["positions"]) + doc["cash_weight_pct"] - 100) > 0.01:
         raise ValueError("portfolio weights do not reconcile")
@@ -36,11 +36,11 @@ def messages(doc: dict, report_day: str) -> list[str]:
         ret = f"{p['return_pct']:+.2f}%" if p["return_pct"] is not None else "미집계"
         lines.append(f"· {p['name']} ({p['id']}) {p['weight_pct']:.2f}% / {ret} / {p['quote_date']}")
     lines += [f"· 현금 {doc['cash_weight_pct']:.2f}% ({doc['cash_krw']:,.0f}원)", "",
-              "첫 기록 후 다음 가용 종가 체결 대기 중입니다." if doc["status"] == "awaiting_next_close" else "일봉 종가·환율 기준 모의 평가입니다.",
+              "첫 기록 후 다음 시가 체결 대기 중입니다 (KR·US·FX 완료 일봉 평가)." if doc["status"].startswith("awaiting_") else "완료 일봉·환율 기준 모의 평가입니다.",
               "휴장일에는 최근 평가를 반복 표시합니다. 시세 기준일을 확인하세요.",
               doc["method"], "https://verdict-archive.vercel.app/portfolio"]
-    if doc["status"] == "awaiting_next_close":
-        lines += ["", "다음 체결 목표 비중 (현재 보유와 구분)"]
+    if doc["status"].startswith("awaiting_"):
+        lines += ["", "다음 진입 후보 · 종목당 기본 비중 (슬롯·잔고 제한)"]
         lines.extend(f"· {p['name']} ({p['id']}) {p['weight_pct']:.2f}%" for p in doc["target_positions"])
     chunks = [""]
     for line in lines:
