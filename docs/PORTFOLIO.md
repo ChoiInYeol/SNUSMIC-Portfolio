@@ -69,6 +69,9 @@ Silver 원장은 동결 입력을 공통 엔진으로 재생한다. Gold는 NAV�
 
 ## 알림 설정
 
+텔레그램 조회·갱신 명령과 공유 방 권한은 [TELEGRAM-COMMANDS.md](TELEGRAM-COMMANDS.md) 참조.
+공유 방 참여자는 조회 전용이며 `/refresh`는 관리자만 실행한다.
+
 GitHub 저장소 **Settings → Secrets and variables → Actions**에 다음 Secrets를 등록한다.
 
 - `TELEGRAM_BOT_TOKEN`: BotFather에서 받은 봇 토큰.

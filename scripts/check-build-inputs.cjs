@@ -26,3 +26,8 @@ if (!result.success) {
   process.exit(1);
 }
 console.log(`ok ${path.relative(ROOT, file)} satisfies SignalsPayloadSchema`);
+
+const { SotaPortfolioSchema } = loadTs("src/lib/sota-portfolio.ts");
+const book = path.join(ROOT, "data/gold/portfolio/sota.json");
+SotaPortfolioSchema.parse(JSON.parse(fs.readFileSync(book, "utf8")));
+console.log("ok SOTA model book satisfies SotaPortfolioSchema");

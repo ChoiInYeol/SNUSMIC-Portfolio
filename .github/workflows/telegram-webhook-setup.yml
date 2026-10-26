@@ -1,0 +1,36 @@
+name: telegram-webhook-setup
+on:
+  workflow_dispatch:
+    inputs:
+      read_only:
+        description: Configure queries only, without an Actions dispatch token
+        type: boolean
+        default: false
+permissions:
+  contents: read
+concurrency:
+  group: telegram-webhook-setup
+  cancel-in-progress: false
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --frozen
+      - name: Configure production endpoint, deploy, register webhook and command menu
+        env:
+          READ_ONLY: ${{ inputs.read_only }}
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_ALLOWED_USER_ID: ${{ secrets.TELEGRAM_ALLOWED_USER_ID }}
+          TELEGRAM_ALLOWED_CHAT_IDS: ${{ secrets.TELEGRAM_ALLOWED_CHAT_IDS }}
+          TELEGRAM_ACTIONS_TOKEN: ${{ secrets.TELEGRAM_ACTIONS_TOKEN }}
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        run: uv run python scripts/configure_telegram_webhook.py

@@ -30,7 +30,12 @@ jobs:
 
       # Install Playwright browsers (needed for KUVIC and Voera collectors).
       - name: Install Playwright + browsers
-        run: uv run python -m playwright install chromium --with-deps
+        run: |
+          uv run python -m playwright install chromium
+          if ! uv run python -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); b.close(); p.stop()"; then
+            uv run python -m playwright install-deps chromium
+            uv run python -c "from playwright.sync_api import sync_playwright; p=sync_playwright().start(); b=p.chromium.launch(); b.close(); p.stop()"
+          fi
 
       # Price lake (git-ignored): silver clean prices, bronze raw fetches, derived price-frame cache.
       - name: Restore price cache
