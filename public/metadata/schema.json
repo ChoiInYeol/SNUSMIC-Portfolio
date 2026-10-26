@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-26T19:32:20+00:00",
+  "generated_at": "2026-10-26T20:15:35+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -1719,7 +1719,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reports/manifest.json",
-      "row_count": 2429,
+      "row_count": 2434,
       "description": "json · versioned artifact",
       "producers": [
         "collect_ewha.py",
@@ -7069,7 +7069,7 @@
       ],
       "column_status": "observed",
       "location": "data/silver/reports/parsed.csv",
-      "row_count": 1648,
+      "row_count": 1653,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -8847,7 +8847,7 @@
       ],
       "column_status": "observed",
       "location": "data/gold/reports/performance.csv",
-      "row_count": 1472,
+      "row_count": 1477,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -9111,7 +9111,7 @@
       ],
       "column_status": "observed",
       "location": "src/data/report-performance.json",
-      "row_count": 1472,
+      "row_count": 1477,
       "description": "json · versioned artifact",
       "producers": [
         "build_report_performance.py"

@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "generated_at": "2026-10-26T19:19:32+00:00",
+ "generated_at": "2026-10-26T19:57:30+00:00",
  "method": "first_seen = UTC date of min(downloaded_at) over bronze manifest rows for the report's source PDF; reports with no manifest row are omitted",
  "first_seen": {
   "data/silver/reports/markdown/2020-06-22_equity-research-교촌에프앤비.md": "2026-06-10",
@@ -996,6 +996,11 @@
   "data/silver/reports/markdown/smic/2026-06-10_Equity Research, 농심홀딩스.md": "2026-06-11",
   "data/silver/reports/markdown/smic/2026-06-10_Equity Research, 코오롱인더스트리.md": "2026-06-11",
   "data/silver/reports/markdown/smic/2026-06-10_Equity Research, 파트론.md": "2026-06-11",
+  "data/silver/reports/markdown/smic/2026-10-18_Equity Research, Qualcomm, inc.md": "2026-10-26",
+  "data/silver/reports/markdown/smic/2026-10-18_Equity Research, celestica, inc.md": "2026-10-26",
+  "data/silver/reports/markdown/smic/2026-10-18_Equity Research, natera, inc.md": "2026-10-26",
+  "data/silver/reports/markdown/smic/2026-10-18_Equity Research, nebius group N.V.md": "2026-10-26",
+  "data/silver/reports/markdown/smic/2026-10-18_Equity Research, 산일전기.md": "2026-10-26",
   "data/silver/reports/markdown/star/2022-03-15_STAR_삼성전기.md": "2026-06-09",
   "data/silver/reports/markdown/star/2022-03-15_STAR_아세아제지.md": "2026-06-09",
   "data/silver/reports/markdown/star/2022-03-15_STAR_해성디에스.md": "2026-06-09",

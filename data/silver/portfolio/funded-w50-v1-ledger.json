@@ -612,7 +612,7 @@
    "pending_exit": false
   }
  ],
- "as_of": "2026-10-26T19:31:56.740272+00:00",
+ "as_of": "2026-10-26T20:15:10.585319+00:00",
  "contributions": [],
  "scheduled_contributions": [],
  "recorded_contributions": 0,
@@ -640,10 +640,10 @@
     "incoming_contributions_krw": 0,
     "reserved_for_earlier_plans_krw": 0,
     "est_sell_proceeds_krw": 51561200.95,
-    "cash_after_plan_est_krw": 51568640.6,
+    "cash_after_plan_est_krw": 39237205.1,
     "target_budget_krw": 12331435.5,
     "position_count": 20,
-    "slots_free": 15,
+    "slots_free": 14,
     "marks": {
      "KR": "2026-10-26",
      "US": "2026-10-23"
@@ -681,7 +681,7 @@
       "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
      ],
      "seq": 1,
-     "order_id": "a81eda5457a01d92-01"
+     "order_id": "645254f0c02e8bd2-01"
     },
     {
      "side": "sell",
@@ -712,7 +712,7 @@
       "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
      ],
      "seq": 2,
-     "order_id": "a81eda5457a01d92-02"
+     "order_id": "645254f0c02e8bd2-02"
     },
     {
      "side": "sell",
@@ -743,7 +743,7 @@
       "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
      ],
      "seq": 3,
-     "order_id": "a81eda5457a01d92-03"
+     "order_id": "645254f0c02e8bd2-03"
     },
     {
      "side": "sell",
@@ -774,7 +774,7 @@
       "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
      ],
      "seq": 4,
-     "order_id": "a81eda5457a01d92-04"
+     "order_id": "645254f0c02e8bd2-04"
     },
     {
      "side": "sell",
@@ -805,7 +805,40 @@
       "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
      ],
      "seq": 5,
-     "order_id": "a81eda5457a01d92-05"
+     "order_id": "645254f0c02e8bd2-05"
+    },
+    {
+     "side": "buy",
+     "ticker": "062040",
+     "market": "KR",
+     "name": "산일전기",
+     "instrument": {
+      "symbol": "KRX:062040",
+      "venue": "KRX",
+      "currency": "KRW",
+      "lot": 1
+     },
+     "signal_id": "5986e5250907a8e6ae2a519acbe3b5fec707c7a781b9bcd260ec554d8da1dae8",
+     "reason_code": "new_report",
+     "reason": "학회 매수 리포트 2026-10-18 (4개 학회) · 최초 관측 2026-10-27 05:15 KST",
+     "budget_krw": 12331435.5,
+     "est_price": 159100.0,
+     "est_fx": 1.0,
+     "est_shares": 77,
+     "est_gross_krw": 12250700.0,
+     "est_cost_krw": 36752.1,
+     "est_cash_flow_krw": -12287452.1,
+     "current_weight_pct": 0.0,
+     "planned_weight_pct": 4.967264355224789,
+     "atr_prior": 13073.809523809523,
+     "conditions": [
+      "수량은 2026-10-26 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+      "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+      "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+      "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+     ],
+     "seq": 6,
+     "order_id": "645254f0c02e8bd2-06"
     }
    ],
    "excluded": [
@@ -893,11 +926,11 @@
    "no_trade_reason": null,
    "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
    "status": "active",
-   "plan_id": "a81eda5457a01d92",
-   "revision": 1,
-   "frozen_at": "2026-10-26T19:31:56.740272+00:00",
-   "supersedes": null,
-   "revision_reason": null,
+   "plan_id": "645254f0c02e8bd2",
+   "revision": 2,
+   "frozen_at": "2026-10-26T20:15:10.585319+00:00",
+   "supersedes": "a81eda5457a01d92",
+   "revision_reason": "새 관측으로 결정이 바뀌어 개정",
    "outcome": "awaiting_open",
    "fills": []
   },
@@ -921,11 +954,23 @@
    "market": "KR",
    "trading_day": "2026-10-27",
    "revision": 1,
-   "status": "active",
+   "status": "superseded",
    "supersedes": null,
    "frozen_at": "2026-10-26T19:31:56.740272+00:00",
    "basis_session": "2026-10-26",
    "orders": 5,
+   "outcome": "superseded"
+  },
+  {
+   "plan_id": "645254f0c02e8bd2",
+   "market": "KR",
+   "trading_day": "2026-10-27",
+   "revision": 2,
+   "status": "active",
+   "supersedes": "a81eda5457a01d92",
+   "frozen_at": "2026-10-26T20:15:10.585319+00:00",
+   "basis_session": "2026-10-26",
+   "orders": 6,
    "outcome": "awaiting_open"
   }
  ],
@@ -1444,6 +1489,16 @@
    "outcome": "가용 현금 0원 < 진입 예산의 50%"
   },
   {
+   "id": "297cd380794f2347340f6be3c392453d765b748745225354de381d11237f94a5",
+   "ticker": "NBIS",
+   "market": "US",
+   "name": "NBIS",
+   "report_date": "2026-10-18",
+   "observed_at": "2026-10-26T20:15:10.585319+00:00",
+   "status": "queued",
+   "outcome": null
+  },
+  {
    "id": "2a46a432d36c1c71c058df346b9f713c9c34f563870b2ba1391cd8082e10fce9",
    "ticker": "069960",
    "market": "KR",
@@ -1904,6 +1959,16 @@
    "outcome": "가용 현금 0원 < 진입 예산의 50%"
   },
   {
+   "id": "5986e5250907a8e6ae2a519acbe3b5fec707c7a781b9bcd260ec554d8da1dae8",
+   "ticker": "062040",
+   "market": "KR",
+   "name": "산일전기",
+   "report_date": "2026-10-18",
+   "observed_at": "2026-10-26T20:15:10.585319+00:00",
+   "status": "queued",
+   "outcome": null
+  },
+  {
    "id": "5bc9f7c13a0e2cb54e9bbffecad95b948297c3691eab1422ef84b779a0154519",
    "ticker": "215000",
    "market": "KR",
@@ -2022,6 +2087,16 @@
    "observed_at": "2026-10-20T16:33:50.074116+00:00",
    "status": "filled",
    "outcome": "2026-10-21 시가 체결"
+  },
+  {
+   "id": "6e101ada2257f2e6e4acf9ddd15360ba57d6849eebd1b13bfb36a0903ff68d60",
+   "ticker": "CLS",
+   "market": "US",
+   "name": "CLS",
+   "report_date": "2026-10-18",
+   "observed_at": "2026-10-26T20:15:10.585319+00:00",
+   "status": "queued",
+   "outcome": null
   },
   {
    "id": "6e3927e9832f59a012026cef0f4cb328939d5b8dd5b105adef3c5c862e4e2c59",
@@ -2312,6 +2387,16 @@
    "observed_at": "2026-10-20T16:33:50.074116+00:00",
    "status": "dropped",
    "outcome": "가용 현금 0원 < 진입 예산의 50%"
+  },
+  {
+   "id": "943d41f97038718084c6022df3d27b36f4b56ca6c11b3cd9e23c6aad5b9b254e",
+   "ticker": "NTRA",
+   "market": "US",
+   "name": "NTRA",
+   "report_date": "2026-10-18",
+   "observed_at": "2026-10-26T20:15:10.585319+00:00",
+   "status": "queued",
+   "outcome": null
   },
   {
    "id": "95e44e94c1950a73e4f412ffd5e467e43bfce3fb152fc1225982632ffc9b5782",
@@ -2702,6 +2787,16 @@
    "observed_at": "2026-10-20T16:33:50.074116+00:00",
    "status": "dropped",
    "outcome": "가용 현금 0원 < 진입 예산의 50%"
+  },
+  {
+   "id": "c6009849472848f59a4a5ef9d377c2483ea673f8233a5150d44750c4ea9b17cf",
+   "ticker": "QCOM",
+   "market": "US",
+   "name": "QCOM",
+   "report_date": "2026-10-18",
+   "observed_at": "2026-10-26T20:15:10.585319+00:00",
+   "status": "queued",
+   "outcome": null
   },
   {
    "id": "c677ed26628af39f7406cdc42f987fb4a015af02fdc60dff1f91e3713f0cc7a3",

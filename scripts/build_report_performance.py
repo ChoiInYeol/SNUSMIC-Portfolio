@@ -1249,7 +1249,8 @@ def fetch_prices(market: str, ticker: str, start: dt.date, end: dt.date) -> pd.D
     return fetch_us_prices(ticker, start, end)
 
 
-def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date, sleep: float) -> pd.DataFrame:
+def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date, sleep: float,
+                        *, cache_only: bool = False) -> pd.DataFrame:
     """일별 시세를 silver 시세(data/silver/prices/)에 캐시하고 누락 구간만 증분 조회한다."""
     as_of = closed_bar_end(market, as_of)
     cache_path = PRICE_CACHE_DIR / f"{market}_{ticker}.csv"
@@ -1258,8 +1259,20 @@ def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date
         try:
             cached = pd.read_csv(cache_path, index_col=0, parse_dates=True)
             cached = cached.loc[cached.index <= pd.Timestamp(as_of)]
-        except Exception:  # noqa: BLE001 - 손상 캐시는 새로 받는다
+        except Exception as exc:  # noqa: BLE001 - 손상 캐시는 새로 받는다
+            if cache_only:
+                raise ValueError(f"invalid cached prices: {market}/{ticker}") from exc
             cached = None
+
+    if cache_only:
+        if cached is None:
+            return pd.DataFrame()  # known unavailable/delisted quotes remain explicitly unpriced
+        if not cached.empty:
+            close = pd.to_numeric(cached["close"], errors="raise")
+            if not cached.index.is_monotonic_increasing or cached.index.has_duplicates or \
+                    close.isna().any() or not close.map(math.isfinite).all() or (close <= 0).any():
+                raise ValueError(f"invalid cached prices: {market}/{ticker}")
+        return cached
 
     if cached is not None and not cached.empty and cached.index[0].date() <= start + dt.timedelta(days=12):
         last = cached.index[-1].date()
@@ -1988,6 +2001,7 @@ def main() -> int:
     parser.add_argument("--markets", nargs="+", default=["KR", "US"], choices=["KR", "US"])
     parser.add_argument("--schools", nargs="+", default=list(SCHOOLS), choices=list(SCHOOLS))
     parser.add_argument("--parse-only", action="store_true", help="시세 조회 없이 파싱 결과만 출력 (검증용)")
+    parser.add_argument("--cached-prices-only", action="store_true", help="이미 수집한 시세로만 재생성 (손상 캐시는 실패, 없는 시세는 No quote)")
     parser.add_argument("--sleep", type=float, default=0.05, help="Seconds to sleep between market-data calls.")
     args = parser.parse_args()
 
@@ -2067,8 +2081,11 @@ def main() -> int:
         # YTD 계산을 위해 최소한 전년도 말 이전부터 확보
         start = min(min_date, year_start) - dt.timedelta(days=10)
         try:
-            price_cache[(market, ticker)] = fetch_prices_cached(market, ticker, start, as_of, args.sleep)
+            price_cache[(market, ticker)] = fetch_prices_cached(market, ticker, start, as_of, args.sleep,
+                                                               **({"cache_only": True} if args.cached_prices_only else {}))
         except Exception as exc:  # keep batch generation usable even when a single quote source fails
+            if args.cached_prices_only:
+                raise
             print(f"market-data error {market} {ticker}: {exc}", file=sys.stderr)
             price_cache[(market, ticker)] = pd.DataFrame()
         if (i + 1) % 50 == 0:

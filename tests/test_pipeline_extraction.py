@@ -32,6 +32,20 @@ def test_colon_exchange_on_cover_identifies_the_company_before_peer_tables(tmp_p
     assert parsed.source_file == path.as_posix()
 
 
+def test_cached_price_replay_does_not_refetch_ipo_history_and_rejects_corruption(tmp_path, monkeypatch):
+    import datetime as dt
+    import build_report_performance as perf
+    monkeypatch.setattr(perf, "PRICE_CACHE_DIR", tmp_path)
+    monkeypatch.setattr(perf, "fetch_prices", lambda *args: pytest.fail("offline replay must not fetch"))
+    cache = tmp_path / "KR_062040.csv"
+    cache.write_text("date,close\n2024-01-02,1000\n2024-01-03,1100\n", encoding="utf-8")
+    frame = perf.fetch_prices_cached("KR", "062040", dt.date(2000, 1, 1), dt.date(2024, 1, 3), 0, cache_only=True)
+    assert list(frame["close"]) == [1000, 1100]
+    cache.write_text("date,close\n2024-01-02,-1\n", encoding="utf-8")
+    with pytest.raises(ValueError, match="invalid cached prices"):
+        perf.fetch_prices_cached("KR", "062040", dt.date(2000, 1, 1), dt.date(2024, 1, 3), 0, cache_only=True)
+
+
 def test_rating_fallback_only_fills_a_missing_candidate_opinion(tmp_path):
     path = report(tmp_path, "2024년 1월 2일 Strong Buy\n목표주가 52,000원")
     assert parse_report(path).rating == "Strong Buy"

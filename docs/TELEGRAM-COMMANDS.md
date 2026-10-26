@@ -65,6 +65,11 @@ gh workflow run telegram-webhook-setup.yml --ref main
   내려받지 못하면 종료 코드 1로 발행을 중단한다. 기존 보고서가 있다는 이유로 수집 실패를 성공으로 표시하지 않는다.
 - SOTA 데이터는 Python 작성기와 zod 독자가 평가액·수량·비중·손익을 검증한다. 잘못된 생성물은 빌드를 실패시킨다.
 
+원문 파싱을 고친 뒤 이미 확보한 시세로 재현할 때는
+`uv run python scripts/build_report_performance.py --cached-prices-only --as-of YYYY-MM-DD`를 사용할 수 있다.
+이 모드는 시세를 새로 조회하지 않으며 손상된 캐시는 실패시킨다. 없는 시세는 명시적인 `No quote`로 남긴다.
+이후 백테스트·API·색인·메타데이터도 기존 작성기로 재생성하고 전체 발행 검사를 실행한다.
+
 Python: `configure_telegram_webhook.py`, `notify_telegram_refresh.py`.
 웹: `src/app/api/telegram/webhook/route.ts`, `src/lib/telegram-bot.ts`, `src/lib/sota-portfolio.ts`.
 공유 데이터·일일 발송의 의미는 [PORTFOLIO.md](PORTFOLIO.md)를 따른다.

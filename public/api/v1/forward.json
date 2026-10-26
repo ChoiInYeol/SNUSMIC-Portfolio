@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "generated_at": "2026-10-26T19:32:12+00:00",
+ "generated_at": "2026-10-26T20:15:24+00:00",
  "method": "신호 스냅샷(append-only, 커밋 시점 박제)의 매수 신호를 이후 실현 시세로 채점. 진입 = 신호일 익일 시가, 수익률 = 로컬 통화 종가 기준, 시장+티커 7일 내 중복 신호 제외. 전략 규칙(스탑·슬롯) 재현이 아니라 공표된 신호 자체의 전진 성적; 가격 미가용은 unavailable로 보존.",
  "provenance": {
   "first_public_commit": "unknown",
@@ -15,7 +15,7 @@
   "n_unavailable": 0,
   "n_pending": 0,
   "coverage_pct": 100.0,
-  "avg_return_pct": -15.74,
+  "avg_return_pct": -15.73,
   "win_rate_pct": 14.3,
   "best_pct": 27.69,
   "worst_pct": -66.54,
@@ -517,10 +517,10 @@
    "name": "VST",
    "basis_price": null,
    "entry_date": "2026-06-15",
-   "entry_price": 152.81,
+   "entry_price": 152.3468,
    "current_price": 140.16,
-   "return_pct": -8.28,
-   "peak_pct": 10.58,
+   "return_pct": -8.0,
+   "peak_pct": 10.74,
    "days": 130,
    "status": "tracking",
    "trigger_schools": [

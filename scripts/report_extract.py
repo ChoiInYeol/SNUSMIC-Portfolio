@@ -15,6 +15,7 @@ from dataclasses import dataclass
 from report_text import strip_missing_images
 
 COVER_LINES = 200
+RATING_COVER_SEGMENTS = 120
 HEADER_RE = re.compile(r"^<!--.*?-->\s*$")
 TABLE_SEPARATOR_RE = re.compile(r"^\s*\|?\s*:?-{3,}")
 
@@ -244,7 +245,7 @@ def rating_candidates(rows: list[list[str]]) -> list[Candidate]:
                     found.append(Candidate("rating", 0, canon, "labeled", 1.0 - 0.1 * offset, idx))
                     break
             continue
-        if idx >= 120:
+        if idx >= RATING_COVER_SEGMENTS:
             continue
         m = RATING_TOKEN_RE.fullmatch(re.sub(r"[\[\]()（）:：*\s]+|유지|상향|하향|신규|maintain|initiate", " ", seg, flags=re.I).strip())
         if m:
@@ -315,6 +316,9 @@ def extract(text: str, market: str | None, market_close: float | None = None) ->
             best = (s, t, c, u, ok)
     s, t, c, u, ok = best
     ratings = rating_candidates(rows)
+    # Reordered GFM boxes can put a standalone cover BUY before the labelled rating box.
+    # A labelled competitor opinion in later body text must not override that cover opinion.
+    ratings = [r for r in ratings if r.order < RATING_COVER_SEGMENTS] or ratings
     rating = max(ratings, key=lambda r: (r.score, -r.order)).raw if ratings else None
     return Extraction(
         target=t.value if t else None, target_raw=t.raw if t else None,

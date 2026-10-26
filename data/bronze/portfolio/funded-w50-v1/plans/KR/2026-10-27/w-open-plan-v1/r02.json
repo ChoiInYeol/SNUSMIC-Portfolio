@@ -1,0 +1,309 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "policy_version": "w-open-plan-v1",
+ "market": "KR",
+ "trading_day": "2026-10-27",
+ "open_at": "2026-10-27T00:00:00+00:00",
+ "basis_session": "2026-10-26",
+ "basis_observed_at": "2026-10-26T19:31:56.740272+00:00",
+ "skipped_closures": [],
+ "quantity_basis": "estimate_from_close",
+ "account_snapshot": {
+  "nav_est_krw": 246628709.97,
+  "cash_krw": 7439.65,
+  "incoming_contributions_krw": 0,
+  "reserved_for_earlier_plans_krw": 0,
+  "est_sell_proceeds_krw": 51561200.95,
+  "cash_after_plan_est_krw": 39237205.1,
+  "target_budget_krw": 12331435.5,
+  "position_count": 20,
+  "slots_free": 14,
+  "marks": {
+   "KR": "2026-10-26",
+   "US": "2026-10-23"
+  },
+  "principal_krw": 146000000.0
+ },
+ "contributions": [],
+ "orders": [
+  {
+   "side": "sell",
+   "ticker": "020000",
+   "market": "KR",
+   "name": "한섬",
+   "instrument": {
+    "symbol": "KRX:020000",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-10-26 종가 17,590.00 < 스탑 18,341.25",
+   "budget_krw": null,
+   "est_price": 17590.0,
+   "est_fx": 1.0,
+   "est_shares": 870,
+   "est_gross_krw": 15303300.0,
+   "est_cost_krw": 45909.9,
+   "est_cash_flow_krw": 15257390.1,
+   "current_weight_pct": 6.2049953559642725,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 1,
+   "order_id": "645254f0c02e8bd2-01"
+  },
+  {
+   "side": "sell",
+   "ticker": "044490",
+   "market": "KR",
+   "name": "태웅",
+   "instrument": {
+    "symbol": "KRX:044490",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-10-26 종가 23,650.00 < 스탑 25,508.78",
+   "budget_krw": null,
+   "est_price": 23650.0,
+   "est_fx": 1.0,
+   "est_shares": 375,
+   "est_gross_krw": 8868750.0,
+   "est_cost_krw": 26606.25,
+   "est_cash_flow_krw": 8842143.75,
+   "current_weight_pct": 3.595992535153081,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 2,
+   "order_id": "645254f0c02e8bd2-02"
+  },
+  {
+   "side": "sell",
+   "ticker": "195870",
+   "market": "KR",
+   "name": "해성디에스",
+   "instrument": {
+    "symbol": "KRX:195870",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-10-26 종가 41,600.00 < 스탑 46,198.81",
+   "budget_krw": null,
+   "est_price": 41600.0,
+   "est_fx": 1.0,
+   "est_shares": 263,
+   "est_gross_krw": 10940800.0,
+   "est_cost_krw": 32822.4,
+   "est_cash_flow_krw": 10907977.6,
+   "current_weight_pct": 4.4361420863822785,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 3,
+   "order_id": "645254f0c02e8bd2-03"
+  },
+  {
+   "side": "sell",
+   "ticker": "290650",
+   "market": "KR",
+   "name": "엘앤씨바이오",
+   "instrument": {
+    "symbol": "KRX:290650",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-10-26 종가 24,700.00 < 스탑 43,855.23",
+   "budget_krw": null,
+   "est_price": 24700.0,
+   "est_fx": 1.0,
+   "est_shares": 261,
+   "est_gross_krw": 6446700.0,
+   "est_cost_krw": 19340.1,
+   "est_cash_flow_krw": 6427359.9,
+   "current_weight_pct": 2.6139292545591393,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 4,
+   "order_id": "645254f0c02e8bd2-04"
+  },
+  {
+   "side": "sell",
+   "ticker": "348210",
+   "market": "KR",
+   "name": "넥스틴",
+   "instrument": {
+    "symbol": "KRX:348210",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-10-26 종가 26,450.00 < 스탑 28,871.73",
+   "budget_krw": null,
+   "est_price": 26450.0,
+   "est_fx": 1.0,
+   "est_shares": 384,
+   "est_gross_krw": 10156800.0,
+   "est_cost_krw": 30470.4,
+   "est_cash_flow_krw": 10126329.6,
+   "current_weight_pct": 4.1182553326052505,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 5,
+   "order_id": "645254f0c02e8bd2-05"
+  },
+  {
+   "side": "buy",
+   "ticker": "062040",
+   "market": "KR",
+   "name": "산일전기",
+   "instrument": {
+    "symbol": "KRX:062040",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "5986e5250907a8e6ae2a519acbe3b5fec707c7a781b9bcd260ec554d8da1dae8",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-10-18 (4개 학회) · 최초 관측 2026-10-27 05:15 KST",
+   "budget_krw": 12331435.5,
+   "est_price": 159100.0,
+   "est_fx": 1.0,
+   "est_shares": 77,
+   "est_gross_krw": 12250700.0,
+   "est_cost_krw": 36752.1,
+   "est_cash_flow_krw": -12287452.1,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.967264355224789,
+   "atr_prior": 13073.809523809523,
+   "conditions": [
+    "수량은 2026-10-26 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 6,
+   "order_id": "645254f0c02e8bd2-06"
+  }
+ ],
+ "excluded": [
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "1617586559950b54b21207ac9cb514d1c571497da990ba04a4debe2fb5f0cb20",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "131390",
+   "name": "원익피앤이",
+   "signal_id": "7a56f8410081103dec5eef81970a5733e2620178508702c71bf9d959cdedf02d",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "048260",
+   "name": "오스템임플란트",
+   "signal_id": "fc09a2b2ee04091e77d203f3d8eaa3e97a9a3378c5b5556b6a8caf1bd37329df",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "d6a82c4e2f23b92a86b0ed00f14df30ab35edccb541b4f5ea10880c57197ce62",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "010620",
+   "name": "HD현대미포",
+   "signal_id": "96def1ad5d37c7eb5e735a922a7dff2aaf207edc26476cfe567c30f246dcef02",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "115960",
+   "name": "연우",
+   "signal_id": "f6fcb8e7062056b72baaed8ee60f42cb9e2c9bacfb4d7c09b0f41db112c3a51b",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "c69d1cf25f049a1bbdb547f09612f51ce48de23bc1baf0ecd0d07ebad4854cac",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "210e1e9a709b92eb6aa6b8f3ac4553fe335184ebbfcfdc96fcc236a0d46df233",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "287410",
+   "name": "제이시스메디칼",
+   "signal_id": "55ce476f44c64c34dbdcbb30d0a771038508425e928a4431b6b598aa0911c825",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "085370",
+   "name": "루트로닉",
+   "signal_id": "973b4bb3575fb7dec54c3f850cd20574043e7b75f3a442a0ab005325c258139f",
+   "reason_code": "no_close",
+   "reason": "2026-10-26 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  }
+ ],
+ "no_trade_reason": null,
+ "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
+ "status": "active",
+ "plan_id": "645254f0c02e8bd2",
+ "revision": 2,
+ "frozen_at": "2026-10-26T20:15:10.585319+00:00",
+ "supersedes": "a81eda5457a01d92",
+ "revision_reason": "새 관측으로 결정이 바뀌어 개정"
+}

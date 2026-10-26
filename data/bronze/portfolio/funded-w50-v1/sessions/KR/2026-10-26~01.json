@@ -1,0 +1,18 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "market": "KR",
+ "session_date": "2026-10-26",
+ "observed_at": "2026-10-26T20:15:10.585319+00:00",
+ "bars": {
+  "062040": {
+   "open": 159900.0,
+   "high": 163000.0,
+   "low": 157100.0,
+   "close": 159100.0,
+   "volume": 103792.0,
+   "atr": 13073.809523809523
+  }
+ },
+ "fx_usdkrw": []
+}

@@ -33268,5 +33268,70 @@
     "size": 1559900,
     "downloaded_at": "2026-10-26T19:09:14+00:00",
     "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12714",
+    "title": "Equity Research, nebius group N.V.",
+    "page_url": "http://snusmic.com/equity-research-nebius-group/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/10/26_2_1주차_수정보고서_5팀_Nebius_Group_N_V_.pdf",
+    "published_hint": "2026-10-18",
+    "file": "data/bronze/reports/pdfs/smic/2026-10-18_Equity Research, nebius group N.V.pdf",
+    "sha256": "f116bff5bdeadb92da7ecd9c85cd10f0c0f988b10f942980b3f66ff3e1b84e21",
+    "size": 2663133,
+    "downloaded_at": "2026-10-26T19:43:40+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12712",
+    "title": "Equity Research, natera, inc.",
+    "page_url": "http://snusmic.com/equity-research-natera-inc/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/10/26_2_1주차_수정보고서_4팀_Natera_Inc.pdf",
+    "published_hint": "2026-10-18",
+    "file": "data/bronze/reports/pdfs/smic/2026-10-18_Equity Research, natera, inc.pdf",
+    "sha256": "da26a2e3783409e3f885ed342097e926cd6756a0f7ab3f8f046e2f3aa5e793a3",
+    "size": 1225851,
+    "downloaded_at": "2026-10-26T19:43:42+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12710",
+    "title": "Equity Research, celestica, inc.",
+    "page_url": "http://snusmic.com/equity-research-celestica-inc/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/10/26_2_1주차_수정보고서_3팀_Celestica_Inc.pdf",
+    "published_hint": "2026-10-18",
+    "file": "data/bronze/reports/pdfs/smic/2026-10-18_Equity Research, celestica, inc.pdf",
+    "sha256": "a6f703fcad974e1e0bf3332c5e0e815900e440c7f5ece510bdf3eeab0aa4cda6",
+    "size": 2448773,
+    "downloaded_at": "2026-10-26T19:43:45+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12708",
+    "title": "Equity Research, Qualcomm, inc.",
+    "page_url": "http://snusmic.com/equity-research-qualcomm-inc/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/10/26_2_1주차_수정보고서_2팀_Qualcomm_Inc..pdf",
+    "published_hint": "2026-10-18",
+    "file": "data/bronze/reports/pdfs/smic/2026-10-18_Equity Research, Qualcomm, inc.pdf",
+    "sha256": "946969d60f0cd2ee93f75e044d58f95b5ee3efb87a29d01e4ca5031bbf98cbac",
+    "size": 2523548,
+    "downloaded_at": "2026-10-26T19:43:47+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12702",
+    "title": "Equity Research, 산일전기",
+    "page_url": "http://snusmic.com/equity-research-%ec%82%b0%ec%9d%bc%ec%a0%84%ea%b8%b0/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/10/26_2_1주차_수정보고서_1팀_산일전기.pdf",
+    "published_hint": "2026-10-18",
+    "file": "data/bronze/reports/pdfs/smic/2026-10-18_Equity Research, 산일전기.pdf",
+    "sha256": "4406352e55c168a9448b73b591bb282a0e1cec985c4c8ac5454f4373440e0ff1",
+    "size": 3329258,
+    "downloaded_at": "2026-10-26T19:43:50+00:00",
+    "error": null
   }
 ]

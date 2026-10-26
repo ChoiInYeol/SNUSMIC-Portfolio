@@ -49,3 +49,9 @@ def test_rating(text, want):
 
 def test_rating_leading_a_segment_with_change_marker():
     assert extract("We seek further insight\n\nBuy(신규) 목표주가(신규): 190,500원", "KR").rating == "Buy"
+
+
+def test_cover_rating_wins_over_a_later_labelled_competitor_opinion():
+    financial_table = "\n".join("| " + " | ".join(str(i) for i in range(10)) + " |" for _ in range(25))
+    text = "| BUY | |\n목표주가 $760 현재주가 $391 상승여력 94.5%\n" + financial_table + "\n경쟁사 투자 의견 Sell"
+    assert extract(text, "US").rating == "Buy"

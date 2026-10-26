@@ -1,8 +1,8 @@
 {
  "datasets": [
   {
-   "bytes": 348009,
-   "files": 237,
+   "bytes": 360390,
+   "files": 245,
    "format": "json",
    "id": "bronze.funded_account",
    "inputs": [],
@@ -129,7 +129,7 @@
    "updated_at": null
   },
   {
-   "bytes": 1764641,
+   "bytes": 1767625,
    "files": 1,
    "format": "json",
    "id": "bronze.report_manifest",
@@ -144,10 +144,10 @@
     "collect_smic.py",
     "collect_voera.py"
    ],
-   "rows": 2429,
+   "rows": 2434,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:10:29+00:00"
+   "updated_at": "2026-10-26T19:43:50+00:00"
   },
   {
    "bytes": null,
@@ -227,10 +227,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-26"
+   "updated_at": "2026-10-27"
   },
   {
-   "bytes": 636044,
+   "bytes": 638107,
    "files": 1,
    "format": "csv",
    "id": "gold.report_performance",
@@ -243,7 +243,7 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1472,
+   "rows": 1477,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
@@ -266,7 +266,7 @@
    "updated_at": null
   },
   {
-   "bytes": 9274,
+   "bytes": 11440,
    "files": 1,
    "format": "json",
    "id": "gold.sota_portfolio",
@@ -284,10 +284,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:31:55+00:00"
+   "updated_at": "2026-10-26T20:15:09+00:00"
   },
   {
-   "bytes": 9147660,
+   "bytes": 9379256,
    "files": 109,
    "format": "json",
    "id": "serving.api_v1",
@@ -304,11 +304,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:32:11+00:00"
+   "updated_at": "2026-10-26T20:15:23+00:00"
   },
   {
-   "bytes": 201367554,
-   "files": 2111,
+   "bytes": 214227965,
+   "files": 2144,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -329,7 +329,7 @@
    "updated_at": "2026-10-26T19:32:12+00:00"
   },
   {
-   "bytes": 15277,
+   "bytes": 15278,
    "files": 1,
    "format": "json",
    "id": "serving.forward_record",
@@ -345,11 +345,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:32:12+00:00"
+   "updated_at": "2026-10-26T20:15:24+00:00"
   },
   {
-   "bytes": 57200194,
-   "files": 2163,
+   "bytes": 57440270,
+   "files": 2168,
    "format": "json/json.gz",
    "id": "serving.fulltext_index",
    "inputs": [
@@ -370,7 +370,7 @@
    "updated_at": null
   },
   {
-   "bytes": 539186,
+   "bytes": 542145,
    "files": 1,
    "format": "json",
    "id": "serving.funded_account",
@@ -386,7 +386,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:31:56.740272+00:00"
+   "updated_at": "2026-10-26T20:15:10.585319+00:00"
   },
   {
    "bytes": 12162,
@@ -407,7 +407,7 @@
    "updated_at": "2026-10-23"
   },
   {
-   "bytes": 149004,
+   "bytes": 149495,
    "files": 1,
    "format": "json",
    "id": "serving.report_first_seen",
@@ -423,10 +423,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:19:32+00:00"
+   "updated_at": "2026-10-26T19:57:30+00:00"
   },
   {
-   "bytes": 2804774,
+   "bytes": 2814340,
    "files": 1,
    "format": "json",
    "id": "serving.report_performance",
@@ -440,10 +440,10 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1472,
+   "rows": 1477,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:19:30.298822+00:00"
+   "updated_at": "2026-10-26T20:04:37.385213+00:00"
   },
   {
    "bytes": 507895,
@@ -467,8 +467,8 @@
    "updated_at": "2026-10-26"
   },
   {
-   "bytes": 10811682,
-   "files": 582,
+   "bytes": 10840797,
+   "files": 583,
    "format": "json",
    "id": "serving.review_evidence",
    "inputs": [
@@ -504,10 +504,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:32:20+00:00"
+   "updated_at": "2026-10-26T20:15:35+00:00"
   },
   {
-   "bytes": 508639,
+   "bytes": 510679,
    "files": 1,
    "format": "json",
    "id": "serving.search_index",
@@ -525,7 +525,7 @@
    "updated_at": "2026-10-26"
   },
   {
-   "bytes": 64329,
+   "bytes": 72545,
    "files": 1,
    "format": "json",
    "id": "serving.stats",
@@ -541,10 +541,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:32:18"
+   "updated_at": "2026-10-27T05:15:33"
   },
   {
-   "bytes": 15795347,
+   "bytes": 16198231,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -561,10 +561,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:31:55+00:00"
+   "updated_at": "2026-10-26T20:15:09+00:00"
   },
   {
-   "bytes": 31026,
+   "bytes": 30922,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_robustness",
@@ -584,7 +584,7 @@
    "updated_at": "2026-10-26"
   },
   {
-   "bytes": 3302501,
+   "bytes": 3401820,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -637,7 +637,7 @@
    "updated_at": null
   },
   {
-   "bytes": 539186,
+   "bytes": 542145,
    "files": 1,
    "format": "json",
    "id": "silver.funded_ledger",
@@ -652,7 +652,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T19:31:56.740272+00:00"
+   "updated_at": "2026-10-26T20:15:10.585319+00:00"
   },
   {
    "bytes": 6001,
@@ -727,8 +727,8 @@
    "updated_at": null
   },
   {
-   "bytes": 138911194,
-   "files": 1650,
+   "bytes": 139509317,
+   "files": 1655,
    "format": "md",
    "id": "silver.report_markdown",
    "inputs": [
@@ -763,7 +763,7 @@
    "updated_at": null
   },
   {
-   "bytes": 359333,
+   "bytes": 360362,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parsed",
@@ -780,7 +780,7 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1648,
+   "rows": 1653,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
