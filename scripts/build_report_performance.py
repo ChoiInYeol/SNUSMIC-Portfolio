@@ -123,8 +123,8 @@ IN_TEXT_TARGET_PRICE_RE = re.compile(
     re.I,
 )
 # 국내 코드 + 거래소 표기: (089970,KQ) (007810, KOSPI) (047050.KS) (187790) (KQ.237690)
-KR_CODE_EXCHANGE_RE = re.compile(r"^(\d{6})\s*[,.]?\s*(KS|KQ|KOSPI|KOSDAQ|코스피|코스닥|KRX)?$", re.I)
-KR_EXCHANGE_CODE_RE = re.compile(r"^(KS|KQ|KOSPI|KOSDAQ|코스피|코스닥|KRX)\s*[.,]?\s*(\d{6})$", re.I)
+KR_CODE_EXCHANGE_RE = re.compile(r"^(\d{6})\s*[,:.]?\s*(KS|KQ|KOSPI|KOSDAQ|코스피|코스닥|KRX)?$", re.I)
+KR_EXCHANGE_CODE_RE = re.compile(r"^(KS|KQ|KOSPI|KOSDAQ|코스피|코스닥|KRX)\s*[.,:]?\s*(\d{6})$", re.I)
 # 괄호 안 단독 미국 티커: (GLW) (TSLA)
 BARE_US_TICKER_RE = re.compile(r"^([A-Z]{1,5})$")
 YIG_PUBLISHED_RE = re.compile(r"발간일\s*(\d{6})")
@@ -1000,7 +1000,7 @@ def parse_report(path: Path, school: str = "smic", hint: dict | None = None, *, 
                     pass
 
     parsed = ParsedReport(
-        source_file=str(path),
+        source_file=path.as_posix(),
         school=school,
         report_type="company",  # 티커 복구 이후 main()에서 확정
         ocr_recovered=ocr_recovered,

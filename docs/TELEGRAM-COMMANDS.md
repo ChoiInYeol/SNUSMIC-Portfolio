@@ -61,6 +61,8 @@ gh workflow run telegram-webhook-setup.yml --ref main
 - 10분 넘게 지연된 갱신 명령은 실행하지 않는다. Telegram 연결은 `max_connections=1`로 등록한다.
   네트워크 타임아웃은 dispatch가 도착했는지 불명확할 수 있어 자동 재시도하지 않고 실행 목록 확인을 안내한다.
 - 조회는 최신 완료 일봉의 저장 결과다. 평가일이 3일 넘게 뒤처지면 날짜와 지연 가능성을 표시한다.
+- SMIC가 HTML·빈 목록·잘못된 JSON을 반환하면 수집기는 최대 3회 재시도한다. 끝내 실패하거나 PDF를
+  내려받지 못하면 종료 코드 1로 발행을 중단한다. 기존 보고서가 있다는 이유로 수집 실패를 성공으로 표시하지 않는다.
 - SOTA 데이터는 Python 작성기와 zod 독자가 평가액·수량·비중·손익을 검증한다. 잘못된 생성물은 빌드를 실패시킨다.
 
 Python: `configure_telegram_webhook.py`, `notify_telegram_refresh.py`.

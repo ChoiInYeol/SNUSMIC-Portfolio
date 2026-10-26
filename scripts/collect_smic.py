@@ -119,17 +119,29 @@ def fetch_posts_page(page: int) -> tuple[list[dict], int]:
     Returns:
         (posts, total_pages)
     """
-    resp = polite_get(
-        SMIC_API,
-        params={
-            "per_page": SMIC_PER_PAGE,
-            "page": page,
-            "_fields": "id,date,title,link,content",
-        },
-    )
-    resp.raise_for_status()
-    total_pages = int(resp.headers.get("X-WP-TotalPages", 1))
-    return resp.json(), total_pages
+    for attempt in range(3):
+        try:
+            resp = polite_get(SMIC_API, headers={"Accept": "application/json"}, params={
+                "per_page": SMIC_PER_PAGE, "page": page, "_fields": "id,date,title,link,content",
+            })
+            resp.raise_for_status()
+            posts = resp.json()
+            total_pages = int(resp.headers.get("X-WP-TotalPages", 1))
+            if not isinstance(posts, list) or (page == 1 and not posts) or total_pages < 1:
+                raise ValueError("invalid/empty SMIC WordPress page")
+            for post in posts:
+                if not isinstance(post, dict) or type(post.get("id")) is not int or \
+                        not isinstance(post.get("date"), str) or not isinstance(post.get("link"), str) or \
+                        not isinstance(post.get("title"), dict) or not isinstance(post["title"].get("rendered"), str) or \
+                        not isinstance(post.get("content"), dict) or not isinstance(post["content"].get("rendered"), str):
+                    raise ValueError("invalid SMIC post fields")
+                datetime.fromisoformat(post["date"])
+            return posts, total_pages
+        except (requests.RequestException, ValueError) as exc:
+            if attempt == 2:
+                raise requests.RequestException(f"SMIC page {page} unavailable after 3 attempts") from exc
+            print(f"  ! page {page}: invalid/unavailable response, retrying ({attempt + 1}/3)", flush=True)
+    raise AssertionError("unreachable")
 
 
 def download_pdf(
@@ -259,8 +271,7 @@ def collect_smic(limit: int | None, full: bool) -> list[dict]:
         try:
             posts, total_pages = fetch_posts_page(page)
         except requests.RequestException as exc:
-            print(f"  ! page {page} fetch failed: {exc}", flush=True)
-            break
+            raise RuntimeError(f"SMIC collection incomplete: {exc}") from exc
 
         if not posts:
             print(f"  page {page}: empty — done", flush=True)
@@ -329,6 +340,8 @@ def collect_smic(limit: int | None, full: bool) -> list[dict]:
         f"  smic collection done: {new_count} processed, {skipped_count} skipped (already in manifest), {error_count} errors",
         flush=True,
     )
+    if error_count:
+        raise RuntimeError(f"SMIC collection incomplete: {error_count} PDF download failures")
     return [e for e in manifest if e.get("school") == "smic"]
 
 
@@ -344,7 +357,11 @@ def main() -> int:
     args = parser.parse_args()
 
     print("== collecting smic ==", flush=True)
-    entries = collect_smic(limit=args.limit, full=args.full)
+    try:
+        entries = collect_smic(limit=args.limit, full=args.full)
+    except (requests.RequestException, RuntimeError, ValueError) as exc:
+        print(f"ERROR: {exc}", file=sys.stderr, flush=True)
+        return 1
 
     manifest = load_manifest()
     ok = sum(1 for e in manifest if e.get("file") and e.get("school") == "smic")

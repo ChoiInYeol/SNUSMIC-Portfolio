@@ -21,6 +21,17 @@ def test_pipeline_scores_competing_prices_instead_of_taking_the_first(tmp_path):
     assert parse_report(path, extractor="legacy").target_price == 46000
 
 
+def test_colon_exchange_on_cover_identifies_the_company_before_peer_tables(tmp_path):
+    path = tmp_path / "2026-10-18_Equity Research, 산일전기.md"
+    path.write_text("| 2026년 10월 10일 | 산일전기 (KRX:062040)<br>천하제일 산일 |\n"
+                    "| --- | --- |\n| BUY | |\n| 목표주가 | 357,400원 |\n| 현재주가 | 222,500원 |\n"
+                    "| Peer | LS일렉트릭 (KRX:010120) | 효성중공업 (KRX:298040) |", encoding="utf-8")
+    parsed = parse_report(path, "smic")
+    assert (parsed.market, parsed.ticker, parsed.company) == ("KR", "062040", "산일전기")
+    assert parsed.target_price == 357400
+    assert parsed.source_file == path.as_posix()
+
+
 def test_rating_fallback_only_fills_a_missing_candidate_opinion(tmp_path):
     path = report(tmp_path, "2024년 1월 2일 Strong Buy\n목표주가 52,000원")
     assert parse_report(path).rating == "Strong Buy"
