@@ -1,6 +1,6 @@
 {
 "schema_version":"1.0",
-"version":"ecb58685d673245a",
+"version":"75f13e33b8ce3961",
 "terms":{
 "acr20":"7.0031:riA",
 "agmen":"7.0031:py3",
@@ -37,7 +37,7 @@
 "eexicii":"7.0031:qbp1",
 "eng":"5.7038:wn5thApj4wp5vX8",
 "estors":"7.0031:sen1",
-"ft":"4.0241:lf1t5mAp3p-1sj2qMxj2q8pe1u7zv2qj3wk1u3pZ1om2tKwLvW2ss5yu4sW4p-4wz2qIx4tEqb2",
+"ft":"4.0241:lf1t5mAp3p-1sj2qMxj2q8pe1u7zv2qj3wk1u3pZ1om2tKwLvW2ss5yu4sW4p-4wz2qIw4tEqb2",
 "gdansk":"7.0031:pcG",
 "gilead":"4.8058:wy1vW2r4qw9pVop6pa1sT_tHrW3rm5tJqE",
 "haber":"7.0031:po1",
@@ -93,7 +93,7 @@
 "계띾":"6.4922:vX2sfX1",
 "공약":"2.8390:tJoPpa1rW1pCs5p2yt1qAq3re1rp2qY1yHw3qX1qKsh1u3wCw8tCw1x8sDrT-2u8w1x3p1q7q4qh1t7qGp1qEpMo5wCp1xAn7r7r3o5m1q3tGuMy3uQtKuh2q9rBr4r4w1y9rTs8sc1ut6s4sIwo1p9v2x1r3t9rTqGsJqGr6q7vd1xDt1sUy7s3w4t2rg1tMx6s6r2s6y2qBw2",
 "국축":"7.0031:rqb1",
-"급량":"1.3863:Ly4r2q3p1q6x3w1p1q1q1q1r9r1w4-2p3n3q1u1t1p1u1q2y2p4rBq3t7y4xAt3tBu9x4q2q2r2pAs2w1p2s1w1v5u2xGy9t3v4x1v1r2v2-1q1y3y1w1q1s1q4t1z1v1wGr1y6r1s1u2x1w9q3q1r1zCz1y5x2r1x3r3rEvEr9z1rGr1r1q1w4r2q7x2p5q1q2z1r2w4r3r2q4r5q1q5u3p1w2r1v7t6q1y1u3q7u4q3p4w8x8q2q1s3sAv5z2w3y6w1u2sAr3v4q7q6t3r1r1p8sBr3o2qBp1r9r2u3w9x2p2-3x1q3s1u4w3q5v2q4v2v1w5t4t4s1v2u4q2p1w3t3vBu5t2pBr1p5o3x5z4p3x5t1s5t2y2t2v6p7o7t4oBw3m2t3m7-5p1x3w1q1q1p1w1x3-3v5u6x1t2y4z1u5-3y4z2u2z2x3-1v3u1u5x9y1x2y1x2u2-6u1t7v3w4t1-1t8x1r4sCrAr2u1v3r1q3r5q1u1w1q1x5q3p2r5u3r2y3r2r5r2x1r3r1x1v1v2w8rMtKs1t4t3x2q1z5sBt3s3t3s2s5s4w2sFtAt1s9t3r5s4t1sEtAy7v1z3r4sAv6zAvBu1z1v6t1u7t1t4u2s1r4x1y1w1w6t4y1t4yFs1u3p3s1w1r1z2u2x4p5uVs4p7w4z3q1o7t2u4r3y2o3w4q1t1u1p1s3u2q7u1q1r2rDx2r1r3y1r3q7r2v4uAr4u2x1r5qAo4v3sAxLvBrCt8-3s8p1q2s7q1s8w3r2q6z1r5p2r1q3w3q1q1r4-1r2t5s8s4v8sEs4s4r8u7s1x8p2v5u2",
+"급량":"1.3839:Ly4r2q3p1q6x3w1p1q1q1q1r9r1w4-2p3n3q1u1t1p1u1q2y2p4rBq3t7y4xAt3tBu9x4q2q2r2pAs2w1p2s1w1v5u2xGy9t3v4x1v1r2v2-1q1y3y1w1q1s1q4t1z1v1wGr1y6r1s1u2x1w9q3q1r1zCz1y5x2r1x3r3rEvEr9z1rGr1r1q1w4r2q7x2p5q1q2z1r2w4r3r2q4r5q1q5u3p1w2r1v7t6q1y1u3q7u4q3p4w8x8q2q1s3sAv5z2w3y6w1u2sAr3v4q7q6t3r1r1p8sBr3o2qBp1r9r2u3w9x2p2-3x1q3s1u4w3q5v2q4v2v1w5t4t4s1v2u4q2p1w3t3vBu5t2pBr1p5o3x5z4p3x5t1s5t2y2t2v6p7o7t4oBw3m2t3m7-5p1x3w1q1q1p1w1x3-3v5u6x1t2y4z1u5-3y4z2u2z2x3-1v3u1u5x9y1x2y1x2u2-6u1t7v3w4t1-1t8x1r4sCrAr2u1v3r1q3r5q1u1w1q1x5q3p2r5u3r2y3r2r5r2x1r3r1x1v1v2w8rMtKs1t4t3x2q1z5sBt3s3t3s2s5s4w2sFtAt1s9t3r5s4t1sEtAy7v1z3r4sAv6zAvBu1z1v6t1u7t1t4u2s1r4x1y1w1w6t4y1t4yFs1u3p3s1w1r1z2u2x4p5uVs4p7w4z3q1o7t2u4r3y2o3w4q1t1u1p1s3u2q7u1q1r2rDx2r1r3y1r3q7r2v4uAr4u2x1r5qAo4v3sAxLvBrCt8-3s8p1q2s7q1s8w3r2q6z1r5p2r1q3w3q1q1r4-1r2t5s8s4v8sEs4s4r8u7s1x8p2v5u2qC",
 "껑작":"7.0031:rV",
 "너핚":"7.0031:pkd1",
 "동맹":"3.1529:qKq5zBp6z2ui2v1r6w2u4u3p1o2o4qr1rs2qFuIqb1qHr3p1rRxFp1wDrd1sBtDtQo3y3s5s1q7pX4pKsl1t8pCw2q3tn1rZ2wOuNv1u3r6y9q1r9q2rf6sX2zd7pz1o7w6p7p1x1o8rn1sFr8u4r9r7q1",
@@ -159,7 +159,7 @@
 "항축":"6.4922:soY1qr7",
 "핯푳":"6.4922:wyj1z9",
 "핳핯":"6.4922:yyj1t9",
-"형증":"4.8828:lg1rCzLs8qcAqw3q7qw2svCqq9yc5u-3",
+"형증":"4.9662:lg1zX1s8qcAqw3q7qw2svCqq9yc5u-3",
 "홖임":"7.0031:tlW1"
 }
 }

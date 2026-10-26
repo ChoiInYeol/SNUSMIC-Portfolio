@@ -1,6 +1,6 @@
 {
 "schema_version":"1.0",
-"version":"cb29858ef867bc66",
+"version":"a597a3e599be229c",
 "terms":{
 "adplatform":"7.0031:uhF",
 "agp":"7.0031:rl7",
@@ -100,7 +100,7 @@
 "귺까":"4.9662:rmUro1sFw2rQr2vX1sJrAsNtk1",
 "기많":"7.0031:tsj1",
 "느릮":"6.1558:pm2scSq-4",
-"다높":"4.6677:qr1m3q2n2vRvgBuo1rCm2qEqEorUs_1qr1p5",
+"다높":"4.6052:qr1m3q2n2vRvgBuo1rCm2qEqEorUs_1qr1p5q6",
 "당강":"6.1558:z-Ssc9szA",
 "당정":"3.3567:ta2wLre3uu1uDqGuVx5wUqBuTqX1qc3qJq3yVpj1pd1u1p2ts1pFsNtu1ry2q3-l2-v1pb1rKr8t5yo1sb2s2uNrs1w2oY1v1-3q1rVo1r3q3sErDy3xs2q4t5u7pBoAsa1rN",
 "당형":"6.4922:trBqoZ1",
@@ -109,7 +109,7 @@
 "등립":"7.0031:qcH",
 "략성":"6.4922:ql1qlG",
 "량입":"7.0031:tej1",
-"력상":"3.9908:mu1rDwIsQrx7qY7ps1ub4zh7r6tFuZ1v1v7pw1ty1v6w9sBuKqBrh1oNo8qAoi1q6qLqBps4",
+"력상":"4.0241:rb2wIsQrx7qY7ps1ub4zh7r6tFuZ1v1v7pw1ty1v6w9sBuKqBrh1oNo8qAoi1q6qLqBps4",
 "렦세":"7.0031:svV",
 "룹형":"7.0031:qu7",
 "륙공":"6.1558:-f9xs3pX7",
@@ -156,8 +156,8 @@
 "적십":"6.1558:niKt_BsY8",
 "젂설":"5.1572:qi2yiSrY1sW1sZ1x2z9_X1y1",
 "정광":"4.0943:-ErW1tVmq1yAy4-Swb6uOot1q_2-i2-Fx6wm1sZ9s3_Cs5sNtt2_s1sGqa4tn5s-2rx1",
-"정중":"4.0586:qPqUm1sf2yKra2r1p5tSrh2xg6w7pm5tUv_6r6vDvc1tg1wOsm1sZ1wt1ty1ok1qg5we4sA",
-"종횡":"3.9273:ur1y2we3rT-f2rF-KrUwj2qb1y1sc1xQv5xGw2uHqY1xBpo2wk2yW5x2zRrl2sW3vkCv6zLw8ue2wO",
+"정중":"4.0943:qPqUsg2yKra2r1p5tSrh2xg6w7pm5tUv_6r6vDvc1tg1wOsm1sZ1wt1ty1ok1qg5we4sA",
+"종횡":"3.8970:ur1z2we3rT-f2rF-KrUwj2qb1y1sc1xQv5xGw2uHqY1xBpo2wk2yW5x2zRrl2sW3vkCv6zLw8ue2wOu6",
 "중닝":"7.0031:qqS",
 "중생":"6.1558:und1vn2qe9",
 "중식":"4.5463:y4q7lVrr6qo5pUtj1pe1ru1qh1um2qq6xd1rv8r2tFru8",
@@ -168,7 +168,7 @@
 "첚여":"7.0031:pkd1",
 "청동":"7.0031:olp1",
 "체붂":"7.0031:tfY1",
-"총합":"2.3879:q5r1t8p4w1u5q1s5r6qHvAsUrY1o7y3tNtFt2vBr4q2q5sB-AqHp3sErY1rOs1u4vY1u4qOwKsNp2r6u3ue2v4u6r2w2tErIqSq5q8q1w3t4u3u6s7o3x3y4q1q1q9q2p4p3u1n5p3q2p2q6q6y4p5t2t1p6q5t3t1o5q6t2w2zAuAy2p4p5wDu7uc2sq1r9q9r2qAv2u3ur1t3tY1qc1rVth3ve1s9qEu4r2uArCq7p3oApEr8t2y5q9sCu4q1r8r8q8sEv9q2v1rVqFrKs5q9q5pCu2wKqRq1q3r8p6sBrDs5s9r7p5x8v9",
+"총합":"2.3879:q5r1t8p4w1u5q1s5r6qHvAsUrY1o7y3tNtFt2vBr4q2q5sB-AqHp3sErY1rOs1u4vY1u4qOwKsNp2r6u3ue2v4u6r2w2tErIqSq5q8q1w3t4u3u6s7o3x3y4q1q1q9q2p4p3u1n5p3q2p2q6q6y4p5t2t1p6q5t3t1o5q6t2w2zAuAy2p4p5wDu7uc2sq1r9q9r2qAv2u3ur1t3tY1qc1rVth3ve1s9qEu4r2uArCq7p3oApEr8t2y5q9sCu4q1r8r8q8sEv9q2v1rVqFrKs5q9q5pCu2wKqRq1rBp6sBrDs5s9r7p5x8v9qF",
 "추곢":"7.0031:scZ1",
 "치앆":"7.0031:xYX1",
 "켛숛":"7.0031:tyj1",
@@ -181,6 +181,6 @@
 "해짂":"3.8112:rY2t2r2pAw2vvRs1s8tEt5s2t2sAsSsJrBs8r1w6s1v9vAx6t1u3y1s9qEsAtw1uk1v8r4v4rAr3",
 "햃셓":"7.0031:tbk1",
 "형광":"3.4866:xNu6tAva3v4tOwFqW2sJyW2zo1qBuh1z2wCrb1oo1q4rr2os1pCzVxd1__1ui4yEyFxGuPsZ1-6vMry1w1sMr6tHs4z6yY1rq2sC-Bqo1y7wIvd1x_4s1u5",
-"형중":"5.1572:sb1l5oJqqIoMqVvjRpb1p4"
+"형중":"5.2685:sb1l5qdJoMqVvjRpb1p4"
 }
 }

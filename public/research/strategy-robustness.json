@@ -1,101 +1,96 @@
 {
  "schema_version": "1.0",
- "as_of": "2026-10-20",
+ "as_of": "2026-10-26",
  "strategy": "W_allweather_chandelier",
  "engine_version": "parking-open-v2",
  "policy": {
   "atr_period": 42,
   "atr_mult": 5.75,
-  "max_positions": 30
+  "max_positions": 20
  },
- "input_fingerprint": "4291cc69aaafcf222e5b1bd918e9193156fc6ef25fff0e8e491c98a4a5ad6068",
+ "input_fingerprint": "d8939c8e03cc6dac94d81d6e0a4108b3239c10a181bb27c739f9f0b01cf2aec9",
  "reoptimized": false,
  "method": "동일 입력·고정 파라미터로 전 구간 재실행. 최고 수익 종목 제외는 사후 진단이며 실전 종목선택 규칙이 아님. 진입 지연은 기본 익일 시가에 해당 종목 거래일 1/3/5일을 추가. 기존 OOS는 이미 검토된 역사 구간임.",
  "ranking": [
   {
    "ticker": "108490",
    "name": "로보티즈",
-   "pnl_krw": 72408654.83
+   "pnl_krw": 71949064.29
   },
   {
    "ticker": "267260",
    "name": "HD현대일렉트릭",
-   "pnl_krw": 38451665.32
+   "pnl_krw": 37511420.8
   },
   {
    "ticker": "009150",
    "name": "삼성전기",
-   "pnl_krw": 24845486.55
+   "pnl_krw": 24721570.74
   },
   {
    "ticker": "353200",
    "name": "대덕전자",
-   "pnl_krw": 22797693.21
+   "pnl_krw": 23058158.5
   },
   {
    "ticker": "007660",
    "name": "이수페타시스",
-   "pnl_krw": 22679701.22
+   "pnl_krw": 22156541.35
   },
   {
    "ticker": "010060",
    "name": "OCI홀딩스",
-   "pnl_krw": 22556728.04
+   "pnl_krw": 22129301.93
   },
   {
    "ticker": "064290",
    "name": "인텍플러스",
-   "pnl_krw": 18028845.17
+   "pnl_krw": 16557967.38
+  },
+  {
+   "ticker": "448900",
+   "name": "한국피아이엠",
+   "pnl_krw": 16172621.1
   },
   {
    "ticker": "218410",
    "name": "RFHIC",
-   "pnl_krw": 17100277.74
+   "pnl_krw": 15946184.39
   },
   {
    "ticker": "127120",
    "name": "제이에스링크",
-   "pnl_krw": 15780277.22
+   "pnl_krw": 15474392.13
   },
   {
    "ticker": "403870",
    "name": "HPSP",
-   "pnl_krw": 14487559.81
-  },
-  {
-   "ticker": "006400",
-   "name": "삼성SDI",
-   "pnl_krw": 14038102.58
+   "pnl_krw": 14168322.01
   },
   {
    "ticker": "017960",
    "name": "한국카본",
-   "pnl_krw": 13163502.25
+   "pnl_krw": 12984096.85
+  },
+  {
+   "ticker": "006400",
+   "name": "삼성SDI",
+   "pnl_krw": 12734282.58
   },
   {
    "ticker": "003230",
    "name": "삼양식품",
-   "pnl_krw": 12911909.2
-  },
-  {
-   "ticker": "290650",
-   "name": "엘앤씨바이오",
-   "pnl_krw": 12789776.52
+   "pnl_krw": 12734003.76
   },
   {
    "ticker": "004170",
    "name": "신세계",
-   "pnl_krw": 12004400.99
+   "pnl_krw": 12126309.8
   },
   {
-   "ticker": "091580",
-   "name": "상신이디피",
-   "pnl_krw": 10133143.67
-  },
-  {
-   "ticker": "060370",
-   "name": "LS마린솔루션",
-   "pnl_krw": 9588457.84
+   "ticker": "021240",
+   "name": "코웨이",
+   "pnl_krw": 9745934.25
   },
   {
    "ticker": "187870",
@@ -103,204 +98,199 @@
    "pnl_krw": 9431852.58
   },
   {
-   "ticker": "048260",
-   "name": "오스템임플란트",
-   "pnl_krw": 8771341.17
+   "ticker": "060370",
+   "name": "LS마린솔루션",
+   "pnl_krw": 9409569.05
   },
   {
-   "ticker": "000150",
-   "name": "두산",
-   "pnl_krw": 8296757.26
+   "ticker": "091580",
+   "name": "상신이디피",
+   "pnl_krw": 8690632.77
   },
   {
    "ticker": "336570",
    "name": "원텍",
-   "pnl_krw": 8277588.06
+   "pnl_krw": 8144060.66
+  },
+  {
+   "ticker": "000150",
+   "name": "두산",
+   "pnl_krw": 8112969.17
   },
   {
    "ticker": "010140",
    "name": "삼성중공업",
-   "pnl_krw": 7902150.0
+   "pnl_krw": 7809836.03
   },
   {
    "ticker": "064350",
    "name": "현대로템",
-   "pnl_krw": 7394490.91
+   "pnl_krw": 7231786.84
   },
   {
    "ticker": "267270",
    "name": "HD건설기계",
-   "pnl_krw": 7302820.64
+   "pnl_krw": 7176936.55
   },
   {
-   "ticker": "089890",
-   "name": "코세스",
-   "pnl_krw": 6909035.77
-  },
-  {
-   "ticker": "108320",
-   "name": "LX세미콘",
-   "pnl_krw": 6794493.96
+   "ticker": "048260",
+   "name": "오스템임플란트",
+   "pnl_krw": 6729222.22
   },
   {
    "ticker": "458870",
    "name": "씨어스",
-   "pnl_krw": 6727998.96
+   "pnl_krw": 6667031.73
+  },
+  {
+   "ticker": "089890",
+   "name": "코세스",
+   "pnl_krw": 6615666.51
   },
   {
    "ticker": "036930",
    "name": "주성엔지니어링",
-   "pnl_krw": 6520801.43
-  },
-  {
-   "ticker": "035900",
-   "name": "JYP Ent.",
-   "pnl_krw": 6393992.04
-  },
-  {
-   "ticker": "095340",
-   "name": "ISC",
-   "pnl_krw": 6351386.42
+   "pnl_krw": 6368671.1
   },
   {
    "ticker": "082740",
    "name": "한화엔진",
-   "pnl_krw": 5921300.0
+   "pnl_krw": 5978105.35
+  },
+  {
+   "ticker": "095340",
+   "name": "ISC",
+   "pnl_krw": 5665345.46
   },
   {
    "ticker": "200710",
    "name": "에이디테크놀로지",
-   "pnl_krw": 5428324.43
+   "pnl_krw": 5197828.66
   },
   {
    "ticker": "000660",
    "name": "SK하이닉스",
-   "pnl_krw": 5227352.55
+   "pnl_krw": 5005390.38
   },
   {
    "ticker": "054450",
    "name": "텔레칩스",
-   "pnl_krw": 5042009.78
+   "pnl_krw": 4894448.91
   },
   {
-   "ticker": "195870",
-   "name": "해성디에스",
-   "pnl_krw": 4913162.39
-  },
-  {
-   "ticker": "020000",
-   "name": "한섬",
-   "pnl_krw": 4761265.91
+   "ticker": "108320",
+   "name": "LX세미콘",
+   "pnl_krw": 4798319.96
   },
   {
    "ticker": "278470",
    "name": "에이피알",
-   "pnl_krw": 4435158.13
+   "pnl_krw": 4352442.96
+  },
+  {
+   "ticker": "035900",
+   "name": "JYP Ent.",
+   "pnl_krw": 4230423.09
   },
   {
    "ticker": "001040",
    "name": "CJ",
-   "pnl_krw": 4104366.52
-  },
-  {
-   "ticker": "039030",
-   "name": "이오테크닉스",
-   "pnl_krw": 3882862.67
-  },
-  {
-   "ticker": "041930",
-   "name": "SY동아",
-   "pnl_krw": 3731315.32
+   "pnl_krw": 4014714.32
   },
   {
    "ticker": "306040",
    "name": "에스제이그룹",
-   "pnl_krw": 3687081.23
-  },
-  {
-   "ticker": "062040",
-   "name": "산일전기",
-   "pnl_krw": 3236922.84
-  },
-  {
-   "ticker": "100840",
-   "name": "SNT에너지",
-   "pnl_krw": 3222968.5
-  },
-  {
-   "ticker": "033780",
-   "name": "KT&G",
-   "pnl_krw": 3163556.31
-  },
-  {
-   "ticker": "010620",
-   "name": "HD현대미포",
-   "pnl_krw": 3094034.61
-  },
-  {
-   "ticker": "012330",
-   "name": "현대모비스",
-   "pnl_krw": 3014689.01
-  },
-  {
-   "ticker": "137400",
-   "name": "피엔티",
-   "pnl_krw": 2813337.44
-  },
-  {
-   "ticker": "192820",
-   "name": "코스맥스",
-   "pnl_krw": 2768639.06
-  },
-  {
-   "ticker": "126340",
-   "name": "비나텍",
-   "pnl_krw": 2755950.73
-  },
-  {
-   "ticker": "237690",
-   "name": "에스티팜",
-   "pnl_krw": 2732129.89
+   "pnl_krw": 3688801.23
   },
   {
    "ticker": "140860",
    "name": "파크시스템스",
-   "pnl_krw": 2694949.6
+   "pnl_krw": 3595370.41
   },
   {
-   "ticker": "WOLF",
-   "name": "WOLF",
-   "pnl_krw": 2651022.86
-  },
-  {
-   "ticker": "287410",
-   "name": "제이시스메디칼",
-   "pnl_krw": 2632784.29
+   "ticker": "195870",
+   "name": "해성디에스",
+   "pnl_krw": 3553199.1
   },
   {
    "ticker": "BILI",
    "name": "BILI",
-   "pnl_krw": 2397460.16
+   "pnl_krw": 3495514.48
+  },
+  {
+   "ticker": "041930",
+   "name": "SY동아",
+   "pnl_krw": 3414287.6
+  },
+  {
+   "ticker": "062040",
+   "name": "산일전기",
+   "pnl_krw": 3240292.67
+  },
+  {
+   "ticker": "100840",
+   "name": "SNT에너지",
+   "pnl_krw": 3152052.18
+  },
+  {
+   "ticker": "010620",
+   "name": "HD현대미포",
+   "pnl_krw": 3127592.04
+  },
+  {
+   "ticker": "012330",
+   "name": "현대모비스",
+   "pnl_krw": 3055614.92
+  },
+  {
+   "ticker": "192820",
+   "name": "코스맥스",
+   "pnl_krw": 2694745.25
+  },
+  {
+   "ticker": "126340",
+   "name": "비나텍",
+   "pnl_krw": 2688326.38
+  },
+  {
+   "ticker": "237690",
+   "name": "에스티팜",
+   "pnl_krw": 2672231.09
+  },
+  {
+   "ticker": "WOLF",
+   "name": "WOLF",
+   "pnl_krw": 2596589.8
+  },
+  {
+   "ticker": "287410",
+   "name": "제이시스메디칼",
+   "pnl_krw": 2564730.87
+  },
+  {
+   "ticker": "033780",
+   "name": "KT&G",
+   "pnl_krw": 2440834.96
+  },
+  {
+   "ticker": "137400",
+   "name": "피엔티",
+   "pnl_krw": 2397581.98
   },
   {
    "ticker": "030200",
    "name": "KT",
-   "pnl_krw": 2332521.73
+   "pnl_krw": 2264944.66
   },
   {
    "ticker": "214150",
    "name": "클래시스",
-   "pnl_krw": 2067678.59
+   "pnl_krw": 1984195.24
   },
   {
    "ticker": "060150",
    "name": "인선이엔티",
-   "pnl_krw": 1784354.4
-  },
-  {
-   "ticker": "017370",
-   "name": "우신시스템",
-   "pnl_krw": 1687056.53
+   "pnl_krw": 1783260.06
   },
   {
    "ticker": "302430",
@@ -308,54 +298,84 @@
    "pnl_krw": 1645326.26
   },
   {
+   "ticker": "020000",
+   "name": "한섬",
+   "pnl_krw": 1643635.96
+  },
+  {
+   "ticker": "017370",
+   "name": "우신시스템",
+   "pnl_krw": 1632117.07
+  },
+  {
    "ticker": "035420",
    "name": "NAVER",
-   "pnl_krw": 1636561.8
+   "pnl_krw": 1624364.49
   },
   {
    "ticker": "353810",
    "name": "이지바이오",
-   "pnl_krw": 1600738.88
+   "pnl_krw": 1601485.62
   },
   {
    "ticker": "009410",
    "name": "태영건설",
-   "pnl_krw": 1518690.16
+   "pnl_krw": 1526043.51
   },
   {
    "ticker": "009450",
    "name": "경동나비엔",
-   "pnl_krw": 1510776.79
-  },
-  {
-   "ticker": "271560",
-   "name": "오리온",
-   "pnl_krw": 1504488.23
+   "pnl_krw": 1482590.71
   },
   {
    "ticker": "033500",
    "name": "동성화인텍",
-   "pnl_krw": 1500981.43
+   "pnl_krw": 1473699.64
+  },
+  {
+   "ticker": "271560",
+   "name": "오리온",
+   "pnl_krw": 1465622.54
+  },
+  {
+   "ticker": "004250",
+   "name": "NPC",
+   "pnl_krw": 1459091.41
   },
   {
    "ticker": "011790",
    "name": "SKC",
-   "pnl_krw": 1447813.97
+   "pnl_krw": 1442563.61
+  },
+  {
+   "ticker": "044490",
+   "name": "태웅",
+   "pnl_krw": 1436946.48
+  },
+  {
+   "ticker": "352820",
+   "name": "하이브",
+   "pnl_krw": 1409503.88
   },
   {
    "ticker": "042660",
    "name": "한화오션",
-   "pnl_krw": 1362311.01
+   "pnl_krw": 1355292.88
   },
   {
    "ticker": "282330",
    "name": "BGF리테일",
-   "pnl_krw": 1356514.8
+   "pnl_krw": 1330444.87
+  },
+  {
+   "ticker": "FNKO",
+   "name": "FNKO",
+   "pnl_krw": 1238406.07
   },
   {
    "ticker": "004000",
    "name": "롯데정밀화학",
-   "pnl_krw": 1267721.6
+   "pnl_krw": 1231752.87
   },
   {
    "ticker": "194700",
@@ -365,37 +385,42 @@
   {
    "ticker": "089850",
    "name": "유비벨록스",
-   "pnl_krw": 1185098.97
+   "pnl_krw": 1144740.53
   },
   {
    "ticker": "028670",
    "name": "팬오션",
-   "pnl_krw": 1131270.81
+   "pnl_krw": 1122348.29
   },
   {
    "ticker": "036010",
    "name": "아비코전자",
-   "pnl_krw": 1113985.03
+   "pnl_krw": 1081382.83
   },
   {
    "ticker": "073490",
    "name": "LIG아큐버",
-   "pnl_krw": 994447.61
+   "pnl_krw": 999262.63
   },
   {
    "ticker": "298050",
    "name": "HS효성첨단소재",
-   "pnl_krw": 986771.28
+   "pnl_krw": 945647.8
   },
   {
    "ticker": "041510",
    "name": "에스엠",
-   "pnl_krw": 945123.48
+   "pnl_krw": 929877.51
+  },
+  {
+   "ticker": "141080",
+   "name": "리가켐바이오",
+   "pnl_krw": 878014.46
   },
   {
    "ticker": "003030",
    "name": "세아제강지주",
-   "pnl_krw": 780877.92
+   "pnl_krw": 768195.28
   },
   {
    "ticker": "091120",
@@ -403,29 +428,24 @@
    "pnl_krw": 726540.52
   },
   {
-   "ticker": "101160",
-   "name": "월덱스",
-   "pnl_krw": 675565.06
+   "ticker": "089970",
+   "name": "브이엠",
+   "pnl_krw": 659923.08
   },
   {
    "ticker": "468530",
    "name": "프로티나",
-   "pnl_krw": 668180.35
-  },
-  {
-   "ticker": "089970",
-   "name": "브이엠",
-   "pnl_krw": 654898.55
+   "pnl_krw": 659739.65
   },
   {
    "ticker": "103590",
    "name": "일진전기",
-   "pnl_krw": 631275.5
+   "pnl_krw": 623931.92
   },
   {
    "ticker": "230360",
    "name": "에코마케팅",
-   "pnl_krw": 571445.03
+   "pnl_krw": 570738.15
   },
   {
    "ticker": "060250",
@@ -435,52 +455,47 @@
   {
    "ticker": "196170",
    "name": "알테오젠",
-   "pnl_krw": 536745.84
-  },
-  {
-   "ticker": "009420",
-   "name": "한올바이오파마",
-   "pnl_krw": 526778.69
+   "pnl_krw": 520152.57
   },
   {
    "ticker": "253450",
    "name": "스튜디오드래곤",
-   "pnl_krw": 488815.02
+   "pnl_krw": 498638.65
   },
   {
    "ticker": "PYPL",
    "name": "PYPL",
-   "pnl_krw": 479637.92
+   "pnl_krw": 479637.87
   },
   {
    "ticker": "025900",
    "name": "동화기업",
-   "pnl_krw": 475831.72
+   "pnl_krw": 479376.76
+  },
+  {
+   "ticker": "GRND",
+   "name": "GRND",
+   "pnl_krw": 466600.68
   },
   {
    "ticker": "012450",
    "name": "한화에어로스페이스",
-   "pnl_krw": 474249.91
-  },
-  {
-   "ticker": "FNKO",
-   "name": "FNKO",
-   "pnl_krw": 428872.8
-  },
-  {
-   "ticker": "099430",
-   "name": "바이오플러스",
-   "pnl_krw": 414311.87
-  },
-  {
-   "ticker": "018880",
-   "name": "한온시스템",
-   "pnl_krw": 412765.49
+   "pnl_krw": 463890.81
   },
   {
    "ticker": "214450",
    "name": "파마리서치",
-   "pnl_krw": 401942.77
+   "pnl_krw": 414668.06
+  },
+  {
+   "ticker": "018880",
+   "name": "한온시스템",
+   "pnl_krw": 412512.34
+  },
+  {
+   "ticker": "099430",
+   "name": "바이오플러스",
+   "pnl_krw": 405182.38
   },
   {
    "ticker": "131390",
@@ -488,49 +503,54 @@
    "pnl_krw": 396154.07
   },
   {
-   "ticker": "004250",
-   "name": "NPC",
-   "pnl_krw": 395541.5
-  },
-  {
    "ticker": "090850",
    "name": "현대이지웰",
-   "pnl_krw": 392519.54
+   "pnl_krw": 392702.65
   },
   {
    "ticker": "008490",
    "name": "서흥",
-   "pnl_krw": 334911.45
+   "pnl_krw": 331992.63
   },
   {
    "ticker": "204620",
    "name": "글로벌텍스프리",
-   "pnl_krw": 310592.26
+   "pnl_krw": 302680.56
   },
   {
    "ticker": "005380",
    "name": "현대차",
-   "pnl_krw": 268633.43
+   "pnl_krw": 259127.98
   },
   {
    "ticker": "035760",
    "name": "CJ ENM",
-   "pnl_krw": 242267.72
+   "pnl_krw": 235393.92
+  },
+  {
+   "ticker": "039030",
+   "name": "이오테크닉스",
+   "pnl_krw": 221446.38
+  },
+  {
+   "ticker": "009420",
+   "name": "한올바이오파마",
+   "pnl_krw": 199523.38
   },
   {
    "ticker": "307950",
    "name": "현대오토에버",
-   "pnl_krw": 190812.28
+   "pnl_krw": 186260.07
   },
   {
    "ticker": "295310",
    "name": "에이치브이엠",
-   "pnl_krw": 177968.43
+   "pnl_krw": 175789.38
   },
   {
    "ticker": "CHGG",
    "name": "CHGG",
-   "pnl_krw": 168634.87
+   "pnl_krw": 164166.36
   },
   {
    "ticker": "131370",
@@ -540,47 +560,37 @@
   {
    "ticker": "003410",
    "name": "쌍용C&E",
-   "pnl_krw": 118307.27
+   "pnl_krw": 116542.45
   },
   {
    "ticker": "139480",
    "name": "이마트",
-   "pnl_krw": 101844.32
+   "pnl_krw": 101802.55
   },
   {
    "ticker": "005300",
    "name": "롯데칠성",
-   "pnl_krw": 94674.18
+   "pnl_krw": 93247.89
   },
   {
    "ticker": "000720",
    "name": "현대건설",
-   "pnl_krw": 93929.09
-  },
-  {
-   "ticker": "352820",
-   "name": "하이브",
-   "pnl_krw": 66578.84
-  },
-  {
-   "ticker": "021240",
-   "name": "코웨이",
-   "pnl_krw": 45179.01
+   "pnl_krw": 91688.22
   },
   {
    "ticker": "014620",
    "name": "성광벤드",
-   "pnl_krw": 33052.86
+   "pnl_krw": 42415.1
   },
   {
    "ticker": "005850",
    "name": "에스엘",
-   "pnl_krw": 30491.75
+   "pnl_krw": 42290.95
   },
   {
    "ticker": "272550",
    "name": "삼양패키징",
-   "pnl_krw": 21871.39
+   "pnl_krw": 10395.33
   },
   {
    "ticker": "084850",
@@ -590,7 +600,7 @@
   {
    "ticker": "039840",
    "name": "디오",
-   "pnl_krw": -67411.02
+   "pnl_krw": -65802.79
   },
   {
    "ticker": "082920",
@@ -600,7 +610,12 @@
   {
    "ticker": "036200",
    "name": "유니셈",
-   "pnl_krw": -169992.28
+   "pnl_krw": -170704.3
+  },
+  {
+   "ticker": "097950",
+   "name": "CJ제일제당",
+   "pnl_krw": -171112.43
   },
   {
    "ticker": "036540",
@@ -610,87 +625,82 @@
   {
    "ticker": "071320",
    "name": "지역난방공사",
-   "pnl_krw": -190306.59
+   "pnl_krw": -184793.09
   },
   {
-   "ticker": "097950",
-   "name": "CJ제일제당",
-   "pnl_krw": -200521.33
+   "ticker": "054210",
+   "name": "이랜텍",
+   "pnl_krw": -197792.03
   },
   {
    "ticker": "068270",
    "name": "셀트리온",
-   "pnl_krw": -207849.4
+   "pnl_krw": -200676.83
   },
   {
    "ticker": "079550",
    "name": "LIG디펜스앤에어로스페이스",
-   "pnl_krw": -277772.9
+   "pnl_krw": -269725.35
   },
   {
    "ticker": "033640",
    "name": "네패스",
-   "pnl_krw": -289416.46
+   "pnl_krw": -288561.15
   },
   {
    "ticker": "093320",
    "name": "케이아이엔엑스",
-   "pnl_krw": -309700.37
-  },
-  {
-   "ticker": "001060",
-   "name": "JW중외제약",
-   "pnl_krw": -328751.73
-  },
-  {
-   "ticker": "LLY",
-   "name": "LLY",
-   "pnl_krw": -358331.81
-  },
-  {
-   "ticker": "368600",
-   "name": "아이씨에이치",
-   "pnl_krw": -373912.79
-  },
-  {
-   "ticker": "023160",
-   "name": "태광",
-   "pnl_krw": -391471.27
-  },
-  {
-   "ticker": "145020",
-   "name": "휴젤",
-   "pnl_krw": -437213.93
+   "pnl_krw": -298090.27
   },
   {
    "ticker": "072710",
    "name": "농심홀딩스",
-   "pnl_krw": -440699.27
+   "pnl_krw": -301548.11
   },
   {
-   "ticker": "189300",
-   "name": "인텔리안테크",
-   "pnl_krw": -447472.04
+   "ticker": "LLY",
+   "name": "LLY",
+   "pnl_krw": -316265.52
   },
   {
-   "ticker": "000640",
-   "name": "동아쏘시오홀딩스",
-   "pnl_krw": -449152.33
+   "ticker": "001060",
+   "name": "JW중외제약",
+   "pnl_krw": -322265.2
+  },
+  {
+   "ticker": "069960",
+   "name": "현대백화점",
+   "pnl_krw": -326766.16
+  },
+  {
+   "ticker": "368600",
+   "name": "아이씨에이치",
+   "pnl_krw": -365673.51
   },
   {
    "ticker": "002310",
    "name": "아세아제지",
-   "pnl_krw": -464410.44
+   "pnl_krw": -370613.47
   },
   {
-   "ticker": "003490",
-   "name": "대한항공",
-   "pnl_krw": -465766.06
+   "ticker": "023160",
+   "name": "태광",
+   "pnl_krw": -380851.88
+  },
+  {
+   "ticker": "145020",
+   "name": "휴젤",
+   "pnl_krw": -424573.84
   },
   {
    "ticker": "263720",
    "name": "디앤씨미디어",
-   "pnl_krw": -475394.06
+   "pnl_krw": -461905.83
+  },
+  {
+   "ticker": "003490",
+   "name": "대한항공",
+   "pnl_krw": -462527.27
   },
   {
    "ticker": "036560",
@@ -698,14 +708,14 @@
    "pnl_krw": -496135.63
   },
   {
-   "ticker": "251970",
-   "name": "펌텍코리아",
-   "pnl_krw": -497065.8
-  },
-  {
    "ticker": "089590",
    "name": "제주항공",
    "pnl_krw": -498910.85
+  },
+  {
+   "ticker": "001120",
+   "name": "LX인터내셔널",
+   "pnl_krw": -509520.55
   },
   {
    "ticker": "200130",
@@ -715,12 +725,7 @@
   {
    "ticker": "105740",
    "name": "디케이락",
-   "pnl_krw": -528639.86
-  },
-  {
-   "ticker": "001120",
-   "name": "LX인터내셔널",
-   "pnl_krw": -528817.97
+   "pnl_krw": -528315.65
   },
   {
    "ticker": "051900",
@@ -730,17 +735,17 @@
   {
    "ticker": "029960",
    "name": "코엔텍",
-   "pnl_krw": -551703.03
+   "pnl_krw": -538212.44
   },
   {
    "ticker": "089600",
    "name": "KT나스미디어",
-   "pnl_krw": -580898.49
+   "pnl_krw": -568098.22
   },
   {
    "ticker": "119610",
    "name": "인터로조",
-   "pnl_krw": -603496.39
+   "pnl_krw": -587121.69
   },
   {
    "ticker": "034730",
@@ -748,19 +753,19 @@
    "pnl_krw": -620965.02
   },
   {
+   "ticker": "214320",
+   "name": "이노션",
+   "pnl_krw": -625333.76
+  },
+  {
    "ticker": "204320",
    "name": "HL만도",
-   "pnl_krw": -642423.74
+   "pnl_krw": -628324.49
   },
   {
    "ticker": "229640",
    "name": "LS에코에너지",
-   "pnl_krw": -644366.86
-  },
-  {
-   "ticker": "214320",
-   "name": "이노션",
-   "pnl_krw": -646627.25
+   "pnl_krw": -630224.97
   },
   {
    "ticker": "282880",
@@ -768,39 +773,39 @@
    "pnl_krw": -649192.5
   },
   {
-   "ticker": "206640",
-   "name": "바디텍메드",
-   "pnl_krw": -663154.06
+   "ticker": "039130",
+   "name": "하나투어",
+   "pnl_krw": -671670.44
   },
   {
    "ticker": "004710",
    "name": "한솔테크닉스",
-   "pnl_krw": -678246.74
+   "pnl_krw": -681087.62
   },
   {
    "ticker": "115450",
    "name": "HLB테라퓨틱스",
-   "pnl_krw": -701260.91
-  },
-  {
-   "ticker": "119850",
-   "name": "지엔씨에너지",
-   "pnl_krw": -717167.34
-  },
-  {
-   "ticker": "039130",
-   "name": "하나투어",
-   "pnl_krw": -731215.24
+   "pnl_krw": -701588.05
   },
   {
    "ticker": "010950",
    "name": "S-Oil",
-   "pnl_krw": -762960.65
+   "pnl_krw": -745128.07
   },
   {
-   "ticker": "298020",
-   "name": "효성티앤씨",
-   "pnl_krw": -765333.96
+   "ticker": "058470",
+   "name": "리노공업",
+   "pnl_krw": -754643.3
+  },
+  {
+   "ticker": "206640",
+   "name": "바디텍메드",
+   "pnl_krw": -763498.62
+  },
+  {
+   "ticker": "073010",
+   "name": "케이에스피",
+   "pnl_krw": -778606.46
   },
   {
    "ticker": "007070",
@@ -815,12 +820,17 @@
   {
    "ticker": "018290",
    "name": "브이티",
-   "pnl_krw": -805052.92
+   "pnl_krw": -793960.58
   },
   {
-   "ticker": "073010",
-   "name": "케이에스피",
-   "pnl_krw": -808717.34
+   "ticker": "230240",
+   "name": "에치에프알",
+   "pnl_krw": -799792.41
+  },
+  {
+   "ticker": "000210",
+   "name": "DL",
+   "pnl_krw": -840287.32
   },
   {
    "ticker": "104460",
@@ -830,12 +840,7 @@
   {
    "ticker": "241560",
    "name": "두산밥캣",
-   "pnl_krw": -896531.83
-  },
-  {
-   "ticker": "047810",
-   "name": "한국항공우주",
-   "pnl_krw": -902476.48
+   "pnl_krw": -883025.42
   },
   {
    "ticker": "086450",
@@ -843,39 +848,29 @@
    "pnl_krw": -906717.11
   },
   {
-   "ticker": "036190",
-   "name": "금화피에스시",
-   "pnl_krw": -915493.05
-  },
-  {
-   "ticker": "000210",
-   "name": "DL",
-   "pnl_krw": -917102.0
-  },
-  {
-   "ticker": "230240",
-   "name": "에치에프알",
-   "pnl_krw": -941423.16
+   "ticker": "079810",
+   "name": "APS이노베이션",
+   "pnl_krw": -914913.0
   },
   {
    "ticker": "069620",
    "name": "대웅제약",
-   "pnl_krw": -943321.48
-  },
-  {
-   "ticker": "375500",
-   "name": "DL이앤씨",
-   "pnl_krw": -984417.45
-  },
-  {
-   "ticker": "084370",
-   "name": "유진테크",
-   "pnl_krw": -995693.83
+   "pnl_krw": -920081.02
   },
   {
    "ticker": "034230",
    "name": "파라다이스",
-   "pnl_krw": -998442.01
+   "pnl_krw": -973245.21
+  },
+  {
+   "ticker": "084370",
+   "name": "유진테크",
+   "pnl_krw": -988770.08
+  },
+  {
+   "ticker": "131970",
+   "name": "두산테스나",
+   "pnl_krw": -1001510.9
   },
   {
    "ticker": "090460",
@@ -883,44 +878,59 @@
    "pnl_krw": -1002668.37
   },
   {
-   "ticker": "015760",
-   "name": "한국전력",
-   "pnl_krw": -1095209.54
+   "ticker": "047810",
+   "name": "한국항공우주",
+   "pnl_krw": -1022058.22
   },
   {
-   "ticker": "234300",
-   "name": "에스트래픽",
-   "pnl_krw": -1098934.22
+   "ticker": "015760",
+   "name": "한국전력",
+   "pnl_krw": -1080119.3
   },
   {
    "ticker": "125210",
    "name": "아모그린텍",
-   "pnl_krw": -1109093.74
+   "pnl_krw": -1081973.48
   },
   {
-   "ticker": "058470",
-   "name": "리노공업",
-   "pnl_krw": -1117096.77
+   "ticker": "251970",
+   "name": "펌텍코리아",
+   "pnl_krw": -1116920.4
   },
   {
-   "ticker": "114810",
-   "name": "한솔아이원스",
-   "pnl_krw": -1181534.81
+   "ticker": "099190",
+   "name": "아이센스",
+   "pnl_krw": -1146671.02
   },
   {
    "ticker": "033290",
    "name": "로젠",
-   "pnl_krw": -1181717.86
+   "pnl_krw": -1151616.0
+  },
+  {
+   "ticker": "114810",
+   "name": "한솔아이원스",
+   "pnl_krw": -1151781.85
   },
   {
    "ticker": "294570",
    "name": "쿠콘",
-   "pnl_krw": -1191315.2
+   "pnl_krw": -1162893.94
   },
   {
    "ticker": "298000",
    "name": "효성화학",
-   "pnl_krw": -1194976.68
+   "pnl_krw": -1166468.07
+  },
+  {
+   "ticker": "069260",
+   "name": "TKG휴켐스",
+   "pnl_krw": -1196785.15
+  },
+  {
+   "ticker": "403550",
+   "name": "쏘카",
+   "pnl_krw": -1215669.56
   },
   {
    "ticker": "228760",
@@ -928,19 +938,14 @@
    "pnl_krw": -1217481.85
   },
   {
-   "ticker": "069260",
-   "name": "TKG휴켐스",
-   "pnl_krw": -1227014.91
+   "ticker": "001530",
+   "name": "DI동일",
+   "pnl_krw": -1221507.67
   },
   {
-   "ticker": "348210",
-   "name": "넥스틴",
-   "pnl_krw": -1239997.16
-  },
-  {
-   "ticker": "403550",
-   "name": "쏘카",
-   "pnl_krw": -1260106.05
+   "ticker": "035600",
+   "name": "KG이니시스",
+   "pnl_krw": -1250490.99
   },
   {
    "ticker": "302550",
@@ -948,367 +953,382 @@
    "pnl_krw": -1267992.7
   },
   {
-   "ticker": "035600",
-   "name": "KG이니시스",
-   "pnl_krw": -1289786.55
-  },
-  {
-   "ticker": "053030",
-   "name": "바이넥스",
-   "pnl_krw": -1307413.42
-  },
-  {
    "ticker": "106190",
    "name": "하이텍팜",
-   "pnl_krw": -1324124.37
+   "pnl_krw": -1285762.26
   },
   {
    "ticker": "215000",
    "name": "골프존",
-   "pnl_krw": -1324489.02
+   "pnl_krw": -1291136.24
   },
   {
-   "ticker": "131970",
-   "name": "두산테스나",
-   "pnl_krw": -1375049.11
-  },
-  {
-   "ticker": "001530",
-   "name": "DI동일",
-   "pnl_krw": -1426469.92
-  },
-  {
-   "ticker": "161390",
-   "name": "한국타이어앤테크놀로지",
-   "pnl_krw": -1443799.3
+   "ticker": "053030",
+   "name": "바이넥스",
+   "pnl_krw": -1359931.49
   },
   {
    "ticker": "036620",
    "name": "감성코퍼레이션",
-   "pnl_krw": -1474332.4
+   "pnl_krw": -1426320.36
   },
   {
-   "ticker": "060590",
-   "name": "씨티씨바이오",
-   "pnl_krw": -1512588.1
-  },
-  {
-   "ticker": "075580",
-   "name": "세진중공업",
-   "pnl_krw": -1536125.58
-  },
-  {
-   "ticker": "003670",
-   "name": "포스코퓨처엠",
-   "pnl_krw": -1536981.17
-  },
-  {
-   "ticker": "010120",
-   "name": "LS ELECTRIC",
-   "pnl_krw": -1545670.9
-  },
-  {
-   "ticker": "INMD",
-   "name": "INMD",
-   "pnl_krw": -1554582.28
-  },
-  {
-   "ticker": "079370",
-   "name": "제우스",
-   "pnl_krw": -1561327.03
-  },
-  {
-   "ticker": "009900",
-   "name": "명신산업",
-   "pnl_krw": -1589075.1
-  },
-  {
-   "ticker": "148150",
-   "name": "세경하이테크",
-   "pnl_krw": -1591562.84
-  },
-  {
-   "ticker": "007210",
-   "name": "벽산",
-   "pnl_krw": -1647557.64
-  },
-  {
-   "ticker": "207940",
-   "name": "삼성바이오로직스",
-   "pnl_krw": -1671811.36
-  },
-  {
-   "ticker": "084730",
-   "name": "팅크웨어",
-   "pnl_krw": -1674285.36
-  },
-  {
-   "ticker": "054950",
-   "name": "제이브이엠",
-   "pnl_krw": -1722748.64
-  },
-  {
-   "ticker": "006650",
-   "name": "대한유화",
-   "pnl_krw": -1728303.11
-  },
-  {
-   "ticker": "054780",
-   "name": "키이스트",
-   "pnl_krw": -1760186.71
-  },
-  {
-   "ticker": "247540",
-   "name": "에코프로비엠",
-   "pnl_krw": -1763504.76
-  },
-  {
-   "ticker": "054040",
-   "name": "한국컴퓨터",
-   "pnl_krw": -1777754.58
-  },
-  {
-   "ticker": "100090",
-   "name": "SK오션플랜트",
-   "pnl_krw": -1809014.67
-  },
-  {
-   "ticker": "310200",
-   "name": "애니플러스",
-   "pnl_krw": -1847422.04
-  },
-  {
-   "ticker": "005290",
-   "name": "동진쎄미켐",
-   "pnl_krw": -1872644.46
-  },
-  {
-   "ticker": "336260",
-   "name": "두산퓨얼셀",
-   "pnl_krw": -1898711.92
-  },
-  {
-   "ticker": "000120",
-   "name": "CJ대한통운",
-   "pnl_krw": -1912890.56
-  },
-  {
-   "ticker": "067160",
-   "name": "SOOP",
-   "pnl_krw": -1983290.97
-  },
-  {
-   "ticker": "128940",
-   "name": "한미약품",
-   "pnl_krw": -2014330.79
-  },
-  {
-   "ticker": "105630",
-   "name": "한세실업",
-   "pnl_krw": -2018409.85
-  },
-  {
-   "ticker": "122640",
-   "name": "예스티",
-   "pnl_krw": -2033287.96
-  },
-  {
-   "ticker": "171090",
-   "name": "선익시스템",
-   "pnl_krw": -2076858.96
-  },
-  {
-   "ticker": "010690",
-   "name": "화신",
-   "pnl_krw": -2153802.53
-  },
-  {
-   "ticker": "012510",
-   "name": "더존비즈온",
-   "pnl_krw": -2162238.85
-  },
-  {
-   "ticker": "020120",
-   "name": "키다리스튜디오",
-   "pnl_krw": -2317569.19
-  },
-  {
-   "ticker": "020150",
-   "name": "롯데에너지머티리얼즈",
-   "pnl_krw": -2331832.32
-  },
-  {
-   "ticker": "008770",
-   "name": "호텔신라",
-   "pnl_krw": -2476470.69
-  },
-  {
-   "ticker": "018670",
-   "name": "SK가스",
-   "pnl_krw": -2491462.73
-  },
-  {
-   "ticker": "293490",
-   "name": "카카오게임즈",
-   "pnl_krw": -2558075.95
-  },
-  {
-   "ticker": "047050",
-   "name": "포스코인터내셔널",
-   "pnl_krw": -2599316.77
-  },
-  {
-   "ticker": "014680",
-   "name": "한솔케미칼",
-   "pnl_krw": -2672596.48
-  },
-  {
-   "ticker": "025860",
-   "name": "남해화학",
-   "pnl_krw": -2686650.44
-  },
-  {
-   "ticker": "322310",
-   "name": "오로스테크놀로지",
-   "pnl_krw": -2770802.82
-  },
-  {
-   "ticker": "112610",
-   "name": "씨에스윈드",
-   "pnl_krw": -2828310.07
-  },
-  {
-   "ticker": "241710",
-   "name": "코스메카코리아",
-   "pnl_krw": -2998342.28
-  },
-  {
-   "ticker": "337930",
-   "name": "젝시믹스",
-   "pnl_krw": -3041591.94
-  },
-  {
-   "ticker": "039440",
-   "name": "에스티아이",
-   "pnl_krw": -3185069.25
-  },
-  {
-   "ticker": "036890",
-   "name": "진성티이씨",
-   "pnl_krw": -3384187.5
-  },
-  {
-   "ticker": "FLNC",
-   "name": "FLNC",
-   "pnl_krw": -3398241.54
-  },
-  {
-   "ticker": "009830",
-   "name": "한화솔루션",
-   "pnl_krw": -3636075.26
-  },
-  {
-   "ticker": "110990",
-   "name": "디아이티",
-   "pnl_krw": -3896299.28
-  },
-  {
-   "ticker": "031980",
-   "name": "피에스케이홀딩스",
-   "pnl_krw": -4055477.58
-  },
-  {
-   "ticker": "003720",
-   "name": "삼영",
-   "pnl_krw": -4161732.23
-  },
-  {
-   "ticker": "099190",
-   "name": "아이센스",
-   "pnl_krw": -4213236.69
-  },
-  {
-   "ticker": "066970",
-   "name": "엘앤에프",
-   "pnl_krw": -4369418.49
-  },
-  {
-   "ticker": "007700",
-   "name": "F&F홀딩스",
-   "pnl_krw": -4394632.54
-  },
-  {
-   "ticker": "298040",
-   "name": "효성중공업",
-   "pnl_krw": -4457792.92
-  },
-  {
-   "ticker": "064760",
-   "name": "티씨케이",
-   "pnl_krw": -4714779.15
+   "ticker": "161390",
+   "name": "한국타이어앤테크놀로지",
+   "pnl_krw": -1427723.26
   },
   {
    "ticker": "041830",
    "name": "인바디",
-   "pnl_krw": -4767062.63
+   "pnl_krw": -1429103.76
   },
   {
-   "ticker": "083650",
-   "name": "비에이치아이",
-   "pnl_krw": -4840656.19
+   "ticker": "060590",
+   "name": "씨티씨바이오",
+   "pnl_krw": -1474058.0
+  },
+  {
+   "ticker": "010120",
+   "name": "LS ELECTRIC",
+   "pnl_krw": -1506298.09
+  },
+  {
+   "ticker": "079370",
+   "name": "제우스",
+   "pnl_krw": -1507857.05
+  },
+  {
+   "ticker": "003670",
+   "name": "포스코퓨처엠",
+   "pnl_krw": -1512187.82
+  },
+  {
+   "ticker": "148150",
+   "name": "세경하이테크",
+   "pnl_krw": -1546964.49
+  },
+  {
+   "ticker": "009900",
+   "name": "명신산업",
+   "pnl_krw": -1548596.65
+  },
+  {
+   "ticker": "007210",
+   "name": "벽산",
+   "pnl_krw": -1606069.47
+  },
+  {
+   "ticker": "036190",
+   "name": "금화피에스시",
+   "pnl_krw": -1620521.79
+  },
+  {
+   "ticker": "207940",
+   "name": "삼성바이오로직스",
+   "pnl_krw": -1623876.84
+  },
+  {
+   "ticker": "084730",
+   "name": "팅크웨어",
+   "pnl_krw": -1653785.35
+  },
+  {
+   "ticker": "075580",
+   "name": "세진중공업",
+   "pnl_krw": -1663893.21
+  },
+  {
+   "ticker": "310200",
+   "name": "애니플러스",
+   "pnl_krw": -1669634.65
+  },
+  {
+   "ticker": "054950",
+   "name": "제이브이엠",
+   "pnl_krw": -1678865.13
+  },
+  {
+   "ticker": "247540",
+   "name": "에코프로비엠",
+   "pnl_krw": -1717947.86
+  },
+  {
+   "ticker": "054780",
+   "name": "키이스트",
+   "pnl_krw": -1719121.54
+  },
+  {
+   "ticker": "054040",
+   "name": "한국컴퓨터",
+   "pnl_krw": -1719212.99
+  },
+  {
+   "ticker": "006650",
+   "name": "대한유화",
+   "pnl_krw": -1735542.21
+  },
+  {
+   "ticker": "100090",
+   "name": "SK오션플랜트",
+   "pnl_krw": -1764446.27
+  },
+  {
+   "ticker": "053610",
+   "name": "프로텍",
+   "pnl_krw": -1780207.3
+  },
+  {
+   "ticker": "005290",
+   "name": "동진쎄미켐",
+   "pnl_krw": -1805009.41
+  },
+  {
+   "ticker": "336260",
+   "name": "두산퓨얼셀",
+   "pnl_krw": -1838745.58
+  },
+  {
+   "ticker": "000120",
+   "name": "CJ대한통운",
+   "pnl_krw": -1849898.93
+  },
+  {
+   "ticker": "INMD",
+   "name": "INMD",
+   "pnl_krw": -1857332.15
+  },
+  {
+   "ticker": "112610",
+   "name": "씨에스윈드",
+   "pnl_krw": -1946052.18
+  },
+  {
+   "ticker": "067160",
+   "name": "SOOP",
+   "pnl_krw": -1947870.53
+  },
+  {
+   "ticker": "128940",
+   "name": "한미약품",
+   "pnl_krw": -1962294.26
+  },
+  {
+   "ticker": "105630",
+   "name": "한세실업",
+   "pnl_krw": -1968918.74
+  },
+  {
+   "ticker": "122640",
+   "name": "예스티",
+   "pnl_krw": -1979830.72
+  },
+  {
+   "ticker": "293490",
+   "name": "카카오게임즈",
+   "pnl_krw": -1980586.0
+  },
+  {
+   "ticker": "171090",
+   "name": "선익시스템",
+   "pnl_krw": -2008534.47
+  },
+  {
+   "ticker": "290650",
+   "name": "엘앤씨바이오",
+   "pnl_krw": -2066958.17
+  },
+  {
+   "ticker": "010690",
+   "name": "화신",
+   "pnl_krw": -2083860.32
+  },
+  {
+   "ticker": "020120",
+   "name": "키다리스튜디오",
+   "pnl_krw": -2257699.05
+  },
+  {
+   "ticker": "020150",
+   "name": "롯데에너지머티리얼즈",
+   "pnl_krw": -2264275.22
+  },
+  {
+   "ticker": "047050",
+   "name": "포스코인터내셔널",
+   "pnl_krw": -2355019.35
+  },
+  {
+   "ticker": "310210",
+   "name": "보로노이",
+   "pnl_krw": -2375496.46
+  },
+  {
+   "ticker": "014680",
+   "name": "한솔케미칼",
+   "pnl_krw": -2421411.86
+  },
+  {
+   "ticker": "018670",
+   "name": "SK가스",
+   "pnl_krw": -2495381.1
+  },
+  {
+   "ticker": "348210",
+   "name": "넥스틴",
+   "pnl_krw": -2561904.67
+  },
+  {
+   "ticker": "119850",
+   "name": "지엔씨에너지",
+   "pnl_krw": -2581420.26
+  },
+  {
+   "ticker": "322310",
+   "name": "오로스테크놀로지",
+   "pnl_krw": -2688726.75
+  },
+  {
+   "ticker": "025860",
+   "name": "남해화학",
+   "pnl_krw": -2706016.15
+  },
+  {
+   "ticker": "189300",
+   "name": "인텔리안테크",
+   "pnl_krw": -2866326.4
+  },
+  {
+   "ticker": "337930",
+   "name": "젝시믹스",
+   "pnl_krw": -2946300.52
+  },
+  {
+   "ticker": "241710",
+   "name": "코스메카코리아",
+   "pnl_krw": -3020484.64
+  },
+  {
+   "ticker": "039440",
+   "name": "에스티아이",
+   "pnl_krw": -3090721.88
+  },
+  {
+   "ticker": "FLNC",
+   "name": "FLNC",
+   "pnl_krw": -3276979.11
+  },
+  {
+   "ticker": "036890",
+   "name": "진성티이씨",
+   "pnl_krw": -3417343.0
+  },
+  {
+   "ticker": "009830",
+   "name": "한화솔루션",
+   "pnl_krw": -3516660.02
+  },
+  {
+   "ticker": "110990",
+   "name": "디아이티",
+   "pnl_krw": -3780009.25
+  },
+  {
+   "ticker": "003720",
+   "name": "삼영",
+   "pnl_krw": -3816952.21
+  },
+  {
+   "ticker": "008770",
+   "name": "호텔신라",
+   "pnl_krw": -3900653.63
   },
   {
    "ticker": "120110",
    "name": "코오롱인더",
-   "pnl_krw": -4934235.07
+   "pnl_krw": -3979405.12
   },
   {
-   "ticker": "006280",
-   "name": "녹십자",
-   "pnl_krw": -5246900.63
+   "ticker": "012510",
+   "name": "더존비즈온",
+   "pnl_krw": -4186040.31
   },
   {
-   "ticker": "222800",
-   "name": "심텍",
-   "pnl_krw": -5702386.86
+   "ticker": "066970",
+   "name": "엘앤에프",
+   "pnl_krw": -4278689.4
   },
   {
-   "ticker": "011070",
-   "name": "LG이노텍",
-   "pnl_krw": -5731885.56
+   "ticker": "007700",
+   "name": "F&F홀딩스",
+   "pnl_krw": -4497200.15
   },
   {
-   "ticker": "FIX",
-   "name": "FIX",
-   "pnl_krw": -5758976.74
+   "ticker": "298040",
+   "name": "효성중공업",
+   "pnl_krw": -4527460.95
+  },
+  {
+   "ticker": "064760",
+   "name": "티씨케이",
+   "pnl_krw": -4590324.33
+  },
+  {
+   "ticker": "083650",
+   "name": "비에이치아이",
+   "pnl_krw": -4694736.77
   },
   {
    "ticker": "257720",
    "name": "실리콘투",
-   "pnl_krw": -5826163.73
+   "pnl_krw": -4708414.53
+  },
+  {
+   "ticker": "006280",
+   "name": "녹십자",
+   "pnl_krw": -5297236.2
+  },
+  {
+   "ticker": "011070",
+   "name": "LG이노텍",
+   "pnl_krw": -5902008.94
+  },
+  {
+   "ticker": "FIX",
+   "name": "FIX",
+   "pnl_krw": -5913381.27
+  },
+  {
+   "ticker": "031980",
+   "name": "피에스케이홀딩스",
+   "pnl_krw": -5948967.95
   },
   {
    "ticker": "098120",
    "name": "마이크로컨텍솔",
-   "pnl_krw": -6500888.68
-  },
-  {
-   "ticker": "091700",
-   "name": "파트론",
-   "pnl_krw": -6619108.59
+   "pnl_krw": -6365570.5
   },
   {
    "ticker": "032350",
    "name": "롯데관광개발",
-   "pnl_krw": -6630646.16
+   "pnl_krw": -6668541.96
+  },
+  {
+   "ticker": "091700",
+   "name": "파트론",
+   "pnl_krw": -6728716.44
+  },
+  {
+   "ticker": "222800",
+   "name": "심텍",
+   "pnl_krw": -7275357.46
   },
   {
    "ticker": "078600",
    "name": "대주전자재료",
-   "pnl_krw": -17324664.93
+   "pnl_krw": -17381539.01
   }
  ],
- "top5_positive_pnl_share_pct": 30.999466596189052,
+ "top5_positive_pnl_share_pct": 31.11153193277047,
  "scenarios": [
   {
    "id": "baseline",
@@ -1317,38 +1337,38 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 422503125.61,
-    "pnl_krw": 322503125.61,
-    "total_return_pct": 322.5,
-    "cagr_pct": 23.61,
-    "sharpe": 0.89,
+    "final_nav_krw": 408322040.83,
+    "pnl_krw": 308322040.83,
+    "total_return_pct": 308.32,
+    "cagr_pct": 22.93,
+    "sharpe": 0.87,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -35.62,
-    "trades": 307,
-    "win_rate_pct": 42.7,
-    "avg_hold_days": 125.5,
+    "mdd_pct": -34.51,
+    "trades": 315,
+    "win_rate_pct": 42.5,
+    "avg_hold_days": 123.0,
     "max_single_return_pct": 682.57,
     "best_trade_ticker": "로보티즈"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 127.71,
-    "cagr_pct": 22.91,
-    "sharpe": 0.99,
-    "mdd_pct": -31.67
+    "total_return_pct": 119.05,
+    "cagr_pct": 21.72,
+    "sharpe": 0.94,
+    "mdd_pct": -31.69
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 86.05,
-    "cagr_pct": 24.84,
+    "end": "2026-10-26",
+    "total_return_pct": 86.86,
+    "cagr_pct": 24.87,
     "sharpe": 0.82,
-    "mdd_pct": -35.62
+    "mdd_pct": -34.51
    },
-   "fees_krw": 23115099.039459147
+   "fees_krw": 23109581.618090354
   },
   {
    "id": "exclude_top_1",
@@ -1359,38 +1379,38 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 406064957.09,
-    "pnl_krw": 306064957.09,
-    "total_return_pct": 306.06,
-    "cagr_pct": 22.89,
-    "sharpe": 0.86,
+    "final_nav_krw": 359932055.86,
+    "pnl_krw": 259932055.86,
+    "total_return_pct": 259.93,
+    "cagr_pct": 20.68,
+    "sharpe": 0.8,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -32.05,
-    "trades": 308,
-    "win_rate_pct": 42.5,
-    "avg_hold_days": 125.4,
+    "mdd_pct": -32.22,
+    "trades": 316,
+    "win_rate_pct": 42.7,
+    "avg_hold_days": 123.4,
     "max_single_return_pct": 611.71,
     "best_trade_ticker": "HD현대일렉트릭"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 127.71,
-    "cagr_pct": 22.91,
-    "sharpe": 0.99,
-    "mdd_pct": -31.67
+    "total_return_pct": 119.05,
+    "cagr_pct": 21.72,
+    "sharpe": 0.94,
+    "mdd_pct": -31.69
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 78.81,
-    "cagr_pct": 23.08,
-    "sharpe": 0.77,
-    "mdd_pct": -32.05
+    "end": "2026-10-26",
+    "total_return_pct": 64.71,
+    "cagr_pct": 19.4,
+    "sharpe": 0.69,
+    "mdd_pct": -32.22
    },
-   "fees_krw": 22012114.905214407
+   "fees_krw": 21817708.071652662
   },
   {
    "id": "exclude_top_3",
@@ -1403,38 +1423,38 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 315686541.77,
-    "pnl_krw": 215686541.77,
-    "total_return_pct": 215.69,
-    "cagr_pct": 18.42,
-    "sharpe": 0.74,
+    "final_nav_krw": 284141635.34,
+    "pnl_krw": 184141635.34,
+    "total_return_pct": 184.14,
+    "cagr_pct": 16.56,
+    "sharpe": 0.68,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -40.4,
-    "trades": 315,
-    "win_rate_pct": 42.9,
-    "avg_hold_days": 123.9,
+    "mdd_pct": -40.05,
+    "trades": 319,
+    "win_rate_pct": 42.3,
+    "avg_hold_days": 122.3,
     "max_single_return_pct": 334.28,
     "best_trade_ticker": "이수페타시스"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 117.57,
-    "cagr_pct": 21.52,
-    "sharpe": 0.94,
-    "mdd_pct": -31.26
+    "total_return_pct": 109.95,
+    "cagr_pct": 20.43,
+    "sharpe": 0.9,
+    "mdd_pct": -31.65
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 45.48,
-    "cagr_pct": 14.34,
-    "sharpe": 0.56,
-    "mdd_pct": -33.28
+    "end": "2026-10-26",
+    "total_return_pct": 35.44,
+    "cagr_pct": 11.38,
+    "sharpe": 0.48,
+    "mdd_pct": -32.83
    },
-   "fees_krw": 19709457.027071536
+   "fees_krw": 19673295.950272672
   },
   {
    "id": "exclude_top_5",
@@ -1449,38 +1469,38 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 275438181.51,
-    "pnl_krw": 175438181.51,
-    "total_return_pct": 175.44,
-    "cagr_pct": 16.07,
-    "sharpe": 0.67,
+    "final_nav_krw": 244145249.23,
+    "pnl_krw": 144145249.23,
+    "total_return_pct": 144.15,
+    "cagr_pct": 13.99,
+    "sharpe": 0.61,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -37.29,
-    "trades": 316,
-    "win_rate_pct": 42.1,
-    "avg_hold_days": 122.9,
+    "mdd_pct": -37.69,
+    "trades": 323,
+    "win_rate_pct": 41.5,
+    "avg_hold_days": 121.5,
     "max_single_return_pct": 238.29,
     "best_trade_ticker": "HPSP"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 99.02,
-    "cagr_pct": 18.83,
-    "sharpe": 0.86,
-    "mdd_pct": -31.26
+    "total_return_pct": 93.61,
+    "cagr_pct": 18.01,
+    "sharpe": 0.82,
+    "mdd_pct": -31.65
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 38.14,
-    "cagr_pct": 12.24,
-    "sharpe": 0.51,
-    "mdd_pct": -34.11
+    "end": "2026-10-26",
+    "total_return_pct": 25.87,
+    "cagr_pct": 8.52,
+    "sharpe": 0.41,
+    "mdd_pct": -34.18
    },
-   "fees_krw": 18747063.450286992
+   "fees_krw": 18519888.964864522
   },
   {
    "id": "delay_1",
@@ -1489,38 +1509,38 @@
    "extra_entry_sessions": 1,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 461289535.82,
-    "pnl_krw": 361289535.82,
-    "total_return_pct": 361.29,
-    "cagr_pct": 25.22,
-    "sharpe": 0.92,
+    "final_nav_krw": 411148623.32,
+    "pnl_krw": 311148623.32,
+    "total_return_pct": 311.15,
+    "cagr_pct": 23.06,
+    "sharpe": 0.86,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -33.65,
-    "trades": 301,
-    "win_rate_pct": 40.5,
-    "avg_hold_days": 128.1,
+    "mdd_pct": -38.18,
+    "trades": 310,
+    "win_rate_pct": 39.4,
+    "avg_hold_days": 126.0,
     "max_single_return_pct": 629.28,
     "best_trade_ticker": "로보티즈"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 109.82,
-    "cagr_pct": 20.42,
-    "sharpe": 0.9,
-    "mdd_pct": -30.44
+    "total_return_pct": 107.2,
+    "cagr_pct": 20.04,
+    "sharpe": 0.89,
+    "mdd_pct": -29.75
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 120.08,
-    "cagr_pct": 32.57,
-    "sharpe": 0.98,
-    "mdd_pct": -33.65
+    "end": "2026-10-26",
+    "total_return_pct": 98.67,
+    "cagr_pct": 27.62,
+    "sharpe": 0.87,
+    "mdd_pct": -38.18
    },
-   "fees_krw": 22454779.89937132
+   "fees_krw": 22909361.89512609
   },
   {
    "id": "delay_3",
@@ -1529,38 +1549,38 @@
    "extra_entry_sessions": 3,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 426099607.43,
-    "pnl_krw": 326099607.43,
-    "total_return_pct": 326.1,
-    "cagr_pct": 23.77,
-    "sharpe": 0.9,
+    "final_nav_krw": 415051294.06,
+    "pnl_krw": 315051294.06,
+    "total_return_pct": 315.05,
+    "cagr_pct": 23.23,
+    "sharpe": 0.88,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -30.71,
-    "trades": 309,
-    "win_rate_pct": 37.9,
-    "avg_hold_days": 125.5,
+    "mdd_pct": -36.47,
+    "trades": 310,
+    "win_rate_pct": 39.0,
+    "avg_hold_days": 124.3,
     "max_single_return_pct": 645.44,
     "best_trade_ticker": "로보티즈"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 91.28,
-    "cagr_pct": 17.66,
-    "sharpe": 0.81,
-    "mdd_pct": -30.12
+    "total_return_pct": 91.96,
+    "cagr_pct": 17.76,
+    "sharpe": 0.83,
+    "mdd_pct": -30.16
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 123.84,
-    "cagr_pct": 33.37,
-    "sharpe": 1.02,
-    "mdd_pct": -30.71
+    "end": "2026-10-26",
+    "total_return_pct": 116.46,
+    "cagr_pct": 31.57,
+    "sharpe": 0.96,
+    "mdd_pct": -36.47
    },
-   "fees_krw": 21476964.013843115
+   "fees_krw": 22739556.821724974
   },
   {
    "id": "delay_5",
@@ -1569,38 +1589,38 @@
    "extra_entry_sessions": 5,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-10-20",
+    "end": "2026-10-26",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 366854318.2,
-    "pnl_krw": 266854318.2,
-    "total_return_pct": 266.85,
-    "cagr_pct": 21.07,
-    "sharpe": 0.83,
+    "final_nav_krw": 344290446.4,
+    "pnl_krw": 244290446.4,
+    "total_return_pct": 244.29,
+    "cagr_pct": 19.89,
+    "sharpe": 0.79,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -37.66,
+    "mdd_pct": -41.07,
     "trades": 306,
-    "win_rate_pct": 39.9,
-    "avg_hold_days": 124.4,
+    "win_rate_pct": 40.5,
+    "avg_hold_days": 124.2,
     "max_single_return_pct": 605.16,
     "best_trade_ticker": "HD현대일렉트릭"
    },
    "in_sample": {
     "start": "2020-01-02",
     "end": "2023-12-29",
-    "total_return_pct": 95.77,
-    "cagr_pct": 18.34,
-    "sharpe": 0.84,
-    "mdd_pct": -34.2
+    "total_return_pct": 98.7,
+    "cagr_pct": 18.78,
+    "sharpe": 0.86,
+    "mdd_pct": -33.89
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-10-20",
-    "total_return_pct": 87.08,
-    "cagr_pct": 25.09,
-    "sharpe": 0.84,
-    "mdd_pct": -37.66
+    "end": "2026-10-26",
+    "total_return_pct": 72.99,
+    "cagr_pct": 21.5,
+    "sharpe": 0.75,
+    "mdd_pct": -41.07
    },
-   "fees_krw": 23452879.173611097
+   "fees_krw": 23707963.993698932
   }
  ],
  "historical_reference": {

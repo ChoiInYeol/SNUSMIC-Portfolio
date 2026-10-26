@@ -1,8 +1,8 @@
 {
  "datasets": [
   {
-   "bytes": 219582,
-   "files": 228,
+   "bytes": 348009,
+   "files": 237,
    "format": "json",
    "id": "bronze.funded_account",
    "inputs": [],
@@ -49,7 +49,7 @@
    "updated_at": null
   },
   {
-   "bytes": 52130,
+   "bytes": 46945,
    "files": 1,
    "format": "json",
    "id": "bronze.kuvic_items",
@@ -59,14 +59,14 @@
    "producer": [
     "collect_kuvic_browser.py"
    ],
-   "rows": 122,
+   "rows": 110,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
   },
   {
-   "bytes": 175030,
-   "files": 2,
+   "bytes": 286131,
+   "files": 3,
    "format": "json",
    "id": "bronze.paper_execution",
    "inputs": [],
@@ -129,7 +129,7 @@
    "updated_at": null
   },
   {
-   "bytes": 1755487,
+   "bytes": 1764641,
    "files": 1,
    "format": "json",
    "id": "bronze.report_manifest",
@@ -144,10 +144,10 @@
     "collect_smic.py",
     "collect_voera.py"
    ],
-   "rows": 2419,
+   "rows": 2429,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T14:35:00+00:00"
+   "updated_at": "2026-10-26T19:10:29+00:00"
   },
   {
    "bytes": null,
@@ -227,10 +227,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-21"
+   "updated_at": "2026-10-26"
   },
   {
-   "bytes": 636070,
+   "bytes": 636044,
    "files": 1,
    "format": "csv",
    "id": "gold.report_performance",
@@ -266,7 +266,7 @@
    "updated_at": null
   },
   {
-   "bytes": 9979,
+   "bytes": 9274,
    "files": 1,
    "format": "json",
    "id": "gold.sota_portfolio",
@@ -284,11 +284,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:33:49+00:00"
+   "updated_at": "2026-10-26T19:31:55+00:00"
   },
   {
-   "bytes": 9342222,
-   "files": 108,
+   "bytes": 9147660,
+   "files": 109,
    "format": "json",
    "id": "serving.api_v1",
    "inputs": [
@@ -304,11 +304,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:34:05+00:00"
+   "updated_at": "2026-10-26T19:32:11+00:00"
   },
   {
-   "bytes": 191162756,
-   "files": 2080,
+   "bytes": 201367554,
+   "files": 2111,
    "format": "json",
    "id": "serving.api_v2",
    "inputs": [
@@ -326,10 +326,10 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:34:06+00:00"
+   "updated_at": "2026-10-26T19:32:12+00:00"
   },
   {
-   "bytes": 15230,
+   "bytes": 15277,
    "files": 1,
    "format": "json",
    "id": "serving.forward_record",
@@ -345,11 +345,11 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:34:06+00:00"
+   "updated_at": "2026-10-26T19:32:12+00:00"
   },
   {
-   "bytes": 57183635,
-   "files": 2162,
+   "bytes": 57200194,
+   "files": 2163,
    "format": "json/json.gz",
    "id": "serving.fulltext_index",
    "inputs": [
@@ -370,7 +370,7 @@
    "updated_at": null
   },
   {
-   "bytes": 578039,
+   "bytes": 539186,
    "files": 1,
    "format": "json",
    "id": "serving.funded_account",
@@ -386,10 +386,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:33:50.074116+00:00"
+   "updated_at": "2026-10-26T19:31:56.740272+00:00"
   },
   {
-   "bytes": 2876,
+   "bytes": 12162,
    "files": 1,
    "format": "json",
    "id": "serving.paper_portfolio",
@@ -404,10 +404,10 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19"
+   "updated_at": "2026-10-23"
   },
   {
-   "bytes": 156121,
+   "bytes": 149004,
    "files": 1,
    "format": "json",
    "id": "serving.report_first_seen",
@@ -423,10 +423,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:26:08+00:00"
+   "updated_at": "2026-10-26T19:19:32+00:00"
   },
   {
-   "bytes": 2812322,
+   "bytes": 2804774,
    "files": 1,
    "format": "json",
    "id": "serving.report_performance",
@@ -443,10 +443,10 @@
    "rows": 1472,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:25:43.230185+00:00"
+   "updated_at": "2026-10-26T19:19:30.298822+00:00"
   },
   {
-   "bytes": 507222,
+   "bytes": 507895,
    "files": 1,
    "format": "json",
    "id": "serving.research_review",
@@ -461,14 +461,14 @@
    "producer": [
     "build_research_review.py"
    ],
-   "rows": 581,
+   "rows": 582,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-21"
+   "updated_at": "2026-10-26"
   },
   {
-   "bytes": 10746884,
-   "files": 581,
+   "bytes": 10811682,
+   "files": 582,
    "format": "json",
    "id": "serving.review_evidence",
    "inputs": [
@@ -504,10 +504,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-26T18:23:52+00:00"
+   "updated_at": "2026-10-26T19:32:20+00:00"
   },
   {
-   "bytes": 508617,
+   "bytes": 508639,
    "files": 1,
    "format": "json",
    "id": "serving.search_index",
@@ -522,10 +522,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-21"
+   "updated_at": "2026-10-26"
   },
   {
-   "bytes": 69150,
+   "bytes": 64329,
    "files": 1,
    "format": "json",
    "id": "serving.stats",
@@ -541,10 +541,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-21T01:34:17"
+   "updated_at": "2026-10-26T19:32:18"
   },
   {
-   "bytes": 16141971,
+   "bytes": 15795347,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_backtest",
@@ -561,10 +561,10 @@
    "rows": null,
    "schema_version": null,
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:33:49+00:00"
+   "updated_at": "2026-10-26T19:31:55+00:00"
   },
   {
-   "bytes": 30703,
+   "bytes": 31026,
    "files": 1,
    "format": "json",
    "id": "serving.strategy_robustness",
@@ -581,10 +581,10 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20"
+   "updated_at": "2026-10-26"
   },
   {
-   "bytes": 3390212,
+   "bytes": 3302501,
    "files": 27,
    "format": "csv",
    "id": "serving.strategy_trades_csv",
@@ -637,7 +637,7 @@
    "updated_at": null
   },
   {
-   "bytes": 578039,
+   "bytes": 539186,
    "files": 1,
    "format": "json",
    "id": "silver.funded_ledger",
@@ -652,7 +652,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:33:50.074116+00:00"
+   "updated_at": "2026-10-26T19:31:56.740272+00:00"
   },
   {
    "bytes": 6001,
@@ -671,7 +671,7 @@
    "updated_at": null
   },
   {
-   "bytes": 2876,
+   "bytes": 12162,
    "files": 1,
    "format": "json",
    "id": "silver.paper_ledger",
@@ -686,7 +686,7 @@
    "rows": null,
    "schema_version": "2.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-19"
+   "updated_at": "2026-10-23"
   },
   {
    "bytes": null,
@@ -727,8 +727,8 @@
    "updated_at": null
   },
   {
-   "bytes": 138754876,
-   "files": 1649,
+   "bytes": 138911194,
+   "files": 1650,
    "format": "md",
    "id": "silver.report_markdown",
    "inputs": [
@@ -745,7 +745,7 @@
    "updated_at": null
   },
   {
-   "bytes": 45938,
+   "bytes": 46150,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parse_issues",
@@ -757,13 +757,13 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 205,
+   "rows": 206,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null
   },
   {
-   "bytes": 359131,
+   "bytes": 359333,
    "files": 1,
    "format": "csv",
    "id": "silver.report_parsed",
@@ -780,7 +780,7 @@
    "producer": [
     "build_report_performance.py"
    ],
-   "rows": 1647,
+   "rows": 1648,
    "schema_version": null,
    "tracked_in_git": true,
    "updated_at": null

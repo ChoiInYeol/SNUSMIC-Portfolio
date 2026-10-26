@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "as_of": "2026-10-21",
+ "as_of": "2026-10-26",
  "records": [
   {
    "id": "data/silver/reports/markdown/2020-10-31_equity-research-지트리비앤티.md",
@@ -765,27 +765,6 @@
    "detail_url": "/research/reviews/a03a8d95fe7553c7cca6b69f83609ef505b7dbc13cbc2962e2eb9105a8d7db7f.json"
   },
   {
-   "id": "data/silver/reports/markdown/smic/2013-09-18_Equity Research, Daehan Flour mills.md",
-   "school": "smic",
-   "values": {
-    "ticker": "001130",
-    "company": "대한제분",
-    "report_date": "2007-05-05",
-    "rating": "Buy",
-    "target_price": 227600.0,
-    "report_current_price": 204000.0,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "2ad366318b7b86ba57509f1f3b7657c0c36935703760a7967bb6962eecd04845",
-   "reasons": [
-    "report_date_from_filename"
-   ],
-   "pdf_url": "http://snusmic.com/equity-research-daehan-flour-mills/",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/smic/2013-09-18_Equity%20Research%2C%20Daehan%20Flour%20mills.md",
-   "correction": {},
-   "detail_url": "/research/reviews/adbc5e8c7ccbb5b21f89e4f5aa89ac29e22fa4083b58449cfdbcab61450d681f.json"
-  },
-  {
    "id": "data/silver/reports/markdown/smic/2013-09-18_Equity Research, DM테크놀러지.md",
    "school": "smic",
    "values": {
@@ -806,6 +785,27 @@
    "markdown_url": null,
    "correction": {},
    "detail_url": "/research/reviews/dadf2c3aa2117abad94bc4ac2649bf76b0557c2677e329b43a85e91511a2a7c6.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/smic/2013-09-18_Equity Research, Daehan Flour mills.md",
+   "school": "smic",
+   "values": {
+    "ticker": "001130",
+    "company": "대한제분",
+    "report_date": "2007-05-05",
+    "rating": "Buy",
+    "target_price": 227600.0,
+    "report_current_price": 204000.0,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "2ad366318b7b86ba57509f1f3b7657c0c36935703760a7967bb6962eecd04845",
+   "reasons": [
+    "report_date_from_filename"
+   ],
+   "pdf_url": "http://snusmic.com/equity-research-daehan-flour-mills/",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/smic/2013-09-18_Equity%20Research%2C%20Daehan%20Flour%20mills.md",
+   "correction": {},
+   "detail_url": "/research/reviews/adbc5e8c7ccbb5b21f89e4f5aa89ac29e22fa4083b58449cfdbcab61450d681f.json"
   },
   {
    "id": "data/silver/reports/markdown/smic/2013-09-18_Equity Research, ECS텔레콤.md",
@@ -6769,48 +6769,6 @@
    "detail_url": "/research/reviews/5fdc7b0085ee929bc49f78fb3107c919ef7de35ceb82ac00a324aac8bd1d9a1b.json"
   },
   {
-   "id": "data/silver/reports/markdown/yig/2025-11-11_[2025-1 KYESS] 두산에너빌리티 (034020, KS), 두산의 클린업 트리오 가스터빈, 대형 원전, SMR (발간.md",
-   "school": "yig",
-   "values": {
-    "ticker": "034020",
-    "company": "두산에너빌리티",
-    "report_date": "2025-05-27",
-    "rating": "Buy",
-    "target_price": 56300.0,
-    "report_current_price": 42350.0,
-    "stated_upside_pct": 32.9
-   },
-   "transcript_sha256": "7675cd72ccc59d4377acb9f70717a4d08d038af5b74c3fd8da92d779e084ea78",
-   "reasons": [
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://yig.yonsei.ac.kr/research/69",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-11_%5B2025-1%20KYESS%5D%20%EB%91%90%EC%82%B0%EC%97%90%EB%84%88%EB%B9%8C%EB%A6%AC%ED%8B%B0%20%28034020%2C%20KS%29%2C%20%EB%91%90%EC%82%B0%EC%9D%98%20%ED%81%B4%EB%A6%B0%EC%97%85%20%ED%8A%B8%EB%A6%AC%EC%98%A4%20%EA%B0%80%EC%8A%A4%ED%84%B0%EB%B9%88%2C%20%EB%8C%80%ED%98%95%20%EC%9B%90%EC%A0%84%2C%20SMR%20%28%EB%B0%9C%EA%B0%84.md",
-   "correction": {},
-   "detail_url": "/research/reviews/348586cae915c82447da77f11b79531c296b66917947db8c5fb1feece975780b.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/yig/2025-11-11_[2025-1 SOKHA 우승] 넥스트바이오메디컬 (389650, KQ), 의료기기의 Next Level (발간일 25051.md",
-   "school": "yig",
-   "values": {
-    "ticker": "389650",
-    "company": "넥스트바이오메디컬",
-    "report_date": "2025-05-15",
-    "rating": "Buy",
-    "target_price": 63200.0,
-    "report_current_price": 40850.0,
-    "stated_upside_pct": 54.7
-   },
-   "transcript_sha256": "43405449439ba02864bae991d54c0c3da7e9d4ab675db03f71ee8a1768e42e22",
-   "reasons": [
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://yig.yonsei.ac.kr/research/67",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-11_%5B2025-1%20SOKHA%20%EC%9A%B0%EC%8A%B9%5D%20%EB%84%A5%EC%8A%A4%ED%8A%B8%EB%B0%94%EC%9D%B4%EC%98%A4%EB%A9%94%EB%94%94%EC%BB%AC%20%28389650%2C%20KQ%29%2C%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B8%B0%EC%9D%98%20Next%20Level%20%28%EB%B0%9C%EA%B0%84%EC%9D%BC%2025051.md",
-   "correction": {},
-   "detail_url": "/research/reviews/421982f514a7e01c62209239137ddb15423e6249d3b1558d35d129380b7d3232.json"
-  },
-  {
    "id": "data/silver/reports/markdown/yig/2025-11-11_HPSP (403870, KQ), HPSP의 역습이 시작된다 (발간일 250314) YIG Research.md",
    "school": "yig",
    "values": {
@@ -6893,6 +6851,48 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-11_SNT%EC%97%90%EB%84%88%EC%A7%80%20%28100840%2C%20KS%29%2C%20SNT%20%EC%97%90%EB%84%88%EC%A7%80%2C%20YOUR%20%EC%97%90%EB%84%88%EC%A7%80%21%20%28%EB%B0%9C%EA%B0%84%EC%9D%BC%20250411%29%20YIG%20Research.md",
    "correction": {},
    "detail_url": "/research/reviews/03b301758e2d7ee07727c97eeb13938a87acc119bee9ebeaa6252056c4e40b23.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/yig/2025-11-11_[2025-1 KYESS] 두산에너빌리티 (034020, KS), 두산의 클린업 트리오 가스터빈, 대형 원전, SMR (발간.md",
+   "school": "yig",
+   "values": {
+    "ticker": "034020",
+    "company": "두산에너빌리티",
+    "report_date": "2025-05-27",
+    "rating": "Buy",
+    "target_price": 56300.0,
+    "report_current_price": 42350.0,
+    "stated_upside_pct": 32.9
+   },
+   "transcript_sha256": "7675cd72ccc59d4377acb9f70717a4d08d038af5b74c3fd8da92d779e084ea78",
+   "reasons": [
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://yig.yonsei.ac.kr/research/69",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-11_%5B2025-1%20KYESS%5D%20%EB%91%90%EC%82%B0%EC%97%90%EB%84%88%EB%B9%8C%EB%A6%AC%ED%8B%B0%20%28034020%2C%20KS%29%2C%20%EB%91%90%EC%82%B0%EC%9D%98%20%ED%81%B4%EB%A6%B0%EC%97%85%20%ED%8A%B8%EB%A6%AC%EC%98%A4%20%EA%B0%80%EC%8A%A4%ED%84%B0%EB%B9%88%2C%20%EB%8C%80%ED%98%95%20%EC%9B%90%EC%A0%84%2C%20SMR%20%28%EB%B0%9C%EA%B0%84.md",
+   "correction": {},
+   "detail_url": "/research/reviews/348586cae915c82447da77f11b79531c296b66917947db8c5fb1feece975780b.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/yig/2025-11-11_[2025-1 SOKHA 우승] 넥스트바이오메디컬 (389650, KQ), 의료기기의 Next Level (발간일 25051.md",
+   "school": "yig",
+   "values": {
+    "ticker": "389650",
+    "company": "넥스트바이오메디컬",
+    "report_date": "2025-05-15",
+    "rating": "Buy",
+    "target_price": 63200.0,
+    "report_current_price": 40850.0,
+    "stated_upside_pct": 54.7
+   },
+   "transcript_sha256": "43405449439ba02864bae991d54c0c3da7e9d4ab675db03f71ee8a1768e42e22",
+   "reasons": [
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://yig.yonsei.ac.kr/research/67",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/yig/2025-11-11_%5B2025-1%20SOKHA%20%EC%9A%B0%EC%8A%B9%5D%20%EB%84%A5%EC%8A%A4%ED%8A%B8%EB%B0%94%EC%9D%B4%EC%98%A4%EB%A9%94%EB%94%94%EC%BB%AC%20%28389650%2C%20KQ%29%2C%20%EC%9D%98%EB%A3%8C%EA%B8%B0%EA%B8%B0%EC%9D%98%20Next%20Level%20%28%EB%B0%9C%EA%B0%84%EC%9D%BC%2025051.md",
+   "correction": {},
+   "detail_url": "/research/reviews/421982f514a7e01c62209239137ddb15423e6249d3b1558d35d129380b7d3232.json"
   },
   {
    "id": "data/silver/reports/markdown/yig/2025-11-11_경동나비엔 (009450, KS), 연애는 식어도 경동은 안 식어요. (발간일 250404) YIG Research.md",
@@ -9610,7 +9610,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "9abd1ffa4919a05fed730f05bd2df81ff2db58daefa0f7c9dc082a932fa48b8b",
+   "transcript_sha256": "0ca5c1b459ee1ccd67026c88903b78f241c3780de03aa5df24eece3d3546314b",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9631,7 +9631,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "ae23d18e2411d0b2552747f505b6d81ea5546621c9ca611ef23623d5ccae02fd",
+   "transcript_sha256": "d25bc5b4612807b8a5de465665a2e6899744759444f77d7beedf99e7131b04d1",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9645,7 +9645,7 @@
    "school": "kuvic",
    "values": {
     "ticker": null,
-    "company": "반도체/반도체와 장비",
+    "company": null,
     "report_date": "2026-06-08",
     "rating": null,
     "target_price": null,
@@ -9662,6 +9662,27 @@
    "detail_url": "/research/reviews/75841685c47799036fb3b0dc73d70140aa68e5c5763e8c77a0eaa9ead862ead5.json"
   },
   {
+   "id": "data/silver/reports/markdown/kuvic/2026-06-08_반도체와 반도체 장비 - NAND, LOVE LOVE LOVE.md",
+   "school": "kuvic",
+   "values": {
+    "ticker": null,
+    "company": "반도체와 반도체 장비",
+    "report_date": "2026-06-08",
+    "rating": null,
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "8fe39cfc4a91bdbff96e1e7681a6df80402d54d815a15f9dc2a00f8a1e40dfd3",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/64f16e86e612014a693eec510855a40f6a5db969f62bedf2e33adc6a985b4350.json"
+  },
+  {
    "id": "data/silver/reports/markdown/kuvic/2026-06-08_증권 - 만스피를 향해 가는 지금.md",
    "school": "kuvic",
    "values": {
@@ -9673,7 +9694,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "18c2cde901b2e80fc3066ad0f743c8fd49150c8b767902560533bc0cd795c76c",
+   "transcript_sha256": "ec394f8cc6b5f4018aa53a5862b83d255f4ead19bf7f9052a4af9347d4cbbcab",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price"
    ],
@@ -9694,7 +9715,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "123eb9a2249dc136af09127fa5938d2feb3467c5d34e8b28525088ee4179f1d7",
+   "transcript_sha256": "90d77e8af54a6c43486fa5062a99125dd80bd9b17ce0be1bd543df7b7bae64f1",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9715,7 +9736,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "72d42def89e70f585898a8d663ff1dcdb7b68aadf700e9f432f3379aa447e917",
+   "transcript_sha256": "2dfe957f2dca754da5394cd4cd0b771f51ec5b056e3bfd6daf97ccdf38cfce5d",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9736,7 +9757,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "e000ae690eda21cfe4824c6dab855676ff5ad82c8be2858dad3d89de06dd126f",
+   "transcript_sha256": "8b7c4d2460c8245b919a892ad1d2d53f9b39d2189173700c58be52be100affdc",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9757,7 +9778,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "e0dcf6918c12576fc0964d7a1c7784465cf37b1a7f3ccf042e8708c43827e6e6",
+   "transcript_sha256": "3498a196dba7480f0948ab31f805c60d5efd8d7b09d7eb3fce6adb9c8d0c71a1",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9778,7 +9799,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "78133a4c19a02a68328160b6b3467a382096efe58329204896a1a8fd4158f918",
+   "transcript_sha256": "a888b1adce23a337c9faa0db0761518d44a054726ef24b4d8b629b4145c66537",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9820,7 +9841,7 @@
     "report_current_price": null,
     "stated_upside_pct": null
    },
-   "transcript_sha256": "ec5c0c9d7cfba9717fbf022554b58337e4ba7f611a2259221bad8d063f8a7044",
+   "transcript_sha256": "7a667ae868358e4d58191985a6e5cd0bb3ea3ed078db96fb009548678de2fc48",
    "reasons": [
     "non_us_kr_or_unparsed_market;missing_ticker"
    ],
@@ -9845,7 +9866,7 @@
    "reasons": [
     "ocr_fallback"
    ],
-   "pdf_url": "https://www.kuvic.com/research?page=1",
+   "pdf_url": "https://www.kuvic.com/research",
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/kuvic/2026-10-01_%EC%8B%AC%ED%85%8D%20-%20%ED%95%98%ED%8A%B8%28%E5%BF%83%29%20%EC%96%B4%ED%83%9D%28%ED%85%8D%29%20%EB%82%B4%20%EC%8B%AC%EC%9E%A5%EC%9D%84%20%EA%B3%B5%EA%B2%A9%ED%95%B4~.md",
    "correction": {},
    "detail_url": "/research/reviews/f6766e1d5950fc8b1dfcfe7e1163452bc1752763b739b60c2e34a452207d11b3.json"
@@ -9866,7 +9887,7 @@
    "reasons": [
     "ocr_fallback"
    ],
-   "pdf_url": "https://www.kuvic.com/research?page=1",
+   "pdf_url": "https://www.kuvic.com/research",
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/kuvic/2026-10-01_%ED%8B%B0%EC%94%A8%EB%A8%B8%ED%8B%B0%EB%A6%AC%EC%96%BC%EC%A6%88%20-%20%EB%84%88%20T%EC%95%BC%20%EC%95%84%EB%8B%88%20TC%EC%95%BC.md",
    "correction": {},
    "detail_url": "/research/reviews/261e5497f60c4b86ce85c697cd15bd0908043e12fe1e0c5d3a3aac280041a8de.json"
@@ -10305,27 +10326,6 @@
    "detail_url": "/research/reviews/c3c2aa839082e2338e19780ef3c59c149a0171025d669eddcb28001d0bdce8b6.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[BUY] High Demand 전력의 현대화 마진의 고도화, HD현대일렉트릭.md",
-   "school": "voera",
-   "values": {
-    "ticker": "267260",
-    "company": "HD현대일렉트릭",
-    "report_date": "2023-01-01",
-    "rating": "Buy",
-    "target_price": 1061986.0,
-    "report_current_price": 778000.0,
-    "stated_upside_pct": 36.5
-   },
-   "transcript_sha256": "03010869f5243c24a98ffd34c137d68a594387297405392e64780a5d8eb35870",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1529214",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20High%20Demand%20%EC%A0%84%EB%A0%A5%EC%9D%98%20%ED%98%84%EB%8C%80%ED%99%94%20%EB%A7%88%EC%A7%84%EC%9D%98%20%EA%B3%A0%EB%8F%84%ED%99%94%2C%20HD%ED%98%84%EB%8C%80%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD.md",
-   "correction": {},
-   "detail_url": "/research/reviews/1cb98378c7f8b33bcc22cbd9916f5cce85d07924b9448770d9a5823e2e759571.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] HL만 도전해, 수출길에.md",
    "school": "voera",
    "values": {
@@ -10347,6 +10347,27 @@
    "detail_url": "/research/reviews/715779921646faa4c5cb1021c3cb7c63c051a113f4fe0dc729afb24070d524b2.json"
   },
   {
+   "id": "data/silver/reports/markdown/voera/undated_[BUY] High Demand 전력의 현대화 마진의 고도화, HD현대일렉트릭.md",
+   "school": "voera",
+   "values": {
+    "ticker": "267260",
+    "company": "HD현대일렉트릭",
+    "report_date": "2023-01-01",
+    "rating": "Buy",
+    "target_price": 1061986.0,
+    "report_current_price": 778000.0,
+    "stated_upside_pct": 36.5
+   },
+   "transcript_sha256": "03010869f5243c24a98ffd34c137d68a594387297405392e64780a5d8eb35870",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/1529214",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20High%20Demand%20%EC%A0%84%EB%A0%A5%EC%9D%98%20%ED%98%84%EB%8C%80%ED%99%94%20%EB%A7%88%EC%A7%84%EC%9D%98%20%EA%B3%A0%EB%8F%84%ED%99%94%2C%20HD%ED%98%84%EB%8C%80%EC%9D%BC%EB%A0%89%ED%8A%B8%EB%A6%AD.md",
+   "correction": {},
+   "detail_url": "/research/reviews/1cb98378c7f8b33bcc22cbd9916f5cce85d07924b9448770d9a5823e2e759571.json"
+  },
+  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] Just.md",
    "school": "voera",
    "values": {
@@ -10366,49 +10387,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20Just.md",
    "correction": {},
    "detail_url": "/research/reviews/2be2ab57875f5980527ddc6d81c6801c6e11ee9e5239c2113bdb98c512cba02f.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[BUY] League of No.1 LIG 넥스원.md",
-   "school": "voera",
-   "values": {
-    "ticker": "079550",
-    "company": "LIG디펜스앤에어로스페이스",
-    "report_date": "2025-02-26",
-    "rating": "Buy",
-    "target_price": 350000.0,
-    "report_current_price": 294000.0,
-    "stated_upside_pct": 19.0
-   },
-   "transcript_sha256": "42a220bdb9e9bbecabcb838b06891f74b4597a2bc5df0e68adedbdbc8c8dc3ae",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1182478",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20League%20of%20No.1%20LIG%20%EB%84%A5%EC%8A%A4%EC%9B%90.md",
-   "correction": {},
-   "detail_url": "/research/reviews/2468ef52bb6aada14b78a349167f98e2d2bc0f630813089cfe31a4c03560a4b8.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] LG디스플레이, 디스는 이제 그만!.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": "2023-05-23",
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "011e910d70adecb50b53f91feca00d656e29c868a6a94147cc7f45e69353272b",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price",
-    "ocr_fallback;date_cover_only"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/716d2186c6107b2637289301e53ffe770a61be95d39c469cce2803eadbbdaf9c.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] LG생활건강.md",
@@ -10433,26 +10411,25 @@
    "detail_url": "/research/reviews/ac5dab349b748909ab2c6f5f32d7e480ac934ca62d5fa7173b220a0c05e9de5a.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] LG에너지솔루션, 가장 에너제틱한 솔루션.md",
+   "id": "data/silver/reports/markdown/voera/undated_[BUY] League of No.1 LIG 넥스원.md",
    "school": "voera",
    "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": "2022-11-14",
+    "ticker": "079550",
+    "company": "LIG디펜스앤에어로스페이스",
+    "report_date": "2025-02-26",
     "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
+    "target_price": 350000.0,
+    "report_current_price": 294000.0,
+    "stated_upside_pct": 19.0
    },
-   "transcript_sha256": "d381e34566557d2ac23716d0f4864d4831083ee0297c250deca7727761ec0d86",
+   "transcript_sha256": "42a220bdb9e9bbecabcb838b06891f74b4597a2bc5df0e68adedbdbc8c8dc3ae",
    "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price",
-    "ocr_fallback;date_cover_only"
+    "date_cover_only"
    ],
-   "pdf_url": null,
-   "markdown_url": null,
+   "pdf_url": "https://www.voera.co.kr/forum/view/1182478",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20League%20of%20No.1%20LIG%20%EB%84%A5%EC%8A%A4%EC%9B%90.md",
    "correction": {},
-   "detail_url": "/research/reviews/36d2eb8e1a49a6183778f45ed8a818d97d2d9e7ab23fc83532d520f7a9e21578.json"
+   "detail_url": "/research/reviews/2468ef52bb6aada14b78a349167f98e2d2bc0f630813089cfe31a4c03560a4b8.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] Linked to AI, Shipped to America, LS ELECREIC.md",
@@ -10476,27 +10453,6 @@
    "detail_url": "/research/reviews/c8f12dcc55de8e39baeeae6e9e84befa1b345a8b5bee71f04eb431c467be213c.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[BUY] No ALTEnertive, ALTEOGEN.md",
-   "school": "voera",
-   "values": {
-    "ticker": "196170",
-    "company": "알테오젠",
-    "report_date": "2025-07-30",
-    "rating": "Buy",
-    "target_price": 689000.0,
-    "report_current_price": 451500.0,
-    "stated_upside_pct": 50.6
-   },
-   "transcript_sha256": "20620533100f894ff5bc1b7fccf206a9acf61b9f9b04bfba38678942dff15d15",
-   "reasons": [
-    "ocr_fallback;date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1299531",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20No%20ALTEnertive%2C%20ALTEOGEN.md",
-   "correction": {},
-   "detail_url": "/research/reviews/af5ccd944c6559819df6a0dc52ac76d1dd1cecab3239beb1b57184354ee7f669.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] NO CAP, MORE CAPA 효성중공업.md",
    "school": "voera",
    "values": {
@@ -10518,26 +10474,25 @@
    "detail_url": "/research/reviews/25af85b01b363c62ed45a8f7eadec0d54db4c7fff1c09835ce8fd811f153ca20.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] Paradise, Lucky Dice.md",
+   "id": "data/silver/reports/markdown/voera/undated_[BUY] No ALTEnertive, ALTEOGEN.md",
    "school": "voera",
    "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
+    "ticker": "196170",
+    "company": "알테오젠",
+    "report_date": "2025-07-30",
     "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
+    "target_price": 689000.0,
+    "report_current_price": 451500.0,
+    "stated_upside_pct": 50.6
    },
-   "transcript_sha256": "c0eb2c1b3cdf11ed6f3694e58b188f666bce77a951ab3cb6a115448bbd6641e0",
+   "transcript_sha256": "20620533100f894ff5bc1b7fccf206a9acf61b9f9b04bfba38678942dff15d15",
    "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
+    "ocr_fallback;date_cover_only"
    ],
-   "pdf_url": null,
-   "markdown_url": null,
+   "pdf_url": "https://www.voera.co.kr/forum/view/1299531",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20No%20ALTEnertive%2C%20ALTEOGEN.md",
    "correction": {},
-   "detail_url": "/research/reviews/c8603277003cd1e8747f046de8ee2925c66db6838fcf14e032c708d6fc7ace17.json"
+   "detail_url": "/research/reviews/af5ccd944c6559819df6a0dc52ac76d1dd1cecab3239beb1b57184354ee7f669.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] Pointer to the world, 포스코인터내셔널.md",
@@ -10583,49 +10538,6 @@
    "detail_url": "/research/reviews/7a3e9e93a127eecbb732681466d086c212f3dc7ee0406ac837e352a0516535bb.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] See and See 보면 볼수록 매력있는, 씨앤씨인터내셔널.md",
-   "school": "voera",
-   "values": {
-    "ticker": "352480",
-    "company": "씨앤씨인터내셔널",
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": 62700.0,
-    "report_current_price": null,
-    "stated_upside_pct": 46.84
-   },
-   "transcript_sha256": "a35a9ff8304462899d3abda04220f3526c7a2f6fca273f0655c64ecbacb2f9ae",
-   "reasons": [
-    "missing_report_date",
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/889718",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20See%20and%20See%20%EB%B3%B4%EB%A9%B4%20%EB%B3%BC%EC%88%98%EB%A1%9D%20%EB%A7%A4%EB%A0%A5%EC%9E%88%EB%8A%94%2C%20%EC%94%A8%EC%95%A4%EC%94%A8%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90.md",
-   "correction": {},
-   "detail_url": "/research/reviews/0c8a88bc6edbfae6d0f1b2125f99874e28ba512d1df16a40a8202cb119a9671f.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] SK아이이테크놀로지, 분리막 대장 SK.md",
-   "school": "voera",
-   "values": {
-    "ticker": "361610",
-    "company": "SK아이이테크놀로지",
-    "report_date": "2024-03-16",
-    "rating": "Buy",
-    "target_price": 88100.0,
-    "report_current_price": null,
-    "stated_upside_pct": 21.3
-   },
-   "transcript_sha256": "02c53014eb22a0f0717b85cbf89c8fb5dec5291a87e7fa57a646028f22019dc1",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1015393",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20SK%EC%95%84%EC%9D%B4%EC%9D%B4%ED%85%8C%ED%81%AC%EB%86%80%EB%A1%9C%EC%A7%80%2C%20%EB%B6%84%EB%A6%AC%EB%A7%89%20%EB%8C%80%EC%9E%A5%20SK.md",
-   "correction": {},
-   "detail_url": "/research/reviews/bd3882e07eec3d2f5d0f171df26b0095a6901bb0e819c76cfed2d6c31b40d08b.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] SK텔레콤.md",
    "school": "voera",
    "values": {
@@ -10645,28 +10557,6 @@
    "markdown_url": null,
    "correction": {},
    "detail_url": "/research/reviews/40efc9c4ae40b5b73228903c4d07ad7deed8f92edc875bf025d8f82a6e68cf5b.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] SK하이닉스, 메모하세요. 메모리 붐은 옵니다.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "3ad33f7478ace7fa6d9037088732487a106e8738491296607f25ebdf06c85e84",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/4137ac236e84092e30ca3b8910401db73ca60996d07448b36be19c31eb7bf1a3.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] SOCKET LIKE ROCKET, 리노공업.md",
@@ -10776,28 +10666,6 @@
    "detail_url": "/research/reviews/1b7d96c155d753adcd41b28dc7f44171e7cd6f305373cef75c4705ab06f84a92.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 고려아연, 너무 싸서 아연실색!.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "544c87b92046407652c87565cfa8bf12a809dadb9e90bf690078a0724ed1a75e",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/ae0241dd529c992f4fbbe4a674c41c3310976926c184d7dfebf8e3865519aef6.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 광학의 재도약과 FC-BGA의 본격 성장, LG 이노텍.md",
    "school": "voera",
    "values": {
@@ -10817,49 +10685,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EA%B4%91%ED%95%99%EC%9D%98%20%EC%9E%AC%EB%8F%84%EC%95%BD%EA%B3%BC%20FC-BGA%EC%9D%98%20%EB%B3%B8%EA%B2%A9%20%EC%84%B1%EC%9E%A5%2C%20LG%20%EC%9D%B4%EB%85%B8%ED%85%8D.md",
    "correction": {},
    "detail_url": "/research/reviews/05fc250c7a6eea1ef25d5422a51f5ef544d34f95e761a721c47c47888b41c0ba.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 국가권력급 플랫폼 네이버.md",
-   "school": "voera",
-   "values": {
-    "ticker": "035420",
-    "company": "NAVER",
-    "report_date": null,
-    "rating": "Hold",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "44dd1d9f4d9a783b831d6f4067acbe078264a7f23deaae1922fd3d0b145a2db2",
-   "reasons": [
-    "missing_report_date",
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1015386",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EA%B5%AD%EA%B0%80%EA%B6%8C%EB%A0%A5%EA%B8%89%20%ED%94%8C%EB%9E%AB%ED%8F%BC%20%EB%84%A4%EC%9D%B4%EB%B2%84.md",
-   "correction": {},
-   "detail_url": "/research/reviews/dccca20f49817afc7df0a0f518197480ed124d0ef58377f272103636896b5acb.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[buy] 네이버_ 모든 웹은 네이버로 통한다.md",
-   "school": "voera",
-   "values": {
-    "ticker": "035420",
-    "company": "NAVER",
-    "report_date": "2021-05-14",
-    "rating": "Buy",
-    "target_price": 525000.0,
-    "report_current_price": null,
-    "stated_upside_pct": 53.0
-   },
-   "transcript_sha256": "5d1b108b3fa64bd10c782d5bae2a772bd8228a6c657fafd7b98be6466c82a570",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/516431",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5Bbuy%5D%20%EB%84%A4%EC%9D%B4%EB%B2%84_%20%EB%AA%A8%EB%93%A0%20%EC%9B%B9%EC%9D%80%20%EB%84%A4%EC%9D%B4%EB%B2%84%EB%A1%9C%20%ED%86%B5%ED%95%9C%EB%8B%A4.md",
-   "correction": {},
-   "detail_url": "/research/reviews/3545f2c8b1ae600264b818158cc6779d7ed6c334d271c327b0e5b77d26e0b18e.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 동방의 빛나는 별, 동성화인텍(+UIC 본선용).md",
@@ -10902,27 +10727,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EB%94%94%EC%96%B4%EC%9C%A0%2C%20%ED%8C%AC%20%ED%94%8C%EB%9E%AB%ED%8F%BC%20%EC%84%B1%EC%9E%A5%20%EC%97%B4%EA%B8%B0%EC%97%90%20%EB%94%94%EC%96%B4%EC%9C%A0~.md",
    "correction": {},
    "detail_url": "/research/reviews/cd9f1a2e11d04aa21de719857e720c54d0531bd31644d101cca78c0c52034279.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
-   "school": "voera",
-   "values": {
-    "ticker": "095340",
-    "company": "ISC",
-    "report_date": "2023-05-22",
-    "rating": "Buy",
-    "target_price": 55000.0,
-    "report_current_price": 46650.0,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "a6ffe4f1e2fd32664e99a75a47f0ac1bc8dca8a0670a1e63d48bbe4cde6b3615",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/848659",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EB%A1%9C%EC%BC%93%EC%B2%98%EB%9F%BC%20%EB%82%A0%EC%95%84%EC%98%A4%EB%A5%B4%EB%8A%94%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%86%8C%EC%BC%93%2C%20ISC.md",
-   "correction": {},
-   "detail_url": "/research/reviews/c48460e81f03eeb58e1adc563e2f7e0a78cf3b3a6458b9c1c77efbc769df4823.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 리쥬란 맞으면 내 미모도 팜하니. 파마리서치.md",
@@ -11137,27 +10941,6 @@
    "detail_url": "/research/reviews/3e27963c37bfc32a1bddea0463e2b27d62fe77119c8e9ffa81a1b41dfe09e051.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 스튜디오드래곤 올라갈 드래곤은 올라간다.md",
-   "school": "voera",
-   "values": {
-    "ticker": "253450",
-    "company": "스튜디오드래곤",
-    "report_date": "2020-09-04",
-    "rating": "Buy",
-    "target_price": 116000.0,
-    "report_current_price": null,
-    "stated_upside_pct": 44.0
-   },
-   "transcript_sha256": "a855654a959ef2c1a5e249453e013a799c1a0df664e934fe1752723f76b064b9",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/391555",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%93%9C%EB%9E%98%EA%B3%A4%20%EC%98%AC%EB%9D%BC%EA%B0%88%20%EB%93%9C%EB%9E%98%EA%B3%A4%EC%9D%80%20%EC%98%AC%EB%9D%BC%EA%B0%84%EB%8B%A4.md",
-   "correction": {},
-   "detail_url": "/research/reviews/cf52072e6c2fb2bbf7465574a850823c904acf4348339284bfb2c019ea667dcf.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 신세계_직감보다는 데이터에 주목하라.md",
    "school": "voera",
    "values": {
@@ -11222,49 +11005,6 @@
    "detail_url": "/research/reviews/1a08264a209980daad142ba5b41a481b8b6943c120736dc20e54538722b87bbb.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 씨에스윈드, 영광의 순간은 바로 지금부터.md",
-   "school": "voera",
-   "values": {
-    "ticker": "112610",
-    "company": "씨에스윈드",
-    "report_date": "2023-03-07",
-    "rating": "Buy",
-    "target_price": 90900.0,
-    "report_current_price": null,
-    "stated_upside_pct": 31.0
-   },
-   "transcript_sha256": "138764402217b1b53f823fe276b7ad4d5b8b73271984b81f02c80f3be40dfbab",
-   "reasons": [
-    "ocr_fallback;date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/808916",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%94%A8%EC%97%90%EC%8A%A4%EC%9C%88%EB%93%9C%2C%20%EC%98%81%EA%B4%91%EC%9D%98%20%EC%88%9C%EA%B0%84%EC%9D%80%20%EB%B0%94%EB%A1%9C%20%EC%A7%80%EA%B8%88%EB%B6%80%ED%84%B0.md",
-   "correction": {},
-   "detail_url": "/research/reviews/8695459f8c1d7e0a96db229f0bc5a6c30b31bc57fd1b0448d9347f1d2bfda84f.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 아난티, AN ANTI-fragile.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "47b9ce764bfc0970d6e22c681cbf49555e27b0ddc6825f04185266eb7b06e297",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/95b6b55086e92ccdb5648be0ce9e07898e9bdb0f0b855eca814ba8a46c900838.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 아프리카TV 논란이 아닌 실적에 주목하라!.md",
    "school": "voera",
    "values": {
@@ -11305,28 +11045,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EC%95%88%EC%A0%84%ED%95%9C%20%EC%9B%90%EC%A0%84%2C%20%ED%95%9C%EC%A0%84KPS.md",
    "correction": {},
    "detail_url": "/research/reviews/c83813fe99f01bd14c2c48d3845af4f14060047b57ae10bf9601754c32abcceb.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 어서 담으세요, POSCO hold+ings.md",
-   "school": "voera",
-   "values": {
-    "ticker": "005490",
-    "company": "POSCO홀딩스",
-    "report_date": null,
-    "rating": "Hold",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "c2e0a3fa9928fc7ef961ecc914777dd961ecc735e4ac0df8d3f3daabb2c48c5f",
-   "reasons": [
-    "missing_report_date",
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/1015447",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%96%B4%EC%84%9C%20%EB%8B%B4%EC%9C%BC%EC%84%B8%EC%9A%94%2C%20POSCO%20hold%2Bings.md",
-   "correction": {},
-   "detail_url": "/research/reviews/29accf346c6a298a3fbec4e2957a8a18d40db48913442e2304b8b0d19a7bea89.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 에이스토리, 올해는 닉값할 시기.md",
@@ -11370,28 +11088,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EC%97%90%EC%BD%94%EB%A7%88%EC%BC%80%ED%8C%85%20_%20%EB%8B%B9%EC%8B%A0%EC%9D%80%20%EC%9D%B4%EB%AF%B8%20%EA%B5%AC%EB%A7%A4%ED%95%98%EA%B3%A0%20%EC%9E%88%EB%8B%A4.md",
    "correction": {},
    "detail_url": "/research/reviews/98dd0302d280b016ea53de7bd33a870cd6f8bb4ca63c351bc0dbadbb3761d6e1.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 엘앤에프, 양극재요 엘앤에프의 하이니켈이요!.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "17c2c8b2710406fb5dc86aebdbab62e048e366748346df8965dd9bf2cc85d8b0",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/2c310617191357c9930cc07115ab30a702dff1972c53551100c011997ad32346.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 엠씨넥스, 넘쳐흘러.md",
@@ -11480,70 +11176,6 @@
    "detail_url": "/research/reviews/488338065e3082bf51ab0c9d6a82bf3ffef71cf7305897d51c420b7e4b0f5c4e.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 이마트 이마트입니다. 제가 돌아왔습니다.md",
-   "school": "voera",
-   "values": {
-    "ticker": "139480",
-    "company": "이마트",
-    "report_date": "2020-11-13",
-    "rating": "Buy",
-    "target_price": 232000.0,
-    "report_current_price": null,
-    "stated_upside_pct": 50.1
-   },
-   "transcript_sha256": "808f1d9ce8970cdd4616b6ace3fe60634cb02b27d31fc7166851d928f4b91429",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/425387",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%9D%B4%EB%A7%88%ED%8A%B8%20%EC%9D%B4%EB%A7%88%ED%8A%B8%EC%9E%85%EB%8B%88%EB%8B%A4.%20%EC%A0%9C%EA%B0%80%20%EB%8F%8C%EC%95%84%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.md",
-   "correction": {},
-   "detail_url": "/research/reviews/52def79cfd6e1ccd90ead96605364bea96f2b3e3d43ed7f84feb05f1040e793b.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 인터로조, 렌즈는 인터로조로 조.md",
-   "school": "voera",
-   "values": {
-    "ticker": "119610",
-    "company": "인터로조",
-    "report_date": "2023-04-05",
-    "rating": "Buy",
-    "target_price": 42650.0,
-    "report_current_price": null,
-    "stated_upside_pct": 24.0
-   },
-   "transcript_sha256": "6ce996c7a8096c3ee7e177d765d5d81e7d2b2fc2bef94ecc3f8f4875459f7b44",
-   "reasons": [
-    "ocr_fallback;date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/825780",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%9D%B8%ED%84%B0%EB%A1%9C%EC%A1%B0%2C%20%EB%A0%8C%EC%A6%88%EB%8A%94%20%EC%9D%B8%ED%84%B0%EB%A1%9C%EC%A1%B0%EB%A1%9C%20%EC%A1%B0.md",
-   "correction": {},
-   "detail_url": "/research/reviews/f7ccc7bcacb6f7c84f5b5d34d29a6091c94784bf44c5c043b2ac5805c5950efc.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 인텔리안테크 위성과 안테나만 있으면 어디든 갈 수 있어!.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "3aaf2f33beb0c7e142f8f41d815b32dece9027c769a053e8ec15abe444e0163a",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/2c215f23acc3e60a30297da5d5d9e53d8d945b12f1fc43fd8dc201ff2f48c261.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 전력 슈퍼싸이클에 올라타라! 효성중공업.md",
    "school": "voera",
    "values": {
@@ -11584,71 +11216,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%EC%A0%84%EC%84%A4%EC%9D%98%20GS%EA%B1%B4%EC%84%A4.md",
    "correction": {},
    "detail_url": "/research/reviews/5381dc701c675a3faf606ecd36e0d024b0e69fb9c3604aa3715c6d6076f5e01c.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제우스, 이 기업은 신인가.md",
-   "school": "voera",
-   "values": {
-    "ticker": "079370",
-    "company": "제우스",
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": 97400.0,
-    "report_current_price": null,
-    "stated_upside_pct": 74.6
-   },
-   "transcript_sha256": "9caba1ace2a4d2d44b2b2c00e7eb1eb199592661d4484be6b532a1a351c5c9a3",
-   "reasons": [
-    "missing_report_date",
-    "ocr_fallback"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/893338",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%A0%9C%EC%9A%B0%EC%8A%A4%2C%20%EC%9D%B4%20%EA%B8%B0%EC%97%85%EC%9D%80%20%EC%8B%A0%EC%9D%B8%EA%B0%80.md",
-   "correction": {},
-   "detail_url": "/research/reviews/2fd1715fc3e9fc74d412f9c02b5d01c517ae2c626e0c4b3def6696c71701259c.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제이시스메디칼 제 1 선두 주자를 향하여.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": 18360.0,
-    "report_current_price": null,
-    "stated_upside_pct": 4.0
-   },
-   "transcript_sha256": "c5cb0a4987a44cdfbdf1fdefe6861601db23dd61f8d05acb32cf2dfbaee31caa",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/c4d77c4c176804836e1e6df5153cd05769367a16cb3d18d6818d973ea7345e29.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제주항공 아직은 이륙할 때가 아니지만.md",
-   "school": "voera",
-   "values": {
-    "ticker": "089590",
-    "company": "제주항공",
-    "report_date": "2020-05-14",
-    "rating": "Buy",
-    "target_price": 20000.0,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "081ce04ea1a5bf505fb812ae6c159fa5cf842e3734c1a93d60d9c3b5f9f98b4c",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/338939",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%A0%9C%EC%A3%BC%ED%95%AD%EA%B3%B5%20%EC%95%84%EC%A7%81%EC%9D%80%20%EC%9D%B4%EB%A5%99%ED%95%A0%20%EB%95%8C%EA%B0%80%20%EC%95%84%EB%8B%88%EC%A7%80%EB%A7%8C.md",
-   "correction": {},
-   "detail_url": "/research/reviews/b4d7a3c977a0f1028d18eeedb681e6b5170d4db3a50e48ca08e3bc0abdb5e3e4.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 조선,대한으로 나아가라, 대한조선.md",
@@ -11778,27 +11345,6 @@
    "detail_url": "/research/reviews/2ac4177dbfb869a93f89aafa16cb74a1790ffea09d7dce4dd5c1c011124dcb87.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 클라쓰가 달라서, 클래시스.md",
-   "school": "voera",
-   "values": {
-    "ticker": "214150",
-    "company": "클래시스",
-    "report_date": "2023-05-21",
-    "rating": "Buy",
-    "target_price": 30000.0,
-    "report_current_price": null,
-    "stated_upside_pct": 13.9
-   },
-   "transcript_sha256": "698778191fca377fa552ccc7f1e08c67d3b93346abde5896259d4803a9c7697f",
-   "reasons": [
-    "ocr_fallback;date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/847592",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%ED%81%B4%EB%9D%BC%EC%93%B0%EA%B0%80%20%EB%8B%AC%EB%9D%BC%EC%84%9C%2C%20%ED%81%B4%EB%9E%98%EC%8B%9C%EC%8A%A4.md",
-   "correction": {},
-   "detail_url": "/research/reviews/67e08027f819d83dd42ef7d5eba85ba67c09a522e85d1be5dd6e7b01bd0fcd79.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 태영건설_ Trash is the New Gold.md",
    "school": "voera",
    "values": {
@@ -11842,28 +11388,6 @@
     "_comment": "OCR 오인식: 본문 '2005년 2월 1일에 설립되었으며'(설립일)를 발간일로 잘못 파싱. 실제 발간일은 본문 '202205.28' 및 '주가(5/28)' 표기 기준 2022-05-28. guard_implausible_dates도 이 케이스를 처리하지만 corrections로 올바른 날짜를 명시."
    },
    "detail_url": "/research/reviews/7fce3aa3165edac6b984105dab3f498f46b69acc84357f8ded413aaaa0a6a66c.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 하이비젼시스템,애플아 나 지금 되게 신나.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": null,
-    "rating": "Buy",
-    "target_price": null,
-    "report_current_price": null,
-    "stated_upside_pct": null
-   },
-   "transcript_sha256": "2a0c592ccb2863757ac1a56509f4bc3b42f63bce83088a85f489d7bb2af3d8d5",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
-    "ocr_fallback"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/d6908bcc25609d54c512f2593ba9b4a7cab294a06c73677fa333233807602d75.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 한국조선해양, 안 사고.md",
@@ -11953,50 +11477,6 @@
    "detail_url": "/research/reviews/46e865a537c820f756bd8209b5b756193183ee2d3ef42bc09d99602cfedbd3e7.json"
   },
   {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 현대건설, 가장 현대적인 건설.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": "2022-11-13",
-    "rating": "Buy",
-    "target_price": 55000.0,
-    "report_current_price": 40900.0,
-    "stated_upside_pct": 36.0
-   },
-   "transcript_sha256": "331bb1bdeb1c6275e96a5c1e82456625bce38de2aa5155ead6973643c5e7679e",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker",
-    "date_cover_only"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/d0bae3c241533ec9d654dbf479e318f11b46d6b2787e819391d8b5470c7cdf29.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[buy] 현대건설기계_ 건설기계, 바쁘다 바빠.md",
-   "school": "voera",
-   "values": {
-    "ticker": null,
-    "company": null,
-    "report_date": "2021-05-14",
-    "rating": "Buy",
-    "target_price": 72900.0,
-    "report_current_price": 60100.0,
-    "stated_upside_pct": 21.0
-   },
-   "transcript_sha256": "dbf4afa41f9f0f2e02d17c18828da8da2b17018f10da96d529626ec9afc285b2",
-   "reasons": [
-    "non_us_kr_or_unparsed_market;missing_ticker",
-    "date_cover_only"
-   ],
-   "pdf_url": null,
-   "markdown_url": null,
-   "correction": {},
-   "detail_url": "/research/reviews/3768dc6968d2bfe717295aedcc0fbfa234fb3c2bb20774365be99f90326eeeb8.json"
-  },
-  {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 현대백화점 The More 현대, 더 모여 현대.md",
    "school": "voera",
    "values": {
@@ -12080,27 +11560,6 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBUY%5D%20%ED%98%95%20%EC%97%AC%EA%B8%B0%EB%8F%84%20%EB%B4%90%EC%A4%98%2C%20%EB%84%B7%EC%A7%B8%20%EA%B9%90%EB%B6%80%20%EB%8C%80%EB%8D%95%EC%A0%84%EC%9E%90.md",
    "correction": {},
    "detail_url": "/research/reviews/78241c6bae29969cd759bfe79b5a49d6d60a1d66fef3b8194ae2d9d6efac16ef.json"
-  },
-  {
-   "id": "data/silver/reports/markdown/voera/undated_[Buy] 화신 화신 신랑 입장~신부 현대차 입장~.md",
-   "school": "voera",
-   "values": {
-    "ticker": "010690",
-    "company": "화신",
-    "report_date": "2023-07-24",
-    "rating": "Buy",
-    "target_price": 42900.0,
-    "report_current_price": 20200.0,
-    "stated_upside_pct": 53.0
-   },
-   "transcript_sha256": "c3388c864c66e2d840b62e0a699275291f455f3093baaff41bf447c38f50f9ae",
-   "reasons": [
-    "date_cover_only"
-   ],
-   "pdf_url": "https://www.voera.co.kr/forum/view/891082",
-   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%ED%99%94%EC%8B%A0%20%ED%99%94%EC%8B%A0%20%EC%8B%A0%EB%9E%91%20%EC%9E%85%EC%9E%A5~%EC%8B%A0%EB%B6%80%20%ED%98%84%EB%8C%80%EC%B0%A8%20%EC%9E%85%EC%9E%A5~.md",
-   "correction": {},
-   "detail_url": "/research/reviews/cea5cf8093b804279c528df842a8dd5e606e142dc045738b4c26f5c1f5c21186.json"
   },
   {
    "id": "data/silver/reports/markdown/voera/undated_[BUY] 화장품의 메카, 수익성은 메가! 코스메카코리아.md",
@@ -12232,6 +11691,525 @@
    "detail_url": "/research/reviews/4c53b00e97a3361c27893624f5c1c6946608e7ae41b3e92c250bddd96e58c8ca.json"
   },
   {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] LG디스플레이, 디스는 이제 그만!.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": "2023-05-23",
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "011e910d70adecb50b53f91feca00d656e29c868a6a94147cc7f45e69353272b",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price",
+    "ocr_fallback;date_cover_only"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/716d2186c6107b2637289301e53ffe770a61be95d39c469cce2803eadbbdaf9c.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] LG에너지솔루션, 가장 에너제틱한 솔루션.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": "2022-11-14",
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "d381e34566557d2ac23716d0f4864d4831083ee0297c250deca7727761ec0d86",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_target_price",
+    "ocr_fallback;date_cover_only"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/36d2eb8e1a49a6183778f45ed8a818d97d2d9e7ab23fc83532d520f7a9e21578.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] Paradise, Lucky Dice.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "c0eb2c1b3cdf11ed6f3694e58b188f666bce77a951ab3cb6a115448bbd6641e0",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/c8603277003cd1e8747f046de8ee2925c66db6838fcf14e032c708d6fc7ace17.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] SK아이이테크놀로지, 분리막 대장 SK.md",
+   "school": "voera",
+   "values": {
+    "ticker": "361610",
+    "company": "SK아이이테크놀로지",
+    "report_date": "2024-03-16",
+    "rating": "Buy",
+    "target_price": 88100.0,
+    "report_current_price": null,
+    "stated_upside_pct": 21.3
+   },
+   "transcript_sha256": "02c53014eb22a0f0717b85cbf89c8fb5dec5291a87e7fa57a646028f22019dc1",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/1015393",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20SK%EC%95%84%EC%9D%B4%EC%9D%B4%ED%85%8C%ED%81%AC%EB%86%80%EB%A1%9C%EC%A7%80%2C%20%EB%B6%84%EB%A6%AC%EB%A7%89%20%EB%8C%80%EC%9E%A5%20SK.md",
+   "correction": {},
+   "detail_url": "/research/reviews/bd3882e07eec3d2f5d0f171df26b0095a6901bb0e819c76cfed2d6c31b40d08b.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] SK하이닉스, 메모하세요. 메모리 붐은 옵니다.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "3ad33f7478ace7fa6d9037088732487a106e8738491296607f25ebdf06c85e84",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/4137ac236e84092e30ca3b8910401db73ca60996d07448b36be19c31eb7bf1a3.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] See and See 보면 볼수록 매력있는, 씨앤씨인터내셔널.md",
+   "school": "voera",
+   "values": {
+    "ticker": "352480",
+    "company": "씨앤씨인터내셔널",
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": 62700.0,
+    "report_current_price": null,
+    "stated_upside_pct": 46.84
+   },
+   "transcript_sha256": "a35a9ff8304462899d3abda04220f3526c7a2f6fca273f0655c64ecbacb2f9ae",
+   "reasons": [
+    "missing_report_date",
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/889718",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20See%20and%20See%20%EB%B3%B4%EB%A9%B4%20%EB%B3%BC%EC%88%98%EB%A1%9D%20%EB%A7%A4%EB%A0%A5%EC%9E%88%EB%8A%94%2C%20%EC%94%A8%EC%95%A4%EC%94%A8%EC%9D%B8%ED%84%B0%EB%82%B4%EC%85%94%EB%84%90.md",
+   "correction": {},
+   "detail_url": "/research/reviews/0c8a88bc6edbfae6d0f1b2125f99874e28ba512d1df16a40a8202cb119a9671f.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 고려아연, 너무 싸서 아연실색!.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "544c87b92046407652c87565cfa8bf12a809dadb9e90bf690078a0724ed1a75e",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/ae0241dd529c992f4fbbe4a674c41c3310976926c184d7dfebf8e3865519aef6.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 국가권력급 플랫폼 네이버.md",
+   "school": "voera",
+   "values": {
+    "ticker": "035420",
+    "company": "NAVER",
+    "report_date": null,
+    "rating": "Hold",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "44dd1d9f4d9a783b831d6f4067acbe078264a7f23deaae1922fd3d0b145a2db2",
+   "reasons": [
+    "missing_report_date",
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/1015386",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EA%B5%AD%EA%B0%80%EA%B6%8C%EB%A0%A5%EA%B8%89%20%ED%94%8C%EB%9E%AB%ED%8F%BC%20%EB%84%A4%EC%9D%B4%EB%B2%84.md",
+   "correction": {},
+   "detail_url": "/research/reviews/dccca20f49817afc7df0a0f518197480ed124d0ef58377f272103636896b5acb.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 로켓처럼 날아오르는 테스트소켓, ISC.md",
+   "school": "voera",
+   "values": {
+    "ticker": "095340",
+    "company": "ISC",
+    "report_date": "2023-05-22",
+    "rating": "Buy",
+    "target_price": 55000.0,
+    "report_current_price": 46650.0,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "a6ffe4f1e2fd32664e99a75a47f0ac1bc8dca8a0670a1e63d48bbe4cde6b3615",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/848659",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EB%A1%9C%EC%BC%93%EC%B2%98%EB%9F%BC%20%EB%82%A0%EC%95%84%EC%98%A4%EB%A5%B4%EB%8A%94%20%ED%85%8C%EC%8A%A4%ED%8A%B8%EC%86%8C%EC%BC%93%2C%20ISC.md",
+   "correction": {},
+   "detail_url": "/research/reviews/c48460e81f03eeb58e1adc563e2f7e0a78cf3b3a6458b9c1c77efbc769df4823.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 스튜디오드래곤 올라갈 드래곤은 올라간다.md",
+   "school": "voera",
+   "values": {
+    "ticker": "253450",
+    "company": "스튜디오드래곤",
+    "report_date": "2020-09-04",
+    "rating": "Buy",
+    "target_price": 116000.0,
+    "report_current_price": null,
+    "stated_upside_pct": 44.0
+   },
+   "transcript_sha256": "a855654a959ef2c1a5e249453e013a799c1a0df664e934fe1752723f76b064b9",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/391555",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4%EB%93%9C%EB%9E%98%EA%B3%A4%20%EC%98%AC%EB%9D%BC%EA%B0%88%20%EB%93%9C%EB%9E%98%EA%B3%A4%EC%9D%80%20%EC%98%AC%EB%9D%BC%EA%B0%84%EB%8B%A4.md",
+   "correction": {},
+   "detail_url": "/research/reviews/cf52072e6c2fb2bbf7465574a850823c904acf4348339284bfb2c019ea667dcf.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 씨에스윈드, 영광의 순간은 바로 지금부터.md",
+   "school": "voera",
+   "values": {
+    "ticker": "112610",
+    "company": "씨에스윈드",
+    "report_date": "2023-03-07",
+    "rating": "Buy",
+    "target_price": 90900.0,
+    "report_current_price": null,
+    "stated_upside_pct": 31.0
+   },
+   "transcript_sha256": "138764402217b1b53f823fe276b7ad4d5b8b73271984b81f02c80f3be40dfbab",
+   "reasons": [
+    "ocr_fallback;date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/808916",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%94%A8%EC%97%90%EC%8A%A4%EC%9C%88%EB%93%9C%2C%20%EC%98%81%EA%B4%91%EC%9D%98%20%EC%88%9C%EA%B0%84%EC%9D%80%20%EB%B0%94%EB%A1%9C%20%EC%A7%80%EA%B8%88%EB%B6%80%ED%84%B0.md",
+   "correction": {},
+   "detail_url": "/research/reviews/8695459f8c1d7e0a96db229f0bc5a6c30b31bc57fd1b0448d9347f1d2bfda84f.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 아난티, AN ANTI-fragile.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "47b9ce764bfc0970d6e22c681cbf49555e27b0ddc6825f04185266eb7b06e297",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/95b6b55086e92ccdb5648be0ce9e07898e9bdb0f0b855eca814ba8a46c900838.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 어서 담으세요, POSCO hold+ings.md",
+   "school": "voera",
+   "values": {
+    "ticker": "005490",
+    "company": "POSCO홀딩스",
+    "report_date": null,
+    "rating": "Hold",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "c2e0a3fa9928fc7ef961ecc914777dd961ecc735e4ac0df8d3f3daabb2c48c5f",
+   "reasons": [
+    "missing_report_date",
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/1015447",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%96%B4%EC%84%9C%20%EB%8B%B4%EC%9C%BC%EC%84%B8%EC%9A%94%2C%20POSCO%20hold%2Bings.md",
+   "correction": {},
+   "detail_url": "/research/reviews/29accf346c6a298a3fbec4e2957a8a18d40db48913442e2304b8b0d19a7bea89.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 엘앤에프, 양극재요 엘앤에프의 하이니켈이요!.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "17c2c8b2710406fb5dc86aebdbab62e048e366748346df8965dd9bf2cc85d8b0",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/2c310617191357c9930cc07115ab30a702dff1972c53551100c011997ad32346.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 이마트 이마트입니다. 제가 돌아왔습니다.md",
+   "school": "voera",
+   "values": {
+    "ticker": "139480",
+    "company": "이마트",
+    "report_date": "2020-11-13",
+    "rating": "Buy",
+    "target_price": 232000.0,
+    "report_current_price": null,
+    "stated_upside_pct": 50.1
+   },
+   "transcript_sha256": "808f1d9ce8970cdd4616b6ace3fe60634cb02b27d31fc7166851d928f4b91429",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/425387",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%9D%B4%EB%A7%88%ED%8A%B8%20%EC%9D%B4%EB%A7%88%ED%8A%B8%EC%9E%85%EB%8B%88%EB%8B%A4.%20%EC%A0%9C%EA%B0%80%20%EB%8F%8C%EC%95%84%EC%99%94%EC%8A%B5%EB%8B%88%EB%8B%A4.md",
+   "correction": {},
+   "detail_url": "/research/reviews/52def79cfd6e1ccd90ead96605364bea96f2b3e3d43ed7f84feb05f1040e793b.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 인터로조, 렌즈는 인터로조로 조.md",
+   "school": "voera",
+   "values": {
+    "ticker": "119610",
+    "company": "인터로조",
+    "report_date": "2023-04-05",
+    "rating": "Buy",
+    "target_price": 42650.0,
+    "report_current_price": null,
+    "stated_upside_pct": 24.0
+   },
+   "transcript_sha256": "6ce996c7a8096c3ee7e177d765d5d81e7d2b2fc2bef94ecc3f8f4875459f7b44",
+   "reasons": [
+    "ocr_fallback;date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/825780",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%9D%B8%ED%84%B0%EB%A1%9C%EC%A1%B0%2C%20%EB%A0%8C%EC%A6%88%EB%8A%94%20%EC%9D%B8%ED%84%B0%EB%A1%9C%EC%A1%B0%EB%A1%9C%20%EC%A1%B0.md",
+   "correction": {},
+   "detail_url": "/research/reviews/f7ccc7bcacb6f7c84f5b5d34d29a6091c94784bf44c5c043b2ac5805c5950efc.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 인텔리안테크 위성과 안테나만 있으면 어디든 갈 수 있어!.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "3aaf2f33beb0c7e142f8f41d815b32dece9027c769a053e8ec15abe444e0163a",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/2c215f23acc3e60a30297da5d5d9e53d8d945b12f1fc43fd8dc201ff2f48c261.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제우스, 이 기업은 신인가.md",
+   "school": "voera",
+   "values": {
+    "ticker": "079370",
+    "company": "제우스",
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": 97400.0,
+    "report_current_price": null,
+    "stated_upside_pct": 74.6
+   },
+   "transcript_sha256": "9caba1ace2a4d2d44b2b2c00e7eb1eb199592661d4484be6b532a1a351c5c9a3",
+   "reasons": [
+    "missing_report_date",
+    "ocr_fallback"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/893338",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%A0%9C%EC%9A%B0%EC%8A%A4%2C%20%EC%9D%B4%20%EA%B8%B0%EC%97%85%EC%9D%80%20%EC%8B%A0%EC%9D%B8%EA%B0%80.md",
+   "correction": {},
+   "detail_url": "/research/reviews/2fd1715fc3e9fc74d412f9c02b5d01c517ae2c626e0c4b3def6696c71701259c.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제이시스메디칼 제 1 선두 주자를 향하여.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": 18360.0,
+    "report_current_price": null,
+    "stated_upside_pct": 4.0
+   },
+   "transcript_sha256": "c5cb0a4987a44cdfbdf1fdefe6861601db23dd61f8d05acb32cf2dfbaee31caa",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/c4d77c4c176804836e1e6df5153cd05769367a16cb3d18d6818d973ea7345e29.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 제주항공 아직은 이륙할 때가 아니지만.md",
+   "school": "voera",
+   "values": {
+    "ticker": "089590",
+    "company": "제주항공",
+    "report_date": "2020-05-14",
+    "rating": "Buy",
+    "target_price": 20000.0,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "081ce04ea1a5bf505fb812ae6c159fa5cf842e3734c1a93d60d9c3b5f9f98b4c",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/338939",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%EC%A0%9C%EC%A3%BC%ED%95%AD%EA%B3%B5%20%EC%95%84%EC%A7%81%EC%9D%80%20%EC%9D%B4%EB%A5%99%ED%95%A0%20%EB%95%8C%EA%B0%80%20%EC%95%84%EB%8B%88%EC%A7%80%EB%A7%8C.md",
+   "correction": {},
+   "detail_url": "/research/reviews/b4d7a3c977a0f1028d18eeedb681e6b5170d4db3a50e48ca08e3bc0abdb5e3e4.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 클라쓰가 달라서, 클래시스.md",
+   "school": "voera",
+   "values": {
+    "ticker": "214150",
+    "company": "클래시스",
+    "report_date": "2023-05-21",
+    "rating": "Buy",
+    "target_price": 30000.0,
+    "report_current_price": null,
+    "stated_upside_pct": 13.9
+   },
+   "transcript_sha256": "698778191fca377fa552ccc7f1e08c67d3b93346abde5896259d4803a9c7697f",
+   "reasons": [
+    "ocr_fallback;date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/847592",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%ED%81%B4%EB%9D%BC%EC%93%B0%EA%B0%80%20%EB%8B%AC%EB%9D%BC%EC%84%9C%2C%20%ED%81%B4%EB%9E%98%EC%8B%9C%EC%8A%A4.md",
+   "correction": {},
+   "detail_url": "/research/reviews/67e08027f819d83dd42ef7d5eba85ba67c09a522e85d1be5dd6e7b01bd0fcd79.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 하이비젼시스템,애플아 나 지금 되게 신나.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": null,
+    "rating": "Buy",
+    "target_price": null,
+    "report_current_price": null,
+    "stated_upside_pct": null
+   },
+   "transcript_sha256": "2a0c592ccb2863757ac1a56509f4bc3b42f63bce83088a85f489d7bb2af3d8d5",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker;missing_report_date;missing_target_price",
+    "ocr_fallback"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/d6908bcc25609d54c512f2593ba9b4a7cab294a06c73677fa333233807602d75.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 현대건설, 가장 현대적인 건설.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": "2022-11-13",
+    "rating": "Buy",
+    "target_price": 55000.0,
+    "report_current_price": 40900.0,
+    "stated_upside_pct": 36.0
+   },
+   "transcript_sha256": "331bb1bdeb1c6275e96a5c1e82456625bce38de2aa5155ead6973643c5e7679e",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker",
+    "date_cover_only"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/d0bae3c241533ec9d654dbf479e318f11b46d6b2787e819391d8b5470c7cdf29.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[Buy] 화신 화신 신랑 입장~신부 현대차 입장~.md",
+   "school": "voera",
+   "values": {
+    "ticker": "010690",
+    "company": "화신",
+    "report_date": "2023-07-24",
+    "rating": "Buy",
+    "target_price": 42900.0,
+    "report_current_price": 20200.0,
+    "stated_upside_pct": 53.0
+   },
+   "transcript_sha256": "c3388c864c66e2d840b62e0a699275291f455f3093baaff41bf447c38f50f9ae",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/891082",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BBuy%5D%20%ED%99%94%EC%8B%A0%20%ED%99%94%EC%8B%A0%20%EC%8B%A0%EB%9E%91%20%EC%9E%85%EC%9E%A5~%EC%8B%A0%EB%B6%80%20%ED%98%84%EB%8C%80%EC%B0%A8%20%EC%9E%85%EC%9E%A5~.md",
+   "correction": {},
+   "detail_url": "/research/reviews/cea5cf8093b804279c528df842a8dd5e606e142dc045738b4c26f5c1f5c21186.json"
+  },
+  {
    "id": "data/silver/reports/markdown/voera/undated_[Buy]마음이 [텍]하는 반도체 기판, 心텍.md",
    "school": "voera",
    "values": {
@@ -12359,6 +12337,49 @@
    "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5BSELL%5D%20SK%EB%B0%94%EC%9D%B4%EC%98%A4%ED%8C%9C_%20%EB%B2%84%EB%B8%94%20%EB%B2%84%EB%B8%94%20%ED%8C%9C%28pharm%29%21.md",
    "correction": {},
    "detail_url": "/research/reviews/dbc749163377b32ed4a1adf11902fb97f7c9481a811ac305ed0c42fed5d583ca.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[buy] 네이버_ 모든 웹은 네이버로 통한다.md",
+   "school": "voera",
+   "values": {
+    "ticker": "035420",
+    "company": "NAVER",
+    "report_date": "2021-05-14",
+    "rating": "Buy",
+    "target_price": 525000.0,
+    "report_current_price": null,
+    "stated_upside_pct": 53.0
+   },
+   "transcript_sha256": "5d1b108b3fa64bd10c782d5bae2a772bd8228a6c657fafd7b98be6466c82a570",
+   "reasons": [
+    "date_cover_only"
+   ],
+   "pdf_url": "https://www.voera.co.kr/forum/view/516431",
+   "markdown_url": "https://github.com/ChoiInYeol/SNUSMIC-Portfolio/blob/main/data/silver/reports/markdown/voera/undated_%5Bbuy%5D%20%EB%84%A4%EC%9D%B4%EB%B2%84_%20%EB%AA%A8%EB%93%A0%20%EC%9B%B9%EC%9D%80%20%EB%84%A4%EC%9D%B4%EB%B2%84%EB%A1%9C%20%ED%86%B5%ED%95%9C%EB%8B%A4.md",
+   "correction": {},
+   "detail_url": "/research/reviews/3545f2c8b1ae600264b818158cc6779d7ed6c334d271c327b0e5b77d26e0b18e.json"
+  },
+  {
+   "id": "data/silver/reports/markdown/voera/undated_[buy] 현대건설기계_ 건설기계, 바쁘다 바빠.md",
+   "school": "voera",
+   "values": {
+    "ticker": null,
+    "company": null,
+    "report_date": "2021-05-14",
+    "rating": "Buy",
+    "target_price": 72900.0,
+    "report_current_price": 60100.0,
+    "stated_upside_pct": 21.0
+   },
+   "transcript_sha256": "dbf4afa41f9f0f2e02d17c18828da8da2b17018f10da96d529626ec9afc285b2",
+   "reasons": [
+    "non_us_kr_or_unparsed_market;missing_ticker",
+    "date_cover_only"
+   ],
+   "pdf_url": null,
+   "markdown_url": null,
+   "correction": {},
+   "detail_url": "/research/reviews/3768dc6968d2bfe717295aedcc0fbfa234fb3c2bb20774365be99f90326eeeb8.json"
   }
  ]
 }
