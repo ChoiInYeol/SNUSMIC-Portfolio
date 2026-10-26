@@ -50,6 +50,7 @@ GOLD = DATA / "gold"
 GOLD_REPORT_PERFORMANCE = GOLD / "reports" / "performance.csv"
 GOLD_REPORT_SUMMARY = GOLD / "reports" / "performance_summary.csv"
 GOLD_HEALTH = GOLD / "ops" / "health.json"
+GOLD_SOTA_PORTFOLIO = GOLD / "portfolio" / "sota.json"  # selected backtest's actual holdings, Telegram input
 GOLD_CACHE = GOLD / "_cache"                             # deterministic backtest stage caches (git-ignored)
 
 # Gold serving artifacts that must live where Next.js reads them.

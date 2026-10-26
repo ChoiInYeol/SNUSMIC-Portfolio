@@ -60,7 +60,7 @@ def test_telegram_receipt_deduplicates_success_and_never_records_failure(tmp_pat
     receipt = tmp_path / "delivery.json"
     def fail(*a, **kw): raise requests.ConnectionError("token-bearing-url-secret-test-token")
     monkeypatch.setattr(sender.requests, "post", fail)
-    assert sender.main(["--receipt", str(receipt)]) == 1
+    assert sender.main(["--source", "paper", "--receipt", str(receipt)]) == 1
     assert not receipt.exists()
     assert "secret-test-token" not in capsys.readouterr().out
     class Response:
@@ -68,7 +68,7 @@ def test_telegram_receipt_deduplicates_success_and_never_records_failure(tmp_pat
         def json(self): return {"ok": True}
     calls = []
     monkeypatch.setattr(sender.requests, "post", lambda *a, **kw: calls.append(kw) or Response())
-    assert sender.main(["--receipt", str(receipt)]) == 0
+    assert sender.main(["--source", "paper", "--receipt", str(receipt)]) == 0
     count = len(calls)
-    assert sender.main(["--receipt", str(receipt)]) == 0 and len(calls) == count
+    assert sender.main(["--source", "paper", "--receipt", str(receipt)]) == 0 and len(calls) == count
     assert "test-chat" not in receipt.read_text()

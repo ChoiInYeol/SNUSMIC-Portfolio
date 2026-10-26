@@ -44,6 +44,8 @@ def _d(id_, layer, path, fmt, producer, inputs=(), schema_file=None):
 
 R = lake.rel
 DATASETS = [
+    _d("gold.sota_portfolio", "gold", R(lake.GOLD_SOTA_PORTFOLIO), "json", ["sota_portfolio.py", "backtest_momentum.py"],
+       ["serving.strategy_backtest", "silver.prices", "gold.report_performance"]),
     _d("bronze.paper_execution", "bronze", f"{R(lake.BRONZE_PAPER_EXECUTION)}/*.json", "json",
        ["paper_execution.py"]),
     _d("serving.strategy_robustness", "gold", R(lake.STRATEGY_ROBUSTNESS), "json", ["build_strategy_robustness.py"],

@@ -168,6 +168,7 @@ jobs:
           uv run python scripts/build_search_index.py --check
           uv run python scripts/build_fulltext_index.py --check
           uv run python scripts/paper_portfolio.py --check
+          uv run python scripts/sota_portfolio.py --check
           uv run python scripts/funded_account.py --check
           uv run python scripts/build_strategy_robustness.py --check
           uv run python scripts/schema_metadata.py --check
@@ -200,7 +201,7 @@ jobs:
             src/data/forward-record.json src/data/stats.json src/data/report-first-seen.json \
             src/data/api-v2-resources.json public/api public/metadata \
             'public/strategy-trades*.csv' \
-            data/gold/reports data/silver/reports/parsed.csv data/silver/reports/parse_issues.csv \
+            data/gold/reports data/gold/portfolio data/silver/reports/parsed.csv data/silver/reports/parse_issues.csv \
             data/bronze/reports/manifest.json data/bronze/reports/kuvic_items.json \
             data/silver/reports/markdown data/gold/ops/health.json \
             data/silver/reference data/bronze/reference data/catalog.json \

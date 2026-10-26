@@ -3,6 +3,38 @@
 > 초기 5천만원·체증식 월 납입·정수 주식·익일 시가 주문 계획 계정(`funded-w50-v1`)은 별도 계정이다.
 > [FUNDED-ACCOUNT.md](FUNDED-ACCOUNT.md) 참조. 아래 내용은 1억원 `execution-v2` 계정에 대한 것이다.
 
+## 일일 텔레그램: 현재 SOTA 모델
+
+`portfolio-daily`는 현재 선정된 SOTA의 **백테스트 모델 보유 상태**를 보낸다. 별도 전진 계좌의 첫 현금
+관측 대신, 해당 연구 실행의 실제 보유 수량·현재 NAV 비중·평가손익(진입비용·환율 포함)을 표시한다.
+시작자금 1억원의 소수 주식 모델이며 정수 주문 수량이나 실계좌 잔고가 아니다. `/portfolio`의 전진 계좌와
+성과·수량을 섞지 않는다. 모델의 상세 연구 페이지는 `/strategy`다.
+
+- 첫머리: 평가 기준일, KOSPI/200MA·이격·레짐 ON/OFF, 주식·파킹·현금 비중.
+- 보유: 종목별 모델 주수, 현재 비중, 원화 평가손익·수익률, 진입가·현재가·실제 시세일.
+- 매도: 스탑까지 3% 이내 종목과 종가 스탑 이탈 후 다음 가용 시가 청산 대기 종목.
+- 매수: 최근 5거래일 리포트 중 아직 다음 시가가 오지 않은 후보. 이미 진입일이 지난 미보유 종목은 제외.
+  슬롯·잔액 제한을 함께 표시하며 후보를 체결로 표시하지 않는다.
+- 청산: 최근 20거래일 내 최신 10건의 실현 손익·진입/청산가·청산 이유. 수익 추적스탑 청산도 수익 실현으로 구분.
+
+W는 KOSPI 200MA 레짐을 참고로 표시하며 OFF여도 신규 진입과 올웨더 파킹을 유지한다.
+평가일이 발송일보다 3일 넘게 뒤처지면 데이터 지연 가능성을 표시한다. 휴장일에는 평가 기준일을 유지한다.
+
+Python writer `sota_portfolio.py`가 `lake.GOLD_SOTA_PORTFOLIO`(Gold `portfolio/sota.json`, 스키마 1.0)를 만든다.
+매 백테스트에서 선정된 결과의 원시 `shares`·비용·환율·파킹 잔액을 직접 사용한다. 파일의 `source_sha256`은
+공표 백테스트 전체의 canonical JSON 해시다. 발행·발송 전에 종목 평가액/손익/비중 합계와 원본 해시를 검증하며
+다른 실행의 파일로 바뀌면 실패한다. 정합성 오류를 기존 현금 메시지로 대체하지 않는다.
+
+```powershell
+uv run python scripts/send_telegram_portfolio.py --dry-run  # 기본 SOTA
+uv run python scripts/sota_portfolio.py --check
+uv run python scripts/send_telegram_portfolio.py --source paper --dry-run  # 이전 전진 계좌 보기
+```
+
+기존 공표 결과에서 최초 생성할 때는 `uv run python scripts/sota_portfolio.py`를 쓴다. 네트워크·재최적화 없이
+캐시 입력으로 parking 계열 SOTA만 재생하고 공표 지표와 일치할 때만 쓴다. 이후 모든 헤드라인은
+`backtest_momentum.py`의 원시 결과 훅에서 생성한다. 일일 영수증은 SOTA/전진 계좌별로 분리한다.
+
 ## 계산 의미
 
 `/portfolio`와 `public/research/portfolio.json`은 **기록 시작 이후의 전진 모의 평가**다.
@@ -48,7 +80,7 @@ GitHub 저장소 **Settings → Secrets and variables → Actions**에 다음 Se
 
 휴장일에는 최근 평가 기준일을 명시해 매일 알린다. 실시간 장중 수익률을 주장하지 않는다.
 기존 신호 변화 알림은 `TELEGRAM_SIGNALS_ENABLED=true`인 경우만 별도로 실행한다.
-일일 포트폴리오는 변동이 없어도 전송한다.
+일일 SOTA 포트폴리오는 변동이 없어도 전송한다.
 
 ```powershell
 uv run python scripts/send_telegram_portfolio.py --dry-run

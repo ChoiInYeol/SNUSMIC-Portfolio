@@ -266,6 +266,27 @@
    "updated_at": null
   },
   {
+   "bytes": 9979,
+   "files": 1,
+   "format": "json",
+   "id": "gold.sota_portfolio",
+   "inputs": [
+    "gold.report_performance",
+    "serving.strategy_backtest",
+    "silver.prices"
+   ],
+   "layer": "gold",
+   "path": "data/gold/portfolio/sota.json",
+   "producer": [
+    "sota_portfolio.py",
+    "backtest_momentum.py"
+   ],
+   "rows": null,
+   "schema_version": "1.0",
+   "tracked_in_git": true,
+   "updated_at": "2026-10-20T16:33:49+00:00"
+  },
+  {
    "bytes": 9342222,
    "files": 108,
    "format": "json",
@@ -466,7 +487,7 @@
    "updated_at": null
   },
   {
-   "bytes": 269488,
+   "bytes": 274759,
    "files": 3,
    "format": "json",
    "id": "serving.schema_metadata",
@@ -483,7 +504,7 @@
    "rows": null,
    "schema_version": "1.0",
    "tracked_in_git": true,
-   "updated_at": "2026-10-20T16:34:19+00:00"
+   "updated_at": "2026-10-26T18:23:52+00:00"
   },
   {
    "bytes": 508617,

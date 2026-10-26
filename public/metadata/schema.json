@@ -1,9 +1,187 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-20T16:34:19+00:00",
+  "generated_at": "2026-10-26T18:23:52+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
+    {
+      "id": "gold.sota_portfolio",
+      "name": "sota_portfolio",
+      "schema_name": "gold",
+      "layer": "gold",
+      "kind": "dataset",
+      "columns": [
+        {
+          "name": "schema_version",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "mode",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "strategy",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "as_of",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "generated_at",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "source_sha256",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "initial_capital_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "nav_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "return_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "simulation_start",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "quantity_basis",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "positions",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "parked_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "parked_weight_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "parking_name",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_krw",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "cash_weight_pct",
+          "data_type": "number",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "regime",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "slots",
+          "data_type": "object",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "buy_candidates",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "recent_window_start",
+          "data_type": "string",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "recent_closed_count",
+          "data_type": "integer",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        },
+        {
+          "name": "recent_exits",
+          "data_type": "array",
+          "nullable": null,
+          "primary_key": false,
+          "description": null
+        }
+      ],
+      "column_status": "observed",
+      "location": "data/gold/portfolio/sota.json",
+      "row_count": null,
+      "description": "json · versioned artifact",
+      "producers": [
+        "sota_portfolio.py",
+        "backtest_momentum.py"
+      ]
+    },
     {
       "id": "bronze.paper_execution",
       "name": "paper_execution",
@@ -9580,6 +9758,33 @@
     }
   ],
   "relationships": [
+    {
+      "id": "etl:gold.report_performance:gold.sota_portfolio",
+      "source": "gold.report_performance",
+      "target": "gold.sota_portfolio",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:serving.strategy_backtest:gold.sota_portfolio",
+      "source": "serving.strategy_backtest",
+      "target": "gold.sota_portfolio",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
+    {
+      "id": "etl:silver.prices:gold.sota_portfolio",
+      "source": "silver.prices",
+      "target": "gold.sota_portfolio",
+      "kind": "etl",
+      "source_columns": [],
+      "target_columns": [],
+      "label": "ETL"
+    },
     {
       "id": "etl:gold.report_performance:serving.strategy_robustness",
       "source": "gold.report_performance",

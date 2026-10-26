@@ -2039,6 +2039,8 @@ def main() -> int:
         },
     }
 
+    from sota_portfolio import write as write_sota_portfolio
+    write_sota_portfolio(payload, headline, prices=prices, calendar=calendar)
     OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"\nWrote {OUT_PATH.relative_to(ROOT).as_posix()}", flush=True)
     print(f"  Trades in JSON: {len(headline_trades_for_json)}", flush=True)
