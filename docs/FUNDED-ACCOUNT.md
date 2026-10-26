@@ -14,6 +14,10 @@
 | 비용 | 주식 편도 0.3% | 개시 시 동결 |
 | 미투자 잔액 | 무이자 원화 현금 | W 백테스트와 차이(아래) |
 
+개시 후 ATR 기간·배수·최대 종목 수는 Bronze genesis의 `config`를 계속 따른다. 일일 연구 백테스트의 Optuna가
+다른 값을 고르면 파이프라인은 차이를 경고 로그로 남기고, 기존 계정 설정으로 시세·신호·주문 계획을 갱신한다.
+연구 재최적화만으로 계정을 재개시하지 않는다. 계정 자체의 정책 변경은 새 계정 ID/epoch가 필요하다.
+
 납입일 규칙은 genesis의 `config.contribution_day`(`status`, `label`, `day_of_month`)에 동결된다. 웹 경계(zod)는
 `proposed_unconfirmed`↔`제안값(미확정)`, `user_confirmed`↔`사용자 확정` 쌍만 허용해 미확정 값이 확정처럼 표시되지 않게 한다.
 

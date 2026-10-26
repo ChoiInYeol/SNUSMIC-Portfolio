@@ -48,7 +48,7 @@ HELD = {"005930": {"market": "KR", "display_name": "삼성전자", "n_clubs": 2}
         "AAPL": {"market": "US", "display_name": "Apple", "n_clubs": 1}}
 
 
-def run(now, *, prices=None, positions=None, reports=(), kospi=None, sp500=None, start=True):
+def run(now, *, prices=None, positions=None, reports=(), kospi=None, sp500=None, start=True, policy=None):
     """One pipeline evening. The first call starts the account exactly as `init` would (explicit rule)."""
     prices = prices or {"005930": frame("KR", 10_000.0), "AAPL": frame("US", 100.0)}
     if start and not (fa.lake.BRONZE_FUNDED / "account.json").exists():
@@ -58,7 +58,7 @@ def run(now, *, prices=None, positions=None, reports=(), kospi=None, sp500=None,
     return fa.capture(as_of=now.astimezone(fa.KST).date().isoformat(), positions=HELD if positions is None else positions,
                       prices=prices, core={"INDEX:KOSPI": kospi if kospi is not None else benchmark("KR"),
                                            "INDEX:SP500": sp500 if sp500 is not None else benchmark("US")},
-                      reports=list(reports), ticker_reports={}, policy=POLICY, now=now)
+                      reports=list(reports), ticker_reports={}, policy=POLICY if policy is None else policy, now=now)
 
 
 def gold():
@@ -101,6 +101,44 @@ def test_replayed_contributions_raise_principal_but_never_returns(lake_tmp):
 
 
 # ── plans and fills ─────────────────────────────────────────────────────────
+
+@pytest.mark.parametrize("research_policy", [
+    {**POLICY, "max_positions": 20},  # refresh-daily: Optuna selected 20 after the account froze 30
+    {**POLICY, "atr_period": 20},
+    {**POLICY, "atr_mult": 3.0},
+    {"atr_period": 63, "atr_mult": 3.0, "max_positions": 1},
+])
+def test_reoptimization_preserves_funded_policy_and_continues_capture(lake_tmp, monkeypatch, research_policy):
+    prices = {"005930": frame("KR", 10_000.0, {"2026-10-23": {"close": 8_000.0}}),
+              "AAPL": frame("US", 100.0), "000660": frame("KR", 20_000.0)}
+    for df in prices.values():
+        df["atr20"] = df["atr"] * 10
+        df["atr63"] = df["atr"] * 20
+    reports = [(dt.date(2026, 10, 21), "000660", "new-report.md", 1)]
+
+    def exercise(policy):
+        run(at("2026-10-20"), prices=prices)
+        frozen = {p: p.read_bytes() for p in fa.lake.BRONZE_FUNDED.rglob("*.json")}
+        for day in ("2026-10-21", "2026-10-22", "2026-10-23"):
+            run(at(day), prices=prices, reports=reports, policy=policy)
+        assert all(p.read_bytes() == content for p, content in frozen.items())
+        fa.write(check=True)
+        return gold(), {p.relative_to(fa.lake.BRONZE_FUNDED): p.read_bytes()
+                        for p in fa.lake.BRONZE_FUNDED.rglob("*.json")}
+
+    expected, expected_bronze = exercise(POLICY)
+    with monkeypatch.context() as scoped:
+        scoped.setattr(fa.lake, "BRONZE_FUNDED", lake_tmp / "retuned" / "bronze")
+        scoped.setattr(fa.lake, "SILVER_FUNDED_LEDGER", lake_tmp / "retuned" / "ledger.json")
+        scoped.setattr(fa.lake, "FUNDED_ACCOUNT", lake_tmp / "retuned" / "funded-account.json")
+        actual, actual_bronze = exercise(research_policy)
+
+    assert actual == expected and actual_bronze == expected_bronze
+    assert {k: actual["config"][k] for k in POLICY} == POLICY
+    assert any(f["ticker"] == "000660" and f["status"] == "filled" for f in actual["fills"])
+    assert any(o["side"] == "sell" and o["reason_code"] == "chandelier_stop"
+               for o in actual["latest_plans"]["KR"]["orders"])
+
 
 def test_plan_is_frozen_without_the_future_open_and_fills_only_after_it_exists(lake_tmp):
     readiness = run(at("2026-10-20"))

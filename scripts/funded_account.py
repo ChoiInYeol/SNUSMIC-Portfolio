@@ -23,6 +23,7 @@ import copy
 import datetime as dt
 import hashlib
 import json
+import logging
 import math
 import re
 from pathlib import Path
@@ -898,15 +899,22 @@ def contribution_record(genesis: dict, n: int, day: dt.date, now: dt.datetime) -
 
 
 def capture(*, as_of, positions, prices, core, reports, ticker_reports, policy, now=None, **_) -> dict | None:
-    """Pipeline hook. Does nothing until an operator ran `funded_account.py init` (no implicit start)."""
+    """Capture inputs under the genesis mandate, independently of research reoptimization.
+
+    Does nothing until an operator ran `funded_account.py init` (no implicit start).
+    `policy` describes today's research run; it never replaces the funded account's frozen config.
+    """
     from backtest import fx
     instant = now or dt.datetime.now(dt.timezone.utc)
     if not (_base() / "account.json").exists():
         return None
     genesis = load_bronze()["genesis"]
-    for key in ("atr_period", "atr_mult", "max_positions"):
-        if policy.get(key) != genesis["config"][key]:
-            raise ValueError(f"W {key} changed inside the frozen funded account; start a new epoch")
+    frozen_policy = {key: genesis["config"][key] for key in ("atr_period", "atr_mult", "max_positions")}
+    if any(policy.get(key) != value for key, value in frozen_policy.items()):
+        logging.getLogger(__name__).warning(
+            "Research policy %s differs from funded account %s; continuing with frozen policy %s",
+            policy, genesis["account_id"], frozen_policy,
+        )
     if fx._USDKRW is None:
         raise ValueError("funded account requires observed USDKRW, not a constant fallback")
     record_signals(genesis, as_of=as_of, reports=reports, ticker_reports=ticker_reports, now=instant)
@@ -957,7 +965,7 @@ def init(*, epoch: dt.datetime, contribution_day: str, status: str, now: dt.date
 
     The epoch must be explicit, timezone-aware, not in the future and at most a day old: an old epoch would
     record months of contributions late and pretend the account existed before anyone decided to start it.
-    The W ATR/slot policy is re-validated against the pipeline's published policy on every capture.
+    Subsequent captures use the genesis's frozen ATR/slot policy even if research is reoptimized.
     """
     now = now or dt.datetime.now(dt.timezone.utc)
     if epoch.tzinfo is None or not now - dt.timedelta(days=1) <= epoch <= now:
