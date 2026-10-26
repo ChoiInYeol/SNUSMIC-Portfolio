@@ -35,9 +35,9 @@ export async function POST(request: Request) {
   let text: string;
   try {
     if (discoveringRoom) {
-      text = `현재 방 ID: ${update.message.chat.id}\n관리자 사용자 ID: ${update.message.from?.id}\n공유 방 연결: 이 방 ID를 TELEGRAM_ALLOWED_CHAT_IDS에 등록한 뒤 webhook setup을 다시 실행하세요. 참여자는 조회만 할 수 있습니다.`;
+      text = `🔐 공유 방 연결 정보\n\n현재 방 ID\n${update.message.chat.id}\n\n관리자 사용자 ID\n${update.message.from?.id}\n\n이 방 ID를 TELEGRAM_ALLOWED_CHAT_IDS에 등록한 뒤 webhook setup을 다시 실행하세요.\n참여자는 조회만 할 수 있습니다.`;
     } else if (command === "/refresh" && role !== "admin") {
-      text = "데이터 갱신은 관리자 전용입니다. /status /holdings /signals /trades로 최신 저장 결과를 조회할 수 있습니다.";
+      text = "🔐 관리자 전용\n\n데이터 갱신은 관리자만 실행할 수 있습니다.\n\n📊 /status\n💼 /holdings\n🎯 /signals\n🧾 /trades\n\n위 명령으로 최신 저장 결과를 조회하세요.";
     } else if (command === "/refresh") {
       const age = Date.now() / 1000 - update.message.date;
       text = age > 600 || age < -60 ? "오래된 갱신 요청입니다. /refresh를 다시 보내 주세요." : await requestRefresh(update, config);
@@ -45,18 +45,21 @@ export async function POST(request: Request) {
       text = ["/status", "/holdings", "/signals", "/trades"].includes(command) ? renderCommand(command, book) : help(role ?? "admin");
       if (["/status", "/holdings", "/signals", "/trades"].includes(command)) {
         const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Seoul" }).format(new Date());
-        if ((Date.parse(today) - Date.parse(book.as_of)) / 86_400_000 > 3) text = `⚠ 저장된 평가 기준일 ${book.as_of} — 휴장·갱신 상태를 확인하세요.\n\n${text}`;
+        if ((Date.parse(today) - Date.parse(book.as_of)) / 86_400_000 > 3) text = `⚠️ 평가일 확인\n저장된 기준일 ${book.as_of}\n휴장 또는 갱신 지연 여부를 확인하세요.\n\n${text}`;
       }
     }
   } catch {
     // A dispatch timeout is ambiguous: it may have reached GitHub. Do not automatically dispatch again.
-    text = "요청 처리 상태를 확인하지 못했습니다. Actions 실행 목록을 확인해 주세요.\nhttps://github.com/ChoiInYeol/SNUSMIC-Portfolio/actions/workflows/refresh-daily.yml";
+    text = "⚠️ 처리 상태 확인 필요\n\n요청의 처리 상태를 확인하지 못했습니다.\n아래 실행 목록을 확인해 주세요.\n\nhttps://github.com/ChoiInYeol/SNUSMIC-Portfolio/actions/workflows/refresh-daily.yml";
   }
   try {
-    for (const part of splitTelegram(text)) {
+    const parts = splitTelegram(text.replace(/[—·]/g, " "));
+    for (const [index, part] of parts.entries()) {
       const response = await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
         method: "POST", headers: { "Content-Type": "application/json" }, signal: AbortSignal.timeout(8000),
-        body: JSON.stringify({ chat_id: String(update.message.chat.id), text: part, disable_web_page_preview: true }),
+        body: JSON.stringify({ chat_id: String(update.message.chat.id),
+          text: parts.length > 1 ? `📄 ${index + 1}/${parts.length}\n\n${part.trim()}` : part,
+          disable_web_page_preview: true }),
       });
       if (!response.ok) throw new Error("Telegram delivery failed");
       const result: unknown = await response.json();

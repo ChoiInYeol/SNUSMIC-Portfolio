@@ -27,10 +27,10 @@ def main():
         model = json.loads((lake.WEB_DATA / "strategy-backtest.json").read_text(encoding="utf-8"))
         validate(doc, model)
         day = dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
-        chunks = [f"✅ 요청한 데이터 갱신이 완료되었습니다. 평가 기준일 {doc['as_of']}\n{url}"] + sota_messages(doc, day)
+        chunks = [f"✅ 데이터 갱신 완료\n\n📅 평가 기준일 {doc['as_of']}\n\n실행 내역\n{url}"] + sota_messages(doc, day)
     else:
         status = "취소되었습니다" if result in ("cancelled", "skipped") else "실패했습니다"
-        chunks = [f"요청한 데이터 갱신이 {status}. 새 데이터는 게시되지 않았습니다.\n{url}"]
+        chunks = [f"⚠️ 데이터 갱신 알림\n\n요청한 데이터 갱신이 {status}.\n새 데이터는 게시되지 않았습니다.\n\n실행 내역\n{url}"]
     return deliver(chunks, scope=f"refresh:{request_id}", receipt=lake.ROOT / "artifacts" / "telegram" / f"refresh-{request_id}.json")
 
 

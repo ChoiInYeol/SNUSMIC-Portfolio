@@ -68,10 +68,11 @@ def test_engine_quantities_fx_pnl_and_current_weights_reconcile(inputs):
 
 def test_digest_explains_regime_fractional_shares_realized_exits_and_pending_entries(inputs):
     text = "\n".join(sender.sota_messages(build(inputs), "2026-10-27"))
-    for expected in ("KOSPI 200MA 레짐 OFF", "OFF여도 신규 매수 규칙·올웨더 파킹 유지", "10.5주", "2.25주",
+    for expected in ("KOSPI 200MA 레짐 OFF", "OFF여도 신규 매수 규칙과 올웨더 파킹을 유지", "10.5주", "2.25주",
                      "8.75%", "+3,000원", "스탑 근접", "다음 가용 시가 매도 대기", "PENDING", "수익 실현", "손실 확정",
-                     "소수 주식", "최근 20거래일", "실계좌·전진 모의계좌 보유 내역이 아닙니다"):
+                     "소수 주식", "최근 20거래일", "실계좌 또는 전진 모의계좌 보유 내역이 아닙니다"):
         assert expected in text
+    assert "—" not in text and "·" not in text
     assert "ALREADY_PASSED" not in text and "FUTURE" not in text and "OPEN (" not in text
     assert "현금 100.00%" not in text
 
@@ -138,7 +139,7 @@ def test_large_digest_chunks_preserve_all_holdings_and_stay_below_telegram_limit
     doc["positions"][0]["name"] = "한글이름" * 1500 + "LAST_STOCK_MARKER"
     chunks = sender.sota_messages(doc, "2026-10-27")
     assert len(chunks) > 2 and all(len(c.encode("utf-16-le")) // 2 <= 4096 for c in chunks)
-    assert "LAST_STOCK_MARKER" in "".join(chunks) and "최근 익절·손절" in "".join(chunks)
+    assert "LAST_STOCK_MARKER" in "".join(chunks) and "최근 청산" in "".join(chunks)
 
 
 def test_default_sender_uses_sota_validates_source_and_deduplicates_without_touching_paper(inputs, tmp_path, monkeypatch):

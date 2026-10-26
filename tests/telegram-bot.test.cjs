@@ -26,18 +26,37 @@ test('secret and role checks separate allowed group readers from the administrat
   assert.equal(bot.roleFor(update('/status', 999, -2000, 'supergroup'), config), null);
   const forwarded = update(); forwarded.message.forward_origin = { type: 'user' };
   assert.equal(bot.roleFor(forwarded, config), null);
-  assert.ok(!bot.help('member').includes('/refresh —') && bot.help('admin').includes('/refresh —'));
+  assert.ok(!bot.help('member').includes('/refresh') && bot.help('admin').includes('/refresh'));
 });
 
 test('query commands report the stored book and UTF-16 splitting preserves all text', () => {
   assert.ok(bot.renderCommand('/status', book).includes(book.as_of));
   for (const p of book.positions) assert.ok(bot.renderCommand('/holdings', book).includes(p.ticker));
   assert.ok(bot.renderCommand('/signals', book).includes('빈 슬롯'));
-  assert.ok(bot.renderCommand('/trades', book).includes('최근 익절·손절'));
+  assert.ok(bot.renderCommand('/trades', book).includes('최근 청산'));
   const text = '한글😀'.repeat(2500);
   const chunks = bot.splitTelegram(text);
   assert.equal(chunks.join(''), text);
   assert.ok(chunks.every((c) => c.length <= 3500));
+});
+
+test('mobile replies separate stock paragraphs, preserve financial values and avoid banned separators', () => {
+  const custom = structuredClone(book);
+  custom.positions[0].name = '회사 — A·B';
+  for (const command of ['/status', '/holdings', '/signals', '/trades']) {
+    const rendered = bot.renderCommand(command, custom);
+    assert.doesNotMatch(rendered, /[—·]/);
+    assert.ok(rendered.includes('\n\n'));
+  }
+  for (const role of ['member', 'admin']) assert.doesNotMatch(bot.help(role), /[—·]/);
+  const holdings = bot.renderCommand('/holdings', custom);
+  assert.match(holdings, /수량 [\d,.]+주\n비중 [\d.]+%\n[🔴🔵⚪]/u);
+  const paragraphs = Array.from({ length: 20 }, (_, i) => `${i}. 회사😀\n수량 1.2345주\n비중 5.00%\n🔴 이익 +1,000원 (+1.00%)`);
+  const pages = bot.splitTelegram(paragraphs.join('\n\n'));
+  assert.equal(pages.length, 4);
+  assert.equal(pages.join(''), paragraphs.join('\n\n'));
+  for (const paragraph of paragraphs) assert.ok(pages.some((page) => page.includes(paragraph)));
+  assert.ok(pages.every((page) => page.length <= 1402));
 });
 
 const response = (data, status = 200) => new Response(JSON.stringify(data), { status });
@@ -91,6 +110,10 @@ test('group members receive queries in the group and cannot refresh', async (t) 
   const { POST } = route();
   assert.equal((await POST(req(update('/holdings', 999, -1001, 'supergroup')))).status, 200);
   assert.ok(sent.length && sent.every((m) => m.chat_id === '-1001'));
+  if (sent.length > 1) {
+    assert.ok(sent[0].text.startsWith(`📄 1/${sent.length}`));
+    assert.ok(sent.at(-1).text.startsWith(`📄 ${sent.length}/${sent.length}`));
+  }
   assert.equal((await POST(req(update('/refresh', 999, -1001, 'supergroup')))).status, 200);
   assert.ok(sent.at(-1).text.includes('관리자 전용'));
 });
