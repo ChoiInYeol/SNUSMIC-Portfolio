@@ -19,8 +19,14 @@
 | `/chatid`: 새 공유 방 ID 확인 | 차단 | 허용 |
 
 명령 응답은 명령을 보낸 방에만 보낸다. 일일 요약과 갱신 완료 알림은 `TELEGRAM_CHAT_ID`로 보낸다.
-응답은 이모지 제목과 빈 줄로 구분한다. 보유 종목과 최근 청산은 최대 5건씩 나누고 페이지 번호를 붙인다.
-종목의 수량, 현재 비중, 손익은 각각 별도 줄에 표시하며 이익은 🔴, 손실은 🔵로 구분한다.
+`/status`, `/holdings`, `/signals`, `/trades`는 기본적으로 고정 양식의 PNG 카드로 응답한다.
+여러 장은 사진 앨범 하나로 묶고, 보유 종목과 청산은 한 장에 최대 6건씩 표시한다.
+사이트의 종이색, Pretendard 서체, 이익 빨강과 손실 파랑을 사용한다. 한글 폰트와 색상은 로컬 자산만 사용한다.
+`/holdings text` 또는 `/holdings 텍스트`처럼 입력하면 기존 텍스트를 볼 수 있다(네 조회 명령 모두 지원).
+이미지 생성이 실패하면 같은 검증된 데이터를 텍스트로 표시한다. 전송 실패를 성공으로 처리하지 않는다.
+이미지는 인증된 요청에서만 생성하며, 외부 이미지 주소나 영구 저장 파일을 만들지 않는다.
+동일한 데이터와 명령의 렌더링은 최대 8항목의 프로세스 메모리 캐시에서 재사용한다.
+`/refresh` 완료 알림은 짧은 결과와 `/status` 안내만 보낸다.
 긴 대시와 가운데점 구분자는 사용하지 않는다.
 명령 메뉴도 기본은 조회 전용이며, 관리자 개인 대화와 등록된 그룹의 관리자에게만 운영 명령 메뉴를 등록한다.
 명령은 허용 목록의 방과 관리자 개인 대화에서만 받는다. 그룹의 다른 참여자를 관리자로 승격하는 명령,
@@ -75,4 +81,6 @@ gh workflow run telegram-webhook-setup.yml --ref main
 
 Python: `configure_telegram_webhook.py`, `notify_telegram_refresh.py`.
 웹: `src/app/api/telegram/webhook/route.ts`, `src/lib/telegram-bot.ts`, `src/lib/sota-portfolio.ts`.
+이미지 양식: `src/lib/telegram-cards.tsx`. `node scripts/render_telegram_cards.cjs <SOTA JSON 경로>`로
+실제 전송 없이 `artifacts/telegram/cards/`에 모든 명령의 미리보기를 렌더링할 수 있다.
 공유 데이터·일일 발송의 의미는 [PORTFOLIO.md](PORTFOLIO.md)를 따른다.

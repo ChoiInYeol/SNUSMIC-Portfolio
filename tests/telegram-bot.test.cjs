@@ -76,10 +76,13 @@ test('refresh dispatch is fixed to main and retries/active runs do not dispatch 
   }
 });
 
-function route() {
+function route(cards = { cardCaption: (command, doc) => `${command} 평가 ${doc.as_of}`,
+  renderTelegramCards: async (command) => Array.from({ length: command === '/holdings' ? 2 : 1 }, (_, i) =>
+    ({ png: Uint8Array.from([137,80,78,71]), title: command, page:i+1, pages:command === '/holdings' ? 2 : 1 })) }) {
   return loadTs('src/app/api/telegram/webhook/route.ts', {
     'next/server': { NextResponse: { json: (data, init) => response(data, init?.status ?? 200) } },
     '@/lib/sota-portfolio': schemas, '@/lib/telegram-bot': bot,
+    '@/lib/telegram-cards': cards,
     '../../../../../data/gold/portfolio/sota.json': rawBook,
   });
 }
@@ -105,17 +108,48 @@ test('unauthenticated or unauthorized webhook requests cannot send or execute an
 test('group members receive queries in the group and cannot refresh', async (t) => {
   environment(t); const sent = [];
   global.fetch = async (url, init) => {
-    assert.ok(url.startsWith('https://api.telegram.org/')); sent.push(JSON.parse(init.body)); return response({ ok: true });
+    assert.ok(url.startsWith('https://api.telegram.org/'));
+    sent.push(init.body instanceof FormData ? { method: url.split('/').at(-1), chat_id:init.body.get('chat_id'), media:JSON.parse(init.body.get('media')) } : JSON.parse(init.body));
+    return response({ ok: true });
   };
   const { POST } = route();
   assert.equal((await POST(req(update('/holdings', 999, -1001, 'supergroup')))).status, 200);
   assert.ok(sent.length && sent.every((m) => m.chat_id === '-1001'));
-  if (sent.length > 1) {
-    assert.ok(sent[0].text.startsWith(`📄 1/${sent.length}`));
-    assert.ok(sent.at(-1).text.startsWith(`📄 ${sent.length}/${sent.length}`));
-  }
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].method, 'sendMediaGroup');
+  assert.equal(sent[0].media.length, 2);
   assert.equal((await POST(req(update('/refresh', 999, -1001, 'supergroup')))).status, 200);
   assert.ok(sent.at(-1).text.includes('관리자 전용'));
+});
+
+test('single card uploads a PNG with a short caption; explicit text mode skips rendering', async (t) => {
+  environment(t); const calls = [];
+  global.fetch = async (url, init) => { calls.push({url, body:init.body}); return response({ok:true}); };
+  const { POST } = route();
+  await POST(req(update('/status')));
+  assert.ok(calls[0].url.endsWith('/sendPhoto'));
+  assert.equal(calls[0].body.get('photo').type, 'image/png');
+  assert.ok(calls[0].body.get('caption').includes(book.as_of));
+  assert.ok(calls[0].body.get('caption').length < 1024);
+  calls.length = 0;
+  const textRoute = route({ renderTelegramCards: () => assert.fail('text mode must not render') });
+  await textRoute.POST(req(update('/holdings text')));
+  assert.ok(calls.every((c) => c.url.endsWith('/sendMessage')));
+  assert.ok(calls.some((c) => JSON.parse(c.body).text.includes(book.positions[0].ticker)));
+});
+
+test('render failures fall back to the same validated text; upload failures request retry', async (t) => {
+  environment(t); const calls = [];
+  global.fetch = async (url, init) => { calls.push({url, body:init.body}); return response({ok:true}); };
+  const fallback = route({cardCaption: () => '', renderTelegramCards: async () => { throw new Error('font failure'); }});
+  assert.equal((await fallback.POST(req(update('/status')))).status, 200);
+  assert.ok(calls[0].url.endsWith('/sendMessage'));
+  assert.ok(JSON.parse(calls[0].body).text.includes('이미지를 불러오지 못해'));
+  calls.length = 0;
+  global.fetch = async (url) => { calls.push(url); return response({ok:false}, 500); };
+  assert.equal((await route().POST(req(update('/holdings')))).status, 503);
+  assert.equal(calls.length, 1);
+  assert.ok(calls[0].endsWith('/sendMediaGroup'));
 });
 
 test('administrator can discover a new room id without granting its members access', async (t) => {

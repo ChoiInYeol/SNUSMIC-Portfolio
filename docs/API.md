@@ -466,7 +466,9 @@ TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... \
 
 - `POST /api/telegram/webhook`: Telegram 내부 명령 수신 엔드포인트. 웹훅 secret 헤더·방 허용 목록·관리자 ID로
   인증한다. 참여자는 조회만 가능하고 `/refresh`는 관리자만 GitHub Actions로 실행한다. v1/v2 읽기 전용 REST
-  계약과 별도이며 응답은 `no-store`다. [명령·권한·연결 절차](TELEGRAM-COMMANDS.md).
+  계약과 별도이며 응답은 `no-store`다. 조회 결과는 PNG 이미지 또는 사진 앨범으로 전송하며,
+  명령 뒤에 `text`를 붙이면 텍스트로 받는다. 공개 이미지 API는 추가하지 않는다.
+  [명령·권한·연결 절차](TELEGRAM-COMMANDS.md).
 - `/research/portfolio.json`: `schema_version=2.0`, `engine_version=parking-open-v2`.
   `policy`(고정 W 정책), `source_as_of`(원천 기준일), `as_of`(전체 시장 완료 평가일),
   `fills`(시장·방향·시가·환율·수량·원화 현금흐름·비용), `data_issues`를 제공한다.

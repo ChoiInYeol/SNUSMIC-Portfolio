@@ -1,12 +1,10 @@
-"""Completion reply for a /refresh request, including the new SOTA book only after publication."""
-import datetime as dt
+"""Short /refresh completion reply, validated against the published SOTA book."""
 import json
 import os
 import re
-from zoneinfo import ZoneInfo
 
 import lake
-from send_telegram_portfolio import deliver, sota_messages
+from send_telegram_portfolio import deliver
 from sota_portfolio import validate
 
 
@@ -26,8 +24,7 @@ def main():
         doc = json.loads(lake.GOLD_SOTA_PORTFOLIO.read_text(encoding="utf-8"))
         model = json.loads((lake.WEB_DATA / "strategy-backtest.json").read_text(encoding="utf-8"))
         validate(doc, model)
-        day = dt.datetime.now(ZoneInfo("Asia/Seoul")).date().isoformat()
-        chunks = [f"✅ 데이터 갱신 완료\n\n📅 평가 기준일 {doc['as_of']}\n\n실행 내역\n{url}"] + sota_messages(doc, day)
+        chunks = [f"✅ 데이터 갱신 완료\n\n📅 평가 기준일 {doc['as_of']}\n\n/status 명령으로 최신 포트폴리오 이미지를 확인하세요.\n\n실행 내역\n{url}"]
     else:
         status = "취소되었습니다" if result in ("cancelled", "skipped") else "실패했습니다"
         chunks = [f"⚠️ 데이터 갱신 알림\n\n요청한 데이터 갱신이 {status}.\n새 데이터는 게시되지 않았습니다.\n\n실행 내역\n{url}"]

@@ -29,6 +29,9 @@ const SHA256 = ":sha([0-9a-f]{64})";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  outputFileTracingIncludes: {
+    "/api/telegram/webhook": ["./src/app/globals.css", "./node_modules/pretendard/dist/public/static/Pretendard-Regular.otf", "./node_modules/pretendard/dist/public/static/Pretendard-Bold.otf"],
+  },
   // Bound static-generation workers as well as the parent process's CPU affinity.
   experimental: { cpus: 4 },
   turbopack: {
