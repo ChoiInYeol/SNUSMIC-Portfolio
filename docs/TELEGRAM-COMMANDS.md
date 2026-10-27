@@ -47,7 +47,7 @@ gh workflow run telegram-webhook-setup.yml --ref main
 ## 공유 그룹 연결
 
 1. 그룹을 만들거나 기존 그룹에 봇을 추가한다.
-2. 관리자가 그룹에서 `/chatid@봇이름`을 보낸다. 이 명령만 미등록 방에서도 관리자에게 허용한다.
+2. 관리자가 그룹에서 `/chatid@kor_univ_portfolio_report_bot`을 보낸다. 이 명령만 미등록 방에서도 관리자에게 허용한다.
 3. 반환된 그룹 ID를 GitHub Actions secret `TELEGRAM_ALLOWED_CHAT_IDS`에 추가한다(여러 방은 쉼표로 구분).
 4. setup workflow를 다시 실행한다. 연결 전에는 그 그룹의 일반 참여자에게 모델 데이터를 응답하지 않는다.
 

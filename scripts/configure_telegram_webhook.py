@@ -12,14 +12,14 @@ import requests
 
 WEBHOOK_URL = "https://verdict-archive.vercel.app/api/telegram/webhook"
 PUBLIC_COMMANDS = [
-    {"command": "status", "description": "SOTA 현황·KOSPI 200MA 레짐"},
-    {"command": "holdings", "description": "보유 주수·현재 비중·평가손익"},
-    {"command": "signals", "description": "매수 대기·스탑 근접 종목"},
-    {"command": "trades", "description": "최근 익절·손절 내역"},
+    {"command": "status", "description": "SOTA 현황과 KOSPI 200MA 레짐"},
+    {"command": "holdings", "description": "보유 수량, 현재 비중, 평가손익"},
+    {"command": "signals", "description": "매수 대기와 스탑 근접 종목"},
+    {"command": "trades", "description": "최근 수익 실현과 손실 청산"},
     {"command": "help", "description": "명령어 도움말"},
 ]
 ADMIN_COMMANDS = PUBLIC_COMMANDS + [
-    {"command": "refresh", "description": "새 보고서·시세·백테스트 갱신 실행 (관리자)"},
+    {"command": "refresh", "description": "보고서, 시세, 백테스트 갱신 (관리자)"},
     {"command": "chatid", "description": "현재 방 ID 확인 (관리자)"},
 ]
 
