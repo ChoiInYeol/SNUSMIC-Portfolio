@@ -123,16 +123,15 @@ def fetch_posts_page(page: int) -> tuple[list[dict], int]:
     for attempt in range(3):
         resp = None
         try:
-            # WordPress exposes the same API through rest_route when a proxy caches HTML
-            # on the pretty /wp-json path. Both responses must pass the same validation.
             params = {
                 "per_page": SMIC_PER_PAGE, "page": page, "_fields": "id,date,title,link,content",
             }
             endpoint = SMIC_API
-            if attempt == 2:
-                endpoint = SMIC_BASE + "/"
-                params["rest_route"] = "/wp/v2/posts"
             resp = polite_get(endpoint, headers={"Accept": "application/json"}, params=params)
+            if attempt == 0 and "cupid.js" in getattr(resp, "text", ""):
+                print("  browser verification page detected; opening the source in Chromium", flush=True)
+                establish_browser_session(requests.Request("GET", endpoint, params=params).prepare().url)
+                resp = polite_get(endpoint, headers={"Accept": "application/json"}, params=params)
             resp.raise_for_status()
             posts = resp.json()
             total_pages = int(resp.headers.get("X-WP-TotalPages", 1))
@@ -155,6 +154,20 @@ def fetch_posts_page(page: int) -> tuple[list[dict], int]:
                 raise requests.RequestException(f"SMIC page {page} unavailable after 3 attempts") from exc
             print(f"  ! page {page}: invalid/unavailable response, retrying ({attempt + 1}/3)", flush=True)
     raise AssertionError("unreachable")
+
+
+def establish_browser_session(url: str) -> None:
+    """Let the source's normal JavaScript page establish its cookies, then reuse that session."""
+    from playwright.sync_api import sync_playwright
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(user_agent=USER_AGENT)
+        page = context.new_page()
+        page.goto(url, wait_until="networkidle", timeout=60_000)
+        page.wait_for_function("!document.querySelector('script[src*=\"cupid.js\"]')", timeout=30_000)
+        for cookie in context.cookies(SMIC_BASE):
+            session.cookies.set(cookie["name"], cookie["value"], domain=cookie["domain"], path=cookie["path"])
+        browser.close()
 
 
 def download_pdf(

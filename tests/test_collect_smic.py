@@ -27,13 +27,16 @@ def test_non_json_response_retries_and_recovers_without_an_empty_success(monkeyp
     assert len(calls) == 2 and calls[0]["headers"]["Accept"] == "application/json"
 
 
-def test_last_attempt_uses_the_equivalent_wordpress_rest_route(monkeypatch):
-    responses = iter([Response(ValueError("cached HTML")), Response(ValueError("cached HTML")), Response([POST])])
+def test_source_javascript_verification_uses_a_browser_before_retrying_json(monkeypatch):
+    blocked = Response(ValueError("HTML"))
+    blocked.text = '<html><script src="/cupid.js"></script></html>'
+    responses = iter([blocked, Response([POST])])
     calls = []
-    def get(url, **kwargs): calls.append((url, kwargs)); return next(responses)
+    def get(url, **kwargs): return next(responses)
     monkeypatch.setattr(smic, "polite_get", get)
+    monkeypatch.setattr(smic, "establish_browser_session", lambda url: calls.append(url))
     assert smic.fetch_posts_page(1) == ([POST], 79)
-    assert calls[-1][1]["params"]["rest_route"] == "/wp/v2/posts"
+    assert len(calls) == 1 and calls[0].startswith(smic.SMIC_API)
 
 
 @pytest.mark.parametrize("bad", [ValueError("HTML"), {}, [], [{"id": 1}]])
