@@ -27,6 +27,15 @@ def test_non_json_response_retries_and_recovers_without_an_empty_success(monkeyp
     assert len(calls) == 2 and calls[0]["headers"]["Accept"] == "application/json"
 
 
+def test_last_attempt_uses_the_equivalent_wordpress_rest_route(monkeypatch):
+    responses = iter([Response(ValueError("cached HTML")), Response(ValueError("cached HTML")), Response([POST])])
+    calls = []
+    def get(url, **kwargs): calls.append((url, kwargs)); return next(responses)
+    monkeypatch.setattr(smic, "polite_get", get)
+    assert smic.fetch_posts_page(1) == ([POST], 79)
+    assert calls[-1][1]["params"]["rest_route"] == "/wp/v2/posts"
+
+
 @pytest.mark.parametrize("bad", [ValueError("HTML"), {}, [], [{"id": 1}]])
 def test_repeated_malformed_response_fails_collection(monkeypatch, bad):
     monkeypatch.setattr(smic, "polite_get", lambda *a, **kw: Response(bad))

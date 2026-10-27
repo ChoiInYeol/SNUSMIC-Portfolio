@@ -34,6 +34,7 @@ from urllib.parse import urljoin
 import requests
 
 from lake import BRONZE_PDFS, BRONZE_REPORT_MANIFEST, resolve_data_path
+from report_sources import transcription_complete
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -120,10 +121,18 @@ def fetch_posts_page(page: int) -> tuple[list[dict], int]:
         (posts, total_pages)
     """
     for attempt in range(3):
+        resp = None
         try:
-            resp = polite_get(SMIC_API, headers={"Accept": "application/json"}, params={
+            # WordPress exposes the same API through rest_route when a proxy caches HTML
+            # on the pretty /wp-json path. Both responses must pass the same validation.
+            params = {
                 "per_page": SMIC_PER_PAGE, "page": page, "_fields": "id,date,title,link,content",
-            })
+            }
+            endpoint = SMIC_API
+            if attempt == 2:
+                endpoint = SMIC_BASE + "/"
+                params["rest_route"] = "/wp/v2/posts"
+            resp = polite_get(endpoint, headers={"Accept": "application/json"}, params=params)
             resp.raise_for_status()
             posts = resp.json()
             total_pages = int(resp.headers.get("X-WP-TotalPages", 1))
@@ -138,6 +147,10 @@ def fetch_posts_page(page: int) -> tuple[list[dict], int]:
                 datetime.fromisoformat(post["date"])
             return posts, total_pages
         except (requests.RequestException, ValueError) as exc:
+            status = getattr(resp, "status_code", "unavailable")
+            mime = getattr(resp, "headers", {}).get("Content-Type", "unknown")
+            snippet = re.sub(r"\s+", " ", getattr(resp, "text", "")[:180])
+            print(f"  ! SMIC response: HTTP {status}, {mime}, {type(exc).__name__}: {snippet}", flush=True)
             if attempt == 2:
                 raise requests.RequestException(f"SMIC page {page} unavailable after 3 attempts") from exc
             print(f"  ! page {page}: invalid/unavailable response, retrying ({attempt + 1}/3)", flush=True)
@@ -160,7 +173,7 @@ def download_pdf(
     existing = known_urls.get(pdf_url)
     if existing:
         path = resolve_data_path(existing["file"]) if existing.get("file") else None
-        if path and path.exists():
+        if (path and path.exists()) or transcription_complete(existing):
             # 메타데이터만 갱신
             changed = False
             for key in ("title", "published_hint", "page_url", "source_id"):
@@ -317,7 +330,7 @@ def collect_smic(limit: int | None, full: bool) -> list[dict]:
             pdf_url = entry["pdf_url"]
             if pdf_url in known_urls:
                 existing = known_urls[pdf_url]
-                if existing.get("file") and (resolve_data_path(existing["file"])).exists():
+                if (existing.get("file") and resolve_data_path(existing["file"]).exists()) or transcription_complete(existing):
                     skipped_count += 1
                     continue
             download_pdf(entry, manifest, known_urls, sha_index)

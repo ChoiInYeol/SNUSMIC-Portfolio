@@ -77,7 +77,7 @@ jobs:
           set +e
           mkdir -p data/bronze/_runs/source-status data/bronze/_runs/quarantine
           failed=0
-          for spec in "reports:uv run python scripts/collect_reports.py --source all --full" "kuvic:uv run python scripts/collect_kuvic_browser.py" "smic:uv run python scripts/collect_smic.py --full" "ewha:uv run python scripts/collect_ewha.py --full" "voera:uv run python scripts/collect_voera.py --full"; do
+          for spec in "kuvic:uv run python scripts/collect_kuvic_browser.py --full" "reports:uv run python scripts/collect_reports.py --source all --full" "smic:uv run python scripts/collect_smic.py --full" "ewha:uv run python scripts/collect_ewha.py --full" "voera:uv run python scripts/collect_voera.py --full"; do
             name="${spec%%:*}"; cmd="${spec#*:}"
             bash -lc "$cmd"; rc=$?
             if [ "$rc" -eq 0 ]; then success=true; error_json=null; else success=false; error_json="\"collector exit $rc\""; failed=1; fi

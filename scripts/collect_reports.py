@@ -26,7 +26,8 @@ from urllib.parse import parse_qs, unquote, unquote_to_bytes, urljoin, urlparse
 
 import requests
 
-from lake import BRONZE_KUVIC_ITEMS, BRONZE_PDFS, BRONZE_REPORT_MANIFEST, SILVER_MARKDOWN, resolve_data_path
+from lake import BRONZE_KUVIC_ITEMS, BRONZE_PDFS, BRONZE_REPORT_MANIFEST, resolve_data_path
+from report_sources import transcription_complete
 
 # Windows 콘솔(cp949)에서 NFD 한글 등 출력 크래시 방지
 if hasattr(sys.stdout, "reconfigure"):
@@ -99,7 +100,7 @@ def download_pdf(entry: dict, manifest: list[dict], known: dict[str, dict],
     existing = known.get(pdf_url)
     if existing and existing.get("file") and existing.get("sha256"):
         path = resolve_data_path(existing["file"])
-        if path.exists():
+        if path.exists() or transcription_complete(existing):
             # 이미 다운로드됨 → 재다운로드 없이 메타데이터만 갱신
             changed = False
             for key in ("title", "published_hint", "page_url", "source_id", "company_hint", "author_hint"):
@@ -422,11 +423,10 @@ def main() -> int:
     # 재다운로드 경로가 사라져 영구 누락된다 (markdown까지 확인하는 이유).
     known_ids: set[str] | None = None
     if not args.full:
-        md_root = SILVER_MARKDOWN
         known_ids = {
             e["source_id"] for e in manifest
             if e.get("file") and e.get("source_id")
-            and (md_root / e["school"] / f"{Path(e['file']).stem}.md").exists()
+            and transcription_complete(e)
         }
 
     for source in sources:

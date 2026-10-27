@@ -32,6 +32,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
+from report_sources import transcription_complete
 
 from lake import BRONZE_PDFS, BRONZE_REPORT_MANIFEST, resolve_data_path
 
@@ -183,7 +184,7 @@ def download_pdf(
     existing = known_urls.get(pdf_url)
     if existing:
         path = resolve_data_path(existing["file"]) if existing.get("file") else None
-        if path and path.exists():
+        if (path and path.exists()) or transcription_complete(existing):
             changed = False
             for key in ("title", "published_hint", "page_url", "source_id", "rating_hint", "tp_hint"):
                 if entry.get(key) and existing.get(key) != entry[key]:
@@ -331,7 +332,7 @@ def collect_voera(limit: int | None, full: bool) -> list[dict]:
                 existing = next(
                     (e for e in manifest if e.get("source_id") == source_id), None
                 )
-                if existing and existing.get("file") and (resolve_data_path(existing["file"])).exists():
+                if existing and ((existing.get("file") and resolve_data_path(existing["file"]).exists()) or transcription_complete(existing)):
                     skipped_count += 1
                     continue
 

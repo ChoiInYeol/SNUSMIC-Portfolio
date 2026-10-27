@@ -1,5 +1,10 @@
 # 데이터 레이어 (Bronze / Silver / Gold)
 
+일일 수집은 새 게시물 목록을 확인하되, manifest에 체크섬이 기록되고 현재 kordoc 버전의
+비어 있지 않은 전사본이 있는 보고서는 PDF 캐시가 없는 Actions 러너에서도 재다운로드하지 않는다.
+버전이 다르거나 전사본이 없으면 복구 다운로드를 수행한다. KUVIC 목록 수집은 다운로드보다 먼저 실행하며,
+완료된 첫 페이지에서 종료한다. 주간 `--full`은 모든 목록 페이지를 확인하고 기존 Bronze 항목을 보존한다.
+
 스키마·계보 탐색: `/developers/architecture` — [FastAPI 메타데이터 서비스와 로컬 실행](METADATA.md).
 
 결정 근거: [ADR 0001](adr/0001-api-v2-and-medallion.md) Decision 2. 모든 경로는 `scripts/lake.py` 한 곳에서 정의하고,

@@ -12,6 +12,7 @@ PDF 다운로드는 하지 않는다 → 결과를 data/bronze/reports/kuvic_ite
 from __future__ import annotations
 
 import json
+import argparse
 import re
 import sys
 import time
@@ -27,7 +28,8 @@ MAX_PAGES = 40
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from lake import BRONZE_KUVIC_ITEMS as OUT_PATH  # noqa: E402
-from collect_reports import USER_AGENT, _kuvic_parse_item  # noqa: E402
+from collect_reports import USER_AGENT, _kuvic_parse_item, load_manifest  # noqa: E402
+from report_sources import transcription_complete  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -61,6 +63,11 @@ def goto_next_page(page, next_number: int) -> bool:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--full", action="store_true", help="Walk all listing pages; default stops at fully transcribed pages")
+    args = parser.parse_args()
+    known = {e["pdf_url"] for e in load_manifest() if e.get("pdf_url") and transcription_complete(e)}
+    previous = json.loads(OUT_PATH.read_text(encoding="utf-8")) if OUT_PATH.exists() else []
     collected: dict[str, dict] = {}
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
@@ -71,11 +78,15 @@ def main() -> int:
         for page_no in range(1, MAX_PAGES + 1):
             time.sleep(PAGE_DELAY)
             fresh = 0
-            for item in harvest_current_page(page):
+            items = harvest_current_page(page)
+            for item in items:
                 if item["pdf_url"] not in collected:
                     collected[item["pdf_url"]] = item
                     fresh += 1
             print(f"page {page_no}: +{fresh} (total {len(collected)})", flush=True)
+            if not args.full and items and all(item["pdf_url"] in known for item in items):
+                print("page already transcribed; incremental collection complete", flush=True)
+                break
             if not goto_next_page(page, page_no + 1):
                 print("no next page control — done", flush=True)
                 break
@@ -84,8 +95,13 @@ def main() -> int:
         browser.close()
 
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(list(collected.values()), ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"saved {len(collected)} items -> {OUT_PATH.relative_to(ROOT).as_posix()}", flush=True)
+    # Preserve previously observed Bronze rows; a short incremental scan is not a replacement snapshot.
+    urls = {row["pdf_url"] for row in previous}
+    merged = previous + [row for url, row in collected.items() if url not in urls]
+    tmp = OUT_PATH.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.replace(OUT_PATH)
+    print(f"saved {len(merged)} items ({len(merged)-len(previous)} new) -> {OUT_PATH.relative_to(ROOT).as_posix()}", flush=True)
     return 0
 
 
