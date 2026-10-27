@@ -1,4 +1,4 @@
-"""Daily SOTA model book: regime, actual model quantities, P&L, exits and pending signals.
+"""Daily SOTA summary and canonical ledger link.
 
 Default source is the current research winner, explicitly labelled as a backtest model.
 --source paper retains the separate forward-paper account digest.
@@ -42,101 +42,25 @@ def messages(doc: dict, report_day: str) -> list[str]:
     lines += [f"· 현금 {doc['cash_weight_pct']:.2f}% ({doc['cash_krw']:,.0f}원)", "",
               "첫 기록 후 다음 시가 체결 대기 중입니다 (KR·US·FX 완료 일봉 평가)." if doc["status"].startswith("awaiting_") else "완료 일봉·환율 기준 모의 평가입니다.",
               "휴장일에는 최근 평가를 반복 표시합니다. 시세 기준일을 확인하세요.",
-              doc["method"], "https://verdict-archive.vercel.app/portfolio"]
+              doc["method"], "https://verdict-archive.vercel.app/portfolio/paper"]
     if doc["status"].startswith("awaiting_"):
         lines += ["", "다음 진입 후보 · 종목당 기본 비중 (슬롯·잔고 제한)"]
         lines.extend(f"· {p['name']} ({p['id']}) {p['weight_pct']:.2f}%" for p in doc["target_positions"])
     return chunk(lines, "📊 포트폴리오 (계속)\n")
 
 
-def price(value, market):
-    if value is None:
-        return "미집계"
-    return f"${value:,.2f}" if market == "US" else f"{value:,.0f}원"
-
-
 def sota_messages(doc: dict, report_day: str) -> list[str]:
     from sota_portfolio import validate
     validate(doc)
-    rows = doc["positions"]
-    regime = doc["regime"]
-    strategy = "W 올웨더 샹들리에" if doc["strategy"] == "W_allweather_chandelier" else doc["strategy"]
-    lines = ["📊 SOTA 모델 포트폴리오", strategy, f"발송일 {report_day}",
-             f"📅 {doc['as_of']} 종가 기준", "", "🚦 시장 상태"]
     lag = (dt.date.fromisoformat(report_day) - dt.date.fromisoformat(doc["as_of"])).days
     if lag < 0:
         raise ValueError("SOTA evaluation date is in the future")
+    lines = ["SOTA 운용 원장", doc["strategy"], f"평가 {doc['as_of']} 종가",
+             f"평가액 {doc['nav_krw']:,.0f}원 / 수익률 {doc['return_pct']:+.2f}%", f"보유 {len(doc['positions'])}종목"]
     if lag > 3:
-        lines += [f"⚠ 평가일이 발송일보다 {lag}일 이전입니다. 휴장·일일 갱신 상태를 확인하세요.", ""]
-    if regime:
-        gap = (regime["kospi_close"] / regime["kospi_ma200"] - 1) * 100
-        lines += [f"KOSPI 200MA 레짐 {regime['state']}", f"이격 {gap:+.2f}%",
-                  f"KOSPI {regime['kospi_close']:,.2f}", f"200일선 {regime['kospi_ma200']:,.2f}"]
-        if doc["strategy"] == "W_allweather_chandelier":
-            lines += ["W는 OFF여도 신규 매수 규칙과 올웨더 파킹을 유지합니다."]
-        else:
-            lines += [regime["note"]]
-    else:
-        lines += ["KOSPI 200MA 레짐: 자료 없음"]
-    winners = sum(p["pnl_krw"] > 0 for p in rows)
-    losers = sum(p["pnl_krw"] < 0 for p in rows)
-    lines += ["", "💰 모델 평가", f"평가액 {doc['nav_krw']:,.0f}원", f"시작자금 {doc['initial_capital_krw']:,.0f}원",
-              f"백테스트 누적 {doc['return_pct']:+.2f}% ({doc['simulation_start']}부터)",
-              "", "💼 자산 구성", f"주식 {sum(p['weight_pct'] for p in rows):.2f}%",
-              f"{doc['parking_name']} 파킹 {doc['parked_weight_pct']:.2f}%", f"현금 {doc['cash_weight_pct']:.2f}%",
-              f"보유 {len(rows)}종목", f"🔴 이익 {winners}종목\n🔵 손실 {losers}종목\n⚪ 보합 {len(rows) - winners - losers}종목",
-              "", "💼 보유 종목", "현재 비중이 큰 순서", ""]
-    if not rows:
-        lines += ["· 보유 주식 없음"]
-    for i, p in enumerate(sorted(rows, key=lambda p: -p["weight_pct"]), 1):
-        shares = f"{p['shares']:,.4f}".rstrip("0").rstrip(".")
-        tag = "🔴 이익" if p["pnl_krw"] > 0 else "🔵 손실" if p["pnl_krw"] < 0 else "⚪ 보합"
-        lines += [f"{i}. {p['name']} ({p['market']}:{p['ticker']})", f"수량 {shares}주", f"비중 {p['weight_pct']:.2f}%",
-                  f"{tag} {p['pnl_krw']:+,.0f}원 ({p['return_pct']:+.2f}%)",
-                  f"진입 {price(p['entry_price'], p['market'])} → 현재 {price(p['current_price'], p['market'])}",
-                  f"시세 {p['quote_date']}", ""]
-    lines += ["🏦 파킹과 현금", f"{doc['parking_name']} 파킹 {doc['parked_krw']:,.0f}원 ({doc['parked_weight_pct']:.2f}%)",
-              f"현금 {doc['cash_krw']:,.0f}원 ({doc['cash_weight_pct']:.2f}%)", "",
-              "🚨 매도 확인", "청산 대기 또는 스탑까지 3% 이내", ""]
-    sells = sorted((p for p in rows if p["exit_pending"] or
-                    (p["dist_to_stop_pct"] is not None and p["dist_to_stop_pct"] <= 3)),
-                   key=lambda p: p["dist_to_stop_pct"] if p["dist_to_stop_pct"] is not None else float("inf"))
-    if not sells:
-        lines += ["해당 종목 없음", ""]
-    for p in sells:
-        status = "⏳ 다음 가용 시가 매도 대기" if p["exit_pending"] else "⚠️ 스탑 근접"
-        distance = f"{p['dist_to_stop_pct']:+.2f}%" if p["dist_to_stop_pct"] is not None else "미집계"
-        lines += [status, f"{p['name']} ({p['market']}:{p['ticker']})",
-                  f"현재가 {price(p['current_price'], p['market'])}", f"스탑 {price(p['stop_level'], p['market'])}", f"스탑까지 {distance}", ""]
-    slots = doc["slots"]
-    lines += ["🛒 매수 대기", f"보유 {slots['open']}/{slots['max_positions']}종목", f"빈 슬롯 {slots['available']}개", ""]
-    if not doc["buy_candidates"]:
-        lines += ["최근 5거래일 리포트 중 다음 시가 대기 후보 없음"]
-    else:
-        lines += ["최근 5거래일 신규 매수 리포트의 다음 가용 시가 후보입니다.", ""]
-        if slots["available"] <= 0:
-            lines += ["· 슬롯이 가득 차 신규 진입 제한"]
-        if doc["cash_krw"] + doc["parked_krw"] < doc["nav_krw"] * 0.05 * 0.5:
-            lines += ["· 최소 진입 예산(기본 NAV 5%의 절반) 미달: 잔액 부족"]
-        for b in doc["buy_candidates"]:
-            lines += [f"{b['display_name']} ({b['market']}:{b['ticker']})", f"진입 {b['entry_basis_date'] or '다음 가용 시가'}",
-                      f"사유 {b['entry_reason']}", ""]
-    lines += ["", "🧾 최근 청산", f"{doc['recent_window_start']} ~ {doc['as_of']}", "최근 20거래일", ""]
-    if not doc["recent_exits"]:
-        lines += ["기간 내 청산 없음"]
-    for i, t in enumerate(doc["recent_exits"], 1):
-        tag = "🔴 수익 실현" if t["pnl_krw"] > 0 else "🔵 손실 확정" if t["pnl_krw"] < 0 else "⚪ 보합 청산"
-        reason = "샹들리에 추적스탑" if "chandelier" in t["exit_reason"].lower() else t["exit_reason"]
-        lines += [f"{i}. {tag}", f"{t['name']} ({t['market']}:{t['ticker']})", f"청산일 {t['exit_date']}",
-                  f"손익 {t['pnl_krw']:+,.0f}원 ({t['return_pct']:+.2f}%)",
-                  f"진입 {price(t['entry_price'], t['market'])} → 청산 {price(t['exit_price'], t['market'])}", f"사유 {reason}", ""]
-    if doc["recent_closed_count"] > len(doc["recent_exits"]):
-        lines += [f"· 총 {doc['recent_closed_count']}건 중 최신 {len(doc['recent_exits'])}건 표시"]
-    lines += ["", "ℹ️ 모델 기준", "수량은 시작자금 기준 백테스트 모델의 소수 주식 수량입니다. 정수 주문 수량과 다릅니다.",
-              "현재 비중은 평가액 기준이며 기본 진입 비중 5%와 다를 수 있습니다. 올웨더는 합성지수 프록시입니다.",
-              "선정된 SOTA의 과거 시뮬레이션 상태이며 실계좌 또는 전진 모의계좌 보유 내역이 아닙니다.",
-              "https://verdict-archive.vercel.app/strategy"]
-    return chunk(lines, "📊 SOTA 포트폴리오 (계속)\n")
+        lines.append(f"평가일이 {lag}일 이전입니다. 기준일을 확인하세요.")
+    lines += ["", "https://verdict-archive.vercel.app/portfolio"]
+    return ["\n".join(lines)]
 
 
 def chunk(lines: list[str], continuation: str) -> list[str]:

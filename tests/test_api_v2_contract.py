@@ -143,6 +143,12 @@ def test_operations_are_documented_and_extension_free():
 @pytest.mark.parametrize("path", sorted(p for p in SPEC["paths"] if not p.endswith(".json")))
 def test_spec_examples_are_valid(path: str):
     content = SPEC["paths"][path]["get"]["responses"]["200"]["content"]["application/json"]
+    if "examples" in content:
+        for example in content["examples"].values():
+            uri = example["externalValue"].removeprefix(v2.SITE)
+            assert uri.startswith("/api/v2/")
+            assert _errors(json.loads(v2.file_for(uri).read_text(encoding="utf-8")), content["schema"], path) == []
+        return
     if "example" not in content:  # only the optional trade-marks resource may lack one, and only when unpublished
         assert path == TRADE_MARKS and not list(API.glob("instruments/*/trade-marks.json"))
         return

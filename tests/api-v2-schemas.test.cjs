@@ -7,6 +7,7 @@ const { ROOT, loadTs, readJson } = require('./_ts-module.cjs');
 // The web app's v2 zod contracts must accept every published /api/v2 document the pipeline wrote.
 const api = path.join(ROOT, 'public/api/v2');
 const schemas = loadTs('src/lib/api-v2.ts', { '@/lib/api-schemas': loadTs('src/lib/api-schemas.ts') });
+schemas.PortfolioDocumentSchema = loadTs('src/lib/sota-portfolio.ts').PortfolioDocumentSchema;
 const files = (dir, pattern) =>
   fs.existsSync(path.join(api, dir))
     ? fs.readdirSync(path.join(api, dir)).filter((name) => pattern.test(name)).map((name) => path.join(dir, name))
@@ -14,6 +15,7 @@ const files = (dir, pattern) =>
 
 const expectations = [
   ['index.json', 'ApiIndexDocumentSchema'],
+  ['portfolio.json', 'PortfolioDocumentSchema'],
   ['signals.json', 'SignalIndexDocumentSchema'],
   ['signals/latest.json', 'SignalSnapshotDocumentSchema'],
   ...files('signals', /^\d{4}-\d{2}-\d{2}\.json$/).map((f) => [f, 'SignalSnapshotDocumentSchema']),

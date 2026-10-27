@@ -13,16 +13,16 @@
 | `/status`: SOTA, NAV, 평가일, KOSPI 200MA 레짐 | 허용 | 허용 |
 | `/holdings`: 모델 주수, 현재 비중, 평가손익 | 허용 | 허용 |
 | `/signals`: 매수 대기, 스탑 근접·청산 대기 | 허용 | 허용 |
-| `/trades`: 최근 수익/손실 청산 | 허용 | 허용 |
+| `/trades`: 최근 매수와 매도 체결 | 허용 | 허용 |
 | `/help`: 역할에 맞는 명령 목록 | 허용 | 허용 |
 | `/refresh`: 리포트·시세 수집, 백테스트, 발행 | 차단 | 허용 |
 | `/chatid`: 새 공유 방 ID 확인 | 차단 | 허용 |
 
 명령 응답은 명령을 보낸 방에만 보낸다. 일일 요약과 갱신 완료 알림은 `TELEGRAM_CHAT_ID`로 보낸다.
-`/status`, `/holdings`, `/signals`, `/trades`는 기본적으로 고정 양식의 PNG 카드로 응답한다.
-여러 장은 사진 앨범 하나로 묶고, 보유 종목과 청산은 한 장에 최대 6건씩 표시한다.
-사이트의 종이색, Pretendard 서체, 이익 빨강과 손실 파랑을 사용한다. 한글 폰트와 색상은 로컬 자산만 사용한다.
-`/holdings text` 또는 `/holdings 텍스트`처럼 입력하면 기존 텍스트를 볼 수 있다(네 조회 명령 모두 지원).
+`/status`, `/holdings`, `/signals`, `/trades`는 기본적으로 표 형식 PNG 운용 원장으로 응답한다.
+여러 장은 사진 앨범 하나로 묶고 한 장에 최대 24행을 표시한다. 진입일, 수량, 가격, 비중, 손익을 열로 정렬한다.
+흰색 바탕, Pretendard 서체, 이익 빨강과 손실 파랑을 사용한다. 한글 폰트와 색상은 로컬 자산만 사용한다.
+`/holdings text` 또는 `/holdings 텍스트`처럼 입력하면 같은 열과 값을 TSV 텍스트로 볼 수 있다(네 조회 명령 모두 지원).
 이미지 생성이 실패하면 같은 검증된 데이터를 텍스트로 표시한다. 전송 실패를 성공으로 처리하지 않는다.
 이미지는 인증된 요청에서만 생성하며, 외부 이미지 주소나 영구 저장 파일을 만들지 않는다.
 동일한 데이터와 명령의 렌더링은 최대 8항목의 프로세스 메모리 캐시에서 재사용한다.
@@ -81,6 +81,20 @@ gh workflow run telegram-webhook-setup.yml --ref main
 
 Python: `configure_telegram_webhook.py`, `notify_telegram_refresh.py`.
 웹: `src/app/api/telegram/webhook/route.ts`, `src/lib/telegram-bot.ts`, `src/lib/sota-portfolio.ts`.
-이미지 양식: `src/lib/telegram-cards.tsx`. `node scripts/render_telegram_cards.cjs <SOTA JSON 경로>`로
-실제 전송 없이 `artifacts/telegram/cards/`에 모든 명령의 미리보기를 렌더링할 수 있다.
+이미지 양식: `src/lib/telegram-image.tsx`. `node scripts/render_telegram_ledger.cjs <SOTA JSON 경로>`로
+실제 전송 없이 `artifacts/telegram/ledger/`에 모든 명령의 미리보기를 렌더링할 수 있다.
 공유 데이터·일일 발송의 의미는 [PORTFOLIO.md](PORTFOLIO.md)를 따른다.
+
+## 공유 원장과 URI
+
+`src/lib/portfolio-data.ts`는 `/api/v2/portfolio` 공표물을 zod로 검증한다. 웹과 봇은 같은
+`portfolio-ledger.ts`의 열 정의와 행을 사용한다. 별도 카드용 계산과 종목별 텍스트 포맷터는 없다.
+
+- `/portfolio#positions`: 보유 진입일, 수량, 현재 비중, 평가손익.
+- `/portfolio#orders`: 매수 대기와 스탑 근접, 청산 대기. 후보를 체결로 표시하지 않는다.
+- `/portfolio/trades?from=2026-10-01&to=2026-10-26&side=buy&q=NBIS`: 기간, 매매 구분, 종목 필터.
+  주소를 공유하거나 다시 열어도 같은 조회 조건을 유지한다. 모든 실제 매수와 매도 체결을 조회할 수 있다.
+- 이미지 캡션은 해당 원장 URI를 제공한다. 이미지는 표의 요약이고 전체 기간 조회는 웹에서 한다.
+
+매도 행의 손익은 매수와 매도의 비용 및 환율을 반영한다. 매수 행의 실현손익은 공란이다.
+일일 알림은 평가액과 수익률, 원장 링크만 보낸다.

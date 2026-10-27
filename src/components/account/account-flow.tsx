@@ -23,7 +23,8 @@ const signed = (v: number) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(Mat
 const tone = (v: number) => (v > 0 ? "text-up" : v < 0 ? "text-down" : "text-muted-foreground");
 
 const ACCOUNTS = [
-  { href: "/portfolio", label: "1억 전진 모의", sub: "execution-v2" },
+  { href: "/portfolio", label: "SOTA 원장", sub: "선정 전략" },
+  { href: "/portfolio/paper", label: "1억 전진 모의", sub: "execution-v2" },
   { href: "/portfolio/funded", label: "5천만 납입식", sub: "funded-w50-v1" },
 ] as const;
 

@@ -25,13 +25,21 @@ def inputs():
     def trade(ticker, date, pnl, reason="t_chandelier_ATR5.75"):
         return {"ticker": ticker, "market": "KR", "display_name": ticker,
                 "entry_date": "2026-09-01", "exit_date": date, "entry": 100,
-                "exit": 110 if pnl > 0 else 90, "pnl_krw": pnl, "return_pct": pnl / 100,
+                "exit": 100 + pnl / 100, "pnl_krw": pnl, "return_pct": pnl / 100,
                 "exit_reason": reason}
     result = {"label": key, "metrics": metrics, "open_positions": positions,
               "execution": {"parked_krw": 40_000, "cash_krw": 6500, "pending_exits": ["MSFT"]},
               "trades": [trade("PROFIT", "2026-10-23", 1000), trade("LOSS", "2026-10-26", -500),
                          trade("OLD", "2026-01-01", 500), trade("FUTURE", "2026-10-28", 1000),
                          trade("OPEN", day, 1000, "데이터_종료_미청산")]}
+    def fill(date, ticker, side, price, shares, cost=None, market="KR", fx=1):
+        gross = price * shares * fx
+        cash = -(cost or gross) if side == "buy" else gross
+        return dict(date=date,ticker=ticker,market=market,side=side,price=price,fx=fx,shares=shares,
+                    gross_krw=gross,cash_flow_krw=cash,fees_krw=abs(cash)-gross if side=="buy" else 0,reason="test")
+    result["execution"]["fills"] = [fill("2026-09-01",t,"buy",100,100) for t in ("PROFIT","LOSS")]
+    result["execution"]["fills"] += [fill("2026-10-01",t,"buy",p["entry_price"],p["shares"],p["cost"],p["market"],p["fx"]) for t,p in positions.items()]
+    result["execution"]["fills"] += [fill("2026-10-23","PROFIT","sell",110,100),fill("2026-10-26","LOSS","sell",95,100)]
     def buy(ticker, pending):
         return {"ticker": ticker, "market": "KR", "display_name": ticker, "entry_pending": pending,
                 "entry_basis_date": None if pending else "2026-10-26", "entry_reason": "학회 매수리포트 → 익일 시가"}
@@ -61,16 +69,14 @@ def test_engine_quantities_fx_pnl_and_current_weights_reconcile(inputs):
     assert (us["value_krw"], us["pnl_krw"], us["weight_pct"]) == (63_000, 3000, 52.5)
     assert kr["return_pct"] == pytest.approx(5) and us["return_pct"] == pytest.approx(5)
     assert sum(p["weight_pct"] for p in doc["positions"]) + doc["parked_weight_pct"] + doc["cash_weight_pct"] == pytest.approx(100)
-    assert {t["ticker"] for t in doc["recent_exits"]} == {"PROFIT", "LOSS"}
+    assert {t["ticker"] for t in doc["fills"] if t["side"] == "sell"} == {"PROFIT", "LOSS"}
     assert [b["ticker"] for b in doc["buy_candidates"]] == ["PENDING"]
     assert us["exit_pending"] and not kr["exit_pending"]
 
 
-def test_digest_explains_regime_fractional_shares_realized_exits_and_pending_entries(inputs):
+def test_digest_links_to_the_same_ledger_without_repeating_the_book(inputs):
     text = "\n".join(sender.sota_messages(build(inputs), "2026-10-27"))
-    for expected in ("KOSPI 200MA 레짐 OFF", "OFF여도 신규 매수 규칙과 올웨더 파킹을 유지", "10.5주", "2.25주",
-                     "8.75%", "+3,000원", "스탑 근접", "다음 가용 시가 매도 대기", "PENDING", "수익 실현", "손실 확정",
-                     "소수 주식", "최근 20거래일", "실계좌 또는 전진 모의계좌 보유 내역이 아닙니다"):
+    for expected in ("2026-10-27", "120,000원", "W_allweather_chandelier", "https://verdict-archive.vercel.app/portfolio"):
         assert expected in text
     assert "—" not in text and "·" not in text
     assert "ALREADY_PASSED" not in text and "FUTURE" not in text and "OPEN (" not in text
@@ -94,10 +100,10 @@ def test_empty_book_and_no_signals_are_explicit(inputs):
     model, result, _, _ = inputs
     result["open_positions"] = {}
     result["trades"] = []
-    result["execution"].update(parked_krw=120_000, cash_krw=0, pending_exits=[])
+    result["execution"].update(parked_krw=120_000, cash_krw=0, pending_exits=[], fills=[])
     model["signals"].update(open_positions=[], imminent_buys=[], slots={"max_positions": 20, "open": 0, "available": 20})
     text = "\n".join(sender.sota_messages(build(inputs), "2026-10-27"))
-    assert "보유 주식 없음" in text and "청산 없음" in text and "대기 후보 없음" in text
+    assert "보유 0종목" in text
 
 
 def test_a_new_headline_is_selected_from_source_and_not_hardcoded_to_w(inputs):
@@ -106,7 +112,7 @@ def test_a_new_headline_is_selected_from_source_and_not_hardcoded_to_w(inputs):
     model["signals"]["regime"].update(applies=True, note="레짐 OFF — 유휴 잔액은 현금 이자 3%, 신규 진입 유지")
     doc = build(inputs)
     text = "\n".join(sender.sota_messages(doc, "2026-10-27"))
-    assert doc["strategy"] == "T-_kospi_core_regime" and "현금 이자 3%" in text
+    assert doc["strategy"] == "T-_kospi_core_regime" and "T-_kospi_core_regime" in text
     assert "W는 레짐 필터 없음" not in text
 
 
@@ -133,13 +139,12 @@ def test_mixed_runs_quote_drift_and_unbalanced_nav_are_rejected(inputs):
         sota.validate(doc)
 
 
-def test_large_digest_chunks_preserve_all_holdings_and_stay_below_telegram_limit(inputs):
+def test_sold_quantities_and_cash_flows_cannot_be_fabricated(inputs):
     doc = build(inputs)
-    # Long labels exercise splitting without dropping or truncating a stock.
-    doc["positions"][0]["name"] = "한글이름" * 1500 + "LAST_STOCK_MARKER"
-    chunks = sender.sota_messages(doc, "2026-10-27")
-    assert len(chunks) > 2 and all(len(c.encode("utf-16-le")) // 2 <= 4096 for c in chunks)
-    assert "LAST_STOCK_MARKER" in "".join(chunks) and "최근 청산" in "".join(chunks)
+    sale = next(f for f in doc["fills"] if f["side"] == "sell")
+    sale["shares"] *= 2
+    with pytest.raises(ValueError):
+        sota.validate(doc)
 
 
 def test_default_sender_uses_sota_validates_source_and_deduplicates_without_touching_paper(inputs, tmp_path, monkeypatch):
@@ -166,7 +171,7 @@ def test_default_sender_uses_sota_validates_source_and_deduplicates_without_touc
     old_paper_receipt = sender.hashlib.sha256(f"{day}:test-recipient".encode()).hexdigest()
     receipt.write_text(json.dumps({"schema_version": "1.0", "delivered": [old_paper_receipt]}), encoding="utf-8")
     assert sender.main(["--receipt", str(receipt)]) == 0 and calls
-    assert calls[0].startswith("📊 SOTA")
+    assert calls[0].startswith("SOTA")
     count = len(calls)
     assert sender.main(["--receipt", str(receipt)]) == 0 and len(calls) == count
     model["generated_at"] = "2026-10-28T10:00:00+00:00"

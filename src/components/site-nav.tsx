@@ -13,7 +13,7 @@ const LINKS = [
   { href: "/stats", label: "통계" },
   { href: "/strategy", label: "전략" },
   { href: "/track", label: "전진 기록" },
-  { href: "/portfolio", label: "모의 계정" },
+  { href: "/portfolio", label: "SOTA 원장" },
   { href: "/developers", label: "API" },
 ];
 

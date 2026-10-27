@@ -2,7 +2,8 @@ const assert = require('node:assert/strict');
 const test = require('node:test');
 const { loadTs, readJson } = require('./_ts-module.cjs');
 const schemas = loadTs('src/lib/sota-portfolio.ts');
-const bot = loadTs('src/lib/telegram-bot.ts');
+const ledger = loadTs('src/lib/portfolio-ledger.ts');
+const bot = loadTs('src/lib/telegram-bot.ts', {'./portfolio-ledger': ledger});
 const rawBook = readJson('data/gold/portfolio/sota.json');
 const book = schemas.SotaPortfolioSchema.parse(rawBook);
 const config = { secret: 'webhook-secret', chatId: '123', userId: '123', allowedChatIds: ['-1001'],
@@ -32,31 +33,22 @@ test('secret and role checks separate allowed group readers from the administrat
 test('query commands report the stored book and UTF-16 splitting preserves all text', () => {
   assert.ok(bot.renderCommand('/status', book).includes(book.as_of));
   for (const p of book.positions) assert.ok(bot.renderCommand('/holdings', book).includes(p.ticker));
-  assert.ok(bot.renderCommand('/signals', book).includes('빈 슬롯'));
-  assert.ok(bot.renderCommand('/trades', book).includes('최근 청산'));
+  assert.ok(bot.renderCommand('/signals', book).includes('매매 대기'));
+  assert.ok(bot.renderCommand('/trades', book).includes('체결 원장'));
   const text = '한글😀'.repeat(2500);
   const chunks = bot.splitTelegram(text);
   assert.equal(chunks.join(''), text);
   assert.ok(chunks.every((c) => c.length <= 3500));
 });
 
-test('mobile replies separate stock paragraphs, preserve financial values and avoid banned separators', () => {
-  const custom = structuredClone(book);
-  custom.positions[0].name = '회사 — A·B';
-  for (const command of ['/status', '/holdings', '/signals', '/trades']) {
+test('text replies use shared ledger values and avoid banned separators', () => {
+  const custom = structuredClone(book); custom.positions[0].name = 'company — A·B';
+  for (const command of ledger.LEDGER_COMMANDS) {
     const rendered = bot.renderCommand(command, custom);
     assert.doesNotMatch(rendered, /[—·]/);
-    assert.ok(rendered.includes('\n\n'));
+    assert.equal(rendered, ledger.ledgerText(command, custom));
   }
   for (const role of ['member', 'admin']) assert.doesNotMatch(bot.help(role), /[—·]/);
-  const holdings = bot.renderCommand('/holdings', custom);
-  assert.match(holdings, /수량 [\d,.]+주\n비중 [\d.]+%\n[🔴🔵⚪]/u);
-  const paragraphs = Array.from({ length: 20 }, (_, i) => `${i}. 회사😀\n수량 1.2345주\n비중 5.00%\n🔴 이익 +1,000원 (+1.00%)`);
-  const pages = bot.splitTelegram(paragraphs.join('\n\n'));
-  assert.equal(pages.length, 4);
-  assert.equal(pages.join(''), paragraphs.join('\n\n'));
-  for (const paragraph of paragraphs) assert.ok(pages.some((page) => page.includes(paragraph)));
-  assert.ok(pages.every((page) => page.length <= 1402));
 });
 
 const response = (data, status = 200) => new Response(JSON.stringify(data), { status });
@@ -76,14 +68,14 @@ test('refresh dispatch is fixed to main and retries/active runs do not dispatch 
   }
 });
 
-function route(cards = { cardCaption: (command, doc) => `${command} 평가 ${doc.as_of}`,
-  renderTelegramCards: async (command) => Array.from({ length: command === '/holdings' ? 2 : 1 }, (_, i) =>
+function route(cards = { ledgerCaption: (command, doc) => `${command} 평가 ${doc.as_of}`,
+  renderLedgerImages: async (command) => Array.from({ length: command === '/holdings' ? 2 : 1 }, (_, i) =>
     ({ png: Uint8Array.from([137,80,78,71]), title: command, page:i+1, pages:command === '/holdings' ? 2 : 1 })) }) {
   return loadTs('src/app/api/telegram/webhook/route.ts', {
     'next/server': { NextResponse: { json: (data, init) => response(data, init?.status ?? 200) } },
     '@/lib/sota-portfolio': schemas, '@/lib/telegram-bot': bot,
-    '@/lib/telegram-cards': cards,
-    '../../../../../data/gold/portfolio/sota.json': rawBook,
+    '@/lib/telegram-image': cards,
+    '@/lib/portfolio-data': {portfolio:book},
   });
 }
 function environment(t) {
@@ -132,7 +124,7 @@ test('single card uploads a PNG with a short caption; explicit text mode skips r
   assert.ok(calls[0].body.get('caption').includes(book.as_of));
   assert.ok(calls[0].body.get('caption').length < 1024);
   calls.length = 0;
-  const textRoute = route({ renderTelegramCards: () => assert.fail('text mode must not render') });
+  const textRoute = route({ renderLedgerImages: () => assert.fail('text mode must not render') });
   await textRoute.POST(req(update('/holdings text')));
   assert.ok(calls.every((c) => c.url.endsWith('/sendMessage')));
   assert.ok(calls.some((c) => JSON.parse(c.body).text.includes(book.positions[0].ticker)));
@@ -141,7 +133,7 @@ test('single card uploads a PNG with a short caption; explicit text mode skips r
 test('render failures fall back to the same validated text; upload failures request retry', async (t) => {
   environment(t); const calls = [];
   global.fetch = async (url, init) => { calls.push({url, body:init.body}); return response({ok:true}); };
-  const fallback = route({cardCaption: () => '', renderTelegramCards: async () => { throw new Error('font failure'); }});
+  const fallback = route({ledgerCaption: () => '', renderLedgerImages: async () => { throw new Error('font failure'); }});
   assert.equal((await fallback.POST(req(update('/status')))).status, 200);
   assert.ok(calls[0].url.endsWith('/sendMessage'));
   assert.ok(JSON.parse(calls[0].body).text.includes('이미지를 불러오지 못해'));

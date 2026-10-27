@@ -480,3 +480,24 @@ TELEGRAM_BOT_TOKEN=... TELEGRAM_CHAT_ID=... \
 
 위 파일은 연구 화면의 정적 보조 계약이며 v2 REST 리소스나 Swagger 작업을 추가하지 않는다.
 Python 작성기와 zod 경계 모델이 검증하고, 잘못된 입력은 빌드/파이프라인을 실패시킨다.
+
+## SOTA 운용 원장 (API 2.1.0)
+
+`GET /api/v2/portfolio`는 v2 envelope 안에 `data.schema_version=2.0`인 SOTA 모델 원장을 제공한다.
+`links.strategy`는 해당 선정 전략으로 연결한다. `/portfolio` 웹, 텔레그램 이미지와 텍스트는 이 공표물을 함께 읽는다.
+기존 v1과 전략 revision 문서는 변경하지 않는다.
+
+`data.positions`에는 `market`, `ticker`, `name`, `entry_date`, `shares`, `entry_price`, `current_price`,
+`quote_date`, `fx`, `cost_krw`, `value_krw`, `weight_pct`, `pnl_krw`, `return_pct`, `stop_level`,
+`dist_to_stop_pct`, `exit_pending`이 있다. 수량은 소수 주식 백테스트 모델이며 실계좌 주문 수량이 아니다.
+
+`data.fills`는 시간순 전체 체결이다. 각 행에는 `date`, `market`, `ticker`, `name`, `side` (`buy`/`sell`),
+`shares`, `price`, `fx`, `gross_krw`, `fees_krw`, `cash_flow_krw`, `reason`, `entry_date`, `entry_price`,
+`pnl_krw`, `return_pct`가 있다. 매수의 손익 두 필드는 null이다. 매도 현금흐름과 원래 매수 현금흐름의
+합이 실현손익이다. 가격은 종목 통화(KR=KRW, US=USD), 금액은 KRW다. 매수 비용을 포함한 원가와
+최종 잔여 체결 수량이 `positions`와 일치해야 발행된다. Gold 스키마 1.0의 `recent_exits`는 전체
+`fills`로 대체했으며, 이 새 API는 처음부터 스키마 2.0만 제공한다.
+
+`recent_window_start`는 기본 최근 체결 기간, `buy_candidates`는 미체결 대기 후보다.
+`regime.applies=false`일 때 KOSPI 200MA ON/OFF는 관측 정보이며 진입 차단 조건이 아니다.
+`source_sha256`은 원본 공표 백테스트의 canonical JSON 해시다.

@@ -32,13 +32,14 @@ from pathlib import Path
 
 import export_signals_api as v1
 import lake
+import sota_portfolio
 
 ROOT = lake.ROOT
 API = lake.API_V2
 PREFIX = "/api/v2"
 SITE = "https://verdict-archive.vercel.app"
 SCHEMA_VERSION = "2.0"
-API_VERSION = "2.0.1"
+API_VERSION = "2.1.0"
 
 STRATEGY_SOURCE = lake.WEB_DATA / "strategy-backtest.json"
 REPORTS_SOURCE = lake.WEB_DATA / "report-performance.json"
@@ -472,6 +473,7 @@ def build_index(as_of: str, now: str) -> dict[str, dict]:
         "track_record": href("track-record"),
         "instruments": href("instruments"),
         "clubs": href("clubs"),
+        "portfolio": href("portfolio"),
     })}
 
 
@@ -730,9 +732,11 @@ def _component_schemas() -> dict:
         "Club": _obj(club_props),
         "ClubItem": _obj({**club_props, "links": _links("self", "reports")}),
         # ── documents ──
+        "SotaPortfolio": sota_portfolio.json_schema(),
+        "PortfolioDocument": _document_schema(_links("self", "strategy"), _ref("SotaPortfolio"), "Selected strategy's actual positions and complete buy/sell fill ledger."),
         "ApiIndexDocument": _document_schema(
             _links("self", "openapi", "signals", "latest_signals", "strategies", "track_record", "instruments",
-                   "clubs"), _ref("ApiIndex"), "API entry point: links to every collection."),
+                   "clubs", optional=("portfolio",)), _ref("ApiIndex"), "API entry point: links to every collection."),
         "SignalIndexDocument": _document_schema(
             _links("self", "latest"), {"type": "array", "items": _ref("SignalIndexEntry")},
             "Every published signal snapshot, newest first."),
@@ -842,7 +846,8 @@ def build_openapi(examples: dict[str, object]) -> dict:
                         "Access-Control-Allow-Origin": {"$ref": "#/components/headers/AccessControlAllowOrigin"},
                         **(extra_headers or {})},
             "content": {"application/json": {"schema": _ref(schema),
-                                             **({"example": examples[example_key]} if example_key in examples
+                                             **({"examples": {"current": {"externalValue": SITE + href("portfolio")}}} if example_key == "portfolio" else
+                                                {"example": examples[example_key]} if example_key in examples
                                                 else {})}},
         }
 
@@ -859,6 +864,9 @@ def build_openapi(examples: dict[str, object]) -> dict:
         return {"get": operation}
 
     paths = {
+        href("portfolio"): op("getPortfolio", "Strategies", "Current SOTA portfolio and execution ledger",
+            "Contains actual fractional quantities, entry dates, both buy and sell fills, fees and FX. The data schema is 2.0. This is a backtest model, not a funded account.",
+            ok("PortfolioDocument", "portfolio", "SOTA ledger", "CacheControlDaily")),
         PREFIX: op("getApiIndex", "Meta", "API entry point",
                    "Links to every top-level collection and to this specification.",
                    ok("ApiIndexDocument", "index", "Index document", "CacheControlDaily"), not_found=False),
@@ -1053,6 +1061,10 @@ def plan_outputs(now: str | None = None) -> tuple[dict[Path, dict], set[Path]]:
     docs.update(build_instruments(reports, marks, instruments, now, frozen_instrument_refs()))
     docs.update(build_clubs(reports, instruments, now))
     docs.update(build_index(as_of, now))
+    book = _load_json(lake.GOLD_SOTA_PORTFOLIO)
+    sota_portfolio.validate(book, data)
+    docs[href("portfolio")] = document(href("portfolio"), book, generated_at=now, as_of=book["as_of"],
+        links={"strategy": href("strategies", book["strategy"])})
 
     outputs: dict[Path, dict] = {file_for(uri): doc for uri, doc in docs.items()}
     append_only = {file_for(uri) for uri in append_only_uris}

@@ -19,7 +19,7 @@ import lake
 from lake_prices import replace_atomic
 
 
-SCHEMA_VERSION = "1.0"
+SCHEMA_VERSION = "2.0"
 RECENT_SESSIONS = 20
 
 
@@ -34,6 +34,25 @@ def number(value, name, *, positive=False):
     if positive and value <= 0:
         raise ValueError(f"invalid {name}")
     return value
+
+
+def json_schema() -> dict:
+    """Public structural contract; accounting identities are checked by validate()."""
+    text, num, date = {"type": "string"}, {"type": "number"}, {"type": "string", "format": "date"}
+    nullable = {"type": ["number", "null"]}
+    def obj(fields): return {"type": "object", "properties": fields, "required": list(fields), "additionalProperties": False}
+    def fields(strings="", numbers="", dates="", nulls=""):
+        return {**{k: text for k in strings.split()}, **{k: num for k in numbers.split()},
+                **{k: date for k in dates.split()}, **{k: nullable for k in nulls.split()}}
+    holding = obj({**fields("ticker market name", "shares entry_price current_price fx cost_krw value_krw weight_pct pnl_krw return_pct", "entry_date quote_date", "stop_level dist_to_stop_pct"), "exit_pending": {"type": "boolean"}})
+    fill = obj({**fields("ticker market name reason", "shares price fx gross_krw cash_flow_krw fees_krw entry_price", "date entry_date", "pnl_krw return_pct"), "side": {"type": "string", "enum": ["buy", "sell"]}})
+    return obj({**fields("strategy source_sha256 generated_at parking_name", "initial_capital_krw nav_krw return_pct parked_krw parked_weight_pct cash_krw cash_weight_pct recent_closed_count", "as_of simulation_start recent_window_start"),
+                "schema_version": {"type": "string", "const": SCHEMA_VERSION}, "mode": {"type": "string", "const": "sota_backtest"},
+                "quantity_basis": {"type": "string", "const": "fractional_model_shares"},
+                "positions": {"type": "array", "items": holding}, "fills": {"type": "array", "items": fill},
+                "regime": {"anyOf": [obj({**fields("state note", "kospi_close kospi_ma200"), "applies": {"type": "boolean"}}), {"type": "null"}]},
+                "slots": obj(fields(numbers="max_positions open available")),
+                "buy_candidates": {"type": "array", "items": obj({**fields("ticker market display_name entry_reason"), "entry_pending": {"type": "boolean", "const": True}, "entry_basis_date": {"type": ["string", "null"], "format": "date"}})}})
 
 
 def build(model: dict, result: dict, *, prices: dict, calendar: list) -> dict:
@@ -80,10 +99,37 @@ def build(model: dict, result: dict, *, prices: dict, calendar: list) -> dict:
     cutoff = calendar[max(0, len(calendar) - RECENT_SESSIONS)].isoformat()
     closed = sorted((t for t in result["trades"] if not t.get("exit_reason", "").endswith("미청산")
                      and cutoff <= t["exit_date"] <= as_of), key=lambda t: (t["exit_date"], t["ticker"]), reverse=True)
-    recent = [{"ticker": t["ticker"], "market": t["market"], "name": t.get("display_name", t["ticker"]),
-               "entry_date": t["entry_date"], "exit_date": t["exit_date"], "entry_price": t["entry"],
-               "exit_price": t["exit"], "pnl_krw": t["pnl_krw"], "return_pct": t["return_pct"],
-               "exit_reason": t["exit_reason"]} for t in closed[:10]]
+    # Keep actual fills, including buys. Never infer a sold quantity from rounded P&L.
+    fills = []
+    inventory = {}
+    names = {(t["market"], t["ticker"]): t.get("display_name", t["ticker"]) for t in result["trades"]}
+    names.update({(p["market"], p["ticker"]): p["name"] for p in rows})
+    if "fills" not in execution:
+        raise ValueError("headline engine must expose actual execution fills")
+    for raw in execution["fills"]:
+        item = dict(raw)
+        key = (item["market"], item["ticker"])
+        if item["side"] == "buy":
+            if key in inventory:
+                raise ValueError("duplicate open position in SOTA fills")
+            inventory[key] = item
+        entry = inventory.get(key)
+        if entry is None:
+            raise ValueError("SOTA sale without an entry")
+        item.update(name=names.get(key, item["ticker"]), entry_date=entry["date"], entry_price=entry["price"],
+                    pnl_krw=None, return_pct=None)
+        if item["side"] == "sell":
+            if abs(item["shares"] - entry["shares"]) > 1e-7:
+                raise ValueError("SOTA entry/exit quantities differ")
+            item["pnl_krw"] = round(item["cash_flow_krw"] + entry["cash_flow_krw"], 2)
+            item["return_pct"] = round(item["pnl_krw"] / -entry["cash_flow_krw"] * 100, 2)
+            trade = next((t for t in result["trades"] if t["ticker"] == item["ticker"] and t["entry_date"] == item["entry_date"] and t["exit_date"] == item["date"]), None)
+            if trade is None or abs(trade["pnl_krw"] - item["pnl_krw"]) > .02 or abs(trade["return_pct"] - item["return_pct"]) > .011:
+                raise ValueError("SOTA fill P&L differs from the published engine trade")
+            del inventory[key]
+        fills.append(item)
+    if set(inventory) != {(p["market"], p["ticker"]) for p in rows}:
+        raise ValueError("SOTA fill inventory differs from holdings")
     doc = {"schema_version": SCHEMA_VERSION, "mode": "sota_backtest", "strategy": strategy,
            "as_of": as_of, "generated_at": model["generated_at"], "source_sha256": fingerprint(model),
            "initial_capital_krw": result["metrics"]["initial_capital_krw"], "nav_krw": nav,
@@ -94,7 +140,7 @@ def build(model: dict, result: dict, *, prices: dict, calendar: list) -> dict:
            "cash_krw": cash, "cash_weight_pct": cash / nav * 100,
            "regime": signals["regime"], "slots": signals["slots"],
            "buy_candidates": [b for b in signals["imminent_buys"] if b["entry_pending"]],
-           "recent_window_start": cutoff, "recent_closed_count": len(closed), "recent_exits": recent}
+           "recent_window_start": cutoff, "recent_closed_count": len(closed), "fills": fills}
     validate(doc, model)
     return doc
 
@@ -143,11 +189,41 @@ def validate(doc: dict, model: dict | None = None) -> None:
         ma = number(regime["kospi_ma200"], "200MA", positive=True)
         if regime["state"] != ("ON" if close >= ma else "OFF") or not isinstance(regime["applies"], bool):
             raise ValueError("invalid SOTA regime")
-    for trade in doc["recent_exits"]:
-        if not doc["recent_window_start"] <= trade["exit_date"] <= doc["as_of"]:
-            raise ValueError("future/out-of-window SOTA exit")
-        number(trade["pnl_krw"], "realized P&L")
-        number(trade["return_pct"], "realized return")
+    inventory = {}
+    previous = ""
+    for fill in doc["fills"]:
+        if not doc["simulation_start"] <= fill["date"] <= doc["as_of"] or fill["date"] < previous:
+            raise ValueError("future/unordered SOTA fill")
+        previous = fill["date"]
+        key = (fill["market"], fill["ticker"])
+        for field in ("shares", "price", "fx", "gross_krw"):
+            number(fill[field], field, positive=True)
+        fees = number(fill["fees_krw"], "fees")
+        cash_flow = number(fill["cash_flow_krw"], "cash flow")
+        if fill["market"] not in ("KR", "US") or fees < 0 or abs(fill["gross_krw"] - fill["shares"] * fill["price"] * fill["fx"]) > .02:
+            raise ValueError("SOTA fill gross does not reconcile")
+        expected = -fill["gross_krw"] - fees if fill["side"] == "buy" else fill["gross_krw"] - fees
+        if abs(cash_flow - expected) > .02:
+            raise ValueError("SOTA fill cash flow does not reconcile")
+        if fill["side"] == "buy":
+            if key in inventory or fill["date"] != fill["entry_date"] or fill["price"] != fill["entry_price"] or fill["pnl_krw"] is not None or fill["return_pct"] is not None:
+                raise ValueError("invalid SOTA entry")
+            inventory[key] = fill
+        elif fill["side"] == "sell":
+            entry = inventory.pop(key, None)
+            if entry is None or entry["date"] != fill["entry_date"] or entry["price"] != fill["entry_price"] or abs(entry["shares"] - fill["shares"]) > 1e-7:
+                raise ValueError("unmatched SOTA exit")
+            pnl = cash_flow + entry["cash_flow_krw"]
+            if abs(number(fill["pnl_krw"], "realized P&L") - pnl) > .02 or abs(number(fill["return_pct"], "realized return") - pnl / -entry["cash_flow_krw"] * 100) > .011:
+                raise ValueError("SOTA realized amounts do not reconcile")
+        else:
+            raise ValueError("invalid SOTA fill side")
+    if set(inventory) != {(p["market"], p["ticker"]) for p in doc["positions"]}:
+        raise ValueError("SOTA fill inventory differs from holdings")
+    for p in doc["positions"]:
+        entry = inventory[(p["market"], p["ticker"])]
+        if abs(entry["shares"] - p["shares"]) > 1e-7 or entry["date"] != p["entry_date"] or abs(-entry["cash_flow_krw"] - p["cost_krw"]) > .02:
+            raise ValueError("SOTA holding differs from entry fill")
     for candidate in doc["buy_candidates"]:
         if candidate["ticker"] in symbols or candidate["entry_pending"] is not True:
             raise ValueError("executed/held SOTA buy candidate")

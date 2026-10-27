@@ -34,6 +34,7 @@
 /* 판결 아카이브 팔레트 — 종이와 잉크, 한국 증시 색 관습(상승=적색, 하락=청색) */
 :root,
 .light {
+  --ledger-background: 0 0% 100%;
   --radius: 0.375rem;
   --background: 43 36% 95%;
   --foreground: 28 18% 12%;
@@ -87,6 +88,7 @@
 }
 
 .dark {
+  --ledger-background: 228 14% 7%;
   --background: 228 14% 7%;
   --foreground: 42 28% 88%;
   --card: 228 12% 10%;

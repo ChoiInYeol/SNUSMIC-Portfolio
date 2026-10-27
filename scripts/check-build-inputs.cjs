@@ -27,7 +27,9 @@ if (!result.success) {
 }
 console.log(`ok ${path.relative(ROOT, file)} satisfies SignalsPayloadSchema`);
 
-const { SotaPortfolioSchema } = loadTs("src/lib/sota-portfolio.ts");
+const { SotaPortfolioSchema, PortfolioDocumentSchema } = loadTs("src/lib/sota-portfolio.ts");
 const book = path.join(ROOT, "data/gold/portfolio/sota.json");
 SotaPortfolioSchema.parse(JSON.parse(fs.readFileSync(book, "utf8")));
+const portfolio = PortfolioDocumentSchema.parse(JSON.parse(fs.readFileSync(path.join(ROOT, "public/api/v2/portfolio.json"), "utf8")));
+require('node:assert/strict').deepEqual(portfolio.data, JSON.parse(fs.readFileSync(book, "utf8")));
 console.log("ok SOTA model book satisfies SotaPortfolioSchema");

@@ -1,13 +1,12 @@
 import { NextResponse } from "next/server";
-import rawBook from "../../../../../data/gold/portfolio/sota.json";
-import { SotaPortfolioSchema } from "@/lib/sota-portfolio";
+import { portfolio as book } from "@/lib/portfolio-data";
 import { help, roleFor, renderCommand, requestRefresh, secretMatches, splitTelegram, TelegramUpdateSchema } from "@/lib/telegram-bot";
-import type { CardCommand, CardImage } from "@/lib/telegram-cards";
+import type { LedgerCommand } from "@/lib/portfolio-ledger";
+import type { LedgerImage } from "@/lib/telegram-image";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
-const book = SotaPortfolioSchema.parse(rawBook);
 const headers = { "Cache-Control": "no-store" };
 
 export async function POST(request: Request) {
@@ -36,7 +35,7 @@ export async function POST(request: Request) {
     String(update.message.from?.id) === config.userId && !update.message.from?.is_bot && !update.message.forward_origin;
   if (!role && !discoveringRoom) return NextResponse.json({ ok: true }, { headers });
   let text = "";
-  let picture: { caption: string; images: CardImage[] } | undefined;
+  let picture: { caption: string; images: LedgerImage[] } | undefined;
   try {
     if (discoveringRoom) {
       text = `🔐 공유 방 연결 정보\n\n현재 방 ID\n${update.message.chat.id}\n\n관리자 사용자 ID\n${update.message.from?.id}\n\n이 방 ID를 TELEGRAM_ALLOWED_CHAT_IDS에 등록한 뒤 webhook setup을 다시 실행하세요.\n참여자는 조회만 할 수 있습니다.`;
@@ -49,9 +48,9 @@ export async function POST(request: Request) {
       const query = ["/status", "/holdings", "/signals", "/trades"].includes(command);
       if (query && !textOnly) {
         try {
-          const cards = await import("@/lib/telegram-cards");
-          const key = command as CardCommand;
-          picture = { caption: cards.cardCaption(key, book), images: await cards.renderTelegramCards(key, book) };
+          const images = await import("@/lib/telegram-image");
+          const key = command as LedgerCommand;
+          picture = { caption: images.ledgerCaption(key, book), images: await images.renderLedgerImages(key, book) };
         } catch {
           text = `이미지를 불러오지 못해 텍스트로 표시합니다.\n\n${renderCommand(command, book)}`;
         }

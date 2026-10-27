@@ -361,7 +361,7 @@ export const ClubReportsDocumentSchema = documentSchema(
 // ── index ──────────────────────────────────────────────────────────────────
 
 export const ApiIndexDocumentSchema = documentSchema(
-  links(["self", "openapi", "signals", "latest_signals", "strategies", "track_record", "instruments", "clubs"]),
+  links(["self", "openapi", "signals", "latest_signals", "strategies", "track_record", "instruments", "clubs"], ["portfolio"]),
   z.object({ title: z.string(), api_version: z.string(), description: z.string() }),
 );
 

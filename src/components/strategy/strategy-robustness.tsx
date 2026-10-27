@@ -27,6 +27,6 @@ export async function StrategyRobustness() {
       </TableRow>)}</TableBody>
     </Table>
     <p className="text-sm text-muted-foreground">상위 5종목의 양의 순손익 기여 비중: <span className="tabular-nums">{data.top5_positive_pnl_share_pct?.toFixed(1) ?? "—"}%</span>. 미청산 평가손익 포함, 파킹 손익 제외.</p>
-    <div className="flex flex-wrap gap-4 text-sm underline underline-offset-4"><Link href="/portfolio">같은 엔진의 전진 모의계정</Link><a href="/research/strategy-robustness.json">진단 원본 JSON</a></div>
+    <div className="flex flex-wrap gap-4 text-sm underline underline-offset-4"><Link href="/portfolio/paper">같은 엔진의 전진 모의계정</Link><a href="/research/strategy-robustness.json">진단 원본 JSON</a></div>
   </section>;
 }
