@@ -1,0 +1,603 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "policy_version": "w-open-plan-v1",
+ "market": "KR",
+ "trading_day": "2026-11-16",
+ "open_at": "2026-11-16T00:00:00+00:00",
+ "basis_session": "2026-11-13",
+ "basis_observed_at": "2026-11-15T19:17:34.749579+00:00",
+ "skipped_closures": [],
+ "quantity_basis": "estimate_from_close",
+ "account_snapshot": {
+  "nav_est_krw": 245422193.74,
+  "cash_krw": 43074974.1,
+  "incoming_contributions_krw": 0,
+  "reserved_for_earlier_plans_krw": 0,
+  "est_sell_proceeds_krw": 55280459.6,
+  "cash_after_plan_est_krw": 186556.21,
+  "target_budget_krw": 12271109.69,
+  "position_count": 16,
+  "slots_free": 12,
+  "marks": {
+   "KR": "2026-11-13",
+   "US": "2026-11-13"
+  },
+  "principal_krw": 149000000.0
+ },
+ "contributions": [],
+ "orders": [
+  {
+   "side": "sell",
+   "ticker": "031980",
+   "market": "KR",
+   "name": "피에스케이홀딩스",
+   "instrument": {
+    "symbol": "KRX:031980",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 152,800.00 < 스탑 140,786.90",
+   "budget_krw": null,
+   "est_price": 152800.0,
+   "est_fx": 1.0,
+   "est_shares": 67,
+   "est_gross_krw": 10237600.0,
+   "est_cost_krw": 30712.8,
+   "est_cash_flow_krw": 10206887.2,
+   "current_weight_pct": 4.17142388150405,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 1,
+   "order_id": "b2b6985fbec091a5-01"
+  },
+  {
+   "side": "sell",
+   "ticker": "041830",
+   "market": "KR",
+   "name": "인바디",
+   "instrument": {
+    "symbol": "KRX:041830",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 38,650.00 < 스탑 43,679.17",
+   "budget_krw": null,
+   "est_price": 38650.0,
+   "est_fx": 1.0,
+   "est_shares": 234,
+   "est_gross_krw": 9044100.0,
+   "est_cost_krw": 27132.3,
+   "est_cash_flow_krw": 9016967.7,
+   "current_weight_pct": 3.6851190441813295,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 2,
+   "order_id": "b2b6985fbec091a5-02"
+  },
+  {
+   "side": "sell",
+   "ticker": "082920",
+   "market": "KR",
+   "name": "비츠로셀",
+   "instrument": {
+    "symbol": "KRX:082920",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 20,750.00 < 스탑 21,018.54",
+   "budget_krw": null,
+   "est_price": 20750.0,
+   "est_fx": 1.0,
+   "est_shares": 490,
+   "est_gross_krw": 10167500.0,
+   "est_cost_krw": 30502.5,
+   "est_cash_flow_krw": 10136997.5,
+   "current_weight_pct": 4.142860857543997,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 3,
+   "order_id": "b2b6985fbec091a5-03"
+  },
+  {
+   "side": "sell",
+   "ticker": "091120",
+   "market": "KR",
+   "name": "이엠텍",
+   "instrument": {
+    "symbol": "KRX:091120",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 4,700.00 < 스탑 4,838.90",
+   "budget_krw": null,
+   "est_price": 4700.0,
+   "est_fx": 1.0,
+   "est_shares": 1023,
+   "est_gross_krw": 4808100.0,
+   "est_cost_krw": 14424.3,
+   "est_cash_flow_krw": 4793675.7,
+   "current_weight_pct": 1.9591137732143886,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 4,
+   "order_id": "b2b6985fbec091a5-04"
+  },
+  {
+   "side": "sell",
+   "ticker": "108490",
+   "market": "KR",
+   "name": "로보티즈",
+   "instrument": {
+    "symbol": "KRX:108490",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 248,000.00 < 스탑 207,107.14",
+   "budget_krw": null,
+   "est_price": 248000.0,
+   "est_fx": 1.0,
+   "est_shares": 48,
+   "est_gross_krw": 11904000.0,
+   "est_cost_krw": 35712.0,
+   "est_cash_flow_krw": 11868288.0,
+   "current_weight_pct": 4.850417078751291,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 5,
+   "order_id": "b2b6985fbec091a5-05"
+  },
+  {
+   "side": "sell",
+   "ticker": "119850",
+   "market": "KR",
+   "name": "지엔씨에너지",
+   "instrument": {
+    "symbol": "KRX:119850",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": null,
+   "reason_code": "chandelier_stop",
+   "reason": "샹들리에 스탑: 2026-11-13 종가 37,900.00 < 스탑 34,372.02",
+   "budget_krw": null,
+   "est_price": 37900.0,
+   "est_fx": 1.0,
+   "est_shares": 245,
+   "est_gross_krw": 9285500.0,
+   "est_cost_krw": 27856.5,
+   "est_cash_flow_krw": 9257643.5,
+   "current_weight_pct": 3.7834801566486145,
+   "planned_weight_pct": 0.0,
+   "atr_prior": null,
+   "conditions": [
+    "보유 전량을 시가에 매도(수량 확정, 금액은 종가 기준 추정)",
+    "시가 없음·거래정지 시 미체결, 다음 거래일 계획에서 재시도"
+   ],
+   "seq": 6,
+   "order_id": "b2b6985fbec091a5-06"
+  },
+  {
+   "side": "buy",
+   "ticker": "010140",
+   "market": "KR",
+   "name": "삼성중공업",
+   "instrument": {
+    "symbol": "KRX:010140",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "8345c08b6dadca598b477793671909191280a29b8aa6c15b8984db9a41b38f0a",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-09-21 (2개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 16590.0,
+   "est_fx": 1.0,
+   "est_shares": 737,
+   "est_gross_krw": 12226830.0,
+   "est_cost_krw": 36680.49,
+   "est_cash_flow_krw": -12263510.49,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.981957749579019,
+   "atr_prior": 899.7619047619048,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 7,
+   "order_id": "b2b6985fbec091a5-07"
+  },
+  {
+   "side": "buy",
+   "ticker": "028050",
+   "market": "KR",
+   "name": "삼성E&A",
+   "instrument": {
+    "symbol": "KRX:028050",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "5f838c2435b6943ebbad797668e7a8dd6adda941dcd2e6e801c61c856cd96be4",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-10-03 (3개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 69400.0,
+   "est_fx": 1.0,
+   "est_shares": 176,
+   "est_gross_krw": 12214400.0,
+   "est_cost_krw": 36643.2,
+   "est_cash_flow_krw": -12251043.2,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.976893007955289,
+   "atr_prior": 3183.3333333333335,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 8,
+   "order_id": "b2b6985fbec091a5-08"
+  },
+  {
+   "side": "buy",
+   "ticker": "290550",
+   "market": "KR",
+   "name": "디케이티",
+   "instrument": {
+    "symbol": "KRX:290550",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "7952b52708a373867ae47b62fb5fbb7af1d772197240a1e26fb7fc581da21178",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-10-03 (2개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 27850.0,
+   "est_fx": 1.0,
+   "est_shares": 439,
+   "est_gross_krw": 12226150.0,
+   "est_cost_krw": 36678.45,
+   "est_cash_flow_krw": -12262828.45,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.981680676022774,
+   "atr_prior": 2243.214285714286,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 9,
+   "order_id": "b2b6985fbec091a5-09"
+  },
+  {
+   "side": "buy",
+   "ticker": "229640",
+   "market": "KR",
+   "name": "LS에코에너지",
+   "instrument": {
+    "symbol": "KRX:229640",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "7014fb2088f92b9b8d3db37be3809e984c85eee8b85f784dd6c8bca5c3b77ee5",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-10-03 (1개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 43350.0,
+   "est_fx": 1.0,
+   "est_shares": 282,
+   "est_gross_krw": 12224700.0,
+   "est_cost_krw": 36674.1,
+   "est_cash_flow_krw": -12261374.1,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.98108985741019,
+   "atr_prior": 5235.714285714285,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 10,
+   "order_id": "b2b6985fbec091a5-10"
+  },
+  {
+   "side": "buy",
+   "ticker": "028050",
+   "market": "KR",
+   "name": "삼성E&A",
+   "instrument": {
+    "symbol": "KRX:028050",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "56de69ffba922aa94bf02aa4b472c769077a3b2c5e4069aa1ef6597386b5f954",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-11-06 (4개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 69400.0,
+   "est_fx": 1.0,
+   "est_shares": 176,
+   "est_gross_krw": 12214400.0,
+   "est_cost_krw": 36643.2,
+   "est_cash_flow_krw": -12251043.2,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.976893007955289,
+   "atr_prior": 3183.3333333333335,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 11,
+   "order_id": "b2b6985fbec091a5-11"
+  },
+  {
+   "side": "buy",
+   "ticker": "126340",
+   "market": "KR",
+   "name": "비나텍",
+   "instrument": {
+    "symbol": "KRX:126340",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "4d6a0bb63b4103e808620cf953386f3f843a7e4ec23275e3f36be47304498fe9",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-11-06 (3개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 90600.0,
+   "est_fx": 1.0,
+   "est_shares": 135,
+   "est_gross_krw": 12231000.0,
+   "est_cost_krw": 36693.0,
+   "est_cash_flow_krw": -12267693.0,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.983656862416586,
+   "atr_prior": 10067.857142857143,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 12,
+   "order_id": "b2b6985fbec091a5-12"
+  },
+  {
+   "side": "buy",
+   "ticker": "251970",
+   "market": "KR",
+   "name": "펌텍코리아",
+   "instrument": {
+    "symbol": "KRX:251970",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "37a5814a8d09fa9f5fd267da9c110773ab2f253900ecd3e0164e2c38e74cd51e",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-11-06 (3개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 73400.0,
+   "est_fx": 1.0,
+   "est_shares": 166,
+   "est_gross_krw": 12184400.0,
+   "est_cost_krw": 36553.2,
+   "est_cash_flow_krw": -12220953.2,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.964669174591501,
+   "atr_prior": 4951.190476190476,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 13,
+   "order_id": "b2b6985fbec091a5-13"
+  },
+  {
+   "side": "buy",
+   "ticker": "086450",
+   "market": "KR",
+   "name": "동국제약",
+   "instrument": {
+    "symbol": "KRX:086450",
+    "venue": "KRX",
+    "currency": "KRW",
+    "lot": 1
+   },
+   "signal_id": "3b0983440ebad0fe215b4315d783c2c1ff41aef6a3965bc84203a85d0e21d9b0",
+   "reason_code": "new_report",
+   "reason": "학회 매수 리포트 2026-11-06 (2개 학회) · 최초 관측 2026-11-16 04:17 KST",
+   "budget_krw": 12271109.69,
+   "est_price": 23900.0,
+   "est_fx": 1.0,
+   "est_shares": 511,
+   "est_gross_krw": 12212900.0,
+   "est_cost_krw": 36638.7,
+   "est_cash_flow_krw": -12249538.7,
+   "current_weight_pct": 0.0,
+   "planned_weight_pct": 4.9762818162871,
+   "atr_prior": 1404.2857142857142,
+   "conditions": [
+    "수량은 2026-11-13 종가 기준 추정치. 실제 수량은 시가로 재계산(주문 예산 한도, 정수 내림)",
+    "갭상승으로 시가 기준 1주 미만이면 미체결(신호 소멸)",
+    "시가 없음·거래정지 시 미체결, 최대 5회 계획까지 재시도",
+    "실행 시 현금이 예산의 50% 미만이면 매수 생략"
+   ],
+   "seq": 14,
+   "order_id": "b2b6985fbec091a5-14"
+  }
+ ],
+ "excluded": [
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "1617586559950b54b21207ac9cb514d1c571497da990ba04a4debe2fb5f0cb20",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "131390",
+   "name": "원익피앤이",
+   "signal_id": "7a56f8410081103dec5eef81970a5733e2620178508702c71bf9d959cdedf02d",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "048260",
+   "name": "오스템임플란트",
+   "signal_id": "fc09a2b2ee04091e77d203f3d8eaa3e97a9a3378c5b5556b6a8caf1bd37329df",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "d6a82c4e2f23b92a86b0ed00f14df30ab35edccb541b4f5ea10880c57197ce62",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "010620",
+   "name": "HD현대미포",
+   "signal_id": "96def1ad5d37c7eb5e735a922a7dff2aaf207edc26476cfe567c30f246dcef02",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "115960",
+   "name": "연우",
+   "signal_id": "f6fcb8e7062056b72baaed8ee60f42cb9e2c9bacfb4d7c09b0f41db112c3a51b",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "c69d1cf25f049a1bbdb547f09612f51ce48de23bc1baf0ecd0d07ebad4854cac",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "210e1e9a709b92eb6aa6b8f3ac4553fe335184ebbfcfdc96fcc236a0d46df233",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "287410",
+   "name": "제이시스메디칼",
+   "signal_id": "55ce476f44c64c34dbdcbb30d0a771038508425e928a4431b6b598aa0911c825",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "085370",
+   "name": "루트로닉",
+   "signal_id": "973b4bb3575fb7dec54c3f850cd20574043e7b75f3a442a0ab005325c258139f",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "252990",
+   "name": "샘씨엔에스",
+   "signal_id": "fe5a037e3a867165c9e9326b8261de9c1ef234c31c78de9a6bd621b60c85d6a8",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "086450",
+   "name": "동국제약",
+   "signal_id": "267b67a2a27900275072df733046761e8d6cf8706afe97e2d0eb8793cd43e262",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "226950",
+   "name": "올릭스",
+   "signal_id": "99bac790836007121455e6cdd4b45de7b36d0b07a510b7a5bc130fae0b02b700",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "013580",
+   "name": "계룡건설",
+   "signal_id": "52cbbf5286e2e42009a68276d951a6955afcc91292fba7546f2c68d81f34bfbc",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  }
+ ],
+ "no_trade_reason": null,
+ "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
+ "status": "active",
+ "plan_id": "b2b6985fbec091a5",
+ "revision": 1,
+ "frozen_at": "2026-11-15T19:17:34.749579+00:00",
+ "supersedes": null,
+ "revision_reason": null
+}

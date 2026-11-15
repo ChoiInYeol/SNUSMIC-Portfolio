@@ -6571,10 +6571,10 @@
     "page_url": "http://snusmic.com/equity-research-aixtron-se/",
     "pdf_url": "http://snusmic.com/wp-content/uploads/2026/05/26_1_3주차_수정보고서_5팀_Aixtron_SE.pdf",
     "published_hint": "2026-05-29",
-    "file": "data/pdfs/2026-05-29_equity-research-aixtron-se.pdf",
+    "file": "data/bronze/reports/pdfs/smic/2026-05-29_Equity Research, Aixtron SE.pdf",
     "sha256": "6aa2aaf8103245dbfff531e917ac334cf3e04b99dab8d6488a6fe93328d008a8",
     "size": 2734395,
-    "downloaded_at": "2026-06-10T04:59:56+00:00",
+    "downloaded_at": "2026-11-15T18:44:43+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -6585,10 +6585,10 @@
     "page_url": "http://snusmic.com/equity-research-comfort-systems-usa-inc/",
     "pdf_url": "http://snusmic.com/wp-content/uploads/2026/05/26_1_3주차_수정보고서_4팀_Comfort_Systems_USA_Inc.pdf",
     "published_hint": "2026-05-29",
-    "file": "data/pdfs/2026-05-29_equity-research-comfort-systems-usa-inc.pdf",
+    "file": "data/bronze/reports/pdfs/smic/2026-05-29_Equity Research, Comfort Systems USA, Inc.pdf",
     "sha256": "0ad71f1a51045b3e52ee025a2fa10ae7f104292546671362f5e211b3949e234f",
     "size": 1825515,
-    "downloaded_at": "2026-06-10T04:59:58+00:00",
+    "downloaded_at": "2026-11-15T18:44:45+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -6599,10 +6599,10 @@
     "page_url": "http://snusmic.com/equity-research-soitec-sa/",
     "pdf_url": "http://snusmic.com/wp-content/uploads/2026/05/26_1_3주차_수정보고서_3팀_Soitec_SA.pdf",
     "published_hint": "2026-05-29",
-    "file": "data/pdfs/2026-05-29_equity-research-soitec-sa.pdf",
+    "file": "data/bronze/reports/pdfs/smic/2026-05-29_Equity Research, Soitec SA.pdf",
     "sha256": "d683a42a014c4ab702e336f05ea8f3774335cc25e871238608e5eb98a69db063",
     "size": 2400018,
-    "downloaded_at": "2026-06-10T05:00:01+00:00",
+    "downloaded_at": "2026-11-15T18:44:48+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -6613,10 +6613,10 @@
     "page_url": "http://snusmic.com/equity-research-sterling-infrastructure-inc/",
     "pdf_url": "http://snusmic.com/wp-content/uploads/2026/05/26_1_3주차_수정보고서_2팀_Sterling_Infrastructure_Inc.pdf",
     "published_hint": "2026-05-29",
-    "file": "data/pdfs/2026-05-29_equity-research-sterling-infrastructure-inc.pdf",
+    "file": "data/bronze/reports/pdfs/smic/2026-05-29_Equity Research, Sterling Infrastructure Inc.pdf",
     "sha256": "25ee6c121274c95c4a7b113c677a3e4c5f17a45a65265a9bd09287d59d7c9f05",
     "size": 2037660,
-    "downloaded_at": "2026-06-10T05:00:03+00:00",
+    "downloaded_at": "2026-11-15T18:44:50+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -6627,10 +6627,10 @@
     "page_url": "http://snusmic.com/equity-research-global-unichip-corp/",
     "pdf_url": "http://snusmic.com/wp-content/uploads/2026/05/26_1_3주차_수정보고서_1팀_Global_Unichip_Corporation.pdf",
     "published_hint": "2026-05-29",
-    "file": "data/pdfs/2026-05-29_equity-research-global-unichip-corp.pdf",
+    "file": "data/bronze/reports/pdfs/smic/2026-05-29_Equity Research, Global Unichip Corp.pdf",
     "sha256": "b1215003523de52632ee4583a1f977854a41b1f6ac1a01a944ba2a75d412e467",
     "size": 2924778,
-    "downloaded_at": "2026-06-10T05:00:06+00:00",
+    "downloaded_at": "2026-11-15T18:44:53+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -21568,10 +21568,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=319",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613230248_5853.pdf&save=STAR_%EC%A0%84%EB%9E%B5%EA%B4%91%EB%AC%BC.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_전략광물.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_전략광물.pdf",
     "sha256": "0083450a69549b39663f89b3596e93ef83b11a91ed38f7af25728839353b7821",
     "size": 3015517,
-    "downloaded_at": "2026-06-15T15:30:01+00:00",
+    "downloaded_at": "2026-11-15T18:41:49+00:00",
     "error": null
   },
   {
@@ -21581,10 +21581,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=318",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195342_7640.pdf&save=KEYSS_STAR_OCI%ED%99%80%EB%94%A9%EC%8A%A4.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_KEYSS_STAR_OCI홀딩스.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_KEYSS_STAR_OCI홀딩스.pdf",
     "sha256": "499edd956d203f50bc2b7746a03cd97eab79e4adcc66b7c95acb78d10a301c4e",
     "size": 3316703,
-    "downloaded_at": "2026-06-15T15:30:02+00:00",
+    "downloaded_at": "2026-11-15T18:42:03+00:00",
     "error": null
   },
   {
@@ -21594,10 +21594,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=317",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195304_4854.pdf&save=STAR_%ED%85%8C%EC%8A%A4.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_테스.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_테스.pdf",
     "sha256": "9dd82489da1edb49ea5c02ed3580ca500f078816a09d813f7787ed2eb55a264f",
     "size": 1489884,
-    "downloaded_at": "2026-06-15T15:30:05+00:00",
+    "downloaded_at": "2026-11-15T18:42:08+00:00",
     "error": null
   },
   {
@@ -21607,10 +21607,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=316",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195219_9372.pdf&save=STAR_Vistra+Energy.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_Vistra Energy.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_Vistra Energy.pdf",
     "sha256": "c58340222b4b63732c852b19c4dc5f7aaf2955838358f0aaa50194973de4211d",
     "size": 3424147,
-    "downloaded_at": "2026-06-15T15:30:08+00:00",
+    "downloaded_at": "2026-11-15T18:42:19+00:00",
     "error": null
   },
   {
@@ -21620,10 +21620,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=315",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195136_6782.pdf&save=STAR_FIGR.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_FIGR.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_FIGR.pdf",
     "sha256": "2ac7f3b3d4e42133d2425579ce55b8c70a8392b6f546e985be8546d52dbb91f4",
     "size": 1592828,
-    "downloaded_at": "2026-06-15T15:30:10+00:00",
+    "downloaded_at": "2026-11-15T18:42:27+00:00",
     "error": null
   },
   {
@@ -21633,10 +21633,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=314",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195055_7860.pdf&save=STAR_FANUC.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_FANUC.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_FANUC.pdf",
     "sha256": "2600ce96c56da3b9845ce20199ba4e29e7aa71ef1390391257c5758c68ef0e9a",
     "size": 2712773,
-    "downloaded_at": "2026-06-15T15:30:14+00:00",
+    "downloaded_at": "2026-11-15T18:42:40+00:00",
     "error": null
   },
   {
@@ -21646,10 +21646,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=313",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613195016_3797.pdf&save=STAR_%EC%BD%94%EB%82%98%EC%95%84%EC%9D%B4.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_코나아이.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_코나아이.pdf",
     "sha256": "233f38be96376f5572a4d2084b735e772893a406429640c1a553b10ee600b2cb",
     "size": 2039266,
-    "downloaded_at": "2026-06-15T15:30:15+00:00",
+    "downloaded_at": "2026-11-15T18:42:48+00:00",
     "error": null
   },
   {
@@ -21659,10 +21659,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=312",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613194939_4097.pdf&save=STAR_%ED%95%98%EB%B0%98%EA%B8%B0%ED%88%AC%EC%9E%90%EC%A0%84%EB%9E%B5.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_하반기투자전략.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_하반기투자전략.pdf",
     "sha256": "6839227ea3b37ddc70687b59055e9b65e8d0a73a1156f22d0d4ca8182eb87bcb",
     "size": 10242564,
-    "downloaded_at": "2026-06-15T15:30:20+00:00",
+    "downloaded_at": "2026-11-15T18:43:34+00:00",
     "error": null
   },
   {
@@ -21672,10 +21672,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=311",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613194902_6893.pdf&save=STAR_%EB%91%90%EC%82%B0%ED%85%8C%EC%8A%A4%EB%82%98.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_두산테스나.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_두산테스나.pdf",
     "sha256": "58205974b4edbf835adb0fa9e8ad1f1869dda98ecfae99efd90fde3187569be5",
     "size": 1570640,
-    "downloaded_at": "2026-06-15T15:30:20+00:00",
+    "downloaded_at": "2026-11-15T18:43:40+00:00",
     "error": null
   },
   {
@@ -21685,10 +21685,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=310",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613194818_4561.pdf&save=STAR_LG%EC%97%90%EB%84%88%EC%A7%80%EC%86%94%EB%A3%A8%EC%85%98.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_LG에너지솔루션.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_LG에너지솔루션.pdf",
     "sha256": "0aa493fab8b033f20f6c142b52e432d19c58c2af08d5e42a791249c6aa8bbc63",
     "size": 2881946,
-    "downloaded_at": "2026-06-15T15:30:25+00:00",
+    "downloaded_at": "2026-11-15T18:43:48+00:00",
     "error": null
   },
   {
@@ -21698,10 +21698,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=309",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260613194723_3733.pdf&save=STAR_%ED%95%9C%ED%99%94-KAI+M%26A+Feasibility+Study.pdf",
     "published_hint": "2026-06-13",
-    "file": "data/pdfs/star/2026-06-13_STAR_한화-KAI M&A Feasibility Study.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-06-13_STAR_한화-KAI M&A Feasibility Study.pdf",
     "sha256": "ef78091400801a753c355ac8ab1859591fe8ca3e429ee48d400d09ccc68ced47",
     "size": 6021988,
-    "downloaded_at": "2026-06-15T15:30:26+00:00",
+    "downloaded_at": "2026-11-15T18:44:06+00:00",
     "error": null
   },
   {
@@ -29182,10 +29182,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=339",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205559_7236.pdf&save=STAR_%ED%98%B8%ED%85%94%EC%8B%A0%EB%9D%BC.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_호텔신라.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_호텔신라.pdf",
     "sha256": "ba779572a4cb5552e7998c22f3cf9d3219d82f83646846f445c208c24ab711fd",
     "size": 3409125,
-    "downloaded_at": "2026-09-08T13:49:00+00:00",
+    "downloaded_at": "2026-11-15T18:37:02+00:00",
     "error": null
   },
   {
@@ -29195,10 +29195,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=338",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205504_9304.pdf&save=STAR_%ED%95%9C%EA%B5%AD%ED%83%80%EC%9D%B4%EC%96%B4%EC%95%A4%ED%85%8C%ED%81%AC%EB%86%80%EB%A1%9C%EC%A7%80.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_한국타이어앤테크놀로지.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_한국타이어앤테크놀로지.pdf",
     "sha256": "b251f4d60b9e6b8a1244914d5e840bd00ea929f978b9fbbe00baa29f4dbef5a7",
     "size": 2729986,
-    "downloaded_at": "2026-09-08T13:49:00+00:00",
+    "downloaded_at": "2026-11-15T18:37:12+00:00",
     "error": null
   },
   {
@@ -29208,10 +29208,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=337",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205412_2422.pdf&save=STAR_%EC%A7%80%EB%8B%88%EC%96%B8%EC%8A%A4.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_지니언스.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_지니언스.pdf",
     "sha256": "e030c7b525bd86a5484400477310d7c7c782b1bd380f3a6e0840c1d17b82cb63",
     "size": 1649349,
-    "downloaded_at": "2026-09-08T13:49:04+00:00",
+    "downloaded_at": "2026-11-15T18:37:17+00:00",
     "error": null
   },
   {
@@ -29221,10 +29221,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=336",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205319_1590.pdf&save=STAR_%EC%9D%B8%EB%B0%94%EB%94%94.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_인바디.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_인바디.pdf",
     "sha256": "1300401d7d937fcbf1c6b241cae15509750bf58b3ce135167cb42e82e3259ab9",
     "size": 4516812,
-    "downloaded_at": "2026-09-08T13:49:06+00:00",
+    "downloaded_at": "2026-11-15T18:37:41+00:00",
     "error": null
   },
   {
@@ -29234,10 +29234,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=335",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205220_8327.pdf&save=STAR_%EC%BC%80%EC%9D%B4%EC%94%A8%ED%85%8D.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_케이씨텍.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_케이씨텍.pdf",
     "sha256": "33616f6ff4a3117c1709917e2c6340ccbaae02a8ff750a488772076bdb6dc654",
     "size": 1497472,
-    "downloaded_at": "2026-09-08T13:49:08+00:00",
+    "downloaded_at": "2026-11-15T18:37:47+00:00",
     "error": null
   },
   {
@@ -29247,10 +29247,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=334",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908205032_6198.pdf&save=STAR_%EC%97%90%EC%8A%A4%EC%95%A4%EB%94%94.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_에스앤디.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_에스앤디.pdf",
     "sha256": "47c47cde4a100c04f885d42e5fcb4343bcaee51aa4715b4560fee2825c0760ae",
     "size": 1832697,
-    "downloaded_at": "2026-09-08T13:49:12+00:00",
+    "downloaded_at": "2026-11-15T18:37:56+00:00",
     "error": null
   },
   {
@@ -29260,10 +29260,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=333",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908204935_7192.pdf&save=STAR_STX%EC%97%94%EC%A7%84.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_STX엔진.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_STX엔진.pdf",
     "sha256": "73ec0faaa7b33255ffccc715a0f60afc8dc26ee62d859858f68e9941b275371b",
     "size": 2589197,
-    "downloaded_at": "2026-09-08T13:49:13+00:00",
+    "downloaded_at": "2026-11-15T18:38:05+00:00",
     "error": null
   },
   {
@@ -29286,10 +29286,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=331",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908204747_9075.pdf&save=STAR_SAMG%EC%97%94%ED%84%B0.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_SAMG엔터.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_SAMG엔터.pdf",
     "sha256": "2373804a53d92e70216a4277e44a05b9263daed036fd773cc9edc6f859c62337",
     "size": 4118082,
-    "downloaded_at": "2026-09-08T13:49:18+00:00",
+    "downloaded_at": "2026-11-15T18:38:31+00:00",
     "error": null,
     "note": "sha256_dedup"
   },
@@ -29300,10 +29300,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=330",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908204627_8909.pdf&save=STAR_KT%26G.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_KT&G.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_KT&G.pdf",
     "sha256": "8809e57652e6ed0de7c0c368d49968690b066e6a031a006cdfbb8873e115b2ce",
     "size": 9928053,
-    "downloaded_at": "2026-09-08T13:49:25+00:00",
+    "downloaded_at": "2026-11-15T18:38:57+00:00",
     "error": null
   },
   {
@@ -29313,10 +29313,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=329",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908204459_2858.pdf&save=STAR_%ED%8C%8C%EC%9D%B4%EC%98%A4%EB%A7%81%ED%81%AC.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_파이오링크.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_파이오링크.pdf",
     "sha256": "bdebb7ac6a40e77dcd681b3f6f45dcb9617dc4a1708a40f77b215c5ae8599fbf",
     "size": 1292216,
-    "downloaded_at": "2026-09-08T13:49:25+00:00",
+    "downloaded_at": "2026-11-15T18:39:01+00:00",
     "error": null
   },
   {
@@ -29326,10 +29326,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=328",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203543_3688.pdf&save=STAR_%EB%A1%9C%EB%B3%B4%ED%8B%B0%EC%A6%88.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_로보티즈.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_로보티즈.pdf",
     "sha256": "a0278dc3b9df49af20c7647cc782864fbe55016b12209bdf3a4c0fb73e86aac8",
     "size": 3373878,
-    "downloaded_at": "2026-09-08T13:49:31+00:00",
+    "downloaded_at": "2026-11-15T18:39:13+00:00",
     "error": null
   },
   {
@@ -29339,10 +29339,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=327",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203440_7581.pdf&save=STAR_%EB%B9%84%EC%B8%A0%EB%A1%9C%EC%85%80.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_비츠로셀.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_비츠로셀.pdf",
     "sha256": "5db77cee50174410ee0167cf98f03bb52e832a974f7053891b3e2856303d3a99",
     "size": 4502293,
-    "downloaded_at": "2026-09-08T13:49:33+00:00",
+    "downloaded_at": "2026-11-15T18:39:40+00:00",
     "error": null
   },
   {
@@ -29352,10 +29352,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=326",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203333_3104.pdf&save=STAR_%EC%A7%80%EC%97%94%EC%94%A8%EC%97%90%EB%84%88%EC%A7%80.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_지엔씨에너지.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_지엔씨에너지.pdf",
     "sha256": "5f51b46682a39ae9ea2b8efa51c4838cf6bf35cbf4ec685234e4724b53e7f0ce",
     "size": 3409029,
-    "downloaded_at": "2026-09-08T13:49:35+00:00",
+    "downloaded_at": "2026-11-15T18:39:52+00:00",
     "error": null
   },
   {
@@ -29365,10 +29365,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=325",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203219_2461.pdf&save=STAR_%ED%8B%B0%EC%97%90%EC%8A%A4%EC%9D%B4.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_티에스이.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_티에스이.pdf",
     "sha256": "5b3b55fdf46740f7a8920d040e4afcff688bd687c64e7f4ad5ebdb5caa7564cb",
     "size": 3318718,
-    "downloaded_at": "2026-09-08T13:49:38+00:00",
+    "downloaded_at": "2026-11-15T18:40:02+00:00",
     "error": null
   },
   {
@@ -29378,10 +29378,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=324",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203122_6919.pdf&save=STAR_%EC%98%AC%EB%A6%AD%EC%8A%A4.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_올릭스.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_올릭스.pdf",
     "sha256": "3170d3237020e7551c49948ee24da6a2c21b6b4ff34f4bb1438292941655be6e",
     "size": 9568897,
-    "downloaded_at": "2026-09-08T13:49:43+00:00",
+    "downloaded_at": "2026-11-15T18:40:46+00:00",
     "error": null
   },
   {
@@ -29391,10 +29391,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=323",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908203019_7199.pdf&save=STAR_%ED%83%9C%EC%9B%85.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_태웅.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_태웅.pdf",
     "sha256": "e52bc8be542fe0af1a9920c38c2cb9c06a1d67bfec3a4c88183157fe03bdca10",
     "size": 6666704,
-    "downloaded_at": "2026-09-08T13:49:46+00:00",
+    "downloaded_at": "2026-11-15T18:41:08+00:00",
     "error": null
   },
   {
@@ -29404,10 +29404,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=322",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908202919_4532.pdf&save=STAR_%ED%95%9C%EC%8A%A4%EB%B0%94%EC%9D%B4%EC%98%A4%EB%A9%94%EB%93%9C.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_한스바이오메드.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_한스바이오메드.pdf",
     "sha256": "697ae9e5c96592071ecf7aa25a24fe44d4bc1328373273d624061424a98d178a",
     "size": 1373863,
-    "downloaded_at": "2026-09-08T13:49:47+00:00",
+    "downloaded_at": "2026-11-15T18:41:14+00:00",
     "error": null
   },
   {
@@ -29417,10 +29417,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=321",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908202805_8737.pdf&save=STAR_%ED%95%9C%EC%84%AC.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_한섬.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_한섬.pdf",
     "sha256": "2e44faaa18e8bc68c02449cf0a9396b40695e42ed9c7359b95440960442b0c57",
     "size": 1804967,
-    "downloaded_at": "2026-09-08T13:49:51+00:00",
+    "downloaded_at": "2026-11-15T18:41:24+00:00",
     "error": null
   },
   {
@@ -29430,10 +29430,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=320",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260908202644_1779.pdf&save=STAR_%EC%8B%AC%ED%85%8D.pdf",
     "published_hint": "2026-09-08",
-    "file": "data/pdfs/star/2026-09-08_STAR_심텍.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-08_STAR_심텍.pdf",
     "sha256": "0c1393e39597b51f4a509e6f94b75549f4de06c77c15cd90439ba44f4a8567c9",
     "size": 2177868,
-    "downloaded_at": "2026-09-08T13:49:52+00:00",
+    "downloaded_at": "2026-11-15T18:41:35+00:00",
     "error": null
   },
   {
@@ -29583,10 +29583,10 @@
     "page_url": "http://starskku.com/board/board_view?code=research&no=340",
     "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260909001023_4375.pdf&save=STAR_%EC%98%88%EC%8A%A4%ED%8B%B0.pdf",
     "published_hint": "2026-09-09",
-    "file": "data/pdfs/star/2026-09-09_STAR_예스티.pdf",
+    "file": "data/bronze/reports/pdfs/star/2026-09-09_STAR_예스티.pdf",
     "sha256": "b43c279639e6250847b7891b0647f1c170bc86924b56838527c04c3a3fe94113",
     "size": 4752407,
-    "downloaded_at": "2026-09-09T13:51:48+00:00",
+    "downloaded_at": "2026-11-15T18:36:46+00:00",
     "error": null
   },
   {
@@ -33332,6 +33332,201 @@
     "sha256": "4406352e55c168a9448b73b591bb282a0e1cec985c4c8ac5454f4373440e0ff1",
     "size": 3329258,
     "downloaded_at": "2026-10-26T19:43:50+00:00",
+    "error": null
+  },
+  {
+    "school": "star",
+    "source_id": "star-332",
+    "title": "STAR_삼성중공업",
+    "page_url": "http://starskku.com/board/board_view?code=research&no=332",
+    "pdf_url": "http://starskku.com/fileRequest/download?file=%2Fboard%2Fresearch%2F20260921213144_7340.pdf&save=STAR_%EC%82%BC%EC%84%B1%EC%A4%91%EA%B3%B5%EC%97%85.pdf",
+    "published_hint": "2026-09-21",
+    "file": "data/bronze/reports/pdfs/star/2026-09-21_STAR_삼성중공업.pdf",
+    "sha256": "d285367d94523080cc678054b11b080f965bcefcef68e4fa17d0a23d28305b46",
+    "size": 1887640,
+    "downloaded_at": "2026-11-15T18:38:10+00:00",
+    "error": null
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_f77eee20126940a38ee4852d89a0da2a",
+    "title": "샘씨엔에스 - “MBTI가 뭐예요? STF요”",
+    "company_hint": "샘씨엔에스",
+    "author_hint": "KUVIC 리서치 5팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_f77eee20126940a38ee4852d89a0da2a.pdf",
+    "published_hint": "2026-11-06",
+    "file": "data/bronze/reports/pdfs/kuvic/2026-11-06_샘씨엔에스 - “MBTI가 뭐예요 STF요”.pdf",
+    "sha256": "0fb4212be72498d6590573965e462c10185fc8cab063965d38fbb76d4584e7e7",
+    "size": 6782354,
+    "downloaded_at": "2026-11-15T18:44:11+00:00",
+    "error": null
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_6a9c375353fe4fca9fae88d237994cd3",
+    "title": "펌텍코리아 - 한번 더 나에게 질풍 같은 용기를~♬",
+    "company_hint": "펌텍코리아",
+    "author_hint": "KUVIC 리서치 3팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_6a9c375353fe4fca9fae88d237994cd3.pdf",
+    "published_hint": "2026-11-06",
+    "file": "data/bronze/reports/pdfs/kuvic/2026-11-06_펌텍코리아 - 한번 더 나에게 질풍 같은 용기를~♬.pdf",
+    "sha256": "101cd26fbd631704b5f2a9608bc4225a2c8ef196a960a02272230425f22d9909",
+    "size": 9606290,
+    "downloaded_at": "2026-11-15T18:44:14+00:00",
+    "error": null
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_2c7c7e8cea6c43f280ec58a545861f14",
+    "title": "삼성E&A - 플랜에이는 이앤에이",
+    "company_hint": "삼성E&A",
+    "author_hint": "KUVIC 리서치 1팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_2c7c7e8cea6c43f280ec58a545861f14.pdf",
+    "published_hint": "2026-11-06",
+    "file": "data/bronze/reports/pdfs/kuvic/2026-11-06_삼성E&A - 플랜에이는 이앤에이.pdf",
+    "sha256": "084aa6390827aad00f542f379c3cbcdc68225cfdd71afa6eaffef5ea823326d4",
+    "size": 8468597,
+    "downloaded_at": "2026-11-15T18:44:16+00:00",
+    "error": null
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_c226b61334194526b51ebfcd93280e61",
+    "title": "비나텍 - 셀을 가져가~ 크림치즈허니",
+    "company_hint": "비나텍",
+    "author_hint": "KUVIC 리서치 4팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_c226b61334194526b51ebfcd93280e61.pdf",
+    "published_hint": "2026-11-06",
+    "file": "data/bronze/reports/pdfs/kuvic/2026-11-06_비나텍 - 셀을 가져가~ 크림치즈허니.pdf",
+    "sha256": "7c199142efccd09e96bb7fb47c177d7107ce5e05a3c8b9cd01c07b3992e54d0f",
+    "size": 9850348,
+    "downloaded_at": "2026-11-15T18:44:19+00:00",
+    "error": null
+  },
+  {
+    "school": "kuvic",
+    "source_id": "kuvic-5ec6f7_84a227ee5ae640d6bb54b48930681889",
+    "title": "동국제약 - 마데카솔~드아웃",
+    "company_hint": "동국제약",
+    "author_hint": "KUVIC 리서치 2팀",
+    "page_url": "https://www.kuvic.com/research",
+    "pdf_url": "https://www.kuvic.com/_files/ugd/5ec6f7_84a227ee5ae640d6bb54b48930681889.pdf",
+    "published_hint": "2026-11-06",
+    "file": "data/bronze/reports/pdfs/kuvic/2026-11-06_동국제약 - 마데카솔~드아웃.pdf",
+    "sha256": "8b2ad6fce6f653bfda742cafac38fcecfed7c81dadefa0feba6f2ffd6450dade",
+    "size": 8986849,
+    "downloaded_at": "2026-11-15T18:44:21+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12743",
+    "title": "Equity Research, 올릭스",
+    "page_url": "http://snusmic.com/equity-research-%ec%98%ac%eb%a6%ad%ec%8a%a4/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/11/26_2_2주차_수정보고서_5팀_올릭스.pdf",
+    "published_hint": "2026-11-07",
+    "file": "data/bronze/reports/pdfs/smic/2026-11-07_Equity Research, 올릭스.pdf",
+    "sha256": "fe5da84fd1540e380aa4eb937065988eebc3ab3a0985f638ecc24a6c54731fda",
+    "size": 2301634,
+    "downloaded_at": "2026-11-15T18:44:28+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12741",
+    "title": "Equity Research, 계룡건설",
+    "page_url": "http://snusmic.com/equity-research-%ea%b3%84%eb%a3%a1%ea%b1%b4%ec%84%a4/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/11/26_2_2주차_수정보고서_4팀_계룡건설.pdf",
+    "published_hint": "2026-11-07",
+    "file": "data/bronze/reports/pdfs/smic/2026-11-07_Equity Research, 계룡건설.pdf",
+    "sha256": "4f8c7cbfabfc8c136bbba6a1e7e22a56ef1e19e8ca3abbe4e96e660389786492",
+    "size": 1423501,
+    "downloaded_at": "2026-11-15T18:44:30+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12739",
+    "title": "Equity Research, nintendo",
+    "page_url": "http://snusmic.com/equity-research-nintendo/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/11/26_2_2주차_수정보고서_3팀_Nintendo.pdf",
+    "published_hint": "2026-11-07",
+    "file": "data/bronze/reports/pdfs/smic/2026-11-07_Equity Research, nintendo.pdf",
+    "sha256": "4c2c4970b4dabdc876c712b5149431c277fdab35669fdad5c43c488d7737c061",
+    "size": 2654457,
+    "downloaded_at": "2026-11-15T18:44:33+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12734",
+    "title": "Equity Research, 동국제약",
+    "page_url": "http://snusmic.com/equity-research-%eb%8f%99%ea%b5%ad%ec%a0%9c%ec%95%bd-2/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/11/26_2_2주차_수정보고서_2팀_동국제약.pdf",
+    "published_hint": "2026-11-07",
+    "file": "data/bronze/reports/pdfs/smic/2026-11-07_Equity Research, 동국제약.pdf",
+    "sha256": "d98f75fdbd56a1fa5a61a61adc70faf785298b0074af86071417656cc0bb83da",
+    "size": 2158759,
+    "downloaded_at": "2026-11-15T18:44:35+00:00",
+    "error": null
+  },
+  {
+    "school": "smic",
+    "source_id": "smic-12732",
+    "title": "Equity Research, transocean",
+    "page_url": "http://snusmic.com/equity-research-transocean/",
+    "pdf_url": "http://snusmic.com/wp-content/uploads/2026/11/26_2_2주차_수정보고서_1팀_Transocean.pdf",
+    "published_hint": "2026-11-07",
+    "file": "data/bronze/reports/pdfs/smic/2026-11-07_Equity Research, transocean.pdf",
+    "sha256": "7f76ba844b6988e361e2fa0a1b2d966cada9ea3c35c4782d4b8e224427971326",
+    "size": 3590139,
+    "downloaded_at": "2026-11-15T18:44:38+00:00",
+    "error": null
+  },
+  {
+    "school": "ewha",
+    "source_id": "ewha-175543823",
+    "title": "[261003] 디케이티(290550)",
+    "company_hint": "290550",
+    "page_url": "https://ewhainvest.com/research?bmode=view&idx=175543823&t=board",
+    "pdf_url": "https://ewhainvest.com/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMzAyMDgxNDRmMzg4OGY0NjY5IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjYxMTEwYzFiZWFhYjQ2ZThlNiI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDI2MTExMDA5MjIxOWI3NDI1MjQiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MzI6IjNkZWFiYTI3ZTVjZWI0Yzk5ZTU3ZDNmZWU2ZWZmYjcwIjtzOjExOiJtZW1iZXJfY29kZSI7Tjt9",
+    "published_hint": "2026-10-03",
+    "file": "data/bronze/reports/pdfs/ewha/2026-10-03_[261003] 디케이티(290550).pdf",
+    "sha256": "5ec9cadec65a4e8e548d9623d3a4d083cd89871ff2d7c986d1b24ffa2cb6aa53",
+    "size": 1520263,
+    "downloaded_at": "2026-11-15T18:45:00+00:00",
+    "error": null
+  },
+  {
+    "school": "ewha",
+    "source_id": "ewha-175543780",
+    "title": "[261003] 삼성E&A(028050)",
+    "company_hint": "028050",
+    "page_url": "https://ewhainvest.com/research?bmode=view&idx=175543780&t=board",
+    "pdf_url": "https://ewhainvest.com/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMzAyMDgxNDRmMzg4OGY0NjY5IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjYxMTEwYzZiYjJlYzU2ZDEyOCI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDI2MTExMDZiZmJlM2MyMWJlMzUiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MzI6IjRlM2U2MDhlYjU4MGMyZTM5ODU4Yzc4Y2RkYjU4ZGYzIjtzOjExOiJtZW1iZXJfY29kZSI7Tjt9",
+    "published_hint": "2026-10-03",
+    "file": "data/bronze/reports/pdfs/ewha/2026-10-03_[261003] 삼성E&A(028050).pdf",
+    "sha256": "bcd78dcead839a1c572dc48a5b52edb3ae78676b747999d738a91dfbbc1d4178",
+    "size": 1660640,
+    "downloaded_at": "2026-11-15T18:45:04+00:00",
+    "error": null
+  },
+  {
+    "school": "ewha",
+    "source_id": "ewha-175543756",
+    "title": "[261003] LS에코에너지(229640)",
+    "company_hint": "229640",
+    "page_url": "https://ewhainvest.com/research?bmode=view&idx=175543756&t=board",
+    "pdf_url": "https://ewhainvest.com/post_file_download.cm?c=YTo1OntzOjEwOiJib2FyZF9jb2RlIjtzOjIyOiJiMjAyMzAyMDgxNDRmMzg4OGY0NjY5IjtzOjk6InBvc3RfY29kZSI7czoyMjoicDIwMjYxMTEwOWYyNDU4MGEwMjhkMiI7czo5OiJmaWxlX2NvZGUiO3M6MjI6InAyMDI2MTExMDdkY2RhZWViNDNhODEiO3M6MTk6InBvc3RfZG93bmxvYWRfdG9rZW4iO3M6MzI6ImIwNGI3NDc1MjVlMTkwMmJlZDk1NWYyOGUyYjM4NDk5IjtzOjExOiJtZW1iZXJfY29kZSI7Tjt9",
+    "published_hint": "2026-10-03",
+    "file": "data/bronze/reports/pdfs/ewha/2026-10-03_[261003] LS에코에너지(229640).pdf",
+    "sha256": "f18bcb1237ca7a396e6c91b6f51dc597b8cf0ae3259e4fd0da2032c331377a67",
+    "size": 2908287,
+    "downloaded_at": "2026-11-15T18:45:09+00:00",
     "error": null
   }
 ]

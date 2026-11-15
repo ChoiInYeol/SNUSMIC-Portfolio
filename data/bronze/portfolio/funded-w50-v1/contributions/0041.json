@@ -1,0 +1,10 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "installment": 41,
+ "amount_krw": 3000000,
+ "scheduled_date": "2026-11-02",
+ "recorded_at": "2026-11-15T19:17:34.749579+00:00",
+ "rule_status": "user_confirmed",
+ "rule_label": "사용자 확정"
+}

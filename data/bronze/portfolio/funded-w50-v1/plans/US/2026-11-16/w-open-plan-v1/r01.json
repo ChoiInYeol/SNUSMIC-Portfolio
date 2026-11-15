@@ -1,0 +1,192 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "policy_version": "w-open-plan-v1",
+ "market": "US",
+ "trading_day": "2026-11-16",
+ "open_at": "2026-11-16T14:30:00+00:00",
+ "basis_session": "2026-11-13",
+ "basis_observed_at": "2026-11-15T19:17:34.749579+00:00",
+ "skipped_closures": [],
+ "quantity_basis": "estimate_from_close",
+ "account_snapshot": {
+  "nav_est_krw": 245422193.74,
+  "cash_krw": 43074974.1,
+  "incoming_contributions_krw": 0,
+  "reserved_for_earlier_plans_krw": 42888417.92,
+  "est_sell_proceeds_krw": 0,
+  "cash_after_plan_est_krw": 186556.18,
+  "target_budget_krw": 12271109.69,
+  "position_count": 16,
+  "slots_free": 12,
+  "marks": {
+   "KR": "2026-11-13",
+   "US": "2026-11-13"
+  },
+  "principal_krw": 149000000.0
+ },
+ "contributions": [],
+ "orders": [],
+ "excluded": [
+  {
+   "ticker": "ALGN",
+   "name": "ALGN",
+   "signal_id": "f5abe5b9546b33c485e23bfb224a8f2e2b1fc0f0f63f5c62494d335bb4af1600",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "BABA",
+   "name": "BABA",
+   "signal_id": "873c97cb5de1643823bb35a4a258a8975eac5f1ae960261e41978e92d6166159",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "EQIX",
+   "name": "EQIX",
+   "signal_id": "f1c5a94b6ec52bc3bc628bde60360b07cbd0b3a601a4b22c3037ce6675c37974",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "PYPL",
+   "name": "PYPL",
+   "signal_id": "1defd6d4947d2cae7f963f60253bd0133e276ad7da1a93566ad6eab8564ae9fe",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "BILI",
+   "name": "BILI",
+   "signal_id": "54ca7534e19bf721046c09572cc2790378f7dae69eeef5af501e293514137304",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "ROKU",
+   "name": "ROKU",
+   "signal_id": "04805b4600c5c21c0fc5f7a19b900ce4a0652a579545e9dc021cca84bb01a544",
+   "reason_code": "no_close",
+   "reason": "2026-11-13 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "GLW",
+   "name": "GLW",
+   "signal_id": "b16b0c2c50b0a5c66d07152efba50bab8c47410df514d8e4ce32f457ff8a62c1",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "SBLK",
+   "name": "SBLK",
+   "signal_id": "31238dfcd8d89884e14bb7e7ed5437a1b5cfc36fdeee2c1bf453885c5b550e07",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "WFG",
+   "name": "WFG",
+   "signal_id": "6e3927e9832f59a012026cef0f4cb328939d5b8dd5b105adef3c5c862e4e2c59",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "CHGG",
+   "name": "CHGG",
+   "signal_id": "330f00800852307b823c609e4c6b01eac8ff181835070e4e7cc1916cdfcb766e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "INMD",
+   "name": "INMD",
+   "signal_id": "23738360675ffb477e43f22d3392e91f9caf05de7b042aa75e766df63357593c",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "OPEN",
+   "name": "OPEN",
+   "signal_id": "d711e5095f5a48d0afa1c35e77ac705fafeb6e8e039e74f57f612eeb7c0f6a77",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "EAF",
+   "name": "EAF",
+   "signal_id": "46f371e4e789c4df1e1d966b209b03346ecbbed0f108dca9dfdd85bdf3b0deb6",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "STNG",
+   "name": "STNG",
+   "signal_id": "e37d701b36ba62560193c5e1e5b900c39bf849823c9a29b239dc0d3e59d092ff",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "CLS",
+   "name": "CLS",
+   "signal_id": "6e101ada2257f2e6e4acf9ddd15360ba57d6849eebd1b13bfb36a0903ff68d60",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "NBIS",
+   "name": "NBIS",
+   "signal_id": "297cd380794f2347340f6be3c392453d765b748745225354de381d11237f94a5",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "NTRA",
+   "name": "NTRA",
+   "signal_id": "943d41f97038718084c6022df3d27b36f4b56ca6c11b3cd9e23c6aad5b9b254e",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "QCOM",
+   "name": "QCOM",
+   "signal_id": "c6009849472848f59a4a5ef9d377c2483ea673f8233a5150d44750c4ea9b17cf",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  },
+  {
+   "ticker": "RIG",
+   "name": "RIG",
+   "signal_id": "8b1f2796314591eb76866be74b52b321134eb115962ecabd391226f845dbf28f",
+   "reason_code": "insufficient_cash",
+   "reason": "가용 현금 186,556원 < 진입 예산의 50%",
+   "final": true
+  }
+ ],
+ "no_trade_reason": "스탑 매도 신호 없음 · 매수 후보 19건 모두 제외(사유 참조)",
+ "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
+ "status": "active",
+ "plan_id": "227f0b0bcc6cf916",
+ "revision": 1,
+ "frozen_at": "2026-11-15T19:17:34.749579+00:00",
+ "supersedes": null,
+ "revision_reason": null
+}

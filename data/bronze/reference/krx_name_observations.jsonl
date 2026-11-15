@@ -21,3 +21,4 @@
 {"schema_version": "1.0", "collected_at": "2026-10-19T17:42:47.431398+00:00", "source": "pykrx.get_market_ticker_name", "library_version": "1.2.8", "ticker": "017890", "name": "한국알콜"}
 {"schema_version": "1.0", "collected_at": "2026-10-19T17:42:47.434329+00:00", "source": "pykrx.get_market_ticker_name", "library_version": "1.2.8", "ticker": "092460", "name": "한라IMS"}
 {"schema_version": "1.0", "collected_at": "2026-10-19T17:42:47.438305+00:00", "source": "pykrx.get_market_ticker_name", "library_version": "1.2.8", "ticker": "039200", "name": "오스코텍"}
+{"schema_version": "1.0", "collected_at": "2026-11-15T18:47:03.039421+00:00", "source": "pykrx.get_market_ticker_name", "library_version": "1.2.8", "ticker": "013580", "name": "계룡건설"}

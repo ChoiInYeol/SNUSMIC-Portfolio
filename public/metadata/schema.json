@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-10-27T16:12:49+00:00",
+  "generated_at": "2026-11-15T19:17:50+00:00",
   "source": "catalog",
   "source_label": "Verdict Archive · file lake",
   "entities": [
@@ -1449,7 +1449,7 @@
       ],
       "column_status": "observed",
       "location": "public/research/review.json",
-      "row_count": 582,
+      "row_count": 585,
       "description": "json · versioned artifact",
       "producers": [
         "build_research_review.py"
@@ -1719,7 +1719,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reports/manifest.json",
-      "row_count": 2434,
+      "row_count": 2448,
       "description": "json · versioned artifact",
       "producers": [
         "collect_ewha.py",
@@ -1794,7 +1794,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reports/kuvic_items.json",
-      "row_count": 110,
+      "row_count": 115,
       "description": "json · versioned artifact",
       "producers": [
         "collect_kuvic_browser.py"
@@ -6852,7 +6852,7 @@
       ],
       "column_status": "observed",
       "location": "data/bronze/reference/krx_name_observations.jsonl",
-      "row_count": 23,
+      "row_count": 24,
       "description": "jsonl · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -7069,7 +7069,7 @@
       ],
       "column_status": "observed",
       "location": "data/silver/reports/parsed.csv",
-      "row_count": 1653,
+      "row_count": 1672,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -7225,7 +7225,7 @@
       ],
       "column_status": "observed",
       "location": "data/silver/reports/parse_issues.csv",
-      "row_count": 206,
+      "row_count": 209,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -8847,7 +8847,7 @@
       ],
       "column_status": "observed",
       "location": "data/gold/reports/performance.csv",
-      "row_count": 1477,
+      "row_count": 1491,
       "description": "csv · versioned artifact",
       "producers": [
         "build_report_performance.py"
@@ -9111,7 +9111,7 @@
       ],
       "column_status": "observed",
       "location": "src/data/report-performance.json",
-      "row_count": 1477,
+      "row_count": 1491,
       "description": "json · versioned artifact",
       "producers": [
         "build_report_performance.py"
