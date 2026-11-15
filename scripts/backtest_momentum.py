@@ -871,7 +871,9 @@ def main() -> int:
     # S. 포트폴리오 최적화 — three variants
     # Monthly optimiser weights are a pure function of the dataset → cached on
     # disk keyed by dataset fingerprint (replay identical; --retune to force).
-    _s_cache_key = hashlib.sha256(f"{dataset_fp}|{strategies.S_WEIGHTS_CODE_TAG}".encode()).hexdigest()
+    # Individual months validate their own exact return matrix. A new daily bar
+    # must not invalidate every historical month's optimiser result.
+    _s_cache_key = strategies._research_code_fingerprint()
     s_weights_memos: dict[str, dict] = {"hrp": {}, "msharpe": {}, "mincvar": {}}
     if not strategies.FORCE_RETUNE and strategies.S_WEIGHTS_CACHE_PATH.exists():
         try:
@@ -879,7 +881,7 @@ def main() -> int:
                 _stored_key, _stored_memos = pickle.load(_fh)
             if _stored_key == _s_cache_key:
                 s_weights_memos = _stored_memos
-                print("  S-family weights cache HIT (dataset unchanged) [--retune to force]", flush=True)
+                print("  S-family monthly cache restored (each input matrix is checked) [--retune to force]", flush=True)
         except Exception:
             pass
 

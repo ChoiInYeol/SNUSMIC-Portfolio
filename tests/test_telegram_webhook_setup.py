@@ -88,7 +88,7 @@ def test_all_refresh_modes_build_the_same_publication_inputs_and_report_failure(
     producers = []
     for name, job in (("refresh-daily.yml", "refresh-daily"), ("refresh-reports.yml", "refresh-weekly")):
         text = (lake.ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
-        block = re.search(r"- name: Rebuild dataset, charts, backtest\n(.*?)(?=\n      - )", text, re.S).group(1)
+        block = re.search(r"- name: Rebuild report dataset and prices\n(.*?)(?=\n      - name: Pipeline health)", text, re.S).group(1)
         commands = re.findall(r"uv run python (scripts/\w+\.py)", block)
         producers.append(commands)
         assert commands.index("scripts/export_signals_api.py") < commands.index("scripts/build_forward_record.py") < commands.index("scripts/export_api_v2.py")

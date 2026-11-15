@@ -23,7 +23,7 @@ load_dotenv(ROOT / ".env")  # pykrx가 import 시점에 KRX_ID/KRX_PW를 읽으�
 from pykrx import stock  # noqa: E402
 
 import lake  # noqa: E402
-from lake_prices import flush_bronze, record_raw_prices, write_silver_prices  # noqa: E402
+from lake_prices import flush_bronze, record_raw_prices, replace_atomic, write_silver_prices  # noqa: E402
 from report_extract import extract  # noqa: E402
 from market_clock import closed_bar_end  # noqa: E402
 from report_text import strip_missing_images  # noqa: E402
@@ -1218,6 +1218,28 @@ def fetch_index(name: str, start: dt.date, end: dt.date) -> pd.DataFrame:
     return out.dropna(subset=["close"])
 
 
+def _history_requested(symbol: str, start: dt.date, cached: pd.DataFrame) -> bool:
+    """Remember exhausted pre-IPO history requests instead of re-downloading them daily."""
+    path = lake.GOLD_CACHE / "price_coverage" / f"{symbol}.json"
+    try:
+        doc = json.loads(path.read_text(encoding="utf-8"))
+        return (doc["schema_version"] == "1.0" and dt.date.fromisoformat(doc["requested_start"]) <= start
+                and doc["first_quote"] == cached.index[0].date().isoformat())
+    except (OSError, ValueError, KeyError, TypeError):
+        return False
+
+
+def _remember_history(symbol: str, start: dt.date, frame: pd.DataFrame) -> None:
+    if not frame.empty:
+        doc = {"schema_version": "1.0", "requested_start": start.isoformat(),
+               "first_quote": frame.index[0].date().isoformat()}
+        try:
+            replace_atomic(lake.GOLD_CACHE / "price_coverage" / f"{symbol}.json",
+                           lambda fh: json.dump(doc, fh))
+        except OSError as exc:
+            print(f"WARNING: could not cache price request coverage for {symbol}: {type(exc).__name__}", file=sys.stderr)
+
+
 def fetch_index_cached(name: str, start: dt.date, as_of: dt.date) -> pd.DataFrame:
     as_of = closed_bar_end("US" if name == "US" else "KR", as_of)
     cache_path = PRICE_CACHE_DIR / f"IDX_{name}.csv"
@@ -1228,7 +1250,8 @@ def fetch_index_cached(name: str, start: dt.date, as_of: dt.date) -> pd.DataFram
             cached = cached.loc[cached.index <= pd.Timestamp(as_of)]
         except Exception:  # noqa: BLE001
             cached = None
-    if cached is not None and not cached.empty and cached.index[0].date() <= start + dt.timedelta(days=12):
+    if cached is not None and not cached.empty and (cached.index[0].date() <= start + dt.timedelta(days=12)
+                                                   or _history_requested(f"IDX_{name}", start, cached)):
         last = cached.index[-1].date()
         if last >= as_of:
             return cached
@@ -1240,6 +1263,7 @@ def fetch_index_cached(name: str, start: dt.date, as_of: dt.date) -> pd.DataFram
     df = fetch_index(name, start, as_of)
     if not df.empty:
         df = write_silver_prices(f"IDX_{name}", df, out_dir=PRICE_CACHE_DIR)
+        _remember_history(f"IDX_{name}", start, df)
     return df
 
 
@@ -1274,7 +1298,8 @@ def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date
                 raise ValueError(f"invalid cached prices: {market}/{ticker}")
         return cached
 
-    if cached is not None and not cached.empty and cached.index[0].date() <= start + dt.timedelta(days=12):
+    if cached is not None and not cached.empty and (cached.index[0].date() <= start + dt.timedelta(days=12)
+                                                   or _history_requested(f"{market}_{ticker}", start, cached)):
         last = cached.index[-1].date()
         if last >= as_of:
             return cached
@@ -1289,6 +1314,7 @@ def fetch_prices_cached(market: str, ticker: str, start: dt.date, as_of: dt.date
     time.sleep(sleep)
     if not df.empty:
         df = write_silver_prices(f"{market}_{ticker}", df, out_dir=PRICE_CACHE_DIR)
+        _remember_history(f"{market}_{ticker}", start, df)
     return df
 
 

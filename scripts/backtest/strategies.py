@@ -5,6 +5,7 @@ import datetime as dt
 import hashlib
 import json
 import math
+from importlib.metadata import version
 from pathlib import Path
 
 import numpy as np
@@ -1272,7 +1273,7 @@ OPTUNA_CACHE_PATH = GOLD_CACHE / "optuna_cache.json"
 SPO_CACHE_PATH = GOLD_CACHE / "spo_cache.pkl"
 S_WEIGHTS_CACHE_PATH = GOLD_CACHE / "s_weights_cache.pkl"
 # Bump when _hrp_weights/_msharpe_weights/_mincvar_weights logic changes
-S_WEIGHTS_CODE_TAG = "s_v1"
+S_WEIGHTS_CODE_TAG = "s_v2-monthly-inputs"
 # Bump when load_prices indicator math or chandelier objective logic changes —
 # the dataset fingerprint hashes raw OHLCV only, so indicator-logic edits would
 # otherwise replay a stale Optuna cache silently (S-weights has the same guard).
@@ -1284,25 +1285,42 @@ def _dataset_fingerprint(
     prices: dict[str, pd.DataFrame],
     reports: list[tuple[dt.date, str, str, int]],
     calendar: list[dt.date],
+    *, through: dt.date | None = None,
 ) -> str:
     """SHA-256 over every input that can influence backtest results:
     report stream, calendar span, raw OHLCV of every ticker, and USDKRW."""
     h = hashlib.sha256()
     # Strategy accounting changes invalidate tuning/rebalance caches even on identical market data.
     h.update(b"execution-v2-prior-close-entry-atr\n")
+    reports = [r for r in reports if through is None or r[0] <= through]
+    calendar = [d for d in calendar if through is None or d <= through]
+    tickers = {r[1] for r in reports}
     for rdate, ticker, source, n_clubs in reports:
         h.update(f"{rdate.isoformat()}|{ticker}|{source}|{n_clubs}\n".encode())
     h.update(f"cal|{calendar[0].isoformat()}|{calendar[-1].isoformat()}|{len(calendar)}\n".encode())
     for tk in sorted(prices):
-        df = prices[tk]
+        if through is not None and tk not in tickers:
+            continue
+        df = prices[tk] if through is None else prices[tk].loc[:pd.Timestamp(through)]
         h.update(tk.encode())
         h.update(df.index.values.tobytes())
         for col in ("open", "high", "low", "close", "volume"):
             if col in df.columns:
                 h.update(np.ascontiguousarray(df[col].to_numpy()).tobytes())
     if fx._USDKRW is not None:
-        h.update(fx._USDKRW.index.values.tobytes())
-        h.update(np.ascontiguousarray(fx._USDKRW.to_numpy()).tobytes())
+        rates = fx._USDKRW if through is None else fx._USDKRW.loc[:pd.Timestamp(through)]
+        h.update(rates.index.values.tobytes())
+        h.update(np.ascontiguousarray(rates.to_numpy()).tobytes())
+    return h.hexdigest()
+
+
+def _research_code_fingerprint() -> str:
+    """Invalidate numerical caches when implementation or dependency versions change."""
+    h = hashlib.sha256(S_WEIGHTS_CODE_TAG.encode())
+    for name in ("strategies.py", "config.py", "accounting.py", "warehouse.py", "fx.py"):
+        h.update(Path(__file__).with_name(name).read_bytes())
+    for package in ("numpy", "pandas", "scipy", "optuna"):
+        h.update(f"{package}:{version(package)}".encode())
     return h.hexdigest()
 
 def _chandelier_fold_sharpe(
@@ -1347,10 +1365,11 @@ def run_optuna_chandelier(
 
     search_space_tag = "atr_period[20,42,63]|atr_mult[2.5,7.0,0.25]|max_positions[10,20,30]"
     cache_key = None
-    if dataset_fingerprint is not None:
+    if dataset_fingerprint is not None and is_calendar:
+        training_fp = _dataset_fingerprint(prices, reports, is_calendar, through=IS_FOLD2_END)
         cache_key = hashlib.sha256(
-            f"{dataset_fingerprint}|{search_space_tag}|seed={OPTUNA_SEED}|trials={OPTUNA_N_TRIALS}"
-            f"|code={OPTUNA_CODE_TAG}".encode()
+            f"{training_fp}|{search_space_tag}|seed={OPTUNA_SEED}|trials={OPTUNA_N_TRIALS}"
+            f"|code={OPTUNA_CODE_TAG}|implementation={_research_code_fingerprint()}".encode()
         ).hexdigest()
 
     best: dict | None = None
@@ -1362,7 +1381,7 @@ def run_optuna_chandelier(
             if entry:
                 best = entry["best_params"]
                 best_val = float(entry["best_objective_raw"])
-                print(f"  Optuna cache HIT (dataset unchanged) — best params {best}  "
+                print(f"  Optuna cache HIT (training inputs unchanged) — best params {best}  "
                       f"obj={best_val:.3f}  [--retune to force re-search]", flush=True)
         except Exception:
             best = None
@@ -3568,7 +3587,7 @@ def run_portfolio_opt(
     내부 가중치 계산을 건너뛰고 동일한 실행 메커니즘(월말 신호 → 익월 첫 거래일
     시가 체결, 턴오버 비용)으로 체결만 수행. V(SPO) 패밀리가 사용.
 
-    weights_memo (perf cache): {month_end_iso → filtered target_weights | None}.
+    weights_memo (perf cache): {month_end_iso:input_hash → filtered target_weights | None}.
     가중치 최적화(hrp/msharpe/mincvar)는 (prices, reports, calendar)의 순수 함수 —
     동일 데이터셋에서는 캐시 재생이 재계산과 결과 동일. None = 해당 월말에 가중치
     미산출(유니버스 부족/실패) 기록. 캐시에 없는 월은 정상 계산 후 기록.
@@ -3756,55 +3775,43 @@ def run_portfolio_opt(
             if sched_w:
                 target_weights = {t: v for t, v in sched_w.items() if v > 0.001}
         elif day in month_ends:
-            mkey = day.isoformat()
+            lookback_start = day - dt.timedelta(days=S_LOOKBACK_DAYS + 30)
+            ret_cols: dict[str, pd.Series] = {}
+            for ticker, ranges in ticker_valid.items():
+                if not any(start <= day <= end for start, end in ranges):
+                    continue
+                df = prices.get(ticker)
+                if df is None or not _has_day(df, day_ts):
+                    continue
+                sub = df.loc[(df.index >= pd.Timestamp(lookback_start)) & (df.index <= day_ts), "close"]
+                if len(sub) >= 30:
+                    ret_cols[ticker] = sub.pct_change().dropna()
+            ret_df = pd.DataFrame(ret_cols).dropna(how="any")
+            # Hash exactly what the optimiser sees, preserving column order.
+            # New OOS bars leave historical months intact; historical corrections invalidate them.
+            digest = hashlib.sha256(f"{variant}|{S_WEIGHTS_CODE_TAG}|{list(ret_df.columns)}".encode())
+            digest.update(ret_df.index.values.tobytes())
+            digest.update(np.ascontiguousarray(ret_df.to_numpy()).tobytes())
+            mkey = f"{day.isoformat()}:{digest.hexdigest()}"
             if weights_memo is not None and mkey in weights_memo:
-                # Cache replay — same filtered weights the optimiser produced on
-                # this dataset → identical rebalance. None = no weights that month.
-                cached_w = weights_memo[mkey]
-                if cached_w is not None:
-                    target_weights = dict(cached_w)
+                computed = weights_memo[mkey]
             else:
-                computed: dict[str, float] | None = None
-                lookback_start = day - dt.timedelta(days=S_LOOKBACK_DAYS + 30)
-                # Build active universe
-                active: list[str] = []
-                for ticker, ranges in ticker_valid.items():
-                    if not any(start <= day <= end for start, end in ranges):
-                        continue
-                    df = prices.get(ticker)
-                    if df is None or not _has_day(df, day_ts):
-                        continue
-                    active.append(ticker)
-
-                if len(active) >= S_MIN_STOCKS:
-                    # Build return matrix
-                    day_ts_start = pd.Timestamp(lookback_start)
-                    ret_cols: dict[str, pd.Series] = {}
-                    for ticker in active:
-                        df = prices[ticker]
-                        sub = df.loc[(df.index >= day_ts_start) & (df.index <= day_ts), "close"]
-                        if len(sub) < 30:
-                            continue
-                        r = sub.pct_change().dropna()
-                        ret_cols[ticker] = r
-
-                    if len(ret_cols) >= S_MIN_STOCKS:
-                        ret_df = pd.DataFrame(ret_cols).dropna(how="any")
-                        if len(ret_df) >= 20 and len(ret_df.columns) >= S_MIN_STOCKS:
-                            try:
-                                if variant == "hrp":
-                                    w_dict = _hrp_weights(ret_df)
-                                elif variant == "msharpe":
-                                    w_dict = _msharpe_weights(ret_df)
-                                else:  # mincvar
-                                    w_dict = _mincvar_weights(ret_df)
-                                computed = {t: v for t, v in w_dict.items() if v > 0.001}
-                            except Exception as e:
-                                print(f"  S({variant}) weight computation failed on {day}: {e}", flush=True)
-                if computed is not None:
-                    target_weights = dict(computed)
+                computed = None
+                if len(ret_df) >= 20 and len(ret_df.columns) >= S_MIN_STOCKS:
+                    try:
+                        if variant == "hrp":
+                            w_dict = _hrp_weights(ret_df)
+                        elif variant == "msharpe":
+                            w_dict = _msharpe_weights(ret_df)
+                        else:
+                            w_dict = _mincvar_weights(ret_df)
+                        computed = {t: v for t, v in w_dict.items() if v > 0.001}
+                    except Exception as e:
+                        print(f"  S({variant}) weight computation failed on {day}: {e}", flush=True)
                 if weights_memo is not None:
                     weights_memo[mkey] = computed
+            if computed is not None:
+                target_weights = dict(computed)
 
         nav = cash + sum(p["shares"] * p["last_close"] * p.get("fx", 1.0) for p in positions.values())
         nav_series.append((day.isoformat(), nav))

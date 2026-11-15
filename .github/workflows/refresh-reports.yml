@@ -39,7 +39,7 @@ jobs:
 
       # Price lake (git-ignored): silver clean prices, bronze raw fetches, derived price-frame cache.
       - name: Restore price cache
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             data/silver/prices
@@ -48,6 +48,19 @@ jobs:
           key: lake-prices-${{ runner.os }}-${{ github.run_id }}
           restore-keys: |
             lake-prices-${{ runner.os }}-
+
+      # Research caches are independently validated by exact inputs/code before reuse.
+      - name: Restore research cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            data/gold/_cache/optuna_cache.json
+            data/gold/_cache/spo_cache.pkl
+            data/gold/_cache/s_weights_cache.pkl
+            data/gold/_cache/price_coverage
+          key: research-${{ runner.os }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            research-${{ runner.os }}-${{ hashFiles('uv.lock') }}-
 
       # One-time migration (2026-10 medallion relayout, docs/DATA-LAYERS.md): seed silver from the
       # pre-relayout data/prices cache so the first run stays incremental, and snapshot it into bronze.
@@ -109,23 +122,44 @@ jobs:
         run: |
           uv run python scripts/transcribe_pdfs.py
 
-      - name: Rebuild dataset, charts, backtest
+      - name: Rebuild report dataset and prices
         env:
           KRX_ID: ${{ secrets.KRX_ID }}
           KRX_PW: ${{ secrets.KRX_PW }}
-        run: |
-          uv run python scripts/build_report_performance.py --sleep 0.3
-          uv run python scripts/build_research_review.py
-          uv run python scripts/build_search_index.py
-          uv run python scripts/build_report_first_seen.py
-          uv run python scripts/build_fulltext_index.py
-          uv run python scripts/export_stock_charts.py
-          uv run python scripts/backtest_momentum.py
-          uv run python scripts/build_strategy_robustness.py
-          uv run python scripts/export_signals_api.py
-          uv run python scripts/build_forward_record.py
-          uv run python scripts/export_api_v2.py
-          uv run python scripts/build_stats.py
+        run: uv run python scripts/build_report_performance.py --sleep 0.3
+
+      - name: Rebuild research review
+        run: uv run python scripts/build_research_review.py
+
+      - name: Rebuild report list index
+        run: uv run python scripts/build_search_index.py
+
+      - name: Rebuild first-seen dates
+        run: uv run python scripts/build_report_first_seen.py
+
+      - name: Rebuild full-text index
+        run: uv run python scripts/build_fulltext_index.py
+
+      - name: Export price charts
+        run: uv run python scripts/export_stock_charts.py
+
+      - name: Rebuild strategy research and accounts
+        run: uv run python scripts/backtest_momentum.py
+
+      - name: Rebuild strategy robustness
+        run: uv run python scripts/build_strategy_robustness.py
+
+      - name: Export legacy signals
+        run: uv run python scripts/export_signals_api.py
+
+      - name: Rebuild forward record
+        run: uv run python scripts/build_forward_record.py
+
+      - name: Export API v2
+        run: uv run python scripts/export_api_v2.py
+
+      - name: Rebuild report statistics
+        run: uv run python scripts/build_stats.py
 
       - name: Pipeline health gate
         env:
@@ -201,6 +235,28 @@ jobs:
           git diff --cached --quiet && echo "no changes" && exit 0
           git commit -m "chore: weekly full sweep ($(date -u +%F))"
           git push
+
+
+      # Retain validated price fetches and deterministic work even if a later publication gate fails.
+      - name: Save price cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/silver/prices
+            data/bronze/prices
+            data/gold/_cache/price_frames
+          key: lake-prices-${{ runner.os }}-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Save research cache
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            data/gold/_cache/optuna_cache.json
+            data/gold/_cache/spo_cache.pkl
+            data/gold/_cache/s_weights_cache.pkl
+            data/gold/_cache/price_coverage
+          key: research-${{ runner.os }}-${{ hashFiles('uv.lock') }}-${{ github.run_id }}-${{ github.run_attempt }}
 
   telegram-result:
     needs: refresh-weekly
