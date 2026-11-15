@@ -113,3 +113,28 @@ def test_refresh_caches_include_research_work_and_survive_later_gate_failures():
         for cache in ("price", "research"):
             block = text.split(f"- name: Save {cache} cache", 1)[1].split("\n      - name:", 1)[0]
             assert "if: always()" in block and "actions/cache/save@v4" in block
+
+
+def test_krx_transport_bounds_authenticated_and_anonymous_reads(monkeypatch):
+    import requests
+    from types import SimpleNamespace
+    import krx_http
+    original_session = requests.Session
+    authenticated = SimpleNamespace(session=original_session())
+    webio = SimpleNamespace(requests=requests, get_session=lambda: authenticated)
+    calls = []
+    monkeypatch.setattr(krx_http.HTTPAdapter, "send", lambda self, request, **kw: calls.append(kw) or kw)
+    krx_http.configure(webio)
+    configured = webio.get_session
+    krx_http.configure(webio)
+    assert webio.get_session is configured  # no repeated wrappers
+    assert requests.Session is original_session  # no global requests monkey-patch
+    assert webio.get_session() is authenticated  # auth object and cookies preserved
+    for session in (authenticated.session, webio.requests.Session()):
+        adapter = session.get_adapter("https://data.krx.co.kr")
+        assert isinstance(adapter, krx_http.BoundedAdapter)
+        adapter.send(None, timeout=None)
+        assert calls[-1]["timeout"] == (10, 45)
+        adapter.send(None, timeout=15)
+        assert calls[-1]["timeout"] == 15
+        session.close()

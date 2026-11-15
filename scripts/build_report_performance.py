@@ -21,6 +21,9 @@ ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")  # pykrx가 import 시점에 KRX_ID/KRX_PW를 읽으므로 먼저 로드
 
 from pykrx import stock  # noqa: E402
+from krx_http import configure as configure_krx_http  # noqa: E402
+
+configure_krx_http()
 
 import lake  # noqa: E402
 from lake_prices import flush_bronze, record_raw_prices, replace_atomic, write_silver_prices  # noqa: E402

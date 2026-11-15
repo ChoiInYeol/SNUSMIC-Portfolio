@@ -29,6 +29,12 @@ const SHA256 = ":sha([0-9a-f]{64})";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  // Immutable revision payloads are fetched by the browser from the CDN. The
+  // generic v2 filesystem reader otherwise traces every historical revision
+  // into server functions, growing their bundles on every daily refresh.
+  outputFileTracingExcludes: {
+    "/*": ["./public/api/v2/strategies/*/revisions/**/*"],
+  },
   outputFileTracingIncludes: {
     "/api/telegram/webhook": ["./src/app/globals.css", "./node_modules/pretendard/dist/public/static/Pretendard-Regular.otf", "./node_modules/pretendard/dist/public/static/Pretendard-Bold.otf"],
   },

@@ -11,7 +11,8 @@ const gate = (...args) => spawnSync(process.execPath, [path.join(ROOT, 'scripts/
   { cwd: ROOT, encoding: 'utf8' });
 
 test('build script runs the gate before next build', () => {
-  assert.match(readJson('package.json').scripts.build, /^node scripts\/check-build-inputs\.cjs && next build$/);
+  assert.equal(readJson('package.json').scripts.build,
+    'node scripts/check-build-inputs.cjs && next build && node scripts/check-server-traces.cjs');
 });
 
 test('the published latest signals pass the build gate', () => {

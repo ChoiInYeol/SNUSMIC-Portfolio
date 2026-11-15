@@ -6,7 +6,7 @@
     "dev:metadata": "uv run uvicorn scripts.metadata_api:app --host 127.0.0.1 --port 8000",
     "dev:local": "next dev --webpack --hostname 127.0.0.1 --port 3100",
     "dev": "next dev",
-    "build": "node scripts/check-build-inputs.cjs && next build",
+    "build": "node scripts/check-build-inputs.cjs && next build && node scripts/check-server-traces.cjs",
     "start": "next start",
     "lint": "eslint ."
   },
