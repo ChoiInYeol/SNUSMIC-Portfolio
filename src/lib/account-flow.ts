@@ -110,17 +110,40 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
   if (d.status === "awaiting_next_open") changes.push(`기록 시작 ${d.started_at.slice(0, 10)} 이후 아직 시장별 다음 시가가 오지 않아 현금 100%입니다.`);
 
   const budget = d.nav_krw * d.policy.position_weight;
-  const slots = d.policy.max_positions - stocks.length;
-  const buys: FlowAction[] = d.target_positions.map((t) => ({
+  const slots = Math.max(0, d.policy.max_positions - stocks.length);
+  const idlePct = d.cash_weight_pct + (parked?.weight_pct ?? 0);
+  let available = d.cash_krw + (parked?.value_krw ?? 0);
+  let estimatedFees = 0;
+  const reserved = new Set(stocks.map((p) => p.id));
+  const entries: { target: PaperPortfolio["target_positions"][number]; gross: number }[] = [];
+  const excluded: FlowPlan["excluded"] = [];
+  for (const target of d.target_positions) {
+    const allocation = Math.min(budget, available);
+    const reason = reserved.has(target.id) ? "이미 보유 중이거나 앞선 후보에 포함된 종목"
+      : entries.length >= slots ? "빈 슬롯 없음"
+      : allocation < budget * 0.5 ? "가용 자금이 기본 진입 예산의 50% 미만" : null;
+    if (reason) {
+      excluded.push({ name: target.name, reason });
+      continue;
+    }
+    // Match parking-open-v2: the allocation includes parking liquidation and stock fees.
+    const gross = allocation * (1 - d.policy.parking_cost) * (1 - d.policy.cost_per_side);
+    estimatedFees += allocation - gross;
+    available -= allocation;
+    reserved.add(target.id);
+    entries.push({ target, gross });
+  }
+  const plannedNav = d.nav_krw - estimatedFees;
+  const buys: FlowAction[] = entries.map(({ target: t, gross }) => ({
     side: "buy",
     id: t.id,
     name: t.name,
     market: t.id.startsWith("US:") ? "US" : t.id.startsWith("KR:") ? "KR" : null,
     shares: null,
-    amountKrw: { value: budget, basis: "estimate" },
+    amountKrw: { value: gross, basis: "estimate" },
     currentWeightPct: 0,
-    plannedWeightPct: t.weight_pct,
-    reason: "학회 매수 신호 관측 후 진입 대기 — 해당 시장의 다음 가용 시가에 기본 NAV 5%로 진입",
+    plannedWeightPct: gross / plannedNav * 100,
+    reason: `학회 매수 신호 관측 후 진입 대기 — 기본 NAV ${(d.policy.position_weight * 100).toFixed(0)}% 예산에서 비용을 차감한 추정`,
     // Same for every candidate, so stated once in the plan notes instead of on each row.
     conditions: [],
   }));
@@ -138,10 +161,6 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
       : "보유 유지 — 종가 스탑 이탈은 다음 완료 종가에서 판정 (이 산출물에 스탑 수준 없음)",
     conditions: [],
   }));
-  const plannedBuyPct = buys.reduce((a, b) => a + (b.plannedWeightPct ?? 0), 0);
-  const idlePct = d.cash_weight_pct + (parked?.weight_pct ?? 0);
-  const estCost = buys.length * budget * d.policy.cost_per_side;
-
   const plan: FlowPlan = {
     key: "paper-next-open",
     title: "다음 시가 (시장별 다음 가용 세션)",
@@ -150,28 +169,29 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
     basis: `${d.as_of} 완료 일봉 기준`,
     status: buys.length ? "awaiting_open" : "waiting_signal",
     actions: [...buys, ...holds],
-    excluded: [],
+    excluded,
     noTradeReason: buys.length
       ? null
-      : "대기 중인 진입 신호가 없습니다 — 새 학회 매수 리포트가 관측되지 않았습니다. 종가 스탑 이탈 매도는 다음 완료 종가에서 판정되어 그다음 시가에 실행됩니다.",
+      : d.target_positions.length ? "대기 후보가 슬롯·잔고·기보유 제한으로 모두 제외됐습니다."
+        : "대기 중인 진입 신호가 없습니다 — 새 학회 매수 리포트가 관측되지 않았습니다. 종가 스탑 이탈 매도는 다음 완료 종가에서 판정되어 그다음 시가에 실행됩니다.",
     contributionsKrw: 0,
-    cashAfterKrw: buys.length ? { value: Math.max(0, d.nav_krw * (idlePct - plannedBuyPct) / 100 - estCost), basis: "estimate" } : null,
+    cashAfterKrw: buys.length ? { value: available, basis: "estimate" } : null,
     notes: [
       "이 계정은 W 엔진의 소수 주식 모형이라 주문 수량 대신 금액(추정 NAV × 5%)을 보여 줍니다.",
-      "모든 매수 후보는 슬롯·잔고·시가 갭에 따라 체결되지 않거나 금액이 달라질 수 있습니다.",
-      ...(buys.length > slots ? [`대기 신호 ${buys.length}건 > 남은 슬롯 ${slots}개 — 일부는 체결되지 않습니다.`] : []),
+      "후보 순서대로 현재 슬롯·자금을 배분한 추정입니다. 시장별 시가·갭·선행 체결에 따라 실제 결과가 달라질 수 있습니다.",
+      ...(excluded.length ? [`대기 후보 ${d.target_positions.length}건 중 ${excluded.length}건은 현재 조건에서 제외했습니다.`] : []),
       "매도 계획은 산출물에 없습니다: 스탑 판정은 다음 완료 종가 이후에만 정해집니다.",
     ],
   };
 
   const weights = [
-    ...stocks.map((p) => ({ id: p.id, name: p.name, currentPct: p.weight_pct, plannedPct: p.weight_pct })),
+    ...stocks.map((p) => ({ id: p.id, name: p.name, currentPct: p.weight_pct, plannedPct: p.value_krw / plannedNav * 100 })),
     ...buys.map((b) => ({ id: b.id, name: b.name, currentPct: 0, plannedPct: b.plannedWeightPct })),
     {
       id: "idle",
       name: d.status === "awaiting_next_open" ? "현금 → 첫 시가 이후 올웨더 파킹" : "올웨더 파킹 · 현금",
       currentPct: idlePct,
-      plannedPct: Math.max(0, idlePct - plannedBuyPct),
+      plannedPct: available / plannedNav * 100,
     },
   ];
 
@@ -197,7 +217,7 @@ export function paperFlow(d: PaperPortfolio): AccountFlow {
     changes,
     plans: [plan],
     weights,
-    weightsNote: `추정 — 대기 신호마다 기본 진입 비중 ${(d.policy.position_weight * 100).toFixed(0)}%를 더한 값. 시가 갭·슬롯(최대 ${d.policy.max_positions})·비용 ${(d.policy.cost_per_side * 100).toFixed(1)}%에 따라 달라집니다.`,
+    weightsNote: `추정 — 가용 자금·슬롯(최대 ${d.policy.max_positions}) 안에서 기본 NAV ${(d.policy.position_weight * 100).toFixed(0)}% 예산을 배분하고 주식·파킹 비용을 차감한 평가액 기준 비중입니다.`,
     log: [...d.fills].reverse().map((f, i) => ({
       key: `${f.date}-${f.ticker}-${i}`,
       date: f.date,

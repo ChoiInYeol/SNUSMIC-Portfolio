@@ -596,6 +596,24 @@ def compute_today_signals(
 # main
 # ──────────────────────────────────────────────────────────────────────────────
 
+def load_benchmarks() -> tuple[pd.Series, pd.Series, pd.Series, pd.Series, pd.Series]:
+    """Load every required observed series before computing publishable results.
+
+    A feed failure must stop publication; synthetic constant/proxy prices change
+    the AllWeather strategy and its benchmark instead of repairing missing data.
+    """
+    series = []
+    for name, loader in (("KOSPI", load_kospi), ("S&P500", load_sp500),
+                         ("NASDAQ", load_nasdaq), ("GLD", load_gld), ("USDKRW", load_usdkrw)):
+        observed = loader()
+        if observed.empty or not np.isfinite(observed.to_numpy()).all() or (observed <= 0).any():
+            raise ValueError(f"{name} requires finite, positive observed benchmark prices")
+        print(f"  {name}: {observed.index[0].date()} to {observed.index[-1].date()}", flush=True)
+        series.append(observed)
+    set_usdkrw(series[4])
+    return tuple(series)
+
+
 def main() -> int:
     print("Loading report data...", flush=True)
     perf_all = pd.read_csv(REPORT_PERFORMANCE_CSV, encoding="utf-8-sig")
@@ -686,29 +704,7 @@ def main() -> int:
 
     # ── Load benchmarks
     print("Loading benchmarks...", flush=True)
-    kospi = load_kospi()
-    sp500 = load_sp500()
-    try:
-        nasdaq = load_nasdaq()
-        print(f"  NASDAQ: {nasdaq.index[0].date()} to {nasdaq.index[-1].date()}", flush=True)
-    except Exception as e:
-        print(f"  NASDAQ fetch failed: {e}, using S&P500 as proxy", flush=True)
-        nasdaq = sp500.copy()
-    try:
-        gld = load_gld()
-        print(f"  GLD: {gld.index[0].date()} to {gld.index[-1].date()}", flush=True)
-    except Exception as e:
-        print(f"  GLD fetch failed: {e}, using flat series as proxy", flush=True)
-        gld = pd.Series(100.0, index=nasdaq.index)
-
-    # v19 FX: USDKRW 환율 로드 및 전역 주입
-    try:
-        usdkrw_series = load_usdkrw()
-        set_usdkrw(usdkrw_series)
-        print(f"  USDKRW: {usdkrw_series.index[0].date()} to {usdkrw_series.index[-1].date()}, "
-              f"latest={usdkrw_series.iloc[-1]:.1f}", flush=True)
-    except Exception as e:
-        print(f"  USDKRW fetch failed: {e}, FX fallback={fx._USDKRW_FALLBACK}", flush=True)
+    kospi, sp500, nasdaq, gld, usdkrw_series = load_benchmarks()
 
     strat_start = calendar[0]
     strat_end = calendar[-1]

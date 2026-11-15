@@ -57,3 +57,45 @@ def test_failed_refresh_reply_does_not_publish_a_success_book(env, monkeypatch):
     monkeypatch.setattr(notify, "deliver", lambda chunks, **kw: calls.append(chunks) or 0)
     assert notify.main() == 0
     assert len(calls[0]) == 1 and "실패" in calls[0][0] and "SOTA 모델" not in calls[0][0]
+
+
+@pytest.mark.parametrize("result", ["failure", "cancelled"])
+def test_scheduled_refresh_failures_alert_without_a_telegram_request(env, monkeypatch, result):
+    monkeypatch.delenv("TELEGRAM_REQUEST_ID", raising=False)
+    monkeypatch.setenv("REFRESH_RESULT", result)
+    monkeypatch.setenv("GITHUB_RUN_ID", "1234")
+    monkeypatch.setattr(notify, "validate", lambda *args: pytest.fail("failed runs must not read a success book"))
+    calls = []
+    monkeypatch.setattr(notify, "deliver", lambda chunks, **kw: calls.append((chunks, kw)) or 0)
+    assert notify.main() == 0
+    assert len(calls) == 1 and calls[0][1]["scope"] == "refresh-run:1234"
+    assert "https://github.com/owner/repo/actions/runs/1234" in calls[0][0][0]
+
+
+def test_unconfigured_scheduled_failure_warns_without_attempting_delivery(env, monkeypatch, capsys):
+    monkeypatch.delenv("TELEGRAM_REQUEST_ID", raising=False)
+    monkeypatch.delenv("TELEGRAM_BOT_TOKEN")
+    monkeypatch.setenv("REFRESH_RESULT", "failure")
+    monkeypatch.setenv("GITHUB_RUN_ID", "1234")
+    monkeypatch.setattr(notify, "deliver", lambda *a, **kw: pytest.fail("not configured"))
+    assert notify.main() == 0
+    assert "::warning::" in capsys.readouterr().out
+
+
+def test_all_refresh_modes_build_the_same_publication_inputs_and_report_failure():
+    import re
+    import lake
+    producers = []
+    for name, job in (("refresh-daily.yml", "refresh-daily"), ("refresh-reports.yml", "refresh-weekly")):
+        text = (lake.ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
+        block = re.search(r"- name: Rebuild dataset, charts, backtest\n(.*?)(?=\n      - )", text, re.S).group(1)
+        commands = re.findall(r"uv run python (scripts/\w+\.py)", block)
+        producers.append(commands)
+        assert commands.index("scripts/export_signals_api.py") < commands.index("scripts/build_forward_record.py") < commands.index("scripts/export_api_v2.py")
+        assert "scripts/build_stats.py" in commands
+        commit = text.split("- name: Commit refreshed artifacts", 1)[1]
+        assert "src/data/forward-record.json" in commit and "src/data/stats.json" in commit
+        reply = text.split("  telegram-result:", 1)[1]
+        assert f"needs: {job}" in reply and "always()" in reply and f"needs.{job}.result != 'success'" in reply
+        assert "scripts/notify_telegram_refresh.py" in reply
+    assert producers[0] == producers[1]

@@ -9,7 +9,7 @@ Telegram으로 운영 알림을 보낸다. "조용한 데이터 부패" 방지�
   * 카운트 감소 — manifest PDF / 전사 markdown / 파싱 행 / 성과 행이 줄면
     데이터 손실 (append-only 파이프라인에서 감소는 버그).
   * 파싱 이슈 급증 — data/silver/reports/parse_issues.csv +15행 이상이면 소스 포맷 변경 의심.
-  * 백테스트 신선도 — signals.as_of가 4일(주말 버퍼) 이상 묵으면 갱신 실패.
+  * 백테스트 신선도 — 시장별 완료 거래일 기준으로 2세션 넘게 누락되면 갱신 실패.
   * 전략 수 변동 — multi_strategy.strategies 수가 바뀌면 의도 여부 확인 필요.
 
 Behavior contract: quality failures return nonzero and block publication; Telegram notification is best-effort and independent. Dry-run is strictly read-only.
@@ -31,6 +31,8 @@ import sys
 from pathlib import Path
 
 import lake
+from market_clock import closed_bar_end
+from market_calendars import is_trading_day, previous_trading_day
 
 ROOT = lake.ROOT
 HEALTH_PATH = lake.GOLD_HEALTH
@@ -42,7 +44,7 @@ REPORT_STATS_PATHS = (ROOT / "src" / "data" / "forward-record.json", ROOT / "src
 REPORT_PERFORMANCE_PATH = ROOT / "src" / "data" / "report-performance.json"
 
 PARSE_ISSUE_SPIKE = 15   # 직전 대비 이 행수 이상 증가하면 경고
-STALE_DAYS = 2           # calendar-day warning; exchange holidays are not inferred
+MAX_MISSED_SESSIONS = 2  # distinct completed KR/US trading dates, excluding holidays
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -212,7 +214,7 @@ _LABELS = {
 }
 
 
-def diagnose(metrics: dict, prev: dict | None) -> list[str]:
+def diagnose(metrics: dict, prev: dict | None, *, now: dt.datetime | None = None) -> list[str]:
     """이상 징후 목록 (비어 있으면 정상)."""
     issues: list[str] = []
 
@@ -238,11 +240,19 @@ def diagnose(metrics: dict, prev: dict | None) -> list[str]:
     as_of = metrics.get("backtest_as_of")
     if as_of:
         try:
-            age = (dt.date.today() - dt.date.fromisoformat(as_of)).days
-            if age > STALE_DAYS:
-                issues.append(f"백테스트 신호가 {age}일 묵음 (as_of {as_of}) — 거래소 휴일은 판별하지 않음")
-        except ValueError:
-            issues.append(f"backtest as_of 파싱 불가: {as_of!r}")
+            instant = now or dt.datetime.now(dt.timezone.utc)
+            caps = {m: previous_trading_day(closed_bar_end(m, now=instant), m, inclusive=True)
+                    for m in ("KR", "US")}
+            day = dt.date.fromisoformat(as_of)
+            missed = 0
+            while day < max(caps.values()) and missed <= MAX_MISSED_SESSIONS:
+                day += dt.timedelta(days=1)
+                if any(day <= cap and is_trading_day(day, market) for market, cap in caps.items()):
+                    missed += 1
+            if missed > MAX_MISSED_SESSIONS:
+                issues.append(f"백테스트 신호가 완료 거래일 {missed}세션 이상 누락 (as_of {as_of})")
+        except (TypeError, ValueError) as exc:
+            issues.append(f"backtest 신선도 판정 불가: {as_of!r}: {exc}")
     else:
         issues.append("backtest as_of 없음 — strategy-backtest.json 점검 필요")
 

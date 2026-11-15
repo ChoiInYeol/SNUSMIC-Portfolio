@@ -65,12 +65,46 @@ test('paper account flow reads the real artifact without inventing fills or quan
   assert.equal(f.valuation.investmentPnlKrw, d.nav_krw - d.initial_capital_krw);
   const [plan] = f.plans;
   const buys = plan.actions.filter((a) => a.side === 'buy');
-  assert.equal(buys.length, d.target_positions.length);
+  assert.equal(buys.length + plan.excluded.length, d.target_positions.length);
   assert.ok(buys.every((a) => a.shares === null && a.amountKrw.basis === 'estimate'), 'fractional engine: amounts only, labelled estimates');
   assert.equal(plan.noTradeReason === null, buys.length > 0);
   assert.equal(f.log.length, d.fills.length);
   const planned = f.weights.reduce((acc, w) => acc + (w.plannedPct ?? 0), 0);
   assert.ok(Math.abs(planned - 100) < 0.01, `planned weights sum ${planned}`);
+});
+
+test('paper estimates conserve NAV after fees and respect cash, slots and existing holdings', () => {
+  const base = readJson('public/research/portfolio.json');
+  for (const { stockPct, count, slots, expected } of [
+    { stockPct: 90, count: 20, slots: 20, expected: 2 },
+    { stockPct: 50, count: 20, slots: 1, expected: 0 },
+    { stockPct: 99, count: 20, slots: 20, expected: 0 },
+    { stockPct: 97.5, count: 20, slots: 20, expected: 1 },
+  ]) {
+    const d = structuredClone(base);
+    d.positions = [
+      { id: 'KR:005930', name: 'held', quote_date: d.as_of, value_krw: d.nav_krw * stockPct / 100, weight_pct: stockPct, return_pct: 0 },
+      { id: 'INDEX:AllWeather', name: 'parking', quote_date: d.as_of, value_krw: d.nav_krw * (100 - stockPct) / 100, weight_pct: 100 - stockPct, return_pct: null },
+    ];
+    d.cash_krw = 0; d.cash_weight_pct = 0; d.policy.max_positions = slots;
+    d.target_positions = [
+      { id: 'KR:005930', name: 'already held', weight_pct: 5 },
+      ...Array.from({ length: count }, (_, i) => ({ id: `KR:${String(i).padStart(6, '0')}`, name: `candidate ${i}`, weight_pct: 5 })),
+    ];
+    const f = flow.paperFlow(PaperPortfolioSchema.parse(d));
+    const plan = f.plans[0];
+    const buys = plan.actions.filter((a) => a.side === 'buy');
+    assert.equal(buys.length, expected);
+    assert.equal(plan.excluded.length + buys.length, d.target_positions.length);
+    assert.ok(buys.every((b) => b.id !== 'KR:005930'));
+    const total = f.weights.reduce((sum, w) => sum + (w.plannedPct ?? 0), 0);
+    assert.ok(Math.abs(total - 100) < 0.01, `planned weights sum ${total}`);
+    const spent = buys.reduce((sum, b) => sum + b.amountKrw.value / ((1 - d.policy.parking_cost) * (1 - d.policy.cost_per_side)), 0);
+    assert.ok(spent <= d.positions[1].value_krw + 0.01);
+    if (expected) assert.ok(Math.abs(plan.cashAfterKrw.value + spent - d.positions[1].value_krw) < 0.01);
+    else assert.ok(plan.noTradeReason);
+    assert.equal(f.log.length, d.fills.length, 'estimates do not invent executions');
+  }
 });
 
 test('a paper account with no pending signal still explains the no-trade day', () => {

@@ -60,7 +60,9 @@ git diff tests/golden/                                # 변경이 의도와 일�
 
 ## 파이프라인 헬스 체크 (v23)
 
-수집기별 종료 상태를 `data/bronze/_runs/source-status/`에 기록하며, 하나라도 실패하면 재생성·커밋 전에 중단하고 상태를 quarantine artifact로 남깁니다. 새 산출물은 strict JSON/유한 수치·분류·시점/헤드라인·카운트/슬롯 일관성·자료 감소 검증 후에만 커밋하고 Telegram 다이제스트를 보냅니다. 품질 실패는 Telegram 설정과 무관하게 nonzero입니다. 신호의 달력상 경과일을 검사하지만 거래소 휴일 여부를 추정하여 최신성을 보장하지는 않습니다.
+수집기별 종료 상태를 `data/bronze/_runs/source-status/`에 기록하며, 하나라도 실패하면 재생성·커밋 전에 중단하고 상태를 quarantine artifact로 남깁니다. 새 산출물은 strict JSON/유한 수치·분류·시점/헤드라인·카운트/슬롯 일관성·자료 감소 검증 후에만 커밋합니다. 품질 실패는 Telegram 설정과 무관하게 nonzero입니다. 신호 신선도는 KR·US 각각의 장 마감·휴장표를 적용해 완료된 거래일의 누락을 세며, 2세션 초과 누락 시 게시를 막습니다.
+
+일간·전체 복구 실행은 같은 서빙 입력(전진 성적·통계 포함)을 재생성합니다. NASDAQ·GLD·USDKRW 등 필수 벤치마크 조회 실패는 대체 가격으로 계산을 계속하지 않고 게시를 중단합니다. 실패·취소 알림은 별도 `telegram-result` 작업에서 실행하므로 수집·백테스트·게시 검증 단계의 실패도 Telegram 설정이 있으면 통지합니다. 설정이 없으면 Actions 경고와 실행 링크를 남깁니다.
 
 ```bash
 uv run python scripts/pipeline_health.py --dry-run   # 전송·health 상태 변경 없는 진단; 이상이면 nonzero

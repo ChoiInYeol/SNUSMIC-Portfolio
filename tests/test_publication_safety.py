@@ -113,3 +113,28 @@ def test_shape_corruption_is_reported_not_silently_published(published_shapes, m
     back_path.write_text(json.dumps(back), encoding="utf-8")
     latest_path.write_text(json.dumps(latest), encoding="utf-8")
     assert health._shape_issues()
+
+
+@pytest.mark.parametrize("instant, as_of, stale", [
+    ("2027-02-08T09:30:00+00:00", "2027-02-05", False),  # KR holiday, US not yet closed
+    ("2026-09-27T09:30:00+00:00", "2026-09-25", False),  # weekend and KR holiday
+    ("2026-10-26T05:00:00+00:00", "2026-10-23", False),  # Monday before either market closes
+    ("2026-10-26T11:00:00+00:00", "2026-10-19", True),
+])
+def test_health_freshness_counts_only_completed_exchange_sessions(instant, as_of, stale):
+    issues = health.diagnose({"backtest_as_of": as_of}, None, now=dt.datetime.fromisoformat(instant))
+    assert any("세션 이상 누락" in issue for issue in issues) is stale
+
+
+@pytest.mark.parametrize("feed", ["load_nasdaq", "load_gld", "load_usdkrw"])
+def test_required_benchmark_failure_aborts_instead_of_substituting_a_proxy(monkeypatch, feed):
+    import backtest_momentum as bt
+    observed = pd.Series([100.0, 101.0], index=pd.to_datetime(["2026-10-22", "2026-10-23"]))
+    for name in ("load_kospi", "load_sp500", "load_nasdaq", "load_gld", "load_usdkrw"):
+        monkeypatch.setattr(bt, name, lambda: observed)
+    def fail():
+        raise RuntimeError("required feed unavailable")
+    monkeypatch.setattr(bt, feed, fail)
+    monkeypatch.setattr(bt, "set_usdkrw", lambda value: pytest.fail("must not commit partial market inputs"))
+    with pytest.raises(RuntimeError, match="required feed unavailable"):
+        bt.load_benchmarks()

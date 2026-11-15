@@ -483,7 +483,9 @@ def build(prev: dict | None = None, exclude: frozenset[str] = frozenset()) -> di
     shards: list[dict[str, str]] = [{} for _ in range(SHARDS)]
     postings = 0
     for t in sorted(raw):
-        idf = math.log(1 + (basis_docs - df[t] + 0.5) / (df[t] + 0.5))
+        # Document frequency belongs to the current corpus. Only the tf length
+        # normalisation is frozen: df may exceed the previous corpus size.
+        idf = math.log(1 + (n_docs - df[t] + 0.5) / (df[t] + 0.5))
         shards[shard_of(t)][t] = f"{idf:.4f}:{encode_postings(raw[t])}"
         postings += len(raw[t])
 

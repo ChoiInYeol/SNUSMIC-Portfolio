@@ -233,7 +233,7 @@ jobs:
 
   telegram-result:
     needs: refresh-daily
-    if: always() && github.event_name == 'workflow_dispatch' && inputs.telegram_request_id != ''
+    if: always() && (needs.refresh-daily.result != 'success' || (github.event_name == 'workflow_dispatch' && inputs.telegram_request_id != ''))
     runs-on: ubuntu-latest
     timeout-minutes: 5
     permissions:

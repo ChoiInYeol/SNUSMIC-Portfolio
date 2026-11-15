@@ -133,6 +133,27 @@ def test_postings_round_trip_and_hash_vectors():
     assert ft.terms("협동로봇을 AI2 공급") == ["협동", "동로", "로봇", "봇을", "ai2", "공급"]
 
 
+def test_growing_corpus_keeps_nonnegative_current_document_idf(tmp_path, monkeypatch):
+    """A common term in newly arrived reports must not produce an unreadable shard."""
+    for i in range(26):
+        (tmp_path / f"2026-11-01-{i}.md").write_text(
+            f"공통 분석 보고서입니다. 기업 고유 자료 식별자 {i} abc{i} 매출 성장과 산업 전망을 검토한다. " * 5,
+            encoding="utf-8")
+    monkeypatch.setattr(ft.lake, "SILVER_MARKDOWN", tmp_path)
+    monkeypatch.setattr(ft.lake, "rel", lambda p: p.name)
+    monkeypatch.setattr(ft, "load_inputs", lambda: ({"groups": [], "alias_stoplist": []}, {}, {}, {}))
+    monkeypatch.setattr(ft, "build_stocks", lambda *args: {})
+    previous = {"params": {"basis": {"docs": 25, "avg_len": 200}}, "reports": []}
+    docs = ft.build(prev=previous)
+    manifest = docs["manifest.json"]
+    assert manifest["stats"]["reports"] == 26
+    assert manifest["params"]["basis"] == previous["params"]["basis"]  # tf basis stays stable
+    values = [value for name, doc in docs.items() if name.startswith("terms/") for value in doc["terms"].values()]
+    assert values and all(re.fullmatch(r"\d+\.\d{4}:[0-9A-Za-z_-]+", value) for value in values)
+    common = docs[f"terms/{ft.shard_of('공통'):03d}.json"]["terms"]["공통"]
+    assert float(common.split(":")[0]) == round(ft.math.log(1 + 0.5 / 26.5), 4)
+
+
 def test_mention_boundaries_and_relation_cues():
     finder = ft.MentionFinder({"레이": "kr-1", "SK": "kr-2", "SK하이닉스": "kr-3", "로보티즈": "kr-4"})
     found = lambda text: [slug for _, _, slug in finder.find(text)]
