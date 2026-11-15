@@ -269,6 +269,25 @@ def test_not_ready_data_records_no_session_and_no_plan(lake_tmp):
     assert gold()["latest_plans"]["KR"]["trading_day"] == "2026-10-21"  # no new KR plan without today's close
 
 
+def test_session_addenda_repeat_and_advance_without_rewriting_observations(lake_tmp):
+    prices = {t: frame("KR", 10_000.0) for t in ("005930", "000660", "035420")}
+    args = dict(market="KR", prices=prices, benchmark=benchmark("KR"), fx_series=fx._USDKRW, atr_column="atr")
+    folder = fa.lake.BRONZE_FUNDED / "sessions" / "KR"
+    fa.record_sessions(universe=["005930"], now=at("2026-10-26"), **args)
+    base = (folder / "2026-10-26.json").read_bytes()
+    fa.record_sessions(universe=["005930", "000660"], now=at("2026-10-26", dt.time(12)), **args)
+    first = (folder / "2026-10-26~01.json").read_bytes()
+    same = fa.record_sessions(universe=["005930", "000660"], now=at("2026-10-26", dt.time(13)), **args)
+    assert same["ready"] and same["recorded_through"] == "2026-10-26" and same["written"] == []
+    fa.record_sessions(universe=list(prices), now=at("2026-10-26", dt.time(14)), **args)
+    assert set(json.loads((folder / "2026-10-26~02.json").read_text())["bars"]) == {"035420"}
+    later = fa.record_sessions(universe=list(prices), now=at("2026-10-27"), **args)
+    assert later["ready"] and later["recorded_through"] == "2026-10-27" and later["written"] == ["2026-10-27"]
+    assert (folder / "2026-10-26.json").read_bytes() == base
+    assert (folder / "2026-10-26~01.json").read_bytes() == first
+    assert set(json.loads((folder / "2026-10-27.json").read_text())["bars"]) == set(prices)
+
+
 def test_benchmark_bar_on_a_calendar_holiday_fails_loudly(lake_tmp):
     run(at("2026-12-23"))
     bad = pd.concat([benchmark("KR"), pd.Series([100.0], index=[pd.Timestamp("2026-12-25")])]).sort_index()

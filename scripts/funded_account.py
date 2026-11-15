@@ -832,7 +832,8 @@ def record_sessions(market: str, *, universe: list[str], prices: dict, benchmark
                     atr_column: str, now: dt.datetime, after: str | None = None) -> dict:
     """Record every completed, data-ready session up to this market's own cutoff. Never a future bar."""
     folder = _base() / "sessions" / market
-    recorded = sorted(p.stem for p in folder.glob("*.json"))
+    # Addenda ({date}~NN.json) are observations of the same session, not later dates.
+    recorded = sorted({_read(p)["session_date"] for p in folder.glob("*.json")})
     cap = expected_session(market, now)
     bench = benchmark.dropna()
     # `after`: a seeded account's last backtest mark; sessions since then are recorded (closes only, no plans).
