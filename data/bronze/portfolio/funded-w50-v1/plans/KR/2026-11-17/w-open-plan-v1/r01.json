@@ -1,0 +1,120 @@
+{
+ "schema_version": "1.0",
+ "account_id": "funded-w50-v1",
+ "policy_version": "w-open-plan-v1",
+ "market": "KR",
+ "trading_day": "2026-11-17",
+ "open_at": "2026-11-17T00:00:00+00:00",
+ "basis_session": "2026-11-16",
+ "basis_observed_at": "2026-11-16T20:03:23.633201+00:00",
+ "skipped_closures": [],
+ "quantity_basis": "estimate_from_close",
+ "account_snapshot": {
+  "nav_est_krw": 237284631.75,
+  "cash_krw": 12644632.11,
+  "incoming_contributions_krw": 0,
+  "reserved_for_earlier_plans_krw": 0,
+  "est_sell_proceeds_krw": 0,
+  "cash_after_plan_est_krw": 12644632.11,
+  "target_budget_krw": 11864231.59,
+  "position_count": 17,
+  "slots_free": 13,
+  "marks": {
+   "KR": "2026-11-16",
+   "US": "2026-11-13"
+  },
+  "principal_krw": 149000000.0
+ },
+ "contributions": [],
+ "orders": [],
+ "excluded": [
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "1617586559950b54b21207ac9cb514d1c571497da990ba04a4debe2fb5f0cb20",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "131390",
+   "name": "원익피앤이",
+   "signal_id": "7a56f8410081103dec5eef81970a5733e2620178508702c71bf9d959cdedf02d",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "048260",
+   "name": "오스템임플란트",
+   "signal_id": "fc09a2b2ee04091e77d203f3d8eaa3e97a9a3378c5b5556b6a8caf1bd37329df",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "230360",
+   "name": "에코마케팅",
+   "signal_id": "d6a82c4e2f23b92a86b0ed00f14df30ab35edccb541b4f5ea10880c57197ce62",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "010620",
+   "name": "HD현대미포",
+   "signal_id": "96def1ad5d37c7eb5e735a922a7dff2aaf207edc26476cfe567c30f246dcef02",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "115960",
+   "name": "연우",
+   "signal_id": "f6fcb8e7062056b72baaed8ee60f42cb9e2c9bacfb4d7c09b0f41db112c3a51b",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "c69d1cf25f049a1bbdb547f09612f51ce48de23bc1baf0ecd0d07ebad4854cac",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "003410",
+   "name": "쌍용C&E",
+   "signal_id": "210e1e9a709b92eb6aa6b8f3ac4553fe335184ebbfcfdc96fcc236a0d46df233",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "287410",
+   "name": "제이시스메디칼",
+   "signal_id": "55ce476f44c64c34dbdcbb30d0a771038508425e928a4431b6b598aa0911c825",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  },
+  {
+   "ticker": "085370",
+   "name": "루트로닉",
+   "signal_id": "973b4bb3575fb7dec54c3f850cd20574043e7b75f3a442a0ab005325c258139f",
+   "reason_code": "no_close",
+   "reason": "2026-11-16 종가 없음(거래정지·미수집) — 다음 계획에서 재평가",
+   "final": false
+  }
+ ],
+ "no_trade_reason": "스탑 매도 신호 없음 · 매수 후보 10건 모두 제외(사유 참조)",
+ "nav_timing_note": "계정 평가액은 시장별 최근 종가(KR·US 기준일이 다를 수 있음)로 계산한 추정치",
+ "status": "active",
+ "plan_id": "b71cced8bf508879",
+ "revision": 1,
+ "frozen_at": "2026-11-16T20:03:23.633201+00:00",
+ "supersedes": null,
+ "revision_reason": null
+}

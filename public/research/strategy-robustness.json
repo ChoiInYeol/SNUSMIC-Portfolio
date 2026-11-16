@@ -1,6 +1,6 @@
 {
  "schema_version": "1.0",
- "as_of": "2026-11-13",
+ "as_of": "2026-11-16",
  "strategy": "W_allweather_chandelier",
  "engine_version": "parking-open-v2",
  "policy": {
@@ -8,7 +8,7 @@
   "atr_mult": 5.75,
   "max_positions": 20
  },
- "input_fingerprint": "b7c695be222bf3ba6f8b9d87f5e5681f5085474d0bacf017ca33c67b8b14185c",
+ "input_fingerprint": "89314a957713fa2258c634fec09c90080204702981fbd6c18209fe0d721a2614",
  "reoptimized": false,
  "method": "동일 입력·고정 파라미터로 전 구간 재실행. 최고 수익 종목 제외는 사후 진단이며 실전 종목선택 규칙이 아님. 진입 지연은 기본 익일 시가에 해당 종목 거래일 1/3/5일을 추가. 기존 OOS는 이미 검토된 역사 구간임.",
  "ranking": [
@@ -43,11 +43,6 @@
    "pnl_krw": 22129301.93
   },
   {
-   "ticker": "064290",
-   "name": "인텍플러스",
-   "pnl_krw": 19391764.83
-  },
-  {
    "ticker": "448900",
    "name": "한국피아이엠",
    "pnl_krw": 16172621.1
@@ -66,6 +61,11 @@
    "ticker": "403870",
    "name": "HPSP",
    "pnl_krw": 14168322.01
+  },
+  {
+   "ticker": "064290",
+   "name": "인텍플러스",
+   "pnl_krw": 13798743.55
   },
   {
    "ticker": "017960",
@@ -88,6 +88,11 @@
    "pnl_krw": 12126309.8
   },
   {
+   "ticker": "021240",
+   "name": "코웨이",
+   "pnl_krw": 10647292.66
+  },
+  {
    "ticker": "187870",
    "name": "디바이스",
    "pnl_krw": 9431852.58
@@ -96,16 +101,6 @@
    "ticker": "060370",
    "name": "LS마린솔루션",
    "pnl_krw": 9409569.05
-  },
-  {
-   "ticker": "252990",
-   "name": "샘씨엔에스",
-   "pnl_krw": 9315046.0
-  },
-  {
-   "ticker": "021240",
-   "name": "코웨이",
-   "pnl_krw": 9134298.19
   },
   {
    "ticker": "336570",
@@ -118,11 +113,6 @@
    "pnl_krw": 8112969.17
   },
   {
-   "ticker": "091580",
-   "name": "상신이디피",
-   "pnl_krw": 8044979.29
-  },
-  {
    "ticker": "064350",
    "name": "현대로템",
    "pnl_krw": 7231786.84
@@ -131,11 +121,6 @@
    "ticker": "267270",
    "name": "HD건설기계",
    "pnl_krw": 7176936.55
-  },
-  {
-   "ticker": "126340",
-   "name": "비나텍",
-   "pnl_krw": 7044028.14
   },
   {
    "ticker": "048260",
@@ -163,6 +148,11 @@
    "pnl_krw": 5978105.35
   },
   {
+   "ticker": "252990",
+   "name": "샘씨엔에스",
+   "pnl_krw": 5844828.0
+  },
+  {
    "ticker": "095340",
    "name": "ISC",
    "pnl_krw": 5665345.46
@@ -181,6 +171,16 @@
    "ticker": "054450",
    "name": "텔레칩스",
    "pnl_krw": 4894448.91
+  },
+  {
+   "ticker": "126340",
+   "name": "비나텍",
+   "pnl_krw": 4884223.29
+  },
+  {
+   "ticker": "091580",
+   "name": "상신이디피",
+   "pnl_krw": 4881277.24
   },
   {
    "ticker": "108320",
@@ -243,19 +243,9 @@
    "pnl_krw": 3055614.92
   },
   {
-   "ticker": "013580",
-   "name": "계룡건설",
-   "pnl_krw": 2912826.76
-  },
-  {
    "ticker": "010140",
    "name": "삼성중공업",
    "pnl_krw": 2863776.79
-  },
-  {
-   "ticker": "028050",
-   "name": "삼성E&A",
-   "pnl_krw": 2807841.62
   },
   {
    "ticker": "192820",
@@ -266,6 +256,11 @@
    "ticker": "237690",
    "name": "에스티팜",
    "pnl_krw": 2672231.09
+  },
+  {
+   "ticker": "028050",
+   "name": "삼성E&A",
+   "pnl_krw": 2655064.72
   },
   {
    "ticker": "WOLF",
@@ -296,11 +291,6 @@
    "ticker": "214150",
    "name": "클래시스",
    "pnl_krw": 1984195.24
-  },
-  {
-   "ticker": "226950",
-   "name": "올릭스",
-   "pnl_krw": 1853650.28
   },
   {
    "ticker": "060150",
@@ -353,6 +343,11 @@
    "pnl_krw": 1459091.41
   },
   {
+   "ticker": "033780",
+   "name": "KT&G",
+   "pnl_krw": 1453913.47
+  },
+  {
    "ticker": "011790",
    "name": "SKC",
    "pnl_krw": 1442563.61
@@ -371,6 +366,11 @@
    "ticker": "042660",
    "name": "한화오션",
    "pnl_krw": 1355292.88
+  },
+  {
+   "ticker": "013580",
+   "name": "계룡건설",
+   "pnl_krw": 1345884.27
   },
   {
    "ticker": "282330",
@@ -423,6 +423,11 @@
    "pnl_krw": 929877.51
   },
   {
+   "ticker": "251970",
+   "name": "펌텍코리아",
+   "pnl_krw": 905000.37
+  },
+  {
    "ticker": "141080",
    "name": "리가켐바이오",
    "pnl_krw": 878014.46
@@ -431,11 +436,6 @@
    "ticker": "RIG",
    "name": "RIG",
    "pnl_krw": 808397.6
-  },
-  {
-   "ticker": "033780",
-   "name": "KT&G",
-   "pnl_krw": 779308.9
   },
   {
    "ticker": "003030",
@@ -546,6 +546,11 @@
    "ticker": "035760",
    "name": "CJ ENM",
    "pnl_krw": 235393.92
+  },
+  {
+   "ticker": "226950",
+   "name": "올릭스",
+   "pnl_krw": 234547.34
   },
   {
    "ticker": "039030",
@@ -698,11 +703,6 @@
    "pnl_krw": -370613.47
   },
   {
-   "ticker": "251970",
-   "name": "펌텍코리아",
-   "pnl_krw": -372849.03
-  },
-  {
    "ticker": "023160",
    "name": "태광",
    "pnl_krw": -380851.88
@@ -761,11 +761,6 @@
    "ticker": "089600",
    "name": "KT나스미디어",
    "pnl_krw": -568098.22
-  },
-  {
-   "ticker": "086450",
-   "name": "동국제약",
-   "pnl_krw": -579345.46
   },
   {
    "ticker": "119610",
@@ -963,14 +958,14 @@
    "pnl_krw": -1250490.99
   },
   {
-   "ticker": "072710",
-   "name": "농심홀딩스",
-   "pnl_krw": -1257943.41
-  },
-  {
    "ticker": "302550",
    "name": "리메드",
    "pnl_krw": -1267992.7
+  },
+  {
+   "ticker": "086450",
+   "name": "동국제약",
+   "pnl_krw": -1284469.58
   },
   {
    "ticker": "106190",
@@ -1006,6 +1001,11 @@
    "ticker": "060590",
    "name": "씨티씨바이오",
    "pnl_krw": -1474058.0
+  },
+  {
+   "ticker": "072710",
+   "name": "농심홀딩스",
+   "pnl_krw": -1497042.23
   },
   {
    "ticker": "010120",
@@ -1368,7 +1368,7 @@
    "pnl_krw": -17381539.01
   }
  ],
- "top5_positive_pnl_share_pct": 30.35955790338068,
+ "top5_positive_pnl_share_pct": 31.13045931765077,
  "scenarios": [
   {
    "id": "baseline",
@@ -1377,13 +1377,13 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 400631389.83,
-    "pnl_krw": 300631389.83,
-    "total_return_pct": 300.63,
-    "cagr_pct": 22.41,
-    "sharpe": 0.85,
+    "final_nav_krw": 385068551.95,
+    "pnl_krw": 285068551.95,
+    "total_return_pct": 285.07,
+    "cagr_pct": 21.68,
+    "sharpe": 0.83,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
     "mdd_pct": -41.24,
     "trades": 323,
@@ -1402,10 +1402,10 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 83.34,
-    "cagr_pct": 23.57,
-    "sharpe": 0.78,
+    "end": "2026-11-16",
+    "total_return_pct": 76.22,
+    "cagr_pct": 21.81,
+    "sharpe": 0.74,
     "mdd_pct": -41.24
    },
    "fees_krw": 24447227.048692428
@@ -1419,13 +1419,13 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 355379464.96,
-    "pnl_krw": 255379464.96,
-    "total_return_pct": 255.38,
-    "cagr_pct": 20.29,
-    "sharpe": 0.78,
+    "final_nav_krw": 341436896.37,
+    "pnl_krw": 241436896.37,
+    "total_return_pct": 241.44,
+    "cagr_pct": 19.57,
+    "sharpe": 0.76,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
     "mdd_pct": -38.88,
     "trades": 325,
@@ -1444,10 +1444,10 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 62.63,
-    "cagr_pct": 18.51,
-    "sharpe": 0.66,
+    "end": "2026-11-16",
+    "total_return_pct": 56.25,
+    "cagr_pct": 16.81,
+    "sharpe": 0.62,
     "mdd_pct": -38.88
    },
    "fees_krw": 22935760.081032645
@@ -1463,13 +1463,13 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 280734105.42,
-    "pnl_krw": 180734105.42,
-    "total_return_pct": 180.73,
-    "cagr_pct": 16.23,
-    "sharpe": 0.67,
+    "final_nav_krw": 269736991.06,
+    "pnl_krw": 169736991.06,
+    "total_return_pct": 169.74,
+    "cagr_pct": 15.53,
+    "sharpe": 0.65,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
     "mdd_pct": -40.05,
     "trades": 328,
@@ -1488,10 +1488,10 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 33.82,
-    "cagr_pct": 10.71,
-    "sharpe": 0.46,
+    "end": "2026-11-16",
+    "total_return_pct": 28.58,
+    "cagr_pct": 9.15,
+    "sharpe": 0.42,
     "mdd_pct": -38.92
    },
    "fees_krw": 20554287.27816
@@ -1509,13 +1509,13 @@
    "extra_entry_sessions": 0,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 240996657.52,
-    "pnl_krw": 140996657.52,
-    "total_return_pct": 141.0,
-    "cagr_pct": 13.67,
-    "sharpe": 0.6,
+    "final_nav_krw": 231675687.04,
+    "pnl_krw": 131675687.04,
+    "total_return_pct": 131.68,
+    "cagr_pct": 13.0,
+    "sharpe": 0.58,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
     "mdd_pct": -39.97,
     "trades": 331,
@@ -1534,10 +1534,10 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 24.25,
-    "cagr_pct": 7.88,
-    "sharpe": 0.39,
+    "end": "2026-11-16",
+    "total_return_pct": 19.44,
+    "cagr_pct": 6.38,
+    "sharpe": 0.35,
     "mdd_pct": -39.97
    },
    "fees_krw": 19268371.707363524
@@ -1549,13 +1549,13 @@
    "extra_entry_sessions": 1,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 413844090.57,
-    "pnl_krw": 313844090.57,
-    "total_return_pct": 313.84,
-    "cagr_pct": 22.99,
-    "sharpe": 0.85,
+    "final_nav_krw": 396057799.29,
+    "pnl_krw": 296057799.29,
+    "total_return_pct": 296.06,
+    "cagr_pct": 22.18,
+    "sharpe": 0.83,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
     "mdd_pct": -42.62,
     "trades": 318,
@@ -1574,10 +1574,10 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 99.97,
-    "cagr_pct": 27.38,
-    "sharpe": 0.85,
+    "end": "2026-11-16",
+    "total_return_pct": 91.38,
+    "cagr_pct": 25.36,
+    "sharpe": 0.81,
     "mdd_pct": -42.62
    },
    "fees_krw": 24064217.948841807
@@ -1589,15 +1589,15 @@
    "extra_entry_sessions": 3,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 391680406.57,
-    "pnl_krw": 291680406.57,
-    "total_return_pct": 291.68,
-    "cagr_pct": 22.01,
-    "sharpe": 0.84,
+    "final_nav_krw": 372124807.22,
+    "pnl_krw": 272124807.22,
+    "total_return_pct": 272.12,
+    "cagr_pct": 21.07,
+    "sharpe": 0.81,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -42.96,
+    "mdd_pct": -43.04,
     "trades": 318,
     "win_rate_pct": 38.4,
     "avg_hold_days": 122.7,
@@ -1614,11 +1614,11 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 104.27,
-    "cagr_pct": 28.33,
-    "sharpe": 0.88,
-    "mdd_pct": -42.96
+    "end": "2026-11-16",
+    "total_return_pct": 94.07,
+    "cagr_pct": 25.97,
+    "sharpe": 0.83,
+    "mdd_pct": -43.04
    },
    "fees_krw": 23990209.176314116
   },
@@ -1629,15 +1629,15 @@
    "extra_entry_sessions": 5,
    "metrics": {
     "start": "2020-01-02",
-    "end": "2026-11-13",
+    "end": "2026-11-16",
     "initial_capital_krw": 100000000.0,
-    "final_nav_krw": 327257381.21,
-    "pnl_krw": 227257381.21,
-    "total_return_pct": 227.26,
-    "cagr_pct": 18.85,
-    "sharpe": 0.75,
+    "final_nav_krw": 310369764.13,
+    "pnl_krw": 210369764.13,
+    "total_return_pct": 210.37,
+    "cagr_pct": 17.92,
+    "sharpe": 0.72,
     "sharpe_definition": "raw daily NAV return, annualized sqrt(252); no risk-free excess subtraction",
-    "mdd_pct": -46.19,
+    "mdd_pct": -46.88,
     "trades": 314,
     "win_rate_pct": 39.8,
     "avg_hold_days": 122.6,
@@ -1654,13 +1654,13 @@
    },
    "out_of_sample": {
     "start": "2024-01-02",
-    "end": "2026-11-13",
-    "total_return_pct": 64.43,
-    "cagr_pct": 18.96,
-    "sharpe": 0.67,
-    "mdd_pct": -46.19
+    "end": "2026-11-16",
+    "total_return_pct": 55.94,
+    "cagr_pct": 16.73,
+    "sharpe": 0.62,
+    "mdd_pct": -46.88
    },
-   "fees_krw": 24382326.515325554
+   "fees_krw": 24725799.49977053
   }
  ],
  "historical_reference": {
